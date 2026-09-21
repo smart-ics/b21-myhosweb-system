@@ -275,3 +275,11 @@ The Screen Complexity Summary describes operational scope by Screen. Its repeate
 - SC-02 Tata Rekening and SC-13 Purchasing are also better treated as later-scope candidates when financial closure, procurement accountability, and cross-department dependencies require broader business alignment.
 
 These observations are planning inputs only. They do not establish a roadmap, timeline, sprint sequence, or implementation commitment.
+
+---
+
+## Traceability Matrix
+
+| This Artifact | Source Artifact | Relationship | Downstream Artifact |
+| ------------- | --------------- | ------------ | ------------------- |
+| Feature Complexity Assessment | Screen-Feature Catalog | Assigns a Complexity Level 1–5 to each cataloged Feature | Development Order |

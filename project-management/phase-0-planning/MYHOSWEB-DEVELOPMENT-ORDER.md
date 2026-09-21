@@ -2,6 +2,30 @@
 
 **Planning Status:** Approved and frozen
 
+## Table of Contents
+
+- [1. Executive Summary](#1-executive-summary)
+- [2. Planning Principles](#2-planning-principles)
+- [3. Approved Development Order](#3-approved-development-order)
+  - [Milestone-1 — Patient Admission Foundation](#milestone-1--patient-admission-foundation)
+  - [Milestone-2 — Emergency Department Operations](#milestone-2--emergency-department-operations)
+  - [Milestone-3 — Outpatient Clinical Operations](#milestone-3--outpatient-clinical-operations)
+  - [Milestone-4 — Pharmacy Operations](#milestone-4--pharmacy-operations)
+  - [Milestone-5 — Billing and Cashier Operations](#milestone-5--billing-and-cashier-operations)
+  - [Milestone-6 — Inpatient Operations](#milestone-6--inpatient-operations)
+  - [Milestone-7 — Inventory Foundation and Shared Barang Capability](#milestone-7--inventory-foundation-and-shared-barang-capability)
+  - [Milestone-8 — Procurement Operations](#milestone-8--procurement-operations)
+  - [Milestone-9 — Laboratory Operations](#milestone-9--laboratory-operations)
+  - [Milestone-10 — Radiology Operations](#milestone-10--radiology-operations)
+  - [Milestone-11 — Master Data Foundation](#milestone-11--master-data-foundation)
+  - [Milestone-12 — Medical Record Administration](#milestone-12--medical-record-administration)
+  - [Milestone-13 — Operating Theatre Operations](#milestone-13--operating-theatre-operations)
+- [4. Development Order Governance](#4-development-order-governance)
+- [5. Relationship to Other Planning Artifacts](#5-relationship-to-other-planning-artifacts)
+- [6. Traceability Matrix](#6-traceability-matrix)
+
+---
+
 ## 1. Executive Summary
 
 MYHOSWEB will be delivered incrementally. Existing hospitals will continue using the desktop system while MYHOSWEB is progressively introduced. Deployment will not wait for the completion of the full system; features and Screens will be released as they become production-ready.
@@ -297,3 +321,10 @@ Roadmap
         ↓
 Implementation
 ```
+
+## 6. Traceability Matrix
+
+| This Artifact | Source Artifact | Relationship | Downstream Artifact |
+| ------------- | --------------- | ------------ | ------------------- |
+| Development Order | Screen-Feature Catalog | Sequences the cataloged Screens/Features into approved milestones using the SC-xx / FT-xx-xx identifiers | Feature Task Model |
+| Development Order | Feature Complexity Assessment | Uses complexity to inform effort and duration without reordering the approved sequence | Feature Task Model |

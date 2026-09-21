@@ -313,3 +313,14 @@ Specifically:
 
 Until then, this document remains a **draft standard** and introduces no durations,
 no manpower, and no sequence changes.
+
+---
+
+## 9. Traceability Matrix
+
+| This Artifact | Source Artifact | Relationship | Downstream Artifact |
+| ------------- | --------------- | ------------ | ------------------- |
+| Feature Task Model | Manifesto / SDLC Workflow | Derives the standard T-01→T-13 / B-01→B-08 lifecycle and role/gate authority model | Feature-Level Detailed Planning |
+| Feature Task Model | Development Order | Applies the standard lifecycle against the approved milestone sequence | Feature-Level Detailed Planning |
+
+The downstream chain continues: **Feature-Level Detailed Planning → Capacity Planning → Roadmap** (future artifacts, not yet created).

@@ -181,3 +181,12 @@
 - FT-14-03 Master Jaminan
 - FT-14-04 Master Layanan
 - FT-14-05 Master Tarif
+
+---
+
+## Traceability Matrix
+
+| This Artifact | Source Artifact | Relationship | Downstream Artifact |
+| ------------- | --------------- | ------------ | ------------------- |
+| Screen-Feature Catalog | Domain Catalog | Maps Screens/Features onto the business domains and capabilities | Feature Complexity Assessment |
+| Screen-Feature Catalog | — | Establishes the SC-xx / FT-xx-xx identifiers referenced by all downstream artifacts | Development Order |

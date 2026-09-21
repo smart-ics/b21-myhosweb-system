@@ -215,3 +215,11 @@ Subsequent artifacts will further decompose:
 **Domain → Capability → Feature → Screen/Workspace**
 
 Used for complexity estimation, roadmap creation, and implementation planning.
+
+---
+
+## Traceability Matrix
+
+| This Artifact | Source Artifact | Relationship | Downstream Artifact |
+| ------------- | --------------- | ------------ | ------------------- |
+| Domain Catalog | — | Defines the business domains and capabilities that bound all Phase-0 planning | Screen-Feature Catalog |
