@@ -4,7 +4,7 @@
 
 This artifact provides an initial, business-oriented complexity assessment for every feature in the MYHOSWEB Screen-Feature Catalog. It is intended to support Phase-0 roadmap planning, development timeframe estimation, feature prioritization, resource allocation, and Board of Directors planning discussion.
 
-The assessment is relative and directional. It uses only the scope defined in `MYHOSWEB-SCREEN-FEATURE-CATALOG.md`; it is not a technical design, implementation plan, or delivery commitment.
+The assessment is relative and directional. It uses only the scope defined in `MYHOSWEB-SCREEN-FEATURE-CATALOG.md`; it is not a technical design, implementation plan, or delivery commitment. Shared or canonical features are counted once for product implementation estimation, while remaining visible in each Screen's operational scope.
 
 ## 2. Complexity Scale
 
@@ -177,7 +177,19 @@ Complexity considers workflow breadth, business rule density, cross-domain depen
 | FT-14-04 | Master Layanan | M | Service catalog maintenance supports clinical and financial activities. |
 | FT-14-05 | Master Tarif | L | Pricing maintenance has broad financial impact and high accuracy expectations. |
 
-Repeated floor-stock features are assessed independently because their operational context differs by screen. Their recurring patterns may offer reuse potential, but the assessments remain separate for planning purposes.
+### Shared / Canonical Features
+
+`Pakai Barang`, `Mutasi Barang`, and `Opname` are common business capabilities reused by multiple operational Screens. Their occurrence in a Screen represents contextual usage, not an independent implementation.
+
+| Canonical Feature | Catalog Usage | Screen Usage Count | Product Implementation Complexity |
+| ----------------- | ------------- | ------------------ | ---------------------------------- |
+| Pakai Barang | FT-05-05, FT-06-05, FT-07-05, FT-08-06, FT-09-06, FT-10-05 | 6 | M, estimated once |
+| Mutasi Barang | FT-05-06, FT-06-06, FT-07-06, FT-08-07, FT-09-07, FT-10-06, FT-11-07, FT-12-02 | 8 | M, estimated once |
+| Opname | FT-05-07, FT-06-07, FT-07-07, FT-08-08, FT-09-08, FT-10-07, FT-11-06, FT-12-03 | 8 | M, estimated once |
+
+The catalog labels `Mutasi Barang` as `Mutasi` in SC-11 Apotek and SC-12 Gudang; these occurrences are included in the same canonical business feature. The catalog labels the usage context by Screen, but the planning estimate treats each canonical feature as one product capability.
+
+For planning purposes, **Screen Scope Complexity** includes the operational impact of a shared feature within that Screen. **Product Implementation Complexity** counts each canonical feature once and must not be multiplied by its Screen Usage Count. Context-specific validation and operational adoption may still affect Screen planning, but they do not create separate canonical feature implementations.
 
 ## 4. Screen Complexity Summary
 
@@ -221,6 +233,8 @@ The ranking reflects the combination of feature breadth, highest individual comp
 
 Screens with the same overall level are ordered by breadth, risk, and business-rule density rather than by an assumed delivery sequence.
 
+The Screen Complexity Summary describes operational scope by Screen. Its repeated `Pakai Barang`, `Mutasi Barang`, and `Opname` entries must not be summed as separate product implementations. For overall implementation estimation, use the Shared / Canonical Features table and count each of those three capabilities once.
+
 ## 6. Planning Observations
 
 ### High-Risk Screens
@@ -240,7 +254,7 @@ Screens with the same overall level are ordered by breadth, risk, and business-r
 
 - SC-14 Mastering is the clearest quick-win candidate because most features are focused maintenance workflows, although Master Jaminan and Master Tarif require stronger control.
 - SC-03 Kasir has a limited feature count and a focused business boundary, despite the importance of payment and closing accuracy.
-- Repeated floor-stock features may benefit from consistent business treatment across screens, while still requiring separate validation in each operational context.
+- The canonical `Pakai Barang`, `Mutasi Barang`, and `Opname` capabilities should be counted once in product implementation estimation, with their Screen occurrences retained for operational scope and context assessment.
 
 ### Screens Suitable for Early Delivery
 
