@@ -1,194 +1,327 @@
-# MYHOSWEB Development Order V1.0
+# MYHOSWEB Development Order
 
-## 1. Purpose
+**Planning Status:** Approved and frozen
 
-This artifact formalizes and **freezes** the agreed MYHOSWEB macro development sequence for Phase-0 planning. It establishes the authoritative order in which the business capabilities defined in the Screen-Feature Catalog will be delivered.
+## 1. Executive Summary
 
-It is the direct input for:
+MYHOSWEB will be delivered incrementally. Existing hospitals will continue using the desktop system while MYHOSWEB is progressively introduced. Deployment will not wait for the completion of the full system; features and Screens will be released as they become production-ready.
 
-- Feature Task / Work Breakdown
-- Capacity Planning
-- Development Roadmap
+The development order is a deliberate business-priority sequence. It is designed to maximize operational value while minimizing implementation risk by establishing patient-facing workflows first, followed by revenue, shared operational, and specialized capabilities. This sequence is the baseline for future planning, prioritization, scope control, capacity planning, and roadmap activities.
 
-This document does **not** modify the Screen-Feature Catalog or the Feature Complexity Assessment. It only orders their content.
+## 2. Planning Principles
 
-## 2. Frozen Decision
+### Incremental Delivery
 
-The development order is **FROZEN** as six macro development-order groups:
+Features are delivered independently and may be deployed without waiting for later stages. Each completed stage is intended to provide usable operational value.
 
-```
-1. Rawat Jalan
-2. IGD
-3. Rawat Inap
-4. Inventory
-5. Shared Barang Concern
-6. Remaining Features
-```
+### Patient Lifecycle First
 
-```
-Rawat Jalan → IGD → Rawat Inap → Inventory → Shared Barang Concern → Remaining Features
-```
+Patient-facing operational workflows receive priority before supporting and administrative capabilities. This establishes the core service journey before expanding the system's supporting functions.
 
-| Order | Macro Development-Order Group | Primary Screen |
-| ----- | ----------------------------- | -------------- |
-| 1 | Pasien Lifecycle — Rawat Jalan | SC-05 Poli Rawat Jalan |
-| 2 | Pasien Lifecycle — IGD | SC-07 IGD |
-| 3 | Pasien Lifecycle — Rawat Inap | SC-06 Bangsal Rawat Inap |
-| 4 | Inventory | SC-12 Gudang |
-| 5 | Shared Barang Concern | Canonical shared features |
-| 6 | Remaining Features | Unordered |
+### Revenue Protection
 
-The six groups are **macro development-order groups**, not phases.
+Billing, pharmacy, and payment capabilities are prioritized before secondary operational modules to protect revenue capture, payment control, and financial settlement.
 
-## 3. Sequencing Rationale
+### Shared Capability Reuse
 
-The frozen sequence follows these principles:
+Inventory-related capabilities are developed once and reused by multiple Screens. This avoids treating repeated operational usage as separate business capabilities.
 
-- **Patient lifecycle is the primary business progression.** The system first delivers the core patient-care journey, then the supporting operational and shared capabilities.
-- **Rawat Jalan → IGD → Rawat Inap is the initial patient-lifecycle delivery sequence.** Outpatient care is delivered first, followed by emergency care, then inpatient care.
-- **Inventory follows Rawat Inap.** Inventory is a supporting operational capability and is placed after the patient-lifecycle sequence is established.
-- **Inventory must be established before shared barang functionality.** The shared barang capabilities depend on an established inventory foundation.
-- **`Pakai Barang`, `Mutasi Barang`, and `Opname` are canonical shared features.** They are the same business capabilities reused by multiple Screens; their appearance in a Screen is contextual usage, not a separate implementation.
-- **Remaining features are intentionally left unordered.** No internal delivery order among them is established yet.
+### Deferred Specialization
 
-## 4. Feature Mapping
+Highly specialized modules such as Laboratory, Radiology, Operating Theatre, and Medical Record Administration are scheduled after core operational workflows are stabilized.
 
-Every feature from `MYHOSWEB-SCREEN-FEATURE-CATALOG.md` is mapped into one of the six groups below. Shared-feature occurrences are **not** treated as independent implementations; each canonical shared feature is mapped once under Order 5.
+## 3. Approved Development Order
 
-### Order 1 — Pasien Lifecycle — Rawat Jalan
+The following sequence is the approved business delivery order. The feature tables retain the approved Screen and Feature identifiers. The source approval record uses a skipped `Stage-3` label; this document presents the same approved sequence as thirteen consecutive business stages for executive planning purposes.
 
-Primary Screen: `SC-05 Poli Rawat Jalan`
+Each feature carries the complexity level assigned in the Feature Complexity Assessment, where 1 is Very Low and 5 is Very High. Stage totals are directional planning indicators only; they do not change the approved stage sequence.
 
-| Feature ID | Feature |
-| ---------- | ------- |
-| FT-05-01 | Antrian |
-| FT-05-02 | Tindakan |
-| FT-05-03 | Rujuk Internal |
-| FT-05-04 | CPOE (Order Pemeriksaan) |
+### Stage-1 — Patient Admission Foundation
 
-### Order 2 — Pasien Lifecycle — IGD
+**Business description:** Establish the patient entry point into the hospital system, including registration, scheduling, queueing, BPJS validation, and patient tracking.
 
-Primary Screen: `SC-07 IGD`
+**Why this stage exists:** Every subsequent patient-facing service depends on a reliable and visible admission journey.
 
-| Feature ID | Feature |
-| ---------- | ------- |
-| FT-07-01 | IGD Visit |
-| FT-07-02 | Triage |
-| FT-07-03 | Ambulance |
-| FT-07-04 | Tindakan |
+**Business value:** The hospital gains a consistent front door for patient access, better visibility of patient movement, and a foundation for coordinated service delivery.
 
-### Order 3 — Pasien Lifecycle — Rawat Inap
+| No | Screen | Feature | Complexity |
+|---:|---|---|---:|
+| 1 | SC-01 Admisi | FT-01-01 Booking | 3 |
+| 2 | SC-01 Admisi | FT-01-02 Registrasi Rawat Jalan dan IGD | 4 |
+| 3 | SC-01 Admisi | FT-01-04 VCLAIM BPJS | 5 |
+| 4 | SC-01 Admisi | FT-01-05 Patient Journey Tracking | 4 |
+| 5 | SC-01 Admisi | FT-01-06 Jadwal Praktek | 3 |
+| 6 | SC-01 Admisi | FT-01-07 Antrian | 3 |
 
-Primary Screen: `SC-06 Bangsal Rawat Inap`
+**Total Complexity: 22**
 
-| Feature ID | Feature |
-| ---------- | ------- |
-| FT-06-01 | Tindakan |
-| FT-06-02 | Pakai Bed |
-| FT-06-03 | Transfer Unit |
-| FT-06-04 | Discharge |
+### Stage-2 — Emergency Department Operations
 
-### Order 4 — Inventory
+**Business description:** Enable the complete operational workflow for emergency services from arrival through treatment.
 
-Primary Screen: `SC-12 Gudang`
+**Why this stage exists:** Emergency services require a focused workflow that supports rapid intake, prioritization, transport, and treatment.
 
-| Feature ID | Feature |
-| ---------- | ------- |
-| FT-12-01 | Terima Barang (DO) |
-| FT-12-04 | Musnah |
-| FT-12-05 | Retur Beli |
+**Business value:** Emergency teams gain greater operational visibility and a more coordinated response to urgent patient needs.
 
-The `SC-12 Gudang` occurrences of `Mutasi` (FT-12-02) and `Opname` (FT-12-03) are canonical shared features and are mapped to Order 5.
+| No | Screen | Feature | Complexity |
+|---:|---|---|---:|
+| 1 | SC-07 IGD | FT-07-01 IGD Visit | 3 |
+| 2 | SC-07 IGD | FT-07-02 Triage | 3 |
+| 3 | SC-07 IGD | FT-07-03 Ambulance | 3 |
+| 4 | SC-07 IGD | FT-07-04 Tindakan | 3 |
 
-### Order 5 — Shared Barang Concern
+**Total Complexity: 12**
 
-Canonical shared features, counted once each regardless of Screen usage count.
+### Stage-3 — Outpatient Clinical Operations
 
-| Canonical Feature | Catalog Occurrences |
-| ----------------- | ------------------- |
-| Pakai Barang | FT-05-05, FT-06-05, FT-07-05, FT-08-06, FT-09-06, FT-10-05 |
-| Mutasi Barang | FT-05-06, FT-06-06, FT-07-06, FT-08-07, FT-09-07, FT-10-06, FT-11-07, FT-12-02 |
-| Opname | FT-05-07, FT-06-07, FT-07-07, FT-08-08, FT-09-08, FT-10-07, FT-11-06, FT-12-03 |
+**Business description:** Enable outpatient service operations, including treatment, internal referrals, and examination ordering.
 
-The catalog labels `Mutasi Barang` as `Mutasi` in `SC-11 Apotek` and `SC-12 Gudang`; these occurrences are the same canonical feature.
+**Why this stage exists:** Outpatient services represent a core recurring care pathway and require coordinated clinical and service activity.
 
-### Remaining Features
+**Business value:** Outpatient teams gain a structured workflow from queue management through treatment and examination requests, improving service continuity.
 
-All features not included in Orders 1–5 remain deferred. No internal order among them is established yet.
+| No | Screen | Feature | Complexity |
+|---:|---|---|---:|
+| 1 | SC-05 Poli Rawat Jalan | FT-05-01 Antrian | 3 |
+| 2 | SC-05 Poli Rawat Jalan | FT-05-02 Tindakan | 3 |
+| 3 | SC-05 Poli Rawat Jalan | FT-05-03 Rujuk Internal | 3 |
+| 4 | SC-05 Poli Rawat Jalan | FT-05-04 CPOE (Order Pemeriksaan) | 4 |
 
-| Feature ID | Feature | Source Screen |
-| ---------- | ------- | ------------- |
-| FT-01-01 | Booking | SC-01 Admisi |
-| FT-01-02 | Registrasi Rawat Jalan dan IGD | SC-01 Admisi |
-| FT-01-03 | Registrasi Rawat Inap | SC-01 Admisi |
-| FT-01-04 | VCLAIM BPJS | SC-01 Admisi |
-| FT-01-05 | Patient Journey Tracking | SC-01 Admisi |
-| FT-01-06 | Jadwal Praktek | SC-01 Admisi |
-| FT-01-07 | Antrian | SC-01 Admisi |
-| FT-02-01 | Rincian Tagihan Pasien | SC-02 Tata Rekening |
-| FT-02-02 | Alokasi Pembayaran | SC-02 Tata Rekening |
-| FT-02-03 | Deposit | SC-02 Tata Rekening |
-| FT-02-04 | Refund | SC-02 Tata Rekening |
-| FT-02-05 | Reg-Out | SC-02 Tata Rekening |
-| FT-03-01 | Order Bayar | SC-03 Kasir |
-| FT-03-02 | Pembayaran | SC-03 Kasir |
-| FT-03-03 | Closing Shift | SC-03 Kasir |
-| FT-04-01 | Data Sosial Pasien | SC-04 Rekam Medis |
-| FT-04-02 | Manajemen Berkas | SC-04 Rekam Medis |
-| FT-04-03 | Casemix dan Coding | SC-04 Rekam Medis |
-| FT-04-04 | Pelaporan RL | SC-04 Rekam Medis |
-| FT-04-05 | Pelaporan Index dan Sensus | SC-04 Rekam Medis |
-| FT-08-01 | External Registration | SC-08 Laboratorium |
-| FT-08-02 | Order Laboratorium | SC-08 Laboratorium |
-| FT-08-03 | Charge | SC-08 Laboratorium |
-| FT-08-04 | Sample Collection | SC-08 Laboratorium |
-| FT-08-05 | Result Management | SC-08 Laboratorium |
-| FT-09-01 | Order Radiologi | SC-09 Radiologi |
-| FT-09-02 | Scheduling | SC-09 Radiologi |
-| FT-09-03 | Imaging | SC-09 Radiologi |
-| FT-09-04 | Expertise | SC-09 Radiologi |
-| FT-09-05 | Verification | SC-09 Radiologi |
-| FT-10-01 | Order Operasi | SC-10 Kamar Operasi |
-| FT-10-02 | Scheduling | SC-10 Kamar Operasi |
-| FT-10-03 | Pre-Operative Clearance | SC-10 Kamar Operasi |
-| FT-10-04 | Post-Operative Management | SC-10 Kamar Operasi |
-| FT-11-01 | Antrian Apotek | SC-11 Apotek |
-| FT-11-02 | Telaah Resep | SC-11 Apotek |
-| FT-11-03 | Penjualan | SC-11 Apotek |
-| FT-11-04 | Dispensing | SC-11 Apotek |
-| FT-11-05 | Serah Obat | SC-11 Apotek |
-| FT-13-01 | Material Request | SC-13 Purchasing |
-| FT-13-02 | Forecasting | SC-13 Purchasing |
-| FT-13-03 | Purchase Request | SC-13 Purchasing |
-| FT-13-04 | Purchase Order | SC-13 Purchasing |
-| FT-13-05 | Faktur Tagihan | SC-13 Purchasing |
-| FT-14-01 | Master Organisasi | SC-14 Mastering |
-| FT-14-02 | Master Dokter | SC-14 Mastering |
-| FT-14-03 | Master Jaminan | SC-14 Mastering |
-| FT-14-04 | Master Layanan | SC-14 Mastering |
-| FT-14-05 | Master Tarif | SC-14 Mastering |
+**Total Complexity: 13**
 
-## 5. Frozen Planning Rules
+### Stage-4 — Pharmacy Operations
 
-- This development order is **FROZEN**.
-- All subsequent planning artifacts must respect this order.
-- Feature complexity does **not** override this order.
-- Complexity may affect effort, duration, and task sequencing **within** an ordered group.
-- Technical dependencies may require prerequisite preparation, but such preparation does not change the frozen business development order.
-- No detailed sequence for the Remaining Features is established yet.
+**Business description:** Enable prescription processing, dispensing, medication handover, and pharmacy stock control.
 
-## 6. Relationship to Other Artifacts
+**Why this stage exists:** Pharmacy is a direct continuation of patient care and a material point of medication control and revenue realization.
+
+**Business value:** The hospital gains a controlled medication workflow from prescription review through handover, with improved accountability for pharmacy transactions and stock activity.
+
+| No | Screen | Feature | Complexity |
+|---:|---|---|---:|
+| 1 | SC-11 Apotek | FT-11-01 Antrian Apotek | 3 |
+| 2 | SC-11 Apotek | FT-11-02 Telaah Resep | 3 |
+| 3 | SC-11 Apotek | FT-11-03 Penjualan | 4 |
+| 4 | SC-11 Apotek | FT-11-04 Dispensing | 3 |
+| 5 | SC-11 Apotek | FT-11-05 Serah Obat | 3 |
+| 6 | SC-11 Apotek | FT-11-06 Opname | 3 |
+| 7 | SC-11 Apotek | FT-11-07 Mutasi | 3 |
+
+**Total Complexity: 22**
+
+### Stage-5 — Billing and Cashier Operations
+
+**Business description:** Establish revenue cycle processing, including billing, payment allocation, cashier operation, and financial settlement.
+
+**Why this stage exists:** Operational services must be connected to reliable charge, payment, and settlement processes.
+
+**Business value:** The hospital gains stronger revenue capture, clearer payment accountability, and controlled cashier closing processes.
+
+| No | Screen | Feature | Complexity |
+|---:|---|---|---:|
+| 1 | SC-02 Tata Rekening | FT-02-01 Rincian Tagihan Pasien | 4 |
+| 2 | SC-02 Tata Rekening | FT-02-02 Alokasi Pembayaran | 4 |
+| 3 | SC-02 Tata Rekening | FT-02-05 Reg-Out | 4 |
+| 4 | SC-03 Kasir | FT-03-01 Order Bayar | 3 |
+| 5 | SC-03 Kasir | FT-03-02 Pembayaran | 4 |
+| 6 | SC-03 Kasir | FT-03-03 Closing Shift | 4 |
+
+**Total Complexity: 23**
+
+### Stage-6 — Inpatient Operations
+
+**Business description:** Enable inpatient service management, including bed occupancy, transfer, discharge, and related financial processes.
+
+**Why this stage exists:** Inpatient care introduces longer patient journeys and requires coordinated control of beds, units, discharge, and financial obligations.
+
+**Business value:** The hospital gains visibility and control over inpatient capacity, patient movement, discharge, deposits, refunds, and continuity of billing.
+
+| No | Screen | Feature | Complexity |
+|---:|---|---|---:|
+| 1 | SC-01 Admisi | FT-01-03 Registrasi Rawat Inap | 4 |
+| 2 | SC-06 Bangsal Rawat Inap | FT-06-01 Tindakan | 3 |
+| 3 | SC-06 Bangsal Rawat Inap | FT-06-02 Pakai Bed | 4 |
+| 4 | SC-06 Bangsal Rawat Inap | FT-06-03 Transfer Unit | 4 |
+| 5 | SC-06 Bangsal Rawat Inap | FT-06-04 Discharge | 4 |
+| 6 | SC-02 Tata Rekening | FT-02-03 Deposit | 3 |
+| 7 | SC-02 Tata Rekening | FT-02-04 Refund | 4 |
+
+**Total Complexity: 26**
+
+### Stage-7 — Inventory Foundation and Shared Barang Capability
+
+**Business description:** Establish warehouse inventory control and the shared stock-management capabilities used by operational departments.
+
+**Why this stage exists:** Reliable stock control is a prerequisite for accountable material usage across the hospital.
+
+**Business value:** The hospital gains a common basis for stock movement, stock counting, disposal, returns, and material usage across departments.
+
+| No | Screen | Feature | Complexity |
+|---:|---|---|---:|
+| 1 | SC-12 Gudang | FT-12-02 Mutasi | 3 |
+| 2 | SC-12 Gudang | FT-12-03 Opname | 3 |
+| 3 | SC-12 Gudang | FT-12-04 Musnah | 4 |
+| 4 | SC-12 Gudang | FT-12-05 Retur Beli | 4 |
+| 5 | SC-05 Poli Rawat Jalan | FT-05-05 Pakai Barang | 3 |
+| 6 | SC-05 Poli Rawat Jalan | FT-05-06 Mutasi Barang | 3 |
+| 7 | SC-05 Poli Rawat Jalan | FT-05-07 Opname | 3 |
+| 8 | SC-07 IGD | FT-07-05 Pakai Barang | 3 |
+| 9 | SC-07 IGD | FT-07-06 Mutasi Barang | 3 |
+| 10 | SC-07 IGD | FT-07-07 Opname | 3 |
+| 11 | SC-06 Bangsal Rawat Inap | FT-06-05 Pakai Barang | 3 |
+| 12 | SC-06 Bangsal Rawat Inap | FT-06-06 Mutasi Barang | 3 |
+| 13 | SC-06 Bangsal Rawat Inap | FT-06-07 Opname | 3 |
+
+**Total Complexity: 41**
+
+**Canonical shared capabilities:** `Pakai Barang`, `Mutasi Barang`, and `Opname` are implemented once as canonical shared capabilities and reused across multiple Screens. Their appearance in a Screen represents contextual use of the same business capability, not a separate implementation for each Screen. Counting each canonical capability once, the distinct capability complexity of this stage is **17** (Musnah, Retur Beli, and the three shared capabilities); the row total of **41** reflects contextual usage across Screens.
+
+### Stage-8 — Procurement Operations
+
+**Business description:** Enable material planning, purchasing, supplier ordering, receiving coordination, and invoice processing.
+
+**Why this stage exists:** Inventory sustainability depends on disciplined planning and controlled replenishment from suppliers.
+
+**Business value:** The hospital gains better purchasing visibility, supplier coordination, receiving control, and invoice traceability.
+
+| No | Screen | Feature | Complexity |
+|---:|---|---|---:|
+| 1 | SC-13 Purchasing | FT-13-01 Material Request | 3 |
+| 2 | SC-13 Purchasing | FT-13-02 Forecasting | 4 |
+| 3 | SC-13 Purchasing | FT-13-03 Purchase Request | 4 |
+| 4 | SC-12 Gudang | FT-12-01 Terima Barang (DO) | 4 |
+| 5 | SC-13 Purchasing | FT-13-04 Purchase Order | 4 |
+| 6 | SC-13 Purchasing | FT-13-05 Faktur Tagihan | 4 |
+
+**Total Complexity: 23**
+
+### Stage-9 — Laboratory Operations
+
+**Business description:** Enable laboratory workflow from registration through specimen collection and result management.
+
+**Why this stage exists:** Laboratory services require an end-to-end operational path connecting requests, specimens, charges, and results.
+
+**Business value:** Laboratory operations gain improved order visibility, specimen accountability, and timely management of diagnostic results.
+
+| No | Screen | Feature | Complexity |
+|---:|---|---|---:|
+| 1 | SC-08 Laboratorium | FT-08-01 External Registration | 3 |
+| 2 | SC-08 Laboratorium | FT-08-02 Order Laboratorium | 3 |
+| 3 | SC-08 Laboratorium | FT-08-03 Charge | 3 |
+| 4 | SC-08 Laboratorium | FT-08-04 Sample Collection | 3 |
+| 5 | SC-08 Laboratorium | FT-08-05 Result Management | 4 |
+| 6 | SC-08 Laboratorium | FT-08-06 Pakai Barang | 3 |
+| 7 | SC-08 Laboratorium | FT-08-07 Mutasi Barang | 3 |
+| 8 | SC-08 Laboratorium | FT-08-08 Opname | 3 |
+
+**Total Complexity: 25**
+
+### Stage-10 — Radiology Operations
+
+**Business description:** Enable radiology workflow from order management through interpretation and verification.
+
+**Why this stage exists:** Radiology requires coordinated scheduling and controlled progression from examination order to verified interpretation.
+
+**Business value:** Radiology teams gain clearer workflow control, improved examination coordination, and stronger verification discipline.
+
+| No | Screen | Feature | Complexity |
+|---:|---|---|---:|
+| 1 | SC-09 Radiologi | FT-09-01 Order Radiologi | 3 |
+| 2 | SC-09 Radiologi | FT-09-02 Scheduling | 3 |
+| 3 | SC-09 Radiologi | FT-09-03 Imaging | 3 |
+| 4 | SC-09 Radiologi | FT-09-04 Expertise | 3 |
+| 5 | SC-09 Radiologi | FT-09-05 Verification | 3 |
+| 6 | SC-09 Radiologi | FT-09-06 Pakai Barang | 3 |
+| 7 | SC-09 Radiologi | FT-09-07 Mutasi Barang | 3 |
+| 8 | SC-09 Radiologi | FT-09-08 Opname | 3 |
+
+**Total Complexity: 24**
+
+### Stage-11 — Master Data Foundation
+
+**Business description:** Establish organizational master data required by all operational modules.
+
+**Why this stage exists:** Consistent organizational, provider, payer, service, and tariff information is necessary for dependable operations and reporting.
+
+**Business value:** The hospital gains a common reference point for operational consistency, service configuration, and financial control.
+
+| No | Screen | Feature | Complexity |
+|---:|---|---|---:|
+| 1 | SC-14 Mastering | FT-14-01 Master Organisasi | 2 |
+| 2 | SC-14 Mastering | FT-14-02 Master Dokter | 2 |
+| 3 | SC-14 Mastering | FT-14-03 Master Jaminan | 3 |
+| 4 | SC-14 Mastering | FT-14-04 Master Layanan | 2 |
+| 5 | SC-14 Mastering | FT-14-05 Master Tarif | 3 |
+
+**Total Complexity: 12**
+
+### Stage-12 — Medical Record Administration
+
+**Business description:** Enable administrative medical record management, coding, and regulatory reporting.
+
+**Why this stage exists:** Medical record administration requires structured control of patient record administration, coding, and institutional reporting after core operational workflows are established.
+
+**Business value:** The hospital gains stronger record administration, coding support, and regulatory reporting capability.
+
+This stage focuses on medical record administration and reporting. Clinical documentation and clinical decision-making are owned by the Electronic Medical Record (EMR) platform and are outside the scope of this stage.
+
+| No | Screen | Feature | Complexity |
+|---:|---|---|---:|
+| 1 | SC-04 Rekam Medis | FT-04-01 Data Sosial Pasien | 2 |
+| 2 | SC-04 Rekam Medis | FT-04-02 Manajemen Berkas | 3 |
+| 3 | SC-04 Rekam Medis | FT-04-03 Casemix dan Coding | 4 |
+| 4 | SC-04 Rekam Medis | FT-04-04 Pelaporan RL | 5 |
+| 5 | SC-04 Rekam Medis | FT-04-05 Pelaporan Index dan Sensus | 4 |
+
+**Total Complexity: 18**
+
+### Stage-13 — Operating Theatre Operations
+
+**Business description:** Enable operating theatre scheduling, operative workflow management, and post-operative coordination.
+
+**Why this stage exists:** Operating theatre services require specialized coordination of orders, scheduling, clearance, operative activity, and post-operative follow-up.
+
+**Business value:** The hospital gains a controlled operating theatre workflow with improved coordination of scarce resources and post-operative activities.
+
+| No | Screen | Feature | Complexity |
+|---:|---|---|---:|
+| 1 | SC-10 Kamar Operasi | FT-10-01 Order Operasi | 3 |
+| 2 | SC-10 Kamar Operasi | FT-10-02 Scheduling | 4 |
+| 3 | SC-10 Kamar Operasi | FT-10-03 Pre-Operative Clearance | 3 |
+| 4 | SC-10 Kamar Operasi | FT-10-04 Post-Operative Management | 3 |
+| 5 | SC-10 Kamar Operasi | FT-10-05 Pakai Barang | 3 |
+| 6 | SC-10 Kamar Operasi | FT-10-06 Mutasi Barang | 3 |
+| 7 | SC-10 Kamar Operasi | FT-10-07 Opname | 3 |
+
+**Total Complexity: 22**
+
+## 4. Development Order Governance
+
+- This development order is approved and frozen.
+- Subsequent planning artifacts must use this sequence.
+- Feature complexity may influence effort estimation.
+- Feature complexity may influence delivery duration.
+- Feature complexity must not alter the approved stage sequence.
+- Future changes to the sequence require explicit management approval.
+
+The approved order governs business prioritization. Estimation and delivery planning may refine the work required within a stage, but may not reorder the stages.
+
+## 5. Relationship to Other Planning Artifacts
 
 ```text
+Domain Catalog
+        ↓
 Screen-Feature Catalog
-        +
+        ↓
 Feature Complexity Assessment
         ↓
-MYHOSWEB Development Order
+Development Order
         ↓
-Feature Task / Work Breakdown
+Feature Work Breakdown
         ↓
 Capacity Planning
         ↓
-Development Roadmap
+Roadmap
+        ↓
+Implementation
 ```
