@@ -143,13 +143,3 @@
 | 79 | SC-13 Purchasing | FT-13-03 Purchase Request |  |
 | 80 | SC-13 Purchasing | FT-13-04 Purchase Order | - FT-13-01 Material Request (opt)<br>- FT-13-03 Purchase Request (opt) |
 | 81 | SC-13 Purchasing | FT-13-05 Faktur Tagihan | - FT-13-04 Purchase Order<br>- FT-12-01 Terima Barang (DO) (opt) |
-
-**SC-14 Mastering**
-
-| No | Screen | Feature | Dependency |
-|----|--------|---------|------------|
-| 82 | SC-14 Mastering | FT-14-01 Master Organisasi |  |
-| 83 | SC-14 Mastering | FT-14-02 Master Dokter |  |
-| 84 | SC-14 Mastering | FT-14-03 Master Jaminan |  |
-| 85 | SC-14 Mastering | FT-14-04 Master Layanan |  |
-| 86 | SC-14 Mastering | FT-14-05 Master Tarif |  |

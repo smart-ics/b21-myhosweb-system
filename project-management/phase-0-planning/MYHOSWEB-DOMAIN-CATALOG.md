@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This document defines the business domains of the MyHospital Platform and the major business capabilities owned by each domain. 
+This document defines the business domains of the MyHospital Platform and the major business capabilities owned by each domain.
 
 The purpose of this catalog is to establish a common business decomposition model for:
 - Screen planning
@@ -17,199 +17,232 @@ The purpose of this catalog is to establish a common business decomposition mode
 
 ## Table of Contents
 
-- [01. Patient](#01-patient)
-- [02. Organization](#02-organization)
-- [03. Admission](#03-admission)
-- [04. Rawat Jalan](#04-rawat-jalan)
-- [05. Rawat Inap](#05-rawat-inap)
-- [06. Emergency](#06-emergency)
-- [07. Laboratory](#07-laboratory)
-- [08. Radiology](#08-radiology)
-- [09. Operating Theatre](#09-operating-theatre)
-- [10. Pharmacy](#10-pharmacy)
-- [11. Inventory](#11-inventory)
-- [12. Procurement](#12-procurement)
-- [13. Tata Rekening](#13-tata-rekening)
-- [14. Manajemen RM](#14-manajemen-rm)
+- [DOM-01 Patient](#dom-01-patient)
+- [DOM-02 Organization](#dom-02-organization)
+- [DOM-03 Admission](#dom-03-admission)
+- [DOM-04 Rawat Jalan](#dom-04-rawat-jalan)
+- [DOM-05 Rawat Inap](#dom-05-rawat-inap)
+- [DOM-06 Emergency](#dom-06-emergency)
+- [DOM-07 Laboratory](#dom-07-laboratory)
+- [DOM-08 Radiology](#dom-08-radiology)
+- [DOM-09 Operating Theatre](#dom-09-operating-theatre)
+- [DOM-10 Pharmacy](#dom-10-pharmacy)
+- [DOM-11 Inventory](#dom-11-inventory)
+- [DOM-12 Procurement](#dom-12-procurement)
+- [DOM-13 Tata Rekening](#dom-13-tata-rekening)
+- [DOM-14 Manajemen RM](#dom-14-manajemen-rm)
+- [DOM-15 CPOE](#dom-15-cpoe)
+- [DOM-16 BPJS Integration](#dom-16-bpjs-integration)
 
 ---
 
-## 01. Patient
+## DOM-01 Patient
 
 ### Purpose
 Manage patient identity and demographic information used across all hospital services.
 
 ### Capabilities
-- **Data Sosial Pasien**: Manage patient demographic, administrative, contact, and social information.
+- **CAP-01-01 Data Sosial Pasien**: Manage patient demographic, administrative, contact, and social information.
 
 ---
 
-## 02. Organization
+## DOM-02 Organization
 
 ### Purpose
 Manage hospital organizational resources used to deliver healthcare services.
 
 ### Capabilities
-- **Layanan**: Manage hospital services and service definitions.
-- **Dokter**: Manage healthcare providers and practitioner information.
-- **Bed**: Manage bed master data and bed classification.
+- **CAP-02-01 Layanan**: Manage hospital services and service definitions.
+- **CAP-02-02 Dokter**: Manage healthcare providers and practitioner information.
+- **CAP-02-03 Bed**: Manage bed master data and bed classification.
 
 ---
 
-## 03. Admission
+## DOM-03 Admission
 
 ### Purpose
 Manage patient entry into hospital services.
 
 ### Capabilities
-- **Registrasi**: Manage patient registration activities.
-- **Booking**: Manage service reservations and appointments.
-- **Antrian**: Manage patient queueing processes.
-- **Tracker**: Manage patient journey and service tracking throughout the admission process.
+- **CAP-03-01 Registrasi**: Manage patient registration activities.
+- **CAP-03-02 Booking**: Manage service reservations and appointments.
+- **CAP-03-03 Antrian**: Manage patient queueing processes.
+- **CAP-03-04 Tracker**: Manage patient journey and service tracking throughout the admission process.
 
 ---
 
-## 04. Rawat Jalan
+## DOM-04 Rawat Jalan
 
 ### Purpose
 Manage outpatient service operations.
 
 ### Capabilities
-- **Tindakan**: Manage outpatient procedures and service execution.
-- **Rujukan Internal**: Manage referrals between hospital units and providers.
-- **Kontrol**: Manage follow-up visits and scheduled return consultations.
+- **CAP-04-01 Tindakan**: Manage outpatient procedures and service execution.
+- **CAP-04-02 Rujukan Internal**: Manage referrals between hospital units and providers.
+- **CAP-04-03 Kontrol**: Manage follow-up visits and scheduled return consultations.
 
 ---
 
-## 05. Rawat Inap
+## DOM-05 Rawat Inap
 
 ### Purpose
 Manage inpatient stay operations.
 
 ### Capabilities
-- **Penempatan Bed**: Manage patient bed assignment and occupancy.
-- **Transfer**: Manage patient movement between rooms, wards, and classes.
-- **Discharge**: Manage inpatient discharge processes.
-- **Intensive Care**: Manage intensive care unit placement and operational workflows.
+- **CAP-05-01 Penempatan Bed**: Manage patient bed assignment and occupancy.
+- **CAP-05-02 Transfer**: Manage patient movement between rooms, wards, and classes.
+- **CAP-05-03 Discharge**: Manage inpatient discharge processes.
+- **CAP-05-04 Intensive Care**: Manage intensive care unit placement and operational workflows.
 
 ---
 
-## 06. Emergency
+## DOM-06 Emergency
 
 ### Purpose
 Manage emergency care operations.
 
 ### Capabilities
-- **IGD Visit**: Manage emergency visit lifecycle and patient flow.
-- **Triage**: Manage emergency patient prioritization and acuity classification.
-- **Observasi**: Manage observation care prior to disposition.
-- **Ambulance**: Manage ambulance requests and ambulance service operations.
+- **CAP-06-01 IGD Visit**: Manage emergency visit lifecycle and patient flow.
+- **CAP-06-02 Triage**: Manage emergency patient prioritization and acuity classification.
+- **CAP-06-03 Observasi**: Manage observation care prior to disposition.
+- **CAP-06-04 Ambulance**: Manage ambulance requests and ambulance service operations.
 
 ---
 
-## 07. Laboratory
+## DOM-07 Laboratory
 
 ### Purpose
 Manage laboratory examination services.
 
 ### Capabilities
-- **Order Lab**: Manage laboratory examination requests.
-- **Sample Collection**: Manage specimen collection and specimen tracking.
-- **Result Management**: Manage laboratory result recording, verification, and release.
+- **CAP-07-02 Sample Collection**: Manage specimen collection and specimen tracking.
+- **CAP-07-03 Result Management**: Manage laboratory result recording, verification, and release.
 
 ---
 
-## 08. Radiology
+## DOM-08 Radiology
 
 ### Purpose
 Manage radiology examination services.
 
 ### Capabilities
-- **Order Radiologi**: Manage radiology examination requests.
-- **Examination**: Manage radiology examination execution and imaging workflow.
-- **Expertise**: Manage radiologist interpretation, reporting, and result authorization.
+- **CAP-08-02 Examination**: Manage radiology examination execution and imaging workflow.
+- **CAP-08-03 Expertise**: Manage radiologist interpretation, reporting, and result authorization.
 
 ---
 
-## 09. Operating Theatre
+## DOM-09 Operating Theatre
 
 ### Purpose
 Manage surgical service operations.
 
 ### Capabilities
-- **Order Operasi**: Manage surgical procedure requests.
-- **Scheduling**: Manage operating theatre scheduling and resource allocation.
-- **Operative Procedure**: Manage surgical procedure execution.
-- **Recovery**: Manage post-operative recovery room activities.
+- **CAP-09-02 Scheduling**: Manage operating theatre scheduling and resource allocation.
+- **CAP-09-03 Operative Procedure**: Manage surgical procedure execution.
+- **CAP-09-04 Recovery**: Manage post-operative recovery room activities.
 
 ---
 
-## 10. Pharmacy
+## DOM-10 Pharmacy
 
 ### Purpose
 Manage medication services and pharmacy operations.
 
 ### Capabilities
-- **Prescription**: Manage medication prescribing activities.
-- **Sales**: Manage direct medication sales transactions.
-- **Dispensing**: Manage medication preparation and dispensing processes.
-- **Retur Jual**: Manage medication sales returns.
+- **CAP-10-02 Sales**: Manage direct medication sales transactions.
+- **CAP-10-03 Dispensing**: Manage medication preparation and dispensing processes.
+- **CAP-10-04 Retur Jual**: Manage medication sales returns.
+- **CAP-10-05 Serah Obat**: Manage medication handover to patients.
 
 ---
 
-## 11. Inventory
+## DOM-11 Inventory
 
 ### Purpose
 Manage inventory assets and stock control.
 
 ### Capabilities
-- **Persediaan**: Manage inventory balances and stock availability.
-- **Mutasi**: Manage inventory movement between locations.
-- **Opname**: Manage stock verification and stock reconciliation activities.
-- **Pemusnahan**: Manage inventory destruction and disposal processes.
+- **CAP-11-01 Persediaan**: Manage inventory balances and stock availability.
+- **CAP-11-02 Mutasi**: Manage inventory movement between locations.
+- **CAP-11-03 Opname**: Manage stock verification and stock reconciliation activities.
+- **CAP-11-04 Pemusnahan**: Manage inventory destruction and disposal processes.
+- **CAP-11-05 Stock-Ledger**: Manage inventory stock ledger and movement history.
 
 ---
 
-## 12. Procurement
+## DOM-12 Procurement
 
 ### Purpose
 Manage procurement and purchasing activities.
 
 ### Capabilities
-- **Purchasing**: Manage purchasing requests and purchase orders.
-- **Terima Barang**: Manage goods receipt processes.
-- **Faktur Tagihan**: Manage supplier invoices and purchase billing documents.
-- **Retur Beli**: Manage supplier return transactions.
+- **CAP-12-01 Purchasing**: Manage purchasing requests and purchase orders.
+- **CAP-12-02 Terima Barang**: Manage goods receipt processes.
+- **CAP-12-03 Faktur Tagihan**: Manage supplier invoices and purchase billing documents.
+- **CAP-12-04 Retur Beli**: Manage supplier return transactions.
 
 ---
 
-## 13. Tata Rekening
+## DOM-13 Tata Rekening
 
 ### Purpose
 Manage financial settlement of patient services.
 
 ### Capabilities
-- **Tarif**: Manage service tariffs and pricing structures.
-- **Jaminan**: Manage payer, guarantor, and insurance eligibility information.
-- **Billing**: Manage charge accumulation and billing processes.
-- **Payment**: Manage payment transactions and financial settlement.
+- **CAP-13-01 Tarif**: Manage service tariffs and pricing structures.
+- **CAP-13-02 Jaminan**: Manage payer, guarantor, and insurance eligibility information.
+- **CAP-13-03 Billing**: Manage charge accumulation and billing processes.
+- **CAP-13-04 Payment**: Manage payment transactions and financial settlement.
 
 ---
 
-## 14. Manajemen RM
+## DOM-14 Manajemen RM
 
 ### Purpose
 Manage medical record administration and statutory hospital reporting.
 
 ### Capabilities
-- **Casemix**: Manage coding, grouping, and reimbursement classification activities.
-- **Pelaporan RS**: Manage mandatory hospital reporting, statistics, and healthcare reporting obligations.
+- **CAP-14-01 Casemix**: Manage coding, grouping, and reimbursement classification activities.
+- **CAP-14-02 Pelaporan RS**: Manage mandatory hospital reporting, statistics, and healthcare reporting obligations.
+
+---
+
+## DOM-15 CPOE
+
+### Purpose
+Manage computerized physician order entry.
+
+### Capabilities
+- **CAP-15-01 Prescription**: Manage medication prescribing activities.
+- **CAP-15-02 Order Lab**: Manage laboratory examination requests.
+- **CAP-15-03 Order Radiologi**: Manage radiology examination requests.
+- **CAP-15-04 Order Operasi**: Manage surgical procedure requests.
+
+---
+
+## DOM-16 BPJS Integration
+
+### Purpose
+Manage integration services between MyHospital and BPJS Kesehatan.
+
+### Capabilities
+- **CAP-16-01 VClaim**: Manage BPJS claim submission and verification through VClaim services.
+- **CAP-16-02 EKlaim**: Manage electronic claim submission and validation.
+- **CAP-16-03 Antrol (Antrian Online)**: Manage BPJS online queue registration and service.
+- **CAP-16-04 HFIS**: Manage hospital facility information reporting to BPJS.
 
 ---
 
 ## Notes
 
 This catalog represents Domain Version 1.1 and serves as the baseline for Phase-0 Migration Planning.
+
+### Stable ID Convention
+
+- **Domain ID** (`DOM-xx`): `xx` is the domain sequence number, assigned by the order in this catalog (`DOM-01` … `DOM-16`).
+- **Capability ID** (`CAP-xx-yy`): `xx` is the owning Domain number; `yy` is the capability sequence within that Domain.
+
+Identifiers are stable and permanent. Renames preserve the ID; removals retire the ID and never reuse it. Downstream planning artifacts must reference these IDs without redefining them.
 
 Subsequent artifacts will further decompose:
 **Domain → Capability → Feature → Screen/Workspace**
