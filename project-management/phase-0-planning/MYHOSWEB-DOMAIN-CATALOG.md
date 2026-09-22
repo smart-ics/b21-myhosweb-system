@@ -55,6 +55,7 @@ Manage hospital organizational resources used to deliver healthcare services.
 - **CAP-02-01 Layanan**: Manage hospital services and service definitions.
 - **CAP-02-02 Dokter**: Manage healthcare providers and practitioner information.
 - **CAP-02-03 Bed**: Manage bed master data and bed classification.
+- **CAP-02-04 Jadwal Praktek**: Manage doctor practice schedules and availability.
 
 ---
 
@@ -167,6 +168,7 @@ Manage inventory assets and stock control.
 - **CAP-11-03 Opname**: Manage stock verification and stock reconciliation activities.
 - **CAP-11-04 Pemusnahan**: Manage inventory destruction and disposal processes.
 - **CAP-11-05 Stock-Ledger**: Manage inventory stock ledger and movement history.
+- **CAP-11-06 Barang**: Manage item/goods master data, specifications, and classifications.
 
 ---
 
@@ -180,6 +182,7 @@ Manage procurement and purchasing activities.
 - **CAP-12-02 Terima Barang**: Manage goods receipt processes.
 - **CAP-12-03 Faktur Tagihan**: Manage supplier invoices and purchase billing documents.
 - **CAP-12-04 Retur Beli**: Manage supplier return transactions.
+- **CAP-12-05 Supplier**: Manage supplier master data, profiles, and vendor information.
 
 ---
 
@@ -204,6 +207,7 @@ Manage medical record administration and statutory hospital reporting.
 ### Capabilities
 - **CAP-14-01 Casemix**: Manage coding, grouping, and reimbursement classification activities.
 - **CAP-14-02 Pelaporan RS**: Manage mandatory hospital reporting, statistics, and healthcare reporting obligations.
+- **CAP-14-03 ICD-X**: Manage ICD coding and diagnosis classification.
 
 ---
 
