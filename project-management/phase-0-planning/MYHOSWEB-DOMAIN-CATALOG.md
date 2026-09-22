@@ -249,10 +249,9 @@ Subsequent artifacts will further decompose:
 
 Used for complexity estimation, roadmap creation, and implementation planning.
 
----
-
 ## Traceability Matrix
 
 | This Artifact | Source Artifact | Relationship | Downstream Artifact |
 | ------------- | --------------- | ------------ | ------------------- |
 | Domain Catalog | — | Defines the business domains and capabilities that bound all Phase-0 planning | Screen-Feature Catalog |
+| Domain Catalog | — | Defines the Domains and Capabilities referenced by the Feature–Capability Mapping | Feature–Capability Mapping |
