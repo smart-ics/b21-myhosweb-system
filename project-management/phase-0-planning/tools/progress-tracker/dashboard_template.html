@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MYHOSWEB Program Progress Dashboard</title>
+<style>
+:root{
+  --ink:#1c2733; --muted:#5b6b7b; --line:#dfe6ee; --bg:#f2f5f9; --card:#ffffff;
+  --green:#1e9e5a; --green-bg:#e4f6ec; --blue:#1f6fd6; --blue-bg:#e6effc;
+  --red:#cf3b3b; --red-bg:#fdeaea; --gray:#7b8794; --gray-bg:#eef1f5;
+  --teal:#0f8b8d; --amber:#b7791f;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  background:var(--bg);color:var(--ink);font-size:14px;line-height:1.45}
+header.site{background:#16283c;color:#fff;padding:18px 28px}
+header.site h1{margin:0;font-size:20px;font-weight:600}
+header.site .sub{margin-top:4px;font-size:12.5px;color:#aebfd1}
+header.site .sub b{color:#fff;font-weight:600}
+nav.toc{position:sticky;top:0;z-index:30;background:#fff;border-bottom:1px solid var(--line);
+  padding:8px 28px;display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+nav.toc a{color:var(--muted);text-decoration:none;font-size:13px;font-weight:500}
+nav.toc a:hover{color:var(--ink)}
+nav.toc .spacer{flex:1}
+button.printbtn{border:1px solid var(--line);background:#fff;color:var(--ink);
+  border-radius:6px;padding:5px 12px;font-size:12.5px;cursor:pointer}
+button.printbtn:hover{background:var(--gray-bg)}
+main{max-width:1240px;margin:0 auto;padding:24px 28px 48px}
+section{margin-bottom:34px}
+section>h2{font-size:16.5px;margin:0 0 4px}
+section>p.desc{margin:0 0 14px;color:var(--muted);font-size:13px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.kpi .v{font-size:26px;font-weight:700;letter-spacing:-.5px}
+.kpi .l{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-top:2px}
+.kpi.green .v{color:var(--green)} .kpi.blue .v{color:var(--blue)}
+.kpi.red .v{color:var(--red)} .kpi.gray .v{color:var(--gray)}
+.overall{margin-top:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.overall .chip{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 16px}
+.overall .chip .t{font-size:12px;color:var(--muted);margin-bottom:6px}
+.overall .chip .t b{color:var(--ink);font-size:14px}
+.bar{position:relative;height:12px;background:var(--gray-bg);border-radius:6px;overflow:hidden}
+.bar .seg{float:left;height:100%}
+.bar .seg.done{background:var(--green)} .bar .seg.prog{background:var(--blue)}
+.bar .seg.block{background:var(--red)}
+.bar.slim{height:9px;min-width:110px}
+.pct{font-variant-numeric:tabular-nums;font-weight:600}
+table.grid{width:100%;border-collapse:collapse;font-size:13px}
+table.grid th{position:sticky;top:0;background:#f7f9fc;color:var(--muted);text-align:left;
+  font-size:11.5px;text-transform:uppercase;letter-spacing:.4px;padding:8px 10px;
+  border-bottom:2px solid var(--line);white-space:nowrap;user-select:none}
+table.grid th.sortable{cursor:pointer}
+table.grid th.sortable:hover{color:var(--ink)}
+table.grid th .arrow{font-size:10px;margin-left:4px;color:var(--blue)}
+table.grid td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+table.grid tr:nth-child(even) td{background:#fafbfd}
+.scroller{max-height:520px;overflow:auto;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+.controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:10px}
+.controls input[type=search]{border:1px solid var(--line);border-radius:6px;padding:7px 10px;
+  font-size:13px;min-width:230px;background:#fff}
+.controls select{border:1px solid var(--line);border-radius:6px;padding:7px 8px;font-size:13px;background:#fff}
+.controls .count{margin-left:auto;color:var(--muted);font-size:12.5px}
+.badge{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600;
+  letter-spacing:.3px;white-space:nowrap}
+.badge.st-NOT_STARTED{background:var(--gray-bg);color:var(--gray)}
+.badge.st-PLANNING,.badge.st-ANALYSIS,.badge.st-IMPLEMENTATION,.badge.st-REVIEW,
+.badge.st-TESTING,.badge.st-PILOT_DEPLOYMENT,.badge.st-IN_PROGRESS{background:var(--blue-bg);color:var(--blue)}
+.badge.st-ROLLED_OUT{background:#e2f5f5;color:var(--teal)}
+.badge.st-COMPLETED{background:var(--green-bg);color:var(--green)}
+.badge.st-BLOCKED{background:var(--red-bg);color:var(--red)}
+.badge.st-TBD,.badge.st-none{background:var(--gray-bg);color:var(--muted)}
+.mile-name{font-weight:600}
+.mile-desc{color:var(--muted);font-size:12px}
+.numcell{font-variant-numeric:tabular-nums;text-align:right}
+.legend{display:flex;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:12px;margin-top:10px}
+.legend .dot{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+.empty{color:var(--muted);font-style:italic;padding:14px}
+footer{border-top:1px solid var(--line);background:#fff;padding:16px 28px;color:var(--muted);font-size:12.5px}
+footer b{color:var(--ink)}
+@media (max-width:760px){
+  main{padding:16px} header.site,nav.toc{padding-left:16px;padding-right:16px}
+  .controls input[type=search]{min-width:0;flex:1}
+}
+@media print{
+  body{background:#fff;font-size:11px}
+  nav.toc,.controls,button.printbtn{display:none!important}
+  .scroller{max-height:none;overflow:visible;border:none}
+  section{margin-bottom:18px;page-break-inside:avoid}
+  header.site{background:#fff;color:#000;border-bottom:2px solid #000}
+  header.site .sub,header.site .sub b{color:#333}
+  .kpi,.card,.overall .chip{border:1px solid #999}
+  table.grid tr{page-break-inside:avoid}
+  a{color:inherit;text-decoration:none}
+}
+</style>
+</head>
+<body>
+<header class="site">
+  <h1>MYHOSWEB Program Progress Dashboard</h1>
+  <div class="sub" id="meta-line"></div>
+</header>
+<nav class="toc">
+  <a href="#sec-exec">Executive Summary</a>
+  <a href="#sec-milestones">Milestone Progress</a>
+  <a href="#sec-screens">Screen Progress</a>
+  <a href="#sec-features">Feature Detail</a>
+  <a href="#sec-testing">Testing Status</a>
+  <a href="#sec-pilot">Pilot Deployment</a>
+  <a href="#sec-rollout">Rollout Status</a>
+  <span class="spacer"></span>
+  <button class="printbtn" onclick="window.print()">Print</button>
+</nav>
+<main>
+  <section id="sec-exec">
+    <h2>Executive Summary</h2>
+    <p class="desc">Program-wide delivery position across all tracked milestone / screen / feature records.</p>
+    <div class="kpis" id="kpi-cards"></div>
+    <div class="overall" id="overall-bars"></div>
+  </section>
+
+  <section id="sec-milestones">
+    <h2>Milestone Progress</h2>
+    <p class="desc">Completion per milestone. Bars show the split of feature records by delivery position.</p>
+    <div class="legend">
+      <span><span class="dot" style="background:var(--green)"></span>Completed</span>
+      <span><span class="dot" style="background:var(--blue)"></span>In Progress</span>
+      <span><span class="dot" style="background:var(--red)"></span>Blocked</span>
+      <span><span class="dot" style="background:var(--gray-bg);border:1px solid var(--line)"></span>Not Started</span>
+    </div>
+    <div class="card" style="margin-top:10px;padding:0;overflow:hidden">
+      <table class="grid" id="milestone-table"></table>
+    </div>
+  </section>
+
+  <section id="sec-screens">
+    <h2>Screen Progress</h2>
+    <p class="desc">Delivery position per tracked screen record (a screen tracked under multiple milestones appears once per milestone).</p>
+    <div class="card" style="margin-top:10px;padding:0;overflow:hidden">
+      <table class="grid" id="screen-table"></table>
+    </div>
+  </section>
+
+  <section id="sec-features">
+    <h2>Feature Detail</h2>
+    <p class="desc">All tracked feature records. Search, filter and click column headers to sort.</p>
+    <div id="features-mount"></div>
+  </section>
+
+  <section id="sec-testing">
+    <h2>Testing Status</h2>
+    <p class="desc">One row per feature / tester assignment recorded in the tracker.</p>
+    <div id="testing-mount"></div>
+  </section>
+
+  <section id="sec-pilot">
+    <h2>Pilot Deployment Status</h2>
+    <p class="desc">One row per feature / pilot hospital deployment.</p>
+    <div id="pilot-mount"></div>
+  </section>
+
+  <section id="sec-rollout">
+    <h2>Rollout Status</h2>
+    <p class="desc">One row per feature / hospital rollout.</p>
+    <div id="rollout-mount"></div>
+  </section>
+</main>
+<footer id="footer-note"></footer>
+
+<script type="application/json" id="tracker-data">__DATA_JSON__</script>
+<script>
+"use strict";
+const DATA = JSON.parse(document.getElementById("tracker-data").textContent);
+const M = DATA.metrics;
+
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function nz(v){return (v===null||v===undefined||v==="")?"—":esc(v);}
+function pctTxt(v){return v.toFixed(1)+"%";}
+function statusBadge(s){
+  if(s===null||s===undefined||s==="") return '<span class="badge st-none">—</span>';
+  return '<span class="badge st-'+esc(s)+'">'+esc(String(s).replace(/_/g," "))+'</span>';
+}
+function stackedBar(row,total){
+  if(!total) return '<div class="bar slim"></div>';
+  const pc=v=>(v*100/total).toFixed(2);
+  return '<div class="bar slim" title="'+
+    row.completed+' completed, '+row.inProgress+' in progress, '+row.blocked+' blocked, '+
+    row.notStarted+' not started of '+total+'">'+
+    '<span class="seg done" style="width:'+pc(row.completed)+'%"></span>'+
+    '<span class="seg prog" style="width:'+pc(row.inProgress)+'%"></span>'+
+    '<span class="seg block" style="width:'+pc(row.blocked)+'%"></span>'+
+    '</div>';
+}
+
+/* ---------- metadata line + footer ---------- */
+document.getElementById("meta-line").innerHTML =
+  "Project <b>"+esc(DATA.metadata.project)+"</b> · Tracker revision <b>"+esc(DATA.metadata.trackerRevision)+
+  "</b> · Source last updated <b>"+esc(DATA.metadata.lastUpdated)+
+  "</b> · Dashboard generated <b>"+esc(DATA.metadata.generatedAt)+"</b>";
+document.getElementById("footer-note").innerHTML =
+  "Source of truth: <b>"+esc(DATA.metadata.source)+
+  "</b>. This dashboard is a generated view — never edit it by hand; regenerate it from the tracker. "+
+  "Generated files are derived artifacts under <b>project-management/phase-0-planning/generated/</b>.";
+
+/* ---------- executive summary ---------- */
+(function(){
+  const p = M.program, f = p.features;
+  const kpis = [
+    ["Milestones", p.totalMilestones, ""],
+    ["Screens", p.totalScreens, ""],
+    ["Features", p.totalFeatures, ""],
+    ["Completed", f.completed, "green"],
+    ["In Progress", f.inProgress, "blue"],
+    ["Blocked", f.blocked, "red"],
+    ["Not Started", f.notStarted, "gray"],
+  ];
+  document.getElementById("kpi-cards").innerHTML = kpis.map(k=>
+    '<div class="kpi '+k[2]+'"><div class="v">'+k[1]+'</div><div class="l">'+k[0]+'</div></div>').join("");
+  const chips = [
+    ["Feature completion", f.completionPct, f],
+    ["Analysis completion", p.phases.analysis.completionPct, p.phases.analysis],
+    ["Testing completion", p.phases.testing.completionPct, p.phases.testing],
+    ["Pilot deployment completion", p.phases.pilotDeployment.completionPct, p.phases.pilotDeployment],
+    ["Rollout completion", p.phases.rollout.completionPct, p.phases.rollout],
+  ];
+  document.getElementById("overall-bars").innerHTML = chips.map(c=>
+    '<div class="chip"><div class="t">'+c[0]+' — <b>'+pctTxt(c[1])+'</b></div>'+
+    stackedBar(c[2], c[2].rowCount!==undefined?c[2].rowCount:c[2].completed+c[2].inProgress+c[2].blocked+c[2].notStarted)+
+    '</div>').join("");
+})();
+
+/* ---------- milestone + screen progress tables ---------- */
+(function(){
+  const cols = ["Milestone","Features","Completed","In Progress","Blocked","Completion"];
+  const t = document.getElementById("milestone-table");
+  t.innerHTML = "<thead><tr>"+cols.map(c=>"<th>"+c+"</th>").join("")+"</tr></thead><tbody>"+
+    M.milestones.map(m=>
+      "<tr><td><div class='mile-name'>"+esc(m.id+" — "+m.name)+"</div>"+
+      (m.businessDescription?"<div class='mile-desc'>"+esc(m.businessDescription)+"</div>":"")+"</td>"+
+      "<td class='numcell'>"+m.featureCount+"</td>"+
+      "<td class='numcell'>"+m.completed+"</td>"+
+      "<td class='numcell'>"+m.inProgress+"</td>"+
+      "<td class='numcell'>"+m.blocked+"</td>"+
+      "<td><div style='display:flex;align-items:center;gap:10px'>"+stackedBar(m,m.featureCount)+
+      "<span class='pct'>"+pctTxt(m.completionPct)+"</span></div></td></tr>").join("")+"</tbody>";
+  const s = document.getElementById("screen-table");
+  s.innerHTML = "<thead><tr><th>Screen</th><th>Milestone</th><th>Features</th><th>Completed</th><th>Completion</th></tr></thead><tbody>"+
+    M.screens.map(x=>
+      "<tr><td><b>"+esc(x.screenId)+"</b> "+esc(x.screenName)+"</td>"+
+      "<td>"+esc(x.milestoneId)+"</td>"+
+      "<td class='numcell'>"+x.featureCount+"</td>"+
+      "<td class='numcell'>"+x.completed+"</td>"+
+      "<td><div style='display:flex;align-items:center;gap:10px'>"+stackedBar(x,x.featureCount)+
+      "<span class='pct'>"+pctTxt(x.completionPct)+"</span></div></td></tr>").join("")+"</tbody>";
+})();
+
+/* ---------- flattened views ---------- */
+const featureRows = [], testingRows = [], pilotRows = [], rolloutRows = [];
+DATA.milestones.forEach(m=>m.screens.forEach(s=>s.features.forEach(f=>{
+  const ctx = {milestoneId:m.id, milestone:m.id+" "+m.name, screenId:s.id, screen:s.id+" "+s.name};
+  featureRows.push({...ctx, featureId:f.featureId, feature:f.featureId+" "+f.featureName,
+    featureName:f.featureName, complexity:f.complexity, status:f.status,
+    bucket:f.statusBucket, plannedStart:f.plannedStart, duration:f.plannedDuration});
+  f.testing.rows.forEach(r=>testingRows.push({...ctx, featureId:f.featureId,
+    feature:f.featureId+" "+f.featureName, tester:r.tester, plannedStart:r.plannedStart,
+    plannedEnd:r.plannedEnd, actualStart:r.actualStart, actualEnd:r.actualEnd,
+    duration:r.duration, status:r.status}));
+  f.pilotDeployment.rows.forEach(r=>pilotRows.push({...ctx, featureId:f.featureId,
+    feature:f.featureId+" "+f.featureName, hospital:r.hospital, deployer:r.deployer,
+    plannedStart:r.plannedStart, plannedEnd:r.plannedEnd, actualStart:r.actualStart,
+    actualEnd:r.actualEnd, duration:r.duration, status:r.status}));
+  f.rollout.forEach(r=>rolloutRows.push({...ctx, featureId:f.featureId,
+    feature:f.featureId+" "+f.featureName, hospital:r.hospital, pic:r.pic, status:r.status}));
+})));
+const BUCKET_LABEL = {completed:"Completed", inProgress:"In Progress", blocked:"Blocked", notStarted:"Not Started"};
+function bucketOfPhaseStatus(st){
+  if(st==="COMPLETED") return "completed";
+  if(st==="BLOCKED") return "blocked";
+  if(st===null||st===undefined||st==="NOT_STARTED") return "notStarted";
+  return "inProgress";
+}
+
+/* ---------- generic table engine ---------- */
+function mountTable(mountId, columns, rows, opts){
+  opts = opts || {};
+  const mount = document.getElementById(mountId);
+  const state = {q:"", sortKey:null, sortDir:1, filters:{}};
+
+  const controls = document.createElement("div");
+  controls.className = "controls";
+  if(opts.search!==false){
+    const inp = document.createElement("input");
+    inp.type = "search"; inp.placeholder = opts.searchPlaceholder || "Search…";
+    inp.addEventListener("input", ()=>{state.q=inp.value.toLowerCase(); render();});
+    controls.appendChild(inp);
+  }
+  (opts.filters||[]).forEach(fc=>{
+    const sel = document.createElement("select");
+    sel.setAttribute("aria-label", fc.label);
+    const vals = [...new Set(rows.map(r=>fc.value(r)).filter(v=>v!==null&&v!==undefined))].sort();
+    sel.innerHTML = "<option value=''>"+esc(fc.label)+": All</option>"+
+      vals.map(v=>"<option value='"+esc(v)+"'>"+esc(fc.labelOf?fc.labelOf(v):v)+"</option>").join("");
+    sel.addEventListener("change", ()=>{state.filters[fc.key]=sel.value; render();});
+    controls.appendChild(sel);
+  });
+  const count = document.createElement("span"); count.className="count"; controls.appendChild(count);
+  mount.appendChild(controls);
+
+  const wrap = document.createElement("div"); wrap.className="scroller";
+  const table = document.createElement("table"); table.className="grid";
+  wrap.appendChild(table); mount.appendChild(wrap);
+
+  function visibleRows(){
+    let out = rows;
+    (opts.filters||[]).forEach(fc=>{
+      const v = state.filters[fc.key];
+      if(v) out = out.filter(r=>fc.value(r)===v);
+    });
+    if(state.q){
+      out = out.filter(r=>columns.some(c=>{
+        const val = c.searchValue?c.searchValue(r):r[c.key];
+        return val!==null&&val!==undefined&&String(val).toLowerCase().includes(state.q);
+      }));
+    }
+    if(state.sortKey){
+      const col = columns.find(c=>c.key===state.sortKey);
+      out = out.slice().sort((a,b)=>{
+        let va=col.sortValue?col.sortValue(a):a[state.sortKey];
+        let vb=col.sortValue?col.sortValue(b):b[state.sortKey];
+        if(va===null||va===undefined) va=(typeof vb==="number")?-Infinity:"";
+        if(vb===null||vb===undefined) vb=(typeof va==="number")?-Infinity:"";
+        if(typeof va==="number"&&typeof vb==="number") return (va-vb)*state.sortDir;
+        return String(va).localeCompare(String(vb))*state.sortDir;
+      });
+    }
+    return out;
+  }
+
+  function render(){
+    const shown = visibleRows();
+    count.textContent = shown.length+" of "+rows.length+" rows";
+    table.innerHTML = "<thead><tr>"+columns.map(c=>{
+      const arrow = state.sortKey===c.key ? "<span class='arrow'>"+(state.sortDir>0?"▲":"▼")+"</span>" : "";
+      return "<th class='"+(c.sortable===false?"":"sortable")+"' data-key='"+esc(c.key)+"'>"+esc(c.label)+arrow+"</th>";
+    }).join("")+"</tr></thead><tbody>"+
+      (shown.length?shown.map(r=>"<tr>"+columns.map(c=>
+        "<td"+(c.numeric?" class='numcell'":"")+">"+(c.render?c.render(r):nz(r[c.key]))+"</td>").join("")+"</tr>").join("")
+        :"<tr><td colspan='"+columns.length+"'><div class='empty'>No matching rows.</div></td></tr>")+"</tbody>";
+    table.querySelectorAll("th.sortable").forEach(th=>th.addEventListener("click",()=>{
+      const k = th.dataset.key;
+      if(state.sortKey===k) state.sortDir*=-1; else {state.sortKey=k; state.sortDir=1;}
+      render();
+    }));
+  }
+  render();
+}
+
+/* ---------- feature detail ---------- */
+mountTable("features-mount", [
+  {key:"milestoneId", label:"Milestone"},
+  {key:"screenId", label:"Screen", render:r=>nz(r.screenId)+" <span style='color:var(--muted)'>"+nz(r.screen)+"</span>"},
+  {key:"feature", label:"Feature", render:r=>"<b>"+nz(r.featureId)+"</b> "+nz(r.featureName)},
+  {key:"complexity", label:"Complexity", numeric:true,
+   render:r=>r.complexity===null?statusBadge("TBD"):r.complexity,
+   sortValue:r=>r.complexity===null?-1:r.complexity},
+  {key:"status", label:"Status", render:r=>statusBadge(r.status),
+   searchValue:r=>r.status},
+  {key:"plannedStart", label:"Plan Start"},
+  {key:"duration", label:"Duration",
+   render:r=>nz(r.duration)},
+], featureRows, {
+  searchPlaceholder:"Search feature, screen, milestone…",
+  filters:[
+    {key:"milestone", label:"Milestone", value:r=>r.milestoneId},
+    {key:"bucket", label:"Status group", value:r=>r.bucket, labelOf:v=>BUCKET_LABEL[v]||v},
+    {key:"status", label:"Exact status", value:r=>r.status},
+  ],
+});
+
+/* ---------- testing ---------- */
+mountTable("testing-mount", [
+  {key:"feature", label:"Feature", render:r=>"<b>"+nz(r.featureId)+"</b> "+nz(r.featureName)},
+  {key:"milestoneId", label:"Milestone"},
+  {key:"screenId", label:"Screen"},
+  {key:"tester", label:"Tester"},
+  {key:"status", label:"Status", render:r=>statusBadge(r.status)},
+  {key:"plannedStart", label:"Planned Start"},
+  {key:"plannedEnd", label:"Planned End"},
+  {key:"actualStart", label:"Actual Start"},
+  {key:"actualEnd", label:"Actual End"},
+  {key:"duration", label:"Duration"},
+], testingRows, {
+  searchPlaceholder:"Search tester, feature…",
+  filters:[
+    {key:"status", label:"Status", value:r=>r.status},
+    {key:"milestone", label:"Milestone", value:r=>r.milestoneId},
+  ],
+});
+
+/* ---------- pilot deployment ---------- */
+mountTable("pilot-mount", [
+  {key:"feature", label:"Feature", render:r=>"<b>"+nz(r.featureId)+"</b> "+nz(r.featureName)},
+  {key:"hospital", label:"Hospital"},
+  {key:"deployer", label:"Deployer"},
+  {key:"status", label:"Status", render:r=>statusBadge(r.status)},
+  {key:"plannedStart", label:"Planned Start"},
+  {key:"plannedEnd", label:"Planned End"},
+  {key:"actualStart", label:"Actual Start"},
+  {key:"actualEnd", label:"Actual End"},
+], pilotRows, {
+  searchPlaceholder:"Search hospital, deployer, feature…",
+  filters:[
+    {key:"status", label:"Status", value:r=>r.status},
+    {key:"milestone", label:"Milestone", value:r=>r.milestoneId},
+  ],
+});
+
+/* ---------- rollout ---------- */
+mountTable("rollout-mount", [
+  {key:"hospital", label:"Hospital"},
+  {key:"pic", label:"PIC"},
+  {key:"feature", label:"Feature", render:r=>"<b>"+nz(r.featureId)+"</b> "+nz(r.featureName)},
+  {key:"milestoneId", label:"Milestone"},
+  {key:"status", label:"Status", render:r=>statusBadge(r.status)},
+], rolloutRows, {
+  searchPlaceholder:"Search hospital, PIC, feature…",
+  filters:[
+    {key:"status", label:"Status", value:r=>r.status},
+    {key:"milestone", label:"Milestone", value:r=>r.milestoneId},
+  ],
+});
+</script>
+</body>
+</html>

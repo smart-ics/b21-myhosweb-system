@@ -1,0 +1,189 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "progress-tracker.schema.json",
+  "title": "MYHOSWEB Program Progress Tracker (normalized)",
+  "description": "Machine-readable view generated from MYHOSWEB-PROGRESS-TRACKER.md. This JSON is a derived artifact; the Markdown tracker remains the source of truth.",
+  "type": "object",
+  "required": ["metadata", "milestones", "metrics"],
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "required": ["project", "version", "trackerRevision", "lastUpdated", "source"],
+      "properties": {
+        "project": {"type": "string"},
+        "artifact": {"type": "string"},
+        "version": {"type": "string"},
+        "trackerRevision": {"type": "integer", "minimum": 1},
+        "lastUpdated": {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+        "generatedAt": {"type": "string"},
+        "source": {"type": "string"},
+        "generator": {"type": "string"}
+      }
+    },
+    "milestones": {
+      "type": "array",
+      "items": {"$ref": "#/definitions/milestone"}
+    },
+    "metrics": {
+      "type": "object",
+      "required": ["program", "milestones", "screens"],
+      "properties": {
+        "program": {"$ref": "#/definitions/programMetrics"},
+        "milestones": {
+          "type": "array",
+          "items": {"$ref": "#/definitions/milestoneMetrics"}
+        },
+        "screens": {
+          "type": "array",
+          "items": {"$ref": "#/definitions/screenMetrics"}
+        }
+      }
+    }
+  },
+  "definitions": {
+    "statusOrNull": {"type": ["string", "null"]},
+    "dateOrNull": {
+      "type": ["string", "null"],
+      "description": "ISO date YYYY-MM-DD, the literal string TBD, or null for '-'."
+    },
+    "bucketCounts": {
+      "type": "object",
+      "required": ["completed", "inProgress", "blocked", "notStarted"],
+      "properties": {
+        "completed": {"type": "integer", "minimum": 0},
+        "inProgress": {"type": "integer", "minimum": 0},
+        "blocked": {"type": "integer", "minimum": 0},
+        "notStarted": {"type": "integer", "minimum": 0}
+      }
+    },
+    "phaseRow": {
+      "type": "object",
+      "description": "One row from an Analysis / Testing / Pilot / Rollout table. Keys are camelCased Markdown column headers.",
+      "properties": {
+        "status": {"$ref": "#/definitions/statusOrNull"}
+      },
+      "additionalProperties": {"type": ["string", "null"]}
+    },
+    "phaseSummary": {
+      "allOf": [{"$ref": "#/definitions/bucketCounts"}],
+      "type": "object",
+      "required": ["rowCount", "completionPct", "statusCounts"],
+      "properties": {
+        "rowCount": {"type": "integer", "minimum": 0},
+        "completionPct": {"type": "number", "minimum": 0, "maximum": 100},
+        "statusCounts": {"type": "object", "additionalProperties": {"type": "integer"}}
+      }
+    },
+    "phaseSection": {
+      "type": "object",
+      "required": ["rows", "summary"],
+      "properties": {
+        "rows": {"type": "array", "items": {"$ref": "#/definitions/phaseRow"}},
+        "summary": {"$ref": "#/definitions/phaseSummary"}
+      }
+    },
+    "rolloutRow": {
+      "type": "object",
+      "required": ["status"],
+      "properties": {
+        "hospital": {"$ref": "#/definitions/statusOrNull"},
+        "pic": {"$ref": "#/definitions/statusOrNull"},
+        "status": {"$ref": "#/definitions/statusOrNull"}
+      }
+    },
+    "feature": {
+      "type": "object",
+      "required": ["featureId", "featureName", "complexity", "status", "statusBucket",
+                   "analysis", "testing", "pilotDeployment", "rollout"],
+      "properties": {
+        "featureId": {"type": "string", "pattern": "^FT-\\d{2}-\\d{2}$"},
+        "featureName": {"type": ["string", "null"]},
+        "complexity": {"type": ["integer", "null"], "minimum": 1, "maximum": 5},
+        "status": {
+          "enum": ["NOT_STARTED", "PLANNING", "ANALYSIS", "IMPLEMENTATION", "REVIEW",
+                   "TESTING", "PILOT_DEPLOYMENT", "ROLLED_OUT", "COMPLETED", "BLOCKED", null]
+        },
+        "statusBucket": {"enum": ["completed", "inProgress", "blocked", "notStarted"]},
+        "plannedStart": {"$ref": "#/definitions/dateOrNull"},
+        "plannedDuration": {"type": ["string", "null"]},
+        "analysis": {"$ref": "#/definitions/phaseSection"},
+        "testing": {"$ref": "#/definitions/phaseSection"},
+        "pilotDeployment": {"$ref": "#/definitions/phaseSection"},
+        "rollout": {"type": "array", "items": {"$ref": "#/definitions/rolloutRow"}},
+        "rolloutSummary": {"$ref": "#/definitions/phaseSummary"},
+        "additionalFields": {"type": "object"}
+      }
+    },
+    "screen": {
+      "type": "object",
+      "required": ["id", "name", "features"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^SC-\\d{2}$"},
+        "name": {"type": "string"},
+        "features": {"type": "array", "items": {"$ref": "#/definitions/feature"}}
+      }
+    },
+    "milestone": {
+      "type": "object",
+      "required": ["id", "name", "screens"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^M\\d{2}$"},
+        "name": {"type": "string"},
+        "status": {"$ref": "#/definitions/statusOrNull"},
+        "businessDescription": {"type": ["string", "null"]},
+        "screens": {"type": "array", "items": {"$ref": "#/definitions/screen"}}
+      }
+    },
+    "milestoneMetrics": {
+      "allOf": [{"$ref": "#/definitions/bucketCounts"}],
+      "type": "object",
+      "required": ["id", "name", "featureCount", "completionPct"],
+      "properties": {
+        "id": {"type": "string"},
+        "name": {"type": "string"},
+        "status": {"$ref": "#/definitions/statusOrNull"},
+        "businessDescription": {"type": ["string", "null"]},
+        "screenCount": {"type": "integer", "minimum": 0},
+        "featureCount": {"type": "integer", "minimum": 0},
+        "completionPct": {"type": "number", "minimum": 0, "maximum": 100}
+      }
+    },
+    "screenMetrics": {
+      "allOf": [{"$ref": "#/definitions/bucketCounts"}],
+      "type": "object",
+      "required": ["milestoneId", "screenId", "screenName", "featureCount", "completionPct"],
+      "properties": {
+        "milestoneId": {"type": "string"},
+        "milestoneName": {"type": "string"},
+        "screenId": {"type": "string"},
+        "screenName": {"type": "string"},
+        "featureCount": {"type": "integer", "minimum": 0},
+        "completionPct": {"type": "number", "minimum": 0, "maximum": 100}
+      }
+    },
+    "programMetrics": {
+      "type": "object",
+      "required": ["totalMilestones", "totalScreens", "totalFeatures", "features", "phases"],
+      "properties": {
+        "totalMilestones": {"type": "integer", "minimum": 0},
+        "totalScreens": {"type": "integer", "minimum": 0},
+        "totalDistinctScreens": {"type": "integer", "minimum": 0},
+        "totalFeatures": {"type": "integer", "minimum": 0},
+        "features": {
+          "allOf": [{"$ref": "#/definitions/bucketCounts"}],
+          "type": "object",
+          "required": ["completionPct"],
+          "properties": {
+            "completionPct": {"type": "number", "minimum": 0, "maximum": 100}
+          }
+        },
+        "statusCounts": {"type": "object"},
+        "phases": {
+          "type": "object",
+          "required": ["analysis", "testing", "pilotDeployment", "rollout"],
+          "additionalProperties": {"$ref": "#/definitions/phaseSummary"}
+        }
+      }
+    }
+  }
+}
