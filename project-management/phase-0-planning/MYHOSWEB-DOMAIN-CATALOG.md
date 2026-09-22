@@ -237,6 +237,80 @@ Manage integration services between MyHospital and BPJS Kesehatan.
 
 ---
 
+## Capability Complexity
+
+This table assigns a business-planning complexity level to each capability, assessed directly at the capability level (not derived from feature-level assessments).
+
+| Level | Meaning |
+| ----- | ------- |
+| **1** | Very Low |
+| **2** | Low |
+| **3** | Medium |
+| **4** | High |
+| **5** | Very High |
+
+| No | Domain | Capability | Complexity |
+| -- | ------ | ---------- | ---------- |
+| 1 | DOM-01 Patient | CAP-01-01 Data Sosial Pasien | 2 |
+| 2 | DOM-02 Organization | CAP-02-01 Layanan | 2 |
+| 3 | DOM-02 Organization | CAP-02-02 Dokter | 2 |
+| 4 | DOM-02 Organization | CAP-02-03 Bed | 2 |
+| 5 | DOM-02 Organization | CAP-02-04 Jadwal Praktek | 3 |
+| 6 | DOM-03 Admission | CAP-03-01 Registrasi | 4 |
+| 7 | DOM-03 Admission | CAP-03-02 Booking | 3 |
+| 8 | DOM-03 Admission | CAP-03-03 Antrian | 3 |
+| 9 | DOM-03 Admission | CAP-03-04 Tracker | 4 |
+| 10 | DOM-04 Rawat Jalan | CAP-04-01 Tindakan | 3 |
+| 11 | DOM-04 Rawat Jalan | CAP-04-02 Rujukan Internal | 3 |
+| 12 | DOM-04 Rawat Jalan | CAP-04-03 Kontrol | 3 |
+| 13 | DOM-05 Rawat Inap | CAP-05-01 Penempatan Bed | 4 |
+| 14 | DOM-05 Rawat Inap | CAP-05-02 Transfer | 4 |
+| 15 | DOM-05 Rawat Inap | CAP-05-03 Discharge | 4 |
+| 16 | DOM-05 Rawat Inap | CAP-05-04 Intensive Care | 4 |
+| 17 | DOM-06 Emergency | CAP-06-01 IGD Visit | 4 |
+| 18 | DOM-06 Emergency | CAP-06-02 Triage | 3 |
+| 19 | DOM-06 Emergency | CAP-06-03 Observasi | 3 |
+| 20 | DOM-06 Emergency | CAP-06-04 Ambulance | 3 |
+| 21 | DOM-07 Laboratory | CAP-07-02 Sample Collection | 3 |
+| 22 | DOM-07 Laboratory | CAP-07-03 Result Management | 4 |
+| 23 | DOM-08 Radiology | CAP-08-02 Examination | 3 |
+| 24 | DOM-08 Radiology | CAP-08-03 Expertise | 3 |
+| 25 | DOM-09 Operating Theatre | CAP-09-02 Scheduling | 4 |
+| 26 | DOM-09 Operating Theatre | CAP-09-03 Operative Procedure | 4 |
+| 27 | DOM-09 Operating Theatre | CAP-09-04 Recovery | 3 |
+| 28 | DOM-10 Pharmacy | CAP-10-02 Sales | 4 |
+| 29 | DOM-10 Pharmacy | CAP-10-03 Dispensing | 3 |
+| 30 | DOM-10 Pharmacy | CAP-10-04 Retur Jual | 3 |
+| 31 | DOM-10 Pharmacy | CAP-10-05 Serah Obat | 3 |
+| 32 | DOM-11 Inventory | CAP-11-01 Persediaan | 3 |
+| 33 | DOM-11 Inventory | CAP-11-02 Mutasi | 3 |
+| 34 | DOM-11 Inventory | CAP-11-03 Opname | 3 |
+| 35 | DOM-11 Inventory | CAP-11-04 Pemusnahan | 4 |
+| 36 | DOM-11 Inventory | CAP-11-05 Stock-Ledger | 3 |
+| 37 | DOM-11 Inventory | CAP-11-06 Barang | 2 |
+| 38 | DOM-12 Procurement | CAP-12-01 Purchasing | 4 |
+| 39 | DOM-12 Procurement | CAP-12-02 Terima Barang | 4 |
+| 40 | DOM-12 Procurement | CAP-12-03 Faktur Tagihan | 4 |
+| 41 | DOM-12 Procurement | CAP-12-04 Retur Beli | 4 |
+| 42 | DOM-12 Procurement | CAP-12-05 Supplier | 2 |
+| 43 | DOM-13 Tata Rekening | CAP-13-01 Tarif | 3 |
+| 44 | DOM-13 Tata Rekening | CAP-13-02 Jaminan | 4 |
+| 45 | DOM-13 Tata Rekening | CAP-13-03 Billing | 4 |
+| 46 | DOM-13 Tata Rekening | CAP-13-04 Payment | 4 |
+| 47 | DOM-14 Manajemen RM | CAP-14-01 Casemix | 4 |
+| 48 | DOM-14 Manajemen RM | CAP-14-02 Pelaporan RS | 5 |
+| 49 | DOM-14 Manajemen RM | CAP-14-03 ICD-X | 4 |
+| 50 | DOM-15 CPOE | CAP-15-01 Prescription | 4 |
+| 51 | DOM-15 CPOE | CAP-15-02 Order Lab | 3 |
+| 52 | DOM-15 CPOE | CAP-15-03 Order Radiologi | 3 |
+| 53 | DOM-15 CPOE | CAP-15-04 Order Operasi | 3 |
+| 54 | DOM-16 BPJS Integration | CAP-16-01 VClaim | 5 |
+| 55 | DOM-16 BPJS Integration | CAP-16-02 EKlaim | 5 |
+| 56 | DOM-16 BPJS Integration | CAP-16-03 Antrol (Antrian Online) | 4 |
+| 57 | DOM-16 BPJS Integration | CAP-16-04 HFIS | 4 |
+
+---
+
 ## Notes
 
 This catalog represents Domain Version 1.1 and serves as the baseline for Phase-0 Migration Planning.
