@@ -59,7 +59,7 @@ Rollout status for an individual hospital uses the phase status set. When all pi
 
 | Milestone | Title | Screens | Features | Completed | In Progress | Blocked | Not Started |
 | --------- | ----- | ------- | -------- | --------- | ----------- | ------- | ----------- |
-| M01 | Patient Admission Foundation | 1 | 6 | 0 | 0 | 0 | 6 |
+| M01 | Patient Admission Foundation | 1 | 6 | 6 | 0 | 0 | 0 |
 | M02 | Emergency Department Operations | 1 | 4 | 0 | 0 | 0 | 4 |
 | M03 | Outpatient Clinical Operations | 1 | 4 | 0 | 0 | 0 | 4 |
 | M04 | Pharmacy Operations | 1 | 7 | 0 | 0 | 0 | 7 |
@@ -72,7 +72,7 @@ Rollout status for an individual hospital uses the phase status set. When all pi
 | M11 | Master Data Foundation | 1 | 5 | 0 | 0 | 0 | 5 |
 | M12 | Medical Record Administration | 1 | 5 | 0 | 0 | 0 | 5 |
 | M13 | Operating Theatre Operations | 1 | 7 | 0 | 0 | 0 | 7 |
-| **Total** | — | — | **86** | **0** | **0** | **0** | **86** |
+| **Total** | — | — | **86** | **6** | **0** | **0** | **80** |
 
 ## 4. Milestone Trackers
 
@@ -82,26 +82,27 @@ Rollout status for an individual hospital uses the phase status set. When all pi
 
 **Business description:** Establish the patient entry point into the hospital system, including registration, scheduling, queueing, BPJS validation, and patient tracking.
 
-**Milestone Status:** NOT_STARTED
+**Milestone Status:** IN_PROGRESS
 
 ### SC-01 Admisi
 
 | Feature ID | Feature Name | Screen ID | Screen Name | Complexity | Overall Status | Planned Start | Duration |
 | ---------- | ------------ | --------- | ----------- | ---------- | -------------- | ------------- | -------- |
-| FT-01-01 | Booking | SC-01 | Admisi | 3 | NOT_STARTED | TBD | TBD |
-| FT-01-02 | Registrasi Rawat Jalan dan IGD | SC-01 | Admisi | 4 | NOT_STARTED | TBD | TBD |
-| FT-01-04 | VCLAIM BPJS | SC-01 | Admisi | 5 | NOT_STARTED | TBD | TBD |
-| FT-01-05 | Patient Journey Tracking | SC-01 | Admisi | 4 | NOT_STARTED | TBD | TBD |
-| FT-01-06 | Jadwal Praktek | SC-01 | Admisi | 3 | NOT_STARTED | TBD | TBD |
-| FT-01-07 | Antrian | SC-01 | Admisi | 3 | NOT_STARTED | TBD | TBD |
+| FT-01-01 | Booking | SC-01 | Admisi | 3 | COMPLETED | TBD | TBD |
+| FT-01-02 | Registrasi Rawat Jalan dan IGD | SC-01 | Admisi | 4 | COMPLETED | TBD | TBD |
+| FT-01-04 | VCLAIM BPJS | SC-01 | Admisi | 5 | COMPLETED | TBD | TBD |
+| FT-01-05 | Patient Journey Tracking | SC-01 | Admisi | 4 | COMPLETED | TBD | TBD |
+| FT-01-06 | Jadwal Praktek | SC-01 | Admisi | 3 | COMPLETED | TBD | TBD |
+| FT-01-07 | Antrian | SC-01 | Admisi | 3 | COMPLETED | TBD | TBD |
 
 #### FT-01-01 Booking
 
 | Field | Value |
 | ----- | ----- |
-| Overall Status | NOT_STARTED |
+| Overall Status | COMPLETED |
 | Planned Start Date | TBD |
 | Planned Duration | TBD |
+| Actual Completion Date | 2026-09-22 |
 
 **Analysis**
 
@@ -131,9 +132,10 @@ Rollout status for an individual hospital uses the phase status set. When all pi
 
 | Field | Value |
 | ----- | ----- |
-| Overall Status | NOT_STARTED |
+| Overall Status | COMPLETED |
 | Planned Start Date | TBD |
 | Planned Duration | TBD |
+| Actual Completion Date | 2026-09-22 |
 
 **Analysis**
 
@@ -163,9 +165,10 @@ Rollout status for an individual hospital uses the phase status set. When all pi
 
 | Field | Value |
 | ----- | ----- |
-| Overall Status | NOT_STARTED |
+| Overall Status | COMPLETED |
 | Planned Start Date | TBD |
 | Planned Duration | TBD |
+| Actual Completion Date | 2026-09-22 |
 
 **Analysis**
 
@@ -195,9 +198,10 @@ Rollout status for an individual hospital uses the phase status set. When all pi
 
 | Field | Value |
 | ----- | ----- |
-| Overall Status | NOT_STARTED |
+| Overall Status | COMPLETED |
 | Planned Start Date | TBD |
 | Planned Duration | TBD |
+| Actual Completion Date | 2026-09-22 |
 
 **Analysis**
 
@@ -227,9 +231,10 @@ Rollout status for an individual hospital uses the phase status set. When all pi
 
 | Field | Value |
 | ----- | ----- |
-| Overall Status | NOT_STARTED |
+| Overall Status | COMPLETED |
 | Planned Start Date | TBD |
 | Planned Duration | TBD |
+| Actual Completion Date | 2026-09-22 |
 
 **Analysis**
 
@@ -259,9 +264,10 @@ Rollout status for an individual hospital uses the phase status set. When all pi
 
 | Field | Value |
 | ----- | ----- |
-| Overall Status | NOT_STARTED |
+| Overall Status | COMPLETED |
 | Planned Start Date | TBD |
 | Planned Duration | TBD |
+| Actual Completion Date | 2026-09-22 |
 
 **Analysis**
 

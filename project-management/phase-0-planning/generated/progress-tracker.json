@@ -5,7 +5,7 @@
     "version": "1.0",
     "trackerRevision": 1,
     "lastUpdated": "2026-09-22",
-    "generatedAt": "2026-09-22 15:55",
+    "generatedAt": "2026-09-22 16:42",
     "source": "project-management/phase-0-planning/MYHOSWEB-PROGRESS-TRACKER.md",
     "generator": "project-management/phase-0-planning/tools/progress-tracker/generate.py"
   },
@@ -13,7 +13,7 @@
     {
       "id": "M01",
       "name": "Patient Admission Foundation",
-      "status": "NOT_STARTED",
+      "status": "IN_PROGRESS",
       "businessDescription": "Establish the patient entry point into the hospital system, including registration, scheduling, queueing, BPJS validation, and patient tracking.",
       "screens": [
         {
@@ -24,8 +24,8 @@
               "featureId": "FT-01-01",
               "featureName": "Booking",
               "complexity": 3,
-              "status": "NOT_STARTED",
-              "statusBucket": "notStarted",
+              "status": "COMPLETED",
+              "statusBucket": "completed",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -118,14 +118,17 @@
                   "NOT_STARTED": 1
                 },
                 "completionPct": 0.0
+              },
+              "additionalFields": {
+                "actualcompletiondate": "2026-09-22"
               }
             },
             {
               "featureId": "FT-01-02",
               "featureName": "Registrasi Rawat Jalan dan IGD",
               "complexity": 4,
-              "status": "NOT_STARTED",
-              "statusBucket": "notStarted",
+              "status": "COMPLETED",
+              "statusBucket": "completed",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -218,14 +221,17 @@
                   "NOT_STARTED": 1
                 },
                 "completionPct": 0.0
+              },
+              "additionalFields": {
+                "actualcompletiondate": "2026-09-22"
               }
             },
             {
               "featureId": "FT-01-04",
               "featureName": "VCLAIM BPJS",
               "complexity": 5,
-              "status": "NOT_STARTED",
-              "statusBucket": "notStarted",
+              "status": "COMPLETED",
+              "statusBucket": "completed",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -318,14 +324,17 @@
                   "NOT_STARTED": 1
                 },
                 "completionPct": 0.0
+              },
+              "additionalFields": {
+                "actualcompletiondate": "2026-09-22"
               }
             },
             {
               "featureId": "FT-01-05",
               "featureName": "Patient Journey Tracking",
               "complexity": 4,
-              "status": "NOT_STARTED",
-              "statusBucket": "notStarted",
+              "status": "COMPLETED",
+              "statusBucket": "completed",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -418,14 +427,17 @@
                   "NOT_STARTED": 1
                 },
                 "completionPct": 0.0
+              },
+              "additionalFields": {
+                "actualcompletiondate": "2026-09-22"
               }
             },
             {
               "featureId": "FT-01-06",
               "featureName": "Jadwal Praktek",
               "complexity": 3,
-              "status": "NOT_STARTED",
-              "statusBucket": "notStarted",
+              "status": "COMPLETED",
+              "statusBucket": "completed",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -518,14 +530,17 @@
                   "NOT_STARTED": 1
                 },
                 "completionPct": 0.0
+              },
+              "additionalFields": {
+                "actualcompletiondate": "2026-09-22"
               }
             },
             {
               "featureId": "FT-01-07",
               "featureName": "Antrian",
               "complexity": 3,
-              "status": "NOT_STARTED",
-              "statusBucket": "notStarted",
+              "status": "COMPLETED",
+              "statusBucket": "completed",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -618,6 +633,9 @@
                   "NOT_STARTED": 1
                 },
                 "completionPct": 0.0
+              },
+              "additionalFields": {
+                "actualcompletiondate": "2026-09-22"
               }
             }
           ]
@@ -8842,14 +8860,15 @@
       "totalDistinctScreens": 14,
       "totalFeatures": 86,
       "features": {
-        "completed": 0,
+        "completed": 6,
         "inProgress": 0,
         "blocked": 0,
-        "notStarted": 86,
-        "completionPct": 0.0
+        "notStarted": 80,
+        "completionPct": 7.0
       },
       "statusCounts": {
-        "NOT_STARTED": 86
+        "COMPLETED": 6,
+        "NOT_STARTED": 80
       },
       "phases": {
         "analysis": {
@@ -8902,15 +8921,15 @@
       {
         "id": "M01",
         "name": "Patient Admission Foundation",
-        "status": "NOT_STARTED",
+        "status": "IN_PROGRESS",
         "businessDescription": "Establish the patient entry point into the hospital system, including registration, scheduling, queueing, BPJS validation, and patient tracking.",
         "screenCount": 1,
         "featureCount": 6,
-        "completed": 0,
+        "completed": 6,
         "inProgress": 0,
         "blocked": 0,
-        "notStarted": 6,
-        "completionPct": 0.0
+        "notStarted": 0,
+        "completionPct": 100.0
       },
       {
         "id": "M02",
@@ -9076,11 +9095,11 @@
         "screenId": "SC-01",
         "screenName": "Admisi",
         "featureCount": 6,
-        "completed": 0,
+        "completed": 6,
         "inProgress": 0,
         "blocked": 0,
-        "notStarted": 6,
-        "completionPct": 0.0
+        "notStarted": 0,
+        "completionPct": 100.0
       },
       {
         "milestoneId": "M02",
