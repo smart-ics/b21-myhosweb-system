@@ -1,6 +1,6 @@
 ---
 name: progress-tracking
-description: Use when recording actual execution progress for MYHOSWEB features — analysis, implementation, testing, pilot deployment, or rollout status updates — or when synchronizing MYHOSWEB-PROGRESS-TRACKER.md after Development Order changes. This skill only ever edits the Markdown tracker; it never runs the JSON/HTML generation tools in project-management/phase-0-planning/tools/progress-tracker itself, since those are run manually. Do not use this to edit planning artifacts (MYHOSWEB-DEVELOPMENT-ORDER.md, MYHOSWEB-FEATURE-COMPLEXITY-ASSESSMENT.md, Feature Registry, Architecture, Implementation Plan) — those stay authoritative and are read-only to this skill.
+description: Use when recording actual execution progress for MYHOSWEB features — analysis, implementation, testing, pilot deployment, or rollout status updates — or when synchronizing MYHOSWEB-PROGRESS-TRACKER.md after Development Order changes. This skill only ever edits the Markdown tracker; it never runs the JSON/HTML generation tools in project-management/phase-0-planning/tools/progress-tracker itself, since those are run manually. Do not use this to edit planning artifacts (MYHOSWEB-DEVELOPMENT-ORDER.md, MYHOSWEB-FEATURE-COMPLEXITY-ASSESSMENT.md, MYHOSWEB-SCREEN-FEATURE-CATALOG.md, Feature Registry, Architecture, Implementation Plan) — those stay authoritative and are read-only to this skill. MYHOSWEB-SCREEN-FEATURE-CATALOG.md is the source of truth for Screen PIC.
 license: MIT
 compatibility: opencode
 metadata:
@@ -31,6 +31,7 @@ project-management/phase-0-planning/MYHOSWEB-PROGRESS-TRACKER.md
 ```text
 MYHOSWEB-DEVELOPMENT-ORDER.md
 MYHOSWEB-FEATURE-COMPLEXITY-ASSESSMENT.md
+MYHOSWEB-SCREEN-FEATURE-CATALOG.md
 FEATURE REGISTRY
 ARCHITECTURE
 IMPLEMENTATION PLAN
@@ -74,6 +75,25 @@ Update FT-07-02 rollout completed at RS XYZ.
 
 For each request I locate the affected Milestone, Screen, and Feature inside the
 tracker and update only the relevant fields — I never touch unrelated entries.
+I never change a Screen `**PIC:**` line during a progress update unless the
+request is an explicit Screen PIC reassignment.
+
+## Screen PIC (source of truth)
+
+`MYHOSWEB-SCREEN-FEATURE-CATALOG.md` is the source of truth for Screen PIC.
+The tracker mirrors it: every `### SC-xx Screen Name` occurrence carries a
+`**PIC:** <name>` line directly under the Screen heading.
+
+Rules:
+
+- On any tracker write, preserve the existing `**PIC:**` lines verbatim unless
+  the task is a catalog-driven sync or an explicit PIC reassignment.
+- Never invent, guess, or default a person name. If the catalog defines no PIC
+  for a Screen (e.g. SC-14 Mastering has no `**PIC:**` line), the tracker uses
+  `**PIC:** TBD`.
+- Screen PIC is distinct from Rollout hospital PIC (`| Hospital | PIC | Status |`).
+  One is Screen ownership; the other is per-hospital rollout accountability.
+  Never copy one into the other.
 
 ## Tracker synchronization
 
@@ -84,6 +104,11 @@ a Feature moved to a different Milestone — I synchronize the tracker structure
 - Never delete completed history.
 - Mark removed items as `RETIRED` instead of deleting them.
 - Add new items with default placeholder values.
+- For any new Screen occurrence, set `**PIC:**` from
+  `MYHOSWEB-SCREEN-FEATURE-CATALOG.md`; use `**PIC:** TBD` only when the
+  catalog defines no PIC for that Screen.
+- When the catalog PIC changes, propagate the new PIC to every occurrence of
+  that Screen in the tracker; never leave occurrences with divergent PICs.
 
 ## Status values
 
@@ -129,8 +154,15 @@ Before writing an update, I validate:
 - `COMPLETED` requires Actual End.
 
 **Rollout**
-- Hospital must have a PIC.
+- Hospital must have a PIC (Rollout hospital PIC, not Screen PIC).
 - Hospital rollout status must be a valid status value.
+
+**Screen PIC**
+- Every `### SC-xx` occurrence in the tracker must have a `**PIC:**` line.
+- Tracker Screen PIC must match `MYHOSWEB-SCREEN-FEATURE-CATALOG.md`; a mismatch
+  is a validation failure, not silent drift.
+- All occurrences of the same Screen ID must carry the same PIC.
+- A missing catalog PIC means `TBD` in the tracker, never a guessed name.
 
 **General**
 - Feature must belong to an existing Milestone.
@@ -151,4 +183,6 @@ not me.
 ## Operating principle
 
 The Progress Tracker records reality. Planning artifacts define intent. I keep
-both intact rather than reconciling one into the other.
+both intact rather than reconciling one into the other — with one exception:
+Screen PIC. For Screen PIC the catalog is the source of truth and the tracker
+is a mirror, so a catalog PIC change is propagated to the tracker.

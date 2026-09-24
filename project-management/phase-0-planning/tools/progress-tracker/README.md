@@ -101,6 +101,7 @@ any browser; there is no backend or framework.
 
 Parsing relies on the conventions documented in tracker section *2. Structure
 and Conventions* and *5. Maintenance Rules* (rule 5): heading formats
-`## Milestone Mxx — Title`, `### SC-xx Name`, `#### FT-xx-yy Name`, the fixed
+`## Milestone Mxx — Title`, `### SC-xx Name` + `**PIC:** Name` screen ownership line,
+`#### FT-xx-yy Name`, the fixed
 phase table headers, and the exact status values. Keeping those stable keeps
 the generator stable.

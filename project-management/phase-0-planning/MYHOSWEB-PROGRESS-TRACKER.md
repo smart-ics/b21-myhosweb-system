@@ -55,6 +55,15 @@ NOT_STARTED | PLANNING | ANALYSIS | IMPLEMENTATION | REVIEW | TESTING | PILOT_DE
 
 Rollout status for an individual hospital uses the phase status set. When all pilot and rollout hospitals reach `COMPLETED` and the feature is accepted, the Overall Status becomes `COMPLETED`.
 
+### Screen Ownership
+
+- Each Screen has exactly one current PIC (Programmer In Charge).
+- PIC ownership is assigned at Screen level and applies to all Features under that Screen unless explicitly stated otherwise.
+- All Features under a Screen inherit the Screen PIC.
+- PIC is responsible for implementation, maintenance, bug fixing, technical coordination, and delivery accountability for the assigned Screen.
+- Screen PIC is operational metadata used for progress tracking and accountability.
+- Screen PIC may change over time without changing Feature identity.
+
 ## 3. Program Summary
 
 | Milestone | Title | Screens | Features | Completed | In Progress | Blocked | Not Started |
@@ -85,6 +94,8 @@ Rollout status for an individual hospital uses the phase status set. When all pi
 **Milestone Status:** IN_PROGRESS
 
 ### SC-01 Admisi
+
+**PIC:** Arif
 
 | Feature ID | Feature Name | Screen ID | Screen Name | Complexity | Overall Status | Planned Start | Duration |
 | ---------- | ------------ | --------- | ----------- | ---------- | -------------- | ------------- | -------- |
@@ -303,6 +314,8 @@ Rollout status for an individual hospital uses the phase status set. When all pi
 
 ### SC-07 IGD
 
+**PIC:** Arif
+
 | Feature ID | Feature Name | Screen ID | Screen Name | Complexity | Overall Status | Planned Start | Duration |
 | ---------- | ------------ | --------- | ----------- | ---------- | -------------- | ------------- | -------- |
 | FT-07-01 | IGD Visit | SC-07 | IGD | 3 | NOT_STARTED | TBD | TBD |
@@ -448,6 +461,8 @@ Rollout status for an individual hospital uses the phase status set. When all pi
 
 ### SC-05 Poli Rawat Jalan
 
+**PIC:** Fikri
+
 | Feature ID | Feature Name | Screen ID | Screen Name | Complexity | Overall Status | Planned Start | Duration |
 | ---------- | ------------ | --------- | ----------- | ---------- | -------------- | ------------- | -------- |
 | FT-05-01 | Antrian | SC-05 | Poli Rawat Jalan | 3 | NOT_STARTED | TBD | TBD |
@@ -592,6 +607,8 @@ Rollout status for an individual hospital uses the phase status set. When all pi
 **Milestone Status:** NOT_STARTED
 
 ### SC-11 Apotek
+
+**PIC:** Roso
 
 | Feature ID | Feature Name | Screen ID | Screen Name | Complexity | Overall Status | Planned Start | Duration |
 | ---------- | ------------ | --------- | ----------- | ---------- | -------------- | ------------- | -------- |
@@ -837,6 +854,8 @@ Rollout status for an individual hospital uses the phase status set. When all pi
 
 ### SC-02 Tata Rekening
 
+**PIC:** Erkoc
+
 | Feature ID | Feature Name | Screen ID | Screen Name | Complexity | Overall Status | Planned Start | Duration |
 | ---------- | ------------ | --------- | ----------- | ---------- | -------------- | ------------- | -------- |
 | FT-02-01 | Rincian Tagihan Pasien | SC-02 | Tata Rekening | 4 | NOT_STARTED | TBD | TBD |
@@ -940,6 +959,8 @@ Rollout status for an individual hospital uses the phase status set. When all pi
 | TBD | TBD | NOT_STARTED |
 
 ### SC-03 Kasir
+
+**PIC:** Erkoc
 
 | Feature ID | Feature Name | Screen ID | Screen Name | Complexity | Overall Status | Planned Start | Duration |
 | ---------- | ------------ | --------- | ----------- | ---------- | -------------- | ------------- | -------- |
@@ -1053,6 +1074,8 @@ Rollout status for an individual hospital uses the phase status set. When all pi
 
 ### SC-01 Admisi
 
+**PIC:** Arif
+
 | Feature ID | Feature Name | Screen ID | Screen Name | Complexity | Overall Status | Planned Start | Duration |
 | ---------- | ------------ | --------- | ----------- | ---------- | -------------- | ------------- | -------- |
 | FT-01-03 | Registrasi Rawat Inap | SC-01 | Admisi | 4 | NOT_STARTED | TBD | TBD |
@@ -1090,6 +1113,8 @@ Rollout status for an individual hospital uses the phase status set. When all pi
 | TBD | TBD | NOT_STARTED |
 
 ### SC-06 Bangsal Rawat Inap
+
+**PIC:** Sulis
 
 | Feature ID | Feature Name | Screen ID | Screen Name | Complexity | Overall Status | Planned Start | Duration |
 | ---------- | ------------ | --------- | ----------- | ---------- | -------------- | ------------- | -------- |
@@ -1228,6 +1253,8 @@ Rollout status for an individual hospital uses the phase status set. When all pi
 
 ### SC-02 Tata Rekening
 
+**PIC:** Erkoc
+
 | Feature ID | Feature Name | Screen ID | Screen Name | Complexity | Overall Status | Planned Start | Duration |
 | ---------- | ------------ | --------- | ----------- | ---------- | -------------- | ------------- | -------- |
 | FT-02-03 | Deposit | SC-02 | Tata Rekening | 3 | NOT_STARTED | TBD | TBD |
@@ -1306,6 +1333,8 @@ Rollout status for an individual hospital uses the phase status set. When all pi
 **Milestone Status:** NOT_STARTED
 
 ### SC-12 Gudang
+
+**PIC:** Roso
 
 | Feature ID | Feature Name | Screen ID | Screen Name | Complexity | Overall Status | Planned Start | Duration |
 | ---------- | ------------ | --------- | ----------- | ---------- | -------------- | ------------- | -------- |
@@ -1444,6 +1473,8 @@ Rollout status for an individual hospital uses the phase status set. When all pi
 
 ### SC-05 Poli Rawat Jalan
 
+**PIC:** Fikri
+
 | Feature ID | Feature Name | Screen ID | Screen Name | Complexity | Overall Status | Planned Start | Duration |
 | ---------- | ------------ | --------- | ----------- | ---------- | -------------- | ------------- | -------- |
 | FT-05-05 | Pakai Barang | SC-05 | Poli Rawat Jalan | 3 | NOT_STARTED | TBD | TBD |
@@ -1548,6 +1579,8 @@ Rollout status for an individual hospital uses the phase status set. When all pi
 
 ### SC-07 IGD
 
+**PIC:** Arif
+
 | Feature ID | Feature Name | Screen ID | Screen Name | Complexity | Overall Status | Planned Start | Duration |
 | ---------- | ------------ | --------- | ----------- | ---------- | -------------- | ------------- | -------- |
 | FT-07-05 | Pakai Barang | SC-07 | IGD | 3 | NOT_STARTED | TBD | TBD |
@@ -1651,6 +1684,8 @@ Rollout status for an individual hospital uses the phase status set. When all pi
 | TBD | TBD | NOT_STARTED |
 
 ### SC-06 Bangsal Rawat Inap
+
+**PIC:** Sulis
 
 | Feature ID | Feature Name | Screen ID | Screen Name | Complexity | Overall Status | Planned Start | Duration |
 | ---------- | ------------ | --------- | ----------- | ---------- | -------------- | ------------- | -------- |
@@ -1763,6 +1798,8 @@ Rollout status for an individual hospital uses the phase status set. When all pi
 **Milestone Status:** NOT_STARTED
 
 ### SC-13 Purchasing
+
+**PIC:** Fikri
 
 | Feature ID | Feature Name | Screen ID | Screen Name | Complexity | Overall Status | Planned Start | Duration |
 | ---------- | ------------ | --------- | ----------- | ---------- | -------------- | ------------- | -------- |
@@ -1934,6 +1971,8 @@ Rollout status for an individual hospital uses the phase status set. When all pi
 
 ### SC-12 Gudang
 
+**PIC:** Roso
+
 | Feature ID | Feature Name | Screen ID | Screen Name | Complexity | Overall Status | Planned Start | Duration |
 | ---------- | ------------ | --------- | ----------- | ---------- | -------------- | ------------- | -------- |
 | FT-12-01 | Terima Barang (DO) | SC-12 | Gudang | 4 | NOT_STARTED | TBD | TBD |
@@ -1979,6 +2018,8 @@ Rollout status for an individual hospital uses the phase status set. When all pi
 **Milestone Status:** NOT_STARTED
 
 ### SC-08 Laboratorium
+
+**PIC:** We
 
 | Feature ID | Feature Name | Screen ID | Screen Name | Complexity | Overall Status | Planned Start | Duration |
 | ---------- | ------------ | --------- | ----------- | ---------- | -------------- | ------------- | -------- |
@@ -2257,6 +2298,8 @@ Rollout status for an individual hospital uses the phase status set. When all pi
 
 ### SC-09 Radiologi
 
+**PIC:** We
+
 | Feature ID | Feature Name | Screen ID | Screen Name | Complexity | Overall Status | Planned Start | Duration |
 | ---------- | ------------ | --------- | ----------- | ---------- | -------------- | ------------- | -------- |
 | FT-09-01 | Order Radiologi | SC-09 | Radiologi | 3 | NOT_STARTED | TBD | TBD |
@@ -2534,6 +2577,8 @@ Rollout status for an individual hospital uses the phase status set. When all pi
 
 ### SC-14 Mastering
 
+**PIC:** TBD
+
 | Feature ID | Feature Name | Screen ID | Screen Name | Complexity | Overall Status | Planned Start | Duration |
 | ---------- | ------------ | --------- | ----------- | ---------- | -------------- | ------------- | -------- |
 | FT-14-01 | Master Organisasi | SC-14 | Mastering | TBD | NOT_STARTED | TBD | TBD |
@@ -2712,6 +2757,8 @@ Rollout status for an individual hospital uses the phase status set. When all pi
 
 ### SC-04 Rekam Medis
 
+**PIC:** Rizal
+
 | Feature ID | Feature Name | Screen ID | Screen Name | Complexity | Overall Status | Planned Start | Duration |
 | ---------- | ------------ | --------- | ----------- | ---------- | -------------- | ------------- | -------- |
 | FT-04-01 | Data Sosial Pasien | SC-04 | Rekam Medis | 2 | NOT_STARTED | TBD | TBD |
@@ -2889,6 +2936,8 @@ Rollout status for an individual hospital uses the phase status set. When all pi
 **Milestone Status:** NOT_STARTED
 
 ### SC-10 Kamar Operasi
+
+**PIC:** Arie
 
 | Feature ID | Feature Name | Screen ID | Screen Name | Complexity | Overall Status | Planned Start | Duration |
 | ---------- | ------------ | --------- | ----------- | ---------- | -------------- | ------------- | -------- |

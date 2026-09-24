@@ -2,6 +2,8 @@
 
 ## SC-01 Admisi
 
+**PIC:** Arif
+
 ### Features
 
 - FT-01-01 Booking
@@ -16,6 +18,8 @@
 
 ## SC-02 Tata Rekening
 
+**PIC:** Erkoc
+
 ### Features
 
 - FT-02-01 Rincian Tagihan Pasien
@@ -28,6 +32,8 @@
 
 ## SC-03 Kasir
 
+**PIC:** Erkoc
+
 ### Features
 
 - FT-03-01 Order Bayar
@@ -37,6 +43,8 @@
 ---
 
 ## SC-04 Rekam Medis
+
+**PIC:** Rizal
 
 ### Features
 
@@ -49,6 +57,8 @@
 ---
 
 ## SC-05 Poli Rawat Jalan
+
+**PIC:** Fikri
 
 ### Features
 
@@ -64,6 +74,8 @@
 
 ## SC-06 Bangsal Rawat Inap
 
+**PIC:** Sulis
+
 ### Features
 
 - FT-06-01 Tindakan
@@ -78,6 +90,8 @@
 
 ## SC-07 IGD
 
+**PIC:** Arif
+
 ### Features
 
 - FT-07-01 IGD Visit
@@ -91,6 +105,8 @@
 ---
 
 ## SC-08 Laboratorium
+
+**PIC:** We
 
 ### Features
 
@@ -107,6 +123,8 @@
 
 ## SC-09 Radiologi
 
+**PIC:** We
+
 ### Features
 
 - FT-09-01 Order Radiologi
@@ -122,6 +140,8 @@
 
 ## SC-10 Kamar Operasi
 
+**PIC:** Arie
+
 ### Features
 
 - FT-10-01 Order Operasi
@@ -135,6 +155,8 @@
 ---
 
 ## SC-11 Apotek
+
+**PIC:** Roso
 
 ### Features
 
@@ -150,6 +172,8 @@
 
 ## SC-12 Gudang
 
+**PIC:** Roso
+
 ### Features
 
 - FT-12-01 Terima Barang (DO)
@@ -161,6 +185,8 @@
 ---
 
 ## SC-13 Purchasing
+
+**PIC:** Fikri
 
 ### Features
 

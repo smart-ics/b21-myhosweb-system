@@ -104,6 +104,7 @@
                    "TESTING", "PILOT_DEPLOYMENT", "ROLLED_OUT", "COMPLETED", "BLOCKED", null]
         },
         "statusBucket": {"enum": ["completed", "inProgress", "blocked", "notStarted"]},
+        "screenPic": {"type": ["string", "null"]},
         "plannedStart": {"$ref": "#/definitions/dateOrNull"},
         "plannedDuration": {"type": ["string", "null"]},
         "analysis": {"$ref": "#/definitions/phaseSection"},
@@ -120,6 +121,7 @@
       "properties": {
         "id": {"type": "string", "pattern": "^SC-\\d{2}$"},
         "name": {"type": "string"},
+        "pic": {"type": ["string", "null"]},
         "features": {"type": "array", "items": {"$ref": "#/definitions/feature"}}
       }
     },
@@ -157,6 +159,7 @@
         "milestoneName": {"type": "string"},
         "screenId": {"type": "string"},
         "screenName": {"type": "string"},
+        "pic": {"type": ["string", "null"]},
         "featureCount": {"type": "integer", "minimum": 0},
         "completionPct": {"type": "number", "minimum": 0, "maximum": 100}
       }

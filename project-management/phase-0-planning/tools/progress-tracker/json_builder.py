@@ -117,6 +117,7 @@ def build_json(parsed_milestones, metadata):
                     "complexity": feature["complexity"],
                     "status": feature["status"],
                     "statusBucket": bucket,
+                    "screenPic": screen.get("pic"),
                     "plannedStart": feature["plannedStart"],
                     "plannedDuration": feature["plannedDuration"],
                     "analysis": {
@@ -143,6 +144,7 @@ def build_json(parsed_milestones, metadata):
             screens_out.append({
                 "id": screen["id"],
                 "name": screen["name"],
+                "pic": screen.get("pic"),
                 "features": features_out,
             })
             metric_screens.append({
@@ -150,6 +152,7 @@ def build_json(parsed_milestones, metadata):
                 "milestoneName": milestone["name"],
                 "screenId": screen["id"],
                 "screenName": screen["name"],
+                "pic": screen.get("pic"),
                 "featureCount": screen_total,
                 **screen_features,
                 "completionPct": _pct(screen_features["completed"], screen_total),

@@ -246,9 +246,10 @@ document.getElementById("footer-note").innerHTML =
       "<td><div style='display:flex;align-items:center;gap:10px'>"+stackedBar(m,m.featureCount)+
       "<span class='pct'>"+pctTxt(m.completionPct)+"</span></div></td></tr>").join("")+"</tbody>";
   const s = document.getElementById("screen-table");
-  s.innerHTML = "<thead><tr><th>Screen</th><th>Milestone</th><th>Features</th><th>Completed</th><th>Completion</th></tr></thead><tbody>"+
+  s.innerHTML = "<thead><tr><th>Screen</th><th>Screen PIC</th><th>Milestone</th><th>Features</th><th>Completed</th><th>Completion</th></tr></thead><tbody>"+
     M.screens.map(x=>
       "<tr><td><b>"+esc(x.screenId)+"</b> "+esc(x.screenName)+"</td>"+
+      "<td>"+nz(x.pic)+"</td>"+
       "<td>"+esc(x.milestoneId)+"</td>"+
       "<td class='numcell'>"+x.featureCount+"</td>"+
       "<td class='numcell'>"+x.completed+"</td>"+
@@ -259,7 +260,7 @@ document.getElementById("footer-note").innerHTML =
 /* ---------- flattened views ---------- */
 const featureRows = [], testingRows = [], pilotRows = [], rolloutRows = [];
 DATA.milestones.forEach(m=>m.screens.forEach(s=>s.features.forEach(f=>{
-  const ctx = {milestoneId:m.id, milestone:m.id+" "+m.name, screenId:s.id, screen:s.id+" "+s.name};
+  const ctx = {milestoneId:m.id, milestone:m.id+" "+m.name, screenId:s.id, screen:s.id+" "+s.name, screenPic:(s.pic!==undefined?s.pic:(f.screenPic!==undefined?f.screenPic:null))};
   featureRows.push({...ctx, featureId:f.featureId, feature:f.featureId+" "+f.featureName,
     featureName:f.featureName, complexity:f.complexity, status:f.status,
     bucket:f.statusBucket, plannedStart:f.plannedStart, duration:f.plannedDuration});
@@ -361,6 +362,7 @@ function mountTable(mountId, columns, rows, opts){
 mountTable("features-mount", [
   {key:"milestoneId", label:"Milestone"},
   {key:"screenId", label:"Screen", render:r=>nz(r.screenId)+" <span style='color:var(--muted)'>"+nz(r.screen)+"</span>"},
+  {key:"screenPic", label:"Screen PIC"},
   {key:"feature", label:"Feature", render:r=>"<b>"+nz(r.featureId)+"</b> "+nz(r.featureName)},
   {key:"complexity", label:"Complexity", numeric:true,
    render:r=>r.complexity===null?statusBadge("TBD"):r.complexity,
@@ -374,6 +376,7 @@ mountTable("features-mount", [
   searchPlaceholder:"Search feature, screen, milestone…",
   filters:[
     {key:"milestone", label:"Milestone", value:r=>r.milestoneId},
+    {key:"screenPic", label:"Screen PIC", value:r=>r.screenPic},
     {key:"bucket", label:"Status group", value:r=>r.bucket, labelOf:v=>BUCKET_LABEL[v]||v},
     {key:"status", label:"Exact status", value:r=>r.status},
   ],

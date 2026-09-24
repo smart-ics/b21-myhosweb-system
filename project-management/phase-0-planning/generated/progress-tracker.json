@@ -3,9 +3,9 @@
     "project": "MYHOSWEB",
     "artifact": "Program Progress Tracker",
     "version": "1.0",
-    "trackerRevision": 1,
-    "lastUpdated": "2026-09-22",
-    "generatedAt": "2026-09-22 16:42",
+    "trackerRevision": 2,
+    "lastUpdated": "2026-09-24",
+    "generatedAt": "2026-09-24 12:27",
     "source": "project-management/phase-0-planning/MYHOSWEB-PROGRESS-TRACKER.md",
     "generator": "project-management/phase-0-planning/tools/progress-tracker/generate.py"
   },
@@ -19,6 +19,7 @@
         {
           "id": "SC-01",
           "name": "Admisi",
+          "pic": "Arif",
           "features": [
             {
               "featureId": "FT-01-01",
@@ -26,6 +27,7 @@
               "complexity": 3,
               "status": "COMPLETED",
               "statusBucket": "completed",
+              "screenPic": "Arif",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -129,6 +131,7 @@
               "complexity": 4,
               "status": "COMPLETED",
               "statusBucket": "completed",
+              "screenPic": "Arif",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -232,6 +235,7 @@
               "complexity": 5,
               "status": "COMPLETED",
               "statusBucket": "completed",
+              "screenPic": "Arif",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -335,6 +339,7 @@
               "complexity": 4,
               "status": "COMPLETED",
               "statusBucket": "completed",
+              "screenPic": "Arif",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -438,6 +443,7 @@
               "complexity": 3,
               "status": "COMPLETED",
               "statusBucket": "completed",
+              "screenPic": "Arif",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -541,6 +547,7 @@
               "complexity": 3,
               "status": "COMPLETED",
               "statusBucket": "completed",
+              "screenPic": "Arif",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -651,6 +658,7 @@
         {
           "id": "SC-07",
           "name": "IGD",
+          "pic": "Arif",
           "features": [
             {
               "featureId": "FT-07-01",
@@ -658,6 +666,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Arif",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -758,6 +767,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Arif",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -858,6 +868,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Arif",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -958,6 +969,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Arif",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -1065,6 +1077,7 @@
         {
           "id": "SC-05",
           "name": "Poli Rawat Jalan",
+          "pic": "Fikri",
           "features": [
             {
               "featureId": "FT-05-01",
@@ -1072,6 +1085,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Fikri",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -1172,6 +1186,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Fikri",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -1272,6 +1287,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Fikri",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -1372,6 +1388,7 @@
               "complexity": 4,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Fikri",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -1479,6 +1496,7 @@
         {
           "id": "SC-11",
           "name": "Apotek",
+          "pic": "Roso",
           "features": [
             {
               "featureId": "FT-11-01",
@@ -1486,6 +1504,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Roso",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -1586,6 +1605,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Roso",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -1686,6 +1706,7 @@
               "complexity": 4,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Roso",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -1786,6 +1807,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Roso",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -1886,6 +1908,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Roso",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -1986,6 +2009,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Roso",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -2086,6 +2110,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Roso",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -2193,6 +2218,7 @@
         {
           "id": "SC-02",
           "name": "Tata Rekening",
+          "pic": "Erkoc",
           "features": [
             {
               "featureId": "FT-02-01",
@@ -2200,6 +2226,7 @@
               "complexity": 4,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Erkoc",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -2300,6 +2327,7 @@
               "complexity": 4,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Erkoc",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -2400,6 +2428,7 @@
               "complexity": 4,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Erkoc",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -2499,6 +2528,7 @@
         {
           "id": "SC-03",
           "name": "Kasir",
+          "pic": "Erkoc",
           "features": [
             {
               "featureId": "FT-03-01",
@@ -2506,6 +2536,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Erkoc",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -2606,6 +2637,7 @@
               "complexity": 4,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Erkoc",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -2706,6 +2738,7 @@
               "complexity": 4,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Erkoc",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -2813,6 +2846,7 @@
         {
           "id": "SC-01",
           "name": "Admisi",
+          "pic": "Arif",
           "features": [
             {
               "featureId": "FT-01-03",
@@ -2820,6 +2854,7 @@
               "complexity": 4,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Arif",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -2919,6 +2954,7 @@
         {
           "id": "SC-06",
           "name": "Bangsal Rawat Inap",
+          "pic": "Sulis",
           "features": [
             {
               "featureId": "FT-06-01",
@@ -2926,6 +2962,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Sulis",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -3026,6 +3063,7 @@
               "complexity": 4,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Sulis",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -3126,6 +3164,7 @@
               "complexity": 4,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Sulis",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -3226,6 +3265,7 @@
               "complexity": 4,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Sulis",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -3325,6 +3365,7 @@
         {
           "id": "SC-02",
           "name": "Tata Rekening",
+          "pic": "Erkoc",
           "features": [
             {
               "featureId": "FT-02-03",
@@ -3332,6 +3373,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Erkoc",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -3432,6 +3474,7 @@
               "complexity": 4,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Erkoc",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -3539,6 +3582,7 @@
         {
           "id": "SC-12",
           "name": "Gudang",
+          "pic": "Roso",
           "features": [
             {
               "featureId": "FT-12-02",
@@ -3546,6 +3590,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Roso",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -3646,6 +3691,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Roso",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -3746,6 +3792,7 @@
               "complexity": 4,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Roso",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -3846,6 +3893,7 @@
               "complexity": 4,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Roso",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -3945,6 +3993,7 @@
         {
           "id": "SC-05",
           "name": "Poli Rawat Jalan",
+          "pic": "Fikri",
           "features": [
             {
               "featureId": "FT-05-05",
@@ -3952,6 +4001,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Fikri",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -4052,6 +4102,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Fikri",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -4152,6 +4203,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Fikri",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -4251,6 +4303,7 @@
         {
           "id": "SC-07",
           "name": "IGD",
+          "pic": "Arif",
           "features": [
             {
               "featureId": "FT-07-05",
@@ -4258,6 +4311,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Arif",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -4358,6 +4412,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Arif",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -4458,6 +4513,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Arif",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -4557,6 +4613,7 @@
         {
           "id": "SC-06",
           "name": "Bangsal Rawat Inap",
+          "pic": "Sulis",
           "features": [
             {
               "featureId": "FT-06-05",
@@ -4564,6 +4621,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Sulis",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -4664,6 +4722,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Sulis",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -4764,6 +4823,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Sulis",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -4871,6 +4931,7 @@
         {
           "id": "SC-13",
           "name": "Purchasing",
+          "pic": "Fikri",
           "features": [
             {
               "featureId": "FT-13-01",
@@ -4878,6 +4939,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Fikri",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -4978,6 +5040,7 @@
               "complexity": 4,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Fikri",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -5078,6 +5141,7 @@
               "complexity": 4,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Fikri",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -5178,6 +5242,7 @@
               "complexity": 4,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Fikri",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -5278,6 +5343,7 @@
               "complexity": 4,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Fikri",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -5377,6 +5443,7 @@
         {
           "id": "SC-12",
           "name": "Gudang",
+          "pic": "Roso",
           "features": [
             {
               "featureId": "FT-12-01",
@@ -5384,6 +5451,7 @@
               "complexity": 4,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Roso",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -5491,6 +5559,7 @@
         {
           "id": "SC-08",
           "name": "Laboratorium",
+          "pic": "We",
           "features": [
             {
               "featureId": "FT-08-01",
@@ -5498,6 +5567,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "We",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -5598,6 +5668,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "We",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -5698,6 +5769,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "We",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -5798,6 +5870,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "We",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -5898,6 +5971,7 @@
               "complexity": 4,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "We",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -5998,6 +6072,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "We",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -6098,6 +6173,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "We",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -6198,6 +6274,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "We",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -6305,6 +6382,7 @@
         {
           "id": "SC-09",
           "name": "Radiologi",
+          "pic": "We",
           "features": [
             {
               "featureId": "FT-09-01",
@@ -6312,6 +6390,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "We",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -6412,6 +6491,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "We",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -6512,6 +6592,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "We",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -6612,6 +6693,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "We",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -6712,6 +6794,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "We",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -6812,6 +6895,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "We",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -6912,6 +6996,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "We",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -7012,6 +7097,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "We",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -7119,6 +7205,7 @@
         {
           "id": "SC-14",
           "name": "Mastering",
+          "pic": "TBD",
           "features": [
             {
               "featureId": "FT-14-01",
@@ -7126,6 +7213,7 @@
               "complexity": null,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "TBD",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -7226,6 +7314,7 @@
               "complexity": null,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "TBD",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -7326,6 +7415,7 @@
               "complexity": null,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "TBD",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -7426,6 +7516,7 @@
               "complexity": null,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "TBD",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -7526,6 +7617,7 @@
               "complexity": null,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "TBD",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -7633,6 +7725,7 @@
         {
           "id": "SC-04",
           "name": "Rekam Medis",
+          "pic": "Rizal",
           "features": [
             {
               "featureId": "FT-04-01",
@@ -7640,6 +7733,7 @@
               "complexity": 2,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Rizal",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -7740,6 +7834,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Rizal",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -7840,6 +7935,7 @@
               "complexity": 4,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Rizal",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -7940,6 +8036,7 @@
               "complexity": 5,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Rizal",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -8040,6 +8137,7 @@
               "complexity": 4,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Rizal",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -8147,6 +8245,7 @@
         {
           "id": "SC-10",
           "name": "Kamar Operasi",
+          "pic": "Arie",
           "features": [
             {
               "featureId": "FT-10-01",
@@ -8154,6 +8253,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Arie",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -8254,6 +8354,7 @@
               "complexity": 4,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Arie",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -8354,6 +8455,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Arie",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -8454,6 +8556,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Arie",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -8554,6 +8657,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Arie",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -8654,6 +8758,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Arie",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -8754,6 +8859,7 @@
               "complexity": 3,
               "status": "NOT_STARTED",
               "statusBucket": "notStarted",
+              "screenPic": "Arie",
               "plannedStart": "TBD",
               "plannedDuration": "TBD",
               "analysis": {
@@ -9094,6 +9200,7 @@
         "milestoneName": "Patient Admission Foundation",
         "screenId": "SC-01",
         "screenName": "Admisi",
+        "pic": "Arif",
         "featureCount": 6,
         "completed": 6,
         "inProgress": 0,
@@ -9106,6 +9213,7 @@
         "milestoneName": "Emergency Department Operations",
         "screenId": "SC-07",
         "screenName": "IGD",
+        "pic": "Arif",
         "featureCount": 4,
         "completed": 0,
         "inProgress": 0,
@@ -9118,6 +9226,7 @@
         "milestoneName": "Outpatient Clinical Operations",
         "screenId": "SC-05",
         "screenName": "Poli Rawat Jalan",
+        "pic": "Fikri",
         "featureCount": 4,
         "completed": 0,
         "inProgress": 0,
@@ -9130,6 +9239,7 @@
         "milestoneName": "Pharmacy Operations",
         "screenId": "SC-11",
         "screenName": "Apotek",
+        "pic": "Roso",
         "featureCount": 7,
         "completed": 0,
         "inProgress": 0,
@@ -9142,6 +9252,7 @@
         "milestoneName": "Billing and Cashier Operations",
         "screenId": "SC-02",
         "screenName": "Tata Rekening",
+        "pic": "Erkoc",
         "featureCount": 3,
         "completed": 0,
         "inProgress": 0,
@@ -9154,6 +9265,7 @@
         "milestoneName": "Billing and Cashier Operations",
         "screenId": "SC-03",
         "screenName": "Kasir",
+        "pic": "Erkoc",
         "featureCount": 3,
         "completed": 0,
         "inProgress": 0,
@@ -9166,6 +9278,7 @@
         "milestoneName": "Inpatient Operations",
         "screenId": "SC-01",
         "screenName": "Admisi",
+        "pic": "Arif",
         "featureCount": 1,
         "completed": 0,
         "inProgress": 0,
@@ -9178,6 +9291,7 @@
         "milestoneName": "Inpatient Operations",
         "screenId": "SC-06",
         "screenName": "Bangsal Rawat Inap",
+        "pic": "Sulis",
         "featureCount": 4,
         "completed": 0,
         "inProgress": 0,
@@ -9190,6 +9304,7 @@
         "milestoneName": "Inpatient Operations",
         "screenId": "SC-02",
         "screenName": "Tata Rekening",
+        "pic": "Erkoc",
         "featureCount": 2,
         "completed": 0,
         "inProgress": 0,
@@ -9202,6 +9317,7 @@
         "milestoneName": "Inventory Foundation and Shared Barang Capability",
         "screenId": "SC-12",
         "screenName": "Gudang",
+        "pic": "Roso",
         "featureCount": 4,
         "completed": 0,
         "inProgress": 0,
@@ -9214,6 +9330,7 @@
         "milestoneName": "Inventory Foundation and Shared Barang Capability",
         "screenId": "SC-05",
         "screenName": "Poli Rawat Jalan",
+        "pic": "Fikri",
         "featureCount": 3,
         "completed": 0,
         "inProgress": 0,
@@ -9226,6 +9343,7 @@
         "milestoneName": "Inventory Foundation and Shared Barang Capability",
         "screenId": "SC-07",
         "screenName": "IGD",
+        "pic": "Arif",
         "featureCount": 3,
         "completed": 0,
         "inProgress": 0,
@@ -9238,6 +9356,7 @@
         "milestoneName": "Inventory Foundation and Shared Barang Capability",
         "screenId": "SC-06",
         "screenName": "Bangsal Rawat Inap",
+        "pic": "Sulis",
         "featureCount": 3,
         "completed": 0,
         "inProgress": 0,
@@ -9250,6 +9369,7 @@
         "milestoneName": "Procurement Operations",
         "screenId": "SC-13",
         "screenName": "Purchasing",
+        "pic": "Fikri",
         "featureCount": 5,
         "completed": 0,
         "inProgress": 0,
@@ -9262,6 +9382,7 @@
         "milestoneName": "Procurement Operations",
         "screenId": "SC-12",
         "screenName": "Gudang",
+        "pic": "Roso",
         "featureCount": 1,
         "completed": 0,
         "inProgress": 0,
@@ -9274,6 +9395,7 @@
         "milestoneName": "Laboratory Operations",
         "screenId": "SC-08",
         "screenName": "Laboratorium",
+        "pic": "We",
         "featureCount": 8,
         "completed": 0,
         "inProgress": 0,
@@ -9286,6 +9408,7 @@
         "milestoneName": "Radiology Operations",
         "screenId": "SC-09",
         "screenName": "Radiologi",
+        "pic": "We",
         "featureCount": 8,
         "completed": 0,
         "inProgress": 0,
@@ -9298,6 +9421,7 @@
         "milestoneName": "Master Data Foundation",
         "screenId": "SC-14",
         "screenName": "Mastering",
+        "pic": "TBD",
         "featureCount": 5,
         "completed": 0,
         "inProgress": 0,
@@ -9310,6 +9434,7 @@
         "milestoneName": "Medical Record Administration",
         "screenId": "SC-04",
         "screenName": "Rekam Medis",
+        "pic": "Rizal",
         "featureCount": 5,
         "completed": 0,
         "inProgress": 0,
@@ -9322,6 +9447,7 @@
         "milestoneName": "Operating Theatre Operations",
         "screenId": "SC-10",
         "screenName": "Kamar Operasi",
+        "pic": "Arie",
         "featureCount": 7,
         "completed": 0,
         "inProgress": 0,

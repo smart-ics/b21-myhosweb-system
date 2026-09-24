@@ -14,6 +14,7 @@ FEATURE_RE = re.compile(r"^####\s+(FT-\d+-\d+)\s+(.+?)\s*$")
 BOLD_ONLY_RE = re.compile(r"^\*\*([^*]+)\*\*$")
 BUSINESS_DESC_RE = re.compile(r"^\*\*Business description:\*\*\s*(.+?)\s*$")
 MILESTONE_STATUS_RE = re.compile(r"^\*\*Milestone Status:\*\*\s*(\S+)")
+SCREEN_PIC_RE = re.compile(r"^\*\*PIC:\*\*\s*(.+?)\s*$")
 TABLE_SEP_CELL_RE = re.compile(r"^:?-{3,}:?$")
 
 PHASE_BY_HEADING = {
@@ -106,7 +107,7 @@ class TrackerParser:
     def _enter_screen(self, sid, name):
         if self._milestone is None:
             return
-        self._screen = {"id": sid, "name": name, "features": []}
+        self._screen = {"id": sid, "name": name, "pic": None, "features": []}
         self._milestone["screens"].append(self._screen)
         self._feature = None
         self._phase = None
@@ -248,6 +249,12 @@ class TrackerParser:
             m = MILESTONE_STATUS_RE.match(stripped)
             if m and self._milestone is not None:
                 self._milestone["status"] = m.group(1)
+                i += 1
+                continue
+
+            m = SCREEN_PIC_RE.match(stripped)
+            if m and self._screen is not None and self._feature is None:
+                self._screen["pic"] = clean(m.group(1))
                 i += 1
                 continue
 
