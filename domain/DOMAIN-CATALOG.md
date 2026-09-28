@@ -1,26 +1,189 @@
 ---
 Artifact Name: Domain Catalog
-Version: 1.0
+Version: 2.1
 Last Update: 2026-09-28
 Updated By: Dury Yudis
 ---
 
 # DOMAIN CATALOG
 
-| ID     | Domain                          | Capabilities                                                                                                   |
-| ------ | ------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| DOM-01 | **Patient**                     | Patient Identity, Patient Demographics                                                                         |
-| DOM-02 | **Organization & Service**      | Organization, Service/Layanan, Practitioner/Dokter,                                           |
-| DOM-03 | **Admission**                   | Booking, Registration, Queue, Patient Journey, Practice Schedule                                                               |
-| DOM-04 | **Outpatient Care**             | Outpatient Visit, Clinical Procedure, Internal Referral, Follow-up/Control                                     |
-| DOM-05 | **Inpatient Care**              | Admission to Ward, Bed Placement, Transfer, Discharge, Intensive Care                                                          |
-| DOM-06 | **Emergency Care**              | Emergency Visit, Triage, Observation, Emergency Procedure, Emergency Disposition, Ambulance                    |
-| DOM-07 | **Laboratory**                  | Laboratory Order, Specimen Collection, Result Management                                                       |
-| DOM-08 | **Radiology**                   | Radiology Order, Scheduling, Examination/Imaging, Interpretation/Reporting                                     |
-| DOM-09 | **Surgical Care**               | Surgical Order, Scheduling, Pre-operative Management, Operative Procedure, Recovery                            |
-| DOM-10 | **Pharmacy**                    | Prescription, Prescription Review, Dispensing, Medication Sales, Medication Handover, Return                   |
-| DOM-11 | **Inventory**                   | Item Master, Stock, Stock Movement, Stock Ledger, Stock Count, Disposal                                        |
-| DOM-12 | **Procurement**                 | Supplier, Material Request, Purchase Request, Purchase Order, Goods Receipt, Purchase Invoice, Purchase Return |
-| DOM-13 | **Patient Financials**          | Tariff, Coverage/Guarantor, Billing, Payment, Deposit, Refund, Financial Settlement                            |
-| DOM-14 | **Medical Records & Reporting** | Medical Record Management, Diagnosis/Coding, Casemix, Hospital Reporting                                       |
-| DOM-15 | **External Payer / BPJS**       | VClaim, e-Klaim, Antrol, HFIS                                                                                  |
+## 01. PASIEN
+Domain Code : **PAS**
+
+**Capabilities:**
+- `PAS-01` Data Sosial Pasien
+- `PAS-02` Demografi
+- `PAS-03` Status Sosial
+
+---
+
+## 02. ORGANISASI
+Domain Code : **ORG**
+
+**Capabilities:**
+- `ORG-01` Unit Layanan
+- `ORG-02` Dokter
+- `ORG-03` Jadwal Praktek
+- `ORG-04` Room Management
+
+---
+
+## 03. ADMISSION
+Domain Code : **ADM**
+
+**Capabilities:**
+- `ADM-01` Booking
+- `ADM-02` Registration
+- `ADM-03` Antrian Registrasi
+- `ADM-04` Pasien Journey
+
+---
+
+## 04. RAWAT JALAN
+Domain Code : **RJL**
+
+**Capabilities:**
+- `RJL-01` Outpatient Visit
+- `RJL-02` Clinical Procedure
+- `RJL-03` Antrian Poli
+- `RJL-04` Internal Referral
+- `RJL-05` Pemeriksaan Awal
+
+---
+
+## 05. RAWAT INAP
+Domain Code : **RNA**
+
+**Capabilities:**
+- `RNA-01` Admission to Ward
+- `RNA-02` Bed Placement
+- `RNA-03` Transfer
+- `RNA-04` Discharge
+- `RNA-05` Bed Readiness
+
+---
+
+## 06. GAWAT DARURAT
+Domain Code : **IGD**
+
+**Capabilities:**
+- `IGD-01` IGD Visit
+- `IGD-02` Triage
+- `IGD-03` IGD Procedure
+- `IGD-04` Disposition
+- `IGD-05` Ambulance
+
+---
+
+## 07. LABORATORY
+Domain Code : **LAB**
+
+**Capabilities:**
+- `LAB-01` Order Lab
+- `LAB-02` Registrasi External
+- `LAB-03` Specimen Collection
+- `LAB-04` Lab Result Management
+
+---
+
+## 08. RADIOLOGY
+Domain Code : **RAD**
+
+**Capabilities:**
+- `RAD-01` Order Radiologi
+- `RAD-02` Scheduling
+- `RAD-03` Examination
+- `RAD-04` Expertise
+
+---
+
+## 09. KAMAR OPERASI
+Domain Code : **KMO**
+
+**Capabilities:**
+- `KMO-01` Order Operasi
+- `KMO-02` Jadwal Operasi
+- `KMO-03` Persiapan Operasi
+- `KMO-04` Operative Procedure
+- `KMO-05` Recovery
+
+---
+
+## 10. APOTEK
+Domain Code : **APT**
+
+**Capabilities:**
+- `APT-01` Resep
+- `APT-02` Telaah Resep
+- `APT-03` Antrian Apotek
+- `APT-04` Sales Order
+- `APT-05` Sales Invoice
+- `APT-06` Dispensing
+- `APT-07` Serah Obat
+- `APT-08` Return
+
+---
+
+## 11. INVENTORY
+Domain Code : **INV**
+
+**Capabilities:**
+- `INV-01` Item Master
+- `INV-02` Stok
+- `INV-03` Mutasi
+- `INV-04` Musnah
+- `INV-05` Repack-Produksi
+- `INV-06` Pakai Barang
+- `INV-07` Stok Opname
+
+---
+
+## 12. PROCUREMENT
+Domain Code : **PRC**
+
+**Capabilities:**
+- `PRC-01` Supplier
+- `PRC-02` Material Request
+- `PRC-03` Purchase Request
+- `PRC-04` Purchase Order
+- `PRC-05` Penerimaan Barang
+- `PRC-06` Faktur
+- `PRC-07` Purchase Return
+
+---
+
+## 13. TATA REKENING
+Domain Code : **TRK**
+
+**Capabilities:**
+- `TRK-01` Tariff
+- `TRK-02` Jaminan
+- `TRK-03` Billing
+- `TRK-04` Payment
+- `TRK-05` Deposit
+- `TRK-06` Refund
+- `TRK-07` Voucher
+
+---
+
+## 14. BERKAS REKAM MEDIS
+Domain Code : **BRM**
+
+**Capabilities:**
+- `BRM-01` Diagnosis/Coding
+- `BRM-02` Morbiditas Pasien
+- `BRM-03` Indikator RS
+- `BRM-04` Laporan RL
+- `BRM-05` Sensus dan Index
+- `BRM-06` Mutasi Berkas
+
+---
+
+## 15. BPJS
+Domain Code : **BPJ**
+
+**Capabilities:**
+- `BPJ-01` VClaim
+- `BPJ-02` e-Klaim
+- `BPJ-03` Antrol
+- `BPJ-04` HFIS
