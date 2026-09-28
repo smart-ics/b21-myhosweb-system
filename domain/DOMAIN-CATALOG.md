@@ -1,3 +1,12 @@
+---
+Artifact Name: Domain Catalog
+Version: 1.0
+Last Update: 2026-09-28
+Updated By: Dury Yudis
+---
+
+# DOMAIN CATALOG
+
 | ID     | Domain                          | Capabilities                                                                                                   |
 | ------ | ------------------------------- | -------------------------------------------------------------------------------------------------------------- |
 | DOM-01 | **Patient**                     | Patient Identity, Patient Demographics                                                                         |
