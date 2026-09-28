@@ -4,7 +4,7 @@
 | DOM-02 | **Organization & Service**      | Organization, Service/Layanan, Practitioner/Dokter,                                           |
 | DOM-03 | **Admission**                   | Booking, Registration, Queue, Patient Journey, Practice Schedule                                                               |
 | DOM-04 | **Outpatient Care**             | Outpatient Visit, Clinical Procedure, Internal Referral, Follow-up/Control                                     |
-| DOM-05 | **Inpatient Care**              | Admission to Ward, Bed Placement, Transfer, Discharge                                                          |
+| DOM-05 | **Inpatient Care**              | Admission to Ward, Bed Placement, Transfer, Discharge, Intensive Care                                                          |
 | DOM-06 | **Emergency Care**              | Emergency Visit, Triage, Observation, Emergency Procedure, Emergency Disposition, Ambulance                    |
 | DOM-07 | **Laboratory**                  | Laboratory Order, Specimen Collection, Result Management                                                       |
 | DOM-08 | **Radiology**                   | Radiology Order, Scheduling, Examination/Imaging, Interpretation/Reporting                                     |
