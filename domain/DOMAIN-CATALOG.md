@@ -45,7 +45,7 @@ Domain Code : **RJL**
 1. `RJL-KONSUL` Konsultasi
 2. `RJL-TINDAKAN` Tindakan Klinis
 3. `RJL-ANTRIAN` Antrian Poli
-4. `RJL-RUJUKAN` Rujukan Internal
+4. `RJL-TRANSFER` Rujukan Internal
 5. `RJL-AWAL` Pemeriksaan Awal
 
 ---
@@ -56,7 +56,7 @@ Domain Code : **RNA**
 **Capabilities:**
 1. `RNA-ANTRIAN` Antrian Masuk Bangsal
 2. `RNA-BED` Bed Placement
-3. `RNA-TRANSFER` Transfer
+3. `RNA-TRANSFER` Transfer Ke Unit Lain
 4. `RNA-DISCHARGE` Discharge
 5. `RNA-HK` Housekeeping Bed Readiness
 
