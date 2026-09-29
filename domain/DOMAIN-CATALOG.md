@@ -11,8 +11,8 @@ Updated By: Dury Yudis
 Domain Code : **PAS**
 
 **Capabilities:**
-- `PAS-01` Data Sosial Pasien
-- `PAS-02` Merge Duplicated Pasien
+- `PAS-DATSOS` Data Sosial Pasien
+- `PAS-MERGE` Merge Duplicated Pasien
 
 ---
 
@@ -20,10 +20,10 @@ Domain Code : **PAS**
 Domain Code : **ORG**
 
 **Capabilities:**
-- `ORG-01` Unit Layanan
-- `ORG-02` Dokter
-- `ORG-03` Jadwal Praktek
-- `ORG-04` Room Management
+- `ORG-LAYANAN` Unit Layanan
+- `ORG-PPA` Petugas Pemberi Asuhan
+- `ORG-JADWAL` Jadwal Praktek Dokter
+- `ORG-BANGSAL` Room Bangsal Management
 
 ---
 
@@ -31,10 +31,10 @@ Domain Code : **ORG**
 Domain Code : **ADM**
 
 **Capabilities:**
-- `ADM-01` Booking
-- `ADM-02` Registration
-- `ADM-03` Antrian Registrasi
-- `ADM-04` Pasien Journey
+- `ADM-BOOKING` Booking
+- `ADM-REG` Registration
+- `ADM-ANTRIAN` Antrian Registrasi
+- `ADM-TRACKER` Pasien Journey
 
 ---
 
@@ -42,11 +42,11 @@ Domain Code : **ADM**
 Domain Code : **RJL**
 
 **Capabilities:**
-- `RJL-01` Outpatient Visit
-- `RJL-02` Clinical Procedure
-- `RJL-03` Antrian Poli
-- `RJL-04` Internal Referral
-- `RJL-05` Pemeriksaan Awal
+- `RJL-KONSUL` Konsultasi
+- `RJL-TINDAKAN` Tindakan Klinis
+- `RJL-ANTRIAN` Antrian Poli
+- `RJL-RUJUKAN` Rujukan Internal
+- `RJL-AWAL` Pemeriksaan Awal
 
 ---
 
