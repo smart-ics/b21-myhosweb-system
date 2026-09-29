@@ -55,7 +55,7 @@ Domain Code : **RNA**
 
 **Capabilities:**
 1. `RNA-ANTRIAN` Antrian Masuk Bangsal
-2. `RNA-BED` Bed Placement
+2. `RNA-BED` Pakai Bed
 3. `RNA-TRANSFER` Transfer Ke Unit Lain
 4. `RNA-CHARGE' Room Charge
 5. `RNA-DISCHARGE` Discharge
