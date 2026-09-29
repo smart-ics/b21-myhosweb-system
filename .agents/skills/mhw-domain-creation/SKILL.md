@@ -1,5 +1,5 @@
 ---
-name: myhos-domain-creation
+name: mhw-domain-creation
 description: Create or update a DOMAIN artifact that formalizes a Business Capability and its owned business knowledge.
 license: Proprietary
 compatibility: myhospital-web
