@@ -57,8 +57,9 @@ Domain Code : **RNA**
 1. `RNA-ANTRIAN` Antrian Masuk Bangsal
 2. `RNA-BED` Bed Placement
 3. `RNA-TRANSFER` Transfer Ke Unit Lain
-4. `RNA-DISCHARGE` Discharge
-5. `RNA-HK` Housekeeping Bed Readiness
+4. `RNA-CHARGE' Room Charge
+5. `RNA-DISCHARGE` Discharge
+6. `RNA-HK` Housekeeping Bed Readiness
 
 ---
 
