@@ -12,8 +12,7 @@ Domain Code : **PAS**
 
 **Capabilities:**
 - `PAS-01` Data Sosial Pasien
-- `PAS-02` Demografi
-- `PAS-03` Status Sosial
+- `PAS-02` Merge Duplicated Pasien
 
 ---
 
@@ -129,7 +128,7 @@ Domain Code : **INV**
 
 **Capabilities:**
 - `INV-01` Item Master
-- `INV-02` Stok
+- `INV-02` Posisi Stok
 - `INV-03` Mutasi
 - `INV-04` Musnah
 - `INV-05` Repack-Produksi
