@@ -20,10 +20,10 @@ Domain Code : **PAS**
 Domain Code : **ORG**
 
 **Capabilities:**
-- `ORG-LAYANAN` Unit Layanan
-- `ORG-PPA` Petugas Pemberi Asuhan
-- `ORG-JADWAL` Jadwal Praktek Dokter
-- `ORG-BANGSAL` Room Bangsal Management
+1. `ORG-LAYANAN` Unit Layanan
+2. `ORG-PPA` Petugas Pemberi Asuhan
+3. `ORG-JADWAL` Jadwal Praktek Dokter
+4. `ORG-BANGSAL` Room Bangsal Management
 
 ---
 
@@ -31,10 +31,10 @@ Domain Code : **ORG**
 Domain Code : **ADM**
 
 **Capabilities:**
-- `ADM-BOOKING` Booking
-- `ADM-REG` Registration
-- `ADM-ANTRIAN` Antrian Registrasi
-- `ADM-TRACKER` Pasien Journey
+1. `ADM-BOOKING` Booking
+2. `ADM-REG` Registration
+3. `ADM-ANTRIAN` Antrian Registrasi
+4. `ADM-TRACKER` Pasien Journey
 
 ---
 
@@ -42,11 +42,11 @@ Domain Code : **ADM**
 Domain Code : **RJL**
 
 **Capabilities:**
-- `RJL-KONSUL` Konsultasi
-- `RJL-TINDAKAN` Tindakan Klinis
-- `RJL-ANTRIAN` Antrian Poli
-- `RJL-RUJUKAN` Rujukan Internal
-- `RJL-AWAL` Pemeriksaan Awal
+1. `RJL-KONSUL` Konsultasi
+2. `RJL-TINDAKAN` Tindakan Klinis
+3. `RJL-ANTRIAN` Antrian Poli
+4. `RJL-RUJUKAN` Rujukan Internal
+5. `RJL-AWAL` Pemeriksaan Awal
 
 ---
 
@@ -54,11 +54,11 @@ Domain Code : **RJL**
 Domain Code : **RNA**
 
 **Capabilities:**
-- `RNA-01` Admission to Ward
-- `RNA-02` Bed Placement
-- `RNA-03` Transfer
-- `RNA-04` Discharge
-- `RNA-05` Bed Readiness
+1. `RNA-ANTRIAN` Antrian Masuk Bangsal
+2. `RNA-BED` Bed Placement
+3. `RNA-TRANSFER` Transfer
+4. `RNA-DISCHARGE` Discharge
+5. `RNA-HK` Housekeeping Bed Readiness
 
 ---
 
@@ -66,11 +66,11 @@ Domain Code : **RNA**
 Domain Code : **IGD**
 
 **Capabilities:**
-- `IGD-01` IGD Visit
-- `IGD-02` Triage
-- `IGD-03` IGD Procedure
-- `IGD-04` Disposition
-- `IGD-05` Ambulance
+1. `IGD-VISIT` IGD Visit
+2. `IGD-TRIAGE` Triage
+3. `IGD-TINDAKAN` IGD Procedure
+4. `IGD-RANAP` Transfer Ranap
+5. `IGD-AMBULANCE` Ambulance
 
 ---
 
@@ -78,10 +78,10 @@ Domain Code : **IGD**
 Domain Code : **LAB**
 
 **Capabilities:**
-- `LAB-01` Order Lab
-- `LAB-02` Registrasi External
-- `LAB-03` Specimen Collection
-- `LAB-04` Lab Result Management
+1. `LAB-ORDER` Order Lab
+2. `LAB-EXTERNAL` Registrasi External
+3. `LAB-COLLECT` Specimen Collection
+4. `LAB-RESULT` Lab Result Management
 
 ---
 
@@ -89,10 +89,10 @@ Domain Code : **LAB**
 Domain Code : **RAD**
 
 **Capabilities:**
-- `RAD-01` Order Radiologi
-- `RAD-02` Scheduling
-- `RAD-03` Examination
-- `RAD-04` Expertise
+1. `RAD-ORDER` Order Radiologi
+2. `RAD-JADWAL` Jadwal Radiologi
+3. `RAD-EXAM` Examination
+4. `RAD-EXPERTISE` Expertise
 
 ---
 
@@ -100,11 +100,11 @@ Domain Code : **RAD**
 Domain Code : **KMO**
 
 **Capabilities:**
-- `KMO-01` Order Operasi
-- `KMO-02` Jadwal Operasi
-- `KMO-03` Persiapan Operasi
-- `KMO-04` Operative Procedure
-- `KMO-05` Recovery
+1. `KMO-ORDER` Order Operasi
+2. `KMO-JADWAL` Jadwal Operasi
+3. `KMO-PREOP` Persiapan Operasi
+4. `KMO-OPR` Operative Procedure
+5. `KMO-RECOVERY` Recovery
 
 ---
 
@@ -112,14 +112,14 @@ Domain Code : **KMO**
 Domain Code : **APT**
 
 **Capabilities:**
-- `APT-01` Resep
-- `APT-02` Telaah Resep
-- `APT-03` Antrian Apotek
-- `APT-04` Sales Order
-- `APT-05` Sales Invoice
-- `APT-06` Dispensing
-- `APT-07` Serah Obat
-- `APT-08` Return
+1. `APT-RESEP` Resep
+2. `APT-TELAAH` Telaah Resep
+3. `APT-QUEUE` Antrian Apotek
+4. `APT-ORDER` Sales Order
+5. `APT-BILL` Sales Bill
+6. `APT-DISPENSING` Dispensing
+7. `APT-SERAH` Serah Obat
+8. `APT-RETUR` Return
 
 ---
 
@@ -127,27 +127,27 @@ Domain Code : **APT**
 Domain Code : **INV**
 
 **Capabilities:**
-- `INV-01` Item Master
-- `INV-02` Posisi Stok
-- `INV-03` Mutasi
-- `INV-04` Musnah
-- `INV-05` Repack-Produksi
-- `INV-06` Pakai Barang
-- `INV-07` Stok Opname
+1. `INV-MASTER` Item Master
+2. `INV-STOK` Stok
+3. `INV-MUTASI` Mutasi
+4. `INV-MUSNAH` Musnah
+5. `INV-REPACK` Repack-Produksi
+6. `INV-PAKAI` Pakai Barang
+7. `INV-OPNAME` Stok Opname
 
 ---
 
-## 12. PROCUREMENT
-Domain Code : **PRC**
+## 12. PURCHASING
+Domain Code : **PUR**
 
 **Capabilities:**
-- `PRC-01` Supplier
-- `PRC-02` Material Request
-- `PRC-03` Purchase Request
-- `PRC-04` Purchase Order
-- `PRC-05` Penerimaan Barang
-- `PRC-06` Faktur
-- `PRC-07` Purchase Return
+1. `PUR-SUPPLIER` Supplier
+2. `PUR-MATREQ` Material Request
+3. `PUR-PURREQ` Purchase Request
+4. `PUR-PO` Purchase Order
+5. `PUR-DO` DO Penerimaan Barang
+6. `PUR-FAKTUR` Faktur
+7. `PUR-RETURN` Purchase Return
 
 ---
 
@@ -155,13 +155,13 @@ Domain Code : **PRC**
 Domain Code : **TRK**
 
 **Capabilities:**
-- `TRK-01` Tariff
-- `TRK-02` Jaminan
-- `TRK-03` Billing
-- `TRK-04` Payment
-- `TRK-05` Deposit
-- `TRK-06` Refund
-- `TRK-07` Voucher
+1. `TRK-TARIF` Tariff
+2. `TRK-JAMINAN` Jaminan
+3. `TRK-BILLING` Billing
+4. `TRK-PAYMENT` Payment
+5. `TRK-DEPOSIT` Deposit
+6. `TRK-KASIR` Kasir
+7. `TRK-VOUCHER` Voucher
 
 ---
 
@@ -169,12 +169,12 @@ Domain Code : **TRK**
 Domain Code : **BRM**
 
 **Capabilities:**
-- `BRM-01` Diagnosis/Coding
-- `BRM-02` Morbiditas Pasien
-- `BRM-03` Indikator RS
-- `BRM-04` Laporan RL
-- `BRM-05` Sensus dan Index
-- `BRM-06` Mutasi Berkas
+1. `BRM-CODING` Diagnosis/Coding
+2. `BRM-MORBID` Morbiditas Pasien
+3. `BRM-INDIKATOR` Indikator RS
+4. `BRM-RL` Laporan RL
+5. `BRM-RPT` Sensus dan Index
+6. `BRM-MUTASI` Mutasi Berkas
 
 ---
 
@@ -182,7 +182,7 @@ Domain Code : **BRM**
 Domain Code : **BPJ**
 
 **Capabilities:**
-- `BPJ-01` VClaim
-- `BPJ-02` e-Klaim
-- `BPJ-03` Antrol
-- `BPJ-04` HFIS
+1. `BPJ-VCLAIM` VClaim
+2. `BPJ-EKLAIM` e-Klaim
+3. `BPJ-ANTROL` Antrol
+4. `BPJ-HFIS` HFIS
