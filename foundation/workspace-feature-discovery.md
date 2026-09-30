@@ -4,11 +4,11 @@
 
 Workspace Feature Discovery is a focused analysis and design sequence used to discover the Features and Outcomes required by a Workspace.
 
-The sequence starts from an existing Workspace and ends at Feature and Outcome.
+The sequence starts from an existing Workspace and ends at one or more Features and their Outcomes.
 
 Its purpose is to answer:
 
-> What Features are required for an Actor to perform the work of this Workspace and achieve the intended Outcomes?
+> What Features are required for the Actors of this Workspace to perform their work and achieve the intended Outcomes?
 
 This sequence does not define implementation.
 
@@ -20,27 +20,26 @@ This sequence does not define implementation.
 
 Workspace Feature Discovery includes:
 
-* Workspace analysis
-* Domain identification
-* Capability identification
-* Actor identification
-* Operational Scenario analysis
-* Use Case definition
-* User Journey definition
-* Feature discovery
-* Outcome definition
+- Workspace definition
+- Domain identification
+- Capability identification
+- Actor identification
+- Work Scenario analysis
+- Feature discovery
+- Outcome definition
+- Traceability between these concepts
 
 ## Excluded
 
 Workspace Feature Discovery does not include:
 
-* Navigation design
-* UI Layout design
-* Database design
-* API design
-* Application architecture
-* Technical implementation
-* Testing strategy
+- Navigation design
+- UI Layout design
+- Database design
+- API design
+- Application architecture
+- Technical implementation
+- Testing strategy
 
 These activities belong to later stages.
 
@@ -48,91 +47,95 @@ These activities belong to later stages.
 
 # Conceptual Boundary
 
-Workspace Feature Discovery operates between Business Capability and System Feature.
+Workspace Feature Discovery connects an existing Workspace with the Business Capabilities and Actors relevant to that Workspace, then discovers the Features required to produce the intended Outcomes.
 
 ```text
-BUSINESS
+BUSINESS CONTEXT
 
 Domain
     ↓
 Capability
 
 
-WORKSPACE FEATURE DISCOVERY
+WORKSPACE CONTEXT
 
+Screen
+    ↓
 Workspace
     ↓
-Domain + Capability
-    ↓
 Actor
-    ↓
-Operational Scenario
-    ↓
-Use Case
-    ↓
-User Journey
-    ↓
-Feature
-    ↓
-Outcome
+
+
+FEATURE DISCOVERY
+
+Domain + Capability + Actor
+              ↓
+        Work Scenario
+              ↓
+           Feature
+              ↓
+           Outcome
 
 
 DEVELOPMENT
 
-UI
-API
-Database
-Code
+Feature + Outcome
+        ↓
+Technical Design
+        ↓
+Implementation
+        ↓
 Test
-Deployment
 ```
 
-The sequence ends when Features and Outcomes are clearly defined.
+The sequence ends at Feature + Outcome.
 
-The sequence does not determine how Features are implemented.
+It does not determine how a Feature is implemented.
 
 ---
 
 # Mental Model
 
-Workspace Feature Discovery follows a single principle:
+Workspace Feature Discovery follows one simple idea:
 
-> A Workspace exists to enable an Actor to achieve Outcomes through Features that realize Business Capabilities.
+> A Workspace exists for an Actor to perform work using Features that realize Business Capabilities and produce Outcomes.
 
 ```text
-Business Need
-      │
-      ▼
-Capability
-      │
-      ▼
-Actor performs work
-      │
-      ▼
-Operational Scenario
-      │
-      ▼
-Use Case
-      │
-      ▼
-User Journey
-      │
-      ▼
-Feature
-      │
-      ▼
-Outcome
+                    WHY?
+               Domain Capability
+                      │
+                      ▼
+                   WHO?
+                    Actor
+                      │
+                      ▼
+               WHAT HAPPENS?
+               Work Scenario
+                      │
+                      ▼
+             WHAT SYSTEM PROVIDES?
+                    Feature
+                      │
+                      ▼
+             WHAT IS ACHIEVED?
+                    Outcome
 ```
 
-Every discovered Feature must be traceable back to:
+The Workspace provides the context:
 
-* a Capability;
-* an Actor;
-* a Scenario;
-* a Use Case;
-* a User Journey.
-
-If traceability cannot be established, the Feature should be questioned.
+```text
+Screen
+  ↓
+Workspace
+  ↓
+Actor + Capability
+  ↓
+Work Scenario
+  ↓
+Feature
+  ↓
+Outcome
+```
 
 ---
 
@@ -142,11 +145,11 @@ If traceability cannot be established, the Feature should be questioned.
 
 ### Purpose
 
-Define the Workspace being analyzed.
+Establish the Workspace being analyzed.
 
 ### Question
 
-> What work area are we designing?
+> What Workspace are we discovering Features for?
 
 ### Input
 
@@ -154,13 +157,23 @@ Existing Workspace definition.
 
 ### Output
 
-Workspace.
+Workspace context.
 
 ### Example
 
 ```text
+Screen:
+Laboratory
+
+Workspace:
 Pathologist Workspace
 ```
+
+### Boundary
+
+This step defines the scope of discovery.
+
+Do not redesign the Screen or Workspace here.
 
 ---
 
@@ -168,35 +181,45 @@ Pathologist Workspace
 
 ### Purpose
 
-Identify the business capabilities required by the Workspace.
+Identify the business capabilities relevant to the Workspace.
 
 ### Questions
 
-> Which Domains participate?
+> Which Domains participate in this Workspace?
 
 > Which Capabilities are required?
 
 ### Input
 
-Workspace.
+Workspace context.
 
 ### Output
 
-Relevant Domains and Capabilities.
+One or more Domain and Capability references.
 
 ### Example
 
 ```text
 LAB
- └─ Lab Result Management
+ └─ LAB-04 Lab Result Management
 
 PAS
- └─ Patient Data
+ └─ PAS-01 Patient Information
 ```
 
-### Rule
+### Rules
 
-A Workspace may involve Capabilities from multiple Domains.
+- A Workspace may involve multiple Domains.
+- A Capability belongs to exactly one Domain.
+- A Feature may realize Capabilities from multiple Domains.
+- Identify existing business capabilities.
+- Do not invent implementation structures.
+
+### Boundary
+
+This step identifies business abilities.
+
+It does not define Features or implementation behavior.
 
 ---
 
@@ -208,15 +231,15 @@ Identify who performs the work.
 
 ### Question
 
-> Who is responsible for achieving the Outcome?
+> Who performs the work in this Workspace?
 
 ### Input
 
-Workspace.
+Workspace context.
 
 ### Output
 
-Actor.
+One or more Actors.
 
 ### Example
 
@@ -224,118 +247,78 @@ Actor.
 Pathologist
 ```
 
+### Boundary
+
+This step identifies responsibility.
+
+It does not define permissions, roles in software, or technical authorization.
+
 ---
 
-## Step 4 — Operational Scenario
+## Step 4 — Work Scenario
 
 ### Purpose
 
-Describe the real operational situation that requires work to be performed.
+Describe the operational situation that requires work to be performed.
 
 ### Question
 
-> What is happening in the real world?
+> What is happening, what must be achieved, and what activities are performed?
 
 ### Input
 
-Domain, Capability, Actor.
+Workspace, Domain, Capability, and Actor.
 
 ### Output
 
-Operational Scenario.
+One or more Work Scenarios.
+
+### Structure
+
+A Work Scenario consists of:
+
+- Situation
+- Goal
+- Activities
 
 ### Example
 
 ```text
-Pathologist receives laboratory
-results requiring verification.
-```
-
-### Rule
-
-Operational Scenarios describe reality.
-
-They do not describe software screens.
-
----
-
-## Step 5 — Use Case
-
-### Purpose
-
-Define what the Actor needs to accomplish.
-
-### Question
-
-> What does the Actor need to achieve?
-
-### Input
-
-Operational Scenario.
-
-### Output
-
-Use Case.
-
-### Example
-
-```text
+Scenario:
 Verify Laboratory Result
+
+Situation:
+A laboratory result is ready for medical review.
+
+Goal:
+Determine whether the result is valid and can be released.
+
+Activities:
+1. Open pending result.
+2. Review patient context.
+3. Review laboratory result.
+4. Verify or reject result.
 ```
 
-### Rule
+### Rules
 
-Use Cases describe intent.
+- Work Scenarios describe real operational work.
+- Work Scenarios describe reality, not software.
+- Work Scenarios replace the separate Scenario, Use Case, and User Journey artifacts in this workflow.
 
-They do not describe interaction details.
+### Boundary
+
+This step describes work.
+
+It does not define system behavior.
 
 ---
 
-## Step 6 — User Journey
+## Step 5 — Feature Discovery
 
 ### Purpose
 
-Describe how the Actor performs the work.
-
-### Question
-
-> What activities must be performed to complete the Use Case?
-
-### Input
-
-Use Case.
-
-### Output
-
-User Journey.
-
-### Example
-
-```text
-Open Result
-    ↓
-Review Result
-    ↓
-Review Patient Context
-    ↓
-Verify Result
-    ↓
-Submit Verification
-```
-
-### Rule
-
-User Journeys describe work activities.
-
-They do not describe UI components.
-
----
-
-## Step 7 — Feature
-
-### Purpose
-
-Discover the concrete system behaviors required to support the User Journey.
+Discover the system behaviors required to support the Work Scenario.
 
 ### Question
 
@@ -343,45 +326,63 @@ Discover the concrete system behaviors required to support the User Journey.
 
 ### Input
 
-User Journey.
+Work Scenario.
 
 ### Output
 
-Features.
+One or more candidate Features.
 
 ### Example
 
 ```text
-View Result
-View Patient Context
-Verify Result
-Reject Result
+F01 — View Laboratory Result
+
+F02 — View Patient Context
+
+F03 — Verify Laboratory Result
+
+F04 — Reject Laboratory Result
 ```
 
-### Rule
+### Rules
 
-Features are concrete system behaviors.
+- A Workspace may produce one or more Features.
+- A Feature may support one or more activities.
+- A Feature may realize Capabilities from multiple Domains.
+- Features are concrete system behaviors.
+- Features are actor-oriented and outcome-oriented.
 
-Features are not:
+### Features Are Not
 
-* screens;
-* forms;
-* tables;
-* reports;
-* APIs;
-* database structures.
+- Database tables
+- API endpoints
+- API responses
+- Forms
+- Pages
+- Reports
+- Charts
+- UI components
+- Technical implementations
+
+### Boundary
+
+This step identifies what the system must provide.
+
+It does not formally define the Feature.
+
+Formal Feature definition is handled by the Feature Creation Skill.
 
 ---
 
-## Step 8 — Outcome
+## Step 6 — Outcome
 
 ### Purpose
 
-Define the business result achieved by the Feature.
+Define the business result produced by a Feature.
 
 ### Question
 
-> What has been achieved?
+> What business result is achieved?
 
 ### Input
 
@@ -389,55 +390,155 @@ Feature.
 
 ### Output
 
-Outcome.
+One or more Outcomes.
 
 ### Example
 
 ```text
-Laboratory Result Verified
+Feature:
+Verify Laboratory Result
+
+Outcome:
+Laboratory result becomes medically verified.
 ```
 
-### Rule
+### Rules
 
-Outcomes are expressed in business terms.
+- Outcomes are expressed in business language.
+- Outcomes describe observable business results.
+- Outcomes are not technical results.
 
-Outcomes are never technical results.
+### Boundary
+
+This step defines the achieved result.
+
+It does not define outcome boundaries, flow, orchestration, constraints, exceptions, or acceptance criteria.
+
+Those belong to the formal Feature artifact.
 
 ---
 
 # Traceability Model
 
-Every Outcome must be traceable to a Feature.
-
-Every Feature must be traceable to a User Journey.
-
-Every User Journey must be traceable to a Use Case.
-
-Every Use Case must be traceable to an Operational Scenario.
-
-Every Operational Scenario must be traceable to an Actor and Capability.
-
-Every Capability must belong to a Domain.
+Every discovered Feature should be traceable.
 
 ```text
-Domain
-    ↓
-Capability
-    ↓
+Screen
+   ↓
+Workspace
+   ↓
+Domain + Capability
+   ↓
 Actor
-    ↓
-Operational Scenario
-    ↓
-Use Case
-    ↓
-User Journey
-    ↓
+   ↓
+Work Scenario
+   ↓
 Feature
-    ↓
+   ↓
 Outcome
 ```
 
-This chain forms the complete justification for the existence of a Feature.
+Example:
+
+```text
+Laboratory
+  ↓
+Pathologist Workspace
+  ↓
+LAB → Lab Result Management
+  ↓
+Pathologist
+  ↓
+Result requires verification
+  ↓
+Verify Laboratory Result
+  ↓
+Laboratory result becomes medically verified
+```
+
+Traceability exists to explain why a Feature exists.
+
+---
+
+# Result
+
+The result of Workspace Feature Discovery is an informal list of candidate Features with complete discovery context.
+
+Each discovered Feature should contain at least:
+
+```text
+Feature
+Actor
+Domain
+Capability
+Work Scenario
+Outcome
+```
+
+Example:
+
+```text
+Feature:
+Verify Laboratory Result
+
+Actor:
+Pathologist
+
+Domain:
+Laboratory
+
+Capability:
+Lab Result Management
+
+Work Scenario:
+A laboratory result is ready for medical review.
+The pathologist reviews the patient context and result,
+then verifies or rejects it.
+
+Outcome:
+Laboratory result becomes medically verified.
+```
+
+A Workspace may produce multiple Features.
+
+```text
+Pathologist Workspace
+
+F01 — View Laboratory Result
+F02 — View Patient Context
+F03 — Verify Laboratory Result
+F04 — Reject Laboratory Result
+```
+
+---
+
+# Handoff to Feature Creation
+
+Each discovered Feature is handed independently to the Feature Creation Skill.
+
+```text
+WORKSPACE FEATURE DISCOVERY
+              ↓
+       Candidate Feature
+              ↓
+     FEATURE CREATION SKILL
+              ↓
+      Formal FEATURE Artifact
+              ↓
+          DEVELOPMENT
+```
+
+Workspace Feature Discovery answers:
+
+> What Features are needed?
+
+Feature Creation answers:
+
+> What is the formal definition of this Feature?
+
+Development answers:
+
+> How should this Feature be implemented?
 
 ---
 
@@ -445,33 +546,91 @@ This chain forms the complete justification for the existence of a Feature.
 
 Workspace Feature Discovery is complete when:
 
-* the Workspace is identified;
-* participating Domains are identified;
-* participating Capabilities are identified;
-* Actors are identified;
-* Operational Scenarios are defined;
-* Use Cases are defined;
-* User Journeys are defined;
-* Features are discovered;
-* Outcomes are defined;
-* traceability exists from Outcome back to Domain.
+- Workspace is identified.
+- Relevant Domains are identified.
+- Relevant Capabilities are identified.
+- Actors are identified.
+- Work Scenarios are described.
+- Required Features are discovered.
+- Outcomes are defined.
+- Traceability exists from Outcome back to Domain.
 
-At this point Feature Discovery ends.
+The process may produce one or many Features.
 
-Implementation begins in the Development stage.
+Discovery ends when the required Outcomes of the Workspace are sufficiently covered.
 
-# Mental Boundary
+---
 
-Capability explains WHY a Feature exists.
+# Relationship With Other Artifacts
 
-Actor explains WHO needs it.
+```text
+CONCEPTUAL MODEL
+Defines:
+Domain
+Capability
+Actor
+Screen
+Workspace
+Feature
+Outcome
 
-Scenario explains WHEN it is needed.
+        ↓
 
-Use Case explains WHAT must be accomplished.
+WORKSPACE FEATURE DISCOVERY
+Discovers:
+What Features a Workspace needs
 
-Journey explains HOW work is performed.
+        ↓
 
-Feature explains WHAT the system must provide.
+FEATURE CREATION
+Formalizes:
+What a Feature means
 
-Outcome explains WHAT is achieved.
+        ↓
+
+DEVELOPMENT
+Implements:
+How a Feature works
+```
+
+---
+
+# Core Mental Model
+
+```text
+Domain      = BUSINESS AREA
+
+Capability  = BUSINESS ABILITY
+
+Workspace   = WORK AREA
+
+Actor       = WHO WORKS
+
+Scenario    = WHAT IS HAPPENING
+
+Feature     = WHAT SYSTEM PROVIDES
+
+Outcome     = WHAT IS ACHIEVED
+```
+
+The discovery sequence is:
+
+```text
+Workspace
+    ↓
+Context
+    ↓
+Work Scenario
+    ↓
+Features
+    ↓
+Outcomes
+```
+
+The sequence stops at:
+
+```text
+Feature + Outcome
+```
+
+Implementation starts after this boundary.
