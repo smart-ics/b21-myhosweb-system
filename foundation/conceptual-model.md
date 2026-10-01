@@ -524,3 +524,141 @@ The primary concern for request classification and escalation is the **Outcome**
 11. Technical artifacts such as tables, APIs, forms, reports, charts, and database structures are implementation details and are not Outcomes.
 
 12. All analysis, design, implementation, and future enhancements must use the concepts defined in this document.
+
+---
+
+# 9. AI Agent Guidance
+
+This section is written specifically for AI Agents operating within this methodology.
+
+It consolidates the rules needed to correctly classify Outcomes, Use Cases, and Workspaces without ambiguity.
+
+---
+
+## 9.1 Outcome Identification Rules
+
+Apply these rules in strict order when identifying Outcomes for a Workspace:
+
+**Rule 1 — Entity Test**
+
+An Outcome corresponds to a distinct persisted business entity.
+
+Ask: *"What new business entity must exist as a result of the work performed in this Workspace?"*
+
+Name the Outcome as `<Entity> exists` — e.g., `Booking exists`, `Outpatient Visit exists`.
+
+**Rule 2 — State Transition Test**
+
+If a candidate Outcome is a state change of an entity that already exists, it is NOT a new Outcome.
+
+It is a **Use Case** that modifies the existing Outcome.
+
+```text
+WRONG: Outcome = "Booking is cancelled"
+RIGHT: Use Case = "Cancel Booking"  →  operates on Outcome: "Booking exists"
+```
+
+**Rule 3 — Count Test**
+
+The number of Outcomes in a Workspace = the number of **distinct persisted business entities** managed there.
+
+```text
+WRONG: Booking exists / Booking is confirmed / Booking is cancelled / Booking is rescheduled = 4 Outcomes
+RIGHT: Booking exists = 1 Outcome
+       Confirm Booking / Cancel Booking / Reschedule Booking = Use Cases
+```
+
+**Rule 4 — Consumption Test**
+
+If the Workspace only reads, displays, searches, or navigates existing business information without creating or modifying a persisted entity, it has **no Outcomes** — only standalone Use Cases.
+
+---
+
+## 9.2 Common AI Misclassification Patterns
+
+| Misclassification | Correct Classification | Reason |
+|---|---|---|
+| "Booking is cancelled" as Outcome | Use Case: Cancel Booking | State change of existing entity, not a new entity |
+| "Booking is confirmed" as Outcome | Use Case: Confirm Booking | State change of existing entity |
+| "Booking is rescheduled" as Outcome | Use Case: Reschedule Booking | State change of existing entity |
+| Each CRUD operation as an Outcome | One Outcome per entity | CRUD operates on the entity; the entity is the Outcome |
+| A report or printed document as an Outcome | Standalone Use Case | Not a persisted business entity |
+| A search result as an Outcome | Standalone Use Case | Temporary display, not persisted |
+
+---
+
+## 9.3 Outcome Naming Convention
+
+Outcomes must be named as:
+
+```text
+<Business Entity> exists
+```
+
+Examples:
+
+```text
+✓ Booking exists
+✓ Outpatient Visit exists
+✓ Laboratory Result exists
+✓ Bed Assignment exists
+✓ Discharge Record exists
+
+✗ Patient is registered          ← describes an action, not a persisted entity
+✗ Booking confirmed              ← describes a state change, not a new entity
+✗ Show booking list              ← describes a display action, not a persisted entity
+```
+
+---
+
+## 9.4 Workspace Analysis Procedure
+
+When asked to identify Outcomes for a Workspace, follow this procedure:
+
+```text
+STEP 1 — Identify the Domain
+  Determine which Domain owns this Workspace from the Domain Catalog.
+
+STEP 2 — Identify the Capability
+  Determine which Capability within that Domain this Workspace exercises.
+
+STEP 3 — Identify the business entity produced
+  Ask: "What new persisted business entity does this Workspace create or manage?"
+
+STEP 4 — Apply the Entity Test (Rule 1)
+  Name it as "<Entity> exists".
+
+STEP 5 — Apply the State Transition Test (Rule 2)
+  Candidate Outcomes that are state changes of Step 4 entity → reclassify as Use Cases.
+
+STEP 6 — Apply the Count Test (Rule 3)
+  Verify: one Outcome per distinct persisted business entity.
+
+STEP 7 — List Use Cases
+  Group Use Cases into:
+  (a) Use Cases that establish the Outcome
+  (b) Use Cases that change the state of the Outcome
+  (c) Standalone Use Cases that only consume existing information
+```
+
+---
+
+## 9.5 Cross-Domain Outcome Rule
+
+An Outcome may require Capabilities from multiple Domains.
+
+When identifying Outcomes, do NOT limit the analysis to a single Domain.
+
+Ask: *"Which Domains contribute their Capabilities to produce this Outcome?"*
+
+Document all contributing Capabilities even if they belong to different Domains.
+
+---
+
+## 9.6 Escalation Quick Reference
+
+| Situation | Action |
+|---|---|
+| Required Capability not in Domain Catalog | Stop. Escalate to Product Owner. |
+| Request creates or modifies a persisted Outcome | Analyst + Architect required. |
+| Request is a Use Case on existing Capabilities and Outcomes | Developer may implement directly. |
