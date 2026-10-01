@@ -333,7 +333,8 @@ Rules:
 
 * A Screen contains one or more Workspaces.
 * A Workspace exposes Outcomes and Use Cases.
-* An Actor performs Outcomes and Use Cases within a Workspace.
+* An Actor performs Use Cases within a Workspace.
+* Use Cases establish, change, or consume Outcomes.
 
 ---
 
@@ -462,8 +463,8 @@ There is no separate conceptual model for legacy systems.
 
 When the Domain/Capability Catalog is incomplete or absent, Capability status may be:
 
-* **Known Capability** — confirmed present in the Domain Catalog.
-* **Existing but Undocumented Capability** — the system already supports it, but it has not been recorded in the Domain Catalog.
+* **Known Capability** — confirmed to exist in the system or domain knowledge.
+* **Existing but Undocumented Capability** — the system already supports it, but it is not yet recorded in the catalog.
 * **Capability Candidate** — it is unclear whether the system already supports this capability; requires confirmation.
 
 The absence of documentation must NOT automatically mean the capability is new.
