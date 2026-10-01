@@ -18,7 +18,7 @@ Its purpose is to:
 
 ## Domain
 
-A **Domain** is the business scope boundary of the system. It defines what business area the system officially supports.
+A **Domain** defines the business scope boundary of the system.
 
 A Domain answers:
 
@@ -26,7 +26,7 @@ A Domain answers:
 
 A Domain owns Capabilities.
 
-The **Domain Catalog** is the authoritative definition of system scope. If a requested business ability does not belong to any Domain Capability, the request is out-of-scope.
+The **Domain Catalog** is the authoritative definition of system scope.
 
 Examples:
 
@@ -44,7 +44,7 @@ Examples:
 
 ## Capability
 
-A **Capability** is a business ability possessed by a Domain. It is a claim of what that Domain is capable of doing.
+A **Capability** is a business ability possessed by a Domain.
 
 A Capability answers:
 
@@ -53,17 +53,23 @@ A Capability answers:
 Characteristics:
 
 * business-oriented;
-* stable over time;
 * implementation-independent;
+* stable;
 * scope-defining.
 
-Capabilities define what the system may legitimately support.
+A Capability is a **claim of business ability**.
+
+Capabilities define what the system is allowed to support.
 
 Capabilities do NOT define implementation.
 
 Capabilities do NOT define user interaction.
 
 Capabilities do NOT define workflow.
+
+A Capability not present in the Domain Catalog represents a potential scope expansion.
+
+A Capability belongs to exactly one Domain.
 
 Examples:
 
@@ -76,108 +82,56 @@ Laboratory
 - Validate Laboratory Result
 ```
 
-A Capability belongs to exactly one Domain.
-
----
-
-## Feature
-
-A **Feature** is a realization of one or more Capabilities that creates or modifies a persisted business Outcome.
-
-A Feature answers:
-
-> What business state will exist or change?
-
-Characteristics:
-
-* outcome-driven;
-* specification-oriented;
-* persistence-oriented;
-* measurable.
-
-A Feature MUST establish, create, modify, or maintain persisted business state.
-
-A Feature is NOT merely a user interaction.
-
-A Feature is NOT merely a screen action.
-
-A Feature is NOT merely a navigation action.
-
-A Feature is NOT merely data viewing.
-
-Examples:
-
-```text
-Feature:
-Register Outpatient Visit
-
-Outcome:
-Outpatient Visit exists.
-```
-
-```text
-Feature:
-Create Laboratory Result
-
-Outcome:
-Laboratory Result exists.
-```
-
-```text
-Feature:
-Assign Bed
-
-Outcome:
-Bed Assignment exists.
-```
-
-```text
-Feature:
-Discharge Patient
-
-Outcome:
-Discharge Record exists.
-```
-
-A Feature may use Capabilities from multiple Domains.
-
 ---
 
 ## Outcome
 
-An **Outcome** is a persisted business result produced by a Feature.
+An **Outcome** is a persisted business result that the system establishes or changes.
 
 An Outcome answers:
 
-> What business fact now exists?
+> What business fact must now exist or change?
 
 Characteristics:
 
 * persisted;
 * measurable;
 * verifiable;
-* becomes the basis of specification and definition of done.
+* specification-oriented.
+
+An Outcome is the **primary unit of business change**.
+
+An Outcome must have sufficient specification to determine whether the requested work is complete.
+
+The specification of an Outcome provides the basis for Definition of Done and acceptance criteria.
 
 Outcome must be expressed in business terms.
 
-Outcome is NOT a UI state.
-
-Outcome is NOT a screen state.
-
-Outcome is NOT a temporary display result.
-
 Examples:
 
-* Outpatient Visit created.
-* Laboratory Result created.
-* Bed Assignment created.
-* Billing Transaction created.
+```text
+Outpatient Visit exists
+Laboratory Result exists
+Bed Assignment exists
+Discharge Record exists
+Billing Transaction exists
+```
+
+An Outcome is NOT:
+
+* user-visible behavior;
+* UI state;
+* screen state;
+* displayed information;
+* an interaction;
+* a navigation result;
+* a temporary display result.
 
 ---
 
 ## Use Case
 
-A **Use Case** is an interaction scenario that utilizes existing Capabilities without changing the business model.
+A **Use Case** is an interaction scenario through which an actor uses the system.
 
 A Use Case answers:
 
@@ -186,18 +140,25 @@ A Use Case answers:
 Characteristics:
 
 * interaction-oriented;
-* does not establish new business outcomes;
-* does not change the business model;
 * does not require new persistence structures.
 
-A Use Case may read and present existing persisted data.
+A Use Case may:
 
-A Use Case may also participate in realizing a Feature, providing the interaction steps through which an actor causes or contributes to a persisted Outcome.
+* read persisted information;
+* display persisted information;
+* search persisted information;
+* navigate persisted information;
+* invoke an existing business operation;
+* participate in establishing or changing an Outcome.
+
+A Use Case is not itself the persisted business result.
+
+Not every Use Case produces an Outcome. A Use Case may simply consume or display an existing Outcome.
 
 Examples:
 
 ```text
-Standalone Use Cases (no Feature context):
+Standalone Use Cases:
 
 - Search Patient
 - View Patient
@@ -208,9 +169,9 @@ Standalone Use Cases (no Feature context):
 ```
 
 ```text
-Use Cases within a Feature:
+Use Cases participating in an Outcome:
 
-Feature: Register Outpatient Visit
+Outcome: Outpatient Visit exists
 
 Use Cases:
 - Search Patient
@@ -277,7 +238,7 @@ Characteristics:
 
 * role-oriented;
 * outcome-oriented;
-* exposes Features and Use Cases required by the Actor.
+* exposes Outcomes and Use Cases required by the Actor.
 
 Examples:
 
@@ -289,99 +250,107 @@ Laboratory Screen
  └─ Pathologist Workspace
 ```
 
-Each Workspace may expose different Features, Use Cases, and Worklists.
+Each Workspace may expose different Outcomes, Use Cases, and Worklists.
 
 ---
 
-# 3. Relationships
+# 3. Semantic Distinction
 
-## Business Structure
+The conceptual model requires a clear separation between:
 
 ```text
+Outcome     →  WHAT must now exist or change  (persisted business result)
+Use Case    →  HOW an actor interacts          (interaction scenario)
+```
+
+These are distinct concepts and must not be conflated.
+
+An Outcome defines the persisted business result.
+
+A Use Case defines the interaction through which an actor causes or consumes that result.
+
+A single Outcome may be established through multiple Use Cases.
+
+A single Use Case may participate in establishing an Outcome, or may simply consume an existing one.
+
+---
+
+# 4. Relationships
+
+## Business Hierarchy
+
+```text
+BUSINESS
+
 Domain
     ↓
 Capability
-```
-
-Rules:
-
-* A Domain owns one or more Capabilities.
-* A Capability belongs to exactly one Domain.
-* The Domain Catalog is the authoritative definition of system scope.
-
----
-
-## Outcome Structure
-
-```text
-Capability
-    ↓
-Feature
     ↓
 Outcome
 ```
 
 Rules:
 
-* A Feature realizes one or more Capabilities.
-* A Capability may contribute to multiple Features.
-* A Feature produces one or more persisted Outcomes.
-* An Outcome may require multiple Features.
+* A Domain owns one or more Capabilities.
+* A Capability belongs to exactly one Domain.
+* A Capability may contribute to multiple Outcomes.
+* An Outcome may require Capabilities from multiple Domains.
+* The Domain Catalog is the authoritative definition of system scope.
 
 ---
 
-## Interaction Structure
+## Interaction Hierarchy
 
 ```text
-Feature
-├── defines persisted Outcome
-└── may be realized through one or more Use Cases
+INTERACTION
+
+Outcome
+    ↓
+Use Case
 ```
 
 Rules:
 
-* A Feature defines a required persisted business Outcome (WHAT must exist or change).
-* A Feature may be realized through one or more Use Cases (HOW an actor causes or contributes to that Outcome).
-* Use Cases do not establish new business outcomes.
-* Use Cases do not change the business model.
+* An Outcome may be established or changed through one or more Use Cases.
+* A Use Case may participate in establishing or changing an Outcome, or may only consume an existing Outcome.
+* Not every Use Case produces an Outcome.
 
 ---
 
-## User Experience Structure
+## User Experience Hierarchy
 
 ```text
+USER EXPERIENCE
+
 Screen
     ↓
 Workspace
     ↓
-Feature / Use Case
-    ↓
-Outcome (Feature only)
+Outcome / Use Case
 ```
 
 Rules:
 
 * A Screen contains one or more Workspaces.
-* A Workspace exposes Features and Use Cases.
-* An Actor performs Features and Use Cases within a Workspace.
-* Features exist to create or modify persisted Outcomes.
-* Use Cases exist to interact with existing information.
+* A Workspace exposes Outcomes and Use Cases.
+* An Actor performs Outcomes and Use Cases within a Workspace.
 
 ---
 
-# 4. Cross-Domain Features
+## Cross-Domain Outcomes
 
-Features are not constrained to a single Domain.
+Outcomes are not constrained to a single Domain.
 
-A Feature may use Capabilities from multiple Domains.
+An Outcome may require Capabilities from multiple Domains.
 
 Example:
 
 ```text
-Feature:
-Register External Laboratory Patient
+Outcome:
+External laboratory patient registration exists
+and is ready for laboratory workflow.
 
-Uses:
+Capabilities used:
 
 Patient
  └─ Patient Data
@@ -393,119 +362,164 @@ Laboratory
  └─ External Registration
 ```
 
-The Feature produces a persisted Outcome:
-
-```text
-External laboratory patient registration exists
-and is ready for laboratory workflow.
-```
-
 ---
 
-# 5. Request Classification
+# 5. Request Classification and Escalation
 
 All system requests must be classified according to the governance model below. Classification determines scope impact and required escalation.
 
-## Use Case
+**Scope is always checked before implementation classification.**
 
-Criteria:
-
-* A Use Case does not itself change the business model.
-* A Use Case may participate in realizing a Feature.
-
-Escalation:
-
-* Developer may implement directly.
-
-## Feature
-
-Criteria:
-
-* Creates new persisted Outcome; OR
-* Modifies existing persisted Outcome.
-
-Escalation:
-
-* Must involve Analyst and Architect.
-
-## New Capability
-
-Criteria:
-
-* Requires Capability not present in Domain Catalog.
-
-Escalation:
-
-* Requires Product Owner approval.
-
----
-
-# 6. Conceptual Hierarchy
+## Decision Tree
 
 ```text
-BUSINESS
-
-Domain
-    ↓
-Capability
-    ↓
-Feature
-    ↓
-Outcome
-
-
-INTERACTION
-
-Feature
-    ↓
-Use Case
-
-
-USER EXPERIENCE
-
-Screen
-    ↓
-Workspace
-    ↓
-Feature / Use Case
-    ↓
-Outcome (Feature only)
+REQUEST
+   │
+   ▼
+Capability exists in Domain Catalog?
+   │
+   ├── NO
+   │     ↓
+   │  New Capability
+   │     ↓
+   │  Product Owner Approval
+   │
+   └── YES
+         ↓
+   Does it create or modify
+   a persisted Outcome?
+         │
+         ├── YES
+         │     ↓
+         │  Outcome Change
+         │     ↓
+         │  Analyst + Architect
+         │
+         └── NO
+               ↓
+            Use Case
+               ↓
+           Developer
 ```
-
-Where:
-
-* Domain defines scope.
-* Capability defines business ability.
-* Feature defines a required persisted business outcome (WHAT must exist or change).
-* Outcome is the persisted result.
-* Use Case defines how an actor interacts to cause or use that outcome (HOW).
 
 ---
 
-# 7. Design Principles
+### Question 1: Does the request require a Capability that is outside the Domain Catalog?
+
+If YES:
+
+```text
+New / Missing Capability
+        ↓
+Product Owner
+```
+
+Product Owner approval is required because the request may expand system scope.
+
+---
+
+### Question 2: Does the request create or modify a persisted Outcome?
+
+If YES:
+
+```text
+Outcome Change
+        ↓
+Analyst + Architect
+```
+
+The request requires business analysis and architectural analysis because the persisted business model is being created or changed.
+
+---
+
+### Question 3: Otherwise
+
+If the request:
+
+* uses existing Capabilities;
+* does not create or modify a persisted Outcome;
+* only interacts with existing business information;
+
+then it is a Use Case-level request.
+
+```text
+Use Case
+    ↓
+Developer
+```
+
+The developer may implement it without Outcome-level analysis.
+
+---
+
+# 6. Legacy and Reverse-Engineering Mode
+
+The same Domain → Capability → Outcome → Use Case model applies to legacy systems where no Domain Catalog or Capability Catalog exists yet.
+
+There is no separate conceptual model for legacy systems.
+
+## Capability Status
+
+When the Domain/Capability Catalog is incomplete or absent, Capability status may be:
+
+* **Known Capability** — confirmed present in the Domain Catalog.
+* **Existing but Undocumented Capability** — the system already supports it, but it has not been recorded in the Domain Catalog.
+* **Capability Candidate** — it is unclear whether the system already supports this capability; requires confirmation.
+
+The absence of documentation must NOT automatically mean the capability is new.
+
+## Reverse-Engineering Process
+
+When reverse-engineering a legacy system:
+
+1. Discover the Outcome being produced or changed.
+2. Identify the Use Cases involved.
+3. Infer the participating business capabilities.
+4. Record capability uncertainty explicitly.
+5. Do not fabricate scope decisions.
+
+Where a capability cannot be confirmed from the existing system or domain knowledge, mark it as a **Capability Candidate** and escalate it for Product Owner scope decision when necessary.
+
+The same conceptual definitions remain valid in both formalized and legacy systems.
+
+---
+
+# 7. On the Term "Feature"
+
+The methodology deliberately does NOT attempt to resolve the industry-wide ambiguity of the word "Feature".
+
+The term **Feature is not used as a first-class conceptual category** in this model.
+
+Whether another team or software tool informally calls something a "feature" is irrelevant to this conceptual model.
+
+There is no hidden replacement concept such as "Business Feature", "Functional Feature", or similar terminology.
+
+The primary concern for request classification and escalation is the **Outcome**.
+
+---
+
+# 8. Design Principles
 
 1. Domain defines business scope boundary.
 
 2. Capability defines business ability as a scope-defining claim.
 
-3. Feature defines a required persisted business outcome.
+3. Outcome defines the persisted business result and is the primary unit of business change.
 
-4. Outcome defines persisted business result.
+4. Use Case defines interaction with business information — it may participate in establishing an Outcome or may only consume existing information.
 
-5. Use Case defines interaction with existing information.
+5. Screen defines operational context.
 
-6. Screen defines operational context.
+6. Workspace defines role-oriented work area.
 
-7. Workspace defines role-oriented work area.
+7. Outcomes may span multiple Domains.
 
-8. Features may span multiple Domains.
+8. Outcomes must always be designed from the desired persisted business result.
 
-9. Features must always be designed from the desired persisted Outcome.
+9. Use Cases must not be confused with Outcomes. A standalone Use Case does not create or modify persisted business state.
 
-10. Use Cases must never be confused with Features. A Use Case does not create or modify persisted business state.
+10. Request classification governs escalation: scope is checked first (Product Owner), then Outcome impact (Analyst + Architect), then Use Case level (Developer).
 
-11. Request classification governs escalation: Use Cases are developer-level, Features require Analyst and Architect, new Capabilities require Product Owner approval.
+11. Technical artifacts such as tables, APIs, forms, reports, charts, and database structures are implementation details and are not Outcomes.
 
-12. Technical artifacts such as tables, APIs, forms, reports, charts, and database structures are implementation details and are not Features.
-
-13. All analysis, design, implementation, and future enhancements must use the concepts defined in this document.
+12. All analysis, design, implementation, and future enhancements must use the concepts defined in this document.
