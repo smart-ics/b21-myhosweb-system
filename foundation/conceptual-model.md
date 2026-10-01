@@ -9,6 +9,7 @@ Its purpose is to:
 * establish a shared understanding between business, product, design, and engineering;
 * provide a consistent vocabulary for analysis and design;
 * define the relationships between business concepts and system concepts;
+* govern system scope through an authoritative Domain and Capability structure;
 * ensure future enhancements follow the same conceptual model.
 
 ---
@@ -17,11 +18,15 @@ Its purpose is to:
 
 ## Domain
 
-A **Domain** is a distinct business area of the hospital that owns a coherent set of responsibilities, rules, information, and capabilities.
+A **Domain** is the business scope boundary of the system. It defines what business area the system officially supports.
 
 A Domain answers:
 
-> What business area are we dealing with?
+> What business area does the system officially support?
+
+A Domain owns Capabilities.
+
+The **Domain Catalog** is the authoritative definition of system scope. If a requested business ability does not belong to any Domain Capability, the request is out-of-scope.
 
 Examples:
 
@@ -39,26 +44,36 @@ Examples:
 
 ## Capability
 
-A **Capability** is a stable business ability that a Domain possesses to fulfill its responsibilities.
+A **Capability** is a business ability possessed by a Domain. It is a claim of what that Domain is capable of doing.
 
 A Capability answers:
 
-> What must this Domain be able to do?
+> What is this Domain capable of doing?
 
 Characteristics:
 
 * business-oriented;
-* implementation-independent;
 * stable over time;
-* reusable by multiple Features.
+* implementation-independent;
+* scope-defining.
+
+Capabilities define what the system may legitimately support.
+
+Capabilities do NOT define implementation.
+
+Capabilities do NOT define user interaction.
+
+Capabilities do NOT define workflow.
 
 Examples:
 
 ```text
 Laboratory
- ├─ Order Lab
- ├─ Specimen Collection
- └─ Lab Result Management
+
+- Receive Laboratory Order
+- Collect Specimen
+- Manage Laboratory Result
+- Validate Laboratory Result
 ```
 
 A Capability belongs to exactly one Domain.
@@ -67,26 +82,62 @@ A Capability belongs to exactly one Domain.
 
 ## Feature
 
-A **Feature** is a concrete system behavior that realizes one or more Capabilities and enables an actor to achieve a specific Outcome.
+A **Feature** is a realization of one or more Capabilities that creates or modifies a persisted business Outcome.
 
 A Feature answers:
 
-> What can the actor accomplish using the system?
+> What business state will exist or change?
 
 Characteristics:
 
-* actor-oriented;
 * outcome-driven;
-* concrete and observable;
-* may involve multiple Domains.
+* specification-oriented;
+* persistence-oriented;
+* measurable.
+
+A Feature MUST establish, create, modify, or maintain persisted business state.
+
+A Feature is NOT merely a user interaction.
+
+A Feature is NOT merely a screen action.
+
+A Feature is NOT merely a navigation action.
+
+A Feature is NOT merely data viewing.
 
 Examples:
 
-* Register External Laboratory Patient
-* Collect Specimen
-* Verify Laboratory Result
-* Assign Bed
-* Discharge Patient
+```text
+Feature:
+Register Outpatient Visit
+
+Outcome:
+Outpatient Visit exists.
+```
+
+```text
+Feature:
+Create Laboratory Result
+
+Outcome:
+Laboratory Result exists.
+```
+
+```text
+Feature:
+Assign Bed
+
+Outcome:
+Bed Assignment exists.
+```
+
+```text
+Feature:
+Discharge Patient
+
+Outcome:
+Discharge Record exists.
+```
 
 A Feature may use Capabilities from multiple Domains.
 
@@ -94,28 +145,66 @@ A Feature may use Capabilities from multiple Domains.
 
 ## Outcome
 
-An **Outcome** is the observable business result achieved after a Feature is successfully performed.
+An **Outcome** is a persisted business result produced by a Feature.
 
 An Outcome answers:
 
-> What has been achieved?
+> What business fact now exists?
+
+Characteristics:
+
+* persisted;
+* measurable;
+* verifiable;
+* becomes the basis of specification and definition of done.
+
+Outcome must be expressed in business terms.
+
+Outcome is NOT a UI state.
+
+Outcome is NOT a screen state.
+
+Outcome is NOT a temporary display result.
 
 Examples:
 
-* Patient registered.
-* Specimen collected.
-* Result verified.
-* Bed assigned.
-* Patient discharged.
-* Billing generated.
+* Outpatient Visit created.
+* Laboratory Result created.
+* Bed Assignment created.
+* Billing Transaction created.
 
-Outcome is expressed in business terms, not technical terms.
+---
+
+## Use Case
+
+A **Use Case** is an interaction scenario that utilizes existing Capabilities and existing Outcomes without changing the business model.
+
+A Use Case answers:
+
+> How does an actor interact with the system?
+
+Characteristics:
+
+* interaction-oriented;
+* reads, presents, or navigates existing information;
+* does not establish new business outcomes;
+* does not change the business model;
+* does not require new persistence structures.
+
+Examples:
+
+* Search Patient
+* View Patient
+* View Laboratory Result
+* Print Laboratory Result
+* Export Report
+* Browse Visit History
 
 ---
 
 ## Actor
 
-An **Actor** is a person, role, or external system that interacts with the system to achieve an Outcome.
+An **Actor** is a person, role, or external system that interacts with the system to achieve an Outcome or perform a Use Case.
 
 An Actor answers:
 
@@ -168,7 +257,7 @@ Characteristics:
 
 * role-oriented;
 * outcome-oriented;
-* exposes Features required by the Actor.
+* exposes Features and Use Cases required by the Actor.
 
 Examples:
 
@@ -180,7 +269,7 @@ Laboratory Screen
  └─ Pathologist Workspace
 ```
 
-Each Workspace may expose different Features and Worklists.
+Each Workspace may expose different Features, Use Cases, and Worklists.
 
 ---
 
@@ -198,6 +287,7 @@ Rules:
 
 * A Domain owns one or more Capabilities.
 * A Capability belongs to exactly one Domain.
+* The Domain Catalog is the authoritative definition of system scope.
 
 ---
 
@@ -215,8 +305,25 @@ Rules:
 
 * A Feature realizes one or more Capabilities.
 * A Capability may contribute to multiple Features.
-* A Feature produces one or more Outcomes.
+* A Feature produces one or more persisted Outcomes.
 * An Outcome may require multiple Features.
+
+---
+
+## Interaction Structure
+
+```text
+Feature
+    ↓
+Use Case
+```
+
+Rules:
+
+* A Feature may require one or more Use Cases as interaction mechanisms.
+* Use Cases utilize existing Capabilities and existing Outcomes.
+* Use Cases do not establish new business outcomes.
+* Use Cases do not change the business model.
 
 ---
 
@@ -227,17 +334,18 @@ Screen
     ↓
 Workspace
     ↓
-Feature
+Feature / Use Case
     ↓
-Outcome
+Outcome (Feature only)
 ```
 
 Rules:
 
 * A Screen contains one or more Workspaces.
-* A Workspace exposes one or more Features.
-* An Actor performs Features within a Workspace.
-* Features exist to achieve Outcomes.
+* A Workspace exposes Features and Use Cases.
+* An Actor performs Features and Use Cases within a Workspace.
+* Features exist to create or modify persisted Outcomes.
+* Use Cases exist to interact with existing information.
 
 ---
 
@@ -265,16 +373,55 @@ Laboratory
  └─ External Registration
 ```
 
-The Feature produces a single Outcome:
+The Feature produces a persisted Outcome:
 
 ```text
-External laboratory patient is registered
-and ready for laboratory workflow.
+External laboratory patient registration exists
+and is ready for laboratory workflow.
 ```
 
 ---
 
-# 5. Conceptual Hierarchy
+# 5. Request Classification
+
+All system requests must be classified according to the governance model below. Classification determines scope impact and required escalation.
+
+## Use Case
+
+Criteria:
+
+* Uses existing Capability.
+* Uses existing Outcome.
+* No business model change.
+
+Escalation:
+
+* Developer may implement directly.
+
+## Feature
+
+Criteria:
+
+* Creates new persisted Outcome; OR
+* Modifies existing persisted Outcome.
+
+Escalation:
+
+* Must involve Analyst and Architect.
+
+## New Capability
+
+Criteria:
+
+* Requires Capability not present in Domain Catalog.
+
+Escalation:
+
+* Requires Product Owner approval.
+
+---
+
+# 6. Conceptual Hierarchy
 
 ```text
 BUSINESS
@@ -288,39 +435,58 @@ Feature
 Outcome
 
 
+INTERACTION
+
+Feature
+    ↓
+Use Case
+
+
 USER EXPERIENCE
 
 Screen
     ↓
 Workspace
     ↓
-Feature
+Feature / Use Case
     ↓
-Outcome
+Outcome (Feature only)
 ```
 
-Feature is the bridge between business capabilities and user experience.
+Where:
+
+* Domain defines scope.
+* Capability defines business ability.
+* Feature realizes capability through persisted business change.
+* Outcome is the persisted result.
+* Use Case is the interaction mechanism.
 
 ---
 
-# 6. Design Principles
+# 7. Design Principles
 
-1. Domain defines business responsibility.
+1. Domain defines business scope boundary.
 
-2. Capability defines business ability.
+2. Capability defines business ability as a scope-defining claim.
 
-3. Feature defines user-visible system behavior.
+3. Feature defines persisted business state change.
 
-4. Outcome defines business result.
+4. Outcome defines persisted business result.
 
-5. Screen defines operational context.
+5. Use Case defines interaction with existing information.
 
-6. Workspace defines role-oriented work area.
+6. Screen defines operational context.
 
-7. Features may span multiple Domains.
+7. Workspace defines role-oriented work area.
 
-8. Features should always be designed from the desired Outcome.
+8. Features may span multiple Domains.
 
-9. Technical artifacts such as tables, APIs, forms, reports, charts, and database structures are implementation details and are not Features.
+9. Features must always be designed from the desired persisted Outcome.
 
-10. All analysis, design, implementation, and future enhancements must use the concepts defined in this document.
+10. Use Cases must never be confused with Features. A Use Case does not create or modify persisted business state.
+
+11. Request classification governs escalation: Use Cases are developer-level, Features require Analyst and Architect, new Capabilities require Product Owner approval.
+
+12. Technical artifacts such as tables, APIs, forms, reports, charts, and database structures are implementation details and are not Features.
+
+13. All analysis, design, implementation, and future enhancements must use the concepts defined in this document.
