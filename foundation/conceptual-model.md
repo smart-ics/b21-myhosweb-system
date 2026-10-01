@@ -410,8 +410,8 @@ All system requests must be classified according to the governance model below. 
 
 Criteria:
 
-* Uses existing Capability.
-* No business model change.
+* A Use Case does not itself change the business model.
+* A Use Case may participate in realizing a Feature.
 
 Escalation:
 
