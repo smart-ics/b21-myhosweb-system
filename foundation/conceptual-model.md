@@ -177,7 +177,7 @@ Examples:
 
 ## Use Case
 
-A **Use Case** is an interaction scenario that utilizes existing Capabilities and existing Outcomes without changing the business model.
+A **Use Case** is an interaction scenario that utilizes existing Capabilities without changing the business model.
 
 A Use Case answers:
 
@@ -186,19 +186,39 @@ A Use Case answers:
 Characteristics:
 
 * interaction-oriented;
-* reads, presents, or navigates existing information;
 * does not establish new business outcomes;
 * does not change the business model;
 * does not require new persistence structures.
 
+A Use Case may read and present existing persisted data.
+
+A Use Case may also participate in realizing a Feature, providing the interaction steps through which an actor causes or contributes to a persisted Outcome.
+
 Examples:
 
-* Search Patient
-* View Patient
-* View Laboratory Result
-* Print Laboratory Result
-* Export Report
-* Browse Visit History
+```text
+Standalone Use Cases (no Feature context):
+
+- Search Patient
+- View Patient
+- View Laboratory Result
+- Print Laboratory Result
+- Export Report
+- Browse Visit History
+```
+
+```text
+Use Cases within a Feature:
+
+Feature: Register Outpatient Visit
+
+Use Cases:
+- Search Patient
+- Select Clinic
+- Select Doctor
+- Select Insurance
+- Confirm Registration
+```
 
 ---
 
@@ -314,14 +334,14 @@ Rules:
 
 ```text
 Feature
-    ↓
-Use Case
+├── defines persisted Outcome
+└── may be realized through one or more Use Cases
 ```
 
 Rules:
 
-* A Feature may require one or more Use Cases as interaction mechanisms.
-* Use Cases utilize existing Capabilities and existing Outcomes.
+* A Feature defines a required persisted business Outcome (WHAT must exist or change).
+* A Feature may be realized through one or more Use Cases (HOW an actor causes or contributes to that Outcome).
 * Use Cases do not establish new business outcomes.
 * Use Cases do not change the business model.
 
@@ -391,7 +411,6 @@ All system requests must be classified according to the governance model below. 
 Criteria:
 
 * Uses existing Capability.
-* Uses existing Outcome.
 * No business model change.
 
 Escalation:
@@ -457,9 +476,9 @@ Where:
 
 * Domain defines scope.
 * Capability defines business ability.
-* Feature realizes capability through persisted business change.
+* Feature defines a required persisted business outcome (WHAT must exist or change).
 * Outcome is the persisted result.
-* Use Case is the interaction mechanism.
+* Use Case defines how an actor interacts to cause or use that outcome (HOW).
 
 ---
 
@@ -469,7 +488,7 @@ Where:
 
 2. Capability defines business ability as a scope-defining claim.
 
-3. Feature defines persisted business state change.
+3. Feature defines a required persisted business outcome.
 
 4. Outcome defines persisted business result.
 
