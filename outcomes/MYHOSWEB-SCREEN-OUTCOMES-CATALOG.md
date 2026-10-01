@@ -21,8 +21,7 @@
 - OC-02-01 Rincian Tagihan Pasien
 - OC-02-02 Alokasi Pembayaran
 - OC-02-03 Deposit
-- OC-02-04 Refund
-- OC-02-05 Reg-Out
+- OC-02-04 Reg-Out
 
 ---
 
@@ -30,9 +29,8 @@
 
 ### Outcomes
 
-- OC-03-01 Order Bayar
-- OC-03-02 Pembayaran
-- OC-03-03 Closing Shift
+- OC-03-01 Kasir (Terima/Keluar Kas)
+- OC-03-02 Closing Shift
 
 ---
 
