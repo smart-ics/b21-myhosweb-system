@@ -3,13 +3,27 @@
 | Field       | Value        |
 |-------------|--------------|
 | Code        | OC-04-05     |
-| Version     | 1.1          |
-| Status      | Draft        |
+| Version     | 1.2          |
+| Status      | Reviewed     |
 | LastUpdated | 2026-10-02   |
 
 ---
 
+> [!NOTE]
+> **Review Notes — 2026-10-02 (GOOD / ACCEPT)**
+>
+> Dokumen ini telah direviu dan dinyatakan **GOOD / ACCEPT** dengan satu *noted risk*:
+>
+> **Dikonfirmasi kuat:** Boundary bisnis sudah jelas; prinsip **Single Source of Truth + No Manual Re-entry** konsisten; hubungan independen dengan OC-04-04 sudah tepat; `Out of Scope` disiplin; detail teknis formula sudah diturunkan ke feasibility/architecture. **Kalimat "Independensi dari Pelaporan RL" (BC 5.3) dan AC-11 adalah bagian paling penting dari desain dan harus dipertahankan.**
+>
+> **Noted Risk (bukan masalah fatal):** Outcome memasukkan tiga lapisan *(Sensus + Index + Statistik Pelayanan)*. Statistik (BOR, ALOS, TOI, BTO, GDR, NDR) berpotensi melebarkan scope. Saat ini masih dapat diterima karena statistik diposisikan eksplisit sebagai *derived dari Sensus dan Index*, dibatasi pada indikator standar nasional, dan analitik epidemiologi luas sudah dikeluarkan.
+>
+> **Langkah berikutnya:** Fokus validasi pada **Participating Capabilities**, bukan boundary bisnis.
+
+---
+
 ## 1. Business Purpose
+
 
 Setiap rumah sakit memerlukan visibilitas menyeluruh dan objektif terhadap volume aktivitas pelayanan, pemanfaatan kapasitas fasilitas, karakteristik populasi pasien yang dilayani, dan pola morbiditas-mortalitas klinis. Dalam penyelenggaraan rekam medis dan tata kelola rumah sakit, kebutuhan tersebut diwujudkan melalui tiga pilar informasi esensial:
 
