@@ -3,7 +3,7 @@
 | Field       | Value        |
 |-------------|--------------|
 | Code        | OC-07-01     |
-| Version     | 1.0          |
+| Version     | 1.1          |
 | Status      | Draft        |
 | LastUpdated | 2026-10-02   |
 
@@ -11,31 +11,31 @@
 
 ## 1. Business Purpose
 
-Setiap orang yang datang ke Instalasi Gawat Darurat (IGD) membutuhkan penanganan medis segera tanpa boleh terhambat oleh kelengkapan administrasi awal maupun kepastian identitas resmi pasien. Rumah sakit harus mampu membuka dan mencatat episode kunjungan gawat darurat (**IGD Visit**) sebagai *persisted business fact* yang menjadi wadah dan konteks operasional bagi seluruh aktivitas pelayanan medis darurat.
+Rumah sakit harus mampu mencatat episode kunjungan seseorang ke Unit Instalasi Gawat Darurat (IGD) sebagai *persisted business fact* yang menjadi konteks pelayanan resmi bagi seluruh aktivitas medis darurat yang berlangsung selama kunjungan tersebut.
 
-IGD Visit merepresentasikan satu episode kunjungan seseorang ke Unit IGD untuk mendapatkan penanganan medis. Episode ini berfungsi sebagai konteks pelayanan induk yang menaungi berbagai aktivitas pelayanan pasien selama di IGD (seperti triage, tindakan medis darurat, pemakaian alkes/obat, konsultasi dokter spesialis, hingga pemeriksaan penunjang), tanpa menjadikan aktivitas-aktivitas tersebut sebagai pendefinisi dari episode kunjungan itu sendiri.
+IGD Visit merepresentasikan satu episode kunjungan seseorang ke Unit IGD. Episode ini menjadi konteks pelayanan induk yang menaungi berbagai aktivitas selama di IGD — seperti triage, tindakan medis, dan pemakaian bahan/alkes — tanpa menjadikan aktivitas-aktivitas tersebut sebagai syarat terbentuknya episode kunjungan.
 
-Episode IGD Visit dapat dicatat seketika bahkan saat identitas pasien belum diketahui (misalnya pasien tidak sadar, tanpa identitas, atau datang tanpa pendamping) menggunakan data dasar pengunjung yang tersedia (`VisitorName`), dan identitas resmi pasien dapat dilengkapi atau ditautkan kemudian selama episode berlangsung. Keberadaan IGD Visit menjamin akuntabilitas penerimaan pasien gawat darurat, keabsahan pemberian pertolongan medis segera, serta kepastian alur hingga ditetapkannya keputusan akhir kelanjutan pelayanan pasien.
+Karena sifat kegawatdaruratan, episode IGD Visit dapat dibuka seketika bahkan ketika identitas resmi pasien belum diketahui. Informasi identitas pasien dapat dilengkapi atau ditautkan kemudian selama episode masih berlangsung. Keberadaan IGD Visit menjamin akuntabilitas penerimaan pasien gawat darurat dan kepastian alur pelayanan hingga ditetapkannya keputusan akhir kelanjutan pelayanan.
 
 ---
 
 ## 2. Outcome Statement
 
-Satu episode kunjungan seseorang ke Unit Gawat Darurat (IGD) **telah tercatat sebagai konteks pelayanan aktif untuk menampung seluruh aktivitas pelayanan medis darurat, dan diselesaikan secara tuntas melalui penetapan keputusan kelanjutan pelayanan (disposisi akhir: Pulang, Rawat Jalan, atau Rawat Inap)**.
+Satu episode kunjungan seseorang ke Unit Gawat Darurat (IGD) **telah tercatat sebagai konteks pelayanan aktif yang diakui sistem, siap menjadi acuan bagi seluruh aktivitas pelayanan selama episode berlangsung**.
 
 ---
 
 ## 3. Participating Domains
 
-| Domain | Role in this Outcome |
-|---|---|
-| Gawat Darurat (IGD) | Pemilik utama (*Core Domain*): mencatat pembukaan episode kunjungan IGD, menyediakan konteks pelayanan gawat darurat, menaungi aktivitas pelayanan, serta mencatat penetapan keputusan akhir (disposisi) yang mengakhiri episode. |
-| Pasien (PAS) | Menyediakan data sosial pasien yang sah jika identitas sudah terdaftar, atau memutakhirkan/menautkan identitas definitif pasien (*Data Sosial Pasien / No. RM*) jika pengunjung awalnya dicatat dengan identitas sementara. |
-| Admission (ADM) | Menyelaraskan episode kunjungan IGD dengan registrasi rumah sakit formal ketika administrasi telah dapat diproses, tanpa menghambat dimulainya episode IGD. |
-| Organisasi (ORG) | Menyediakan data unit layanan IGD aktif dan data Petugas Pemberi Asuhan (PPA / dokter jaga / perawat) yang bertanggung jawab atas penerimaan dan penanganan pasien. |
-| Rawat Inap (RNA) | Domain penerima pelimpahan pelayanan ketika keputusan akhir IGD Visit adalah **Rawat Inap**, menjadi gerbang awal alur penerimaan rawat inap. |
-| Rawat Jalan (RJL) | Domain penerima pengalihan pelayanan ketika keputusan akhir IGD Visit adalah **Rawat Jalan** (poliklinik). |
-| Tata Rekening (TRK) | Menyediakan konteks penjaminan dan penagihan biaya atas pelayanan yang terjadi selama episode kunjungan IGD (meskipun pencatatan tagihan dan kasir adalah outcome terpisah). |
+| Domain | Kategori | Role in this Outcome |
+|---|---|---|
+| Gawat Darurat (IGD) | **Core Domain — Owner** | Pemilik dan pengelola penuh episode IGD Visit: membuka episode, menyediakan konteks pelayanan gawat darurat, menaungi aktivitas pelayanan, serta menetapkan dan mencatat keputusan akhir kelanjutan pelayanan yang mengakhiri episode. |
+| Pasien (PAS) | Domain Pendukung | Menyediakan data sosial dan identitas resmi pasien (No. RM) bila identitas sudah terdaftar, atau memfasilitasi penautan identitas definitif pasien bila episode dimulai dengan identitas pengunjung sementara. |
+| Admission (ADM) | Domain Pendukung | Menyelaraskan episode kunjungan IGD dengan registrasi rumah sakit formal bila diperlukan, tanpa menjadi prasyarat dimulainya episode IGD. |
+| Organisasi (ORG) | Domain Pendukung | Menyediakan data unit layanan IGD yang aktif dan data Petugas Pemberi Asuhan (PPA) yang bertanggung jawab atas penerimaan dan penanganan pasien. |
+| Rawat Inap (RNA) | Domain Penerima Transfer | Menjadi domain penerima pelimpahan pelayanan apabila keputusan akhir IGD Visit adalah Rawat Inap. |
+| Rawat Jalan (RJL) | Domain Penerima Transfer | Menjadi domain penerima pengalihan pelayanan apabila keputusan akhir IGD Visit adalah Rawat Jalan. |
+| Tata Rekening (TRK) | Domain Pendukung | Menyediakan konteks penjaminan yang berlaku atas episode kunjungan IGD. Pencatatan tagihan dan pembayaran merupakan outcome terpisah. |
 
 ---
 
@@ -62,62 +62,55 @@ Satu episode kunjungan seseorang ke Unit Gawat Darurat (IGD) **telah tercatat se
 
 ### 5.1 Required Business Facts
 
-- Satu episode kunjungan IGD atas nama seseorang (teridentifikasi maupun belum teridentifikasi) telah dibuka dan tercatat sebagai unit pelayanan gawat darurat yang aktif.
-- Episode IGD Visit memiliki identitas pengenal kedatangan minimal yang valid: Nomor Rekam Medis (jika sudah terdaftar) ATAU informasi dasar pengunjung sementara (misalnya `VisitorName` seperti "Mr. X", "Ny. Y", atau nama pengunjung yang dilaporkan).
-- Episode IGD Visit memiliki penanda waktu kedatangan resmi di unit IGD.
-- Episode IGD Visit berkedudukan sebagai konteks induk (*encounter context*) bagi seluruh aktivitas operasional klinis dan administratif selama berada di IGD.
-- Jika episode diawali tanpa identitas pasien definitif, fakta keterkaitan antara episode kunjungan dengan identitas resmi pasien (No. RM definitif) dapat diperbarui kemudian tanpa mengubah riwayat episode pelayanan yang telah berjalan.
-- Episode IGD Visit memiliki keputusan akhir kelanjutan pelayanan (disposisi akhir) yang ditetapkan oleh dokter/petugas berwenang: salah satu dari **Pulang**, **Rawat Jalan**, atau **Rawat Inap**.
-- Penetapan keputusan akhir kelanjutan pelayanan menandai bahwa episode kunjungan IGD telah selesai (*closed/completed*).
+- Satu episode kunjungan IGD atas nama seseorang — teridentifikasi maupun belum teridentifikasi — telah dibuka dan tercatat sebagai pelayanan gawat darurat yang aktif.
+- Episode IGD Visit memiliki identitas pengenal minimal yang valid: Nomor Rekam Medis bila pasien sudah terdaftar, atau nama pengunjung sementara bila identitas resmi belum diketahui.
+- Episode IGD Visit memiliki penanda waktu kedatangan di unit IGD.
+- Episode IGD Visit berkedudukan sebagai konteks induk bagi seluruh aktivitas pelayanan klinis dan administratif selama kunjungan di IGD.
+- Jika episode dimulai tanpa identitas pasien definitif, identitas resmi dapat ditautkan kemudian tanpa mengubah riwayat episode yang telah berjalan.
 
 ### 5.2 Required Recorded Information
 
-**Informasi Kedatangan dan Identitas Episode:**
-- Nomor/identitas referensi unik episode kunjungan IGD.
-- Waktu kedatangan / waktu pencatatan awal kunjungan IGD (tanggal dan jam).
+**Identitas dan Kedatangan:**
+- Nomor referensi unik episode kunjungan IGD.
+- Waktu kedatangan dan pencatatan awal kunjungan (tanggal dan jam).
 - Unit layanan IGD penerima.
-- Petugas penerima / pencatat awal kunjungan.
-- Informasi subjek pengunjung:
-  * *Jika teridentifikasi:* Nomor Rekam Medis (No. RM) dan data sosial pasien yang valid.
-  * *Jika belum teridentifikasi:* Nama pengunjung sementara (`VisitorName`), jenis kelamin fisik yang teramati, perkiraan usia/kelompok usia, serta catatan pengenal awal.
-- Keterangan cara kedatangan (datang sendiri, diantar keluarga/warga, rujukan faskes lain, diantar kepolisian, atau dibawa ambulans).
-- Dokter/PPA penanggung jawab awal IGD (atau tim jaga IGD).
+- Petugas penerima atau pencatat awal kunjungan.
+- Identitas subjek kunjungan: Nomor Rekam Medis bila pasien sudah terdaftar, atau nama/pengenal pengunjung sementara bila identitas resmi belum diketahui, dilengkapi keterangan jenis kelamin dan perkiraan usia yang teramati.
+- Keterangan cara kedatangan (datang sendiri, diantar keluarga atau warga, rujukan fasilitas kesehatan lain, diantar kepolisian, atau dibawa ambulans).
+- Dokter atau PPA penanggung jawab awal (atau tim jaga IGD).
 
-**Informasi Pemutakhiran Identitas (jika berlaku):**
-- Referensi identitas pasien definitif (No. RM) yang ditautkan ke episode.
-- Waktu dan identitas petugas yang melakukan penautan/pemutakhiran identitas pasien.
+**Pemutakhiran Identitas (jika berlaku):**
+- Identitas pasien resmi (No. RM) yang ditautkan ke episode.
+- Waktu dan petugas yang melakukan penautan identitas.
 
-**Informasi Keputusan Kelanjutan Pelayanan (Disposisi Akhir):**
-- Jenis keputusan akhir (tepat salah satu):
-  1. **Pulang** (pasien diperbolehkan meninggalkan fasilitas pelayanan IGD).
-  2. **Rawat Jalan** (pasien dialihkan untuk mendapatkan pelayanan lanjutan di unit rawat jalan / poliklinik).
-  3. **Rawat Inap** (pasien dilimpahkan untuk mendapatkan pelayanan lanjutan di unit rawat inap / bangsal).
-- Waktu penetapan keputusan akhir (tanggal dan jam penutupan episode).
-- Dokter/petugas berwenang yang menetapkan keputusan akhir.
-- Catatan/keterangan klinis atau administratif atas keputusan akhir (misal: kondisi membaik diizinkan pulang, poliklinik tujuan pengalihan, atau indikasi rawat inap).
+**Keputusan Kelanjutan Pelayanan (Disposisi Akhir):**
+- Jenis keputusan akhir, tepat salah satu dari:
+  1. **Pulang** — pasien diperbolehkan meninggalkan fasilitas pelayanan IGD.
+  2. **Rawat Jalan** — pasien dialihkan untuk mendapatkan pelayanan lanjutan di unit rawat jalan.
+  3. **Rawat Inap** — pasien dilimpahkan untuk mendapatkan pelayanan lanjutan di unit rawat inap.
+- Waktu penetapan keputusan akhir.
+- Dokter atau petugas berwenang yang menetapkan keputusan akhir.
+- Keterangan atas keputusan akhir (misalnya: kondisi membaik, poliklinik tujuan, atau indikasi rawat inap).
 
 ### 5.3 Required Business Conditions
 
-- Pembentukan episode IGD Visit tidak boleh dihambat atau dipersyaratkan oleh kelengkapan administrasi admission, status kepesertaan jaminan/asuransi, maupun ketersediaan Nomor Rekam Medis resmi.
-- Minimal harus ada satu informasi pengenal pengunjung (`VisitorName` atau No. RM) agar episode IGD Visit dapat dicatat.
-- Pembentukan episode IGD Visit tidak boleh dipersyaratkan oleh adanya hasil triage atau pencatatan tindakan medis tertentu terlebih dahulu.
-- Episode IGD Visit harus berada dalam status aktif agar dapat menampung dan menjadi konteks referensi bagi aktivitas-aktivitas pelayanan di IGD (triage, tindakan klinis, penggunaan alkes/obat, dll.).
+- Episode IGD Visit dapat dibuka tanpa mensyaratkan adanya registrasi admisi rumah sakit, kelengkapan status jaminan, maupun ketersediaan Nomor Rekam Medis resmi.
+- Minimal harus ada satu informasi pengenal pengunjung agar episode IGD Visit dapat dicatat.
+- Episode IGD Visit dapat dibuka tanpa mensyaratkan selesainya triage atau pencatatan tindakan medis terlebih dahulu.
+- Episode IGD Visit harus berada dalam status aktif agar dapat menjadi konteks referensi bagi aktivitas-aktivitas pelayanan di IGD.
 - Episode IGD Visit tidak dapat dinyatakan selesai tanpa adanya penetapan keputusan akhir kelanjutan pelayanan yang definitif.
-- Keputusan kelanjutan pelayanan bersifat saling meniadakan (*mutually exclusive*): satu episode IGD Visit hanya boleh memiliki tepat satu disposisi akhir (Pulang, Rawat Jalan, atau Rawat Inap).
-- Setelah keputusan akhir ditetapkan, episode IGD Visit ditutup dan tidak dapat menerima pencatatan aktivitas pelayanan medis baru.
+- Keputusan kelanjutan pelayanan bersifat saling meniadakan: satu episode IGD Visit hanya boleh memiliki tepat satu disposisi akhir.
+- Setelah keputusan akhir ditetapkan, episode IGD Visit ditutup dan tidak dapat menerima penambahan aktivitas pelayanan baru.
 
 ### 5.4 Completion Proof
 
 > What proves this Outcome is complete?
 
 - Episode kunjungan IGD tercatat dengan nomor referensi unik dan dapat ditelusuri.
-- Tercatat secara definitif tepat satu keputusan akhir kelanjutan pelayanan (disposisi):
-  1. **Pulang**,
-  2. **Rawat Jalan**, atau
-  3. **Rawat Inap**.
-- Tercatat waktu penetapan keputusan akhir dan identitas dokter/petugas yang menetapkannya.
-- Episode IGD Visit berstatus selesai (*Completed / Closed / Transferred / Discharged*).
-- Episode telah siap menjadi dasar bagi proses lanjutan: pemulangan pasien, penerimaan di rawat jalan, atau proses registrasi/penempatan bed di rawat inap.
+- Terdapat tepat satu keputusan akhir kelanjutan pelayanan yang ditetapkan: **Pulang**, **Rawat Jalan**, atau **Rawat Inap**.
+- Tercatat waktu penetapan keputusan akhir dan identitas dokter atau petugas yang menetapkannya.
+- Episode IGD Visit berstatus selesai.
+- Episode telah siap menjadi dasar bagi proses lanjutan sesuai disposisi yang ditetapkan.
 
 ---
 
@@ -125,11 +118,11 @@ Satu episode kunjungan seseorang ke Unit Gawat Darurat (IGD) **telah tercatat se
 
 ### Start
 
-Dimulai ketika seseorang datang ke Instalasi Gawat Darurat (IGD) karena membutuhkan penanganan medis darurat dan episode kunjungannya mulai dicatat oleh petugas sebagai pelayanan IGD (baik menggunakan data pasien yang sudah terdaftar maupun data pengunjung sementara / `VisitorName`).
+Dimulai ketika seseorang datang ke Instalasi Gawat Darurat (IGD) membutuhkan penanganan medis dan episode kunjungannya mulai dicatat oleh petugas — baik menggunakan data pasien yang sudah terdaftar maupun menggunakan nama atau pengenal pengunjung sementara ketika identitas resmi belum diketahui.
 
 ### End
 
-Selesai ketika dokter/petugas yang berwenang telah menetapkan keputusan atas kelanjutan pelayanan pasien (disposisi akhir: **Pulang**, **Rawat Jalan**, atau **Rawat Inap**), mencatatnya ke dalam episode, dan menandai bahwa episode kunjungan IGD telah selesai.
+Selesai ketika dokter atau petugas yang berwenang telah menetapkan keputusan akhir kelanjutan pelayanan pasien (**Pulang**, **Rawat Jalan**, atau **Rawat Inap**), keputusan tersebut tercatat ke dalam episode, dan episode kunjungan IGD dinyatakan selesai.
 
 ---
 
@@ -137,27 +130,27 @@ Selesai ketika dokter/petugas yang berwenang telah menetapkan keputusan atas kel
 
 > Rules that must always hold true for this Outcome.
 
-- **Emergency Priority over Administrative Prerequisite**: Pembentukan IGD Visit tidak boleh mensyaratkan adanya registrasi admisi rumah sakit terlebih dahulu (*admission registration does not precede emergency care*). Pelayanan gawat darurat dapat segera dimulai.
-- **Independence from Patient Identity**: Ketiadaan Nomor Rekam Medis (pasien belum terdaftar / tidak dikenal) tidak boleh menghalangi pembentukan episode IGD Visit. Penggunaan data dasar sementara (`VisitorName`) sah secara bisnis untuk membuka episode.
-- **Separation of Episode and Clinical Services**: IGD Visit adalah wadah/konteks episode kunjungan, bukan satu tindakan klinis atau triage. Triage, tindakan medis, pemakaian barang, dan pemeriksaan penunjang adalah aktivitas/outcome terpisah yang merujuk pada episode IGD Visit yang aktif.
-- **Mandatory Final Disposition for Completion**: Episode IGD Visit tidak dapat ditutup atau diselesaikan tanpa salah satu dari 3 keputusan akhir yang sah: Pulang, Rawat Jalan, atau Rawat Inap.
-- **Mutual Exclusivity of Disposition**: Keputusan akhir kelanjutan pelayanan bersifat tunggal untuk satu episode kunjungan (tepat satu pilihan).
-- **Closure Immutability**: Setelah episode ditutup dengan keputusan akhir kelanjutan pelayanan, episode tidak dapat menerima penambahan aktivitas pelayanan klinis IGD baru. Apabila pasien yang sama datang kembali di lain waktu, wajib dibuka episode IGD Visit yang baru.
-- **Traceability of Identity Resolution**: Jika identitas pasien definitif baru diketahui di tengah atau di akhir episode, penautan ke master pasien tidak boleh menghapus atau merusak riwayat aktivitas yang telah dicatat selama pengunjung berstatus sementara.
+- **Prioritas Pelayanan di Atas Kelengkapan Administrasi**: Pembentukan episode IGD Visit tidak boleh mensyaratkan selesainya registrasi admisi rumah sakit. Pelayanan gawat darurat dapat segera dimulai dan episode dapat langsung dicatat.
+- **Kebebasan dari Prasyarat Identitas**: Ketiadaan identitas resmi pasien tidak boleh menghalangi pembentukan episode IGD Visit. Nama atau pengenal pengunjung sementara sah secara bisnis untuk membuka episode.
+- **Pemisahan Episode dan Aktivitas Klinis**: IGD Visit adalah konteks episode kunjungan, bukan tindakan klinis atau triage. Triage, tindakan medis, dan pemakaian barang adalah aktivitas atau outcome terpisah yang merujuk pada episode IGD Visit yang aktif sebagai konteksnya.
+- **Disposisi Akhir sebagai Syarat Penutupan Episode**: Episode IGD Visit tidak dapat ditutup atau diselesaikan tanpa salah satu keputusan akhir yang sah: Pulang, Rawat Jalan, atau Rawat Inap.
+- **Keunikan Disposisi**: Satu episode kunjungan hanya boleh memiliki tepat satu keputusan akhir kelanjutan pelayanan.
+- **Episode Tertutup Tidak Menerima Aktivitas Baru**: Setelah episode ditutup dengan keputusan akhir, episode tidak dapat menerima penambahan aktivitas pelayanan klinis IGD baru. Kunjungan berikutnya oleh pasien yang sama wajib membuka episode IGD Visit baru.
+- **Keterlacakan Resolusi Identitas**: Penautan identitas resmi pasien ke episode yang dimulai dengan identitas sementara tidak boleh menghapus atau merusak riwayat aktivitas yang telah dicatat sebelumnya.
 
 ---
 
 ## 8. Business Exceptions
 
-> Conditions under which the Outcome cannot be established or handled abnormally.
+> Conditions under which the Outcome is established or handled under abnormal circumstances.
 
 | Exception | Expected Behavior |
 |---|---|
-| Pengunjung datang dalam kondisi tidak sadar / tanpa identitas sama sekali dan tanpa pendamping | Episode IGD Visit tetap wajib dicatat menggunakan penamaan sementara (misalnya `VisitorName`: "Mr. X / Label Kedatangan Darurat") agar konteks pelayanan segera terbentuk dan penanganan medis darurat dapat langsung dicatat. |
-| Identitas pasien resmi (No. RM) berhasil ditemukan setelah episode berjalan menggunakan nama sementara | Petugas memperbarui episode IGD Visit dengan menautkan data sosial pasien resmi (No. RM definitif) melalui kemampuan `PAS-DATSOS`. Seluruh aktivitas dan layanan yang telah tercatat sebelumnya otomatis tetap melekat pada episode tersebut. |
-| Pasien meninggalkan IGD atas permintaan sendiri (APS / Pulang Paksa) atau melarikan diri sebelum penanganan selesai | Episode diselesaikan dengan keputusan akhir **Pulang** disertai dokumentasi catatan/alasan khusus (misal: atas permintaan sendiri / menolak tindakan), sehingga episode tetap memiliki penutupan administratif yang sah. |
-| Pasien meninggal dunia di IGD (*Death on Arrival* / Meninggal saat Penanganan) | Episode diselesaikan dengan keputusan akhir **Pulang** disertai dokumentasi keterangan kematian / pemulangan jenazah, sehingga episode kunjungan IGD resmi ditutup. |
-| Terjadi pembatalan kunjungan akibat kekeliruan pencatatan (*False Visit / Duplicate Entry*) | Episode dapat dibatalkan hanya oleh petugas berwenang dengan mencatat alasan pembatalan yang sah, dan episode ditandai batal tanpa penetapan disposisi kelanjutan pelayanan. |
+| Pengunjung datang dalam kondisi tidak sadar, tanpa identitas, dan tanpa pendamping | Episode IGD Visit tetap dicatat segera menggunakan nama atau pengenal sementara agar konteks pelayanan terbentuk dan penanganan medis darurat dapat langsung dicatat. |
+| Identitas resmi pasien (No. RM) ditemukan setelah episode berjalan dengan identitas sementara | Petugas memperbarui episode dengan menautkan data sosial pasien resmi. Seluruh aktivitas dan layanan yang telah tercatat sebelumnya tetap melekat pada episode tersebut. |
+| Pasien meninggalkan IGD atas permintaan sendiri (APS / Pulang Paksa) sebelum penanganan selesai | Episode diselesaikan dengan keputusan akhir **Pulang** disertai keterangan bahwa kepulangan adalah atas permintaan sendiri atau penolakan tindakan. |
+| Pasien meninggal dunia di IGD (*Death on Arrival* atau meninggal saat penanganan berlangsung) | Kematian di IGD tidak disamakan dengan keputusan Pulang. Karena domain saat ini tidak mendefinisikan disposisi khusus untuk kematian, episode diselesaikan dengan mencatat keterangan meninggal dunia secara eksplisit. Penetapan penanganan administratif formal atas kematian di IGD memerlukan keputusan lebih lanjut dari Product Owner mengenai disposisi yang sesuai. |
+| Terjadi kekeliruan pencatatan (entri ganda atau kunjungan palsu) | Episode dapat dibatalkan oleh petugas berwenang dengan mencatat alasan pembatalan yang sah. Pembatalan adalah kondisi di luar lifecycle normal (bukan penutupan melalui disposisi), dan hanya digunakan untuk koreksi administratif. |
 
 ---
 
@@ -167,16 +160,16 @@ Selesai ketika dokter/petugas yang berwenang telah menetapkan keputusan atas kel
 
 | # | Criterion | Validates |
 |---|---|---|
-| AC-01 | Episode IGD Visit berhasil dicatat seketika saat seseorang datang ke IGD membutuhkan penanganan medis, menggunakan identitas pasien terdaftar (No. RM) maupun hanya dengan informasi dasar pengunjung (`VisitorName`). | Completeness |
-| AC-02 | Episode IGD Visit yang aktif dapat dijadikan sebagai konteks acuan (*encounter context*) bagi pencatatan aktivitas pelayanan lain di IGD (triage, tindakan medis, dan pemakaian barang). | Completeness |
-| AC-03 | Episode IGD Visit dapat diselesaikan secara definitif ketika dokter/petugas menetapkan salah satu dari 3 keputusan kelanjutan pelayanan: **Pulang**, **Rawat Jalan**, atau **Rawat Inap**. | Completeness |
-| AC-04 | Setiap penetapan keputusan akhir mencatat secara akurat jenis keputusan (tepat salah satu dari 3 opsi), waktu penetapan, dan identitas petugas/dokter yang menetapkan. | Correctness |
-| AC-05 | Sistem menerima pencatatan episode IGD Visit tanpa mensyaratkan ketersediaan Nomor Rekam Medis resmi pada saat kedatangan. | Constraint |
-| AC-06 | Sistem mengizinkan pembentukan episode IGD Visit tanpa mensyaratkan selesainya triage atau tindakan medis terlebih dahulu. | Constraint |
-| AC-07 | Episode IGD Visit tidak dapat ditutup tanpa adanya salah satu dari 3 keputusan kelanjutan pelayanan yang valid. | Constraint |
+| AC-01 | Episode IGD Visit berhasil dicatat ketika seseorang datang ke IGD, baik menggunakan identitas pasien terdaftar maupun hanya dengan nama atau pengenal pengunjung sementara. | Completeness |
+| AC-02 | Episode IGD Visit yang aktif dapat dijadikan sebagai konteks acuan bagi pencatatan aktivitas pelayanan lain di IGD, termasuk triage, tindakan medis, dan pemakaian barang. | Completeness |
+| AC-03 | Episode IGD Visit dapat diselesaikan secara definitif ketika dokter atau petugas menetapkan salah satu dari tiga keputusan kelanjutan pelayanan: Pulang, Rawat Jalan, atau Rawat Inap. | Completeness |
+| AC-04 | Setiap penetapan keputusan akhir mencatat jenis keputusan, waktu penetapan, dan identitas dokter atau petugas yang menetapkannya. | Correctness |
+| AC-05 | Episode IGD Visit dapat dibuka tanpa mensyaratkan Nomor Rekam Medis resmi pada saat kedatangan. | Constraint |
+| AC-06 | Episode IGD Visit dapat dibuka tanpa mensyaratkan selesainya triage atau tindakan medis terlebih dahulu. | Constraint |
+| AC-07 | Episode IGD Visit tidak dapat ditutup tanpa adanya salah satu keputusan kelanjutan pelayanan yang valid. | Constraint |
 | AC-08 | Episode IGD Visit yang telah ditutup dengan keputusan akhir tidak dapat menerima penambahan aktivitas pelayanan klinis baru. | Constraint |
-| AC-09 | Jika episode dimulai dengan pengunjung belum teridentifikasi, identitas resmi pasien (No. RM) dapat ditautkan ke episode tersebut tanpa membatalkan atau merusak riwayat pelayanan yang sudah dicatat. | Exception |
-| AC-10 | Kasus pasien pulang atas permintaan sendiri atau meninggal dunia dapat diselesaikan dalam koridor keputusan akhir yang sah dengan pencatatan keterangan yang sesuai. | Exception |
+| AC-09 | Identitas resmi pasien dapat ditautkan ke episode yang dimulai dengan identitas sementara, tanpa membatalkan atau merusak riwayat pelayanan yang sudah dicatat. | Exception |
+| AC-10 | Kasus pasien yang meninggalkan IGD atas permintaan sendiri dapat diselesaikan melalui keputusan Pulang dengan keterangan yang sesuai. | Exception |
 
 ---
 
@@ -184,13 +177,13 @@ Selesai ketika dokter/petugas yang berwenang telah menetapkan keputusan atas kel
 
 > What this Outcome explicitly does NOT cover.
 
-- Penilaian, pengkategorian skala kegawatan, dan pencatatan klinis triage → Diatur dalam **OC-07-02 Triage** (`IGD-TRIAGE`).
+- Penilaian, pengkategorian skala kegawatan, dan pencatatan hasil triage → Diatur dalam **OC-07-02 Triage** (`IGD-TRIAGE`).
 - Pelaksanaan dan pencatatan tindakan medis darurat, prosedur penanganan klinis, dan jasa medis → Diatur dalam **OC-07-04 Tindakan** (`IGD-TINDAKAN`).
-- Pencatatan pemakaian obat, alkes habis pakai, dan darah selama penanganan IGD → Diatur dalam **OC-07-05 Pakai Barang** (`INV-PAKAI`).
-- Permintaan dan pengelolaan operasional serta penagihan mobil ambulans → Diatur dalam **OC-07-03 Ambulance** (`IGD-AMBULANCE`).
-- Proses pendaftaran rawat inap, alokasi bed, dan administrasi penerimaan pasien di bangsal setelah diputuskan rawat inap → Diatur dalam **OC-01-03 Registrasi Rawat Inap** dan **OC-06-02 Pakai Bed**.
-- Penjadwalan, pemanggilan, dan antrian di poliklinik rawat jalan setelah diputuskan dialihkan ke rawat jalan → Diatur dalam **OC-01-02 Registrasi Rawat Jalan** dan **OC-05-01 Antrian Poli**.
-- Dokumentasi rekam medis klinis mendalam (CPPT, anamnesis dokter, resume medis IGD) → Dikelola oleh **Domain EMR / Rekam Medis Elektronik**.
-- Penghitungan tarif pelayanan, pembentukan billing kasir, deposit, dan pelunasan tagihan pembayaran → Diatur dalam **Domain Tata Rekening** (`SC-02`, `SC-03`).
-- Pengelolaan master pasien, pembuatan No. RM baru, dan penggabungan rekam medis ganda (*patient merge*) → Diatur dalam **Domain Pasien** (`PAS-DATSOS`, `PAS-MERGE`).
-- Penerbitan Surat Eligibilitas Peserta (SEP) BPJS Kesehatan untuk IGD → Diatur dalam **OC-01-04 VCLAIM BPJS**.
+- Pencatatan pemakaian obat, alkes habis pakai, dan bahan selama penanganan IGD → Diatur dalam **OC-07-05 Pakai Barang** (`INV-PAKAI`).
+- Permintaan, pengelolaan operasional, dan penagihan ambulans → Diatur dalam **OC-07-03 Ambulance** (`IGD-AMBULANCE`).
+- Proses pendaftaran rawat inap, alokasi bed, dan administrasi penerimaan di bangsal setelah diputuskan rawat inap → Diatur dalam **OC-01-03 Registrasi Rawat Inap** dan **OC-06-02 Pakai Bed**.
+- Penjadwalan, antrian, dan penerimaan di poliklinik rawat jalan setelah diputuskan dialihkan ke rawat jalan → Diatur dalam **OC-01-02 Registrasi Rawat Jalan** dan **OC-05-01 Antrian Poli**.
+- Dokumentasi rekam medis klinis (CPPT, anamnesis dokter, resume medis IGD) → Dikelola oleh **Domain EMR / Rekam Medis Elektronik**.
+- Penghitungan tarif, pembentukan billing, deposit, dan pelunasan tagihan → Diatur dalam **Domain Tata Rekening** (`SC-02`, `SC-03`).
+- Pengelolaan master pasien, pembuatan No. RM baru, dan penggabungan rekam medis ganda → Diatur dalam **Domain Pasien** (`PAS-DATSOS`, `PAS-MERGE`).
+- Penerbitan Surat Eligibilitas Peserta (SEP) BPJS Kesehatan untuk kunjungan IGD → Diatur dalam **OC-01-04 VCLAIM BPJS**.
