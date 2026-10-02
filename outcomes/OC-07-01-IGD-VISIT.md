@@ -3,7 +3,7 @@
 | Field       | Value        |
 |-------------|--------------|
 | Code        | OC-07-01     |
-| Version     | 1.1          |
+| Version     | 1.2          |
 | Status      | Draft        |
 | LastUpdated | 2026-10-02   |
 
@@ -70,18 +70,14 @@ Satu episode kunjungan seseorang ke Unit Gawat Darurat (IGD) **telah tercatat se
 
 ### 5.2 Required Recorded Information
 
-**Identitas dan Kedatangan:**
+**Pembukaan Episode:**
 - Nomor referensi unik episode kunjungan IGD.
-- Waktu kedatangan dan pencatatan awal kunjungan (tanggal dan jam).
-- Unit layanan IGD penerima.
-- Petugas penerima atau pencatat awal kunjungan.
-- Identitas subjek kunjungan: Nomor Rekam Medis bila pasien sudah terdaftar, atau nama/pengenal pengunjung sementara bila identitas resmi belum diketahui, dilengkapi keterangan jenis kelamin dan perkiraan usia yang teramati.
-- Keterangan cara kedatangan (datang sendiri, diantar keluarga atau warga, rujukan fasilitas kesehatan lain, diantar kepolisian, atau dibawa ambulans).
-- Dokter atau PPA penanggung jawab awal (atau tim jaga IGD).
+- Waktu pembukaan episode (tanggal dan jam kedatangan).
+- Unit layanan IGD tempat episode dibuka.
+- Identitas subjek kunjungan: Nomor Rekam Medis bila pasien sudah terdaftar, atau nama/pengenal pengunjung sementara bila identitas resmi belum diketahui.
 
 **Pemutakhiran Identitas (jika berlaku):**
-- Identitas pasien resmi (No. RM) yang ditautkan ke episode.
-- Waktu dan petugas yang melakukan penautan identitas.
+- Identitas pasien resmi (No. RM) yang ditautkan ke episode setelah berhasil diidentifikasi.
 
 **Keputusan Kelanjutan Pelayanan (Disposisi Akhir):**
 - Jenis keputusan akhir, tepat salah satu dari:
@@ -90,7 +86,7 @@ Satu episode kunjungan seseorang ke Unit Gawat Darurat (IGD) **telah tercatat se
   3. **Rawat Inap** — pasien dilimpahkan untuk mendapatkan pelayanan lanjutan di unit rawat inap.
 - Waktu penetapan keputusan akhir.
 - Dokter atau petugas berwenang yang menetapkan keputusan akhir.
-- Keterangan atas keputusan akhir (misalnya: kondisi membaik, poliklinik tujuan, atau indikasi rawat inap).
+- Keterangan atas keputusan akhir yang diperlukan untuk menjelaskan konteks penyelesaian episode (misalnya: kondisi membaik, poliklinik tujuan pengalihan, indikasi rawat inap, kepulangan atas permintaan sendiri, atau keterangan kematian).
 
 ### 5.3 Required Business Conditions
 
@@ -149,7 +145,7 @@ Selesai ketika dokter atau petugas yang berwenang telah menetapkan keputusan akh
 | Pengunjung datang dalam kondisi tidak sadar, tanpa identitas, dan tanpa pendamping | Episode IGD Visit tetap dicatat segera menggunakan nama atau pengenal sementara agar konteks pelayanan terbentuk dan penanganan medis darurat dapat langsung dicatat. |
 | Identitas resmi pasien (No. RM) ditemukan setelah episode berjalan dengan identitas sementara | Petugas memperbarui episode dengan menautkan data sosial pasien resmi. Seluruh aktivitas dan layanan yang telah tercatat sebelumnya tetap melekat pada episode tersebut. |
 | Pasien meninggalkan IGD atas permintaan sendiri (APS / Pulang Paksa) sebelum penanganan selesai | Episode diselesaikan dengan keputusan akhir **Pulang** disertai keterangan bahwa kepulangan adalah atas permintaan sendiri atau penolakan tindakan. |
-| Pasien meninggal dunia di IGD (*Death on Arrival* atau meninggal saat penanganan berlangsung) | Kematian di IGD tidak disamakan dengan keputusan Pulang. Karena domain saat ini tidak mendefinisikan disposisi khusus untuk kematian, episode diselesaikan dengan mencatat keterangan meninggal dunia secara eksplisit. Penetapan penanganan administratif formal atas kematian di IGD memerlukan keputusan lebih lanjut dari Product Owner mengenai disposisi yang sesuai. |
+| Pasien meninggal dunia di IGD (*Death on Arrival* atau meninggal saat penanganan berlangsung) | IGD Visit diselesaikan dengan disposition **Pulang**, dengan keterangan yang secara eksplisit menyatakan bahwa pasien meninggal dunia. Keterangan kematian menjadi atribut pada penyelesaian episode, bukan disposition tersendiri. |
 | Terjadi kekeliruan pencatatan (entri ganda atau kunjungan palsu) | Episode dapat dibatalkan oleh petugas berwenang dengan mencatat alasan pembatalan yang sah. Pembatalan adalah kondisi di luar lifecycle normal (bukan penutupan melalui disposisi), dan hanya digunakan untuk koreksi administratif. |
 
 ---
@@ -169,7 +165,7 @@ Selesai ketika dokter atau petugas yang berwenang telah menetapkan keputusan akh
 | AC-07 | Episode IGD Visit tidak dapat ditutup tanpa adanya salah satu keputusan kelanjutan pelayanan yang valid. | Constraint |
 | AC-08 | Episode IGD Visit yang telah ditutup dengan keputusan akhir tidak dapat menerima penambahan aktivitas pelayanan klinis baru. | Constraint |
 | AC-09 | Identitas resmi pasien dapat ditautkan ke episode yang dimulai dengan identitas sementara, tanpa membatalkan atau merusak riwayat pelayanan yang sudah dicatat. | Exception |
-| AC-10 | Kasus pasien yang meninggalkan IGD atas permintaan sendiri dapat diselesaikan melalui keputusan Pulang dengan keterangan yang sesuai. | Exception |
+| AC-10 | Kasus pasien meninggal dunia di IGD diselesaikan dengan disposition Pulang disertai keterangan yang secara eksplisit menyatakan bahwa pasien meninggal dunia. | Exception |
 
 ---
 
