@@ -3,7 +3,7 @@
 | Field       | Value             |
 |-------------|-------------------|
 | Code        | OC-08-02          |
-| Version     | 1.2               |
+| Version     | 1.3               |
 | Status      | Draft             |
 | LastUpdated | 2026-10-02        |
 
@@ -95,14 +95,13 @@ Order pemeriksaan laboratorium untuk pasien telah berhasil dibuat dan tercatat d
 
 ### Start
 
-Dimulai ketika Order Creator (Dokter, atau Nurse/Staff atas instruksi dokter) mengonfirmasi dan mengirimkan order pemeriksaan laboratorium untuk pasien — menyertakan Patient ID, Doctor ID sebagai Requester, dan minimal satu item pemeriksaan laboratorium — dan order berhasil tercatat dengan status **`Ordered`**.
+Dimulai ketika Order Creator (Dokter, atau Nurse/Staff atas instruksi dokter) mengajukan permintaan pemeriksaan laboratorium untuk pasien — menyertakan Patient ID, Doctor ID sebagai Requester, dan minimal satu item pemeriksaan laboratorium — kemudian mengonfirmasi dan mengirimkan order tersebut.
 
 ### End
 
-Berakhir ketika salah satu dari kondisi berikut terpenuhi:
-1. Order berhasil terbentuk dengan status **`Ordered`**; **ATAU**
-2. Order berstatus `Ordered` berhasil diedit (item ditambah/dihapus/diganti) dan tersimpan kembali dengan status `Ordered`; **ATAU**
-3. Order berstatus `Ordered` berhasil dibatalkan sebelum memasuki status `Charged`.
+Berakhir ketika order berhasil tercatat dengan status **`Ordered`** — yaitu business result utama dari Outcome ini.
+
+Selama order masih berstatus `Ordered`, Order Creator dapat melakukan maintenance terhadap order: menambah, menghapus, atau mengganti item pemeriksaan, maupun membatalkan order apabila pemeriksaan tidak lagi diperlukan. Aktivitas maintenance ini berada dalam cakupan OC-08-02 selama order belum berstatus `Charged`.
 
 > **Batas Tanggung Jawab:** Setelah order beralih ke status **`Charged`** (ditangani oleh OC-08-03), pengelolaan lifecycle order keluar dari cakupan OC-08-02. OC-08-02 tidak mengelola billing, pengambilan spesimen, pemrosesan, maupun hasil pemeriksaan.
 
