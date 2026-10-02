@@ -3,7 +3,7 @@
 | Field       | Value        |
 |-------------|--------------|
 | Code        | OC-05-01     |
-| Version     | 1.1          |
+| Version     | 1.2          |
 | Status      | Review       |
 | LastUpdated | 2026-10-02   |
 
@@ -15,9 +15,7 @@ Pengelolaan antrean pasien di poliklinik rawat jalan adalah mekanisme operasiona
 
 Antrean (*Queue*) merupakan instrumen pengaturan alur pelayanan pada titik layanan poliklinik tertentu dan secara tegas dibedakan dari Kunjungan (*Visit*). Nomor antrean (*queue number*) mencerminkan identitas posisi antrean pasien pada *service context* terkait dan bukan merupakan identitas dari *Visit*. Satu *Visit* dapat melibatkan lebih dari satu dokter atau poliklinik, di mana masing-masing *service context* memerlukan pengelolaan antrean tersendiri.
 
-Dalam tata kelola rumah sakit, domain **Admission** bertanggung jawab atas pembentukan dan penerbitan nomor antrean, sedangkan domain **Rawat Jalan** bertanggung jawab menerima, menggunakan, mengelola urutan pemanggilan, serta memperbarui status antrean sepanjang tahapan pelayanan di poliklinik hingga pelayanan pada antrean tersebut dinyatakan selesai.
-
-Tanpa adanya pengelolaan antrean rawat jalan yang terstandardisasi sebagai *persisted business fact*, urutan pemanggilan pasien tidak dapat dikendalikan secara andal, deviasi pemanggilan (seperti pasien dilewati atau dipanggil ulang) tidak dapat ditelusuri, dan kepastian penyelesaian pelayanan pada setiap unit poliklinik tidak dapat dibuktikan.
+Adanya tata kelola antrean rawat jalan yang terstandardisasi sebagai *persisted business fact* memastikan urutan pemanggilan pasien dapat dikendalikan secara transparan, penyesuaian pemanggilan (seperti pasien dilewati atau dipanggil ulang) tercatat secara akurat, serta kepastian penyelesaian pelayanan pada setiap unit poliklinik dapat dibuktikan.
 
 ---
 
@@ -65,11 +63,11 @@ Antrean pasien pada suatu *service context* poliklinik rawat jalan **telah aktif
   - Poliklinik tujuan (*service unit*);
   - Dokter pemeriksa (*DPJP / PPA*);
   - Tanggal pelayanan (*service date*).
-- Nomor antrean (*queue number*) telah diterbitkan oleh Admission sebagai identitas/posisi antrean pasien yang bersifat tetap dan tidak berubah selama operasional antrean.
-- Urutan pemanggilan (*calling order*) dapat disesuaikan secara operasional (dapat terjadi *skip*, pemanggilan ulang/*recall*, atau prioritas) tanpa mengubah nomor antrean (*queue number*) pasien. Penyesuaian urutan pemanggilan hanya dapat dilakukan oleh petugas poliklinik yang berwenang dan setiap perubahan wajib tercatat beserta identitas petugas yang melakukan penyesuaian.
-- Status antrean bergerak mengikuti siklus hidup operasional yang sah: **Menunggu → Dipanggil → Dalam Pelayanan → Selesai**, atau berakhir pada status terminal **Tidak Hadir** (pasien tidak hadir setelah upaya pemanggilan ulang/*recall*) maupun **Dibatalkan** (pembatalan administratif oleh Admission sebelum antrean dilayani).
-- Hubungan antara *Visit* dan *Queue* bersifat *one-to-many* (1 Visit : N Queue). Satu episode *Visit* dapat memiliki beberapa *Queue* pada *service context* yang berbeda.
-- Penyelesaian suatu antrean (*Queue Selesai*) menandai berakhirnya pelayanan pada *service context* bersangkutan, dan tidak otomatis menyebabkan *Visit* pasien berakhir.
+- Nomor antrean (*queue number*) diterbitkan oleh Admission sebagai identitas/posisi antrean pendaftaran pasien.
+- Urutan pemanggilan (*calling order*) dapat disesuaikan secara operasional (*skip*, *recall*, prioritas) tanpa mengubah nomor antrean asli.
+- Status antrean merepresentasikan tahapan operasional aktif (**Menunggu → Dipanggil → Dalam Pelayanan → Selesai**), atau status terminal alternatif (**Tidak Hadir** atau **Dibatalkan**).
+- Hubungan *Visit* dan *Queue* bersifat *one-to-many* (1 Visit : N Queue untuk *service context* yang berbeda).
+- Penyelesaian antrean (*Queue Selesai*) menandai berakhirnya pelayanan pada *service context* lokal tersebut, bukan menutup *Visit* pasien.
 
 ### 5.2 Required Recorded Information
 
@@ -97,25 +95,13 @@ Antrean pasien pada suatu *service context* poliklinik rawat jalan **telah aktif
 ### 5.3 Required Business Conditions
 
 - Kunjungan rawat jalan yang menjadi referensi antrean harus berstatus aktif (**Terdaftar**) dalam sistem (`OC-01-02`).
-- Nomor antrean diterbitkan oleh Admission (`ADM-REG` / `ADM-ANTRIAN`) dan tersedia untuk digunakan oleh Rawat Jalan.
-- Nomor antrean harus unik dalam ruang lingkup poliklinik, dokter, dan tanggal pelayanan yang sama.
-- Pada *service context* yang identik (poliklinik sama, dokter sama, tanggal sama), satu *Visit* hanya boleh memiliki satu entri antrean yang berstatus aktif.
-- Perbedaan antara nomor antrean (*queue number*) dan urutan pemanggilan (*calling order*) harus dipertahankan:
-  - *Queue number* adalah nomor urut identitas pendaftaran antrean;
-  - *Calling order* adalah urutan fisik pemanggilan yang dapat dipengaruhi oleh ketidakhadiran pasien atau diskresi operasional poliklinik.
-- Siklus hidup status antrean mengikuti urutan normal:
-  `Menunggu` → `Dipanggil` → `Dalam Pelayanan` → `Selesai`
-  
-  Status terminal alternatif yang diizinkan:
-  - **Tidak Hadir**: ditetapkan setelah pasien tidak merespons pemanggilan kembali (*recall*). Ini adalah status bisnis resmi pada record antrean — bukan hanya sebuah catatan operasional — dan menandai bahwa tanggung jawab kelanjutan pasien dialihkan ke Admission.
-  - **Dibatalkan**: ditetapkan secara administratif oleh Admission ketika *Visit* dibatalkan sebelum antrean dilayani, atau ketika sesi praktik dokter dihentikan dan antrean tidak dapat dialihkan.
-- Penyesuaian urutan pemanggilan (*calling order*) hanya dapat dilakukan oleh petugas poliklinik yang berwenang. Setiap penyesuaian wajib tercatat (siapa, kapan, alasan) dan tidak boleh mengubah nomor antrean (*queue number*) asli pasien.
-- Penanganan kondisi pasien tidak hadir saat dipanggil:
-  1. Pasien yang tidak merespons panggilan dapat dilewati (*skip*); nomor antrean tidak berubah dan sistem/petugas dapat melanjutkan pemanggilan antrean berikutnya;
-  2. Pasien yang dilewati dapat dipanggil kembali (*recall*) sesuai ketentuan operasional poliklinik;
-  3. Jika setelah dipanggil kembali pasien tetap tidak hadir, status antrean ditetapkan menjadi **Tidak Hadir** dan tanggung jawab kelanjutan pasien dialihkan ke domain Admission.
-- Antrean yang telah berstatus **Selesai** atau telah diakhiri (terminal) tidak dapat dipanggil kembali atau diaktifkan ulang.
-- Status **Selesai** pada antrean hanya berlaku lokal bagi *service context* yang bersangkutan dan tidak menutup *Visit* pasien secara keseluruhan.
+- Nomor antrean diterbitkan oleh Admission (`ADM-REG` / `ADM-ANTRIAN`) dan tersedia untuk digunakan di Rawat Jalan.
+- Penyesuaian urutan pemanggilan (*calling order*) hanya dapat dilakukan oleh petugas poliklinik yang berwenang, serta wajib mencatat audit trail (petugas, waktu, alasan).
+- Penanganan ketidakhadiran pasien saat dipanggil:
+  1. Pasien yang tidak merespons panggilan dapat dilewati (*skip*);
+  2. Pasien yang dilewati dapat dipanggil kembali (*recall*) sesuai diskresi operasional poliklinik;
+  3. Jika pasien tetap tidak hadir setelah dipanggil kembali, status antrean ditetapkan menjadi **Tidak Hadir** dan memicu pengalihan kendali ke domain Admission.
+- Antrean yang telah mencapai status terminal (**Selesai**, **Tidak Hadir**, **Dibatalkan**) tidak dapat dipanggil kembali atau diaktifkan ulang.
 
 ### 5.4 Completion Proof
 
@@ -137,7 +123,7 @@ Dimulai ketika nomor antrean untuk suatu *service context* rawat jalan telah dit
 
 Berakhir ketika salah satu dari tiga kondisi terpenuhi:
 1. Status antrean berubah menjadi **Selesai**, yaitu saat dokter atau perawat di poliklinik menandai bahwa pelayanan klinis untuk antrean pada *service context* tersebut telah diselesaikan; ATAU
-2. Status antrean berubah menjadi **Tidak Hadir**, yaitu setelah pasien tidak memenuhi pemanggilan kembali (*recall*) — kondisi ini merupakan status bisnis resmi dan secara otomatis memicu *boundary event* pengembalian kendali pasien ke domain Admission; ATAU
+2. Status antrean berubah menjadi **Tidak Hadir**, yaitu setelah pasien tidak memenuhi pemanggilan kembali (*recall*) — kondisi ini memicu *boundary event* pengembalian kendali pasien ke domain Admission; ATAU
 3. Status antrean berubah menjadi **Dibatalkan**, yaitu ketika Admission membatalkan *Visit* terkait sebelum antrean dilayani.
 
 > **Batasan Penting:** Berakhirnya antrean pada suatu *service context* **TIDAK** mengakhiri Kunjungan (*Visit*) pasien. Kunjungan tetap berada di bawah domain Admission dan dapat memiliki *service context* / antrean lain dalam episode pelayanan yang sama.
@@ -148,13 +134,12 @@ Berakhir ketika salah satu dari tiga kondisi terpenuhi:
 
 > Rules that must always hold true for this Outcome.
 
-- **Pemisahan Konseptual Visit dan Queue:** *Queue* bukan *Visit* dan nomor antrean bukan nomor identitas kunjungan. *Queue* adalah mekanisme penempatan dan pemanggilan pasien pada suatu *service context* tertentu.
-- **Kardinalitas Layanan (Bukan 1 Visit = 1 Queue):** Satu *Visit* dapat memiliki beberapa *Queue* pada *service context* yang berbeda (misalnya Poli Penyakit Dalam dan Poli Gizi). Aturan "1 Visit = 1 Queue" dilarang diterapkan. Namun, untuk *service context* yang identik (poli sama, dokter sama, tanggal sama), satu *Visit* hanya boleh memiliki maksimal satu antrean aktif.
-- **Pemisahan Nomor Antrean vs Urutan Pemanggilan:** Nomor antrean (*queue number*) merupakan identitas/posisi antrean yang bersifat tetap. Urutan pemanggilan (*calling order*) bersifat operasional dan dinamis. Tindakan melewati (*skip*) atau memanggil ulang (*recall*) pasien tidak boleh mengubah nomor antrean asli pasien.
-- **Integritas Konteks Antrean:** Setiap entri antrean wajib memiliki referensi yang valid terhadap *Visit* rawat jalan yang aktif, unit poliklinik yang valid, dokter yang bertugas, dan tanggal pelayanan yang bersangkutan.
-- **Keunikan Nomor Antrean:** Tidak boleh ada dua antrean aktif dengan nomor antrean yang sama untuk kombinasi poliklinik, dokter, dan tanggal pelayanan yang sama.
-- **Imutabilitas Status Terminal:** Antrean yang sudah berstatus **Selesai**, **Tidak Hadir**, atau **Dibatalkan** tidak dapat diaktifkan kembali. Jika pasien memerlukan pelayanan tambahan di luar rencana awal, hal tersebut harus mengikuti alur penerbitan antrean baru sesuai mekanisme rujukan internal atau registrasi.
-- **Batas Kewenangan Antar Domain:** Domain Rawat Jalan tidak berwenang menerbitkan nomor antrean kunjungan awal (kewenangan Admission) dan tidak berwenang menetapkan alasan medis terbentuknya *service context* baru (kewenangan `OC-05-03 Rujuk Internal`).
+- **Pemisahan Konseptual Visit dan Queue:** *Queue* bukan *Visit*. *Queue* adalah instrumen tata kelola pemanggilan pasien pada *service context* tertentu.
+- **Kardinalitas Service Context:** Satu *Visit* dapat memiliki beberapa *Queue* pada *service context* yang berbeda. Namun, untuk *service context* yang identik (poliklinik, dokter, dan tanggal sama), satu *Visit* hanya boleh memiliki maksimal satu antrean aktif.
+- **Keunikan Nomor Antrean:** Dalam *service context* yang sama (poliklinik, dokter, tanggal), nomor antrean (*queue number*) bersifat unik dan tidak boleh ada dua antrean aktif ber-nomor antrean sama.
+- **Pemisahan Queue Number vs Calling Order:** *Queue number* bersifat imutabel sebagai identitas pendaftaran antrean; *calling order* bersifat operasional dan dinamis. Tindakan *skip* atau *recall* dilarang mengubah *queue number* asli.
+- **Imutabilitas Status Terminal:** Antrean berstatus **Selesai**, **Tidak Hadir**, atau **Dibatalkan** bersifat final dan tidak dapat diaktifkan kembali.
+- **Batas Kewenangan Domain:** Domain Rawat Jalan mengelola lifecycle antrean poliklinik, tetapi tidak berwenang menerbitkan nomor antrean kunjungan awal (kewenangan Admission) atau membuat rujukan internal baru (kewenangan `OC-05-03`).
 
 ---
 
@@ -167,7 +152,7 @@ Berakhir ketika salah satu dari tiga kondisi terpenuhi:
 | Pasien tidak merespons saat nomor antrean dipanggil pertama kali | Antrean ditandai dilewati (*skip*). Petugas dapat melanjutkan pemanggilan antrean berikutnya tanpa membatalkan antrean pasien. Nomor antrean pasien tetap dipertahankan. |
 | Pasien tetap tidak hadir setelah dilakukan pemanggilan kembali (*recall*) | Status antrean ditetapkan menjadi **Tidak Hadir**. Antrean keluar dari daftar aktif dan domain Admission menerima *boundary event* untuk menindaklanjuti kondisi pasien. |
 | Referensi *Visit* pasien telah dibatalkan di loket pendaftaran sebelum dipanggil | Status antrean ditetapkan menjadi **Dibatalkan**. Antrean tidak dapat diproses lebih lanjut dan dikeluarkan dari daftar antrean aktif poliklinik. |
-| Dokter pemeriksa berhalangan hadir atau sesi praktik dihentikan mendadak saat antrean masih berstatus Menunggu | Antrean yang belum dilayani tidak dapat diselesaikan secara normal. Status antrean ditangguhkan dan dialihkan ke dokter pengganti atau dijadwalkan ulang; jika tidak dapat dialihkan, status antrean ditetapkan **Dibatalkan** sesuai koordinasi dengan Admission. |
+| Dokter pemeriksa berhalangan hadir atau sesi praktik dihentikan mendadak saat antrean masih berstatus Menunggu | Status antrean ditangguhkan; jika tidak dapat dialihkan ke dokter pengganti pada hari yang sama, status antrean ditetapkan **Dibatalkan** sesuai koordinasi dengan Admission. |
 | Duplikasi antrean untuk *Visit* yang sama pada poliklinik, dokter, dan tanggal yang sama | Sistem menolak pembentukan antrean aktif kedua. Antrean aktif yang sudah ada tetap dipertahankan dan ditampilkan kepada petugas. |
 | Percobaan pemanggilan pada antrean yang sudah berstatus **Selesai** atau diakhiri | Sistem menolak pemanggilan. Antrean yang sudah mencapai status terminal tidak dapat dipanggil kembali. |
 
@@ -189,7 +174,7 @@ Berakhir ketika salah satu dari tiga kondisi terpenuhi:
 | AC-08 | Antrean yang berstatus **Selesai** mencatat waktu penyelesaian pelayanan oleh dokter/petugas dan dikeluarkan dari daftar antrean aktif poliklinik. | Completeness |
 | AC-09 | Perubahan status antrean menjadi **Selesai** pada suatu *service context* tidak mengubah status *Visit* pasien menjadi selesai / tutup secara keseluruhan. | Constraint |
 | AC-10 | Antrean yang telah berstatus **Selesai**, **Tidak Hadir**, atau **Dibatalkan** ditolak ketika dicoba untuk dipanggil atau diaktifkan kembali. | Constraint |
-| AC-11 | Pembatalan kunjungan (*Visit*) pada boundary Admission secara otomatis mengubah status seluruh antrean poliklinik terkait yang belum selesai menjadi **Dibatalkan**. | Exception |
+| AC-11 | Pembatalan kunjungan (*Visit*) pada domain Admission secara otomatis mengubah status antrean poliklinik terkait yang belum dilayani menjadi **Dibatalkan**. | Exception |
 
 ---
 
@@ -211,6 +196,8 @@ Berakhir ketika salah satu dari tiga kondisi terpenuhi:
 
 ## 11. Perbandingan Baseline & Cross-Outcome Dependencies
 
+> **Catatan Penyelarasan:** Section ini merupakan suplemen dokumentasi penyesuaian baseline dan tidak memengaruhi definisi spesifikasi inti Outcome.
+
 ### 11.1 Perbandingan dengan Baseline OC-01-07
 
 | Aspek | Baseline `OC-01-07 Antrian` (Admission) | Definisi `OC-05-01 Antrian Rawat Jalan` | Catatan Penyelarasan |
@@ -228,3 +215,4 @@ Poin berikut bukan merupakan open question yang memblokir OC-05-01, melainkan ti
 |---|------|--------------------------|---------------|
 | D-01 | **Penyelarasan Cakupan OC-01-07** — `OC-01-07` berpotensi redundan karena kini mendefinisikan antrian poli yang sudah dicakup `OC-05-01`. Perlu konfirmasi apakah `OC-01-07` difokuskan hanya pada Antrian Registrasi Loket. | `OC-01-07` (Admission SC-01) | Review `OC-01-07` pada sesi Admission domain; tidak memblokir `OC-05-01`. |
 | D-02 | **Mekanisme Boundary Event ke ADM-TRACKER** — Ketika status antrean menjadi **Tidak Hadir**, apakah sistem rawat jalan menerbitkan event langsung ke `ADM-TRACKER` atau memerlukan konfirmasi manual dari petugas loket? | `ADM-TRACKER` (Patient Journey Tracking) | Definisikan dalam spesifikasi integrasi `ADM-TRACKER`; tidak memblokir lifecycle antrean `OC-05-01`. |
+
