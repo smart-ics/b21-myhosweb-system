@@ -3,7 +3,7 @@
 | Field       | Value        |
 |-------------|--------------|
 | Code        | OC-04-05     |
-| Version     | 1.0          |
+| Version     | 1.1          |
 | Status      | Draft        |
 | LastUpdated | 2026-10-02   |
 
@@ -15,7 +15,7 @@ Setiap rumah sakit memerlukan visibilitas menyeluruh dan objektif terhadap volum
 
 1. **Sensus Pelayanan**: Mengetahui berapa banyak dan bagaimana distribusi pergerakan aktivitas pelayanan rumah sakit dalam suatu periode atau titik waktu tertentu (kunjungan pasien, dinamika tempat tidur rawat inap, pasien masuk, pindahan, pasien keluar, pasien meninggal, dan hari perawatan).
 2. **Indeks Rekam Medis**: Menyediakan pengelompokan kasus/pasien yang memenuhi kriteria klinis dan administratif tertentu (berdasarkan diagnosis penyakit, tindakan/operasi medis, dokter penanggung jawab, kematian, kelahiran, rujukan, cara pulang, dan demografi) untuk keperluan penemuan kembali (*retrieval*), audit klinis, evaluasi medis, dan riset kesehatan.
-3. **Statistik dan Indikator Pelayanan**: Menyediakan metrik agregat dan indikator efisiensi pelayanan rumah sakit (seperti BOR, ALOS, TOI, BTO, NDR, GDR) serta analisis epidemiologis (morbiditas 10 besar penyakit, tren penyakit tidak menular, mortalitas, dan kewaspadaan dini surveilans KLB) untuk pengambilan keputusan manajemen dan evaluasi mutu klinis.
+3. **Statistik Pelayanan yang Merupakan Derived dari Sensus dan Indeks**: Menyediakan metrik agregat efisiensi pelayanan rawat inap (seperti BOR, ALOS, TOI, BTO, NDR, GDR) dan rangkuman pola morbiditas (10 Besar Penyakit) yang langsung diturunkan dari data sensus dan indeks kasus yang telah terbentuk — untuk keperluan evaluasi pemanfaatan fasilitas dan verifikasi pelaporan rumah sakit.
 
 ### Prinsip Utama: Derived Information dari Single Source of Truth
 
@@ -52,8 +52,9 @@ Sistem legacy rumah sakit memiliki 38 menu terpisah yang berkembang selama berta
 |-------------------------|---------------------------------------------|--------------|
 | **Sensus Pelayanan** | `mnuSensusHarian`, `mnuSensusHarianInap`, `mnuRekapHarianRawatInap`, `mnuRekapRuanganRawatInap`, `mnuRekapKegiatanRawatDarurat`, `mnuInfoRekapKunjungan`, `mnuPasienPulang`, `mnuPasienPulangPerJaminan`, `mnuPasienBaru`, `mnuPasienDalamPerawatan` (posisi cut-off) | Mengukur volume kunjungan, pergerakan tempat tidur rawat inap (SHRI), dan sisa pasien pada periode/cut-off. |
 | **Indeks Rekam Medis** | `mnuPenyakit`, `mnuPenyakit2` (Indeks Diagnosis), `mnuOperasi`, `mnuTindakanMedis` (Indeks Prosedur/Operasi), `mnuDokter`, `mnuDokter2` (Indeks Dokter DPJP), `mnuKematian` (Indeks Kematian), `mnuKelahiran` (Indeks Kelahiran), `mnuRujukan` (Indeks Rujukan Masuk/Keluar), `mnuRekapPulangPaksa` (Indeks APS), `mnuImunisasi` (Indeks Pelayanan Khusus), `mnuWilayah` (Indeks Demografi Pasien) | Menyediakan daftar kasus granular berbasis filter fakta klinis/administratif untuk audit dan penelusuran fakta. |
-| **Statistik & Indikator Pelayanan** | `mnuInfoRekapIndikatorKes`, `mnuRekapIndikatorKesehatan2` (Indikator BOR, ALOS, TOI, BTO, NDR, GDR), `mnuMorbiditasPasien` (10 Besar Morbiditas), `mnuInfoMonitoringPelayanan`, `mnuInfoSurveilansKLB` (Surveilans Penyakit Menular), `mnuMaternal`, `mnuPenyakitTdkMenular`, `mnuRekapKematian`, `mnuRekapKelahiran`, `mnuInfoRekapWilayahPerGrupJaminan`, `mnuRekapKegiatanDepkes` | Menyajikan indikator efisiensi pemanfaatan fasilitas dan tabulasi pola kesehatan/epidemiologi. |
-| **Dikeluarkan dari Boundary (Out of Scope)** | `mnuHistoriPasien` (Penelusuran klinis individual → `ADM-TRACKER`), `mnuInfoPasien` (Pencarian master demografi → `PAS-DATSOS`), `mnuInfoPasienAktif` (Monitoring bed operasional real-time bangsal → `RNA-BED`), `mnuPasienNonAktif` (Retensi/keaktifan nomor RM → `PAS-DATSOS`/`BRM-MUTASI`), `mnuPasienUltah` (CRM/Humas non-klinis) | Menjaga integritas boundary agar fokus pada sensus, indeks, dan statistik agregasi rekam medis. |
+| **Statistik & Indikator Pelayanan** | `mnuInfoRekapIndikatorKes`, `mnuRekapIndikatorKesehatan2` (Indikator BOR, ALOS, TOI, BTO, NDR, GDR), `mnuMorbiditasPasien` (10 Besar Morbiditas), `mnuInfoMonitoringPelayanan`, `mnuInfoRekapWilayahPerGrupJaminan`, `mnuRekapKematian`, `mnuRekapKelahiran` | Menyajikan indikator efisiensi pemanfaatan fasilitas rawat inap dan rangkuman pola morbiditas yang langsung diturunkan dari data sensus dan indeks kasus. |
+| **Dikeluarkan dari Boundary (perlu dievaluasi lebih lanjut)** | `mnuInfoSurveilansKLB`, `mnuMaternal`, `mnuPenyakitTdkMenular`, `mnuRekapKegiatanDepkes` | Menu-menu ini mewakili analitik epidemiologi yang lebih luas dari fungsi Index/Sensus. Perlu dievaluasi apakah masuk dalam OC-04-05 atau merupakan capability/outcome tersendiri. |
+| **Dikeluarkan dari Boundary (Out of Scope)** | `mnuHistoriPasien` (Penelusuran klinis individual → `ADM-TRACKER`), `mnuInfoPasien` (Pencarian master demografi → `PAS-DATSOS`), `mnuInfoPasienAktif` (Monitoring bed operasional real-time bangsal → `RNA-BED`), `mnuPasienNonAktif` (Retensi/keaktifan nomor RM → `PAS-DATSOS`/`BRM-MUTASI`), `mnuPasienUltah` (CRM/Humas non-klinis) | Jelas berada di luar boundary rekam medis: pencarian individual pasien, live bed monitoring, tata kelola RM, dan pemasaran. |
 
 ---
 
@@ -117,79 +118,57 @@ Informasi sensus pelayanan, indeks kasus rekam medis, dan statistik indikator ru
 
 ### 5.1 Required Business Facts
 
-- Informasi **Sensus Pelayanan** (harian dan periodik) telah tersedia dari transaksi operasional untuk seluruh unit pelayanan (Rawat Jalan, Rawat Inap, Gawat Darurat, dan Penunjang Medis).
-- **Sensus Harian Rawat Inap (SHRI)** mencatat pergerakan mutasi tempat tidur secara presisi pada setiap titik waktu cut-off harian:
-  $$\text{Pasien Sisa Akhir} = \text{Pasien Awal} + \text{Masuk} + \text{Pindahan Masuk} - \text{Dipindahkan Keluar} - \text{Pulang Hidup} - \text{Meninggal}$$
-  serta akumulasi Hari Perawatan (HP) dan Lama Dirawat (LD) per ruangan, kelas perawatan, dan total rumah sakit.
+- Informasi **Sensus Pelayanan** (harian dan periodik) telah tersedia dari transaksi operasional untuk aktivitas pelayanan yang relevan dengan kebutuhan Rekam Medis, analisis pelayanan, dan verifikasi pelaporan rumah sakit.
+- **Sensus Rawat Inap** merepresentasikan pergerakan pasien dan posisi pasien pada periode atau cut-off yang ditetapkan rumah sakit secara konsisten — mencakup pasien masuk, pindahan masuk, dipindahkan keluar, keluar (hidup maupun meninggal), dan sisa pasien dalam perawatan — serta akumulasi hari perawatan, tanpa menghasilkan penghitungan ganda.
 - Kumpulan **Indeks Rekam Medis** terstandar telah tersedia dan dapat disaring (*filtered*) berdasarkan kriteria operasional/klinis:
-  - **Indeks Penyakit (Disease Index)**: Kumpulan episode berdasarkan kode ICD-10 (utama/sekunder), kelompok usia, jenis kelamin, dan hasil perawatan.
-  - **Indeks Tindakan / Operasi (Procedure Index)**: Kumpulan episode berdasarkan kode ICD-9-CM, jenis spesialisasi bedah, dokter operator, dan dokter anestesi.
+  - **Indeks Penyakit (Disease Index)**: Kumpulan episode berdasarkan diagnosis terverifikasi, kelompok usia, jenis kelamin, dan hasil perawatan.
+  - **Indeks Tindakan / Operasi (Procedure Index)**: Kumpulan episode berdasarkan prosedur medis yang dikodifikasikan, jenis spesialisasi, dan dokter pelaksana.
   - **Indeks Dokter / PPA (Physician Index)**: Kumpulan episode yang ditangani oleh dokter tertentu sebagai DPJP Utama atau pelaksana tindakan.
-  - **Indeks Kematian (Death Index)**: Kumpulan kasus kematian pasien yang dirawat di rumah sakit, memuat diagnosis penyebab kematian, waktu kematian, ruangan terakhir, dan durasi perawatan (< 48 jam vs $\ge$ 48 jam).
-  - **Indeks Kelahiran (Birth Index)**: Kumpulan kelahiran bayi (hidup/mati) di rumah sakit dengan berat badan lahir, cara persalinan, dan identitas ibu.
-  - **Indeks Pasien Rujukan (Referral Index)**: Kumpulan pasien rujukan masuk (berdasarkan faskes pengirim) dan rujukan keluar (berdasarkan faskes tujuan dan alasan rujukan).
-  - **Indeks Pasien Pulang Paksa / APS**: Kumpulan pasien yang menghentikan perawatan atas permintaan sendiri beserta unit perawatan dan alasan kepulangan.
+  - **Indeks Kematian (Death Index)**: Kumpulan kasus kematian pasien yang dirawat di rumah sakit beserta atribut klinis dan administratifnya.
+  - **Indeks Kelahiran (Birth Index)**: Kumpulan kelahiran bayi di rumah sakit beserta kondisi dan identitas terkaitnya.
+  - **Indeks Pasien Rujukan (Referral Index)**: Kumpulan pasien rujukan masuk dan rujukan keluar beserta asal/tujuan faskes.
+  - **Indeks Pasien Pulang Paksa / APS**: Kumpulan pasien yang menghentikan perawatan atas permintaan sendiri.
   - **Indeks Wilayah & Penjamin**: Kumpulan pasien berdasarkan domisili geografis dan kelompok jaminan pembayaran.
-- **Statistik Pelayanan dan Indikator Rumah Sakit** telah dihitung menggunakan formula baku perumahsakitan yang berlaku nasional:
-  - Indikator efisiensi rawat inap: BOR (*Bed Occupancy Rate*), ALOS (*Average Length of Stay*), TOI (*Turn Over Interval*), BTO (*Bed Turn Over*), GDR (*Gross Death Rate*), dan NDR (*Net Death Rate*).
-  - Tabulasi pola epidemiologis: 10 Besar Penyakit (*Top 10 Morbidity*) per instalasi, tren Penyakit Tidak Menular (PTM), statistik maternal-perinatal, dan deteksi dini surveilans epidemiologi/KLB.
-- **Keterlacakan Granular (*Drill-Down Traceability*)**: Setiap angka agregat pada sensus dan statistik pelayanan dapat ditelusuri langsung ke daftar kasus/pasien individual (indeks) yang membentuk angka tersebut.
+- **Statistik Pelayanan** yang merupakan derived dari sensus dan indeks kasus telah tersedia, mencakup indikator efisiensi rawat inap (BOR, ALOS, TOI, BTO, GDR, NDR) sesuai formula baku nasional, dan rangkuman pola morbiditas (10 Besar Penyakit).
+- **Keterlacakan (*Drill-Down Traceability*)**: Setiap angka agregat pada sensus dan statistik pelayanan dapat ditelusuri langsung ke daftar kasus/pasien individual (indeks) yang membentuk angka tersebut.
 - **Transparansi Kesiapan Data Sumber (*Non-Blocking*)**: Episode pelayanan yang belum lengkap kodifikasinya (misal pasien sudah discharge namun koding ICD-10 belum divalidasi) tetap terhitung pada volume sensus, namun diidentifikasi secara transparan pada indeks klinis sebagai status *Pending Koding*.
 
 ### 5.2 Required Recorded Information
 
-**Konteks dan Parameter Analisis:**
+**Konteks Analisis:**
 - Identitas rumah sakit dan unit kerja/bangsal/instalasi.
-- Parameter rentang waktu: tanggal/jam cut-off sensus harian atau rentang periode analisis (bulanan, triwulanan, tahunan).
-- Parameter kriteria pencarian/penyaringan (kode diagnosis, kode tindakan, dokter DPJP, kelompok usia, jenis jaminan, kelas rawat, wilayah).
+- Parameter periode atau cut-off yang ditetapkan.
+- Kriteria penyaringan yang relevan (jenis pelayanan, diagnosa, tindakan, dokter, demografi pasien, penjamin, wilayah).
 
 **Informasi Sensus Pelayanan:**
-- Rekapitulasi volume kunjungan: jumlah kunjungan baru, kunjungan lama, per poliklinik, per jenis penjamin, dan per wilayah domisili.
-- Metrik SHRI per ruangan dan kelas rawat:
-  - Jumlah Pasien Awal Periode.
-  - Jumlah Pasien Masuk Baru.
-  - Jumlah Pasien Pindahan Masuk (*Transfer In*).
-  - Jumlah Pasien Dipindahkan Keluar (*Transfer Out*).
-  - Jumlah Pasien Keluar Hidup (sembuh, membaik, rujukan, pulang paksa).
-  - Jumlah Pasien Keluar Meninggal (< 48 jam dan $\ge$ 48 jam).
-  - Jumlah Pasien Sisa Akhir Periode.
-  - Jumlah Hari Perawatan (HP) dan Lama Dirawat (LD).
+- Data pergerakan pasien rawat inap per ruangan/kelas rawat dalam periode yang ditetapkan: pasien awal, masuk, pindahan masuk, dipindahkan keluar, keluar (hidup dan meninggal), dan sisa akhir periode.
+- Akumulasi hari perawatan dan lama dirawat.
+- Volume kunjungan rawat jalan dan gawat darurat per periode.
 
 **Informasi Indeks Kasus Rekam Medis:**
-- Identitas episode: Nomor Rekam Medis (No RM), Nama Pasien, Nomor Registrasi/Kunjungan, Tanggal Masuk, Tanggal Pulang/Keluar.
-- Atribut klinis: Kode Diagnosis ICD-10 (Utama & Sekunder) beserta deskripsi, Kode Prosedur ICD-9-CM beserta deskripsi.
-- Atribut pelayanan: Unit/Bangsal/Kamar, Kelas Rawat, Dokter DPJP Utama, Dokter Operator/Anestesi (pada tindakan bedah).
-- Atribut khusus:
-  - Pada Indeks Kematian: Tanggal/jam kematian, diagnosis penyebab kematian, kategori kematian (< 48 jam / $\ge$ 48 jam).
-  - Pada Indeks Kelahiran: Tanggal/jam kelahiran, jenis kelamin bayi, berat badan lahir, kondisi lahir (hidup/mati), No RM ibu.
-  - Pada Indeks Rujukan: Jenis rujukan (masuk/keluar), nama faskes asal/tujuan, alasan rujukan.
-  - Pada Indeks Pulang Paksa: Alasan pulang atas permintaan sendiri.
+- Identitas episode pelayanan yang menjadi anggota indeks (nomor rekam medis, nomor registrasi, tanggal masuk, tanggal keluar/pulang).
+- Atribut klinis yang menjadi dasar pengelompokan indeks (diagnosis, tindakan, dokter DPJP, cara pulang).
+- Atribut demografi dan administratif yang relevan (unit pelayanan, kelas rawat, penjamin, wilayah domisili).
+- Atribut spesifik kasus untuk Indeks Kematian (hasil perawatan dan kategori waktu kematian), Indeks Kelahiran (kondisi bayi dan identitas ibu), dan Indeks Rujukan (faskes asal/tujuan).
 
-**Informasi Statistik & Indikator Pelayanan:**
-- Nilai indikator efisiensi rawat inap per ruangan/kelas dan total RS:
-  $$\text{BOR (\%)} = \frac{\text{Jumlah Hari Perawatan}}{\text{Jumlah Tempat Tidur Tersedia} \times \text{Jumlah Hari Periode}} \times 100\%$$
-  $$\text{ALOS (hari)} = \frac{\text{Jumlah Lama Dirawat Pasien Keluar}}{\text{Jumlah Pasien Keluar (Hidup + Meninggal)}}$$
-  $$\text{TOI (hari)} = \frac{(\text{Jumlah Tempat Tidur Tersedia} \times \text{Jumlah Hari}) - \text{Jumlah Hari Perawatan}}{\text{Jumlah Pasien Keluar (Hidup + Meninggal)}}$$
-  $$\text{BTO (kali)} = \frac{\text{Jumlah Pasien Keluar (Hidup + Meninggal)}}{\text{Jumlah Tempat Tidur Tersedia}}$$
-  $$\text{GDR (\textperthousand)} = \frac{\text{Total Pasien Meninggal}}{\text{Total Pasien Keluar (Hidup + Meninggal)}} \times 1000\text{\textperthousand}$$
-  $$\text{NDR (\textperthousand)} = \frac{\text{Pasien Meninggal } \ge 48\text{ jam}}{\text{Total Pasien Keluar (Hidup + Meninggal)}} \times 1000\text{\textperthousand}$$
-- Peringkat 10 Besar Morbiditas (Top 10 Diseases) menurut kelompok umur dan jenis kelamin.
-- Tabulasi kasus surveilans epidemiologi penyakit menular berpotensi KLB.
+**Informasi Statistik Pelayanan:**
+- Nilai indikator efisiensi rawat inap (BOR, ALOS, TOI, BTO, GDR, NDR) per ruangan/kelas dan total rumah sakit.
+- Rangkuman peringkat pola morbiditas (10 Besar Penyakit).
 
-**Informasi Kesiapan Data Sumber:**
-- Daftar episode yang belum memiliki pengkodean tervalidasi pada penarikan Indeks Penyakit / Prosedur.
-- Daftar episode rawat inap dengan data mutasi bed yang belum ditutup administrasinya saat cut-off sensus.
+**Transparansi Kesiapan Data Sumber:**
+- Status data sumber yang belum lengkap sehingga tidak dapat sepenuhnya diperhitungkan pada indeks klinis atau statistik (misal: kasus belum terkoding, episode rawat inap belum ditutup administrasinya).
 
 ### 5.3 Required Business Conditions
 
 - **Derived Information & Single Source of Truth**: Seluruh data sensus, indeks, dan statistik wajib diturunkan secara langsung dari data transaksi operasional. Tidak ada fasilitas input manual atau modifikasi angka agregat secara lokal di modul Rekam Medis.
 - **Koreksi di Modul Sumber**: Apabila terdapat ketidaksesuaian data pada hasil sensus atau indeks, koreksi data wajib dilakukan pada unit kerja pemilik transaksi operasional (misal pemutakhiran mutasi bed di Bangsal, penetapan kode di Casemix & Coding, atau pemutakhiran data sosial di Admisi).
 - **Independensi Sensus dari Koding**: Sensus volume kunjungan dan dinamika tempat tidur rawat inap dapat dibentuk langsung dari data transaksi admission dan bangsal, tanpa harus menunggu selesainya pengkodean klinis (coding).
-- **Keterikatan Indeks Klinis pada Hasil Koding Tervalidasi**: Indeks Penyakit dan Indeks Tindakan hanya menampilkan kasus yang telah memiliki penetapan kode ICD-10/ICD-9-CM yang tervalidasi dari kapabilitas `BRM-CODING`. Kasus yang belum terkoding ditampilkan dalam daftar kasus *Pending Koding*.
-- **Kepatuhan Terhadap Formula Baku Nasional**: Rumus penghitungan indikator perumahsakitan (BOR, ALOS, TOI, BTO, GDR, NDR) wajib mematuhi pedoman teknis baku Kementerian Kesehatan RI.
-- **Kaidah Hari Perawatan Tunggal**: Satu pasien rawat inap hanya menghasilkan tepat 1 Hari Perawatan (HP) untuk setiap 1 hari kalender perawatan. Perpindahan ruangan internal dalam satu hari yang sama tidak boleh menyebabkan penggandaan hari perawatan.
+- **Keterikatan Indeks Klinis pada Hasil Koding Tervalidasi**: Indeks Penyakit dan Indeks Tindakan hanya menampilkan kasus yang telah memiliki penetapan kode yang tervalidasi dari kapabilitas `BRM-CODING`. Kasus yang belum terkoding ditampilkan dalam daftar kasus *Pending Koding*.
+- **Kepatuhan Terhadap Standar Baku Nasional**: Indikator efisiensi rawat inap (BOR, ALOS, TOI, BTO, GDR, NDR) harus dihitung berdasarkan definisi operasional dan standar baku yang berlaku di Indonesia. Formula dan detail penghitungan akan ditetapkan pada tahap feasibility/architecture.
+- **Konsistensi Penghitungan Sensus Rawat Inap**: Sensus rawat inap harus menggunakan definisi cut-off yang konsisten dan ditetapkan rumah sakit. Perpindahan ruangan internal tidak boleh menghasilkan penghitungan ganda hari perawatan untuk pasien yang sama dalam satu periode hitung yang sama.
 - **Keterlacakan Vertikal Penuh**: Setiap angka agregat pada rekapitulasi sensus dan tabel statistik wajib menyediakan mekanisme *drill-down* ke daftar kasus operasional pembentuknya.
 - **Independensi dari Pelaporan RL**: Sensus dan Indeks dihasilkan secara mandiri dari data operasional dan tidak bergantung pada output Pelaporan RL (OC-04-04). Namun, data sensus dan indeks dapat digunakan sebagai sarana pembuktian/verifikasi terhadap angka-angka pada laporan RL.
+
 
 ### 5.4 Completion Proof
 
@@ -217,9 +196,10 @@ Berakhir ketika informasi sensus pelayanan, indeks kasus rekam medis, dan statis
 
 - **Keaslian Fakta Operasional**: Sistem tidak menyediakan mekanisme manipulasi, pengeditan langsung angka agregat, atau pembuatan catatan rekaan. Seluruh angka bersumber murni dari data operasional.
 - **Akses Read-Only terhadap Domain Operasional**: Outcome ini tidak memiliki kewenangan mengubah catatan klinis, status tempat tidur, data transaksi keuangan, atau status registrasi pada domain-domain sumber.
-- **Kepatuhan Kaidah Standar Kementerian Kesehatan RI**: Seluruh rumus indikator rumah sakit, batasan pembagian umur, definisi operasional hari perawatan, dan metode perhitungan sensus mengacu pada standar baku Kementerian Kesehatan RI.
-- **Konsistensi Jam Cut-Off Sensus Harian**: Penghitungan sensus harian rawat inap menggunakan jam cut-off baku yang telah ditetapkan oleh kebijakan rumah sakit (standar nasional: pukul 00:00 atau akhir shift operasional harian yang konsisten).
+- **Kepatuhan Terhadap Standar Baku Nasional**: Indikator efisiensi rumah sakit dan statistik pelayanan mengacu pada definisi operasional dan standar baku yang berlaku di Indonesia.
+- **Konsistensi Penghitungan Sensus**: Definisi cut-off dan metode penghitungan sensus rawat inap harus konsisten dan ditetapkan sesuai kebijakan rumah sakit. Penghitungan tidak boleh menghasilkan penghitungan ganda hari perawatan.
 - **Prinsip Non-Blocking**: Ketiadaan pengkodean diagnosis atau kelengkapan data tertentu tidak boleh memblokir penyajian sensus pergerakan pasien dan volume aktivitas operasional. Data yang belum lengkap disajikan dengan penanda transparan.
+
 
 ---
 
@@ -242,14 +222,14 @@ Berakhir ketika informasi sensus pelayanan, indeks kasus rekam medis, dan statis
 
 | # | Criterion | Validates |
 |---|-----------|-----------|
-| **AC-01** | Sistem dapat menghasilkan informasi sensus harian dan periodik untuk Rawat Jalan, Rawat Inap, dan Gawat Darurat yang bersumber murni dari data operasional rumah sakit. | Completeness |
-| **AC-02** | Sensus Harian Rawat Inap (SHRI) menyajikan pergerakan pasien harian per ruangan dan kelas rawat dengan keseimbangan matematis yang valid: Pasien Sisa = Pasien Awal + Masuk + Pindahan Masuk - Dipindahkan Keluar - Pulang Hidup - Meninggal. | Correctness |
-| **AC-03** | Satu pasien rawat inap yang berpindah ruangan beberapa kali dalam satu hari kalender hanya dihitung menghasilkan tepat satu hari perawatan (tidak terjadi duplikasi HP). | Correctness |
+| **AC-01** | Sistem dapat menghasilkan informasi sensus harian dan periodik untuk aktivitas pelayanan yang relevan dengan kebutuhan Rekam Medis, bersumber murni dari data operasional rumah sakit. | Completeness |
+| **AC-02** | Sensus rawat inap menyajikan pergerakan pasien per ruangan/kelas rawat secara konsisten dan seimbang: sisa pasien akhir periode dapat dibuktikan dari posisi awal ditambah seluruh pergerakan masuk dikurangi seluruh pergerakan keluar, tanpa penghitungan ganda. | Correctness |
+| **AC-03** | Pasien rawat inap yang berpindah ruangan lebih dari satu kali dalam satu periode hitung yang sama hanya menghasilkan satu satuan hari perawatan untuk periode tersebut. | Correctness |
 | **AC-04** | Sistem menyediakan Indeks Rekam Medis terstandar (Indeks Penyakit, Indeks Operasi/Tindakan, Indeks Dokter, Indeks Kematian, Indeks Kelahiran, Indeks Rujukan, Indeks Pulang Paksa, dan Indeks Wilayah/Penjamin) yang dapat disaring berdasarkan kriteria yang relevan. | Completeness |
-| **AC-05** | Indeks Penyakit dan Indeks Prosedur hanya memuat kasus yang telah memiliki kode ICD-10 dan ICD-9-CM yang tervalidasi dari kapabilitas `BRM-CODING`. | Constraint |
+| **AC-05** | Indeks Penyakit dan Indeks Tindakan hanya memuat kasus yang telah memiliki kode diagnosis/prosedur yang tervalidasi dari kapabilitas `BRM-CODING`. | Constraint |
 | **AC-06** | Kasus yang telah selesai secara operasional namun belum selesai dikoding ditampilkan dalam status *Pending Koding* tanpa memblokir pembentukan sensus volume pelayanan. | Exception |
-| **AC-07** | Sistem menghitung indikator efisiensi pelayanan rumah sakit (BOR, ALOS, TOI, BTO, GDR, NDR) sesuai formula baku Kementerian Kesehatan RI berdasarkan data sensus dan kapasitas tempat tidur. | Correctness |
-| **AC-08** | Sistem menyajikan statistik epidemiologi meliputi peringkat 10 Besar Morbiditas (*Top 10 Morbidity*) per instalasi dan kelompok demografi, tren Penyakit Tidak Menular, serta kewaspadaan dini surveilans KLB. | Completeness |
+| **AC-07** | Sistem menghitung indikator efisiensi pelayanan rawat inap (BOR, ALOS, TOI, BTO, GDR, NDR) berdasarkan standar baku nasional dari data sensus dan kapasitas tempat tidur yang tersedia. | Correctness |
+| **AC-08** | Sistem menyajikan rangkuman pola morbiditas (peringkat 10 Besar Penyakit) berdasarkan data indeks kasus yang telah terkodifikasi. | Completeness |
 | **AC-09** | Setiap angka agregat pada sensus pelayanan dan statistik indikator dapat ditelusuri (*drill-down*) ke daftar kasus/pasien individual (indeks) yang membentuknya. | Correctness |
 | **AC-10** | Sistem tidak menyediakan fasilitas input manual atau modifikasi lokal terhadap angka sensus/indeks/statistik; seluruh angka merupakan turunan murni dari transaksi operasional sumber. | Constraint |
 | **AC-11** | Informasi sensus dan indeks dapat digunakan untuk memverifikasi dan mengaudit angka-angka pada Pelaporan RL (OC-04-04), tanpa menciptakan ketergantungan data langsung antara keduanya. | Correctness |
@@ -269,5 +249,7 @@ Berakhir ketika informasi sensus pelayanan, indeks kasus rekam medis, dan statis
 - **Monitoring Operasional Tempat Tidur Real-Time (*Live Bed Board*)**: Papan kontrol ketersediaan dan status kesiapan tempat tidur kamar bangsal saat ini untuk penempatan pasien baru → `RNA-BED` (`mnuInfoPasienAktif`).
 - **Pengelolaan Status Keaktifan Nomor Rekam Medis**: Penonaktifan nomor rekam medis atau retensi status pasien non-aktif → `PAS-DATSOS` / `BRM-MUTASI` (`mnuPasienNonAktif`).
 - **Administrasi Layanan Pelanggan / Pemasaran Non-Medis**: Pengelolaan data ulang tahun pasien untuk keperluan promosi atau ucapan humas rumah sakit (`mnuPasienUltah`) → Administrasi Humas / CRM Rumah Sakit.
+- **Analitik Epidemiologi Luas (Perlu Dievaluasi Tersendiri)**: Tabulasi penyakit tidak menular (PTM), statistik maternal-perinatal, dan kewaspadaan dini surveilans KLB (`mnuInfoSurveilansKLB`, `mnuMaternal`, `mnuPenyakitTdkMenular`, `mnuRekapKegiatanDepkes`) berada di luar boundary Index/Sensus dan perlu dievaluasi lebih lanjut — apakah termasuk dalam outcome ini setelah scope diperluas, atau merupakan capability/outcome tersendiri.
 - **Transmisi Elektronik ke Server Eksternal (Kemenkes / Dinkes)**: Mekanisme protokol komunikasi API pengiriman data surveilans atau statistik ke instansi luar rumah sakit.
 - **Keputusan Desain Teknis**: Skema tabel basis data, optimasi indeks SQL, mekanisme penyimpanan sementara (*caching*), arsitektur *reporting engine*, dan desain tata letak antarmuka pengguna (*UI wireframe*).
+
