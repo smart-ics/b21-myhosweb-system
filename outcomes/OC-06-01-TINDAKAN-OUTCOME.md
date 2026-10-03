@@ -3,7 +3,7 @@
 | Field       | Value        |
 |-------------|--------------|
 | Code        | OC-06-01     |
-| Version     | 1.1          |
+| Version     | 1.2          |
 | Status      | Draft        |
 | LastUpdated | 2026-10-03   |
 
@@ -26,7 +26,7 @@ Tanpa pencatatan pelaksanaan tindakan yang sah dan akuntabel, rumah sakit tidak 
 
 ## 2. Outcome Statement
 
-Aktivitas pelayanan medis, keperawatan, atau prosedur klinis yang dilakukan oleh tenaga kesehatan kepada pasien rawat inap **telah tercatat sebagai fakta pelaksanaan pelayanan (Clinical Service Event) yang sah, akuntabel, dan siap digunakan sebagai konteks asuhan berkelanjutan serta dapat menjadi sumber bagi konsekuensi bisnis downstream seperti pembentukan charge apabila berlaku**.
+Pelayanan medis, keperawatan, atau prosedur klinis yang benar-benar dilakukan oleh tenaga kesehatan kepada pasien rawat inap **telah tercatat sebagai fakta pelaksanaan pelayanan (Clinical Service Event) yang sah, akuntabel, dan dapat ditelusuri untuk kebutuhan asuhan berkelanjutan. Pencatatan tindakan merupakan outcome tersendiri dan dapat menjadi sumber bagi proses downstream, termasuk pembentukan charge apabila berlaku, tetapi keberhasilan proses downstream tersebut bukan merupakan syarat tercapainya outcome Tindakan.**
 
 ---
 
@@ -130,7 +130,7 @@ Berakhir ketika fakta bahwa tindakan telah dilakukan telah tercatat secara persi
 
 Pembentukan *Charge*, penerbitan *Tagihan*, maupun penerimaan *Pembayaran* **bukan merupakan bagian dari completion condition OC-06-01**.
 
-Outcome ini juga mencapai titik akhir terminal alternatif apabila pencatatan tindakan dibatalkan (**Dibatalkan / Void**) melalui prosedur koreksi bisnis yang sah dan dapat diaudit.
+Tindakan yang telah dicatat dapat kemudian dibatalkan melalui proses koreksi bisnis yang sah. Setelah berstatus Void, tindakan tersebut tidak lagi dianggap sebagai tindakan aktif/valid untuk proses downstream. Riwayat bahwa tindakan tersebut pernah dicatat dan kemudian dikoreksi harus tetap dapat ditelusuri secara akuntabel.
 
 ---
 
@@ -145,7 +145,7 @@ Outcome ini juga mencapai titik akhir terminal alternatif apabila pencatatan tin
 - **Validitas Waktu:** Waktu pelaksanaan tindakan tidak boleh berada di masa mendatang (*future time*) dan harus berada dalam rentang waktu episode rawat inap pasien.
 - **Independensi dari Billing:** Keberhasilan pencatatan tindakan tidak bergantung pada keberhasilan proses pembentukan charge atau penagihan. Charge adalah konsekuensi downstream dari tindakan.
 - **Pemisahan dari Pemakaian Barang:** Tindakan tidak mencatat pengurangan stok atau konsumsi fisik bahan medis habis pakai; penggunaan barang merupakan tanggung jawab outcome terpisah (*Pakai Barang*).
-- **Akuntabilitas Pembatalan (Void):** Tindakan yang dibatalkan harus memiliki alasan bisnis yang sah dan dapat diaudit. Tindakan yang telah berstatus *Void* tidak lagi diakui sebagai pelayanan aktif yang sah.
+- **Akuntabilitas Pembatalan (Void):** Tindakan yang telah dicatat dapat dibatalkan melalui proses koreksi bisnis yang sah. Void merupakan koreksi terhadap pencatatan dan bukan penghapusan riwayat pencatatan. Setelah berstatus *Void*, tindakan tersebut tidak lagi dianggap sebagai tindakan aktif/valid untuk proses downstream, namun riwayat bahwa tindakan tersebut pernah dicatat dan kemudian dikoreksi harus tetap dapat ditelusuri secara akuntabel.
 - **Pencegahan Dampak Pembatalan Finansial:** Tindakan yang telah menghasilkan konsekuensi finansial tidak boleh dibatalkan tanpa mempertimbangkan dan merekonsiliasi konsekuensi finansial tersebut melalui proses bisnis yang bertanggung jawab di domain Tata Rekening.
 - **Pencatatan Ulang:** Apabila suatu pelayanan yang telah di-void ternyata benar-benar perlu diberikan kembali kepada pasien, peristiwa tersebut harus dicatat sebagai fakta tindakan baru.
 
