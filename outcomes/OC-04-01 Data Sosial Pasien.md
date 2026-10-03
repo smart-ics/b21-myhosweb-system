@@ -3,7 +3,7 @@
 | Field       | Value             |
 |-------------|-------------------|
 | Code        | OC-04-01          |
-| Version     | 1.1               |
+| Version     | 1.2               |
 | Status      | Draft             |
 | LastUpdated | 2026-10-03        |
 
@@ -31,10 +31,10 @@ Informasi identitas dan sosial pasien **telah terbentuk atau diperbarui sebagai 
 
 | Domain | Role in this Outcome |
 |--------|----------------------|
-| **Pasien** | **Pemilik Utama**: Mengelola profil Data Sosial Pasien, menerbitkan No. RM sebagai business key, memelihara atribut identitas dan sosial, serta memelihara status keaktifan master data pasien melalui kapabilitas `PAS-DATSOS`. |
-| **Admission** | **Inisiator & Pemutakhir Operasional**: Memfasilitasi pembentukan data sosial pasien baru pada pendaftaran pertama, memverifikasi identitas pasien pada kunjungan ulang, dan memfasilitasi pemutakhiran data saat registrasi pelayanan melalui kapabilitas `ADM-REG`. |
-| **Organisasi** | **Penyedia Referensi Baku**: Menyediakan data master referensi wilayah administratif dan atribut sosiologis yang digunakan pada profil pasien melalui kapabilitas `ORG-LAYANAN`. |
-| **BPJS** | **Verifikator Eksternal (Kondisional)**: Memvalidasi kesesuaian data identitas pasien (NIK) dengan basis data nasional BPJS Kesehatan melalui kapabilitas `BPJ-VCLAIM` pada saat pendaftaran atau verifikasi penjamin. |
+| **Pasien** | **Pemilik Utama (*Primary*)**: Mengelola profil Data Sosial Pasien, menerbitkan No. RM sebagai business key, memelihara atribut identitas dan sosial, serta memelihara status keaktifan master data pasien melalui kapabilitas `PAS-DATSOS`. |
+| **Admission** | **Pendukung Operasional (*Supporting*)**: Memfasilitasi pembentukan data sosial pasien baru pada pendaftaran pertama, memverifikasi identitas pasien pada kunjungan ulang, dan memfasilitasi pemutakhiran data saat registrasi pelayanan melalui kapabilitas `ADM-REG`. |
+| **Organisasi** | **Penyedia Referensi (*Reference*)**: Menyediakan data master referensi wilayah administratif dan atribut sosiologis yang digunakan pada profil pasien melalui kapabilitas `ORG-LAYANAN`. Organisasi tidak membentuk atau mengubah Data Sosial Pasien, melainkan menyediakan nilai referensi baku. |
+| **BPJS** | **Verifikator Eksternal (*Conditional*)**: Memvalidasi kesesuaian data identitas pasien (NIK) dengan basis data nasional BPJS Kesehatan melalui kapabilitas `BPJ-VCLAIM`. Partisipasi BPJS bersifat kondisional — OC-04-01 **tetap dapat terbentuk tanpa verifikasi BPJS** apabila layanan verifikasi tidak tersedia atau tidak relevan. |
 
 > **Catatan**: Domain lain (Rawat Jalan, Rawat Inap, Gawat Darurat, Laboratorium, Radiologi, Apotek, Berkas Rekam Medis, Tata Rekening, Pelaporan) berperan sebagai **konsumen referensi**. Mereka mereferensikan No. RM dan data sosial pasien yang dipelihara oleh OC-04-01, tetapi tidak menjadi pemilik master identitas dan sosial tersebut.
 
@@ -42,13 +42,15 @@ Informasi identitas dan sosial pasien **telah terbentuk atau diperbarui sebagai 
 
 ## 4. Participating Capabilities
 
-| Capability | Domain | Status |
-|------------|--------|--------|
-| `PAS-DATSOS` Data Sosial Pasien | Pasien | Known |
-| `ADM-REG` Registration | Admission | Known |
-| `ORG-LAYANAN` Unit Layanan | Organisasi | Known |
-| `BPJ-VCLAIM` VClaim | BPJS | Known |
+| Capability | Domain | Role | Status |
+|------------|--------|------|--------|
+| `PAS-DATSOS` Data Sosial Pasien | Pasien | Primary | Known |
+| `ADM-REG` Registration | Admission | Supporting | Known |
+| `ORG-LAYANAN` Unit Layanan | Organisasi | Reference | Known |
+| `BPJ-VCLAIM` VClaim | BPJS | Conditional | Known |
 
+> **Capability Role**: Primary — capability inti pembentuk outcome · Supporting — capability yang memfasilitasi pembentukan · Reference — penyedia data referensi baku · Conditional — partisipasi bersyarat, outcome tetap dapat terbentuk tanpa capability ini.
+>
 > **Capability Status values:** Known · Existing but Undocumented · Capability Candidate
 
 ---
@@ -159,7 +161,7 @@ Informasi identitas dan sosial pasien **telah terbentuk atau diperbarui sebagai 
 |-----------|-------------------|
 | **Identitas pasien sudah terdaftar (duplikasi terdeteksi)** | Pembentukan No. RM baru ditolak. Profil pasien yang sudah ada ditampilkan untuk diverifikasi; petugas diarahkan untuk menggunakan No. RM yang ada atau melakukan pemutakhiran data. |
 | **Atribut minimum wajib tidak lengkap** | Pembentukan profil pasien baru ditolak hingga atribut minimum wajib terpenuhi. |
-| **Pasien gawat darurat tiba tanpa identitas yang terverifikasi** | No. RM dapat diterbitkan dengan identitas sementara agar pelayanan tidak terhambat. Pemutakhiran data sosial lengkap wajib dilakukan segera setelah identitas asli terkonfirmasi. |
+| **Pasien gawat darurat tiba tanpa identitas yang terverifikasi** | Satu No. RM diterbitkan dengan identitas sementara agar pelayanan tidak terhambat. No. RM ini adalah No. RM definitif pasien tersebut — **bukan No. RM sementara yang akan diganti**. Setelah identitas asli terkonfirmasi, profil Data Sosial Pasien pada No. RM yang sama wajib diperbarui dengan data identitas definitif. Apabila pada saat rekonsiliasi ditemukan bahwa individu tersebut sudah memiliki No. RM lain, penyelesaian dilakukan melalui kapabilitas `PAS-MERGE`, bukan dengan menerbitkan No. RM tambahan. |
 | **Koneksi verifikasi eksternal (Dukcapil / BPJS VClaim) tidak tersedia** | Penyimpanan data sosial dapat dilakukan berdasarkan dokumen fisik yang tersedia, dengan penanda status verifikasi tertunda untuk diselesaikan saat koneksi pulih. |
 
 ---
