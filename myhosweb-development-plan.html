@@ -946,18 +946,18 @@
       </div>
       <div class="gantt-wrapper">
         <div style="margin-bottom: 14px; font-size: 12px; color: var(--text-muted);">
-          * Timeline calculated assuming 1 Effort = 1 Working Day (22 Working Days = 1 Month). Waves run concurrently when PICs are independent, and queue sequentially when PICs overlap.
+          * Timeline calculated starting from 1 October 2026, assuming 1 Effort = 1 Working Day (22 Working Days ≈ 1 Month). Waves run concurrently when PICs are independent, and queue sequentially when PICs overlap.
         </div>
         <div class="gantt-header-row">
           <div>Delivery Wave</div>
-          <div>M1 (1-22d)</div>
-          <div>M2 (23-44d)</div>
-          <div>M3 (45-66d)</div>
-          <div>M4 (67-88d)</div>
-          <div>M5 (89-110d)</div>
-          <div>M6 (111-132d)</div>
-          <div>M7 (133-154d)</div>
-          <div>M8 (155-176d)</div>
+          <div>M1<br><span style="font-weight:400;font-size:10px">Oct 1–Nov 2</span></div>
+          <div>M2<br><span style="font-weight:400;font-size:10px">Nov 3–Dec 2</span></div>
+          <div>M3<br><span style="font-weight:400;font-size:10px">Dec 3–Jan 1</span></div>
+          <div>M4<br><span style="font-weight:400;font-size:10px">Jan 4–Feb 2</span></div>
+          <div>M5<br><span style="font-weight:400;font-size:10px">Feb 3–Apr 1</span></div>
+          <div>M6<br><span style="font-weight:400;font-size:10px">Apr 5–May 5</span></div>
+          <div>M7<br><span style="font-weight:400;font-size:10px">May 6–Jun 4</span></div>
+          <div>M8<br><span style="font-weight:400;font-size:10px">Jun 7–Jul 1</span></div>
         </div>
         <div id="ganttBody"></div>
       </div>
@@ -3665,10 +3665,30 @@
       });
 
       const maxTimelineDays = 176;
+      const startDate = new Date(Date.UTC(2026, 9, 1));
+      function dayToDate(d) {
+        let cur = new Date(startDate.getTime());
+        let count = 0;
+        while (count < d) {
+          cur = new Date(cur.getTime() + 86400000);
+          const dow = cur.getUTCDay();
+          if (dow !== 0 && dow !== 6) count++;
+        }
+        return cur;
+      }
+      function fmtDate(d) {
+        return d.toLocaleDateString('en-CA');
+      }
+      function fmtDateShort(d) {
+        const m = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        return m[d.getUTCMonth()] + ' ' + d.getUTCDate() + ' ' + d.getUTCFullYear();
+      }
 
       document.getElementById('ganttBody').innerHTML = waveSchedule.map(w => {
         const leftPct = ((w.startDay / maxTimelineDays) * 100).toFixed(2);
         const widthPct = (((w.endDay - w.startDay) / maxTimelineDays) * 100).toFixed(2);
+        const startD = dayToDate(w.startDay);
+        const endD = dayToDate(w.endDay);
 
         return `
           <div class="gantt-wave-row">
@@ -3676,8 +3696,8 @@
               <span class="wave-badge">${w.waveId}</span> ${w.waveName}
             </div>
             <div class="gantt-track-area">
-              <div class="gantt-bar-item" style="left: ${leftPct}%; width: ${widthPct}%;" title="Day ${w.startDay} to ${w.endDay} (${w.duration} working days)">
-                ${w.waveId}: Day ${w.startDay}-${w.endDay} (${w.duration}d duration)
+              <div class="gantt-bar-item" style="left: ${leftPct}%; width: ${widthPct}%;" title="${fmtDateShort(startD)} to ${fmtDateShort(endD)} (${w.duration} working days)">
+                ${w.waveId}: ${fmtDateShort(startD)} – ${fmtDateShort(endD)} (${w.duration}d)
               </div>
             </div>
           </div>
