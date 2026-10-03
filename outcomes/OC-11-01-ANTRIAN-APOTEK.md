@@ -3,7 +3,7 @@
 | Field       | Value        |
 |-------------|--------------|
 | Code        | OC-11-01     |
-| Version     | 1.0          |
+| Version     | 1.1          |
 | Status      | Draft        |
 | LastUpdated | 2026-10-03   |
 
@@ -21,7 +21,7 @@ Dengan adanya Antrian Apotek yang tercatat sebagai fakta bisnis persisten (*pers
 
 ## 2. Outcome Statement
 
-Entri antrian pelayanan apotek rawat jalan **telah tercatat dan diterbitkan dengan nomor antrian yang sah, terhubung tepat ke satu sumber pelayanan, serta perkembangannya terpantau secara transparan dan akuntabel dari penerbitan hingga pelayanan selesai atau dibatalkan**.
+Entri antrian pelayanan apotek rawat jalan **telah tercatat dan diterbitkan dengan nomor antrian yang sah, perkembangannya terpantau secara transparan dan akuntabel dari penerbitan hingga pelayanan selesai atau dibatalkan, dan pada saat sumber pelayanan telah diidentifikasi, antrian tersebut terhubung tepat ke satu sumber pelayanan**.
 
 ---
 
@@ -58,16 +58,15 @@ Entri antrian pelayanan apotek rawat jalan **telah tercatat dan diterbitkan deng
 ### 5.1 Required Business Facts
 
 - Nomor antrian apotek yang sah dan unik untuk hari pelayanan telah diterbitkan dan tercatat dalam sistem.
-- Entri antrian apotek merepresentasikan **tepat satu sumber pelayanan** (hubungan 1:1) dan tidak menggabungkan dua sumber pelayanan berbeda.
-- Kondisi hubungan (*mapping*) antara nomor antrian dan sumber pelayanan tercatat secara tegas:
-  - **Belum Terpetakan (*Unmapped*)**: nomor antrian sudah terbit namun belum dikaitkan dengan sumber pelayanan spesifik.
-  - **Terpetakan (*Mapped*)**: nomor antrian telah terhubung secara definitif dengan tepat satu sumber pelayanan (resep sistem, resep kerja/kertas, atau jual bebas).
+- Setiap nomor antrian mencatat apakah sumber pelayanan telah diidentifikasi atau belum:
+  - Jika sumber pelayanan **belum diidentifikasi**, antrian tetap valid dan dapat diproses lebih lanjut oleh petugas.
+  - Jika sumber pelayanan **sudah diidentifikasi**, antrian tersebut terhubung ke **tepat satu** sumber pelayanan (resep masuk dari sistem, resep kertas/kerja, atau jual bebas). Satu nomor antrian tidak dapat dihubungkan ke lebih dari satu sumber pelayanan.
 - Status perkembangan pelayanan antrian tercatat sebagai fakta bisnis yang bertahap dan dapat dibedakan:
   - **Menunggu Pelayanan**: antrian aktif menunggu pemanggilan atau pemrosesan.
-  - **Dipanggil / Sedang Dilayani**: antrian sedang dipanggil di loket tertentu atau sedang diproses oleh petugas apotek.
+  - **Dipanggil / Sedang Dilayani**: antrian sedang dalam proses pelayanan oleh petugas apotek.
   - **Selesai**: seluruh proses pelayanan kefarmasian untuk nomor antrian tersebut telah tuntas.
-  - **Dibatalkan**: antrian dihentikan sebelum selesai (misalnya pasien tidak hadir atau membatalkan pelayanan).
-- Informasi nomor antrian, loket pelayanan, dan status pelayanan tersedia untuk disajikan pada sarana informasi pasien (*display* antrian).
+  - **Dibatalkan**: antrian dihentikan sebelum selesai.
+- Informasi nomor antrian, loket pelayanan, dan status pelayanan tercatat dan dapat disajikan kepada pasien.
 
 ### 5.2 Required Recorded Information
 
@@ -75,24 +74,22 @@ Entri antrian pelayanan apotek rawat jalan **telah tercatat dan diterbitkan deng
 - Unit apotek tujuan dan loket pelayanan yang menangani.
 - Tanggal dan waktu penerbitan nomor antrian.
 - Status pelayanan antrian saat ini (**Menunggu Pelayanan**, **Dipanggil / Sedang Dilayani**, **Selesai**, atau **Dibatalkan**).
-- Status keterikatan sumber pelayanan (**Belum Terpetakan** atau **Terpetakan**).
-- Jenis sumber pelayanan (Resep Masuk dari Sistem, Resep Kertas/Kerja, atau Jual Bebas / Non-resep).
-- Referensi dokumen/transaksi sumber pelayanan (misalnya nomor resep atau nomor order penjualan jika sudah terpetakan).
-- Identitas pasien (Nomor Rekam Medis dan/atau nama pasien) jika sudah diketahui atau terhubung dengan resep/identitas yang sah.
-- Loket pemanggil / titik layanan tempat antrian dipanggil atau dilayani.
-- Catatan riwayat waktu pelayanan (*lifecycle timestamps*): waktu penerbitan antrian, waktu pemanggilan, dan waktu penyelesaian/pembatalan.
+- Kondisi keterikatan sumber pelayanan: apakah sumber pelayanan sudah diidentifikasi atau belum.
+- Jenis sumber pelayanan (resep masuk dari sistem, resep kertas/kerja, atau jual bebas / non-resep) — jika sudah teridentifikasi.
+- Referensi ke sumber pelayanan (misalnya nomor resep) — jika sudah terpetakan.
+- Identitas pasien (Nomor Rekam Medis dan/atau nama pasien) jika sudah diketahui.
+- Loket / titik pelayanan tempat antrian dipanggil atau dilayani.
+- Riwayat waktu pelayanan: waktu penerbitan antrian, waktu pemanggilan, dan waktu penyelesaian atau pembatalan.
 - Identitas petugas yang memanggil, memetakan, atau menyelesaikan antrian.
-- Catatan tindakan pemanggilan di luar urutan normal (jika petugas memilih nomor antrian di luar urutan nomor default).
+- Catatan bahwa pemanggilan dilakukan di luar urutan nomor normal — jika kondisi tersebut terjadi.
 
 ### 5.3 Required Business Conditions
 
-- Nomor antrian apotek dapat diterbitkan sebelum sumber pelayanan teridentifikasi/terhubung (misalnya saat pasien mengambil nomor di kiosk), atau diterbitkan bersamaan saat resep elektronik diterima oleh apotek.
-- Suatu nomor antrian yang berstatus Belum Terpetakan (*Unmapped*) wajib diidentifikasi dan dimapping ke tepat satu sumber pelayanan sebelum pelayanan kefarmasian definitif dinyatakan selesai.
-- Satu nomor antrian hanya boleh terikat pada satu sumber pelayanan. Tidak diperbolehkan menggabungkan dua resep berbeda atau resep dengan transaksi jual bebas ke dalam satu nomor antrian yang sama.
-- Satu sumber pelayanan aktif hanya boleh memiliki satu entri antrian apotek aktif pada hari pelayanan yang sama.
-- Urutan nomor antrian adalah urutan pelayanan normal/default, namun petugas apotek memiliki wewenang untuk memilih dan memanggil nomor antrian lain di luar urutan nomor berdasarkan kondisi pelayanan nyata di apotek.
+- Nomor antrian apotek dapat diterbitkan sebelum sumber pelayanan teridentifikasi, maupun bersamaan saat sumber pelayanan sudah diketahui.
+- Pada saat sumber pelayanan telah diidentifikasi, satu nomor antrian hanya dapat dihubungkan ke tepat satu sumber pelayanan. Tidak diperbolehkan menggabungkan dua resep berbeda, atau resep dengan transaksi jual bebas, ke dalam satu nomor antrian yang sama.
+- Urutan nomor antrian adalah urutan pelayanan normal/default, namun petugas apotek memiliki wewenang untuk memilih dan memanggil nomor antrian lain di luar urutan berdasarkan kondisi pelayanan nyata di apotek.
 - Sistem tidak melakukan penghitungan tingkat urgensi secara otomatis dan tidak menghitung estimasi waktu tunggu (*estimated waiting time*).
-- Status perkembangan pelayanan harus mengikuti transisi yang sah dan tidak boleh melompati tahap validasi pemetaan sebelum penyelesaian.
+- Pelayanan suatu nomor antrian tidak dapat dinyatakan selesai (**Selesai**) sebelum sumber pelayanannya berhasil diidentifikasi.
 
 ### 5.4 Completion Proof
 
@@ -107,15 +104,15 @@ Entri antrian pelayanan apotek rawat jalan **telah tercatat dan diterbitkan deng
 
 ### Start
 
-Dimulai ketika nomor antrian apotek diterbitkan dan entri antrian baru tercatat dalam sistem — baik melalui pengambilan mandiri oleh pasien/keluarga di kiosk antrian apotek, pencetakan/penerbitan oleh petugas apotek, maupun saat resep dari poliklinik masuk ke antrian apotek.
+Dimulai ketika nomor antrian apotek diterbitkan dan entri antrian baru tercatat dalam sistem.
 
 ### End
 
 Berakhir ketika entri antrian apotek mencapai kondisi terminal:
-1. Status pelayanan berubah menjadi **Selesai** (pelayanan kefarmasian untuk nomor antrian tersebut telah tuntas dilakukan); ATAU
-2. Status pelayanan berubah menjadi **Dibatalkan** (pasien tidak hadir setelah pemanggilan berulang atau pasien membatalkan proses pelayanan obat).
+1. Status pelayanan berubah menjadi **Selesai** — pelayanan kefarmasian untuk nomor antrian tersebut telah tuntas dilakukan; ATAU
+2. Status pelayanan berubah menjadi **Dibatalkan** — antrian ditutup sebelum pelayanan selesai.
 
-> **Catatan Batasan Waktu:** Outcome Antrian Apotek bersifat harian (*daily operational cycle*). Setiap nomor antrian hanya berlaku pada tanggal pelayanan yang bersangkutan dan tidak dibawa ke hari berikutnya.
+> **Catatan:** Outcome Antrian Apotek bersifat harian. Setiap nomor antrian hanya berlaku pada tanggal pelayanan yang bersangkutan dan tidak dibawa ke hari berikutnya.
 
 ---
 
@@ -124,14 +121,13 @@ Berakhir ketika entri antrian apotek mencapai kondisi terminal:
 > Rules that must always hold true for this Outcome.
 
 - **Urutan Pelayanan Default:** Urutan nomor antrian merupakan urutan pelayanan standar/normal di apotek.
-- **Diskresi Pemanggilan Petugas:** Petugas apotek memiliki kewenangan operasional untuk memanggil nomor antrian di luar urutan nomor normal apabila kondisi pelayanan di apotek mengharuskannya (misalnya kesiapan obat racikan vs non-racikan, kebutuhan telaah/klarifikasi dengan dokter, atau kehadiran fisik pasien di ruang tunggu).
-- **Relasi Tunggal (1:1):** Satu nomor antrian hanya merepresentasikan tepat satu sumber pelayanan. Penggabungan beberapa sumber pelayanan ke dalam satu nomor antrian dilarang.
-- **Fleksibilitas Penerbitan Awal:** Nomor antrian tidak selalu harus langsung memiliki sumber pelayanan pada saat diterbitkan; nomor antrian dapat diterbitkan dalam kondisi Belum Terpetakan (*Unmapped*) dan dimapping kemudian oleh petugas.
-- **Prasyarat Penyelesaian Pelayanan:** Pelayanan suatu nomor antrian tidak dapat diselesaikan (**Selesai**) sebelum nomor antrian tersebut berhasil dimapping secara definitif ke satu sumber pelayanan yang sah.
-- **Larangan Otomasi Urgensi:** Sistem dilarang menentukan atau menghitung tingkat urgensi secara otomatis; penentuan prioritas pelayanan di luar nomor urut adalah wewenang klinis/operasional petugas apotek.
-- **Larangan Estimasi Waktu Tunggu:** Sistem dilarang menghitung atau menampilkan perkiraan waktu tunggu (*estimated waiting time*) kepada pasien. Display antrian hanya menyajikan informasi faktual berupa nomor antrian, loket, dan status pelayanan agar pasien dapat memantau posisinya secara mandiri.
+- **Diskresi Pemanggilan Petugas:** Petugas apotek memiliki kewenangan untuk memanggil nomor antrian di luar urutan normal apabila kondisi pelayanan di apotek mengharuskannya.
+- **Relasi Tunggal (1:1) Pasca Identifikasi:** Setelah sumber pelayanan diidentifikasi, satu nomor antrian hanya dapat terhubung ke tepat satu sumber pelayanan. Penggabungan beberapa sumber pelayanan ke dalam satu nomor antrian dilarang.
+- **Fleksibilitas Penerbitan Awal:** Nomor antrian dapat diterbitkan sebelum sumber pelayanannya diketahui, dan dapat dimapping kemudian oleh petugas.
+- **Prasyarat Penyelesaian Pelayanan:** Pelayanan suatu nomor antrian tidak dapat dinyatakan **Selesai** sebelum sumber pelayanannya berhasil diidentifikasi.
+- **Larangan Otomasi Urgensi:** Sistem dilarang menentukan atau menghitung tingkat urgensi secara otomatis; penentuan prioritas pelayanan di luar nomor urut adalah wewenang petugas apotek.
+- **Larangan Estimasi Waktu Tunggu:** Sistem dilarang menghitung atau menampilkan perkiraan waktu tunggu kepada pasien. Informasi antrian yang disajikan kepada pasien hanya berupa nomor antrian, loket, dan status pelayanan.
 - **Keunikan Nomor Antrian Harian:** Nomor antrian apotek harus unik untuk setiap unit apotek pada tanggal pelayanan yang sama.
-- **Ketertutupan Status Akhir (*Immutability of Terminal State*):** Antrian yang sudah berstatus **Selesai** atau **Dibatalkan** bersifat permanen dan tidak dapat diaktifkan kembali. Pelayanan baru memerlukan penerbitan nomor antrian baru.
 
 ---
 
@@ -141,12 +137,11 @@ Berakhir ketika entri antrian apotek mencapai kondisi terminal:
 
 | Exception | Expected Behavior |
 |-----------|-------------------|
-| Sumber pelayanan tidak ditemukan saat proses pemetaan | Antrian tetap berstatus **Belum Terpetakan**. Petugas melakukan konfirmasi manual ke unit poliklinik atau mencari berkas resep kertas. Jika sumber pelayanan tetap tidak ditemukan atau tidak sah, antrian dapat ditandai **Dibatalkan**. |
-| Sumber pelayanan yang dipilih sudah terikat pada nomor antrian aktif lain | Sistem menolak pemetaan ganda. Petugas diberitahu bahwa sumber pelayanan tersebut sudah memiliki nomor antrian aktif dan diarahkan untuk menggunakan antrian yang sudah ada atau membatalkan antrian duplikat. |
-| Pasien tidak merespons saat nomor antrian dipanggil | Petugas dapat menandai antrian sebagai dilewati (*skip* / panggilan tertunda) dan melanjutkan pemanggilan ke nomor berikutnya. Pasien yang bersangkutan dapat dipanggil kembali sewaktu hadir tanpa kehilangan hak antriannya, atau dibatalkan jika melebihi batas waktu tunggu yang ditentukan apotek. |
-| Pasien membatalkan transaksi atau meninggalkan apotek sebelum obat selesai diproses | Antrian diubah statusnya menjadi **Dibatalkan** dengan mencatat alasan pembatalan dari pasien atau petugas. |
-| Resep dari sistem poliklinik dibatalkan oleh dokter setelah nomor antrian diterbitkan | Status antrian apotek terkait disesuaikan menjadi **Dibatalkan** dengan keterangan resep dibatalkan oleh peresep. |
-| Terjadi gangguan sarana cetak atau kiosk mandiri saat pasien mengambil antrian | Petugas apotek dapat menerbitkan nomor antrian secara langsung dari loket sehingga antrian tetap tercatat dalam sistem secara sah. |
+| Sumber pelayanan tidak dapat diidentifikasi saat proses pemetaan | Antrian tetap aktif tanpa sumber pelayanan terhubung. Petugas melakukan konfirmasi manual ke unit terkait. Jika sumber pelayanan tidak dapat ditemukan atau tidak sah, antrian dapat ditutup dengan status **Dibatalkan**. |
+| Sumber pelayanan yang dipilih sudah terikat pada nomor antrian aktif lain | Pemetaan ditolak. Petugas diberitahu bahwa sumber pelayanan tersebut sudah memiliki nomor antrian aktif dan diarahkan untuk menggunakan atau membatalkan antrian yang sudah ada. |
+| Pasien tidak merespons saat nomor antrian dipanggil | Petugas dapat melewati (*skip*) antrian tersebut dan melanjutkan pemanggilan ke nomor berikutnya. Nomor yang dilewati tetap tercatat sebagai antrian aktif dan dapat dipanggil kembali. |
+| Pasien membatalkan atau meninggalkan apotek sebelum pelayanan selesai | Antrian diubah statusnya menjadi **Dibatalkan** dengan mencatat alasan pembatalan. |
+| Resep dari poliklinik dibatalkan oleh dokter setelah nomor antrian diterbitkan | Antrian terkait tidak memiliki sumber pelayanan yang sah; antrian disesuaikan menjadi **Dibatalkan**. |
 
 ---
 
@@ -156,20 +151,17 @@ Berakhir ketika entri antrian apotek mencapai kondisi terminal:
 
 | # | Criterion | Validates |
 |---|-----------|-----------|
-| AC-01 | Nomor antrian apotek yang diterbitkan tercatat dengan kode/nomor urut unik untuk unit apotek dan tanggal pelayanan yang bersangkutan. | Completeness |
-| AC-02 | Setiap entri antrian apotek mencatat waktu penerbitan, unit apotek, loket, status pelayanan, dan status keterikatan sumber pelayanan. | Completeness |
-| AC-03 | Nomor antrian apotek dapat diterbitkan dalam kondisi Belum Terpetakan (*Unmapped*) tanpa mengharuskan sumber pelayanan langsung tersedia saat nomor dibuat. | Correctness |
-| AC-04 | Nomor antrian apotek dapat dihubungkan ke sumber pelayanan yang sah (resep masuk dari rawat jalan, resep kertas/manual, atau transaksi jual bebas) sehingga status keterikatannya berubah menjadi Terpetakan (*Mapped*). | Correctness |
-| AC-05 | Sistem mencegah satu nomor antrian dihubungkan ke lebih dari satu sumber pelayanan (menegakkan aturan 1:1). | Constraint |
-| AC-06 | Sistem menolak pemetaan jika sumber pelayanan yang dipilih sudah terhubung dengan nomor antrian apotek lain yang masih aktif pada hari yang sama. | Constraint |
-| AC-07 | Petugas apotek dapat memilih dan memanggil nomor antrian di luar urutan nomor normal tanpa halangan dari sistem, dan tindakan tersebut tercatat dalam riwayat antrian. | Correctness |
-| AC-08 | Sistem tidak menampilkan perhitungan atau estimasi waktu tunggu (*estimated waiting time*) pada informasi antrian. | Constraint |
-| AC-09 | Informasi nomor antrian, loket, dan status perkembangan pelayanan dapat disajikan untuk display ruang tunggu pasien. | Completeness |
-| AC-10 | Status pelayanan antrian dapat diperbarui secara berurutan (**Menunggu Pelayanan** → **Dipanggil / Sedang Dilayani** → **Selesai** atau **Dibatalkan**). | Correctness |
-| AC-11 | Antrian yang belum terpetakan ke sumber pelayanan tidak dapat diubah statusnya menjadi **Selesai**. | Constraint |
-| AC-12 | Antrian yang telah berstatus **Selesai** atau **Dibatalkan** tidak dapat diubah kembali statusnya menjadi aktif. | Constraint |
-| AC-13 | Antrian yang pasiennya tidak merespons pemanggilan dapat dilewati (*skip*) untuk memanggil antrian berikutnya, dan tetap dapat dipanggil kembali oleh petugas sebelum ditutup. | Exception |
-| AC-14 | Antrian yang dibatalkan mencatat status **Dibatalkan** beserta alasan pembatalan dan identitas petugas yang membatalkan. | Exception |
+| AC-01 | Nomor antrian apotek yang diterbitkan tercatat dengan nomor urut unik untuk unit apotek dan tanggal pelayanan yang bersangkutan. | Completeness |
+| AC-02 | Setiap entri antrian apotek mencatat waktu penerbitan, unit apotek, status pelayanan, dan kondisi keterikatan sumber pelayanan. | Completeness |
+| AC-03 | Nomor antrian apotek dapat diterbitkan sebelum sumber pelayanan diidentifikasi — entri antrian tercatat sah dengan kondisi sumber belum diketahui. | Correctness |
+| AC-04 | Setelah sumber pelayanan diidentifikasi, entri antrian mencatat keterikatan ke tepat satu sumber pelayanan (resep masuk dari rawat jalan, resep kertas/kerja, atau jual bebas). | Correctness |
+| AC-05 | Tidak terdapat entri antrian yang memiliki keterikatan ke lebih dari satu sumber pelayanan. | Constraint |
+| AC-06 | Entri antrian yang memiliki sumber pelayanan terpetakan tidak dapat dinyatakan **Selesai** tanpa sumber pelayanan tersebut tercatat. | Constraint |
+| AC-07 | Riwayat antrian menunjukkan bahwa terdapat nomor yang dilayani di luar urutan nomor normal, dan kondisi tersebut tercatat dalam entri antrian. | Correctness |
+| AC-08 | Entri antrian tidak memuat informasi estimasi waktu tunggu atau perkiraan jadwal selesai. | Constraint |
+| AC-09 | Informasi nomor antrian, loket, dan status pelayanan tercatat dalam sistem dan dapat diambil untuk disajikan kepada pasien. | Completeness |
+| AC-10 | Entri antrian yang berstatus **Selesai** memiliki sumber pelayanan terpetakan, loket pelayanan, dan waktu penyelesaian yang tercatat. | Completeness |
+| AC-11 | Entri antrian yang berstatus **Dibatalkan** memiliki catatan alasan pembatalan dan identitas petugas yang membatalkan. | Exception |
 
 ---
 
