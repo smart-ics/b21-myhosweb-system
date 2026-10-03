@@ -7,6 +7,7 @@
         {
           "ScreenId": "SC-14",
           "ScreenName": "Mastering",
+          "PIC": "",
           "Outcomes": [
             {
               "OutcomeId": "OC-14-01",
@@ -208,6 +209,7 @@
         {
           "ScreenId": "SC-01",
           "ScreenName": "Admisi",
+          "PIC": "",
           "Outcomes": [
             {
               "OutcomeId": "OC-01-01",
@@ -385,6 +387,7 @@
         {
           "ScreenId": "SC-05",
           "ScreenName": "Poli Rawat Jalan",
+          "PIC": "",
           "Outcomes": [
             {
               "OutcomeId": "OC-05-01",
@@ -512,6 +515,7 @@
         {
           "ScreenId": "SC-02",
           "ScreenName": "Tata Rekening",
+          "PIC": "",
           "Outcomes": [
             {
               "OutcomeId": "OC-02-01",
@@ -582,6 +586,7 @@
         {
           "ScreenId": "SC-03",
           "ScreenName": "Kasir",
+          "PIC": "",
           "Outcomes": [
             {
               "OutcomeId": "OC-03-01",
@@ -692,6 +697,7 @@
         {
           "ScreenId": "SC-04",
           "ScreenName": "Rekam Medis",
+          "PIC": "",
           "Outcomes": [
             {
               "OutcomeId": "OC-04-01",
@@ -859,6 +865,7 @@
         {
           "ScreenId": "SC-07",
           "ScreenName": "IGD",
+          "PIC": "",
           "Outcomes": [
             {
               "OutcomeId": "OC-07-01",
@@ -986,6 +993,7 @@
         {
           "ScreenId": "SC-06",
           "ScreenName": "Bangsal Rawat Inap",
+          "PIC": "",
           "Outcomes": [
             {
               "OutcomeId": "OC-06-01",
@@ -1121,6 +1129,7 @@
         {
           "ScreenId": "SC-08",
           "ScreenName": "Laboratorium",
+          "PIC": "",
           "Outcomes": [
             {
               "OutcomeId": "OC-08-01",
@@ -1295,6 +1304,7 @@
         {
           "ScreenId": "SC-09",
           "ScreenName": "Radiologi",
+          "PIC": "",
           "Outcomes": [
             {
               "OutcomeId": "OC-09-01",
@@ -1469,6 +1479,7 @@
         {
           "ScreenId": "SC-10",
           "ScreenName": "Kamar Operasi",
+          "PIC": "",
           "Outcomes": [
             {
               "OutcomeId": "OC-10-01",
@@ -1646,6 +1657,7 @@
         {
           "ScreenId": "SC-11",
           "ScreenName": "Apotek",
+          "PIC": "",
           "Outcomes": [
             {
               "OutcomeId": "OC-11-01",
@@ -1899,6 +1911,7 @@
         {
           "ScreenId": "SC-12",
           "ScreenName": "Gudang",
+          "PIC": "",
           "Outcomes": [
             {
               "OutcomeId": "OC-12-01",
@@ -2058,6 +2071,7 @@
         {
           "ScreenId": "SC-13",
           "ScreenName": "Purchasing",
+          "PIC": "",
           "Outcomes": [
             {
               "OutcomeId": "OC-13-01",
