@@ -5,7 +5,6 @@ SC-14 Mastering
 ├── OC-14-01 Master Organisasi
 ├── OC-14-02 Master Dokter
 ├── OC-14-03 Master Jaminan
-├── OC-14-04 Master Layanan
 └── OC-14-05 Master Tarif
 
 SC-01 Admisi
