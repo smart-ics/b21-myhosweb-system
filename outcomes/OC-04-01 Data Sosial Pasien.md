@@ -141,7 +141,7 @@ Profil Data Sosial Pasien memuat kelompok informasi sebagai berikut:
 - Nomor identitas resmi pihak terkait (NIK/KTP), bila dipersyaratkan.
 
 **E. Metadata dan Jejak Audit Bisnis (Audit Trail):**
-- Waktu pencatatan data pertama kali (*Creation Timestamp*).
+- Waktu pencatatan pertama kali (*Creation Timestamp*).
 - Petugas pembuat rekaman awal (*Created By*).
 - Waktu pemutakhiran terakhir (*Last Modified Timestamp*).
 - Petugas pemutakhiran terakhir (*Modified By*).
