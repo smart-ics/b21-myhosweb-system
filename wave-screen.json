@@ -10,23 +10,28 @@
           "Outcome": [
             {
               "OutcomeId": "OC-14-01",
-              "OutcomeName": "Master Organisasi"
+              "OutcomeName": "Master Organisasi",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-14-02",
-              "OutcomeName": "Master Dokter"
+              "OutcomeName": "Master Dokter",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-14-03",
-              "OutcomeName": "Master Jaminan"
+              "OutcomeName": "Master Jaminan",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-14-04",
-              "OutcomeName": "Master Layanan"
+              "OutcomeName": "Master Layanan",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-14-05",
-              "OutcomeName": "Master Tarif"
+              "OutcomeName": "Master Tarif",
+              "Complexity": 1
             }
           ],
           "Workspace": [
@@ -202,31 +207,38 @@
           "Outcome": [
             {
               "OutcomeId": "OC-01-01",
-              "OutcomeName": "Booking"
+              "OutcomeName": "Booking",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-01-02",
-              "OutcomeName": "Registrasi Rawat Jalan dan IGD"
+              "OutcomeName": "Registrasi Rawat Jalan dan IGD",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-01-03",
-              "OutcomeName": "Registrasi Rawat Inap"
+              "OutcomeName": "Registrasi Rawat Inap",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-01-04",
-              "OutcomeName": "VCLAIM BPJS"
+              "OutcomeName": "VCLAIM BPJS",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-01-05",
-              "OutcomeName": "Patient Journey Tracking"
+              "OutcomeName": "Patient Journey Tracking",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-01-06",
-              "OutcomeName": "Jadwal Praktek"
+              "OutcomeName": "Jadwal Praktek",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-01-07",
-              "OutcomeName": "Antrian"
+              "OutcomeName": "Antrian",
+              "Complexity": 1
             }
           ],
           "Workspace": [
@@ -369,31 +381,38 @@
           "Outcome": [
             {
               "OutcomeId": "OC-05-01",
-              "OutcomeName": "Antrian"
+              "OutcomeName": "Antrian",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-05-02",
-              "OutcomeName": "Tindakan"
+              "OutcomeName": "Tindakan",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-05-03",
-              "OutcomeName": "Rujuk Internal"
+              "OutcomeName": "Rujuk Internal",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-05-04",
-              "OutcomeName": "CPOE (Order Pemeriksaan)"
+              "OutcomeName": "CPOE (Order Pemeriksaan)",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-05-05",
-              "OutcomeName": "Pakai Barang"
+              "OutcomeName": "Pakai Barang",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-05-06",
-              "OutcomeName": "Mutasi Barang"
+              "OutcomeName": "Mutasi Barang",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-05-07",
-              "OutcomeName": "Opname"
+              "OutcomeName": "Opname",
+              "Complexity": 1
             }
           ],
           "Workspace": [
@@ -487,19 +506,23 @@
           "Outcome": [
             {
               "OutcomeId": "OC-02-01",
-              "OutcomeName": "Rincian Tagihan Pasien"
+              "OutcomeName": "Rincian Tagihan Pasien",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-02-02",
-              "OutcomeName": "Alokasi Pembayaran"
+              "OutcomeName": "Alokasi Pembayaran",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-02-03",
-              "OutcomeName": "Deposit"
+              "OutcomeName": "Deposit",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-02-04",
-              "OutcomeName": "Reg-Out"
+              "OutcomeName": "Reg-Out",
+              "Complexity": 1
             }
           ],
           "Workspace": [
@@ -552,11 +575,13 @@
           "Outcome": [
             {
               "OutcomeId": "OC-03-01",
-              "OutcomeName": "Kasir (Terima/Keluar Kas)"
+              "OutcomeName": "Kasir (Terima/Keluar Kas)",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-03-02",
-              "OutcomeName": "Closing Shift"
+              "OutcomeName": "Closing Shift",
+              "Complexity": 1
             }
           ],
           "Workspace": [
@@ -658,23 +683,28 @@
           "Outcome": [
             {
               "OutcomeId": "OC-04-01",
-              "OutcomeName": "Data Sosial Pasien"
+              "OutcomeName": "Data Sosial Pasien",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-04-02",
-              "OutcomeName": "Manajemen Berkas"
+              "OutcomeName": "Manajemen Berkas",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-04-03",
-              "OutcomeName": "Casemix dan Coding"
+              "OutcomeName": "Casemix dan Coding",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-04-04",
-              "OutcomeName": "Pelaporan RL"
+              "OutcomeName": "Pelaporan RL",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-04-05",
-              "OutcomeName": "Pelaporan Index dan Sensus"
+              "OutcomeName": "Pelaporan Index dan Sensus",
+              "Complexity": 1
             }
           ],
           "Workspace": [
@@ -817,31 +847,38 @@
           "Outcome": [
             {
               "OutcomeId": "OC-07-01",
-              "OutcomeName": "IGD Visit"
+              "OutcomeName": "IGD Visit",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-07-02",
-              "OutcomeName": "Triage"
+              "OutcomeName": "Triage",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-07-03",
-              "OutcomeName": "Ambulance"
+              "OutcomeName": "Ambulance",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-07-04",
-              "OutcomeName": "Tindakan"
+              "OutcomeName": "Tindakan",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-07-05",
-              "OutcomeName": "Pakai Barang"
+              "OutcomeName": "Pakai Barang",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-07-06",
-              "OutcomeName": "Mutasi Barang"
+              "OutcomeName": "Mutasi Barang",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-07-07",
-              "OutcomeName": "Opname"
+              "OutcomeName": "Opname",
+              "Complexity": 1
             }
           ],
           "Workspace": [
@@ -935,31 +972,38 @@
           "Outcome": [
             {
               "OutcomeId": "OC-06-01",
-              "OutcomeName": "Tindakan"
+              "OutcomeName": "Tindakan",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-06-02",
-              "OutcomeName": "Pakai Bed"
+              "OutcomeName": "Pakai Bed",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-06-03",
-              "OutcomeName": "Transfer Unit"
+              "OutcomeName": "Transfer Unit",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-06-04",
-              "OutcomeName": "Discharge"
+              "OutcomeName": "Discharge",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-06-05",
-              "OutcomeName": "Pakai Barang"
+              "OutcomeName": "Pakai Barang",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-06-06",
-              "OutcomeName": "Mutasi Barang"
+              "OutcomeName": "Mutasi Barang",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-06-07",
-              "OutcomeName": "Opname"
+              "OutcomeName": "Opname",
+              "Complexity": 1
             }
           ],
           "Workspace": [
@@ -1061,35 +1105,43 @@
           "Outcome": [
             {
               "OutcomeId": "OC-08-01",
-              "OutcomeName": "External Registration"
+              "OutcomeName": "External Registration",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-08-02",
-              "OutcomeName": "Order Laboratorium"
+              "OutcomeName": "Order Laboratorium",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-08-03",
-              "OutcomeName": "Charge"
+              "OutcomeName": "Charge",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-08-04",
-              "OutcomeName": "Sample Collection"
+              "OutcomeName": "Sample Collection",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-08-05",
-              "OutcomeName": "Result Management"
+              "OutcomeName": "Result Management",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-08-06",
-              "OutcomeName": "Pakai Barang"
+              "OutcomeName": "Pakai Barang",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-08-07",
-              "OutcomeName": "Mutasi Barang"
+              "OutcomeName": "Mutasi Barang",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-08-08",
-              "OutcomeName": "Opname"
+              "OutcomeName": "Opname",
+              "Complexity": 1
             }
           ],
           "Workspace": [
@@ -1224,35 +1276,43 @@
           "Outcome": [
             {
               "OutcomeId": "OC-09-01",
-              "OutcomeName": "Order Radiologi"
+              "OutcomeName": "Order Radiologi",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-09-02",
-              "OutcomeName": "Scheduling"
+              "OutcomeName": "Scheduling",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-09-03",
-              "OutcomeName": "Imaging"
+              "OutcomeName": "Imaging",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-09-04",
-              "OutcomeName": "Expertise"
+              "OutcomeName": "Expertise",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-09-05",
-              "OutcomeName": "Verification"
+              "OutcomeName": "Verification",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-09-06",
-              "OutcomeName": "Pakai Barang"
+              "OutcomeName": "Pakai Barang",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-09-07",
-              "OutcomeName": "Mutasi Barang"
+              "OutcomeName": "Mutasi Barang",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-09-08",
-              "OutcomeName": "Opname"
+              "OutcomeName": "Opname",
+              "Complexity": 1
             }
           ],
           "Workspace": [
@@ -1387,31 +1447,38 @@
           "Outcome": [
             {
               "OutcomeId": "OC-10-01",
-              "OutcomeName": "Order Operasi"
+              "OutcomeName": "Order Operasi",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-10-02",
-              "OutcomeName": "Scheduling"
+              "OutcomeName": "Scheduling",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-10-03",
-              "OutcomeName": "Pre-Operative Clearance"
+              "OutcomeName": "Pre-Operative Clearance",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-10-04",
-              "OutcomeName": "Post-Operative Management"
+              "OutcomeName": "Post-Operative Management",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-10-05",
-              "OutcomeName": "Pakai Barang"
+              "OutcomeName": "Pakai Barang",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-10-06",
-              "OutcomeName": "Mutasi Barang"
+              "OutcomeName": "Mutasi Barang",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-10-07",
-              "OutcomeName": "Opname"
+              "OutcomeName": "Opname",
+              "Complexity": 1
             }
           ],
           "Workspace": [
@@ -1554,31 +1621,38 @@
           "Outcome": [
             {
               "OutcomeId": "OC-11-01",
-              "OutcomeName": "Antrian Apotek"
+              "OutcomeName": "Antrian Apotek",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-11-02",
-              "OutcomeName": "Telaah Resep"
+              "OutcomeName": "Telaah Resep",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-11-03",
-              "OutcomeName": "Penjualan"
+              "OutcomeName": "Penjualan",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-11-04",
-              "OutcomeName": "Dispensing"
+              "OutcomeName": "Dispensing",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-11-05",
-              "OutcomeName": "Serah Obat"
+              "OutcomeName": "Serah Obat",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-11-06",
-              "OutcomeName": "Opname"
+              "OutcomeName": "Opname",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-11-07",
-              "OutcomeName": "Mutasi"
+              "OutcomeName": "Mutasi",
+              "Complexity": 1
             }
           ],
           "Workspace": [
@@ -1795,23 +1869,28 @@
           "Outcome": [
             {
               "OutcomeId": "OC-12-01",
-              "OutcomeName": "Terima Barang (DO)"
+              "OutcomeName": "Terima Barang (DO)",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-12-02",
-              "OutcomeName": "Mutasi"
+              "OutcomeName": "Mutasi",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-12-03",
-              "OutcomeName": "Opname"
+              "OutcomeName": "Opname",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-12-04",
-              "OutcomeName": "Musnah"
+              "OutcomeName": "Musnah",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-12-05",
-              "OutcomeName": "Retur Beli"
+              "OutcomeName": "Retur Beli",
+              "Complexity": 1
             }
           ],
           "Workspace": [
@@ -1946,23 +2025,28 @@
           "Outcome": [
             {
               "OutcomeId": "OC-13-01",
-              "OutcomeName": "Material Request"
+              "OutcomeName": "Material Request",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-13-02",
-              "OutcomeName": "Forecasting"
+              "OutcomeName": "Forecasting",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-13-03",
-              "OutcomeName": "Purchase Request"
+              "OutcomeName": "Purchase Request",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-13-04",
-              "OutcomeName": "Purchase Order"
+              "OutcomeName": "Purchase Order",
+              "Complexity": 1
             },
             {
               "OutcomeId": "OC-13-05",
-              "OutcomeName": "Faktur Tagihan"
+              "OutcomeName": "Faktur Tagihan",
+              "Complexity": 1
             }
           ],
           "Workspace": [
