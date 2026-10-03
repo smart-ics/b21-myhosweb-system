@@ -38,7 +38,7 @@
             {
               "WorkspaceId": "SC-14-01",
               "WorkspaceName": "Workspace Organisasi",
-              "Complexity": 1,
+              "TotalEffort": 1,
               "Tasks": [
                 {
                   "TaskId": "SC-14-01-01",
@@ -80,7 +80,7 @@
             {
               "WorkspaceId": "SC-14-02",
               "WorkspaceName": "Workspace Dokter",
-              "Complexity": 1,
+              "TotalEffort": 1,
               "Tasks": [
                 {
                   "TaskId": "SC-14-02-01",
@@ -122,7 +122,7 @@
             {
               "WorkspaceId": "SC-14-03",
               "WorkspaceName": "Workspace Jaminan",
-              "Complexity": 1,
+              "TotalEffort": 1,
               "Tasks": [
                 {
                   "TaskId": "SC-14-03-01",
@@ -164,7 +164,7 @@
             {
               "WorkspaceId": "SC-14-04",
               "WorkspaceName": "Workspace Tariff",
-              "Complexity": 1,
+              "TotalEffort": 1,
               "Tasks": [
                 {
                   "TaskId": "SC-14-04-01",
@@ -249,7 +249,7 @@
             {
               "WorkspaceId": "SC-01-01",
               "WorkspaceName": "Workspace Booking",
-              "Complexity": 1,
+              "TotalEffort": 1,
               "Tasks": [
                 {
                   "TaskId": "SC-01-01-01",
@@ -291,7 +291,7 @@
             {
               "WorkspaceId": "SC-01-02",
               "WorkspaceName": "Workspace Registrasi Rawat Jalan dan IGD",
-              "Complexity": 1,
+              "TotalEffort": 1,
               "Tasks": [
                 {
                   "TaskId": "SC-01-02-01",
@@ -333,7 +333,7 @@
             {
               "WorkspaceId": "SC-01-03",
               "WorkspaceName": "Workspace Registrasi Ranap",
-              "Complexity": 1,
+              "TotalEffort": 1,
               "Tasks": [
                 {
                   "TaskId": "SC-01-03-01",
@@ -426,7 +426,7 @@
             {
               "WorkspaceId": "SC-05-01",
               "WorkspaceName": "Workspace Tindakan",
-              "Complexity": 1,
+              "TotalEffort": 1,
               "Tasks": [
                 {
                   "TaskId": "SC-05-01-01",
@@ -468,7 +468,7 @@
             {
               "WorkspaceId": "SC-05-02",
               "WorkspaceName": "Workspace Local Inventory",
-              "Complexity": 1,
+              "TotalEffort": 1,
               "Tasks": [
                 {
                   "TaskId": "SC-05-02-01",
@@ -538,7 +538,7 @@
             {
               "WorkspaceId": "SC-02-01",
               "WorkspaceName": "Workspace Reg Out",
-              "Complexity": 1,
+              "TotalEffort": 1,
               "Tasks": [
                 {
                   "TaskId": "SC-02-01-01",
@@ -598,7 +598,7 @@
             {
               "WorkspaceId": "SC-03-01",
               "WorkspaceName": "Workspace Kasir-Deposit-Voucher",
-              "Complexity": 1,
+              "TotalEffort": 1,
               "Tasks": [
                 {
                   "TaskId": "SC-03-01-01",
@@ -640,7 +640,7 @@
             {
               "WorkspaceId": "SC-03-02",
               "WorkspaceName": "Workspace Closing Shift",
-              "Complexity": 1,
+              "TotalEffort": 1,
               "Tasks": [
                 {
                   "TaskId": "SC-03-02-01",
@@ -723,7 +723,7 @@
             {
               "WorkspaceId": "SC-04-01",
               "WorkspaceName": "Workspace Berkas RM",
-              "Complexity": 1,
+              "TotalEffort": 1,
               "Tasks": [
                 {
                   "TaskId": "SC-04-01-01",
@@ -765,7 +765,7 @@
             {
               "WorkspaceId": "SC-04-02",
               "WorkspaceName": "Workspace Casemix dan Coding",
-              "Complexity": 1,
+              "TotalEffort": 1,
               "Tasks": [
                 {
                   "TaskId": "SC-04-02-01",
@@ -807,7 +807,7 @@
             {
               "WorkspaceId": "SC-04-03",
               "WorkspaceName": "Workspace Pelaporan RL",
-              "Complexity": 1,
+              "TotalEffort": 1,
               "Tasks": [
                 {
                   "TaskId": "SC-04-03-01",
@@ -900,7 +900,7 @@
             {
               "WorkspaceId": "SC-07-01",
               "WorkspaceName": "Workspace IGD Triage",
-              "Complexity": 1,
+              "TotalEffort": 1,
               "Tasks": [
                 {
                   "TaskId": "SC-07-01-01",
@@ -942,7 +942,7 @@
             {
               "WorkspaceId": "SC-05-02",
               "WorkspaceName": "Workspace Local Inventory",
-              "Complexity": 1,
+              "TotalEffort": 1,
               "Tasks": [
                 {
                   "TaskId": "SC-05-02-01",
@@ -1027,7 +1027,7 @@
             {
               "WorkspaceId": "SC-06-01",
               "WorkspaceName": "Workspace Bed Management",
-              "Complexity": 1,
+              "TotalEffort": 1,
               "Tasks": [
                 {
                   "TaskId": "SC-06-01-01",
@@ -1069,7 +1069,7 @@
             {
               "WorkspaceId": "SC-05-02",
               "WorkspaceName": "Workspace Local Inventory",
-              "Complexity": 1,
+              "TotalEffort": 1,
               "Tasks": [
                 {
                   "TaskId": "SC-05-02-01",
@@ -1167,7 +1167,7 @@
             {
               "WorkspaceId": "SC-08-01",
               "WorkspaceName": "Workspace Order Laboratorium",
-              "Complexity": 1,
+              "TotalEffort": 1,
               "Tasks": [
                 {
                   "TaskId": "SC-08-01-01",
@@ -1209,7 +1209,7 @@
             {
               "WorkspaceId": "SC-08-02",
               "WorkspaceName": "Workspace Result Management",
-              "Complexity": 1,
+              "TotalEffort": 1,
               "Tasks": [
                 {
                   "TaskId": "SC-08-02-01",
@@ -1251,7 +1251,7 @@
             {
               "WorkspaceId": "SC-08-03",
               "WorkspaceName": "Workspace Local Inventory",
-              "Complexity": 1,
+              "TotalEffort": 1,
               "Tasks": [
                 {
                   "TaskId": "SC-08-03-01",
@@ -1341,7 +1341,7 @@
             {
               "WorkspaceId": "SC-09-01",
               "WorkspaceName": "Workspace Order Radiologi",
-              "Complexity": 1,
+              "TotalEffort": 1,
               "Tasks": [
                 {
                   "TaskId": "SC-09-01-01",
@@ -1383,7 +1383,7 @@
             {
               "WorkspaceId": "SC-09-02",
               "WorkspaceName": "Workspace Expertise",
-              "Complexity": 1,
+              "TotalEffort": 1,
               "Tasks": [
                 {
                   "TaskId": "SC-09-02-01",
@@ -1425,7 +1425,7 @@
             {
               "WorkspaceId": "SC-09-03",
               "WorkspaceName": "Workspace Local Inventory",
-              "Complexity": 1,
+              "TotalEffort": 1,
               "Tasks": [
                 {
                   "TaskId": "SC-09-03-01",
@@ -1510,7 +1510,7 @@
             {
               "WorkspaceId": "SC-10-01",
               "WorkspaceName": "Workspace Scheduling",
-              "Complexity": 1,
+              "TotalEffort": 1,
               "Tasks": [
                 {
                   "TaskId": "SC-10-01-01",
@@ -1552,7 +1552,7 @@
             {
               "WorkspaceId": "SC-10-02",
               "WorkspaceName": "Workspace Operative Management",
-              "Complexity": 1,
+              "TotalEffort": 1,
               "Tasks": [
                 {
                   "TaskId": "SC-10-02-01",
@@ -1594,7 +1594,7 @@
             {
               "WorkspaceId": "SC-10-03",
               "WorkspaceName": "Workspace Local Inventory",
-              "Complexity": 1,
+              "TotalEffort": 1,
               "Tasks": [
                 {
                   "TaskId": "SC-10-03-01",
@@ -1687,7 +1687,7 @@
             {
               "WorkspaceId": "SC-11-01",
               "WorkspaceName": "Workspace Antrian Apotek",
-              "Complexity": 1,
+              "TotalEffort": 1,
               "Tasks": [
                 {
                   "TaskId": "SC-11-01-01",
@@ -1729,7 +1729,7 @@
             {
               "WorkspaceId": "SC-11-02",
               "WorkspaceName": "Workspace Telaah Resep",
-              "Complexity": 1,
+              "TotalEffort": 1,
               "Tasks": [
                 {
                   "TaskId": "SC-11-02-01",
@@ -1771,7 +1771,7 @@
             {
               "WorkspaceId": "SC-11-03",
               "WorkspaceName": "Workspace Dispensing",
-              "Complexity": 1,
+              "TotalEffort": 1,
               "Tasks": [
                 {
                   "TaskId": "SC-11-03-01",
@@ -1813,7 +1813,7 @@
             {
               "WorkspaceId": "SC-11-04",
               "WorkspaceName": "Workspace Serah Obat",
-              "Complexity": 1,
+              "TotalEffort": 1,
               "Tasks": [
                 {
                   "TaskId": "SC-11-04-01",
@@ -1855,7 +1855,7 @@
             {
               "WorkspaceId": "SC-11-05",
               "WorkspaceName": "Workspace Local Inventory",
-              "Complexity": 1,
+              "TotalEffort": 1,
               "Tasks": [
                 {
                   "TaskId": "SC-11-05-01",
@@ -1930,7 +1930,7 @@
             {
               "WorkspaceId": "SC-12-01",
               "WorkspaceName": "Workspace Terima Barang (DO), Retur Beli",
-              "Complexity": 1,
+              "TotalEffort": 1,
               "Tasks": [
                 {
                   "TaskId": "SC-12-01-01",
@@ -1972,7 +1972,7 @@
             {
               "WorkspaceId": "SC-12-02",
               "WorkspaceName": "Workspace Local Inventory",
-              "Complexity": 1,
+              "TotalEffort": 1,
               "Tasks": [
                 {
                   "TaskId": "SC-12-02-01",
@@ -2014,7 +2014,7 @@
             {
               "WorkspaceId": "SC-12-03",
               "WorkspaceName": "Workspace Retur Beli",
-              "Complexity": 1,
+              "TotalEffort": 1,
               "Tasks": [
                 {
                   "TaskId": "SC-12-03-01",
@@ -2089,7 +2089,7 @@
             {
               "WorkspaceId": "SC-13-01",
               "WorkspaceName": "Workspace Purchase Order",
-              "Complexity": 1,
+              "TotalEffort": 1,
               "Tasks": [
                 {
                   "TaskId": "SC-13-01-01",
@@ -2131,7 +2131,7 @@
             {
               "WorkspaceId": "SC-13-02",
               "WorkspaceName": "Workspace Faktur Tagihan",
-              "Complexity": 1,
+              "TotalEffort": 1,
               "Tasks": [
                 {
                   "TaskId": "SC-13-02-01",
