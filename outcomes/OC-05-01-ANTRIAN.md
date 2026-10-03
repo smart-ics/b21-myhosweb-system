@@ -3,25 +3,27 @@
 | Field       | Value        |
 |-------------|--------------|
 | Code        | OC-05-01     |
-| Version     | 1.2          |
+| Version     | 1.4          |
 | Status      | Review       |
-| LastUpdated | 2026-10-02   |
+| LastUpdated | 2026-10-03   |
 
 ---
 
 ## 1. Business Purpose
 
-Pengelolaan antrean pasien di poliklinik rawat jalan adalah mekanisme operasional untuk menempatkan, memanggil, dan memprogresikan pasien dalam suatu *service context* pelayanan rawat jalan secara teratur, tertib, dan transparan.
+Pengelolaan antrean pasien di poliklinik rawat jalan adalah mekanisme operasional untuk menempatkan, memanggil, dan mengelola status pasien sepanjang lifecycle antrean dalam suatu *service context* pelayanan rawat jalan secara teratur, tertib, dan transparan.
 
-Antrean (*Queue*) merupakan instrumen pengaturan alur pelayanan pada titik layanan poliklinik tertentu dan secara tegas dibedakan dari Kunjungan (*Visit*). Nomor antrean (*queue number*) mencerminkan identitas posisi antrean pasien pada *service context* terkait dan bukan merupakan identitas dari *Visit*. Satu *Visit* dapat melibatkan lebih dari satu dokter atau poliklinik, di mana masing-masing *service context* memerlukan pengelolaan antrean tersendiri.
+Antrean (*Queue*) merupakan instrumen pengaturan alur pelayanan pada suatu *service context* dan secara tegas dibedakan dari Kunjungan (*Visit*). Nomor antrean (*queue number*) mencerminkan identitas posisi antrean pasien pada *service context* terkait dan bukan merupakan identitas dari *Visit*.
 
 Adanya tata kelola antrean rawat jalan yang terstandardisasi sebagai *persisted business fact* memastikan urutan pemanggilan pasien dapat dikendalikan secara transparan, penyesuaian pemanggilan (seperti pasien dilewati atau dipanggil ulang) tercatat secara akurat, serta kepastian penyelesaian pelayanan pada setiap unit poliklinik dapat dibuktikan.
+
+> **Definisi — Service Context:** Kombinasi unik antara poliklinik tujuan, dokter pemeriksa, dan tanggal pelayanan yang membentuk satu titik layanan klinis. Satu *Visit* dapat melewati lebih dari satu *service context* apabila pasien mendapatkan pelayanan di beberapa poliklinik atau dokter dalam satu episode kunjungan yang sama.
 
 ---
 
 ## 2. Outcome Statement
 
-Antrean pasien pada suatu *service context* poliklinik rawat jalan **telah aktif, dikelola proses pemanggilannya, dan diproses status pelayanannya secara tertib hingga selesai, sebagai representasi persisted business fact atas pelaksanaan antrean pelayanan rawat jalan dalam episode kunjungan pasien**.
+Antrean pasien pada suatu *service context* poliklinik rawat jalan **telah terbentuk sebagai fakta bisnis yang terpersistensi, mencatat posisi dan rekam jejak pemanggilan pasien, dan dinyatakan selesai ketika pelayanan pada *service context* tersebut telah dituntaskan atau diakhiri secara sah**.
 
 ---
 
@@ -29,7 +31,7 @@ Antrean pasien pada suatu *service context* poliklinik rawat jalan **telah aktif
 
 | Domain | Role in this Outcome |
 |--------|----------------------|
-| Rawat Jalan | **Pemilik utama outcome**: mengelola antrean pasien di poliklinik, mengendalikan proses pemanggilan (*calling order*), memprogresikan status antrean selama pelayanan rawat jalan, dan mencatat penyelesaian antrean. |
+| Rawat Jalan | **Pemilik utama outcome**: mengelola antrean pasien di poliklinik, mengendalikan proses pemanggilan (*calling order*), memperbarui status antrean sepanjang lifecycle pelayanan rawat jalan, dan mencatat penyelesaian antrean. |
 | Admission | Bertanggung jawab atas pembentukan dan penerbitan nomor antrean (*queue number*) pada saat registrasi kunjungan, serta memelihara siklus hidup *Visit* sebagai konteks induk. |
 | Pasien | Menyediakan data identitas resmi pasien (Nomor Rekam Medis dan data sosial) yang menjadi subjek antrean. |
 | Organisasi | Menyediakan referensi unit layanan poliklinik (`ORG-LAYANAN`), data dokter pemeriksa (`ORG-PPA`), dan jadwal praktik dokter (`ORG-JADWAL`) sebagai konteks operasional antrean. |
@@ -63,10 +65,10 @@ Antrean pasien pada suatu *service context* poliklinik rawat jalan **telah aktif
   - Poliklinik tujuan (*service unit*);
   - Dokter pemeriksa (*DPJP / PPA*);
   - Tanggal pelayanan (*service date*).
-- Nomor antrean (*queue number*) diterbitkan oleh Admission sebagai identitas/posisi antrean pendaftaran pasien.
+- Nomor antrean (*queue number*) diterbitkan oleh Admission sebagai identitas posisi antrean pelayanan rawat jalan di poliklinik.
 - Urutan pemanggilan (*calling order*) dapat disesuaikan secara operasional (*skip*, *recall*, prioritas) tanpa mengubah nomor antrean asli.
 - Status antrean merepresentasikan tahapan operasional aktif (**Menunggu → Dipanggil → Dalam Pelayanan → Selesai**), atau status terminal alternatif (**Tidak Hadir** atau **Dibatalkan**).
-- Hubungan *Visit* dan *Queue* bersifat *one-to-many* (1 Visit : N Queue untuk *service context* yang berbeda).
+- Satu *Visit* dapat memiliki lebih dari satu antrean apabila pasien menerima pelayanan pada *service context* yang berbeda. Namun, dalam *service context* yang identik (poliklinik, dokter, dan tanggal sama), satu *Visit* hanya boleh memiliki satu antrean aktif.
 - Penyelesaian antrean (*Queue Selesai*) menandai berakhirnya pelayanan pada *service context* lokal tersebut, bukan menutup *Visit* pasien.
 
 ### 5.2 Required Recorded Information
@@ -95,7 +97,6 @@ Antrean pasien pada suatu *service context* poliklinik rawat jalan **telah aktif
 ### 5.3 Required Business Conditions
 
 - Kunjungan rawat jalan yang menjadi referensi antrean harus berstatus aktif (**Terdaftar**) dalam sistem (`OC-01-02`).
-- Nomor antrean diterbitkan oleh Admission (`ADM-REG` / `ADM-ANTRIAN`) dan tersedia untuk digunakan di Rawat Jalan.
 - Penyesuaian urutan pemanggilan (*calling order*) hanya dapat dilakukan oleh petugas poliklinik yang berwenang, serta wajib mencatat audit trail (petugas, waktu, alasan).
 - Penanganan ketidakhadiran pasien saat dipanggil:
   1. Pasien yang tidak merespons panggilan dapat dilewati (*skip*);
@@ -137,7 +138,7 @@ Berakhir ketika salah satu dari tiga kondisi terpenuhi:
 - **Pemisahan Konseptual Visit dan Queue:** *Queue* bukan *Visit*. *Queue* adalah instrumen tata kelola pemanggilan pasien pada *service context* tertentu.
 - **Kardinalitas Service Context:** Satu *Visit* dapat memiliki beberapa *Queue* pada *service context* yang berbeda. Namun, untuk *service context* yang identik (poliklinik, dokter, dan tanggal sama), satu *Visit* hanya boleh memiliki maksimal satu antrean aktif.
 - **Keunikan Nomor Antrean:** Dalam *service context* yang sama (poliklinik, dokter, tanggal), nomor antrean (*queue number*) bersifat unik dan tidak boleh ada dua antrean aktif ber-nomor antrean sama.
-- **Pemisahan Queue Number vs Calling Order:** *Queue number* bersifat imutabel sebagai identitas pendaftaran antrean; *calling order* bersifat operasional dan dinamis. Tindakan *skip* atau *recall* dilarang mengubah *queue number* asli.
+- **Pemisahan Queue Number vs Calling Order:** *Queue number* bersifat imutabel sebagai identitas posisi antrean pelayanan di poliklinik; *calling order* bersifat operasional dan dinamis. Tindakan *skip* atau *recall* dilarang mengubah *queue number* asli.
 - **Imutabilitas Status Terminal:** Antrean berstatus **Selesai**, **Tidak Hadir**, atau **Dibatalkan** bersifat final dan tidak dapat diaktifkan kembali.
 - **Batas Kewenangan Domain:** Domain Rawat Jalan mengelola lifecycle antrean poliklinik, tetapi tidak berwenang menerbitkan nomor antrean kunjungan awal (kewenangan Admission) atau membuat rujukan internal baru (kewenangan `OC-05-03`).
 
@@ -152,7 +153,7 @@ Berakhir ketika salah satu dari tiga kondisi terpenuhi:
 | Pasien tidak merespons saat nomor antrean dipanggil pertama kali | Antrean ditandai dilewati (*skip*). Petugas dapat melanjutkan pemanggilan antrean berikutnya tanpa membatalkan antrean pasien. Nomor antrean pasien tetap dipertahankan. |
 | Pasien tetap tidak hadir setelah dilakukan pemanggilan kembali (*recall*) | Status antrean ditetapkan menjadi **Tidak Hadir**. Antrean keluar dari daftar aktif dan domain Admission menerima *boundary event* untuk menindaklanjuti kondisi pasien. |
 | Referensi *Visit* pasien telah dibatalkan di loket pendaftaran sebelum dipanggil | Status antrean ditetapkan menjadi **Dibatalkan**. Antrean tidak dapat diproses lebih lanjut dan dikeluarkan dari daftar antrean aktif poliklinik. |
-| Dokter pemeriksa berhalangan hadir atau sesi praktik dihentikan mendadak saat antrean masih berstatus Menunggu | Status antrean ditangguhkan; jika tidak dapat dialihkan ke dokter pengganti pada hari yang sama, status antrean ditetapkan **Dibatalkan** sesuai koordinasi dengan Admission. |
+| Dokter pemeriksa berhalangan hadir atau sesi praktik dihentikan mendadak saat antrean masih berstatus Menunggu | Antrean tetap dalam status **Menunggu** selama diupayakan pengalihan ke dokter pengganti pada hari yang sama. Jika pengalihan tidak dapat dilakukan, status antrean ditetapkan menjadi **Dibatalkan** sesuai koordinasi dengan Admission. |
 | Duplikasi antrean untuk *Visit* yang sama pada poliklinik, dokter, dan tanggal yang sama | Sistem menolak pembentukan antrean aktif kedua. Antrean aktif yang sudah ada tetap dipertahankan dan ditampilkan kepada petugas. |
 | Percobaan pemanggilan pada antrean yang sudah berstatus **Selesai** atau diakhiri | Sistem menolak pemanggilan. Antrean yang sudah mencapai status terminal tidak dapat dipanggil kembali. |
 
@@ -165,7 +166,7 @@ Berakhir ketika salah satu dari tiga kondisi terpenuhi:
 | # | Criterion | Validates |
 |---|-----------|-----------| 
 | AC-01 | Setiap antrean rawat jalan tercatat dengan konteks lengkap: nomor antrean, referensi *Visit* aktif, poliklinik tujuan, dokter pemeriksa, tanggal pelayanan, dan status antrean. | Completeness |
-| AC-02 | Status antrean dapat diprogresikan mengikuti urutan siklus hidup yang sah: **Menunggu → Dipanggil → Dalam Pelayanan → Selesai**, atau berakhir pada status terminal **Tidak Hadir** maupun **Dibatalkan** sesuai skenario operasional dan administratif yang berlaku. | Correctness |
+| AC-02 | Status antrean bertransisi mengikuti urutan siklus hidup yang sah: **Menunggu → Dipanggil → Dalam Pelayanan → Selesai**, atau berakhir pada status terminal **Tidak Hadir** maupun **Dibatalkan** sesuai skenario operasional dan administratif yang berlaku. | Correctness |
 | AC-03 | Satu *Visit* dapat terhubung ke lebih dari satu antrean rawat jalan pada poliklinik atau dokter yang berbeda, memvalidasi bahwa sistem tidak membatasi 1 Visit = 1 Queue. | Constraint |
 | AC-04 | Dalam satu poliklinik, dokter, dan tanggal pelayanan yang sama, nomor antrean bersifat unik dan tidak terdapat dua antrean aktif untuk nomor antrean yang sama. | Constraint |
 | AC-05 | Penyesuaian urutan pemanggilan (*skip* atau *recall*) tidak mengubah nomor antrean (*queue number*) yang telah diterbitkan untuk pasien, dan setiap penyesuaian tercatat bersama identitas petugas yang melakukannya. | Correctness |
