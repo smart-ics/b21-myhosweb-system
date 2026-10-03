@@ -3,7 +3,7 @@
 | Field       | Value        |
 |-------------|--------------|
 | Code        | OC-06-01     |
-| Version     | 1.2          |
+| Version     | 2.0          |
 | Status      | Draft        |
 | LastUpdated | 2026-10-03   |
 
@@ -11,22 +11,27 @@
 
 ## 1. Business Purpose
 
-Rumah sakit harus mampu mencatat dan memelihara fakta pelaksanaan aktivitas pelayanan medis, keperawatan, dan pelayanan klinis lainnya yang benar-benar telah diberikan oleh tenaga kesehatan kepada pasien selama menjalani masa perawatan rawat inap.
+Rumah sakit harus memiliki kemampuan operasional untuk mengelola dan mencatat seluruh siklus pelayanan atau prosedur klinis pasien rawat inap, mulai dari saat pelayanan tersebut direncanakan, dijadwalkan, sedang diproses, telah selesai dilaksanakan, hingga kemungkinan dibatalkan atau dikoreksi.
 
-Tindakan rawat inap merepresentasikan **fakta pelaksanaan pelayanan klinis aktual (Clinical Service Event)**, bukan sekadar instruksi medis/order atau ketersediaan master jenis tindakan. Pencatatan ini membuktikan bahwa pasien telah nyata-nyata menerima asuhan klinis dalam rangka pemeriksaan, diagnosis, pengobatan, perawatan luka, pemantauan kondisi, maupun pemulihan.
+Tindakan rawat inap merepresentasikan **Operational Service Event**, yaitu kejadian pelayanan operasional yang mengelola dan melacak status pelaksanaan suatu pelayanan atau prosedur klinis kepada pasien rawat inap. Tindakan bukan sekadar pencatatan retrospektif atas histori pelayanan yang telah selesai, melainkan entitas operasional yang memungkinkan organisasi rumah sakit:
+1. Mengetahui pelayanan atau prosedur apa saja yang sedang aktif dikelola untuk pasien rawat inap;
+2. Mengetahui status operasional pelaksanaan pelayanan/prosedur tersebut secara transparan (apakah belum dilakukan, sedang diproses, telah selesai dilakukan, atau dibatalkan);
+3. Mengetahui siapa tenaga kesehatan yang bertanggung jawab atau terlibat dalam penanganan tindakan sesuai konteks bisnis;
+4. Mengetahui dimensi waktu yang relevan terhadap siklus operasional tindakan (kapan direncanakan, dijadwalkan, dilaksanakan, dibatalkan, atau dikoreksi);
+5. Menyediakan fakta operasional yang terverifikasi dan akuntabel sebagai sumber bagi proses klinis lanjutan serta proses downstream lainnya (termasuk pembentukan *charge* tagihan pasien apabila tindakan telah berstatus *Performed* dan memiliki tarif).
 
-Pencatatan kejadian pelayanan ini menerapkan prinsip **One Clinical Event, Multiple Perspectives**, di mana satu fakta bahwa pelayanan telah dilakukan kepada pasien dapat menjadi sumber bagi beberapa perspektif bisnis:
-1. **Perspektif Asuhan Klinis:** Memastikan kesinambungan pelayanan, kejelasan akuntabilitas tenaga kesehatan pelaksana, dan dokumentasi riwayat intervensi yang diterima pasien.
-2. **Perspektif Finansial / Billing:** Menjadi dasar bagi pembentukan konsekuensi tagihan (*charge*) apabila tindakan memiliki konsekuensi tarif sesuai penjamin dan kelas rawat pasien, di mana proses penagihan dan penatausahaan keuangan dikelola sepenuhnya pada domain terkait (Tata Rekening).
-3. **Perspektif Logistik / Pemakaian Barang:** Menjadi dasar keterkaitan apabila tindakan memerlukan bahan medis habis pakai (BMHP), di mana pencatatan penggunaan dan mutasi barang dikelola sepenuhnya pada domain terpisah (*Pakai Barang*).
-
-Tanpa pencatatan pelaksanaan tindakan yang sah dan akuntabel, rumah sakit tidak dapat mempertanggungjawabkan pelayanan yang telah diberikan kepada pasien, kehilangan riwayat pelayanan yang valid, serta mengaburkan transparansi kinerja klinis tenaga kesehatan.
+Pencatatan kejadian operasional ini menerapkan prinsip **One Operational Event, Multiple Perspectives**, di mana satu fakta operasional tindakan menjadi sumber tunggal bagi berbagai kebutuhan bisnis:
+- **Perspektif Asuhan Klinis:** Mengkoordinasikan pelaksanaan asuhan pasien, memastikan kesinambungan perawatan, serta membuktikan pelaksanaan intervensi saat tindakan mencapai status *Performed*.
+- **Perspektif Finansial / Billing:** Menjadi pemicu downstream bagi pembentukan *charge* tagihan pada domain Tata Rekening ketika tindakan telah berstatus *Performed* dan memenuhi kriteria penjaminan/tarif, di mana proses billing dan pembayaran dikelola sepenuhnya di luar Tindakan.
+- **Perspektif Logistik / Pemakaian Barang:** Menjadi dasar penelusuran jika tindakan memerlukan bahan medis habis pakai (BMHP), di mana pencatatan penggunaan dan mutasi barang dikelola sepenuhnya pada domain terpisah (*Pakai Barang*).
 
 ---
 
 ## 2. Outcome Statement
 
-Pelayanan medis, keperawatan, atau prosedur klinis yang benar-benar dilakukan oleh tenaga kesehatan kepada pasien rawat inap **telah tercatat sebagai fakta pelaksanaan pelayanan (Clinical Service Event) yang sah, akuntabel, dan dapat ditelusuri untuk kebutuhan asuhan berkelanjutan. Pencatatan tindakan merupakan outcome tersendiri dan dapat menjadi sumber bagi proses downstream, termasuk pembentukan charge apabila berlaku, tetapi keberhasilan proses downstream tersebut bukan merupakan syarat tercapainya outcome Tindakan.**
+Tindakan merupakan **Operational Service Event yang merepresentasikan pelayanan atau prosedur yang perlu, sedang, atau telah dilakukan kepada pasien dalam konteks pelayanan rawat inap, serta mencatat status operasional pelaksanaannya sehingga dapat diketahui apakah Tindakan belum dilakukan, sedang diproses, telah dilakukan, dibatalkan, atau dikoreksi sesuai aturan bisnis.**
+
+Ketika status Tindakan mencapai **Performed**, Tindakan menjadi fakta bahwa pelayanan/prosedur tersebut benar-benar telah dilakukan kepada pasien dan dapat digunakan sebagai sumber bagi proses klinis dan konsekuensi bisnis downstream, termasuk pembentukan charge apabila berlaku. Keberhasilan proses downstream tersebut bukan merupakan syarat tercapainya outcome Tindakan.
 
 ---
 
@@ -34,10 +39,10 @@ Pelayanan medis, keperawatan, atau prosedur klinis yang benar-benar dilakukan ol
 
 | Domain | Role in this Outcome |
 |--------|----------------------|
-| Rawat Inap (`RNA`) | Menyediakan konteks episode rawat inap aktif tempat pelayanan klinis diberikan kepada pasien |
-| Pasien (`PAS`) | Menyediakan data identitas pasien sebagai subjek penerima pelayanan klinis |
-| Organisasi (`ORG`) | Menyediakan data unit layanan tempat tindakan dilakukan serta identitas Petugas Pemberi Asuhan (PPA) pelaksana tindakan |
-| Tata Rekening (`TRK`) | Domain downstream yang menerima fakta pelayanan tindakan sebagai sumber pembentukan konsekuensi finansial (*charge*) apabila tindakan memiliki tarif |
+| Rawat Inap (`RNA`) | Menyediakan konteks episode rawat inap aktif tempat pelayanan operasional tindakan dikelola dan dilaksanakan |
+| Pasien (`PAS`) | Menyediakan data identitas pasien sebagai subjek penerima pelayanan atau prosedur klinis |
+| Organisasi (`ORG`) | Menyediakan data unit layanan tempat tindakan dikelola/dilaksanakan serta data Petugas Pemberi Asuhan (PPA) yang bertanggung jawab atau bertindak sebagai pelaksana |
+| Tata Rekening (`TRK`) | Domain downstream yang menerima fakta tindakan yang telah berstatus *Performed* sebagai sumber pembentukan konsekuensi finansial (*charge*) apabila tindakan memiliki tarif |
 
 > **Catatan Batasan Domain:**
 > Outcome ini tidak mengambil alih kepemilikan atas proses penagihan (*billing*), transaksi pembayaran (*payment*), pengelolaan logistik/barang (*inventory*), maupun pengelolaan tempat tidur (*bed management*). Domain-domain tersebut berpartisipasi sesuai batas tanggung jawab bisnisnya masing-masing.
@@ -58,7 +63,7 @@ Pelayanan medis, keperawatan, atau prosedur klinis yang benar-benar dilakukan ol
 > **Capability Status values:** Known · Existing but Undocumented · Capability Candidate
 >
 > **Catatan Tata Kelola & Eskalasi Scope (Governance Rule):**
-> Sesuai Domain Catalog (Versi 2.1 authoritative), Domain Rawat Inap (`RNA`) saat ini baru mendefinisikan: `RNA-ANTRIAN`, `RNA-BED`, `RNA-TRANSFER`, `RNA-CHARGE`, `RNA-DISCHARGE`, dan `RNA-HK`. Berbeda dengan Rawat Jalan yang memiliki `RJL-TINDAKAN` dan Gawat Darurat yang memiliki `IGD-TINDAKAN`, capability pencatatan tindakan klinis di Rawat Inap belum terdaftar di Domain Catalog.
+> Sesuai Domain Catalog (Versi 2.1 authoritative), Domain Rawat Inap (`RNA`) saat ini mendefinisikan: `RNA-ANTRIAN`, `RNA-BED`, `RNA-TRANSFER`, `RNA-CHARGE`, `RNA-DISCHARGE`, dan `RNA-HK`. Berbeda dengan Rawat Jalan yang memiliki `RJL-TINDAKAN` dan Gawat Darurat yang memiliki `IGD-TINDAKAN`, capability pengelolaan tindakan klinis di Rawat Inap belum terdaftar di Domain Catalog.
 > Mengikuti aturan tata kelola skill, tim analisis **tidak membuat capability baru secara sepihak** dan **tidak menganggap Capability Candidate sebagai capability yang telah disetujui**. Kebutuhan ini didokumentasikan sebagai **Capability Candidate** (`RNA-TINDAKAN`) dan **dieskalasikan kepada Product Owner** untuk keputusan penetapan scope capability resmi dalam Domain Catalog.
 
 ---
@@ -69,52 +74,53 @@ Pelayanan medis, keperawatan, atau prosedur klinis yang benar-benar dilakukan ol
 
 ### 5.1 Required Business Facts
 
-- Fakta pelaksanaan tindakan pelayanan klinis/keperawatan nyata-nyata telah dilakukan kepada pasien rawat inap dan tersimpan secara persisten.
-- Pelaksanaan tindakan terhubung dengan pasien yang memiliki episode rawat inap aktif yang valid pada saat tindakan berlangsung.
-- Jenis tindakan klinis yang dilakukan dapat diidentifikasi secara jelas dan sah dalam katalog layanan rumah sakit.
-- Pelaksana tindakan (PPA) dan waktu pelaksanaan aktual dapat ditelusuri.
-- Pelaksanaan tindakan dapat diidentifikasi dan, apabila secara bisnis relevan, jumlah atau frekuensi pelaksanaannya dapat ditentukan.
-- Catatan tindakan memiliki status bisnis yang dapat dibedakan: berstatus aktif (**Dilaksanakan / Performed**) atau berstatus koreksi (**Dibatalkan / Void**).
-- Tindakan dapat dibedakan secara tegas dari instruksi/order medis yang belum dilaksanakan:
-  - Jika tindakan dilakukan berdasarkan order dokter (CPOE), keterkaitan pemenuhan order tersebut dapat ditelusuri.
-  - Tindakan tetap sah terbentuk tanpa order sebelumnya apabila berupa tindakan mandiri keperawatan atau prosedur klinis langsung.
-- Tindakan dapat dibedakan secara tegas dari pemakaian barang; bahan atau obat yang digunakan tidak menjadi bagian dari definisi tindakan.
-- Jika tindakan memiliki konsekuensi finansial, fakta tindakan dapat menjadi sumber bagi pembentukan *charge* di domain Tata Rekening. Namun, keberhasilan pembentukan *charge* adalah konsekuensi downstream dan **bukan merupakan syarat utama terbentuknya fakta Tindakan**.
+- Keberadaan suatu **Operational Service Event** yang sah, dapat diidentifikasi, dan terhubung dengan pasien yang memiliki episode rawat inap aktif.
+- Tindakan merujuk pada jenis pelayanan atau prosedur klinis yang valid dalam katalog layanan rumah sakit.
+- Tindakan memiliki status operasional pelaksanaan yang jelas dan dapat dipertanggungjawabkan (misalnya: belum dilakukan / direncanakan, dijadwalkan, sedang dalam proses, telah dilakukan, dibatalkan, atau dikoreksi).
+- Tindakan mencatat informasi waktu yang relevan sesuai tahap siklus hidupnya (waktu inisiasi/rencana, waktu penjadwalan, waktu mulai, waktu pelaksanaan aktual, waktu pembatalan, atau waktu koreksi).
+- Status **Dilaksanakan (Performed)** merepresentasikan fakta bisnis bahwa pelayanan/prosedur tersebut benar-benar telah selesai dilakukan kepada pasien oleh tenaga kesehatan yang berwenang. Informasi pelaksana aktual dan waktu pelaksanaan aktual menjadi wajib dipenuhi ketika tindakan mencapai status *Performed*.
+- Status **Dibatalkan (Cancelled)** merepresentasikan pembatalan yang sah sebelum pelayanan dilakukan, dan tidak boleh dianggap sebagai pelayanan yang telah diberikan kepada pasien.
+- Status **Dibatalkan Pasca Pencatatan (Void)** merepresentasikan koreksi bisnis atas pencatatan tindakan yang sudah ada sebelumnya tanpa menghapus rekam historisnya.
+- Keterkaitan dengan instruksi/order medis (CPOE) dapat ditelusuri apabila tindakan berasal dari order. Order yang belum menghasilkan event Tindakan tidak dianggap sebagai Tindakan yang telah dilakukan, dan Order bukan merupakan Tindakan (Order ≠ Tindakan).
+- Keterkaitan dengan pemakaian barang (jika menggunakan BMHP) dapat ditelusuri ke outcome terpisah (*Pakai Barang*), di mana konsumsi barang bukan bagian dari definisi inti Tindakan.
+- Keterkaitan dengan konsekuensi finansial (jika tindakan bertarif dan berstatus *Performed*) dapat ditelusuri ke domain Tata Rekening untuk pembentukan *charge*. Keberhasilan pembentukan *charge* adalah konsekuensi downstream dan **bukan merupakan syarat keberadaan atau pembentukan Outcome Tindakan**.
 
 ### 5.2 Required Recorded Information
 
-Pencatatan pelaksanaan tindakan harus memuat informasi bisnis esensial berikut secara implementation-independent:
+Pencatatan Operational Service Event tindakan harus memuat informasi bisnis esensial berikut secara implementation-independent:
 
-- **Identitas Tindakan:** Identifikasi unik atas kejadian pelayanan tindakan yang bersangkutan.
-- **Subjek Pasien:** Identitas pasien yang menerima pelayanan tindakan.
-- **Konteks Rawat Inap:** Identifikasi episode rawat inap aktif tempat tindakan berlangsung.
-- **Layanan Klinis:** Jenis pelayanan atau prosedur klinis yang dilakukan.
-- **Pelaksana Pelayanan:** Identitas tenaga kesehatan (PPA) yang bertanggung jawab dan melaksanakan tindakan.
-- **Waktu Pelaksanaan:** Waktu aktual dilaksanakannya tindakan kepada pasien.
-- **Unit Pelayanan:** Unit kerja atau bangsal tempat tindakan dilaksanakan.
-- **Jumlah / Frekuensi Pelaksanaan:** Kuantitas atau frekuensi pelaksanaan tindakan, apabila relevan dengan karakteristik jenis tindakan tersebut.
-- **Catatan Pelayanan:** Keterangan klinis atau informasi tambahan yang relevan terkait pelaksanaan tindakan.
-- **Keterkaitan Order (Kondisional):** Keterkaitan dengan instruksi/order medis sebelumnya, apabila tindakan dilakukan atas dasar order.
-- **Keterkaitan Finansial (Kondisional):** Penelusuran ke konsekuensi tagihan (*charge*) di domain Tata Rekening, apabila tindakan memiliki konsekuensi tarif.
-- **Informasi Pembatalan (Kondisional - jika Void):** Alasan bisnis pembatalan dan akuntabilitas pihak yang membatalkan.
+- **Identitas Event Tindakan:** Identifikasi unik atas Operational Service Event tindakan yang bersangkutan.
+- **Subjek Pasien:** Identitas pasien yang menjadi sasaran atau penerima pelayanan.
+- **Konteks Episode Rawat Inap:** Identifikasi episode rawat inap aktif tempat tindakan dikelola.
+- **Jenis Pelayanan/Prosedur:** Identifikasi jenis tindakan atau prosedur klinis yang dikelola.
+- **Status Operasional Tindakan:** Status pelaksanaan saat ini yang merepresentasikan posisi tindakan dalam siklus hidup operasionalnya.
+- **Informasi Waktu Siklus Hidup:** Waktu yang relevan sesuai status tindakan (misalnya: waktu inisiasi/rencana, waktu terjadwal, waktu pelaksanaan aktual jika telah dilakukan, waktu pembatalan jika dibatalkan, atau waktu koreksi jika di-void).
+- **Pelaksana Pelayanan (Kondisional sesuai status):** Identitas tenaga kesehatan yang bertanggung jawab atas rencana tindakan, atau tenaga kesehatan pelaksana aktual (wajib dipenuhi apabila tindakan berstatus *Performed*).
+- **Unit Pelayanan:** Unit kerja, bangsal, atau ruangan tempat tindakan direncanakan, dikelola, atau dilaksanakan.
+- **Jumlah / Frekuensi Pelayanan (Kondisional):** Kuantitas atau frekuensi pelaksanaan tindakan, apabila relevan dengan karakteristik jenis tindakan tersebut.
+- **Catatan / Keterangan Pelayanan:** Keterangan klinis atau operasional yang relevan terkait rencana, proses, atau hasil pelaksanaan tindakan.
+- **Keterkaitan Inisiasi / Order (Kondisional):** Penelusuran ke instruksi atau order medis sebelumnya, apabila tindakan berakar dari order dokter.
+- **Keterkaitan Finansial Downstream (Kondisional):** Penelusuran ke konsekuensi tagihan (*charge*) di Tata Rekening, apabila tindakan berstatus *Performed* dan memiliki konsekuensi tarif.
+- **Informasi Pembatalan / Koreksi (Kondisional):** Alasan bisnis pembatalan (*Cancelled*) atau alasan koreksi (*Void*) beserta akuntabilitas pihak yang membatalkan/mengoreksi.
 
 ### 5.3 Required Business Conditions
 
-- Pasien memiliki episode rawat inap aktif pada saat tindakan dilakukan (tidak berada dalam status belum dirawat atau sudah dinyatakan pulang/discharged).
-- Pelayanan klinis benar-benar telah selesai atau nyata-nyata dilakukan kepada pasien, bukan sekadar rencana atau instruksi.
-- Tenaga kesehatan yang tercatat sebagai pelaksana adalah pihak yang sah dan berwenang sesuai aturan rumah sakit.
+- Pasien memiliki episode rawat inap aktif pada saat event tindakan dibuat dan dikelola (tidak berada dalam status belum dirawat atau sudah dinyatakan pulang/discharged).
 - Jenis tindakan merupakan layanan yang sah dan diizinkan pada unit rawat inap bersangkutan.
-- Waktu pelaksanaan tindakan dapat dipertanggungjawabkan secara klinis (tidak berada di masa depan dan berada dalam rentang episode rawat inap pasien).
-- Kuantitas atau frekuensi tindakan, apabila relevan ditentukan, harus merepresentasikan volume pelayanan yang rasional dan terukur.
+- Status operasional tindakan harus merepresentasikan kondisi bisnis yang sah.
+- Transisi status operasional tindakan harus mematuhi aturan bisnis yang sah (misalnya: tindakan yang sudah *Performed* tidak dapat diubah langsung menjadi *Cancelled*; pembatalan pasca *Performed* harus melalui mekanisme koreksi *Void*).
+- Apabila tindakan berstatus *Performed*, pelayanan/prosedur harus benar-benar telah selesai dilakukan kepada pasien oleh tenaga kesehatan yang berwenang, dengan waktu pelaksanaan aktual yang valid (tidak berada di masa depan dan berada dalam rentang episode rawat inap pasien).
+- Apabila tindakan berstatus *Cancelled*, tindakan tidak boleh diperlakukan sebagai pelayanan yang telah terjadi.
+- Apabila tindakan berstatus *Void*, tindakan tidak lagi dianggap aktif/valid untuk proses downstream, namun riwayat pencatatan dan koreksinya tetap dapat ditelusuri secara akuntabel.
+- Penetapan jumlah atau frekuensi tindakan (apabila secara bisnis relevan ditentukan) harus rasional dan terukur sesuai karakteristik tindakan.
 
 ### 5.4 Completion Proof
 
 Outcome ini dinyatakan established apabila:
 
-- Fakta bahwa tindakan telah dilakukan kepada pasien telah tercatat secara persisten dan sah dalam sistem.
-- Status bisnis tindakan adalah **Dilaksanakan (Performed)**.
-- Tindakan dapat ditelusuri, diidentifikasi, dan diverifikasi dalam riwayat pelayanan klinis pasien.
-- Tindakan siap digunakan oleh tenaga kesehatan sebagai referensi asuhan klinis lanjutan dan siap menjadi sumber bagi proses bisnis downstream (seperti pembentukan *charge* di Tata Rekening apabila bertarif).
+- **Operational Service Event Tindakan telah tercatat secara sah dalam sistem** dengan identitas jenis tindakan, pasien, episode rawat inap yang relevan, serta status operasional yang dapat dipertanggungjawabkan (baik dalam status belum dilakukan, sedang diproses, telah dilakukan, maupun dibatalkan).
+- Event tindakan dapat diidentifikasi, ditelusuri, dan diverifikasi dalam riwayat operasional pelayanan pasien rawat inap.
+- Status **Dilaksanakan (Performed)** merupakan bukti pencapaian kondisi bisnis spesifik (*business state*) yang membuktikan bahwa pelayanan atau prosedur tersebut benar-benar telah selesai dilakukan kepada pasien, dan siap menjadi sumber bagi proses klinis lanjutan serta proses downstream (seperti pembentukan *charge* di Tata Rekening apabila bertarif).
 
 ---
 
@@ -122,13 +128,16 @@ Outcome ini dinyatakan established apabila:
 
 ### Start
 
-Dimulai ketika terdapat pelayanan klinis aktual yang dilakukan oleh tenaga kesehatan kepada pasien rawat inap dan fakta pelaksanaan pelayanan tersebut perlu dicatat, baik yang didasarkan pada instruksi/order dokter sebelumnya maupun sebagai inisiatif asuhan klinis mandiri.
+Dimulai ketika terdapat kebutuhan, instruksi/order dokter, atau dasar pelayanan klinis yang sah untuk mengelola suatu Tindakan terhadap pasien rawat inap dan Tindakan tersebut perlu dicatat sebagai Operational Service Event dalam sistem operasional bangsal (baik yang berasal dari order dokter maupun inisiatif asuhan klinis mandiri).
 
 ### End
 
-Berakhir ketika fakta bahwa tindakan telah dilakukan telah tercatat secara persisten, sah, dapat ditelusuri, dan dapat diverifikasi sebagai pelayanan yang benar-benar telah diberikan kepada pasien rawat inap.
+Berakhir ketika Operational Service Event Tindakan mencapai kondisi terminal yang dapat dipertanggungjawabkan secara bisnis dalam siklus hidup operasionalnya:
+1. Tindakan telah selesai dilaksanakan kepada pasien dengan status **Dilaksanakan (Performed)**; ATAU
+2. Tindakan dibatalkan secara sah sebelum pelaksanaan dengan status **Dibatalkan (Cancelled)** disertai alasan pembatalan bisnis yang valid; ATAU
+3. Tindakan yang telah dicatat kemudian dikoreksi melalui proses koreksi bisnis yang sah dengan status **Dibatalkan Pasca Pencatatan (Void)**.
 
-Pembentukan *Charge*, penerbitan *Tagihan*, maupun penerimaan *Pembayaran* **bukan merupakan bagian dari completion condition OC-06-01**.
+Penegasan: Pembentukan *Charge*, penerbitan *Tagihan*, maupun penerimaan *Pembayaran* **bukan merupakan bagian dari completion condition OC-06-01**.
 
 Tindakan yang telah dicatat dapat kemudian dibatalkan melalui proses koreksi bisnis yang sah. Setelah berstatus Void, tindakan tersebut tidak lagi dianggap sebagai tindakan aktif/valid untuk proses downstream. Riwayat bahwa tindakan tersebut pernah dicatat dan kemudian dikoreksi harus tetap dapat ditelusuri secara akuntabel.
 
@@ -138,16 +147,18 @@ Tindakan yang telah dicatat dapat kemudian dibatalkan melalui proses koreksi bis
 
 > Aturan bisnis yang harus selalu terpenuhi untuk Outcome ini.
 
-- **Fakta Aktual vs Rencana:** Tindakan hanya boleh dicatat apabila pelayanan klinis telah benar-benar dilakukan. Rencana pelayanan atau keberadaan instruksi dokter (order) tidak dapat dianggap sebagai Outcome Tindakan.
-- **Konteks Episode Aktif:** Pasien harus memiliki episode rawat inap aktif pada saat tindakan dilakukan. Tindakan tidak boleh dicatat untuk pasien yang belum terdaftar rawat inap atau telah selesai masa perawatannya (*discharged*).
-- **Independensi dari Status Tempat Tidur:** Keberadaan atau status fisik tempat tidur (*bed*) bukan merupakan prasyarat mutlak pencatatan tindakan, melainkan dikelola oleh capability terpisah (*Pakai Bed*).
-- **Keabsahan Pelaksana:** Tenaga kesehatan yang tercatat sebagai pelaksana tindakan harus dapat diidentifikasi dan sah sesuai aturan kompetensi rumah sakit.
-- **Validitas Waktu:** Waktu pelaksanaan tindakan tidak boleh berada di masa mendatang (*future time*) dan harus berada dalam rentang waktu episode rawat inap pasien.
-- **Independensi dari Billing:** Keberhasilan pencatatan tindakan tidak bergantung pada keberhasilan proses pembentukan charge atau penagihan. Charge adalah konsekuensi downstream dari tindakan.
-- **Pemisahan dari Pemakaian Barang:** Tindakan tidak mencatat pengurangan stok atau konsumsi fisik bahan medis habis pakai; penggunaan barang merupakan tanggung jawab outcome terpisah (*Pakai Barang*).
-- **Akuntabilitas Pembatalan (Void):** Tindakan yang telah dicatat dapat dibatalkan melalui proses koreksi bisnis yang sah. Void merupakan koreksi terhadap pencatatan dan bukan penghapusan riwayat pencatatan. Setelah berstatus *Void*, tindakan tersebut tidak lagi dianggap sebagai tindakan aktif/valid untuk proses downstream, namun riwayat bahwa tindakan tersebut pernah dicatat dan kemudian dikoreksi harus tetap dapat ditelusuri secara akuntabel.
-- **Pencegahan Dampak Pembatalan Finansial:** Tindakan yang telah menghasilkan konsekuensi finansial tidak boleh dibatalkan tanpa mempertimbangkan dan merekonsiliasi konsekuensi finansial tersebut melalui proses bisnis yang bertanggung jawab di domain Tata Rekening.
-- **Pencatatan Ulang:** Apabila suatu pelayanan yang telah di-void ternyata benar-benar perlu diberikan kembali kepada pasien, peristiwa tersebut harus dicatat sebagai fakta tindakan baru.
+- **Representasi Operational Service Event:** Tindakan merepresentasikan event operasional pelayanan yang mengelola status pelaksanaan tindakan, bukan hanya histori pelayanan yang sudah selesai. Tindakan sah tercatat dalam status operasional sebelum, selama, atau setelah tindakan dilakukan.
+- **Konteks Episode Rawat Inap Aktif:** Pasien harus memiliki episode rawat inap aktif yang valid pada saat event tindakan dibuat dan dikelola. Tindakan tidak boleh dikelola untuk pasien yang belum terdaftar rawat inap atau telah selesai masa perawatannya (*discharged*).
+- **Independensi dari Status Tempat Tidur:** Keberadaan atau status fisik tempat tidur (*bed*) bukan merupakan prasyarat mutlak keberadaan Tindakan; pengelolaan tempat tidur dikelola oleh capability terpisah (*Pakai Bed*).
+- **Keabsahan Jenis Tindakan:** Jenis tindakan yang dikelola harus terdaftar aktif dan sah dalam katalog layanan rumah sakit.
+- **Keabsahan Status Bisnis:** Status tindakan harus merepresentasikan kondisi operasional yang sah (misalnya: *Planned*, *Scheduled*, *In Progress*, *Performed*, *Cancelled*, atau *Void*).
+- **Integritas Status Performed:** Tindakan yang berstatus *Performed* harus membuktikan bahwa pelayanan benar-benar telah selesai dilakukan kepada pasien oleh tenaga kesehatan yang sah, dengan waktu pelaksanaan aktual yang valid (tidak berada di masa depan dan berada dalam rentang episode rawat inap).
+- **Pembedaan dari Order:** Order adalah instruksi/rencana, sedangkan Tindakan adalah event operasional yang mengelola pelaksanaan. Keberadaan order yang belum diikuti oleh event tindakan tidak boleh dianggap sebagai tindakan yang telah dilakukan (Order ≠ Tindakan).
+- **Integritas Status Cancelled:** Tindakan yang berstatus *Cancelled* tidak boleh dianggap atau diperlakukan sebagai pelayanan yang pernah dilaksanakan kepada pasien.
+- **Integritas Status Void:** Tindakan yang telah dicatat dapat dibatalkan melalui proses koreksi bisnis yang sah (*Void*). Void merupakan koreksi terhadap pencatatan dan bukan penghapusan riwayat pencatatan. Setelah berstatus *Void*, tindakan tersebut tidak lagi dianggap sebagai tindakan aktif/valid untuk proses downstream, namun riwayat bahwa tindakan tersebut pernah dicatat dan kemudian dikoreksi harus tetap dapat ditelusuri secara akuntabel.
+- **Pencegahan Dampak Pembatalan Finansial:** Tindakan yang telah menghasilkan konsekuensi finansial downstream tidak boleh dibatalkan/di-void tanpa mempertimbangkan dan merekonsiliasi konsekuensi finansial tersebut melalui proses bisnis yang bertanggung jawab di domain Tata Rekening.
+- **Pemisahan dari Pemakaian Barang:** Tindakan tidak mencatat pengurangan stok atau konsumsi fisik bahan medis habis pakai; penggunaan barang dikelola sepenuhnya melalui outcome terpisah (*Pakai Barang*).
+- **Independensi dari Billing:** Keberhasilan pencatatan tindakan tidak bergantung pada keberhasilan proses pembentukan charge atau penagihan. Charge adalah konsekuensi downstream yang dapat terbentuk setelah tindakan berstatus *Performed* dan memenuhi kriteria tarif.
 
 ---
 
@@ -157,13 +168,16 @@ Tindakan yang telah dicatat dapat kemudian dibatalkan melalui proses koreksi bis
 
 | Exception | Expected Behavior |
 |-----------|-------------------|
-| Pasien tidak memiliki episode rawat inap aktif pada waktu tindakan | Pencatatan tindakan ditolak. Pasien harus memiliki episode rawat inap yang sah pada saat tindakan dilakukan. |
-| Tenaga kesehatan pelaksana tidak teridentifikasi atau tidak sah | Pencatatan tindakan ditolak. Pelaksana tindakan harus merupakan tenaga kesehatan yang valid dan berwenang. |
-| Waktu pelaksanaan tidak valid (di masa depan atau di luar rentang rawat inap) | Pencatatan tindakan ditolak. Waktu pelaksanaan harus dapat dipertanggungjawabkan secara klinis. |
-| Jenis tindakan tidak valid atau tidak diizinkan pada unit rawat inap bersangkutan | Pencatatan tindakan ditolak. Jenis tindakan harus aktif dan sesuai dengan ruang lingkup unit pelayanan. |
-| Pembentukan charge downstream gagal atau tarif belum terkonfigurasi (untuk tindakan bertarif) | **Fakta pelaksanaan tindakan tetap sah terbentuk dan tercatat (Established).** Penanganan ketidaksesuaian tarif atau keterlambatan pembentukan charge dieskalasikan ke domain Tata Rekening sebagai isu downstream tanpa membatalkan fakta klinis. |
-| Permintaan pembatalan (*Void*) diajukan tanpa alasan bisnis yang sah | Pembatalan ditolak. Pembatalan tindakan wajib disertai alasan bisnis yang jelas demi kepentingan audit klinis. |
-| Permintaan pembatalan (*Void*) atas tindakan yang konsekuensi finansialnya telah terkunci/selesai | Pembatalan fakta tindakan tidak dapat dilakukan secara sepihak sebelum dilakukan koordinasi dan rekonsiliasi administratif dengan domain Tata Rekening. |
+| Tindakan tercatat tetapi belum dilakukan (status *Planned* / *Scheduled*) | **Kondisi operasional yang sah (bukan error).** Tindakan menunggu proses pelaksanaan pelayanan kepada pasien sesuai rencana klinis. |
+| Tindakan dibatalkan secara sah sebelum pelaksanaan (status *Cancelled*) | Tindakan dinyatakan batal dengan alasan pembatalan bisnis yang valid. Tindakan tidak diperlakukan sebagai pelayanan yang telah terjadi. |
+| Tindakan telah tercatat namun kemudian dikoreksi (*Void*) | Tindakan diubah statusnya menjadi Void dengan alasan koreksi yang jelas dan dapat diaudit. Tindakan tidak lagi aktif untuk proses downstream, dan riwayat pencatatan tetap terpelihara. |
+| Tindakan telah berstatus *Performed* namun pembentukan charge downstream gagal atau tarif belum terkonfigurasi | **Fakta tindakan tetap sah terbentuk dan berstatus Performed (tidak membatalkan Outcome Tindakan).** Masalah konfigurasi tarif atau keterlambatan pembentukan charge dieskalasikan ke domain Tata Rekening sebagai isu downstream tanpa membatalkan fakta klinis. |
+| Pasien tidak memiliki episode rawat inap aktif pada waktu tindakan dikelola | Pencatatan event tindakan ditolak. Pasien harus memiliki episode rawat inap yang sah. |
+| Tenaga kesehatan pelaksana tidak teridentifikasi atau tidak sah saat tindakan dinyatakan *Performed* | Penetapan status *Performed* ditolak. Pelaksana tindakan harus merupakan tenaga kesehatan yang valid dan berwenang. |
+| Waktu pelaksanaan aktual tidak valid (di masa depan atau di luar rentang rawat inap) | Penetapan status *Performed* ditolak. Waktu pelaksanaan harus dapat dipertanggungjawabkan secara klinis. |
+| Jenis tindakan tidak valid atau tidak diizinkan pada unit rawat inap bersangkutan | Pencatatan event tindakan ditolak. Jenis tindakan harus aktif dan sesuai ruang lingkup unit pelayanan. |
+| Transisi status tidak sah (misalnya membatalkan langsung tindakan yang sudah *Performed* tanpa mekanisme *Void*) | Perubahan status ditolak. Pembatalan tindakan yang sudah dilakukan harus melalui prosedur koreksi *Void*. |
+| Permintaan pembatalan (*Cancelled*) atau koreksi (*Void*) diajukan tanpa alasan bisnis yang sah | Perubahan status ditolak. Alasan pembatalan/koreksi wajib disertakan demi akuntabilitas audit bisnis. |
 
 ---
 
@@ -173,15 +187,18 @@ Tindakan yang telah dicatat dapat kemudian dibatalkan melalui proses koreksi bis
 
 | # | Kriteria Penerimaan | Validasi |
 |---|---------------------|----------|
-| AC-01 | Tindakan merepresentasikan pelayanan medis, keperawatan, atau klinis yang benar-benar telah dilaksanakan kepada pasien, bukan sekadar rencana atau instruksi. | Completeness |
-| AC-02 | Tindakan terhubung secara sah dengan pasien yang memiliki episode rawat inap aktif pada saat tindakan berlangsung. | Correctness |
-| AC-03 | Jenis tindakan yang dilaksanakan dapat diidentifikasi secara jelas dan valid dalam katalog layanan rumah sakit. | Completeness |
-| AC-04 | Tenaga kesehatan pelaksana (PPA) dan waktu pelaksanaan aktual dapat ditelusuri dan dipertanggungjawabkan secara klinis. | Correctness |
-| AC-05 | Fakta pelaksanaan tindakan tersimpan secara persisten dan dapat diverifikasi dalam riwayat pelayanan pasien. | Completeness |
-| AC-06 | Tindakan dapat dibedakan secara tegas dari instruksi medis/order yang belum dilaksanakan; apabila tindakan berasal dari order, keterkaitan pemenuhan order dapat ditelusuri. | Correctness |
-| AC-07 | Tindakan dapat dibedakan secara tegas dari pemakaian barang; pencatatan tindakan tidak mencakup pengurangan fisik bahan medis habis pakai. | Correctness |
-| AC-08 | Apabila tindakan berstatus bertarif, hubungan ke konsekuensi tagihan (*charge*) dapat ditelusuri, namun **keberhasilan pembentukan charge bukan merupakan prerequisite terbentuknya Outcome Tindakan**. | Correctness |
-| AC-09 | Tindakan yang dibatalkan (*Void*) dapat dibedakan dari tindakan yang sah/aktif (*Performed*), memiliki alasan bisnis yang sah, dapat diaudit, dan tidak lagi dihitung sebagai pelayanan aktif. | Exception |
+| AC-01 | Operational Service Event Tindakan dapat tercatat dan teridentifikasi secara sah dalam sistem sebelum pelayanan/prosedur dilakukan kepada pasien (misalnya berstatus *Planned* atau *Scheduled*). | Completeness |
+| AC-02 | Tindakan dapat memiliki status operasional yang dapat dibedakan untuk menunjukkan apakah pelayanan/prosedur belum dilakukan, sedang diproses, telah dilakukan, dibatalkan, atau dikoreksi. | Correctness |
+| AC-03 | Keberadaan instruksi atau order medis (CPOE) tidak secara otomatis dianggap sebagai Tindakan yang sudah dilakukan; Order diakui sebagai inisiasi/pemicu yang terpisah dari pelaksanaan Tindakan (Order ≠ Tindakan). | Constraint |
+| AC-04 | Tindakan yang berstatus **Dilaksanakan (Performed)** membuktikan bahwa pelayanan atau prosedur klinis benar-benar telah selesai dilakukan kepada pasien rawat inap oleh tenaga kesehatan yang sah pada waktu yang dapat dipertanggungjawabkan. | Completeness |
+| AC-05 | Tindakan yang berstatus **Dibatalkan (Cancelled)** tidak dianggap atau diperlakukan sebagai pelayanan klinis yang pernah dilakukan kepada pasien. | Correctness |
+| AC-06 | Tindakan yang telah dicatat dapat dikoreksi menjadi berstatus **Void** melalui proses bisnis yang sah dan tidak lagi diperlakukan sebagai tindakan aktif/valid untuk proses downstream. | Correctness |
+| AC-07 | Riwayat bahwa suatu tindakan pernah dicatat dan kemudian dikoreksi/di-void tetap dapat ditelusuri secara akuntabel untuk kebutuhan audit bisnis. | Completeness |
+| AC-08 | Tindakan yang telah berstatus *Performed* dapat menjadi sumber bagi pembentukan *charge* tagihan pada domain Tata Rekening apabila tindakan tersebut memiliki konsekuensi tarif yang berlaku. | Correctness |
+| AC-09 | Tindakan tetap sah terbentuk dan valid sebagai Outcome meskipun pembentukan *charge* di Tata Rekening belum terjadi, tertunda, atau mengalami kendala konfigurasi tarif. | Correctness |
+| AC-10 | Penggunaan dan pengurangan bahan medis habis pakai (BMHP) saat tindakan dipisahkan dari pencatatan tindakan dan dikelola melalui Outcome Pakai Barang (`OC-06-05`). | Constraint |
+| AC-11 | Keterisian atau penempatan fisik tempat tidur (*bed management*) bukan merupakan prasyarat mutlak keberadaan Tindakan; yang menjadi konteks adalah episode rawat inap aktif pasien. | Constraint |
+| AC-12 | Spesifikasi Outcome Tindakan dinyatakan secara murni dalam konsep dan aturan bisnis yang *implementation-independent* tanpa bergantung pada skema database, tabel, kolom, API endpoint, UI form, atau enum teknis. | Correctness |
 
 ---
 
