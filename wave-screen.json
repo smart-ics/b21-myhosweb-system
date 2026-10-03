@@ -43,22 +43,22 @@
                 {
                   "TaskId": "SC-14-01-01",
                   "TaskName": "Core Feature",
-                  "Effort": 5
+                  "Effort": 2
                 },
                 {
                   "TaskId": "SC-14-01-02",
                   "TaskName": "UI Design",
-                  "Effort": 3
+                  "Effort": 1
                 },
                 {
                   "TaskId": "SC-14-01-03",
                   "TaskName": "BFF Feature",
-                  "Effort": ""
+                  "Effort": 1
                 },
                 {
                   "TaskId": "SC-14-01-04",
                   "TaskName": "Architecture",
-                  "Effort": 2
+                  "Effort": 1
                 },
                 {
                   "TaskId": "SC-14-01-05",
@@ -68,12 +68,12 @@
                 {
                   "TaskId": "SC-14-01-06",
                   "TaskName": "Testing",
-                  "Effort": 4
+                  "Effort": 2
                 },
                 {
                   "TaskId": "SC-14-01-07",
                   "TaskName": "Deployment",
-                  "Effort": 2
+                  "Effort": 1
                 }
               ]
             },
@@ -85,22 +85,22 @@
                 {
                   "TaskId": "SC-14-02-01",
                   "TaskName": "Core Feature",
-                  "Effort": 5
+                  "Effort": 2
                 },
                 {
                   "TaskId": "SC-14-02-02",
                   "TaskName": "UI Design",
-                  "Effort": 3
+                  "Effort": 1
                 },
                 {
                   "TaskId": "SC-14-02-03",
                   "TaskName": "BFF Feature",
-                  "Effort": ""
+                  "Effort": 1
                 },
                 {
                   "TaskId": "SC-14-02-04",
                   "TaskName": "Architecture",
-                  "Effort": 2
+                  "Effort": 1
                 },
                 {
                   "TaskId": "SC-14-02-05",
@@ -110,12 +110,12 @@
                 {
                   "TaskId": "SC-14-02-06",
                   "TaskName": "Testing",
-                  "Effort": 4
+                  "Effort": 2
                 },
                 {
                   "TaskId": "SC-14-02-07",
                   "TaskName": "Deployment",
-                  "Effort": 2
+                  "Effort": 1
                 }
               ]
             },
@@ -127,22 +127,22 @@
                 {
                   "TaskId": "SC-14-03-01",
                   "TaskName": "Core Feature",
-                  "Effort": 5
+                  "Effort": 2
                 },
                 {
                   "TaskId": "SC-14-03-02",
                   "TaskName": "UI Design",
-                  "Effort": 3
+                  "Effort": 2
                 },
                 {
                   "TaskId": "SC-14-03-03",
                   "TaskName": "BFF Feature",
-                  "Effort": ""
+                  "Effort": 1
                 },
                 {
                   "TaskId": "SC-14-03-04",
                   "TaskName": "Architecture",
-                  "Effort": 2
+                  "Effort": 1
                 },
                 {
                   "TaskId": "SC-14-03-05",
@@ -152,7 +152,7 @@
                 {
                   "TaskId": "SC-14-03-06",
                   "TaskName": "Testing",
-                  "Effort": 4
+                  "Effort": 2
                 },
                 {
                   "TaskId": "SC-14-03-07",
@@ -169,7 +169,7 @@
                 {
                   "TaskId": "SC-14-04-01",
                   "TaskName": "Core Feature",
-                  "Effort": 5
+                  "Effort": 4
                 },
                 {
                   "TaskId": "SC-14-04-02",
@@ -179,7 +179,7 @@
                 {
                   "TaskId": "SC-14-04-03",
                   "TaskName": "BFF Feature",
-                  "Effort": ""
+                  "Effort": 2
                 },
                 {
                   "TaskId": "SC-14-04-04",
@@ -194,7 +194,7 @@
                 {
                   "TaskId": "SC-14-04-06",
                   "TaskName": "Testing",
-                  "Effort": 4
+                  "Effort": 2
                 },
                 {
                   "TaskId": "SC-14-04-07",
@@ -212,37 +212,37 @@
             {
               "OutcomeId": "OC-01-01",
               "OutcomeName": "Booking",
-              "Complexity": 1
+              "Complexity": 3
             },
             {
               "OutcomeId": "OC-01-02",
               "OutcomeName": "Registrasi Rawat Jalan dan IGD",
-              "Complexity": 1
+              "Complexity": 5
             },
             {
               "OutcomeId": "OC-01-03",
               "OutcomeName": "Registrasi Rawat Inap",
-              "Complexity": 1
+              "Complexity": 5
             },
             {
               "OutcomeId": "OC-01-04",
               "OutcomeName": "VCLAIM BPJS",
-              "Complexity": 1
+              "Complexity": 4
             },
             {
               "OutcomeId": "OC-01-05",
               "OutcomeName": "Patient Journey Tracking",
-              "Complexity": 1
+              "Complexity": 3
             },
             {
               "OutcomeId": "OC-01-06",
               "OutcomeName": "Jadwal Praktek",
-              "Complexity": 1
+              "Complexity": 2
             },
             {
               "OutcomeId": "OC-01-07",
               "OutcomeName": "Antrian",
-              "Complexity": 1
+              "Complexity": 2
             }
           ],
           "Workspaces": [
@@ -254,17 +254,17 @@
                 {
                   "TaskId": "SC-01-01-01",
                   "TaskName": "Core Feature",
-                  "Effort": 5
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-01-01-02",
                   "TaskName": "UI Design",
-                  "Effort": 3
+                  "Effort": 2
                 },
                 {
                   "TaskId": "SC-01-01-03",
                   "TaskName": "BFF Feature",
-                  "Effort": ""
+                  "Effort": 2
                 },
                 {
                   "TaskId": "SC-01-01-04",
@@ -274,17 +274,17 @@
                 {
                   "TaskId": "SC-01-01-05",
                   "TaskName": "Development",
-                  "Effort": 1
+                  "Effort": 2
                 },
                 {
                   "TaskId": "SC-01-01-06",
                   "TaskName": "Testing",
-                  "Effort": 4
+                  "Effort": 2
                 },
                 {
                   "TaskId": "SC-01-01-07",
                   "TaskName": "Deployment",
-                  "Effort": 2
+                  "Effort": 1
                 }
               ]
             },
@@ -296,17 +296,17 @@
                 {
                   "TaskId": "SC-01-02-01",
                   "TaskName": "Core Feature",
-                  "Effort": 5
+                  "Effort": 4
                 },
                 {
                   "TaskId": "SC-01-02-02",
                   "TaskName": "UI Design",
-                  "Effort": 3
+                  "Effort": 4
                 },
                 {
                   "TaskId": "SC-01-02-03",
                   "TaskName": "BFF Feature",
-                  "Effort": ""
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-01-02-04",
@@ -321,7 +321,7 @@
                 {
                   "TaskId": "SC-01-02-06",
                   "TaskName": "Testing",
-                  "Effort": 4
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-01-02-07",
@@ -338,17 +338,17 @@
                 {
                   "TaskId": "SC-01-03-01",
                   "TaskName": "Core Feature",
-                  "Effort": 5
+                  "Effort": 4
                 },
                 {
                   "TaskId": "SC-01-03-02",
                   "TaskName": "UI Design",
-                  "Effort": 3
+                  "Effort": 4
                 },
                 {
                   "TaskId": "SC-01-03-03",
                   "TaskName": "BFF Feature",
-                  "Effort": ""
+                  "Effort": 2
                 },
                 {
                   "TaskId": "SC-01-03-04",
@@ -363,7 +363,7 @@
                 {
                   "TaskId": "SC-01-03-06",
                   "TaskName": "Testing",
-                  "Effort": 4
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-01-03-07",
@@ -389,37 +389,37 @@
             {
               "OutcomeId": "OC-05-01",
               "OutcomeName": "Antrian",
-              "Complexity": 1
+              "Complexity": 2
             },
             {
               "OutcomeId": "OC-05-02",
               "OutcomeName": "Tindakan",
-              "Complexity": 1
+              "Complexity": 5
             },
             {
               "OutcomeId": "OC-05-03",
               "OutcomeName": "Rujuk Internal",
-              "Complexity": 1
+              "Complexity": 2
             },
             {
               "OutcomeId": "OC-05-04",
               "OutcomeName": "CPOE (Order Pemeriksaan)",
-              "Complexity": 1
+              "Complexity": 5
             },
             {
               "OutcomeId": "OC-05-05",
               "OutcomeName": "Pakai Barang",
-              "Complexity": 1
+              "Complexity": 4
             },
             {
               "OutcomeId": "OC-05-06",
               "OutcomeName": "Mutasi Barang",
-              "Complexity": 1
+              "Complexity": 4
             },
             {
               "OutcomeId": "OC-05-07",
               "OutcomeName": "Opname",
-              "Complexity": 1
+              "Complexity": 5
             }
           ],
           "Workspaces": [
@@ -431,17 +431,17 @@
                 {
                   "TaskId": "SC-05-01-01",
                   "TaskName": "Core Feature",
-                  "Effort": 5
+                  "Effort": 4
                 },
                 {
                   "TaskId": "SC-05-01-02",
                   "TaskName": "UI Design",
-                  "Effort": 3
+                  "Effort": 4
                 },
                 {
                   "TaskId": "SC-05-01-03",
                   "TaskName": "BFF Feature",
-                  "Effort": ""
+                  "Effort": 2
                 },
                 {
                   "TaskId": "SC-05-01-04",
@@ -456,7 +456,7 @@
                 {
                   "TaskId": "SC-05-01-06",
                   "TaskName": "Testing",
-                  "Effort": 4
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-05-01-07",
@@ -473,17 +473,17 @@
                 {
                   "TaskId": "SC-05-02-01",
                   "TaskName": "Core Feature",
-                  "Effort": 5
+                  "Effort": 4
                 },
                 {
                   "TaskId": "SC-05-02-02",
                   "TaskName": "UI Design",
-                  "Effort": 3
+                  "Effort": 2
                 },
                 {
                   "TaskId": "SC-05-02-03",
                   "TaskName": "BFF Feature",
-                  "Effort": ""
+                  "Effort": 1
                 },
                 {
                   "TaskId": "SC-05-02-04",
@@ -498,7 +498,7 @@
                 {
                   "TaskId": "SC-05-02-06",
                   "TaskName": "Testing",
-                  "Effort": 4
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-05-02-07",
@@ -516,22 +516,22 @@
             {
               "OutcomeId": "OC-02-01",
               "OutcomeName": "Rincian Tagihan Pasien",
-              "Complexity": 1
+              "Complexity": 2
             },
             {
               "OutcomeId": "OC-02-02",
               "OutcomeName": "Alokasi Pembayaran",
-              "Complexity": 1
+              "Complexity": 4
             },
             {
               "OutcomeId": "OC-02-03",
               "OutcomeName": "Deposit",
-              "Complexity": 1
+              "Complexity": 3
             },
             {
               "OutcomeId": "OC-02-04",
               "OutcomeName": "Reg-Out",
-              "Complexity": 1
+              "Complexity": 5
             }
           ],
           "Workspaces": [
@@ -548,12 +548,12 @@
                 {
                   "TaskId": "SC-02-01-02",
                   "TaskName": "UI Design",
-                  "Effort": 3
+                  "Effort": 4
                 },
                 {
                   "TaskId": "SC-02-01-03",
                   "TaskName": "BFF Feature",
-                  "Effort": ""
+                  "Effort": 2
                 },
                 {
                   "TaskId": "SC-02-01-04",
@@ -568,7 +568,7 @@
                 {
                   "TaskId": "SC-02-01-06",
                   "TaskName": "Testing",
-                  "Effort": 4
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-02-01-07",
@@ -586,12 +586,12 @@
             {
               "OutcomeId": "OC-03-01",
               "OutcomeName": "Kasir (Terima/Keluar Kas)",
-              "Complexity": 1
+              "Complexity": 4
             },
             {
               "OutcomeId": "OC-03-02",
               "OutcomeName": "Closing Shift",
-              "Complexity": 1
+              "Complexity": 3
             }
           ],
           "Workspaces": [
@@ -603,7 +603,7 @@
                 {
                   "TaskId": "SC-03-01-01",
                   "TaskName": "Core Feature",
-                  "Effort": 5
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-03-01-02",
@@ -613,7 +613,7 @@
                 {
                   "TaskId": "SC-03-01-03",
                   "TaskName": "BFF Feature",
-                  "Effort": ""
+                  "Effort": 2
                 },
                 {
                   "TaskId": "SC-03-01-04",
@@ -628,7 +628,7 @@
                 {
                   "TaskId": "SC-03-01-06",
                   "TaskName": "Testing",
-                  "Effort": 4
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-03-01-07",
@@ -645,7 +645,7 @@
                 {
                   "TaskId": "SC-03-02-01",
                   "TaskName": "Core Feature",
-                  "Effort": 5
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-03-02-02",
@@ -655,12 +655,12 @@
                 {
                   "TaskId": "SC-03-02-03",
                   "TaskName": "BFF Feature",
-                  "Effort": ""
+                  "Effort": 1
                 },
                 {
                   "TaskId": "SC-03-02-04",
                   "TaskName": "Architecture",
-                  "Effort": 2
+                  "Effort": 1
                 },
                 {
                   "TaskId": "SC-03-02-05",
@@ -670,7 +670,7 @@
                 {
                   "TaskId": "SC-03-02-06",
                   "TaskName": "Testing",
-                  "Effort": 4
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-03-02-07",
@@ -696,27 +696,27 @@
             {
               "OutcomeId": "OC-04-01",
               "OutcomeName": "Data Sosial Pasien",
-              "Complexity": 1
+              "Complexity": 3
             },
             {
               "OutcomeId": "OC-04-02",
               "OutcomeName": "Manajemen Berkas",
-              "Complexity": 1
+              "Complexity": 4
             },
             {
               "OutcomeId": "OC-04-03",
               "OutcomeName": "Casemix dan Coding",
-              "Complexity": 1
+              "Complexity": 5
             },
             {
               "OutcomeId": "OC-04-04",
               "OutcomeName": "Pelaporan RL",
-              "Complexity": 1
+              "Complexity": 4
             },
             {
               "OutcomeId": "OC-04-05",
               "OutcomeName": "Pelaporan Index dan Sensus",
-              "Complexity": 1
+              "Complexity": 4
             }
           ],
           "Workspaces": [
@@ -728,7 +728,7 @@
                 {
                   "TaskId": "SC-04-01-01",
                   "TaskName": "Core Feature",
-                  "Effort": 5
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-04-01-02",
@@ -738,7 +738,7 @@
                 {
                   "TaskId": "SC-04-01-03",
                   "TaskName": "BFF Feature",
-                  "Effort": ""
+                  "Effort": 2
                 },
                 {
                   "TaskId": "SC-04-01-04",
@@ -753,7 +753,7 @@
                 {
                   "TaskId": "SC-04-01-06",
                   "TaskName": "Testing",
-                  "Effort": 4
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-04-01-07",
@@ -775,22 +775,22 @@
                 {
                   "TaskId": "SC-04-02-02",
                   "TaskName": "UI Design",
-                  "Effort": 3
+                  "Effort": 5
                 },
                 {
                   "TaskId": "SC-04-02-03",
                   "TaskName": "BFF Feature",
-                  "Effort": ""
+                  "Effort": 4
                 },
                 {
                   "TaskId": "SC-04-02-04",
                   "TaskName": "Architecture",
-                  "Effort": 2
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-04-02-05",
                   "TaskName": "Development",
-                  "Effort": 1
+                  "Effort": 2
                 },
                 {
                   "TaskId": "SC-04-02-06",
@@ -812,7 +812,7 @@
                 {
                   "TaskId": "SC-04-03-01",
                   "TaskName": "Core Feature",
-                  "Effort": 5
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-04-03-02",
@@ -822,12 +822,12 @@
                 {
                   "TaskId": "SC-04-03-03",
                   "TaskName": "BFF Feature",
-                  "Effort": ""
+                  "Effort": 1
                 },
                 {
                   "TaskId": "SC-04-03-04",
                   "TaskName": "Architecture",
-                  "Effort": 2
+                  "Effort": 1
                 },
                 {
                   "TaskId": "SC-04-03-05",
@@ -837,7 +837,7 @@
                 {
                   "TaskId": "SC-04-03-06",
                   "TaskName": "Testing",
-                  "Effort": 4
+                  "Effort": 2
                 },
                 {
                   "TaskId": "SC-04-03-07",
@@ -863,7 +863,7 @@
             {
               "OutcomeId": "OC-07-01",
               "OutcomeName": "IGD Visit",
-              "Complexity": 1
+              "Complexity": 4
             },
             {
               "OutcomeId": "OC-07-02",
@@ -873,27 +873,27 @@
             {
               "OutcomeId": "OC-07-03",
               "OutcomeName": "Ambulance",
-              "Complexity": 1
+              "Complexity": 3
             },
             {
               "OutcomeId": "OC-07-04",
               "OutcomeName": "Tindakan",
-              "Complexity": 1
+              "Complexity": 4
             },
             {
               "OutcomeId": "OC-07-05",
               "OutcomeName": "Pakai Barang",
-              "Complexity": 1
+              "Complexity": 3
             },
             {
               "OutcomeId": "OC-07-06",
               "OutcomeName": "Mutasi Barang",
-              "Complexity": 1
+              "Complexity": 2
             },
             {
               "OutcomeId": "OC-07-07",
               "OutcomeName": "Opname",
-              "Complexity": 1
+              "Complexity": 2
             }
           ],
           "Workspaces": [
@@ -905,7 +905,7 @@
                 {
                   "TaskId": "SC-07-01-01",
                   "TaskName": "Core Feature",
-                  "Effort": 5
+                  "Effort": 4
                 },
                 {
                   "TaskId": "SC-07-01-02",
@@ -915,7 +915,7 @@
                 {
                   "TaskId": "SC-07-01-03",
                   "TaskName": "BFF Feature",
-                  "Effort": ""
+                  "Effort": 2
                 },
                 {
                   "TaskId": "SC-07-01-04",
@@ -930,7 +930,7 @@
                 {
                   "TaskId": "SC-07-01-06",
                   "TaskName": "Testing",
-                  "Effort": 4
+                  "Effort": 5
                 },
                 {
                   "TaskId": "SC-07-01-07",
@@ -947,7 +947,7 @@
                 {
                   "TaskId": "SC-05-02-01",
                   "TaskName": "Core Feature",
-                  "Effort": 5
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-05-02-02",
@@ -957,7 +957,7 @@
                 {
                   "TaskId": "SC-05-02-03",
                   "TaskName": "BFF Feature",
-                  "Effort": ""
+                  "Effort": 2
                 },
                 {
                   "TaskId": "SC-05-02-04",
@@ -972,7 +972,7 @@
                 {
                   "TaskId": "SC-05-02-06",
                   "TaskName": "Testing",
-                  "Effort": 4
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-05-02-07",
@@ -990,37 +990,37 @@
             {
               "OutcomeId": "OC-06-01",
               "OutcomeName": "Tindakan",
-              "Complexity": 1
+              "Complexity": 4
             },
             {
               "OutcomeId": "OC-06-02",
               "OutcomeName": "Pakai Bed",
-              "Complexity": 1
+              "Complexity": 4
             },
             {
               "OutcomeId": "OC-06-03",
               "OutcomeName": "Transfer Unit",
-              "Complexity": 1
+              "Complexity": 2
             },
             {
               "OutcomeId": "OC-06-04",
               "OutcomeName": "Discharge",
-              "Complexity": 1
+              "Complexity": 2
             },
             {
               "OutcomeId": "OC-06-05",
               "OutcomeName": "Pakai Barang",
-              "Complexity": 1
+              "Complexity": 3
             },
             {
               "OutcomeId": "OC-06-06",
               "OutcomeName": "Mutasi Barang",
-              "Complexity": 1
+              "Complexity": 2
             },
             {
               "OutcomeId": "OC-06-07",
               "OutcomeName": "Opname",
-              "Complexity": 1
+              "Complexity": 4
             }
           ],
           "Workspaces": [
@@ -1032,7 +1032,7 @@
                 {
                   "TaskId": "SC-06-01-01",
                   "TaskName": "Core Feature",
-                  "Effort": 5
+                  "Effort": 4
                 },
                 {
                   "TaskId": "SC-06-01-02",
@@ -1042,7 +1042,7 @@
                 {
                   "TaskId": "SC-06-01-03",
                   "TaskName": "BFF Feature",
-                  "Effort": ""
+                  "Effort": 2
                 },
                 {
                   "TaskId": "SC-06-01-04",
@@ -1057,7 +1057,7 @@
                 {
                   "TaskId": "SC-06-01-06",
                   "TaskName": "Testing",
-                  "Effort": 4
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-06-01-07",
@@ -1074,7 +1074,7 @@
                 {
                   "TaskId": "SC-05-02-01",
                   "TaskName": "Core Feature",
-                  "Effort": 5
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-05-02-02",
@@ -1084,7 +1084,7 @@
                 {
                   "TaskId": "SC-05-02-03",
                   "TaskName": "BFF Feature",
-                  "Effort": ""
+                  "Effort": 2
                 },
                 {
                   "TaskId": "SC-05-02-04",
@@ -1099,7 +1099,7 @@
                 {
                   "TaskId": "SC-05-02-06",
                   "TaskName": "Testing",
-                  "Effort": 4
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-05-02-07",
@@ -1125,42 +1125,42 @@
             {
               "OutcomeId": "OC-08-01",
               "OutcomeName": "External Registration",
-              "Complexity": 1
+              "Complexity": 3
             },
             {
               "OutcomeId": "OC-08-02",
               "OutcomeName": "Order Laboratorium",
-              "Complexity": 1
+              "Complexity": 5
             },
             {
               "OutcomeId": "OC-08-03",
               "OutcomeName": "Charge",
-              "Complexity": 1
+              "Complexity": 4
             },
             {
               "OutcomeId": "OC-08-04",
               "OutcomeName": "Sample Collection",
-              "Complexity": 1
+              "Complexity": 5
             },
             {
               "OutcomeId": "OC-08-05",
               "OutcomeName": "Result Management",
-              "Complexity": 1
+              "Complexity": 3
             },
             {
               "OutcomeId": "OC-08-06",
               "OutcomeName": "Pakai Barang",
-              "Complexity": 1
+              "Complexity": 2
             },
             {
               "OutcomeId": "OC-08-07",
               "OutcomeName": "Mutasi Barang",
-              "Complexity": 1
+              "Complexity": 3
             },
             {
               "OutcomeId": "OC-08-08",
               "OutcomeName": "Opname",
-              "Complexity": 1
+              "Complexity": 2
             }
           ],
           "Workspaces": [
@@ -1177,12 +1177,12 @@
                 {
                   "TaskId": "SC-08-01-02",
                   "TaskName": "UI Design",
-                  "Effort": 3
+                  "Effort": 4
                 },
                 {
                   "TaskId": "SC-08-01-03",
                   "TaskName": "BFF Feature",
-                  "Effort": ""
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-08-01-04",
@@ -1192,12 +1192,12 @@
                 {
                   "TaskId": "SC-08-01-05",
                   "TaskName": "Development",
-                  "Effort": 1
+                  "Effort": 2
                 },
                 {
                   "TaskId": "SC-08-01-06",
                   "TaskName": "Testing",
-                  "Effort": 4
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-08-01-07",
@@ -1214,22 +1214,22 @@
                 {
                   "TaskId": "SC-08-02-01",
                   "TaskName": "Core Feature",
-                  "Effort": 5
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-08-02-02",
                   "TaskName": "UI Design",
-                  "Effort": 3
+                  "Effort": 2
                 },
                 {
                   "TaskId": "SC-08-02-03",
                   "TaskName": "BFF Feature",
-                  "Effort": ""
+                  "Effort": 1
                 },
                 {
                   "TaskId": "SC-08-02-04",
                   "TaskName": "Architecture",
-                  "Effort": 2
+                  "Effort": 1
                 },
                 {
                   "TaskId": "SC-08-02-05",
@@ -1239,7 +1239,7 @@
                 {
                   "TaskId": "SC-08-02-06",
                   "TaskName": "Testing",
-                  "Effort": 4
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-08-02-07",
@@ -1256,7 +1256,7 @@
                 {
                   "TaskId": "SC-08-03-01",
                   "TaskName": "Core Feature",
-                  "Effort": 5
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-08-03-02",
@@ -1266,7 +1266,7 @@
                 {
                   "TaskId": "SC-08-03-03",
                   "TaskName": "BFF Feature",
-                  "Effort": ""
+                  "Effort": 2
                 },
                 {
                   "TaskId": "SC-08-03-04",
@@ -1281,7 +1281,7 @@
                 {
                   "TaskId": "SC-08-03-06",
                   "TaskName": "Testing",
-                  "Effort": 4
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-08-03-07",
@@ -1299,42 +1299,42 @@
             {
               "OutcomeId": "OC-09-01",
               "OutcomeName": "Order Radiologi",
-              "Complexity": 1
+              "Complexity": 4
             },
             {
               "OutcomeId": "OC-09-02",
               "OutcomeName": "Scheduling",
-              "Complexity": 1
+              "Complexity": 4
             },
             {
               "OutcomeId": "OC-09-03",
               "OutcomeName": "Imaging",
-              "Complexity": 1
+              "Complexity": 2
             },
             {
               "OutcomeId": "OC-09-04",
               "OutcomeName": "Expertise",
-              "Complexity": 1
+              "Complexity": 3
             },
             {
               "OutcomeId": "OC-09-05",
               "OutcomeName": "Verification",
-              "Complexity": 1
+              "Complexity": 3
             },
             {
               "OutcomeId": "OC-09-06",
               "OutcomeName": "Pakai Barang",
-              "Complexity": 1
+              "Complexity": 2
             },
             {
               "OutcomeId": "OC-09-07",
               "OutcomeName": "Mutasi Barang",
-              "Complexity": 1
+              "Complexity": 2
             },
             {
               "OutcomeId": "OC-09-08",
               "OutcomeName": "Opname",
-              "Complexity": 1
+              "Complexity": 2
             }
           ],
           "Workspaces": [
@@ -1346,17 +1346,17 @@
                 {
                   "TaskId": "SC-09-01-01",
                   "TaskName": "Core Feature",
-                  "Effort": 5
+                  "Effort": 4
                 },
                 {
                   "TaskId": "SC-09-01-02",
                   "TaskName": "UI Design",
-                  "Effort": 3
+                  "Effort": 4
                 },
                 {
                   "TaskId": "SC-09-01-03",
                   "TaskName": "BFF Feature",
-                  "Effort": ""
+                  "Effort": 2
                 },
                 {
                   "TaskId": "SC-09-01-04",
@@ -1371,7 +1371,7 @@
                 {
                   "TaskId": "SC-09-01-06",
                   "TaskName": "Testing",
-                  "Effort": 4
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-09-01-07",
@@ -1430,7 +1430,7 @@
                 {
                   "TaskId": "SC-09-03-01",
                   "TaskName": "Core Feature",
-                  "Effort": 5
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-09-03-02",
@@ -1455,7 +1455,7 @@
                 {
                   "TaskId": "SC-09-03-06",
                   "TaskName": "Testing",
-                  "Effort": 4
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-09-03-07",
@@ -1473,37 +1473,37 @@
             {
               "OutcomeId": "OC-10-01",
               "OutcomeName": "Order Operasi",
-              "Complexity": 1
+              "Complexity": 4
             },
             {
               "OutcomeId": "OC-10-02",
               "OutcomeName": "Scheduling",
-              "Complexity": 1
+              "Complexity": 3
             },
             {
               "OutcomeId": "OC-10-03",
               "OutcomeName": "Pre-Operative Clearance",
-              "Complexity": 1
+              "Complexity": 2
             },
             {
               "OutcomeId": "OC-10-04",
               "OutcomeName": "Post-Operative Management",
-              "Complexity": 1
+              "Complexity": 2
             },
             {
               "OutcomeId": "OC-10-05",
               "OutcomeName": "Pakai Barang",
-              "Complexity": 1
+              "Complexity": 3
             },
             {
               "OutcomeId": "OC-10-06",
               "OutcomeName": "Mutasi Barang",
-              "Complexity": 1
+              "Complexity": 3
             },
             {
               "OutcomeId": "OC-10-07",
               "OutcomeName": "Opname",
-              "Complexity": 1
+              "Complexity": 3
             }
           ],
           "Workspaces": [
@@ -1515,22 +1515,22 @@
                 {
                   "TaskId": "SC-10-01-01",
                   "TaskName": "Core Feature",
-                  "Effort": 5
+                  "Effort": 4
                 },
                 {
                   "TaskId": "SC-10-01-02",
                   "TaskName": "UI Design",
-                  "Effort": 3
+                  "Effort": 4
                 },
                 {
                   "TaskId": "SC-10-01-03",
                   "TaskName": "BFF Feature",
-                  "Effort": ""
+                  "Effort": 2
                 },
                 {
                   "TaskId": "SC-10-01-04",
                   "TaskName": "Architecture",
-                  "Effort": 2
+                  "Effort": 1
                 },
                 {
                   "TaskId": "SC-10-01-05",
@@ -1540,7 +1540,7 @@
                 {
                   "TaskId": "SC-10-01-06",
                   "TaskName": "Testing",
-                  "Effort": 4
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-10-01-07",
@@ -1557,7 +1557,7 @@
                 {
                   "TaskId": "SC-10-02-01",
                   "TaskName": "Core Feature",
-                  "Effort": 5
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-10-02-02",
@@ -1567,7 +1567,7 @@
                 {
                   "TaskId": "SC-10-02-03",
                   "TaskName": "BFF Feature",
-                  "Effort": ""
+                  "Effort": 1
                 },
                 {
                   "TaskId": "SC-10-02-04",
@@ -1582,7 +1582,7 @@
                 {
                   "TaskId": "SC-10-02-06",
                   "TaskName": "Testing",
-                  "Effort": 4
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-10-02-07",
@@ -1599,7 +1599,7 @@
                 {
                   "TaskId": "SC-10-03-01",
                   "TaskName": "Core Feature",
-                  "Effort": 5
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-10-03-02",
@@ -1609,7 +1609,7 @@
                 {
                   "TaskId": "SC-10-03-03",
                   "TaskName": "BFF Feature",
-                  "Effort": ""
+                  "Effort": 2
                 },
                 {
                   "TaskId": "SC-10-03-04",
@@ -1624,7 +1624,7 @@
                 {
                   "TaskId": "SC-10-03-06",
                   "TaskName": "Testing",
-                  "Effort": 4
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-10-03-07",
@@ -1650,37 +1650,37 @@
             {
               "OutcomeId": "OC-11-01",
               "OutcomeName": "Antrian Apotek",
-              "Complexity": 1
+              "Complexity": 4
             },
             {
               "OutcomeId": "OC-11-02",
               "OutcomeName": "Telaah Resep",
-              "Complexity": 1
+              "Complexity": 3
             },
             {
               "OutcomeId": "OC-11-03",
               "OutcomeName": "Penjualan",
-              "Complexity": 1
+              "Complexity": 4
             },
             {
               "OutcomeId": "OC-11-04",
               "OutcomeName": "Dispensing",
-              "Complexity": 1
+              "Complexity": 5
             },
             {
               "OutcomeId": "OC-11-05",
               "OutcomeName": "Serah Obat",
-              "Complexity": 1
+              "Complexity": 2
             },
             {
               "OutcomeId": "OC-11-06",
               "OutcomeName": "Opname",
-              "Complexity": 1
+              "Complexity": 3
             },
             {
               "OutcomeId": "OC-11-07",
               "OutcomeName": "Mutasi",
-              "Complexity": 1
+              "Complexity": 3
             }
           ],
           "Workspaces": [
@@ -1697,12 +1697,12 @@
                 {
                   "TaskId": "SC-11-01-02",
                   "TaskName": "UI Design",
-                  "Effort": 3
+                  "Effort": 4
                 },
                 {
                   "TaskId": "SC-11-01-03",
                   "TaskName": "BFF Feature",
-                  "Effort": ""
+                  "Effort": 2
                 },
                 {
                   "TaskId": "SC-11-01-04",
@@ -1717,7 +1717,7 @@
                 {
                   "TaskId": "SC-11-01-06",
                   "TaskName": "Testing",
-                  "Effort": 4
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-11-01-07",
@@ -1734,7 +1734,7 @@
                 {
                   "TaskId": "SC-11-02-01",
                   "TaskName": "Core Feature",
-                  "Effort": 5
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-11-02-02",
@@ -1744,7 +1744,7 @@
                 {
                   "TaskId": "SC-11-02-03",
                   "TaskName": "BFF Feature",
-                  "Effort": ""
+                  "Effort": 1
                 },
                 {
                   "TaskId": "SC-11-02-04",
@@ -1759,7 +1759,7 @@
                 {
                   "TaskId": "SC-11-02-06",
                   "TaskName": "Testing",
-                  "Effort": 4
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-11-02-07",
@@ -1781,12 +1781,12 @@
                 {
                   "TaskId": "SC-11-03-02",
                   "TaskName": "UI Design",
-                  "Effort": 3
+                  "Effort": 5
                 },
                 {
                   "TaskId": "SC-11-03-03",
                   "TaskName": "BFF Feature",
-                  "Effort": ""
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-11-03-04",
@@ -1796,7 +1796,7 @@
                 {
                   "TaskId": "SC-11-03-05",
                   "TaskName": "Development",
-                  "Effort": 1
+                  "Effort": 2
                 },
                 {
                   "TaskId": "SC-11-03-06",
@@ -1818,22 +1818,22 @@
                 {
                   "TaskId": "SC-11-04-01",
                   "TaskName": "Core Feature",
-                  "Effort": 5
+                  "Effort": 2
                 },
                 {
                   "TaskId": "SC-11-04-02",
                   "TaskName": "UI Design",
-                  "Effort": 3
+                  "Effort": 1
                 },
                 {
                   "TaskId": "SC-11-04-03",
                   "TaskName": "BFF Feature",
-                  "Effort": ""
+                  "Effort": 1
                 },
                 {
                   "TaskId": "SC-11-04-04",
                   "TaskName": "Architecture",
-                  "Effort": 2
+                  "Effort": 1
                 },
                 {
                   "TaskId": "SC-11-04-05",
@@ -1843,7 +1843,7 @@
                 {
                   "TaskId": "SC-11-04-06",
                   "TaskName": "Testing",
-                  "Effort": 4
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-11-04-07",
@@ -1860,7 +1860,7 @@
                 {
                   "TaskId": "SC-11-05-01",
                   "TaskName": "Core Feature",
-                  "Effort": 5
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-11-05-02",
@@ -1870,7 +1870,7 @@
                 {
                   "TaskId": "SC-11-05-03",
                   "TaskName": "BFF Feature",
-                  "Effort": ""
+                  "Effort": 2
                 },
                 {
                   "TaskId": "SC-11-05-04",
@@ -1885,7 +1885,7 @@
                 {
                   "TaskId": "SC-11-05-06",
                   "TaskName": "Testing",
-                  "Effort": 4
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-11-05-07",
@@ -1903,27 +1903,27 @@
             {
               "OutcomeId": "OC-12-01",
               "OutcomeName": "Terima Barang (DO)",
-              "Complexity": 1
+              "Complexity": 4
             },
             {
               "OutcomeId": "OC-12-02",
               "OutcomeName": "Mutasi",
-              "Complexity": 1
+              "Complexity": 4
             },
             {
               "OutcomeId": "OC-12-03",
               "OutcomeName": "Opname",
-              "Complexity": 1
+              "Complexity": 4
             },
             {
               "OutcomeId": "OC-12-04",
               "OutcomeName": "Musnah",
-              "Complexity": 1
+              "Complexity": 2
             },
             {
               "OutcomeId": "OC-12-05",
               "OutcomeName": "Retur Beli",
-              "Complexity": 1
+              "Complexity": 3
             }
           ],
           "Workspaces": [
@@ -1935,7 +1935,7 @@
                 {
                   "TaskId": "SC-12-01-01",
                   "TaskName": "Core Feature",
-                  "Effort": 5
+                  "Effort": 4
                 },
                 {
                   "TaskId": "SC-12-01-02",
@@ -1945,7 +1945,7 @@
                 {
                   "TaskId": "SC-12-01-03",
                   "TaskName": "BFF Feature",
-                  "Effort": ""
+                  "Effort": 2
                 },
                 {
                   "TaskId": "SC-12-01-04",
@@ -1960,7 +1960,7 @@
                 {
                   "TaskId": "SC-12-01-06",
                   "TaskName": "Testing",
-                  "Effort": 4
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-12-01-07",
@@ -1977,7 +1977,7 @@
                 {
                   "TaskId": "SC-12-02-01",
                   "TaskName": "Core Feature",
-                  "Effort": 5
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-12-02-02",
@@ -1987,7 +1987,7 @@
                 {
                   "TaskId": "SC-12-02-03",
                   "TaskName": "BFF Feature",
-                  "Effort": ""
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-12-02-04",
@@ -2002,7 +2002,7 @@
                 {
                   "TaskId": "SC-12-02-06",
                   "TaskName": "Testing",
-                  "Effort": 4
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-12-02-07",
@@ -2019,7 +2019,7 @@
                 {
                   "TaskId": "SC-12-03-01",
                   "TaskName": "Core Feature",
-                  "Effort": 5
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-12-03-02",
@@ -2029,7 +2029,7 @@
                 {
                   "TaskId": "SC-12-03-03",
                   "TaskName": "BFF Feature",
-                  "Effort": ""
+                  "Effort": 1
                 },
                 {
                   "TaskId": "SC-12-03-04",
@@ -2044,7 +2044,7 @@
                 {
                   "TaskId": "SC-12-03-06",
                   "TaskName": "Testing",
-                  "Effort": 4
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-12-06-07",
@@ -2062,27 +2062,27 @@
             {
               "OutcomeId": "OC-13-01",
               "OutcomeName": "Material Request",
-              "Complexity": 1
+              "Complexity": 5
             },
             {
               "OutcomeId": "OC-13-02",
               "OutcomeName": "Forecasting",
-              "Complexity": 1
+              "Complexity": 4
             },
             {
               "OutcomeId": "OC-13-03",
               "OutcomeName": "Purchase Request",
-              "Complexity": 1
+              "Complexity": 3
             },
             {
               "OutcomeId": "OC-13-04",
               "OutcomeName": "Purchase Order",
-              "Complexity": 1
+              "Complexity": 3
             },
             {
               "OutcomeId": "OC-13-05",
               "OutcomeName": "Faktur Tagihan",
-              "Complexity": 1
+              "Complexity": 4
             }
           ],
           "Workspaces": [
@@ -2094,17 +2094,17 @@
                 {
                   "TaskId": "SC-13-01-01",
                   "TaskName": "Core Feature",
-                  "Effort": 5
+                  "Effort": 4
                 },
                 {
                   "TaskId": "SC-13-01-02",
                   "TaskName": "UI Design",
-                  "Effort": 3
+                  "Effort": 4
                 },
                 {
                   "TaskId": "SC-13-01-03",
                   "TaskName": "BFF Feature",
-                  "Effort": ""
+                  "Effort": 2
                 },
                 {
                   "TaskId": "SC-13-01-04",
@@ -2119,7 +2119,7 @@
                 {
                   "TaskId": "SC-13-01-06",
                   "TaskName": "Testing",
-                  "Effort": 4
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-13-01-07",
@@ -2136,7 +2136,7 @@
                 {
                   "TaskId": "SC-13-02-01",
                   "TaskName": "Core Feature",
-                  "Effort": 5
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-13-02-02",
@@ -2146,7 +2146,7 @@
                 {
                   "TaskId": "SC-13-02-03",
                   "TaskName": "BFF Feature",
-                  "Effort": ""
+                  "Effort": 1
                 },
                 {
                   "TaskId": "SC-13-02-04",
@@ -2161,7 +2161,7 @@
                 {
                   "TaskId": "SC-13-02-06",
                   "TaskName": "Testing",
-                  "Effort": 4
+                  "Effort": 3
                 },
                 {
                   "TaskId": "SC-13-02-07",
