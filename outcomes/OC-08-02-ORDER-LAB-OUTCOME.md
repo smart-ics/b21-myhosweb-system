@@ -3,7 +3,7 @@
 | Field       | Value             |
 |-------------|-------------------|
 | Code        | OC-08-02          |
-| Version     | 2.0               |
+| Version     | 2.1               |
 | Status      | Draft             |
 | LastUpdated | 2026-10-03        |
 
@@ -71,7 +71,7 @@ Order pemeriksaan laboratorium untuk pasien telah berhasil dibuat dan tercatat d
 - Kode Registrasi asal (Originating Registration Code).
 - Identitas Dokter Pemberi Instruksi / Requester (Doctor ID).
 - Identitas Pembuat Order / Order Creator (User ID dari pengguna yang memiliki hak akses ke menu Laboratorium).
-- Peran/relasi Order Creator terhadap Dokter Requester (apakah Dokter sendiri atau pengguna lain atas instruksi dokter).
+- Identitas/relasi Order Creator terhadap Doctor Requester, apabila relevan dalam konteks pemberian instruksi.
 - Tingkat Urgensi/Prioritas (*Urgency/Priority*) pemeriksaan (wajib ada; terisi nilai pilihan atau nilai default).
 - Daftar item pemeriksaan laboratorium yang diminta (satu atau lebih item tarif/tindakan pemeriksaan laboratorium).
 - *Clinical Intent* / alasan pemeriksaan (opsional; dicatat apabila diisi).
@@ -175,7 +175,7 @@ Selama order masih berstatus `Ordered` dan belum memasuki status `Charged`, Orde
 | AC-09 | Selama order masih berstatus `Ordered` (sebelum `Charged`), order dapat dibatalkan dan mengalami transisi status bisnis menjadi **`Cancelled`**. | Correctness |
 | AC-10 | Order yang telah berstatus `Cancelled` tidak dapat diproses ke status `Charged` atau tahapan lifecycle lanjutan. | Constraint |
 | AC-11 | Upaya edit atau pembatalan order yang sudah berstatus `Charged` (atau status lanjutan dalam lifecycle) ditolak karena telah melewati boundary OC-08-02. | Constraint |
-| AC-12 | Order laboratorium yang tercatat dengan Kode Registrasi asal tidak terikat eksklusif 1:1, dan dapat diproses downstream pada registrasi yang sama, berbeda, atau tanpa registrasi baru sesuai kebutuhan pelayanan. | Constraint |
+| AC-12 | Order tidak mensyaratkan Kode Registrasi yang sama untuk pelaksanaan pemeriksaan berikutnya. | Constraint |
 
 ---
 
