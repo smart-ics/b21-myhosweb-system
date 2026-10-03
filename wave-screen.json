@@ -9,8 +9,24 @@
           "ScreenName": "Mastering",
           "Outcome": [
             {
-              "OutcomeId": "",
-              "OutcomeName": ""
+              "OutcomeId": "OC-14-01",
+              "OutcomeName": "Master Organisasi"
+            },
+            {
+              "OutcomeId": "OC-14-02",
+              "OutcomeName": "Master Dokter"
+            },
+            {
+              "OutcomeId": "OC-14-03",
+              "OutcomeName": "Master Jaminan"
+            },
+            {
+              "OutcomeId": "OC-14-04",
+              "OutcomeName": "Master Layanan"
+            },
+            {
+              "OutcomeId": "OC-14-05",
+              "OutcomeName": "Master Tarif"
             }
           ],
           "Workspace": [
@@ -185,8 +201,32 @@
           "ScreenName": "Admisi",
           "Outcome": [
             {
-              "OutcomeId": "",
-              "OutcomeName": ""
+              "OutcomeId": "OC-01-01",
+              "OutcomeName": "Booking"
+            },
+            {
+              "OutcomeId": "OC-01-02",
+              "OutcomeName": "Registrasi Rawat Jalan dan IGD"
+            },
+            {
+              "OutcomeId": "OC-01-03",
+              "OutcomeName": "Registrasi Rawat Inap"
+            },
+            {
+              "OutcomeId": "OC-01-04",
+              "OutcomeName": "VCLAIM BPJS"
+            },
+            {
+              "OutcomeId": "OC-01-05",
+              "OutcomeName": "Patient Journey Tracking"
+            },
+            {
+              "OutcomeId": "OC-01-06",
+              "OutcomeName": "Jadwal Praktek"
+            },
+            {
+              "OutcomeId": "OC-01-07",
+              "OutcomeName": "Antrian"
             }
           ],
           "Workspace": [
@@ -328,8 +368,32 @@
           "ScreenName": "Poli Rawat Jalan",
           "Outcome": [
             {
-              "OutcomeId": "",
-              "OutcomeName": ""
+              "OutcomeId": "OC-05-01",
+              "OutcomeName": "Antrian"
+            },
+            {
+              "OutcomeId": "OC-05-02",
+              "OutcomeName": "Tindakan"
+            },
+            {
+              "OutcomeId": "OC-05-03",
+              "OutcomeName": "Rujuk Internal"
+            },
+            {
+              "OutcomeId": "OC-05-04",
+              "OutcomeName": "CPOE (Order Pemeriksaan)"
+            },
+            {
+              "OutcomeId": "OC-05-05",
+              "OutcomeName": "Pakai Barang"
+            },
+            {
+              "OutcomeId": "OC-05-06",
+              "OutcomeName": "Mutasi Barang"
+            },
+            {
+              "OutcomeId": "OC-05-07",
+              "OutcomeName": "Opname"
             }
           ],
           "Workspace": [
@@ -422,8 +486,20 @@
           "ScreenName": "Tata Rekening",
           "Outcome": [
             {
-              "OutcomeId": "",
-              "OutcomeName": ""
+              "OutcomeId": "OC-02-01",
+              "OutcomeName": "Rincian Tagihan Pasien"
+            },
+            {
+              "OutcomeId": "OC-02-02",
+              "OutcomeName": "Alokasi Pembayaran"
+            },
+            {
+              "OutcomeId": "OC-02-03",
+              "OutcomeName": "Deposit"
+            },
+            {
+              "OutcomeId": "OC-02-04",
+              "OutcomeName": "Reg-Out"
             }
           ],
           "Workspace": [
@@ -475,8 +551,12 @@
           "ScreenName": "Kasir",
           "Outcome": [
             {
-              "OutcomeId": "",
-              "OutcomeName": ""
+              "OutcomeId": "OC-03-01",
+              "OutcomeName": "Kasir (Terima/Keluar Kas)"
+            },
+            {
+              "OutcomeId": "OC-03-02",
+              "OutcomeName": "Closing Shift"
             }
           ],
           "Workspace": [
@@ -577,8 +657,24 @@
           "ScreenName": "Rekam Medis",
           "Outcome": [
             {
-              "OutcomeId": "",
-              "OutcomeName": ""
+              "OutcomeId": "OC-04-01",
+              "OutcomeName": "Data Sosial Pasien"
+            },
+            {
+              "OutcomeId": "OC-04-02",
+              "OutcomeName": "Manajemen Berkas"
+            },
+            {
+              "OutcomeId": "OC-04-03",
+              "OutcomeName": "Casemix dan Coding"
+            },
+            {
+              "OutcomeId": "OC-04-04",
+              "OutcomeName": "Pelaporan RL"
+            },
+            {
+              "OutcomeId": "OC-04-05",
+              "OutcomeName": "Pelaporan Index dan Sensus"
             }
           ],
           "Workspace": [
@@ -720,8 +816,32 @@
           "ScreenName": "IGD",
           "Outcome": [
             {
-              "OutcomeId": "",
-              "OutcomeName": ""
+              "OutcomeId": "OC-07-01",
+              "OutcomeName": "IGD Visit"
+            },
+            {
+              "OutcomeId": "OC-07-02",
+              "OutcomeName": "Triage"
+            },
+            {
+              "OutcomeId": "OC-07-03",
+              "OutcomeName": "Ambulance"
+            },
+            {
+              "OutcomeId": "OC-07-04",
+              "OutcomeName": "Tindakan"
+            },
+            {
+              "OutcomeId": "OC-07-05",
+              "OutcomeName": "Pakai Barang"
+            },
+            {
+              "OutcomeId": "OC-07-06",
+              "OutcomeName": "Mutasi Barang"
+            },
+            {
+              "OutcomeId": "OC-07-07",
+              "OutcomeName": "Opname"
             }
           ],
           "Workspace": [
@@ -814,8 +934,32 @@
           "ScreenName": "Bangsal Rawat Inap",
           "Outcome": [
             {
-              "OutcomeId": "",
-              "OutcomeName": ""
+              "OutcomeId": "OC-06-01",
+              "OutcomeName": "Tindakan"
+            },
+            {
+              "OutcomeId": "OC-06-02",
+              "OutcomeName": "Pakai Bed"
+            },
+            {
+              "OutcomeId": "OC-06-03",
+              "OutcomeName": "Transfer Unit"
+            },
+            {
+              "OutcomeId": "OC-06-04",
+              "OutcomeName": "Discharge"
+            },
+            {
+              "OutcomeId": "OC-06-05",
+              "OutcomeName": "Pakai Barang"
+            },
+            {
+              "OutcomeId": "OC-06-06",
+              "OutcomeName": "Mutasi Barang"
+            },
+            {
+              "OutcomeId": "OC-06-07",
+              "OutcomeName": "Opname"
             }
           ],
           "Workspace": [
@@ -916,8 +1060,36 @@
           "ScreenName": "Laboratorium",
           "Outcome": [
             {
-              "OutcomeId": "",
-              "OutcomeName": ""
+              "OutcomeId": "OC-08-01",
+              "OutcomeName": "External Registration"
+            },
+            {
+              "OutcomeId": "OC-08-02",
+              "OutcomeName": "Order Laboratorium"
+            },
+            {
+              "OutcomeId": "OC-08-03",
+              "OutcomeName": "Charge"
+            },
+            {
+              "OutcomeId": "OC-08-04",
+              "OutcomeName": "Sample Collection"
+            },
+            {
+              "OutcomeId": "OC-08-05",
+              "OutcomeName": "Result Management"
+            },
+            {
+              "OutcomeId": "OC-08-06",
+              "OutcomeName": "Pakai Barang"
+            },
+            {
+              "OutcomeId": "OC-08-07",
+              "OutcomeName": "Mutasi Barang"
+            },
+            {
+              "OutcomeId": "OC-08-08",
+              "OutcomeName": "Opname"
             }
           ],
           "Workspace": [
@@ -1051,8 +1223,36 @@
           "ScreenName": "Radiologi",
           "Outcome": [
             {
-              "OutcomeId": "",
-              "OutcomeName": ""
+              "OutcomeId": "OC-09-01",
+              "OutcomeName": "Order Radiologi"
+            },
+            {
+              "OutcomeId": "OC-09-02",
+              "OutcomeName": "Scheduling"
+            },
+            {
+              "OutcomeId": "OC-09-03",
+              "OutcomeName": "Imaging"
+            },
+            {
+              "OutcomeId": "OC-09-04",
+              "OutcomeName": "Expertise"
+            },
+            {
+              "OutcomeId": "OC-09-05",
+              "OutcomeName": "Verification"
+            },
+            {
+              "OutcomeId": "OC-09-06",
+              "OutcomeName": "Pakai Barang"
+            },
+            {
+              "OutcomeId": "OC-09-07",
+              "OutcomeName": "Mutasi Barang"
+            },
+            {
+              "OutcomeId": "OC-09-08",
+              "OutcomeName": "Opname"
             }
           ],
           "Workspace": [
@@ -1186,8 +1386,32 @@
           "ScreenName": "Kamar Operasi",
           "Outcome": [
             {
-              "OutcomeId": "",
-              "OutcomeName": ""
+              "OutcomeId": "OC-10-01",
+              "OutcomeName": "Order Operasi"
+            },
+            {
+              "OutcomeId": "OC-10-02",
+              "OutcomeName": "Scheduling"
+            },
+            {
+              "OutcomeId": "OC-10-03",
+              "OutcomeName": "Pre-Operative Clearance"
+            },
+            {
+              "OutcomeId": "OC-10-04",
+              "OutcomeName": "Post-Operative Management"
+            },
+            {
+              "OutcomeId": "OC-10-05",
+              "OutcomeName": "Pakai Barang"
+            },
+            {
+              "OutcomeId": "OC-10-06",
+              "OutcomeName": "Mutasi Barang"
+            },
+            {
+              "OutcomeId": "OC-10-07",
+              "OutcomeName": "Opname"
             }
           ],
           "Workspace": [
@@ -1329,8 +1553,32 @@
           "ScreenName": "Apotek",
           "Outcome": [
             {
-              "OutcomeId": "",
-              "OutcomeName": ""
+              "OutcomeId": "OC-11-01",
+              "OutcomeName": "Antrian Apotek"
+            },
+            {
+              "OutcomeId": "OC-11-02",
+              "OutcomeName": "Telaah Resep"
+            },
+            {
+              "OutcomeId": "OC-11-03",
+              "OutcomeName": "Penjualan"
+            },
+            {
+              "OutcomeId": "OC-11-04",
+              "OutcomeName": "Dispensing"
+            },
+            {
+              "OutcomeId": "OC-11-05",
+              "OutcomeName": "Serah Obat"
+            },
+            {
+              "OutcomeId": "OC-11-06",
+              "OutcomeName": "Opname"
+            },
+            {
+              "OutcomeId": "OC-11-07",
+              "OutcomeName": "Mutasi"
             }
           ],
           "Workspace": [
@@ -1546,8 +1794,24 @@
           "ScreenName": "Gudang",
           "Outcome": [
             {
-              "OutcomeId": "",
-              "OutcomeName": ""
+              "OutcomeId": "OC-12-01",
+              "OutcomeName": "Terima Barang (DO)"
+            },
+            {
+              "OutcomeId": "OC-12-02",
+              "OutcomeName": "Mutasi"
+            },
+            {
+              "OutcomeId": "OC-12-03",
+              "OutcomeName": "Opname"
+            },
+            {
+              "OutcomeId": "OC-12-04",
+              "OutcomeName": "Musnah"
+            },
+            {
+              "OutcomeId": "OC-12-05",
+              "OutcomeName": "Retur Beli"
             }
           ],
           "Workspace": [
@@ -1681,8 +1945,24 @@
           "ScreenName": "Purchasing",
           "Outcome": [
             {
-              "OutcomeId": "",
-              "OutcomeName": ""
+              "OutcomeId": "OC-13-01",
+              "OutcomeName": "Material Request"
+            },
+            {
+              "OutcomeId": "OC-13-02",
+              "OutcomeName": "Forecasting"
+            },
+            {
+              "OutcomeId": "OC-13-03",
+              "OutcomeName": "Purchase Request"
+            },
+            {
+              "OutcomeId": "OC-13-04",
+              "OutcomeName": "Purchase Order"
+            },
+            {
+              "OutcomeId": "OC-13-05",
+              "OutcomeName": "Faktur Tagihan"
             }
           ],
           "Workspace": [
