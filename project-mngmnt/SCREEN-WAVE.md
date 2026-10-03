@@ -1,11 +1,6 @@
 # WAVE-01 : FOUNDATION & PATIENT ADMISSION
 
 SC-14 Mastering
-- SC-14-01 Outcome Discovery
-	- SC-14-01-01 Master Organisasi
-	- SC-14-01-02 Master Dokter
-	- SC-14-01-03 Master Jaminan
-	- SC-14-01-04 Master Tarif
 - SC-14-02 Workspace Organisasi
 	- SC-14-02-01 Core Feature
 	- SC-14-02-02 UI Design
@@ -40,13 +35,6 @@ SC-14 Mastering
 	- SC-14-05-07 Deployment
 
 SC-01 Admisi
-- SC-01-01 Outcome Discovery
-	- SC-01-01-01 Booking
-	- SC-01-01-02 Registrasi Rawat Jalan dan IGD
-	- SC-01-01-03 VCLAIM BPJS
-	- SC-01-01-04 Patient Journey Tracking
-	- SC-01-01-05 Jadwal Praktek
-	- SC-01-01-06 Antrian
 - SC-01-02 Workspace Booking
 	- SC-01-02-01 Core Feature
 	- SC-01-02-02 UI Design
@@ -62,51 +50,20 @@ SC-01 Admisi
 	- SC-01-03-04 Architecture
 	- SC-01-03-05 Development
 	- SC-01-03-06 Testing
-	- SC-01-03-07 Deployment
-- SC-01-04 Workspace VCLAIM BPJS
+- SC-01-04 Workspace Registrasi Ranap
 	- SC-01-04-01 Core Feature
 	- SC-01-04-02 UI Design
 	- SC-01-04-03 BFF Feature
 	- SC-01-04-04 Architecture
 	- SC-01-04-05 Development
 	- SC-01-04-06 Testing
-	- SC-01-04-07 Deployment
-- SC-01-05 Workspace Patient Journey Tracking
-	- SC-01-05-01 Core Feature
-	- SC-01-05-02 UI Design
-	- SC-01-05-03 BFF Feature
-	- SC-01-05-04 Architecture
-	- SC-01-05-05 Development
-	- SC-01-05-06 Testing
-	- SC-01-05-07 Deployment
-- SC-01-06 Workspace Jadwal Praktek
-	- SC-01-06-01 Core Feature
-	- SC-01-06-02 UI Design
-	- SC-01-06-03 BFF Feature
-	- SC-01-06-04 Architecture
-	- SC-01-06-05 Development
-	- SC-01-06-06 Testing
-	- SC-01-06-07 Deployment
-- SC-01-07 Workspace Antrian
-	- SC-01-07-01 Core Feature
-	- SC-01-07-02 UI Design
-	- SC-01-07-03 BFF Feature
-	- SC-01-07-04 Architecture
-	- SC-01-07-05 Development
-	- SC-01-07-06 Testing
-	- SC-01-07-07 Deployment
 
 ---
 
 # WAVE-02 : OUTPATIENT REVENUE CYCLE
 
 SC-05 Poli Rawat Jalan
-- SC-05-01 Outcome Discovery
-	- SC-05-01-01 Antrian
-	- SC-05-01-02 Tindakan
-	- SC-05-01-03 Rujuk Internal
-	- SC-05-01-04 CPOE
-- SC-05-02 Workspace Antrian
+- SC-05-02 Workspace Tindakan
 	- SC-05-02-01 Core Feature
 	- SC-05-02-02 UI Design
 	- SC-05-02-03 BFF Feature
@@ -114,7 +71,7 @@ SC-05 Poli Rawat Jalan
 	- SC-05-02-05 Development
 	- SC-05-02-06 Testing
 	- SC-05-02-07 Deployment
-- SC-05-03 Workspace Tindakan
+- SC-05-03 Workspace Local Inventory
 	- SC-05-03-01 Core Feature
 	- SC-05-03-02 UI Design
 	- SC-05-03-03 BFF Feature
@@ -122,29 +79,9 @@ SC-05 Poli Rawat Jalan
 	- SC-05-03-05 Development
 	- SC-05-03-06 Testing
 	- SC-05-03-07 Deployment
-- SC-05-04 Workspace Rujuk Internal
-	- SC-05-04-01 Core Feature
-	- SC-05-04-02 UI Design
-	- SC-05-04-03 BFF Feature
-	- SC-05-04-04 Architecture
-	- SC-05-04-05 Development
-	- SC-05-04-06 Testing
-	- SC-05-04-07 Deployment
-- SC-05-05 Workspace CPOE
-	- SC-05-05-01 Core Feature
-	- SC-05-05-02 UI Design
-	- SC-05-05-03 BFF Feature
-	- SC-05-05-04 Architecture
-	- SC-05-05-05 Development
-	- SC-05-05-06 Testing
-	- SC-05-05-07 Deployment
 
 SC-02 Tata Rekening
-- SC-02-01 Outcome Discovery
-	- SC-02-01-01 Rincian Tagihan Pasien
-	- SC-02-01-02 Alokasi Pembayaran
-	- SC-02-01-03 Reg-Out
-- SC-02-02 Workspace Rincian Tagihan Pasien
+- SC-02-02 Workspace Reg Out
 	- SC-02-02-01 Core Feature
 	- SC-02-02-02 UI Design
 	- SC-02-02-03 BFF Feature
@@ -152,28 +89,9 @@ SC-02 Tata Rekening
 	- SC-02-02-05 Development
 	- SC-02-02-06 Testing
 	- SC-02-02-07 Deployment
-- SC-02-03 Workspace Alokasi Pembayaran
-	- SC-02-03-01 Core Feature
-	- SC-02-03-02 UI Design
-	- SC-02-03-03 BFF Feature
-	- SC-02-03-04 Architecture
-	- SC-02-03-05 Development
-	- SC-02-03-06 Testing
-	- SC-02-03-07 Deployment
-- SC-02-04 Workspace Reg-Out
-	- SC-02-04-01 Core Feature
-	- SC-02-04-02 UI Design
-	- SC-02-04-03 BFF Feature
-	- SC-02-04-04 Architecture
-	- SC-02-04-05 Development
-	- SC-02-04-06 Testing
-	- SC-02-04-07 Deployment
 
 SC-03 Kasir
-- SC-03-01 Outcome Discovery
-	- SC-03-01-01 Kasir
-	- SC-03-01-02 Closing Shift
-- SC-03-02 Workspace Kasir
+- SC-03-02 Workspace Kasir-Deposit-Voucher
 	- SC-03-02-01 Core Feature
 	- SC-03-02-02 UI Design
 	- SC-03-02-03 BFF Feature
@@ -195,13 +113,7 @@ SC-03 Kasir
 # WAVE-03 : MEDICAL RECORD FOUNDATION
 
 SC-04 Rekam Medis
-- SC-04-01 Outcome Discovery
-	- SC-04-01-01 Data Sosial Pasien
-	- SC-04-01-02 Manajemen Berkas
-	- SC-04-01-03 Casemix dan Coding
-	- SC-04-01-04 Pelaporan RL
-	- SC-04-01-05 Pelaporan Index dan Sensus
-- SC-04-02 Workspace Data Sosial Pasien
+- SC-04-02 Workspace Berkas RM
 	- SC-04-02-01 Core Feature
 	- SC-04-02-02 UI Design
 	- SC-04-02-03 BFF Feature
@@ -209,14 +121,6 @@ SC-04 Rekam Medis
 	- SC-04-02-05 Development
 	- SC-04-02-06 Testing
 	- SC-04-02-07 Deployment
-- SC-04-03 Workspace Manajemen Berkas
-	- SC-04-03-01 Core Feature
-	- SC-04-03-02 UI Design
-	- SC-04-03-03 BFF Feature
-	- SC-04-03-04 Architecture
-	- SC-04-03-05 Development
-	- SC-04-03-06 Testing
-	- SC-04-03-07 Deployment
 - SC-04-04 Workspace Casemix dan Coding
 	- SC-04-04-01 Core Feature
 	- SC-04-04-02 UI Design
@@ -233,26 +137,12 @@ SC-04 Rekam Medis
 	- SC-04-05-05 Development
 	- SC-04-05-06 Testing
 	- SC-04-05-07 Deployment
-- SC-04-06 Workspace Pelaporan Index dan Sensus
-	- SC-04-06-01 Core Feature
-	- SC-04-06-02 UI Design
-	- SC-04-06-03 BFF Feature
-	- SC-04-06-04 Architecture
-	- SC-04-06-05 Development
-	- SC-04-06-06 Testing
-	- SC-04-06-07 Deployment
-
 ---
 
 # WAVE-04 : ACUTE CARE OPERATIONS
 
 SC-07 IGD
-- SC-07-01 Outcome Discovery
-	- SC-07-01-01 IGD Visit
-	- SC-07-01-02 Triage
-	- SC-07-01-03 Ambulance
-	- SC-07-01-04 Tindakan
-- SC-07-02 Workspace IGD Visit
+- SC-07-02 Workspace IGD Triage
 	- SC-07-02-01 Core Feature
 	- SC-07-02-02 UI Design
 	- SC-07-02-03 BFF Feature
@@ -260,50 +150,17 @@ SC-07 IGD
 	- SC-07-02-05 Development
 	- SC-07-02-06 Testing
 	- SC-07-02-07 Deployment
-- SC-07-03 Workspace Triage
-	- SC-07-03-01 Core Feature
-	- SC-07-03-02 UI Design
-	- SC-07-03-03 BFF Feature
-	- SC-07-03-04 Architecture
-	- SC-07-03-05 Development
-	- SC-07-03-06 Testing
-	- SC-07-03-07 Deployment
-- SC-07-04 Workspace Ambulance
-	- SC-07-04-01 Core Feature
-	- SC-07-04-02 UI Design
-	- SC-07-04-03 BFF Feature
-	- SC-07-04-04 Architecture
-	- SC-07-04-05 Development
-	- SC-07-04-06 Testing
-	- SC-07-04-07 Deployment
-- SC-07-05 Workspace Tindakan
-	- SC-07-05-01 Core Feature
-	- SC-07-05-02 UI Design
-	- SC-07-05-03 BFF Feature
-	- SC-07-05-04 Architecture
-	- SC-07-05-05 Development
-	- SC-07-05-06 Testing
-	- SC-07-05-07 Deployment
-
-SC-01 Admisi
-- SC-01-01 Outcome Discovery
-	- SC-01-01-01 Registrasi Rawat Inap
-- SC-01-02 Workspace Registrasi Rawat Inap
-	- SC-01-02-01 Core Feature
-	- SC-01-02-02 UI Design
-	- SC-01-02-03 BFF Feature
-	- SC-01-02-04 Architecture
-	- SC-01-02-05 Development
-	- SC-01-02-06 Testing
-	- SC-01-02-07 Deployment
+- SC-05-03 Workspace Local Inventory
+	- SC-05-03-01 Core Feature
+	- SC-05-03-02 UI Design
+	- SC-05-03-03 BFF Feature
+	- SC-05-03-04 Architecture
+	- SC-05-03-05 Development
+	- SC-05-03-06 Testing
+	- SC-05-03-07 Deployment
 
 SC-06 Bangsal Rawat Inap
-- SC-06-01 Outcome Discovery
-	- SC-06-01-01 Tindakan
-	- SC-06-01-02 Pakai Bed
-	- SC-06-01-03 Transfer Unit
-	- SC-06-01-04 Discharge
-- SC-06-02 Workspace Tindakan
+- SC-06-02 Workspace Bed Management
 	- SC-06-02-01 Core Feature
 	- SC-06-02-02 UI Design
 	- SC-06-02-03 BFF Feature
@@ -311,62 +168,20 @@ SC-06 Bangsal Rawat Inap
 	- SC-06-02-05 Development
 	- SC-06-02-06 Testing
 	- SC-06-02-07 Deployment
-- SC-06-03 Workspace Pakai Bed
-	- SC-06-03-01 Core Feature
-	- SC-06-03-02 UI Design
-	- SC-06-03-03 BFF Feature
-	- SC-06-03-04 Architecture
-	- SC-06-03-05 Development
-	- SC-06-03-06 Testing
-	- SC-06-03-07 Deployment
-- SC-06-04 Workspace Transfer Unit
-	- SC-06-04-01 Core Feature
-	- SC-06-04-02 UI Design
-	- SC-06-04-03 BFF Feature
-	- SC-06-04-04 Architecture
-	- SC-06-04-05 Development
-	- SC-06-04-06 Testing
-	- SC-06-04-07 Deployment
-- SC-06-05 Workspace Discharge
-	- SC-06-05-01 Core Feature
-	- SC-06-05-02 UI Design
-	- SC-06-05-03 BFF Feature
-	- SC-06-05-04 Architecture
-	- SC-06-05-05 Development
-	- SC-06-05-06 Testing
-	- SC-06-05-07 Deployment
-
-SC-02 Tata Rekening
-- SC-02-01 Outcome Discovery
-	- SC-02-01-01 Deposit
-- SC-02-02 Workspace Deposit
-	- SC-02-02-01 Core Feature
-	- SC-02-02-02 UI Design
-	- SC-02-02-03 BFF Feature
-	- SC-02-02-04 Architecture
-	- SC-02-02-05 Development
-	- SC-02-02-06 Testing
-	- SC-02-02-07 Deployment
+- SC-05-03 Workspace Local Inventory
+	- SC-05-03-01 Core Feature
+	- SC-05-03-02 UI Design
+	- SC-05-03-03 BFF Feature
+	- SC-05-03-04 Architecture
+	- SC-05-03-05 Development
+	- SC-05-03-06 Testing
+	- SC-05-03-07 Deployment
 
 ---
 
 # WAVE-05 : DIAGNOSTIC & PROCEDURE SERVICES
 
 SC-08 Laboratorium
-- SC-08-01 Outcome Discovery
-	- SC-08-01-01 External Registration
-	- SC-08-01-02 Order Laboratorium
-	- SC-08-01-03 Charge
-	- SC-08-01-04 Sample Collection
-	- SC-08-01-05 Result Management
-- SC-08-02 Workspace External Registration
-	- SC-08-02-01 Core Feature
-	- SC-08-02-02 UI Design
-	- SC-08-02-03 BFF Feature
-	- SC-08-02-04 Architecture
-	- SC-08-02-05 Development
-	- SC-08-02-06 Testing
-	- SC-08-02-07 Deployment
 - SC-08-03 Workspace Order Laboratorium
 	- SC-08-03-01 Core Feature
 	- SC-08-03-02 UI Design
@@ -375,23 +190,15 @@ SC-08 Laboratorium
 	- SC-08-03-05 Development
 	- SC-08-03-06 Testing
 	- SC-08-03-07 Deployment
-- SC-08-04 Workspace Charge
-	- SC-08-04-01 Core Feature
-	- SC-08-04-02 UI Design
-	- SC-08-04-03 BFF Feature
-	- SC-08-04-04 Architecture
-	- SC-08-04-05 Development
-	- SC-08-04-06 Testing
-	- SC-08-04-07 Deployment
-- SC-08-05 Workspace Sample Collection
-	- SC-08-05-01 Core Feature
-	- SC-08-05-02 UI Design
-	- SC-08-05-03 BFF Feature
-	- SC-08-05-04 Architecture
-	- SC-08-05-05 Development
-	- SC-08-05-06 Testing
-	- SC-08-05-07 Deployment
 - SC-08-06 Workspace Result Management
+	- SC-08-06-01 Core Feature
+	- SC-08-06-02 UI Design
+	- SC-08-06-03 BFF Feature
+	- SC-08-06-04 Architecture
+	- SC-08-06-05 Development
+	- SC-08-06-06 Testing
+	- SC-08-06-07 Deployment
+- SC-08-07 Workspace Local Inventory
 	- SC-08-06-01 Core Feature
 	- SC-08-06-02 UI Design
 	- SC-08-06-03 BFF Feature
@@ -401,12 +208,6 @@ SC-08 Laboratorium
 	- SC-08-06-07 Deployment
 
 SC-09 Radiologi
-- SC-09-01 Outcome Discovery
-	- SC-09-01-01 Order Radiologi
-	- SC-09-01-02 Scheduling
-	- SC-09-01-03 Imaging
-	- SC-09-01-04 Expertise
-	- SC-09-01-05 Verification
 - SC-09-02 Workspace Order Radiologi
 	- SC-09-02-01 Core Feature
 	- SC-09-02-02 UI Design
@@ -415,22 +216,6 @@ SC-09 Radiologi
 	- SC-09-02-05 Development
 	- SC-09-02-06 Testing
 	- SC-09-02-07 Deployment
-- SC-09-03 Workspace Scheduling
-	- SC-09-03-01 Core Feature
-	- SC-09-03-02 UI Design
-	- SC-09-03-03 BFF Feature
-	- SC-09-03-04 Architecture
-	- SC-09-03-05 Development
-	- SC-09-03-06 Testing
-	- SC-09-03-07 Deployment
-- SC-09-04 Workspace Imaging
-	- SC-09-04-01 Core Feature
-	- SC-09-04-02 UI Design
-	- SC-09-04-03 BFF Feature
-	- SC-09-04-04 Architecture
-	- SC-09-04-05 Development
-	- SC-09-04-06 Testing
-	- SC-09-04-07 Deployment
 - SC-09-05 Workspace Expertise
 	- SC-09-05-01 Core Feature
 	- SC-09-05-02 UI Design
@@ -439,29 +224,16 @@ SC-09 Radiologi
 	- SC-09-05-05 Development
 	- SC-09-05-06 Testing
 	- SC-09-05-07 Deployment
-- SC-09-06 Workspace Verification
-	- SC-09-06-01 Core Feature
-	- SC-09-06-02 UI Design
-	- SC-09-06-03 BFF Feature
-	- SC-09-06-04 Architecture
-	- SC-09-06-05 Development
-	- SC-09-06-06 Testing
-	- SC-09-06-07 Deployment
+- SC-09-06 Workspace Local Inventory
+	- SC-09-05-01 Core Feature
+	- SC-09-05-02 UI Design
+	- SC-09-05-03 BFF Feature
+	- SC-09-05-04 Architecture
+	- SC-09-05-05 Development
+	- SC-09-05-06 Testing
+	- SC-09-05-07 Deployment
 
 SC-10 Kamar Operasi
-- SC-10-01 Outcome Discovery
-	- SC-10-01-01 Order Operasi
-	- SC-10-01-02 Scheduling
-	- SC-10-01-03 Pre-Operative Clearance
-	- SC-10-01-04 Post-Operative Management
-- SC-10-02 Workspace Order Operasi
-	- SC-10-02-01 Core Feature
-	- SC-10-02-02 UI Design
-	- SC-10-02-03 BFF Feature
-	- SC-10-02-04 Architecture
-	- SC-10-02-05 Development
-	- SC-10-02-06 Testing
-	- SC-10-02-07 Deployment
 - SC-10-03 Workspace Scheduling
 	- SC-10-03-01 Core Feature
 	- SC-10-03-02 UI Design
@@ -470,15 +242,7 @@ SC-10 Kamar Operasi
 	- SC-10-03-05 Development
 	- SC-10-03-06 Testing
 	- SC-10-03-07 Deployment
-- SC-10-04 Workspace Pre-Operative Clearance
-	- SC-10-04-01 Core Feature
-	- SC-10-04-02 UI Design
-	- SC-10-04-03 BFF Feature
-	- SC-10-04-04 Architecture
-	- SC-10-04-05 Development
-	- SC-10-04-06 Testing
-	- SC-10-04-07 Deployment
-- SC-10-05 Workspace Post-Operative Management
+- SC-10-05 Workspace Operative Management
 	- SC-10-05-01 Core Feature
 	- SC-10-05-02 UI Design
 	- SC-10-05-03 BFF Feature
@@ -486,20 +250,19 @@ SC-10 Kamar Operasi
 	- SC-10-05-05 Development
 	- SC-10-05-06 Testing
 	- SC-10-05-07 Deployment
-
+- SC-10-06 Workspace Local Inventory
+	- SC-10-05-01 Core Feature
+	- SC-10-05-02 UI Design
+	- SC-10-05-03 BFF Feature
+	- SC-10-05-04 Architecture
+	- SC-10-05-05 Development
+	- SC-10-05-06 Testing
+	- SC-10-05-07 Deployment
 ---
 
 # WAVE-06 : SUPPLY CHAIN & PHARMACY
 
 SC-11 Apotek
-- SC-11-01 Outcome Discovery
-	- SC-11-01-01 Antrian Apotek
-	- SC-11-01-02 Telaah Resep
-	- SC-11-01-03 Penjualan
-	- SC-11-01-04 Dispensing
-	- SC-11-01-05 Serah Obat
-	- SC-11-01-06 Opname
-	- SC-11-01-07 Mutasi
 - SC-11-02 Workspace Antrian Apotek
 	- SC-11-02-01 Core Feature
 	- SC-11-02-02 UI Design
@@ -516,14 +279,6 @@ SC-11 Apotek
 	- SC-11-03-05 Development
 	- SC-11-03-06 Testing
 	- SC-11-03-07 Deployment
-- SC-11-04 Workspace Penjualan
-	- SC-11-04-01 Core Feature
-	- SC-11-04-02 UI Design
-	- SC-11-04-03 BFF Feature
-	- SC-11-04-04 Architecture
-	- SC-11-04-05 Development
-	- SC-11-04-06 Testing
-	- SC-11-04-07 Deployment
 - SC-11-05 Workspace Dispensing
 	- SC-11-05-01 Core Feature
 	- SC-11-05-02 UI Design
@@ -540,7 +295,7 @@ SC-11 Apotek
 	- SC-11-06-05 Development
 	- SC-11-06-06 Testing
 	- SC-11-06-07 Deployment
-- SC-11-07 Workspace Opname
+- SC-11-07 Workspace Local Inventory
 	- SC-11-07-01 Core Feature
 	- SC-11-07-02 UI Design
 	- SC-11-07-03 BFF Feature
@@ -548,23 +303,9 @@ SC-11 Apotek
 	- SC-11-07-05 Development
 	- SC-11-07-06 Testing
 	- SC-11-07-07 Deployment
-- SC-11-08 Workspace Mutasi
-	- SC-11-08-01 Core Feature
-	- SC-11-08-02 UI Design
-	- SC-11-08-03 BFF Feature
-	- SC-11-08-04 Architecture
-	- SC-11-08-05 Development
-	- SC-11-08-06 Testing
-	- SC-11-08-07 Deployment
 
 SC-12 Gudang
-- SC-12-01 Outcome Discovery
-	- SC-12-01-01 Terima Barang (DO)
-	- SC-12-01-02 Mutasi
-	- SC-12-01-03 Opname
-	- SC-12-01-04 Musnah
-	- SC-12-01-05 Retur Beli
-- SC-12-02 Workspace Terima Barang (DO)
+- SC-12-02 Workspace Terima Barang (DO), Retur Beli
 	- SC-12-02-01 Core Feature
 	- SC-12-02-02 UI Design
 	- SC-12-02-03 BFF Feature
@@ -572,15 +313,7 @@ SC-12 Gudang
 	- SC-12-02-05 Development
 	- SC-12-02-06 Testing
 	- SC-12-02-07 Deployment
-- SC-12-03 Workspace Mutasi
-	- SC-12-03-01 Core Feature
-	- SC-12-03-02 UI Design
-	- SC-12-03-03 BFF Feature
-	- SC-12-03-04 Architecture
-	- SC-12-03-05 Development
-	- SC-12-03-06 Testing
-	- SC-12-03-07 Deployment
-- SC-12-04 Workspace Opname
+- SC-12-04 Workspace Local Inventory
 	- SC-12-04-01 Core Feature
 	- SC-12-04-02 UI Design
 	- SC-12-04-03 BFF Feature
@@ -588,14 +321,6 @@ SC-12 Gudang
 	- SC-12-04-05 Development
 	- SC-12-04-06 Testing
 	- SC-12-04-07 Deployment
-- SC-12-05 Workspace Musnah
-	- SC-12-05-01 Core Feature
-	- SC-12-05-02 UI Design
-	- SC-12-05-03 BFF Feature
-	- SC-12-05-04 Architecture
-	- SC-12-05-05 Development
-	- SC-12-05-06 Testing
-	- SC-12-05-07 Deployment
 - SC-12-06 Workspace Retur Beli
 	- SC-12-06-01 Core Feature
 	- SC-12-06-02 UI Design
@@ -606,36 +331,6 @@ SC-12 Gudang
 	- SC-12-06-07 Deployment
 
 SC-13 Purchasing
-- SC-13-01 Outcome Discovery
-	- SC-13-01-01 Material Request
-	- SC-13-01-02 Forecasting
-	- SC-13-01-03 Purchase Request
-	- SC-13-01-04 Purchase Order
-	- SC-13-01-05 Faktur Tagihan
-- SC-13-02 Workspace Material Request
-	- SC-13-02-01 Core Feature
-	- SC-13-02-02 UI Design
-	- SC-13-02-03 BFF Feature
-	- SC-13-02-04 Architecture
-	- SC-13-02-05 Development
-	- SC-13-02-06 Testing
-	- SC-13-02-07 Deployment
-- SC-13-03 Workspace Forecasting
-	- SC-13-03-01 Core Feature
-	- SC-13-03-02 UI Design
-	- SC-13-03-03 BFF Feature
-	- SC-13-03-04 Architecture
-	- SC-13-03-05 Development
-	- SC-13-03-06 Testing
-	- SC-13-03-07 Deployment
-- SC-13-04 Workspace Purchase Request
-	- SC-13-04-01 Core Feature
-	- SC-13-04-02 UI Design
-	- SC-13-04-03 BFF Feature
-	- SC-13-04-04 Architecture
-	- SC-13-04-05 Development
-	- SC-13-04-06 Testing
-	- SC-13-04-07 Deployment
 - SC-13-05 Workspace Purchase Order
 	- SC-13-05-01 Core Feature
 	- SC-13-05-02 UI Design
@@ -652,185 +347,3 @@ SC-13 Purchasing
 	- SC-13-06-05 Development
 	- SC-13-06-06 Testing
 	- SC-13-06-07 Deployment
-
-## Shared Inventory Capability
-
-SC-05 Poli Rawat Jalan
-- SC-05-01 Outcome Discovery
-	- SC-05-01-01 Pakai Barang
-	- SC-05-01-02 Mutasi Barang
-	- SC-05-01-03 Opname
-- SC-05-02 Workspace Pakai Barang
-	- SC-05-02-01 Core Feature
-	- SC-05-02-02 UI Design
-	- SC-05-02-03 BFF Feature
-	- SC-05-02-04 Architecture
-	- SC-05-02-05 Development
-	- SC-05-02-06 Testing
-	- SC-05-02-07 Deployment
-- SC-05-03 Workspace Mutasi Barang
-	- SC-05-03-01 Core Feature
-	- SC-05-03-02 UI Design
-	- SC-05-03-03 BFF Feature
-	- SC-05-03-04 Architecture
-	- SC-05-03-05 Development
-	- SC-05-03-06 Testing
-	- SC-05-03-07 Deployment
-- SC-05-04 Workspace Opname
-	- SC-05-04-01 Core Feature
-	- SC-05-04-02 UI Design
-	- SC-05-04-03 BFF Feature
-	- SC-05-04-04 Architecture
-	- SC-05-04-05 Development
-	- SC-05-04-06 Testing
-	- SC-05-04-07 Deployment
-
-SC-06 Bangsal Rawat Inap
-- SC-06-01 Outcome Discovery
-	- SC-06-01-01 Pakai Barang
-	- SC-06-01-02 Mutasi Barang
-	- SC-06-01-03 Opname
-- SC-06-02 Workspace Pakai Barang
-	- SC-06-02-01 Core Feature
-	- SC-06-02-02 UI Design
-	- SC-06-02-03 BFF Feature
-	- SC-06-02-04 Architecture
-	- SC-06-02-05 Development
-	- SC-06-02-06 Testing
-	- SC-06-02-07 Deployment
-- SC-06-03 Workspace Mutasi Barang
-	- SC-06-03-01 Core Feature
-	- SC-06-03-02 UI Design
-	- SC-06-03-03 BFF Feature
-	- SC-06-03-04 Architecture
-	- SC-06-03-05 Development
-	- SC-06-03-06 Testing
-	- SC-06-03-07 Deployment
-- SC-06-04 Workspace Opname
-	- SC-06-04-01 Core Feature
-	- SC-06-04-02 UI Design
-	- SC-06-04-03 BFF Feature
-	- SC-06-04-04 Architecture
-	- SC-06-04-05 Development
-	- SC-06-04-06 Testing
-	- SC-06-04-07 Deployment
-
-SC-07 IGD
-- SC-07-01 Outcome Discovery
-	- SC-07-01-01 Pakai Barang
-	- SC-07-01-02 Mutasi Barang
-	- SC-07-01-03 Opname
-- SC-07-02 Workspace Pakai Barang
-	- SC-07-02-01 Core Feature
-	- SC-07-02-02 UI Design
-	- SC-07-02-03 BFF Feature
-	- SC-07-02-04 Architecture
-	- SC-07-02-05 Development
-	- SC-07-02-06 Testing
-	- SC-07-02-07 Deployment
-- SC-07-03 Workspace Mutasi Barang
-	- SC-07-03-01 Core Feature
-	- SC-07-03-02 UI Design
-	- SC-07-03-03 BFF Feature
-	- SC-07-03-04 Architecture
-	- SC-07-03-05 Development
-	- SC-07-03-06 Testing
-	- SC-07-03-07 Deployment
-- SC-07-04 Workspace Opname
-	- SC-07-04-01 Core Feature
-	- SC-07-04-02 UI Design
-	- SC-07-04-03 BFF Feature
-	- SC-07-04-04 Architecture
-	- SC-07-04-05 Development
-	- SC-07-04-06 Testing
-	- SC-07-04-07 Deployment
-
-SC-08 Laboratorium
-- SC-08-01 Outcome Discovery
-	- SC-08-01-01 Pakai Barang
-	- SC-08-01-02 Mutasi Barang
-	- SC-08-01-03 Opname
-- SC-08-02 Workspace Pakai Barang
-	- SC-08-02-01 Core Feature
-	- SC-08-02-02 UI Design
-	- SC-08-02-03 BFF Feature
-	- SC-08-02-04 Architecture
-	- SC-08-02-05 Development
-	- SC-08-02-06 Testing
-	- SC-08-02-07 Deployment
-- SC-08-03 Workspace Mutasi Barang
-	- SC-08-03-01 Core Feature
-	- SC-08-03-02 UI Design
-	- SC-08-03-03 BFF Feature
-	- SC-08-03-04 Architecture
-	- SC-08-03-05 Development
-	- SC-08-03-06 Testing
-	- SC-08-03-07 Deployment
-- SC-08-04 Workspace Opname
-	- SC-08-04-01 Core Feature
-	- SC-08-04-02 UI Design
-	- SC-08-04-03 BFF Feature
-	- SC-08-04-04 Architecture
-	- SC-08-04-05 Development
-	- SC-08-04-06 Testing
-	- SC-08-04-07 Deployment
-
-SC-09 Radiologi
-- SC-09-01 Outcome Discovery
-	- SC-09-01-01 Pakai Barang
-	- SC-09-01-02 Mutasi Barang
-	- SC-09-01-03 Opname
-- SC-09-02 Workspace Pakai Barang
-	- SC-09-02-01 Core Feature
-	- SC-09-02-02 UI Design
-	- SC-09-02-03 BFF Feature
-	- SC-09-02-04 Architecture
-	- SC-09-02-05 Development
-	- SC-09-02-06 Testing
-	- SC-09-02-07 Deployment
-- SC-09-03 Workspace Mutasi Barang
-	- SC-09-03-01 Core Feature
-	- SC-09-03-02 UI Design
-	- SC-09-03-03 BFF Feature
-	- SC-09-03-04 Architecture
-	- SC-09-03-05 Development
-	- SC-09-03-06 Testing
-	- SC-09-03-07 Deployment
-- SC-09-04 Workspace Opname
-	- SC-09-04-01 Core Feature
-	- SC-09-04-02 UI Design
-	- SC-09-04-03 BFF Feature
-	- SC-09-04-04 Architecture
-	- SC-09-04-05 Development
-	- SC-09-04-06 Testing
-	- SC-09-04-07 Deployment
-
-SC-10 Kamar Operasi
-- SC-10-01 Outcome Discovery
-	- SC-10-01-01 Pakai Barang
-	- SC-10-01-02 Mutasi Barang
-	- SC-10-01-03 Opname
-- SC-10-02 Workspace Pakai Barang
-	- SC-10-02-01 Core Feature
-	- SC-10-02-02 UI Design
-	- SC-10-02-03 BFF Feature
-	- SC-10-02-04 Architecture
-	- SC-10-02-05 Development
-	- SC-10-02-06 Testing
-	- SC-10-02-07 Deployment
-- SC-10-03 Workspace Mutasi Barang
-	- SC-10-03-01 Core Feature
-	- SC-10-03-02 UI Design
-	- SC-10-03-03 BFF Feature
-	- SC-10-03-04 Architecture
-	- SC-10-03-05 Development
-	- SC-10-03-06 Testing
-	- SC-10-03-07 Deployment
-- SC-10-04 Workspace Opname
-	- SC-10-04-01 Core Feature
-	- SC-10-04-02 UI Design
-	- SC-10-04-03 BFF Feature
-	- SC-10-04-04 Architecture
-	- SC-10-04-05 Development
-	- SC-10-04-06 Testing
-	- SC-10-04-07 Deployment
