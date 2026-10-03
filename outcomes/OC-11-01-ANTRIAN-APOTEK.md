@@ -3,7 +3,7 @@
 | Field       | Value        |
 |-------------|--------------|
 | Code        | OC-11-01     |
-| Version     | 1.1          |
+| Version     | 1.2          |
 | Status      | Draft        |
 | LastUpdated | 2026-10-03   |
 
@@ -11,11 +11,9 @@
 
 ## 1. Business Purpose
 
-Pelayanan kefarmasian bagi pasien rawat jalan di rumah sakit memerlukan pengelolaan alur kedatangan dan giliran pelayanan yang teratur, adil, transparan, dan akuntabel.
+Pelayanan kefarmasian bagi pasien rawat jalan di rumah sakit memerlukan pengelolaan giliran pelayanan yang teratur, adil, dan transparan.
 
-Antrian Apotek memastikan bahwa setiap pasien atau perwakilan pasien yang memerlukan pelayanan di apotek rawat jalan memperoleh nomor antrian yang sah, tercatat dalam sistem, dan terhubung secara akurat dengan satu sumber pelayanan (baik resep elektronik dari poliklinik, resep kertas/manual yang dibawa pasien, maupun transaksi tanpa resep seperti Jual Bebas).
-
-Dengan adanya Antrian Apotek yang tercatat sebagai fakta bisnis persisten (*persisted business fact*), apotek dapat mengendalikan arus pelayanan, memantau riwayat pemanggilan dan penyelesaian, menyediakan transparansi posisi antrian kepada pasien melalui papan informasi (*display*), serta memberikan fleksibilitas kepada petugas apotek untuk mengambil keputusan pemanggilan berdasarkan kondisi pelayanan riil di lapangan.
+Antrian Apotek memastikan bahwa setiap pasien yang memerlukan pelayanan di apotek rawat jalan memperoleh nomor antrian yang sah dan tercatat sebagai fakta bisnis persisten, sehingga urutan pelayanan dapat dikelola secara konsisten, posisi antrian dapat diketahui oleh pasien, dan setiap nomor antrian terhubung secara akurat dengan tepat satu sumber pelayanan.
 
 ---
 
@@ -127,7 +125,7 @@ Berakhir ketika entri antrian apotek mencapai kondisi terminal:
 - **Prasyarat Penyelesaian Pelayanan:** Pelayanan suatu nomor antrian tidak dapat dinyatakan **Selesai** sebelum sumber pelayanannya berhasil diidentifikasi.
 - **Larangan Otomasi Urgensi:** Sistem dilarang menentukan atau menghitung tingkat urgensi secara otomatis; penentuan prioritas pelayanan di luar nomor urut adalah wewenang petugas apotek.
 - **Larangan Estimasi Waktu Tunggu:** Sistem dilarang menghitung atau menampilkan perkiraan waktu tunggu kepada pasien. Informasi antrian yang disajikan kepada pasien hanya berupa nomor antrian, loket, dan status pelayanan.
-- **Keunikan Nomor Antrian Harian:** Nomor antrian apotek harus unik untuk setiap unit apotek pada tanggal pelayanan yang sama.
+- **Keunikan Nomor Antrian Harian:** Nomor antrian apotek harus unik dalam konteks pelayanan apotek dan tanggal pelayanan yang sama.
 
 ---
 
@@ -157,7 +155,7 @@ Berakhir ketika entri antrian apotek mencapai kondisi terminal:
 | AC-04 | Setelah sumber pelayanan diidentifikasi, entri antrian mencatat keterikatan ke tepat satu sumber pelayanan (resep masuk dari rawat jalan, resep kertas/kerja, atau jual bebas). | Correctness |
 | AC-05 | Tidak terdapat entri antrian yang memiliki keterikatan ke lebih dari satu sumber pelayanan. | Constraint |
 | AC-06 | Entri antrian yang memiliki sumber pelayanan terpetakan tidak dapat dinyatakan **Selesai** tanpa sumber pelayanan tersebut tercatat. | Constraint |
-| AC-07 | Riwayat antrian menunjukkan bahwa terdapat nomor yang dilayani di luar urutan nomor normal, dan kondisi tersebut tercatat dalam entri antrian. | Correctness |
+| AC-07 | Entri antrian yang dilayani di luar urutan nomor normal memiliki catatan bahwa pelayanan dilakukan di luar urutan. | Correctness |
 | AC-08 | Entri antrian tidak memuat informasi estimasi waktu tunggu atau perkiraan jadwal selesai. | Constraint |
 | AC-09 | Informasi nomor antrian, loket, dan status pelayanan tercatat dalam sistem dan dapat diambil untuk disajikan kepada pasien. | Completeness |
 | AC-10 | Entri antrian yang berstatus **Selesai** memiliki sumber pelayanan terpetakan, loket pelayanan, dan waktu penyelesaian yang tercatat. | Completeness |
