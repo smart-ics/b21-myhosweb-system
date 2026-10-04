@@ -1,8 +1,47 @@
 [
   {
     "Wave": {
+      "WaveId": "WAVE-00",
+      "WaveName": "PREPARATION & OUTCOME DISCOVERY",
+      "Screen": [
+        {
+          "ScreenId": "SC-00",
+          "ScreenName": "Preparation & Outcome Discovery",
+          "PIC": "All PICs",
+          "Outcomes": [
+            {
+              "OutcomeId": "OC-00-01",
+              "OutcomeName": "Outcome Discovery & System Architecture Setup",
+              "Complexity": 1
+            }
+          ],
+          "Workspaces": [
+            {
+              "WorkspaceId": "SC-00-01",
+              "WorkspaceName": "Workspace System Architecture & Discovery",
+              "TotalEffort": 5,
+              "Tasks": [
+                {
+                  "TaskId": "SC-00-01-01",
+                  "TaskName": "Outcome Discovery & Domain Alignment",
+                  "Effort": 3
+                },
+                {
+                  "TaskId": "SC-00-01-02",
+                  "TaskName": "Environment & Baseline Setup",
+                  "Effort": 2
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Wave": {
       "WaveId": "WAVE-01",
-      "WaveName": "FOUNDATION & PATIENT ADMISSION",
+      "WaveName": "MASTER & PATIENT ADMISSION",
       "Screen": [
         {
           "ScreenId": "SC-14",

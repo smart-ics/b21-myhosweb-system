@@ -3,17 +3,11 @@
  * 
  * Usage:
  *   node generate_dashboard.js
- * 
- * Description:
- *   Reads `wave-screen.json` (or `screen-wave.json` as fallback) from the project directory,
- *   embeds the raw JSON payload into `myhosweb-development-plan.html`, and recalculates
- *   all executive scope, timeline, effort, and resource metrics.
  */
 
 const fs = require('fs');
 const path = require('path');
 
-// Determine JSON source file
 const currentDir = __dirname;
 let jsonPath = path.join(currentDir, 'wave-screen.json');
 
@@ -428,6 +422,11 @@ const htmlContent = `<!DOCTYPE html>
       position: relative;
     }
 
+    .wave-card.wave-00-highlight {
+      border: 2px solid var(--indigo-600);
+      background-color: #f5f3ff;
+    }
+
     .wave-card-header {
       display: flex;
       justify-content: space-between;
@@ -443,6 +442,10 @@ const htmlContent = `<!DOCTYPE html>
       padding: 3px 8px;
       border-radius: 4px;
       letter-spacing: 0.05em;
+    }
+
+    .wave-badge.prep {
+      background-color: var(--indigo-600);
     }
 
     .wave-title {
@@ -730,24 +733,24 @@ const htmlContent = `<!DOCTYPE html>
 
     .gantt-header-row {
       display: grid;
-      grid-template-columns: 220px repeat(8, 1fr);
+      grid-template-columns: 240px repeat(12, 1fr);
       border-bottom: 2px solid var(--border-color);
       padding-bottom: 10px;
       margin-bottom: 12px;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
       color: var(--text-muted);
       text-transform: uppercase;
-      min-width: 900px;
+      min-width: 1100px;
     }
 
     .gantt-wave-row {
       display: grid;
-      grid-template-columns: 220px 1fr;
+      grid-template-columns: 240px 1fr;
       align-items: center;
       padding: 12px 0;
       border-bottom: 1px solid var(--border-color);
-      min-width: 900px;
+      min-width: 1100px;
     }
 
     .gantt-wave-label {
@@ -783,6 +786,10 @@ const htmlContent = `<!DOCTYPE html>
       text-overflow: ellipsis;
     }
 
+    .gantt-bar-item.prep-bar {
+      background: linear-gradient(90deg, #059669, #10b981);
+    }
+
     @media print {
       body { background-color: #ffffff; }
       header { background: none; color: #000; padding: 0; margin-bottom: 20px; }
@@ -806,7 +813,7 @@ const htmlContent = `<!DOCTYPE html>
             <span class="badge-no-progress">Pre-Implementation Strategy</span>
           </h1>
           <p>
-            Executive baseline roadmap covering Scope, Effort, Resource Allocation, and Delivery Waves. Dynamically calculated from ${sourceFileName} specification.
+            Executive baseline roadmap covering Scope, Effort, Resource Allocation, and Delivery Waves. Formula: <strong>1 Effort Unit = 1.5 Working Days</strong>. Project Start: <strong>1 Oct 2026</strong>.
           </p>
         </div>
         <div class="header-actions">
@@ -839,7 +846,7 @@ const htmlContent = `<!DOCTYPE html>
 
     <!-- EXECUTIVE Q&A CALLOUT SUMMARY -->
     <div class="executive-callout">
-      <h3>Executive Briefing & Key Answers</h3>
+      <h3>Executive Briefing & Key Answers (1 Effort = 1.5 Days)</h3>
       <div class="qa-grid" id="qaSummaryGrid"></div>
     </div>
 
@@ -934,7 +941,7 @@ const htmlContent = `<!DOCTYPE html>
               <th onclick="sortTable(2)">Wave ⇕</th>
               <th onclick="sortTable(3)">Assigned PIC ⇕</th>
               <th onclick="sortTable(4)" style="text-align: center;">Workspaces ⇕</th>
-              <th onclick="sortTable(5)" style="text-align: right;">Total Effort (Days) ⇕</th>
+              <th onclick="sortTable(5)" style="text-align: right;">Effort (Units / Working Days) ⇕</th>
             </tr>
           </thead>
           <tbody id="tableBody"></tbody>
@@ -947,13 +954,13 @@ const htmlContent = `<!DOCTYPE html>
       <div class="section-header">
         <h2 class="section-title">
           <span>Sections 5 & 6: Resource Allocation & Workload Chart</span>
-          <span class="section-tag">Workforce Loading</span>
+          <span class="section-tag">Workforce Loading (Working Days)</span>
         </h2>
       </div>
       <div class="resource-grid">
         <div class="pic-workload-card">
           <div style="font-size: 14px; font-weight: 700; color: var(--navy-900); margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border-color);">
-            Workload Distribution Chart (Man-Days)
+            Workload Distribution Chart (Working Days)
           </div>
           <div id="workloadChartContainer"></div>
         </div>
@@ -972,23 +979,27 @@ const htmlContent = `<!DOCTYPE html>
       <div class="section-header">
         <h2 class="section-title">
           <span>Section 7: Proposed Timeline (Gantt Schedule)</span>
-          <span class="section-tag">PIC-Based Sequencing</span>
+          <span class="section-tag">Multiplier: 1.5 Days/Effort</span>
         </h2>
       </div>
       <div class="gantt-wrapper">
         <div style="margin-bottom: 14px; font-size: 12px; color: var(--text-muted);">
-          * Timeline calculated assuming 1 Effort = 1 Working Day (22 Working Days = 1 Month). Waves run concurrently when PICs are independent, and queue sequentially when PICs overlap.
+          * Project Starts <strong>1 Oct 2026</strong>. Conversion: <strong>1 Effort Unit = 1.5 Working Days</strong> (22 Working Days = 1 Month). <strong>WAVE-00</strong> runs for 7.5 Working Days (5 effort units). All subsequent waves start after WAVE-00 completes.
         </div>
         <div class="gantt-header-row">
           <div>Delivery Wave</div>
-          <div>M1 (1-22d)</div>
-          <div>M2 (23-44d)</div>
-          <div>M3 (45-66d)</div>
-          <div>M4 (67-88d)</div>
-          <div>M5 (89-110d)</div>
-          <div>M6 (111-132d)</div>
-          <div>M7 (133-154d)</div>
-          <div>M8 (155-176d)</div>
+          <div>Oct 2026</div>
+          <div>Nov 2026</div>
+          <div>Dec 2026</div>
+          <div>Jan 2027</div>
+          <div>Feb 2027</div>
+          <div>Mar 2027</div>
+          <div>Apr 2027</div>
+          <div>May 2027</div>
+          <div>Jun 2027</div>
+          <div>Jul 2027</div>
+          <div>Aug 2027</div>
+          <div>Sep 2027</div>
         </div>
         <div id="ganttBody"></div>
       </div>
@@ -997,6 +1008,8 @@ const htmlContent = `<!DOCTYPE html>
   </div>
 
   <script>
+    const EFFORT_MULTIPLIER = 1.5; // 1 effort = 1.5 working days
+
     let RAW_WAVE_DATA = ${rawData};
 
     let waves = [];
@@ -1043,7 +1056,7 @@ const htmlContent = `<!DOCTYPE html>
 
       RAW_WAVE_DATA.forEach(item => {
         const w = item.Wave;
-        let waveEffort = 0;
+        let waveEffortPoints = 0;
         let waveScreensCount = 0;
         let waveWorkspacesCount = 0;
         let waveTasksCount = 0;
@@ -1053,23 +1066,24 @@ const htmlContent = `<!DOCTYPE html>
           waveScreensCount++;
           if (s.PIC) wavePics.add(s.PIC);
 
-          let screenEffort = 0;
+          let screenEffortPoints = 0;
           let screenWorkspacesCount = 0;
           let screenTasksCount = 0;
 
           (s.Workspaces || []).forEach(ws => {
             screenWorkspacesCount++;
-            let wsEffort = 0;
+            let wsEffortPoints = 0;
             let wsTasksCount = 0;
 
             (ws.Tasks || []).forEach(t => {
               wsTasksCount++;
-              const e = (t.Effort !== "" && t.Effort !== null && t.Effort !== undefined && !isNaN(Number(t.Effort))) ? Number(t.Effort) : 0;
-              wsEffort += e;
+              const ep = (t.Effort !== "" && t.Effort !== null && t.Effort !== undefined && !isNaN(Number(t.Effort))) ? Number(t.Effort) : 0;
+              wsEffortPoints += ep;
               tasks.push({
                 taskId: t.TaskId,
                 taskName: t.TaskName,
-                effort: e,
+                effortPoints: ep,
+                workingDays: ep * EFFORT_MULTIPLIER,
                 workspaceId: ws.WorkspaceId,
                 workspaceName: ws.WorkspaceName,
                 screenId: s.ScreenId,
@@ -1080,13 +1094,14 @@ const htmlContent = `<!DOCTYPE html>
               });
             });
 
-            screenEffort += wsEffort;
+            screenEffortPoints += wsEffortPoints;
             screenTasksCount += wsTasksCount;
 
             workspaces.push({
               workspaceId: ws.WorkspaceId,
               workspaceName: ws.WorkspaceName,
-              effort: wsEffort,
+              effortPoints: wsEffortPoints,
+              workingDays: wsEffortPoints * EFFORT_MULTIPLIER,
               tasksCount: wsTasksCount,
               tasks: ws.Tasks || [],
               screenId: s.ScreenId,
@@ -1097,7 +1112,7 @@ const htmlContent = `<!DOCTYPE html>
             });
           });
 
-          waveEffort += screenEffort;
+          waveEffortPoints += screenEffortPoints;
           waveWorkspacesCount += screenWorkspacesCount;
           waveTasksCount += screenTasksCount;
 
@@ -1109,7 +1124,8 @@ const htmlContent = `<!DOCTYPE html>
             pic: s.PIC || 'Unassigned',
             workspacesCount: screenWorkspacesCount,
             tasksCount: screenTasksCount,
-            effort: screenEffort,
+            effortPoints: screenEffortPoints,
+            workingDays: screenEffortPoints * EFFORT_MULTIPLIER,
             outcomesCount: (s.Outcomes || []).length,
             outcomes: s.Outcomes || [],
             workspaces: s.Workspaces || []
@@ -1117,11 +1133,12 @@ const htmlContent = `<!DOCTYPE html>
 
           const p = s.PIC || 'Unassigned';
           if (!picMap[p]) {
-            picMap[p] = { pic: p, screensCount: 0, workspacesCount: 0, effort: 0, screens: [], waves: new Set() };
+            picMap[p] = { pic: p, screensCount: 0, workspacesCount: 0, effortPoints: 0, workingDays: 0, screens: [], waves: new Set() };
           }
           picMap[p].screensCount++;
           picMap[p].workspacesCount += screenWorkspacesCount;
-          picMap[p].effort += screenEffort;
+          picMap[p].effortPoints += screenEffortPoints;
+          picMap[p].workingDays += screenEffortPoints * EFFORT_MULTIPLIER;
           picMap[p].screens.push(s.ScreenId + ' ' + s.ScreenName);
           picMap[p].waves.add(w.WaveId);
         });
@@ -1132,7 +1149,8 @@ const htmlContent = `<!DOCTYPE html>
           screensCount: waveScreensCount,
           workspacesCount: waveWorkspacesCount,
           tasksCount: waveTasksCount,
-          effort: waveEffort,
+          effortPoints: waveEffortPoints,
+          workingDays: waveEffortPoints * EFFORT_MULTIPLIER,
           pics: Array.from(wavePics),
           rawScreen: w.Screen || []
         });
@@ -1140,51 +1158,54 @@ const htmlContent = `<!DOCTYPE html>
     }
 
     function renderExecutiveAnswers() {
-      const totalEffort = screens.reduce((acc, curr) => acc + curr.effort, 0);
+      const totalEffortPoints = screens.reduce((acc, curr) => acc + curr.effortPoints, 0);
+      const totalWorkingDays = totalEffortPoints * EFFORT_MULTIPLIER;
       const totalPics = Object.keys(picMap).length;
       
-      let largestWave = waves.reduce((prev, current) => (prev.effort > current.effort) ? prev : current, waves[0]);
-      let picList = Object.values(picMap);
-      let heaviestPic = picList.reduce((prev, current) => (prev.effort > current.effort) ? prev : current, picList[0]);
-      const manMonths = (totalEffort / 22).toFixed(1);
+      let featureWaves = waves.filter(w => w.waveId !== 'WAVE-00');
+      let largestWave = featureWaves.reduce((prev, current) => (prev.workingDays > current.workingDays) ? prev : current, featureWaves[0] || waves[0]);
+      let picList = Object.values(picMap).filter(p => p.pic !== 'All PICs');
+      let heaviestPic = picList.reduce((prev, current) => (prev.workingDays > current.workingDays) ? prev : current, picList[0]);
+      const manMonths = (totalWorkingDays / 22).toFixed(1);
 
       document.getElementById('qaSummaryGrid').innerHTML = \`
         <div class="qa-item">
+          <div class="qa-question">Formula & Multiplier</div>
+          <div class="qa-answer">1 Effort Unit = 1.5 Working Days. Total Effort: \${totalEffortPoints} Units = \${totalWorkingDays.toFixed(1)} Working Days.</div>
+        </div>
+        <div class="qa-item">
           <div class="qa-question">What will be built?</div>
-          <div class="qa-answer">\${screens.length} Screens, \${workspaces.length} Workspaces & \${tasks.length} Tasks across \${waves.length} Delivery Waves</div>
+          <div class="qa-answer">\${screens.length} Screens, \${workspaces.length} Workspaces & \${tasks.length} Tasks across \${waves.length} Total Waves</div>
         </div>
         <div class="qa-item">
           <div class="qa-question">Who will build it?</div>
-          <div class="qa-answer">\${totalPics} Assigned Engineers (\${picList.map(p => p.pic).join(', ')})</div>
+          <div class="qa-answer">\${totalPics} Assigned PIC Units (\${picList.map(p => p.pic).join(', ')})</div>
         </div>
         <div class="qa-item">
-          <div class="qa-question">How much effort is required?</div>
-          <div class="qa-answer">\${totalEffort} Working Days (~\${manMonths} Man-Months total)</div>
+          <div class="qa-question">How long will it take?</div>
+          <div class="qa-answer">\${totalWorkingDays.toFixed(1)} Working Days (~\${manMonths} Man-Months total duration)</div>
         </div>
         <div class="qa-item">
-          <div class="qa-question">Which Wave is largest?</div>
-          <div class="qa-answer">\${largestWave.waveId} (\${largestWave.waveName}): \${largestWave.effort} Days (\${((largestWave.effort/totalEffort)*100).toFixed(1)}%)</div>
+          <div class="qa-question">Which Feature Wave is largest?</div>
+          <div class="qa-answer">\${largestWave.waveId} (\${largestWave.waveName}): \${largestWave.workingDays.toFixed(1)} Working Days (\${((largestWave.workingDays/totalWorkingDays)*100).toFixed(1)}%)</div>
         </div>
         <div class="qa-item">
           <div class="qa-question">Which PIC has highest workload?</div>
-          <div class="qa-answer">\${heaviestPic.pic}: \${heaviestPic.effort} Days (\${((heaviestPic.effort/totalEffort)*100).toFixed(1)}% of total workload)</div>
-        </div>
-        <div class="qa-item">
-          <div class="qa-question">Proposed Sequence & Timeline</div>
-          <div class="qa-answer">6 Waves via PIC-Optimized Parallel Schedule (~7.3 Calendar Months)</div>
+          <div class="qa-answer">\${heaviestPic ? heaviestPic.pic : 'Rizal'}: \${heaviestPic ? heaviestPic.workingDays.toFixed(1) : 0} Working Days (\${heaviestPic ? ((heaviestPic.workingDays/totalWorkingDays)*100).toFixed(1) : 0}% share)</div>
         </div>
       \`;
     }
 
     function renderKPIs() {
-      const totalEffort = screens.reduce((acc, curr) => acc + curr.effort, 0);
+      const totalEffortPoints = screens.reduce((acc, curr) => acc + curr.effortPoints, 0);
+      const totalWorkingDays = totalEffortPoints * EFFORT_MULTIPLIER;
       const kpis = [
-        { label: 'Total Waves', val: waves.length, sub: 'Delivery milestones' },
+        { label: 'Total Waves', val: waves.length, sub: 'WAVE-00 Prep + 6 Feature Waves' },
         { label: 'Total Screens', val: screens.length, sub: 'User touchpoints' },
         { label: 'Total Workspaces', val: workspaces.length, sub: 'Sub-system units' },
-        { label: 'Total Tasks', val: tasks.length, sub: 'Granular work items' },
-        { label: 'Total Effort', val: totalEffort + ' Days', sub: '~' + (totalEffort / 22).toFixed(1) + ' Man-Months' },
-        { label: 'Assigned PICs', val: Object.keys(picMap).length, sub: 'Core team members' }
+        { label: 'Total Effort Units', val: totalEffortPoints, sub: 'JSON Baseline Points' },
+        { label: 'Total Working Days', val: totalWorkingDays.toFixed(1) + 'd', sub: 'Calculated at 1.5 Days/Effort' },
+        { label: 'Total Man-Months', val: (totalWorkingDays / 22).toFixed(1) + ' MM', sub: '22 Working Days/Month' }
       ];
 
       document.getElementById('kpiGrid').innerHTML = kpis.map(k => \`
@@ -1197,45 +1218,45 @@ const htmlContent = `<!DOCTYPE html>
     }
 
     function renderCriticalWorkloads() {
-      const totalEffort = screens.reduce((acc, curr) => acc + curr.effort, 0);
+      const totalWorkingDays = screens.reduce((acc, curr) => acc + curr.workingDays, 0);
 
-      const topScreens = [...screens].sort((a, b) => b.effort - a.effort).slice(0, 5);
+      const topScreens = [...screens].filter(s => s.screenId !== 'SC-00').sort((a, b) => b.workingDays - a.workingDays).slice(0, 5);
       document.getElementById('topScreensList').innerHTML = topScreens.map(s => {
-        const pct = ((s.effort / totalEffort) * 100).toFixed(1);
+        const pct = ((s.workingDays / totalWorkingDays) * 100).toFixed(1);
         return \`
           <li class="top-item">
             <div class="top-item-info">
               <span class="top-item-name">
                 <span class="pic-tag">\${s.screenId}</span> \${s.screenName} (\${s.pic})
               </span>
-              <span class="top-item-val">\${s.effort}d (\${pct}%)</span>
+              <span class="top-item-val">\${s.workingDays.toFixed(1)}d (\${pct}%)</span>
             </div>
             <div class="progress-track"><div class="progress-fill" style="width: \${pct*3.5}%;"></div></div>
           </li>
         \`;
       }).join('');
 
-      const topWs = [...workspaces].sort((a, b) => b.effort - a.effort).slice(0, 5);
+      const topWs = [...workspaces].filter(ws => ws.workspaceId !== 'SC-00-01').sort((a, b) => b.workingDays - a.workingDays).slice(0, 5);
       document.getElementById('topWorkspacesList').innerHTML = topWs.map(ws => \`
         <li class="top-item">
           <div class="top-item-info">
             <span class="top-item-name">
               <span class="pic-tag">\${ws.workspaceId}</span> \${ws.workspaceName}
             </span>
-            <span class="top-item-val">\${ws.effort}d</span>
+            <span class="top-item-val">\${ws.workingDays.toFixed(1)}d (\${ws.effortPoints} pts)</span>
           </div>
           <div style="font-size: 11px; color: var(--text-muted);">Screen: \${ws.screenName} (\${ws.waveId})</div>
         </li>
       \`).join('');
 
-      const topPics = Object.values(picMap).sort((a, b) => b.effort - a.effort).slice(0, 5);
+      const topPics = Object.values(picMap).filter(p => p.pic !== 'All PICs').sort((a, b) => b.workingDays - a.workingDays).slice(0, 5);
       document.getElementById('topPicsList').innerHTML = topPics.map(p => {
-        const pct = ((p.effort / totalEffort) * 100).toFixed(1);
+        const pct = ((p.workingDays / totalWorkingDays) * 100).toFixed(1);
         return \`
           <li class="top-item">
             <div class="top-item-info">
               <span class="top-item-name">\${p.pic} (\${p.screensCount} Screens)</span>
-              <span class="top-item-val">\${p.effort}d (\${pct}%)</span>
+              <span class="top-item-val">\${p.workingDays.toFixed(1)}d (\${pct}%)</span>
             </div>
             <div class="progress-track"><div class="progress-fill" style="width: \${pct*2.2}%;"></div></div>
           </li>
@@ -1244,14 +1265,15 @@ const htmlContent = `<!DOCTYPE html>
     }
 
     function renderRoadmap() {
-      const totalEffort = screens.reduce((acc, curr) => acc + curr.effort, 0);
+      const totalWorkingDays = screens.reduce((acc, curr) => acc + curr.workingDays, 0);
       document.getElementById('roadmapGrid').innerHTML = waves.map(w => {
-        const pct = ((w.effort / totalEffort) * 100).toFixed(1);
+        const pct = ((w.workingDays / totalWorkingDays) * 100).toFixed(1);
+        const isPrep = w.waveId === 'WAVE-00';
         return \`
-          <div class="wave-card">
+          <div class="wave-card \${isPrep ? 'wave-00-highlight' : ''}">
             <div>
               <div class="wave-card-header">
-                <span class="wave-badge">\${w.waveId}</span>
+                <span class="wave-badge \${isPrep ? 'prep' : ''}">\${w.waveId}</span>
                 <span style="font-size: 12px; font-weight:700; color: var(--indigo-600);">\${pct}% Share</span>
               </div>
               <div class="wave-title">\${w.waveName}</div>
@@ -1263,12 +1285,12 @@ const htmlContent = `<!DOCTYPE html>
                 <div class="wave-stat-lbl">Screens</div>
               </div>
               <div class="wave-stat">
-                <div class="wave-stat-val">\${w.workspacesCount}</div>
-                <div class="wave-stat-lbl">Workspaces</div>
+                <div class="wave-stat-val">\${w.effortPoints}</div>
+                <div class="wave-stat-lbl">Effort Pts</div>
               </div>
               <div class="wave-stat">
-                <div class="wave-stat-val">\${w.effort}</div>
-                <div class="wave-stat-lbl">Effort Days</div>
+                <div class="wave-stat-val">\${w.workingDays.toFixed(1)}</div>
+                <div class="wave-stat-lbl">Work Days</div>
               </div>
             </div>
 
@@ -1286,21 +1308,25 @@ const htmlContent = `<!DOCTYPE html>
     function renderTreeBreakdown() {
       document.getElementById('treeContainer').innerHTML = waves.map((w, wIndex) => {
         const screensHtml = w.rawScreen.map((s, sIndex) => {
-          let screenTotalEffort = 0;
+          let screenWorkingDays = 0;
+          let screenEffortPoints = 0;
+
           const wsHtml = (s.Workspaces || []).map(ws => {
-            let wsEffort = 0;
+            let wsEffortPoints = 0;
             (ws.Tasks || []).forEach(t => {
-              if (t.Effort !== "" && !isNaN(Number(t.Effort))) wsEffort += Number(t.Effort);
+              if (t.Effort !== "" && !isNaN(Number(t.Effort))) wsEffortPoints += Number(t.Effort);
             });
-            screenTotalEffort += wsEffort;
+            const wsWorkingDays = wsEffortPoints * EFFORT_MULTIPLIER;
+            screenEffortPoints += wsEffortPoints;
+            screenWorkingDays += wsWorkingDays;
 
             return \`
               <div style="margin-top: 6px; padding: 6px 10px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 4px; display: flex; justify-content: space-between; align-items: center; font-size: 12px;">
                 <div>
                   <strong>\${ws.WorkspaceId}</strong> - \${ws.WorkspaceName}
-                  <span style="color: var(--text-muted); margin-left: 8px;">(\${(ws.Tasks||[]).length} tasks)</span>
+                  <span style="color: var(--text-muted); margin-left: 8px;">(\${(ws.Tasks||[]).length} tasks | \${wsEffortPoints} pts)</span>
                 </div>
-                <span class="effort-pill">\${wsEffort}d</span>
+                <span class="effort-pill">\${wsWorkingDays.toFixed(1)} Days</span>
               </div>
             \`;
           }).join('');
@@ -1313,7 +1339,7 @@ const htmlContent = `<!DOCTYPE html>
                   <strong>\${s.ScreenId}</strong> \${s.ScreenName}
                   <span class="pic-tag">\${s.PIC}</span>
                 </div>
-                <span class="effort-pill">\${screenTotalEffort}d</span>
+                <span class="effort-pill">\${screenWorkingDays.toFixed(1)} Days (\${screenEffortPoints} pts)</span>
               </div>
               <div class="tree-node-body" id="body-s-\${wIndex}-\${sIndex}">
                 \${wsHtml}
@@ -1327,10 +1353,10 @@ const htmlContent = `<!DOCTYPE html>
             <div class="tree-node-header" onclick="toggleTreeNode('w-\${wIndex}')" style="background-color: #f1f5f9;">
               <div class="tree-node-title">
                 <span class="toggle-icon" id="icon-w-\${wIndex}">-</span>
-                <span class="wave-badge">\${w.waveId}</span>
+                <span class="wave-badge \${w.waveId === 'WAVE-00' ? 'prep' : ''}">\${w.waveId}</span>
                 <strong>\${w.waveName}</strong>
               </div>
-              <span class="effort-pill" style="background-color: var(--navy-900); color: #fff;">\${w.effort} Days Total</span>
+              <span class="effort-pill" style="background-color: var(--navy-900); color: #fff;">\${w.workingDays.toFixed(1)} Days Total (\${w.effortPoints} pts)</span>
             </div>
             <div class="tree-node-body" id="body-w-\${wIndex}">
               \${screensHtml}
@@ -1369,12 +1395,12 @@ const htmlContent = `<!DOCTYPE html>
     function renderTableRows(data) {
       document.getElementById('tableBody').innerHTML = data.map(s => \`
         <tr>
-          <td><span class="wave-badge">\${s.screenId}</span></td>
+          <td><span class="wave-badge \${s.waveId === 'WAVE-00' ? 'prep' : ''}">\${s.screenId}</span></td>
           <td style="font-weight: 600;">\${s.screenName}</td>
           <td><span style="font-size: 11px; font-weight:700; color: var(--navy-900);">\${s.waveId}</span></td>
           <td><span class="pic-tag">\${s.pic}</span></td>
           <td style="text-align: center;">\${s.workspacesCount}</td>
-          <td style="text-align: right; font-weight: 700; color: var(--indigo-600);">\${s.effort} Days</td>
+          <td style="text-align: right; font-weight: 700; color: var(--indigo-600);">\${s.workingDays.toFixed(1)} Days (\${s.effortPoints} pts)</td>
         </tr>
       \`).join('');
       document.getElementById('tableCounter').innerText = \`Showing \${data.length} of \${screens.length} screens\`;
@@ -1408,7 +1434,7 @@ const htmlContent = `<!DOCTYPE html>
         else if (colIndex === 2) { v1 = a.waveId; v2 = b.waveId; }
         else if (colIndex === 3) { v1 = a.pic; v2 = b.pic; }
         else if (colIndex === 4) { v1 = a.workspacesCount; v2 = b.workspacesCount; }
-        else if (colIndex === 5) { v1 = a.effort; v2 = b.effort; }
+        else if (colIndex === 5) { v1 = a.workingDays; v2 = b.workingDays; }
 
         if (v1 < v2) return sortAsc ? -1 : 1;
         if (v1 > v2) return sortAsc ? 1 : -1;
@@ -1419,22 +1445,22 @@ const htmlContent = `<!DOCTYPE html>
     }
 
     function renderResourceAllocation() {
-      const picList = Object.values(picMap).sort((a, b) => b.effort - a.effort);
-      const maxEffort = picList[0].effort;
-      const totalEffort = screens.reduce((acc, curr) => acc + curr.effort, 0);
+      const picList = Object.values(picMap).filter(p => p.pic !== 'All PICs').sort((a, b) => b.workingDays - a.workingDays);
+      const maxWorkingDays = picList[0] ? picList[0].workingDays : 1;
+      const totalWorkingDays = screens.reduce((acc, curr) => acc + curr.workingDays, 0);
 
       document.getElementById('workloadChartContainer').innerHTML = picList.map((p, idx) => {
-        const pctWidth = ((p.effort / maxEffort) * 100).toFixed(1);
+        const pctWidth = ((p.workingDays / maxWorkingDays) * 100).toFixed(1);
         const isHighest = idx === 0;
         return \`
           <div class="bar-chart-row">
             <div class="bar-pic-name">\${p.pic}</div>
             <div class="bar-container-wrapper">
               <div class="bar-fill-inner \${isHighest ? 'highest' : ''}" style="width: \${pctWidth}%;">
-                \${p.effort}d
+                \${p.workingDays.toFixed(1)}d
               </div>
             </div>
-            <div class="bar-val-label">\${((p.effort/totalEffort)*100).toFixed(1)}%</div>
+            <div class="bar-val-label">\${((p.workingDays/totalWorkingDays)*100).toFixed(1)}%</div>
           </div>
         \`;
       }).join('');
@@ -1444,25 +1470,40 @@ const htmlContent = `<!DOCTYPE html>
           <div>
             <div style="font-size: 14px; font-weight: 700; color: var(--navy-900);">\${p.pic}</div>
             <div style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">
-              \${p.screensCount} Screens | \${p.workspacesCount} Workspaces
+              \${p.screensCount} Screens | \${p.workspacesCount} Workspaces (\${p.effortPoints} pts)
             </div>
           </div>
           <div style="text-align: right;">
-            <div style="font-size: 16px; font-weight: 800; color: var(--indigo-600);">\${p.effort} Days</div>
-            <div style="font-size: 11px; color: var(--text-muted);">\${((p.effort/totalEffort)*100).toFixed(1)}% share</div>
+            <div style="font-size: 16px; font-weight: 800; color: var(--indigo-600);">\${p.workingDays.toFixed(1)} Days</div>
+            <div style="font-size: 11px; color: var(--text-muted);">\${((p.workingDays/totalWorkingDays)*100).toFixed(1)}% share</div>
           </div>
         </div>
       \`).join('');
     }
 
     function renderGanttTimeline() {
-      let picBusyUntil = {};
-      Object.keys(picMap).forEach(p => picBusyUntil[p] = 0);
-
       let waveSchedule = [];
-      waves.forEach(w => {
-        let picWorkloadInWave = {};
-        w.pics.forEach(p => picWorkloadInWave[p] = 0);
+      let prepWave = waves.find(w => w.waveId === 'WAVE-00');
+
+      let currentPrepWorkingDays = prepWave ? prepWave.workingDays : 7.5;
+      waveSchedule.push({
+        waveId: 'WAVE-00',
+        waveName: prepWave ? prepWave.waveName : 'PREPARATION & OUTCOME DISCOVERY',
+        startDay: 0,
+        endDay: currentPrepWorkingDays,
+        duration: currentPrepWorkingDays,
+        effortPoints: prepWave ? prepWave.effortPoints : 5,
+        pics: prepWave ? prepWave.pics : ['All PICs'],
+        isPrep: true
+      });
+
+      let picBusyUntil = {};
+      Object.keys(picMap).forEach(p => picBusyUntil[p] = currentPrepWorkingDays);
+
+      const featureWaves = waves.filter(w => w.waveId !== 'WAVE-00');
+      featureWaves.forEach(w => {
+        let picWorkloadInWavePoints = {};
+        w.pics.forEach(p => picWorkloadInWavePoints[p] = 0);
         
         w.rawScreen.forEach(s => {
           const p = s.PIC;
@@ -1472,25 +1513,26 @@ const htmlContent = `<!DOCTYPE html>
               if (t.Effort !== "" && !isNaN(Number(t.Effort))) sEffort += Number(t.Effort);
             });
           });
-          if (p) picWorkloadInWave[p] = (picWorkloadInWave[p] || 0) + sEffort;
+          if (p) picWorkloadInWavePoints[p] = (picWorkloadInWavePoints[p] || 0) + sEffort;
         });
 
-        let startDay = 0;
+        let startDay = currentPrepWorkingDays;
         w.pics.forEach(p => {
           if (picBusyUntil[p] > startDay) startDay = picBusyUntil[p];
         });
 
-        let maxPicDuration = 0;
+        let maxPicDurationPoints = 0;
         w.pics.forEach(p => {
-          if ((picWorkloadInWave[p] || 0) > maxPicDuration) maxPicDuration = picWorkloadInWave[p];
+          if ((picWorkloadInWavePoints[p] || 0) > maxPicDurationPoints) maxPicDurationPoints = picWorkloadInWavePoints[p];
         });
-        if (maxPicDuration === 0) maxPicDuration = 1;
+        if (maxPicDurationPoints === 0) maxPicDurationPoints = 1;
 
-        let endDay = startDay + maxPicDuration;
+        let maxPicWorkingDays = maxPicDurationPoints * EFFORT_MULTIPLIER;
+        let endDay = startDay + maxPicWorkingDays;
 
         w.pics.forEach(p => {
-          const pEffort = picWorkloadInWave[p] || 0;
-          picBusyUntil[p] = startDay + pEffort;
+          const pWorkingDays = (picWorkloadInWavePoints[p] || 0) * EFFORT_MULTIPLIER;
+          picBusyUntil[p] = startDay + pWorkingDays;
         });
 
         waveSchedule.push({
@@ -1498,13 +1540,14 @@ const htmlContent = `<!DOCTYPE html>
           waveName: w.waveName,
           startDay: startDay,
           endDay: endDay,
-          duration: maxPicDuration,
-          effort: w.effort,
-          pics: w.pics
+          duration: maxPicWorkingDays,
+          effortPoints: w.effortPoints,
+          pics: w.pics,
+          isPrep: false
         });
       });
 
-      const maxTimelineDays = 176;
+      const maxTimelineDays = 260; // ~12 months scale
 
       document.getElementById('ganttBody').innerHTML = waveSchedule.map(w => {
         const leftPct = ((w.startDay / maxTimelineDays) * 100).toFixed(2);
@@ -1513,11 +1556,11 @@ const htmlContent = `<!DOCTYPE html>
         return \`
           <div class="gantt-wave-row">
             <div class="gantt-wave-label">
-              <span class="wave-badge">\${w.waveId}</span> \${w.waveName}
+              <span class="wave-badge \${w.isPrep ? 'prep' : ''}">\${w.waveId}</span> \${w.waveName}
             </div>
             <div class="gantt-track-area">
-              <div class="gantt-bar-item" style="left: \${leftPct}%; width: \${widthPct}%;" title="Day \${w.startDay} to \${w.endDay} (\${w.duration} working days)">
-                \${w.waveId}: Day \${w.startDay}-\${w.endDay} (\${w.duration}d duration)
+              <div class="gantt-bar-item \${w.isPrep ? 'prep-bar' : ''}" style="left: \${leftPct}%; width: \${widthPct}%;" title="Day \${w.startDay.toFixed(1)} to \${w.endDay.toFixed(1)} (\${w.duration.toFixed(1)} working days)">
+                \${w.waveId}: Day \${w.startDay.toFixed(0)}-\${w.endDay.toFixed(0)} (\${w.duration.toFixed(1)}d)
               </div>
             </div>
           </div>
@@ -1536,6 +1579,7 @@ fs.writeFileSync(outputPath, htmlContent, 'utf8');
 
 console.log('----------------------------------------------------');
 console.log('✓ Successfully re-generated Dashboard HTML!');
+console.log('  Formula Applied  :', '1 Effort Unit = 1.5 Working Days');
 console.log('  Source Data File :', sourceFileName);
 console.log('  Output File      :', outputPath);
 console.log('----------------------------------------------------');
