@@ -11,9 +11,6 @@
         "screenName": "Preparation & Outcome Discovery",
         "pic": "All PICs",
         "totalEffort": 5,
-        "outcomes": [
-          "OC-00-01"
-        ],
         "tasks": [
           {
             "taskId": "SC-00-01-01",
@@ -41,11 +38,6 @@
         "screenName": "Admisi",
         "pic": "Arif",
         "totalEffort": 17,
-        "outcomes": [
-          "OC-01-01",
-          "OC-01-06",
-          "OC-01-07"
-        ],
         "tasks": [
           {
             "taskId": "SC-01-01-01",
@@ -60,7 +52,7 @@
           {
             "taskId": "SC-01-01-03",
             "taskName": "BFF Feature",
-            "effort": ""
+            "effort": 1
           },
           {
             "taskId": "SC-01-01-04",
@@ -75,12 +67,12 @@
           {
             "taskId": "SC-01-01-06",
             "taskName": "Testing",
-            "effort": 4
+            "effort": 3
           },
           {
             "taskId": "SC-01-01-07",
             "taskName": "Deployment",
-            "effort": 2
+            "effort": 1
           }
         ]
       },
@@ -92,11 +84,6 @@
         "screenName": "Admisi",
         "pic": "Arif",
         "totalEffort": 17,
-        "outcomes": [
-          "OC-01-02",
-          "OC-01-04",
-          "OC-01-05"
-        ],
         "tasks": [
           {
             "taskId": "SC-01-02-01",
@@ -111,7 +98,7 @@
           {
             "taskId": "SC-01-02-03",
             "taskName": "BFF Feature",
-            "effort": ""
+            "effort": 1
           },
           {
             "taskId": "SC-01-02-04",
@@ -126,12 +113,12 @@
           {
             "taskId": "SC-01-02-06",
             "taskName": "Testing",
-            "effort": 4
+            "effort": 3
           },
           {
             "taskId": "SC-01-02-07",
             "taskName": "Deployment",
-            "effort": 2
+            "effort": 1
           }
         ]
       },
@@ -160,7 +147,7 @@
           {
             "taskId": "SC-01-03-03",
             "taskName": "BFF Feature",
-            "effort": ""
+            "effort": 1
           },
           {
             "taskId": "SC-01-03-04",
@@ -175,7 +162,7 @@
           {
             "taskId": "SC-01-03-06",
             "taskName": "Testing",
-            "effort": 4
+            "effort": 3
           },
           {
             "taskId": "SC-01-03-07",
@@ -198,12 +185,6 @@
         "screenName": "Poli Rawat Jalan",
         "pic": "Fikri",
         "totalEffort": 17,
-        "outcomes": [
-          "OC-05-01",
-          "OC-05-02",
-          "OC-05-03",
-          "OC-05-04"
-        ],
         "tasks": [
           {
             "taskId": "SC-05-01-01",
@@ -218,7 +199,7 @@
           {
             "taskId": "SC-05-01-03",
             "taskName": "BFF Feature",
-            "effort": ""
+            "effort": 1
           },
           {
             "taskId": "SC-05-01-04",
@@ -250,11 +231,6 @@
         "screenName": "Poli Rawat Jalan",
         "pic": "Fikri",
         "totalEffort": 17,
-        "outcomes": [
-          "OC-05-05",
-          "OC-05-06",
-          "OC-05-07"
-        ],
         "tasks": [
           {
             "taskId": "SC-05-02-01",
@@ -269,7 +245,7 @@
           {
             "taskId": "SC-05-02-03",
             "taskName": "BFF Feature",
-            "effort": ""
+            "effort": 1
           },
           {
             "taskId": "SC-05-02-04",
@@ -301,12 +277,6 @@
         "screenName": "Tata Rekening",
         "pic": "Erkoc",
         "totalEffort": 17,
-        "outcomes": [
-          "OC-02-01",
-          "OC-02-02",
-          "OC-02-03",
-          "OC-02-04"
-        ],
         "tasks": [
           {
             "taskId": "SC-02-01-01",
@@ -353,9 +323,6 @@
         "screenName": "Kasir",
         "pic": "Erkoc",
         "totalEffort": 17,
-        "outcomes": [
-          "OC-03-01"
-        ],
         "tasks": [
           {
             "taskId": "SC-03-01-01",
@@ -370,7 +337,7 @@
           {
             "taskId": "SC-03-01-03",
             "taskName": "BFF Feature",
-            "effort": ""
+            "effort": 1
           },
           {
             "taskId": "SC-03-01-04",
@@ -402,24 +369,21 @@
         "screenName": "Kasir",
         "pic": "Erkoc",
         "totalEffort": 17,
-        "outcomes": [
-          "OC-03-02"
-        ],
         "tasks": [
           {
             "taskId": "SC-03-02-01",
             "taskName": "Core Feature",
-            "effort": 5
+            "effort": 2
           },
           {
             "taskId": "SC-03-02-02",
             "taskName": "UI Design",
-            "effort": 3
+            "effort": 2
           },
           {
             "taskId": "SC-03-02-03",
             "taskName": "BFF Feature",
-            "effort": ""
+            "effort": 1
           },
           {
             "taskId": "SC-03-02-04",
@@ -434,12 +398,12 @@
           {
             "taskId": "SC-03-02-06",
             "taskName": "Testing",
-            "effort": 4
+            "effort": 2
           },
           {
             "taskId": "SC-03-02-07",
             "taskName": "Deployment",
-            "effort": 2
+            "effort": 1
           }
         ]
       }
@@ -457,25 +421,21 @@
         "screenName": "Rekam Medis",
         "pic": "Rizal",
         "totalEffort": 17,
-        "outcomes": [
-          "OC-04-01",
-          "OC-04-02"
-        ],
         "tasks": [
           {
             "taskId": "SC-04-01-01",
             "taskName": "Core Feature",
-            "effort": 5
+            "effort": 3
           },
           {
             "taskId": "SC-04-01-02",
             "taskName": "UI Design",
-            "effort": 3
+            "effort": 2
           },
           {
             "taskId": "SC-04-01-03",
             "taskName": "BFF Feature",
-            "effort": ""
+            "effort": 1
           },
           {
             "taskId": "SC-04-01-04",
@@ -490,7 +450,7 @@
           {
             "taskId": "SC-04-01-06",
             "taskName": "Testing",
-            "effort": 4
+            "effort": 3
           },
           {
             "taskId": "SC-04-01-07",
@@ -507,9 +467,6 @@
         "screenName": "Rekam Medis",
         "pic": "Rizal",
         "totalEffort": 17,
-        "outcomes": [
-          "OC-04-03"
-        ],
         "tasks": [
           {
             "taskId": "SC-04-02-01",
@@ -524,7 +481,7 @@
           {
             "taskId": "SC-04-02-03",
             "taskName": "BFF Feature",
-            "effort": ""
+            "effort": 1
           },
           {
             "taskId": "SC-04-02-04",
@@ -539,7 +496,7 @@
           {
             "taskId": "SC-04-02-06",
             "taskName": "Testing",
-            "effort": 4
+            "effort": 3
           },
           {
             "taskId": "SC-04-02-07",
@@ -556,25 +513,21 @@
         "screenName": "Rekam Medis",
         "pic": "Rizal",
         "totalEffort": 17,
-        "outcomes": [
-          "OC-04-04",
-          "OC-04-05"
-        ],
         "tasks": [
           {
             "taskId": "SC-04-03-01",
             "taskName": "Core Feature",
-            "effort": 5
+            "effort": 4
           },
           {
             "taskId": "SC-04-03-02",
             "taskName": "UI Design",
-            "effort": 3
+            "effort": 2
           },
           {
             "taskId": "SC-04-03-03",
             "taskName": "BFF Feature",
-            "effort": ""
+            "effort": 1
           },
           {
             "taskId": "SC-04-03-04",
@@ -589,7 +542,7 @@
           {
             "taskId": "SC-04-03-06",
             "taskName": "Testing",
-            "effort": 4
+            "effort": 2
           },
           {
             "taskId": "SC-04-03-07",
@@ -612,12 +565,6 @@
         "screenName": "IGD",
         "pic": "Arif",
         "totalEffort": 17,
-        "outcomes": [
-          "OC-07-01",
-          "OC-07-02",
-          "OC-07-03",
-          "OC-07-04"
-        ],
         "tasks": [
           {
             "taskId": "SC-07-01-01",
@@ -632,7 +579,7 @@
           {
             "taskId": "SC-07-01-03",
             "taskName": "BFF Feature",
-            "effort": ""
+            "effort": 1
           },
           {
             "taskId": "SC-07-01-04",
@@ -647,7 +594,7 @@
           {
             "taskId": "SC-07-01-06",
             "taskName": "Testing",
-            "effort": 4
+            "effort": 2
           },
           {
             "taskId": "SC-07-01-07",
@@ -664,26 +611,21 @@
         "screenName": "IGD",
         "pic": "Arif",
         "totalEffort": 17,
-        "outcomes": [
-          "OC-07-05",
-          "OC-07-06",
-          "OC-07-07"
-        ],
         "tasks": [
           {
             "taskId": "SC-05-02-01",
             "taskName": "Core Feature",
-            "effort": 5
+            "effort": 4
           },
           {
             "taskId": "SC-05-02-02",
             "taskName": "UI Design",
-            "effort": 3
+            "effort": 2
           },
           {
             "taskId": "SC-05-02-03",
             "taskName": "BFF Feature",
-            "effort": ""
+            "effort": 1
           },
           {
             "taskId": "SC-05-02-04",
@@ -715,12 +657,6 @@
         "screenName": "Bangsal Rawat Inap",
         "pic": "Sulis",
         "totalEffort": 17,
-        "outcomes": [
-          "OC-06-01",
-          "OC-06-02",
-          "OC-06-03",
-          "OC-06-04"
-        ],
         "tasks": [
           {
             "taskId": "SC-06-01-01",
@@ -735,7 +671,7 @@
           {
             "taskId": "SC-06-01-03",
             "taskName": "BFF Feature",
-            "effort": ""
+            "effort": 1
           },
           {
             "taskId": "SC-06-01-04",
@@ -767,31 +703,26 @@
         "screenName": "Bangsal Rawat Inap",
         "pic": "Sulis",
         "totalEffort": 17,
-        "outcomes": [
-          "OC-06-05",
-          "OC-06-06",
-          "OC-06-07"
-        ],
         "tasks": [
           {
             "taskId": "SC-05-02-01",
             "taskName": "Core Feature",
-            "effort": 5
+            "effort": 3
           },
           {
             "taskId": "SC-05-02-02",
             "taskName": "UI Design",
-            "effort": 3
+            "effort": 2
           },
           {
             "taskId": "SC-05-02-03",
             "taskName": "BFF Feature",
-            "effort": ""
+            "effort": 1
           },
           {
             "taskId": "SC-05-02-04",
             "taskName": "Architecture",
-            "effort": 2
+            "effort": 1
           },
           {
             "taskId": "SC-05-02-05",
@@ -824,11 +755,6 @@
         "screenName": "Laboratorium",
         "pic": "We",
         "totalEffort": 17,
-        "outcomes": [
-          "OC-08-01",
-          "OC-08-02",
-          "OC-08-03"
-        ],
         "tasks": [
           {
             "taskId": "SC-08-01-01",
@@ -875,10 +801,6 @@
         "screenName": "Laboratorium",
         "pic": "We",
         "totalEffort": 17,
-        "outcomes": [
-          "OC-08-04",
-          "OC-08-05"
-        ],
         "tasks": [
           {
             "taskId": "SC-08-02-01",
@@ -925,11 +847,6 @@
         "screenName": "Laboratorium",
         "pic": "We",
         "totalEffort": 17,
-        "outcomes": [
-          "OC-08-06",
-          "OC-08-07",
-          "OC-08-08"
-        ],
         "tasks": [
           {
             "taskId": "SC-08-03-01",
@@ -976,11 +893,6 @@
         "screenName": "Radiologi",
         "pic": "We",
         "totalEffort": 17,
-        "outcomes": [
-          "OC-09-01",
-          "OC-09-02",
-          "OC-09-03"
-        ],
         "tasks": [
           {
             "taskId": "SC-09-01-01",
@@ -1027,10 +939,6 @@
         "screenName": "Radiologi",
         "pic": "We",
         "totalEffort": 17,
-        "outcomes": [
-          "OC-09-04",
-          "OC-09-05"
-        ],
         "tasks": [
           {
             "taskId": "SC-09-02-01",
@@ -1077,11 +985,6 @@
         "screenName": "Radiologi",
         "pic": "We",
         "totalEffort": 17,
-        "outcomes": [
-          "OC-09-06",
-          "OC-09-07",
-          "OC-09-08"
-        ],
         "tasks": [
           {
             "taskId": "SC-09-03-01",
@@ -1128,11 +1031,6 @@
         "screenName": "Kamar Operasi",
         "pic": "Arie",
         "totalEffort": 17,
-        "outcomes": [
-          "OC-10-01",
-          "OC-10-02",
-          "OC-10-03"
-        ],
         "tasks": [
           {
             "taskId": "SC-10-01-01",
@@ -1147,7 +1045,7 @@
           {
             "taskId": "SC-10-01-03",
             "taskName": "BFF Feature",
-            "effort": ""
+            "effort": 1
           },
           {
             "taskId": "SC-10-01-04",
@@ -1179,9 +1077,6 @@
         "screenName": "Kamar Operasi",
         "pic": "Arie",
         "totalEffort": 17,
-        "outcomes": [
-          "OC-10-04"
-        ],
         "tasks": [
           {
             "taskId": "SC-10-02-01",
@@ -1228,11 +1123,6 @@
         "screenName": "Kamar Operasi",
         "pic": "Arie",
         "totalEffort": 17,
-        "outcomes": [
-          "OC-10-05",
-          "OC-10-06",
-          "OC-10-07"
-        ],
         "tasks": [
           {
             "taskId": "SC-10-03-01",
@@ -1247,7 +1137,7 @@
           {
             "taskId": "SC-10-03-03",
             "taskName": "BFF Feature",
-            "effort": ""
+            "effort": 1
           },
           {
             "taskId": "SC-10-03-04",
@@ -1285,9 +1175,6 @@
         "screenName": "Apotek",
         "pic": "Jude",
         "totalEffort": 17,
-        "outcomes": [
-          "OC-11-01"
-        ],
         "tasks": [
           {
             "taskId": "SC-11-01-01",
@@ -1317,7 +1204,7 @@
           {
             "taskId": "SC-11-01-06",
             "taskName": "Testing",
-            "effort": 4
+            "effort": 3
           },
           {
             "taskId": "SC-11-01-07",
@@ -1334,14 +1221,11 @@
         "screenName": "Apotek",
         "pic": "Jude",
         "totalEffort": 17,
-        "outcomes": [
-          "OC-11-02"
-        ],
         "tasks": [
           {
             "taskId": "SC-11-02-01",
             "taskName": "Core Feature",
-            "effort": 5
+            "effort": 4
           },
           {
             "taskId": "SC-11-02-02",
@@ -1351,7 +1235,7 @@
           {
             "taskId": "SC-11-02-03",
             "taskName": "BFF Feature",
-            "effort": ""
+            "effort": 1
           },
           {
             "taskId": "SC-11-02-04",
@@ -1383,10 +1267,6 @@
         "screenName": "Apotek",
         "pic": "Jude",
         "totalEffort": 17,
-        "outcomes": [
-          "OC-11-03",
-          "OC-11-04"
-        ],
         "tasks": [
           {
             "taskId": "SC-11-03-01",
@@ -1433,24 +1313,21 @@
         "screenName": "Apotek",
         "pic": "Jude",
         "totalEffort": 17,
-        "outcomes": [
-          "OC-11-05"
-        ],
         "tasks": [
           {
             "taskId": "SC-11-04-01",
             "taskName": "Core Feature",
-            "effort": 5
+            "effort": 3
           },
           {
             "taskId": "SC-11-04-02",
             "taskName": "UI Design",
-            "effort": 3
+            "effort": 2
           },
           {
             "taskId": "SC-11-04-03",
             "taskName": "BFF Feature",
-            "effort": ""
+            "effort": 1
           },
           {
             "taskId": "SC-11-04-04",
@@ -1465,7 +1342,7 @@
           {
             "taskId": "SC-11-04-06",
             "taskName": "Testing",
-            "effort": 4
+            "effort": 2
           },
           {
             "taskId": "SC-11-04-07",
@@ -1482,15 +1359,11 @@
         "screenName": "Apotek",
         "pic": "Jude",
         "totalEffort": 17,
-        "outcomes": [
-          "OC-11-06",
-          "OC-11-07"
-        ],
         "tasks": [
           {
             "taskId": "SC-11-05-01",
             "taskName": "Core Feature",
-            "effort": 5
+            "effort": 3
           },
           {
             "taskId": "SC-11-05-02",
@@ -1500,7 +1373,7 @@
           {
             "taskId": "SC-11-05-03",
             "taskName": "BFF Feature",
-            "effort": ""
+            "effort": 1
           },
           {
             "taskId": "SC-11-05-04",
@@ -1532,10 +1405,6 @@
         "screenName": "Gudang",
         "pic": "Roso",
         "totalEffort": 17,
-        "outcomes": [
-          "OC-12-01",
-          "OC-12-05"
-        ],
         "tasks": [
           {
             "taskId": "SC-12-01-01",
@@ -1582,11 +1451,6 @@
         "screenName": "Gudang",
         "pic": "Roso",
         "totalEffort": 17,
-        "outcomes": [
-          "OC-12-02",
-          "OC-12-03",
-          "OC-12-04"
-        ],
         "tasks": [
           {
             "taskId": "SC-12-02-01",
@@ -1633,9 +1497,6 @@
         "screenName": "Gudang",
         "pic": "Roso",
         "totalEffort": 17,
-        "outcomes": [
-          "OC-12-05"
-        ],
         "tasks": [
           {
             "taskId": "SC-12-03-01",
@@ -1682,12 +1543,6 @@
         "screenName": "Purchasing",
         "pic": "Fikri",
         "totalEffort": 17,
-        "outcomes": [
-          "OC-13-01",
-          "OC-13-02",
-          "OC-13-03",
-          "OC-13-04"
-        ],
         "tasks": [
           {
             "taskId": "SC-13-01-01",
@@ -1702,7 +1557,7 @@
           {
             "taskId": "SC-13-01-03",
             "taskName": "BFF Feature",
-            "effort": ""
+            "effort": 1
           },
           {
             "taskId": "SC-13-01-04",
@@ -1734,9 +1589,6 @@
         "screenName": "Purchasing",
         "pic": "Fikri",
         "totalEffort": 17,
-        "outcomes": [
-          "OC-13-05"
-        ],
         "tasks": [
           {
             "taskId": "SC-13-02-01",
