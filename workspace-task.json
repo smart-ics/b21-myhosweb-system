@@ -1,0 +1,1780 @@
+[
+  {
+    "waveId": "WAVE-00",
+    "waveName": "PREPARATION & OUTCOME DISCOVERY",
+    "workspaces": [
+      {
+        "workspaceId": "SC-00-01",
+        "workspaceName": "Workspace System Architecture & Discovery",
+        "screenId": "SC-00",
+        "screenCode": "SC-00",
+        "screenName": "Preparation & Outcome Discovery",
+        "pic": "All PICs",
+        "totalEffort": 5,
+        "outcomes": [
+          "OC-00-01"
+        ],
+        "tasks": [
+          {
+            "taskId": "SC-00-01-01",
+            "taskName": "Outcome Discovery & Domain Alignment",
+            "effort": 3
+          },
+          {
+            "taskId": "SC-00-01-02",
+            "taskName": "Environment & Baseline Setup",
+            "effort": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "waveId": "WAVE-01",
+    "waveName": "MASTER & PATIENT ADMISSION",
+    "workspaces": [
+      {
+        "workspaceId": "SC-01-01",
+        "workspaceName": "Workspace Booking",
+        "screenId": "SC-01",
+        "screenCode": "SC-01",
+        "screenName": "Admisi",
+        "pic": "Arif",
+        "totalEffort": 17,
+        "outcomes": [
+          "OC-01-01",
+          "OC-01-06",
+          "OC-01-07"
+        ],
+        "tasks": [
+          {
+            "taskId": "SC-01-01-01",
+            "taskName": "Core Feature",
+            "effort": 5
+          },
+          {
+            "taskId": "SC-01-01-02",
+            "taskName": "UI Design",
+            "effort": 3
+          },
+          {
+            "taskId": "SC-01-01-03",
+            "taskName": "BFF Feature",
+            "effort": ""
+          },
+          {
+            "taskId": "SC-01-01-04",
+            "taskName": "Architecture",
+            "effort": 2
+          },
+          {
+            "taskId": "SC-01-01-05",
+            "taskName": "Development",
+            "effort": 1
+          },
+          {
+            "taskId": "SC-01-01-06",
+            "taskName": "Testing",
+            "effort": 4
+          },
+          {
+            "taskId": "SC-01-01-07",
+            "taskName": "Deployment",
+            "effort": 2
+          }
+        ]
+      },
+      {
+        "workspaceId": "SC-01-02",
+        "workspaceName": "Workspace Registrasi Rawat Jalan dan IGD",
+        "screenId": "SC-01",
+        "screenCode": "SC-01",
+        "screenName": "Admisi",
+        "pic": "Arif",
+        "totalEffort": 17,
+        "outcomes": [
+          "OC-01-02",
+          "OC-01-04",
+          "OC-01-05"
+        ],
+        "tasks": [
+          {
+            "taskId": "SC-01-02-01",
+            "taskName": "Core Feature",
+            "effort": 5
+          },
+          {
+            "taskId": "SC-01-02-02",
+            "taskName": "UI Design",
+            "effort": 3
+          },
+          {
+            "taskId": "SC-01-02-03",
+            "taskName": "BFF Feature",
+            "effort": ""
+          },
+          {
+            "taskId": "SC-01-02-04",
+            "taskName": "Architecture",
+            "effort": 2
+          },
+          {
+            "taskId": "SC-01-02-05",
+            "taskName": "Development",
+            "effort": 1
+          },
+          {
+            "taskId": "SC-01-02-06",
+            "taskName": "Testing",
+            "effort": 4
+          },
+          {
+            "taskId": "SC-01-02-07",
+            "taskName": "Deployment",
+            "effort": 2
+          }
+        ]
+      },
+      {
+        "workspaceId": "SC-01-03",
+        "workspaceName": "Workspace Registrasi Ranap",
+        "screenId": "SC-01",
+        "screenCode": "SC-01",
+        "screenName": "Admisi",
+        "pic": "Arif",
+        "totalEffort": 17,
+        "outcomes": [
+          "OC-01-03"
+        ],
+        "tasks": [
+          {
+            "taskId": "SC-01-03-01",
+            "taskName": "Core Feature",
+            "effort": 5
+          },
+          {
+            "taskId": "SC-01-03-02",
+            "taskName": "UI Design",
+            "effort": 3
+          },
+          {
+            "taskId": "SC-01-03-03",
+            "taskName": "BFF Feature",
+            "effort": ""
+          },
+          {
+            "taskId": "SC-01-03-04",
+            "taskName": "Architecture",
+            "effort": 2
+          },
+          {
+            "taskId": "SC-01-03-05",
+            "taskName": "Development",
+            "effort": 1
+          },
+          {
+            "taskId": "SC-01-03-06",
+            "taskName": "Testing",
+            "effort": 4
+          },
+          {
+            "taskId": "SC-01-03-07",
+            "taskName": "Deployment",
+            "effort": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "waveId": "WAVE-02",
+    "waveName": "OUTPATIENT REVENUE CYCLE",
+    "workspaces": [
+      {
+        "workspaceId": "SC-05-01",
+        "workspaceName": "Workspace Tindakan",
+        "screenId": "SC-05",
+        "screenCode": "SC-05",
+        "screenName": "Poli Rawat Jalan",
+        "pic": "Fikri",
+        "totalEffort": 17,
+        "outcomes": [
+          "OC-05-01",
+          "OC-05-02",
+          "OC-05-03",
+          "OC-05-04"
+        ],
+        "tasks": [
+          {
+            "taskId": "SC-05-01-01",
+            "taskName": "Core Feature",
+            "effort": 5
+          },
+          {
+            "taskId": "SC-05-01-02",
+            "taskName": "UI Design",
+            "effort": 3
+          },
+          {
+            "taskId": "SC-05-01-03",
+            "taskName": "BFF Feature",
+            "effort": ""
+          },
+          {
+            "taskId": "SC-05-01-04",
+            "taskName": "Architecture",
+            "effort": 2
+          },
+          {
+            "taskId": "SC-05-01-05",
+            "taskName": "Development",
+            "effort": 1
+          },
+          {
+            "taskId": "SC-05-01-06",
+            "taskName": "Testing",
+            "effort": 4
+          },
+          {
+            "taskId": "SC-05-01-07",
+            "taskName": "Deployment",
+            "effort": 2
+          }
+        ]
+      },
+      {
+        "workspaceId": "SC-05-02",
+        "workspaceName": "Workspace Local Inventory",
+        "screenId": "SC-05",
+        "screenCode": "SC-05",
+        "screenName": "Poli Rawat Jalan",
+        "pic": "Fikri",
+        "totalEffort": 17,
+        "outcomes": [
+          "OC-05-05",
+          "OC-05-06",
+          "OC-05-07"
+        ],
+        "tasks": [
+          {
+            "taskId": "SC-05-02-01",
+            "taskName": "Core Feature",
+            "effort": 5
+          },
+          {
+            "taskId": "SC-05-02-02",
+            "taskName": "UI Design",
+            "effort": 3
+          },
+          {
+            "taskId": "SC-05-02-03",
+            "taskName": "BFF Feature",
+            "effort": ""
+          },
+          {
+            "taskId": "SC-05-02-04",
+            "taskName": "Architecture",
+            "effort": 2
+          },
+          {
+            "taskId": "SC-05-02-05",
+            "taskName": "Development",
+            "effort": 1
+          },
+          {
+            "taskId": "SC-05-02-06",
+            "taskName": "Testing",
+            "effort": 4
+          },
+          {
+            "taskId": "SC-05-02-07",
+            "taskName": "Deployment",
+            "effort": 2
+          }
+        ]
+      },
+      {
+        "workspaceId": "SC-02-01",
+        "workspaceName": "Workspace Reg Out",
+        "screenId": "SC-02",
+        "screenCode": "SC-02",
+        "screenName": "Tata Rekening",
+        "pic": "Erkoc",
+        "totalEffort": 17,
+        "outcomes": [
+          "OC-02-01",
+          "OC-02-02",
+          "OC-02-03",
+          "OC-02-04"
+        ],
+        "tasks": [
+          {
+            "taskId": "SC-02-01-01",
+            "taskName": "Core Feature",
+            "effort": 4
+          },
+          {
+            "taskId": "SC-02-01-02",
+            "taskName": "UI Design",
+            "effort": 3
+          },
+          {
+            "taskId": "SC-02-01-03",
+            "taskName": "BFF Feature",
+            "effort": 1
+          },
+          {
+            "taskId": "SC-02-01-04",
+            "taskName": "Architecture",
+            "effort": 2
+          },
+          {
+            "taskId": "SC-02-01-05",
+            "taskName": "Development",
+            "effort": 1
+          },
+          {
+            "taskId": "SC-02-01-06",
+            "taskName": "Testing",
+            "effort": 4
+          },
+          {
+            "taskId": "SC-02-01-07",
+            "taskName": "Deployment",
+            "effort": 2
+          }
+        ]
+      },
+      {
+        "workspaceId": "SC-03-01",
+        "workspaceName": "Workspace Kasir-Deposit-Voucher",
+        "screenId": "SC-03",
+        "screenCode": "SC-03",
+        "screenName": "Kasir",
+        "pic": "Erkoc",
+        "totalEffort": 17,
+        "outcomes": [
+          "OC-03-01"
+        ],
+        "tasks": [
+          {
+            "taskId": "SC-03-01-01",
+            "taskName": "Core Feature",
+            "effort": 5
+          },
+          {
+            "taskId": "SC-03-01-02",
+            "taskName": "UI Design",
+            "effort": 3
+          },
+          {
+            "taskId": "SC-03-01-03",
+            "taskName": "BFF Feature",
+            "effort": ""
+          },
+          {
+            "taskId": "SC-03-01-04",
+            "taskName": "Architecture",
+            "effort": 2
+          },
+          {
+            "taskId": "SC-03-01-05",
+            "taskName": "Development",
+            "effort": 1
+          },
+          {
+            "taskId": "SC-03-01-06",
+            "taskName": "Testing",
+            "effort": 4
+          },
+          {
+            "taskId": "SC-03-01-07",
+            "taskName": "Deployment",
+            "effort": 2
+          }
+        ]
+      },
+      {
+        "workspaceId": "SC-03-02",
+        "workspaceName": "Workspace Closing Shift",
+        "screenId": "SC-03",
+        "screenCode": "SC-03",
+        "screenName": "Kasir",
+        "pic": "Erkoc",
+        "totalEffort": 17,
+        "outcomes": [
+          "OC-03-02"
+        ],
+        "tasks": [
+          {
+            "taskId": "SC-03-02-01",
+            "taskName": "Core Feature",
+            "effort": 5
+          },
+          {
+            "taskId": "SC-03-02-02",
+            "taskName": "UI Design",
+            "effort": 3
+          },
+          {
+            "taskId": "SC-03-02-03",
+            "taskName": "BFF Feature",
+            "effort": ""
+          },
+          {
+            "taskId": "SC-03-02-04",
+            "taskName": "Architecture",
+            "effort": 2
+          },
+          {
+            "taskId": "SC-03-02-05",
+            "taskName": "Development",
+            "effort": 1
+          },
+          {
+            "taskId": "SC-03-02-06",
+            "taskName": "Testing",
+            "effort": 4
+          },
+          {
+            "taskId": "SC-03-02-07",
+            "taskName": "Deployment",
+            "effort": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "waveId": "WAVE-03",
+    "waveName": "MEDICAL RECORD FOUNDATION",
+    "workspaces": [
+      {
+        "workspaceId": "SC-04-01",
+        "workspaceName": "Workspace Berkas RM",
+        "screenId": "SC-04",
+        "screenCode": "SC-04",
+        "screenName": "Rekam Medis",
+        "pic": "Rizal",
+        "totalEffort": 17,
+        "outcomes": [
+          "OC-04-01",
+          "OC-04-02"
+        ],
+        "tasks": [
+          {
+            "taskId": "SC-04-01-01",
+            "taskName": "Core Feature",
+            "effort": 5
+          },
+          {
+            "taskId": "SC-04-01-02",
+            "taskName": "UI Design",
+            "effort": 3
+          },
+          {
+            "taskId": "SC-04-01-03",
+            "taskName": "BFF Feature",
+            "effort": ""
+          },
+          {
+            "taskId": "SC-04-01-04",
+            "taskName": "Architecture",
+            "effort": 2
+          },
+          {
+            "taskId": "SC-04-01-05",
+            "taskName": "Development",
+            "effort": 1
+          },
+          {
+            "taskId": "SC-04-01-06",
+            "taskName": "Testing",
+            "effort": 4
+          },
+          {
+            "taskId": "SC-04-01-07",
+            "taskName": "Deployment",
+            "effort": 2
+          }
+        ]
+      },
+      {
+        "workspaceId": "SC-04-02",
+        "workspaceName": "Workspace Casemix dan Coding",
+        "screenId": "SC-04",
+        "screenCode": "SC-04",
+        "screenName": "Rekam Medis",
+        "pic": "Rizal",
+        "totalEffort": 17,
+        "outcomes": [
+          "OC-04-03"
+        ],
+        "tasks": [
+          {
+            "taskId": "SC-04-02-01",
+            "taskName": "Core Feature",
+            "effort": 5
+          },
+          {
+            "taskId": "SC-04-02-02",
+            "taskName": "UI Design",
+            "effort": 3
+          },
+          {
+            "taskId": "SC-04-02-03",
+            "taskName": "BFF Feature",
+            "effort": ""
+          },
+          {
+            "taskId": "SC-04-02-04",
+            "taskName": "Architecture",
+            "effort": 2
+          },
+          {
+            "taskId": "SC-04-02-05",
+            "taskName": "Development",
+            "effort": 1
+          },
+          {
+            "taskId": "SC-04-02-06",
+            "taskName": "Testing",
+            "effort": 4
+          },
+          {
+            "taskId": "SC-04-02-07",
+            "taskName": "Deployment",
+            "effort": 2
+          }
+        ]
+      },
+      {
+        "workspaceId": "SC-04-03",
+        "workspaceName": "Workspace Pelaporan RL",
+        "screenId": "SC-04",
+        "screenCode": "SC-04",
+        "screenName": "Rekam Medis",
+        "pic": "Rizal",
+        "totalEffort": 17,
+        "outcomes": [
+          "OC-04-04",
+          "OC-04-05"
+        ],
+        "tasks": [
+          {
+            "taskId": "SC-04-03-01",
+            "taskName": "Core Feature",
+            "effort": 5
+          },
+          {
+            "taskId": "SC-04-03-02",
+            "taskName": "UI Design",
+            "effort": 3
+          },
+          {
+            "taskId": "SC-04-03-03",
+            "taskName": "BFF Feature",
+            "effort": ""
+          },
+          {
+            "taskId": "SC-04-03-04",
+            "taskName": "Architecture",
+            "effort": 2
+          },
+          {
+            "taskId": "SC-04-03-05",
+            "taskName": "Development",
+            "effort": 1
+          },
+          {
+            "taskId": "SC-04-03-06",
+            "taskName": "Testing",
+            "effort": 4
+          },
+          {
+            "taskId": "SC-04-03-07",
+            "taskName": "Deployment",
+            "effort": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "waveId": "WAVE-04",
+    "waveName": "ACUTE CARE OPERATIONS",
+    "workspaces": [
+      {
+        "workspaceId": "SC-07-01",
+        "workspaceName": "Workspace IGD Triage",
+        "screenId": "SC-07",
+        "screenCode": "SC-07",
+        "screenName": "IGD",
+        "pic": "Arif",
+        "totalEffort": 17,
+        "outcomes": [
+          "OC-07-01",
+          "OC-07-02",
+          "OC-07-03",
+          "OC-07-04"
+        ],
+        "tasks": [
+          {
+            "taskId": "SC-07-01-01",
+            "taskName": "Core Feature",
+            "effort": 5
+          },
+          {
+            "taskId": "SC-07-01-02",
+            "taskName": "UI Design",
+            "effort": 3
+          },
+          {
+            "taskId": "SC-07-01-03",
+            "taskName": "BFF Feature",
+            "effort": ""
+          },
+          {
+            "taskId": "SC-07-01-04",
+            "taskName": "Architecture",
+            "effort": 2
+          },
+          {
+            "taskId": "SC-07-01-05",
+            "taskName": "Development",
+            "effort": 1
+          },
+          {
+            "taskId": "SC-07-01-06",
+            "taskName": "Testing",
+            "effort": 4
+          },
+          {
+            "taskId": "SC-07-01-07",
+            "taskName": "Deployment",
+            "effort": 2
+          }
+        ]
+      },
+      {
+        "workspaceId": "SC-05-02",
+        "workspaceName": "Workspace Local Inventory",
+        "screenId": "SC-07",
+        "screenCode": "SC-07",
+        "screenName": "IGD",
+        "pic": "Arif",
+        "totalEffort": 17,
+        "outcomes": [
+          "OC-07-05",
+          "OC-07-06",
+          "OC-07-07"
+        ],
+        "tasks": [
+          {
+            "taskId": "SC-05-02-01",
+            "taskName": "Core Feature",
+            "effort": 5
+          },
+          {
+            "taskId": "SC-05-02-02",
+            "taskName": "UI Design",
+            "effort": 3
+          },
+          {
+            "taskId": "SC-05-02-03",
+            "taskName": "BFF Feature",
+            "effort": ""
+          },
+          {
+            "taskId": "SC-05-02-04",
+            "taskName": "Architecture",
+            "effort": 2
+          },
+          {
+            "taskId": "SC-05-02-05",
+            "taskName": "Development",
+            "effort": 1
+          },
+          {
+            "taskId": "SC-05-02-06",
+            "taskName": "Testing",
+            "effort": 4
+          },
+          {
+            "taskId": "SC-05-02-07",
+            "taskName": "Deployment",
+            "effort": 2
+          }
+        ]
+      },
+      {
+        "workspaceId": "SC-06-01",
+        "workspaceName": "Workspace Bed Management",
+        "screenId": "SC-06",
+        "screenCode": "SC-06",
+        "screenName": "Bangsal Rawat Inap",
+        "pic": "Sulis",
+        "totalEffort": 17,
+        "outcomes": [
+          "OC-06-01",
+          "OC-06-02",
+          "OC-06-03",
+          "OC-06-04"
+        ],
+        "tasks": [
+          {
+            "taskId": "SC-06-01-01",
+            "taskName": "Core Feature",
+            "effort": 5
+          },
+          {
+            "taskId": "SC-06-01-02",
+            "taskName": "UI Design",
+            "effort": 3
+          },
+          {
+            "taskId": "SC-06-01-03",
+            "taskName": "BFF Feature",
+            "effort": ""
+          },
+          {
+            "taskId": "SC-06-01-04",
+            "taskName": "Architecture",
+            "effort": 2
+          },
+          {
+            "taskId": "SC-06-01-05",
+            "taskName": "Development",
+            "effort": 1
+          },
+          {
+            "taskId": "SC-06-01-06",
+            "taskName": "Testing",
+            "effort": 4
+          },
+          {
+            "taskId": "SC-06-01-07",
+            "taskName": "Deployment",
+            "effort": 2
+          }
+        ]
+      },
+      {
+        "workspaceId": "SC-05-02",
+        "workspaceName": "Workspace Local Inventory",
+        "screenId": "SC-06",
+        "screenCode": "SC-06",
+        "screenName": "Bangsal Rawat Inap",
+        "pic": "Sulis",
+        "totalEffort": 17,
+        "outcomes": [
+          "OC-06-05",
+          "OC-06-06",
+          "OC-06-07"
+        ],
+        "tasks": [
+          {
+            "taskId": "SC-05-02-01",
+            "taskName": "Core Feature",
+            "effort": 5
+          },
+          {
+            "taskId": "SC-05-02-02",
+            "taskName": "UI Design",
+            "effort": 3
+          },
+          {
+            "taskId": "SC-05-02-03",
+            "taskName": "BFF Feature",
+            "effort": ""
+          },
+          {
+            "taskId": "SC-05-02-04",
+            "taskName": "Architecture",
+            "effort": 2
+          },
+          {
+            "taskId": "SC-05-02-05",
+            "taskName": "Development",
+            "effort": 1
+          },
+          {
+            "taskId": "SC-05-02-06",
+            "taskName": "Testing",
+            "effort": 4
+          },
+          {
+            "taskId": "SC-05-02-07",
+            "taskName": "Deployment",
+            "effort": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "waveId": "WAVE-05",
+    "waveName": "DIAGNOSTIC & PROCEDURE SERVICES",
+    "workspaces": [
+      {
+        "workspaceId": "SC-08-01",
+        "workspaceName": "Workspace Order Laboratorium",
+        "screenId": "SC-08",
+        "screenCode": "SC-08",
+        "screenName": "Laboratorium",
+        "pic": "We",
+        "totalEffort": 17,
+        "outcomes": [
+          "OC-08-01",
+          "OC-08-02",
+          "OC-08-03"
+        ],
+        "tasks": [
+          {
+            "taskId": "SC-08-01-01",
+            "taskName": "Core Feature",
+            "effort": 4
+          },
+          {
+            "taskId": "SC-08-01-02",
+            "taskName": "UI Design",
+            "effort": 3
+          },
+          {
+            "taskId": "SC-08-01-03",
+            "taskName": "BFF Feature",
+            "effort": 1
+          },
+          {
+            "taskId": "SC-08-01-04",
+            "taskName": "Architecture",
+            "effort": 2
+          },
+          {
+            "taskId": "SC-08-01-05",
+            "taskName": "Development",
+            "effort": 1
+          },
+          {
+            "taskId": "SC-08-01-06",
+            "taskName": "Testing",
+            "effort": 3
+          },
+          {
+            "taskId": "SC-08-01-07",
+            "taskName": "Deployment",
+            "effort": 1
+          }
+        ]
+      },
+      {
+        "workspaceId": "SC-08-02",
+        "workspaceName": "Workspace Result Management",
+        "screenId": "SC-08",
+        "screenCode": "SC-08",
+        "screenName": "Laboratorium",
+        "pic": "We",
+        "totalEffort": 17,
+        "outcomes": [
+          "OC-08-04",
+          "OC-08-05"
+        ],
+        "tasks": [
+          {
+            "taskId": "SC-08-02-01",
+            "taskName": "Core Feature",
+            "effort": 3
+          },
+          {
+            "taskId": "SC-08-02-02",
+            "taskName": "UI Design",
+            "effort": 3
+          },
+          {
+            "taskId": "SC-08-02-03",
+            "taskName": "BFF Feature",
+            "effort": 1
+          },
+          {
+            "taskId": "SC-08-02-04",
+            "taskName": "Architecture",
+            "effort": 2
+          },
+          {
+            "taskId": "SC-08-02-05",
+            "taskName": "Development",
+            "effort": 1
+          },
+          {
+            "taskId": "SC-08-02-06",
+            "taskName": "Testing",
+            "effort": 3
+          },
+          {
+            "taskId": "SC-08-02-07",
+            "taskName": "Deployment",
+            "effort": 2
+          }
+        ]
+      },
+      {
+        "workspaceId": "SC-08-03",
+        "workspaceName": "Workspace Local Inventory",
+        "screenId": "SC-08",
+        "screenCode": "SC-08",
+        "screenName": "Laboratorium",
+        "pic": "We",
+        "totalEffort": 17,
+        "outcomes": [
+          "OC-08-06",
+          "OC-08-07",
+          "OC-08-08"
+        ],
+        "tasks": [
+          {
+            "taskId": "SC-08-03-01",
+            "taskName": "Core Feature",
+            "effort": 3
+          },
+          {
+            "taskId": "SC-08-03-02",
+            "taskName": "UI Design",
+            "effort": 3
+          },
+          {
+            "taskId": "SC-08-03-03",
+            "taskName": "BFF Feature",
+            "effort": 2
+          },
+          {
+            "taskId": "SC-08-03-04",
+            "taskName": "Architecture",
+            "effort": 2
+          },
+          {
+            "taskId": "SC-08-03-05",
+            "taskName": "Development",
+            "effort": 1
+          },
+          {
+            "taskId": "SC-08-03-06",
+            "taskName": "Testing",
+            "effort": 3
+          },
+          {
+            "taskId": "SC-08-03-07",
+            "taskName": "Deployment",
+            "effort": 2
+          }
+        ]
+      },
+      {
+        "workspaceId": "SC-09-01",
+        "workspaceName": "Workspace Order Radiologi",
+        "screenId": "SC-09",
+        "screenCode": "SC-09",
+        "screenName": "Radiologi",
+        "pic": "We",
+        "totalEffort": 17,
+        "outcomes": [
+          "OC-09-01",
+          "OC-09-02",
+          "OC-09-03"
+        ],
+        "tasks": [
+          {
+            "taskId": "SC-09-01-01",
+            "taskName": "Core Feature",
+            "effort": 3
+          },
+          {
+            "taskId": "SC-09-01-02",
+            "taskName": "UI Design",
+            "effort": 3
+          },
+          {
+            "taskId": "SC-09-01-03",
+            "taskName": "BFF Feature",
+            "effort": 1
+          },
+          {
+            "taskId": "SC-09-01-04",
+            "taskName": "Architecture",
+            "effort": 2
+          },
+          {
+            "taskId": "SC-09-01-05",
+            "taskName": "Development",
+            "effort": 1
+          },
+          {
+            "taskId": "SC-09-01-06",
+            "taskName": "Testing",
+            "effort": 3
+          },
+          {
+            "taskId": "SC-09-01-07",
+            "taskName": "Deployment",
+            "effort": 1
+          }
+        ]
+      },
+      {
+        "workspaceId": "SC-09-02",
+        "workspaceName": "Workspace Expertise",
+        "screenId": "SC-09",
+        "screenCode": "SC-09",
+        "screenName": "Radiologi",
+        "pic": "We",
+        "totalEffort": 17,
+        "outcomes": [
+          "OC-09-04",
+          "OC-09-05"
+        ],
+        "tasks": [
+          {
+            "taskId": "SC-09-02-01",
+            "taskName": "Core Feature",
+            "effort": 3
+          },
+          {
+            "taskId": "SC-09-02-02",
+            "taskName": "UI Design",
+            "effort": 3
+          },
+          {
+            "taskId": "SC-09-02-03",
+            "taskName": "BFF Feature",
+            "effort": 1
+          },
+          {
+            "taskId": "SC-09-02-04",
+            "taskName": "Architecture",
+            "effort": 2
+          },
+          {
+            "taskId": "SC-09-02-05",
+            "taskName": "Development",
+            "effort": 1
+          },
+          {
+            "taskId": "SC-09-02-06",
+            "taskName": "Testing",
+            "effort": 3
+          },
+          {
+            "taskId": "SC-09-02-07",
+            "taskName": "Deployment",
+            "effort": 1
+          }
+        ]
+      },
+      {
+        "workspaceId": "SC-09-03",
+        "workspaceName": "Workspace Local Inventory",
+        "screenId": "SC-09",
+        "screenCode": "SC-09",
+        "screenName": "Radiologi",
+        "pic": "We",
+        "totalEffort": 17,
+        "outcomes": [
+          "OC-09-06",
+          "OC-09-07",
+          "OC-09-08"
+        ],
+        "tasks": [
+          {
+            "taskId": "SC-09-03-01",
+            "taskName": "Core Feature",
+            "effort": 3
+          },
+          {
+            "taskId": "SC-09-03-02",
+            "taskName": "UI Design",
+            "effort": 3
+          },
+          {
+            "taskId": "SC-09-03-03",
+            "taskName": "BFF Feature",
+            "effort": 2
+          },
+          {
+            "taskId": "SC-09-03-04",
+            "taskName": "Architecture",
+            "effort": 2
+          },
+          {
+            "taskId": "SC-09-03-05",
+            "taskName": "Development",
+            "effort": 1
+          },
+          {
+            "taskId": "SC-09-03-06",
+            "taskName": "Testing",
+            "effort": 3
+          },
+          {
+            "taskId": "SC-09-03-07",
+            "taskName": "Deployment",
+            "effort": 2
+          }
+        ]
+      },
+      {
+        "workspaceId": "SC-10-01",
+        "workspaceName": "Workspace Scheduling",
+        "screenId": "SC-10",
+        "screenCode": "SC-10",
+        "screenName": "Kamar Operasi",
+        "pic": "Arie",
+        "totalEffort": 17,
+        "outcomes": [
+          "OC-10-01",
+          "OC-10-02",
+          "OC-10-03"
+        ],
+        "tasks": [
+          {
+            "taskId": "SC-10-01-01",
+            "taskName": "Core Feature",
+            "effort": 5
+          },
+          {
+            "taskId": "SC-10-01-02",
+            "taskName": "UI Design",
+            "effort": 3
+          },
+          {
+            "taskId": "SC-10-01-03",
+            "taskName": "BFF Feature",
+            "effort": ""
+          },
+          {
+            "taskId": "SC-10-01-04",
+            "taskName": "Architecture",
+            "effort": 2
+          },
+          {
+            "taskId": "SC-10-01-05",
+            "taskName": "Development",
+            "effort": 1
+          },
+          {
+            "taskId": "SC-10-01-06",
+            "taskName": "Testing",
+            "effort": 4
+          },
+          {
+            "taskId": "SC-10-01-07",
+            "taskName": "Deployment",
+            "effort": 2
+          }
+        ]
+      },
+      {
+        "workspaceId": "SC-10-02",
+        "workspaceName": "Workspace Operative Management",
+        "screenId": "SC-10",
+        "screenCode": "SC-10",
+        "screenName": "Kamar Operasi",
+        "pic": "Arie",
+        "totalEffort": 17,
+        "outcomes": [
+          "OC-10-04"
+        ],
+        "tasks": [
+          {
+            "taskId": "SC-10-02-01",
+            "taskName": "Core Feature",
+            "effort": 5
+          },
+          {
+            "taskId": "SC-10-02-02",
+            "taskName": "UI Design",
+            "effort": 3
+          },
+          {
+            "taskId": "SC-10-02-03",
+            "taskName": "BFF Feature",
+            "effort": ""
+          },
+          {
+            "taskId": "SC-10-02-04",
+            "taskName": "Architecture",
+            "effort": 2
+          },
+          {
+            "taskId": "SC-10-02-05",
+            "taskName": "Development",
+            "effort": 1
+          },
+          {
+            "taskId": "SC-10-02-06",
+            "taskName": "Testing",
+            "effort": 4
+          },
+          {
+            "taskId": "SC-10-02-07",
+            "taskName": "Deployment",
+            "effort": 2
+          }
+        ]
+      },
+      {
+        "workspaceId": "SC-10-03",
+        "workspaceName": "Workspace Local Inventory",
+        "screenId": "SC-10",
+        "screenCode": "SC-10",
+        "screenName": "Kamar Operasi",
+        "pic": "Arie",
+        "totalEffort": 17,
+        "outcomes": [
+          "OC-10-05",
+          "OC-10-06",
+          "OC-10-07"
+        ],
+        "tasks": [
+          {
+            "taskId": "SC-10-03-01",
+            "taskName": "Core Feature",
+            "effort": 5
+          },
+          {
+            "taskId": "SC-10-03-02",
+            "taskName": "UI Design",
+            "effort": 3
+          },
+          {
+            "taskId": "SC-10-03-03",
+            "taskName": "BFF Feature",
+            "effort": ""
+          },
+          {
+            "taskId": "SC-10-03-04",
+            "taskName": "Architecture",
+            "effort": 2
+          },
+          {
+            "taskId": "SC-10-03-05",
+            "taskName": "Development",
+            "effort": 1
+          },
+          {
+            "taskId": "SC-10-03-06",
+            "taskName": "Testing",
+            "effort": 4
+          },
+          {
+            "taskId": "SC-10-03-07",
+            "taskName": "Deployment",
+            "effort": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "waveId": "WAVE-06",
+    "waveName": "SUPPLY CHAIN & PHARMACY",
+    "workspaces": [
+      {
+        "workspaceId": "SC-11-01",
+        "workspaceName": "Workspace Antrian Apotek",
+        "screenId": "SC-11",
+        "screenCode": "SC-11",
+        "screenName": "Apotek",
+        "pic": "Jude",
+        "totalEffort": 17,
+        "outcomes": [
+          "OC-11-01"
+        ],
+        "tasks": [
+          {
+            "taskId": "SC-11-01-01",
+            "taskName": "Core Feature",
+            "effort": 5
+          },
+          {
+            "taskId": "SC-11-01-02",
+            "taskName": "UI Design",
+            "effort": 3
+          },
+          {
+            "taskId": "SC-11-01-03",
+            "taskName": "BFF Feature",
+            "effort": ""
+          },
+          {
+            "taskId": "SC-11-01-04",
+            "taskName": "Architecture",
+            "effort": 2
+          },
+          {
+            "taskId": "SC-11-01-05",
+            "taskName": "Development",
+            "effort": 1
+          },
+          {
+            "taskId": "SC-11-01-06",
+            "taskName": "Testing",
+            "effort": 4
+          },
+          {
+            "taskId": "SC-11-01-07",
+            "taskName": "Deployment",
+            "effort": 2
+          }
+        ]
+      },
+      {
+        "workspaceId": "SC-11-02",
+        "workspaceName": "Workspace Telaah Resep",
+        "screenId": "SC-11",
+        "screenCode": "SC-11",
+        "screenName": "Apotek",
+        "pic": "Jude",
+        "totalEffort": 17,
+        "outcomes": [
+          "OC-11-02"
+        ],
+        "tasks": [
+          {
+            "taskId": "SC-11-02-01",
+            "taskName": "Core Feature",
+            "effort": 5
+          },
+          {
+            "taskId": "SC-11-02-02",
+            "taskName": "UI Design",
+            "effort": 3
+          },
+          {
+            "taskId": "SC-11-02-03",
+            "taskName": "BFF Feature",
+            "effort": ""
+          },
+          {
+            "taskId": "SC-11-02-04",
+            "taskName": "Architecture",
+            "effort": 2
+          },
+          {
+            "taskId": "SC-11-02-05",
+            "taskName": "Development",
+            "effort": 1
+          },
+          {
+            "taskId": "SC-11-02-06",
+            "taskName": "Testing",
+            "effort": 4
+          },
+          {
+            "taskId": "SC-11-02-07",
+            "taskName": "Deployment",
+            "effort": 2
+          }
+        ]
+      },
+      {
+        "workspaceId": "SC-11-03",
+        "workspaceName": "Workspace Dispensing",
+        "screenId": "SC-11",
+        "screenCode": "SC-11",
+        "screenName": "Apotek",
+        "pic": "Jude",
+        "totalEffort": 17,
+        "outcomes": [
+          "OC-11-03",
+          "OC-11-04"
+        ],
+        "tasks": [
+          {
+            "taskId": "SC-11-03-01",
+            "taskName": "Core Feature",
+            "effort": 5
+          },
+          {
+            "taskId": "SC-11-03-02",
+            "taskName": "UI Design",
+            "effort": 3
+          },
+          {
+            "taskId": "SC-11-03-03",
+            "taskName": "BFF Feature",
+            "effort": ""
+          },
+          {
+            "taskId": "SC-11-03-04",
+            "taskName": "Architecture",
+            "effort": 2
+          },
+          {
+            "taskId": "SC-11-03-05",
+            "taskName": "Development",
+            "effort": 1
+          },
+          {
+            "taskId": "SC-11-03-06",
+            "taskName": "Testing",
+            "effort": 4
+          },
+          {
+            "taskId": "SC-11-03-07",
+            "taskName": "Deployment",
+            "effort": 2
+          }
+        ]
+      },
+      {
+        "workspaceId": "SC-11-04",
+        "workspaceName": "Workspace Serah Obat",
+        "screenId": "SC-11",
+        "screenCode": "SC-11",
+        "screenName": "Apotek",
+        "pic": "Jude",
+        "totalEffort": 17,
+        "outcomes": [
+          "OC-11-05"
+        ],
+        "tasks": [
+          {
+            "taskId": "SC-11-04-01",
+            "taskName": "Core Feature",
+            "effort": 5
+          },
+          {
+            "taskId": "SC-11-04-02",
+            "taskName": "UI Design",
+            "effort": 3
+          },
+          {
+            "taskId": "SC-11-04-03",
+            "taskName": "BFF Feature",
+            "effort": ""
+          },
+          {
+            "taskId": "SC-11-04-04",
+            "taskName": "Architecture",
+            "effort": 2
+          },
+          {
+            "taskId": "SC-11-04-05",
+            "taskName": "Development",
+            "effort": 1
+          },
+          {
+            "taskId": "SC-11-04-06",
+            "taskName": "Testing",
+            "effort": 4
+          },
+          {
+            "taskId": "SC-11-04-07",
+            "taskName": "Deployment",
+            "effort": 2
+          }
+        ]
+      },
+      {
+        "workspaceId": "SC-11-05",
+        "workspaceName": "Workspace Local Inventory",
+        "screenId": "SC-11",
+        "screenCode": "SC-11",
+        "screenName": "Apotek",
+        "pic": "Jude",
+        "totalEffort": 17,
+        "outcomes": [
+          "OC-11-06",
+          "OC-11-07"
+        ],
+        "tasks": [
+          {
+            "taskId": "SC-11-05-01",
+            "taskName": "Core Feature",
+            "effort": 5
+          },
+          {
+            "taskId": "SC-11-05-02",
+            "taskName": "UI Design",
+            "effort": 3
+          },
+          {
+            "taskId": "SC-11-05-03",
+            "taskName": "BFF Feature",
+            "effort": ""
+          },
+          {
+            "taskId": "SC-11-05-04",
+            "taskName": "Architecture",
+            "effort": 2
+          },
+          {
+            "taskId": "SC-11-05-05",
+            "taskName": "Development",
+            "effort": 1
+          },
+          {
+            "taskId": "SC-11-05-06",
+            "taskName": "Testing",
+            "effort": 4
+          },
+          {
+            "taskId": "SC-11-05-07",
+            "taskName": "Deployment",
+            "effort": 2
+          }
+        ]
+      },
+      {
+        "workspaceId": "SC-12-01",
+        "workspaceName": "Workspace Terima Barang (DO), Retur Beli",
+        "screenId": "SC-12",
+        "screenCode": "SC-12",
+        "screenName": "Gudang",
+        "pic": "Roso",
+        "totalEffort": 17,
+        "outcomes": [
+          "OC-12-01",
+          "OC-12-05"
+        ],
+        "tasks": [
+          {
+            "taskId": "SC-12-01-01",
+            "taskName": "Core Feature",
+            "effort": 5
+          },
+          {
+            "taskId": "SC-12-01-02",
+            "taskName": "UI Design",
+            "effort": 3
+          },
+          {
+            "taskId": "SC-12-01-03",
+            "taskName": "BFF Feature",
+            "effort": ""
+          },
+          {
+            "taskId": "SC-12-01-04",
+            "taskName": "Architecture",
+            "effort": 2
+          },
+          {
+            "taskId": "SC-12-01-05",
+            "taskName": "Development",
+            "effort": 1
+          },
+          {
+            "taskId": "SC-12-01-06",
+            "taskName": "Testing",
+            "effort": 4
+          },
+          {
+            "taskId": "SC-12-01-07",
+            "taskName": "Deployment",
+            "effort": 2
+          }
+        ]
+      },
+      {
+        "workspaceId": "SC-12-02",
+        "workspaceName": "Workspace Local Inventory",
+        "screenId": "SC-12",
+        "screenCode": "SC-12",
+        "screenName": "Gudang",
+        "pic": "Roso",
+        "totalEffort": 17,
+        "outcomes": [
+          "OC-12-02",
+          "OC-12-03",
+          "OC-12-04"
+        ],
+        "tasks": [
+          {
+            "taskId": "SC-12-02-01",
+            "taskName": "Core Feature",
+            "effort": 5
+          },
+          {
+            "taskId": "SC-12-02-02",
+            "taskName": "UI Design",
+            "effort": 3
+          },
+          {
+            "taskId": "SC-12-02-03",
+            "taskName": "BFF Feature",
+            "effort": ""
+          },
+          {
+            "taskId": "SC-12-02-04",
+            "taskName": "Architecture",
+            "effort": 2
+          },
+          {
+            "taskId": "SC-12-02-05",
+            "taskName": "Development",
+            "effort": 1
+          },
+          {
+            "taskId": "SC-12-02-06",
+            "taskName": "Testing",
+            "effort": 4
+          },
+          {
+            "taskId": "SC-12-02-07",
+            "taskName": "Deployment",
+            "effort": 2
+          }
+        ]
+      },
+      {
+        "workspaceId": "SC-12-03",
+        "workspaceName": "Workspace Retur Beli",
+        "screenId": "SC-12",
+        "screenCode": "SC-12",
+        "screenName": "Gudang",
+        "pic": "Roso",
+        "totalEffort": 17,
+        "outcomes": [
+          "OC-12-05"
+        ],
+        "tasks": [
+          {
+            "taskId": "SC-12-03-01",
+            "taskName": "Core Feature",
+            "effort": 5
+          },
+          {
+            "taskId": "SC-12-03-02",
+            "taskName": "UI Design",
+            "effort": 3
+          },
+          {
+            "taskId": "SC-12-03-03",
+            "taskName": "BFF Feature",
+            "effort": ""
+          },
+          {
+            "taskId": "SC-12-03-04",
+            "taskName": "Architecture",
+            "effort": 2
+          },
+          {
+            "taskId": "SC-12-03-05",
+            "taskName": "Development",
+            "effort": 1
+          },
+          {
+            "taskId": "SC-12-03-06",
+            "taskName": "Testing",
+            "effort": 4
+          },
+          {
+            "taskId": "SC-12-06-07",
+            "taskName": "Deployment",
+            "effort": 2
+          }
+        ]
+      },
+      {
+        "workspaceId": "SC-13-01",
+        "workspaceName": "Workspace Purchase Order",
+        "screenId": "SC-13",
+        "screenCode": "SC-13",
+        "screenName": "Purchasing",
+        "pic": "Fikri",
+        "totalEffort": 17,
+        "outcomes": [
+          "OC-13-01",
+          "OC-13-02",
+          "OC-13-03",
+          "OC-13-04"
+        ],
+        "tasks": [
+          {
+            "taskId": "SC-13-01-01",
+            "taskName": "Core Feature",
+            "effort": 5
+          },
+          {
+            "taskId": "SC-13-01-02",
+            "taskName": "UI Design",
+            "effort": 3
+          },
+          {
+            "taskId": "SC-13-01-03",
+            "taskName": "BFF Feature",
+            "effort": ""
+          },
+          {
+            "taskId": "SC-13-01-04",
+            "taskName": "Architecture",
+            "effort": 2
+          },
+          {
+            "taskId": "SC-13-01-05",
+            "taskName": "Development",
+            "effort": 1
+          },
+          {
+            "taskId": "SC-13-01-06",
+            "taskName": "Testing",
+            "effort": 4
+          },
+          {
+            "taskId": "SC-13-01-07",
+            "taskName": "Deployment",
+            "effort": 2
+          }
+        ]
+      },
+      {
+        "workspaceId": "SC-13-02",
+        "workspaceName": "Workspace Faktur Tagihan",
+        "screenId": "SC-13",
+        "screenCode": "SC-13",
+        "screenName": "Purchasing",
+        "pic": "Fikri",
+        "totalEffort": 17,
+        "outcomes": [
+          "OC-13-05"
+        ],
+        "tasks": [
+          {
+            "taskId": "SC-13-02-01",
+            "taskName": "Core Feature",
+            "effort": 5
+          },
+          {
+            "taskId": "SC-13-02-02",
+            "taskName": "UI Design",
+            "effort": 3
+          },
+          {
+            "taskId": "SC-13-02-03",
+            "taskName": "BFF Feature",
+            "effort": ""
+          },
+          {
+            "taskId": "SC-13-02-04",
+            "taskName": "Architecture",
+            "effort": 2
+          },
+          {
+            "taskId": "SC-13-02-05",
+            "taskName": "Development",
+            "effort": 1
+          },
+          {
+            "taskId": "SC-13-02-06",
+            "taskName": "Testing",
+            "effort": 4
+          },
+          {
+            "taskId": "SC-13-02-07",
+            "taskName": "Deployment",
+            "effort": 2
+          }
+        ]
+      }
+    ]
+  }
+]
