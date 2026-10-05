@@ -86,7 +86,7 @@ External Registration untuk pasien yang datang langsung ke unit laboratorium **t
 - Petugas yang melakukan External Registration harus merupakan pengguna terautentikasi dengan hak akses ke menu laboratorium.
 - **Untuk `ExistingLabOrder`**, Lab Order existing yang akan dihubungkan harus memenuhi seluruh syarat eligibilitas berikut secara bersamaan:
   - Lab Order masih aktif.
-  - Lab Order belum terealisasi (belum diproses ke tahap berikutnya).
+  - Lab Order belum terealisasi.
   - Lab Order tidak sedang memiliki External Registration yang aktif (tidak ada External Registration aktif lain yang sudah menghubungkan diri ke Lab Order tersebut).
 - Sumber kebenaran eligibilitas Lab Order existing ditentukan melalui **relationship/inquiry External Registration → Lab Order**, bukan melalui flag khusus pada Lab Order.
 - Apabila Lab Order gagal dibuat (untuk `ExternalReferral` / `SelfRequested`) atau Lab Order existing tidak memenuhi syarat eligibilitas (untuk `ExistingLabOrder`), External Registration **tidak boleh** dianggap berhasil.
