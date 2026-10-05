@@ -3,7 +3,7 @@
 | Field       | Value        |
 |-------------|--------------|
 | Code        | OC-11-02     |
-| Version     | 1.0          |
+| Version     | 1.1          |
 | Status      | Draft        |
 | LastUpdated | 2026-10-05   |
 
@@ -144,7 +144,7 @@ Keputusan telaah profesional atas setiap item resep dokter beserta Serviceable I
 - Seluruh item resep memiliki salah satu dari tiga keputusan final (tidak ada item yang berstatus pending atau menunggu klarifikasi).
 - Status telaah resep berada pada kondisi terminal yang sah: **Disetujui Penuh**, **Disetujui Sebagian**, atau **Ditolak Penuh**.
 - Serviceable Item Set telah terbentuk dan tersedia secara persisten bagi proses Penjualan (OC-11-03) dan Dispensing (OC-11-04).
-- Identitas Apoteker penanggung jawab dan stempel waktu pengesahan tercatat secara sah dan tidak dapat disangkal (*non-repudiable*).
+- Identitas Apoteker penanggung jawab dan waktu pengesahan keputusan telaah tercatat dan dapat ditelusuri.
 
 ---
 
@@ -195,7 +195,7 @@ Berakhir ketika:
 | Exception | Expected Behavior |
 |-----------|-------------------|
 | Dosis tidak lazim, kontraindikasi, atau interaksi obat teridentifikasi | Apoteker menunda penetapan keputusan item, mencatat catatan klarifikasi klinis, dan menghubungi dokter penulis resep. Item tetap berstatus **Menunggu Klarifikasi** dan resep tetap berstatus **Sedang Ditelaah** sampai klarifikasi tuntas. |
-| Klarifikasi dokter tidak berhasil diperoleh / dokter tidak merespons | Item tidak boleh disetujui secara sepihak. Apoteker menetapkan item sebagai **Ditolak** dengan alasan klinis "Klarifikasi dokter tidak diperoleh / pertimbangan keamanan pasien", ATAU telaah resep tetap ditunda dalam status **Sedang Ditelaah** sesuai kebijakan operasional farmasi. |
+| Klarifikasi dokter tidak berhasil diperoleh / dokter tidak merespons | Selama Apoteker belum dapat mengambil keputusan professional atas item tersebut: item tetap berstatus **Menunggu Klarifikasi** dan resep tetap berstatus **Sedang Ditelaah** — ini bukan keputusan final. Jika kemudian Apoteker secara profesional memutuskan bahwa item tidak dapat dilayani karena klarifikasi tidak diperoleh dan keamanan pasien tidak dapat dijamin: Apoteker menetapkan item sebagai **Ditolak** dengan alasan yang tercatat eksplisit (contoh: "Klarifikasi dokter tidak diperoleh — item tidak dapat dilayani secara aman"). Transisi dari Pending ke Rejected hanya terjadi melalui keputusan aktif Apoteker, bukan secara otomatis karena dokter tidak merespons. |
 | Stok obat pada resep tidak tersedia atau tidak mencukupi | Apoteker dapat: (a) melakukan substitusi obat sejenis/ekuivalen dan mencatat data substitusi; (b) menyetujui kuantitas yang tersedia (*Approved Quantity* < *Prescription Quantity*) dengan mencatat alasan keterbatasan stok; atau (c) menolak item jika alternatif tidak tersedia. |
 | Pasien menyatakan tidak ingin menebus item obat sebelum telaah difinalisasi | Apoteker menetapkan item tersebut sebagai **Ditolak** dengan alasan "Permintaan / Penolakan Pasien". Item tidak masuk ke Serviceable Item Set. |
 | Pasien membatalkan pembelian obat setelah telaah selesai difinalisasi | Keputusan telaah resep tetap **Disetujui** (tidak diubah menjadi Ditolak). Pembatalan dicatat dan ditangani pada proses transaksi downstream (Kasir / Penjualan) atau pengembalian dispensing. |
