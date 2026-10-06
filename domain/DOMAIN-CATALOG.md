@@ -43,7 +43,7 @@ Domain Code : **RJL**
 
 **Capabilities:**
 1. `RJL-KONSUL` Konsultasi
-2. `RJL-TINDAKAN` Charge Tindakan Klinis
+2. `RJL-TINDAKAN` Tindakan Klinis
 3. `RJL-ANTRIAN` Antrian Poli
 4. `RJL-TRANSFER` Rujukan Internal
 5. `RJL-AWAL` Pemeriksaan Awal

@@ -41,7 +41,7 @@ Satu *service/billing record* atas prosedur klinis yang telah selesai dilaksanak
 
 | Capability | Domain | Status |
 |------------|--------|--------|
-| `RJL-TINDAKAN` Charge Tindakan Klinis | Rawat Jalan | Known |
+| `RJL-TINDAKAN` Tindakan Klinis | Rawat Jalan | Known |
 | `RJL-TRANSFER` Rujukan Internal | Rawat Jalan | Known |
 | `TRK-TARIF` Tariff | Tata Rekening | Known |
 | `TRK-BILLING` Billing | Tata Rekening | Known |

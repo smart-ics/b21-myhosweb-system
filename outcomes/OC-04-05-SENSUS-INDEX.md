@@ -109,7 +109,7 @@ Informasi sensus pelayanan, indeks kasus rekam medis, dan statistik indikator ru
 | `RNA-BED` Pakai Bed | Rawat Inap | Known |
 | `RNA-DISCHARGE` Discharge | Rawat Inap | Known |
 | `RJL-KONSUL` Konsultasi | Rawat Jalan | Known |
-| `RJL-TINDAKAN` Charge Tindakan Klinis | Rawat Jalan | Known |
+| `RJL-TINDAKAN` Tindakan Klinis | Rawat Jalan | Known |
 | `IGD-VISIT` IGD Visit | Gawat Darurat | Known |
 | `IGD-TRIAGE` Triage | Gawat Darurat | Known |
 | `IGD-TINDAKAN` IGD Procedure | Gawat Darurat | Known |

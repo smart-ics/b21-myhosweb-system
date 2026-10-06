@@ -90,7 +90,7 @@ Laporan RL sesuai struktur dan ketentuan pelaporan yang berlaku (RL 1–RL 5) un
 | `RNA-BED` Pakai Bed | Rawat Inap | Known |
 | `RNA-DISCHARGE` Discharge | Rawat Inap | Known |
 | `RJL-KONSUL` Konsultasi | Rawat Jalan | Known |
-| `RJL-TINDAKAN` Charge Tindakan Klinis | Rawat Jalan | Known |
+| `RJL-TINDAKAN` Tindakan Klinis | Rawat Jalan | Known |
 | `IGD-VISIT` IGD Visit | Gawat Darurat | Known |
 | `IGD-TINDAKAN` IGD Procedure | Gawat Darurat | Known |
 | `LAB-RESULT` Lab Result Management | Laboratory | Known |
