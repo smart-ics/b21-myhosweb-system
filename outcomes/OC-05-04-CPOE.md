@@ -3,44 +3,41 @@
 | Field       | Value        |
 |-------------|--------------|
 | Code        | OC-05-04     |
-| Version     | 1.1          |
-| Status      | Draft        |
+| Version     | 1.2          |
+| Status      | Review       |
 | LastUpdated | 2026-10-06   |
 
 ---
 
 ## 1. Business Purpose
 
-Setiap kebutuhan klinis pasien yang memerlukan pelayanan, pemeriksaan diagnostik, intervensi medis, terapi obat/nutrisi, maupun konsultasi antar-disiplin memerlukan penerjemahan dari intensi klinis (*clinical intent*) menjadi instruksi resmi yang terotorisasi (*authorized prospective clinical instruction*).
+Setiap kebutuhan diagnostik, terapi, intervensi medis, maupun konsultasi penunjang pasien yang diputuskan dalam proses pelayanan rawat jalan memerlukan penerjemahan dari intensi klinis (*clinical intent*) menjadi instruksi resmi yang terotorisasi (*authorized prospective clinical instruction*).
 
-Kapabilitas **Computerized Provider Order Entry (CPOE)** menyediakan mekanisme terstandardisasi bagi rumah sakit untuk mengelola siklus hidup instruksi klinis secara terstruktur—mencakup penyusunan, otorisasi, perutean ke unit pelaksana (*Destination*), koordinasi penerimaan dan klarifikasi, pelacakan proses pemenuhan (*fulfilment*), hingga penutupan resmi (*closure*) setelah tanggung jawab koordinasi klinis selesai.
+Kapabilitas **Computerized Provider Order Entry (CPOE)** menyediakan mekanisme terstandardisasi bagi Petugas Pemberi Asuhan (PPA) untuk menyusun, mengesahkan, dan merutekan instruksi klinis ke unit kerja pelaksana (*Destination* seperti Laboratorium, Radiologi, Apotek, dan Kamar Operasi), serta memantau status pemenuhannya secara terkoordinasi dan akuntabel.
 
-Penggunaan istilah **Computerized Provider Order Entry** menegaskan bahwa penyusun (*Order Author*) maupun pemberi otorisasi (*Order Authorizer*) mencakup dokter serta Petugas Pemberi Asuhan (PPA) lain (seperti perawat, bidan, dietisien, atau apoteker klinis) sesuai lingkup kewenangan profesi dan penugasan klinis (*clinical privileges*) yang sah di rumah sakit.
-
-CPOE bukan sekadar fungsionalitas entri data ke komputer, melainkan fondasi tata kelola klinis yang menjaga kejelasan *clinical intent*, akuntabilitas otorisasi, koordinasi pemenuhan, dan ketertelusuran instruksi sepanjang episode perawatan pasien.
-
-> **Prinsip Fundamental Domain:**  
-> **Clinical Order merepresentasikan *clinical intent* yang akan dilaksanakan, bukan bukti bahwa pelayanan atau tindakan tersebut telah dilakukan.**  
-> Clinical Order tidak secara otomatis menghasilkan biaya (*Order ≠ Charge*). Kelayakan pembebanan biaya hanya muncul dari fakta pemenuhan aktual (*actual fulfilment*) yang sah.
+Sebagai fakta bisnis yang terpersistensi, Clinical Order merepresentasikan rencana instruksi prospektif dan **bukan** bukti pelaksanaan maupun pembebanan biaya (*Order ≠ Charge*). Kelayakan pembebanan biaya (*Charge Eligibility*) hanya timbul dari fakta pemenuhan aktual yang disahkan oleh unit pelaksana dan diteruskan ke domain Tata Rekening.
 
 ---
 
 ## 2. Outcome Statement
 
-Clinical Order yang merepresentasikan *clinical intent* atas kebutuhan pelayanan pasien **telah disahkan oleh Ordering PPA yang berwenang, diarahkan ke Destination yang bertanggung jawab, dapat ditelusuri proses pemenuhannya, dan ditutup secara akuntabel setelah seluruh tanggung jawab koordinasi klinis selesai**.
+Satu atau lebih *Clinical Order* yang merepresentasikan *clinical intent* atas kebutuhan pelayanan pasien **telah disahkan secara sah oleh Petugas Pemberi Asuhan (PPA) yang berwenang, dirutekan ke unit kerja pelaksana (*Destination*), dapat ditelusuri status pemenuhannya secara akuntabel, dan ditutup setelah seluruh tanggung jawab koordinasi klinis selesai**.
 
 ---
 
 ## 3. Participating Domains
 
-Sebagai kapabilitas lintas domain (*cross-domain capability*), CPOE berinteraksi dengan:
-
-| Kelompok Domain | Domain Terkait | Peran dalam Outcome |
-|-----------------|----------------|---------------------|
-| **Ordering Context** | Rawat Jalan, Rawat Inap, Gawat Darurat | Wadah pelayanan asal tempat kebutuhan klinis dirumuskan, instruksi diotorisasi, dan hasil pemenuhan dievaluasi (`RJL-KONSUL`, `RJL-TRANSFER`, `RNA-TRANSFER`, `IGD-VISIT`). |
-| **Executing Domains** | Laboratory, Radiology, Kamar Operasi, Apotek, Unit Penunjang | Unit kerja tujuan (*Destination*) yang menerima instruksi, melakukan telaah dan klarifikasi, melaksanakan aktivitas klinis, menerbitkan hasil resmi, dan melaporkan ringkasan pemenuhan (`LAB-ORDER`, `RAD-ORDER`, `KMO-ORDER`, `APT-RESEP`). |
-| **Financial Consumer** | Tata Rekening | Mengonsumsi fakta pemenuhan aktual yang layak dibebankan (*Charge Eligibility*) untuk pembentukan tagihan pasien (`TRK-BILLING`, `TRK-TARIF`). |
-| **Care Context & Identity** | Admission, Pasien, Organisasi | Menyediakan keabsahan kunjungan aktif (`ADM-REG`), pelacakan alur pasien (`ADM-TRACKER`), data identitas pasien (`PAS-DATSOS`), unit layanan (`ORG-LAYANAN`), serta data kewenangan PPA (`ORG-PPA`). |
+| Domain | Role in this Outcome |
+|--------|----------------------|
+| Rawat Jalan | **Domain pemilik konteks layanan**: inisiasi kebutuhan klinis, penyusunan draf order (*authoring*), otorisasi medis (`RJL-KONSUL`), dan peninjauan ringkasan status pemenuhan. |
+| Laboratory | Unit pelaksana (*Destination*) untuk order pemeriksaan spesimen dan laboratorium klinik (`LAB-ORDER`). |
+| Radiology | Unit pelaksana (*Destination*) untuk order pemeriksaan pencitraan dan radiodiagnostik (`RAD-ORDER`). |
+| Apotek | Unit pelaksana (*Destination*) untuk order peresepan obat, farmasi klinis, dan BMHP (`APT-RESEP`). |
+| Kamar Operasi | Unit pelaksana (*Destination*) untuk penjadwalan dan persiapan prosedur pembedahan (`KMO-ORDER`). |
+| Admission | Memelihara keabsahan kunjungan aktif (*Visit*) pasien tempat order diterbitkan (`ADM-REG`, `ADM-TRACKER`). |
+| Organisasi | Menyediakan master unit kerja layanan (`ORG-LAYANAN`) dan data kewenangan klinis PPA (`ORG-PPA`). |
+| Pasien | Menyediakan data identitas sah pasien (Nomor RM dan data sosial) yang menjadi subjek instruksi (`PAS-DATSOS`). |
+| Tata Rekening | Mengonsumsi fakta pemenuhan aktual yang layak dibebankan (*Charge Eligibility*) dari unit pelaksana untuk pembentukan tagihan pasien (`TRK-BILLING`). |
 
 ---
 
@@ -48,18 +45,17 @@ Sebagai kapabilitas lintas domain (*cross-domain capability*), CPOE berinteraksi
 
 | Capability | Domain | Status |
 |------------|--------|--------|
-| `CPOE-ORDER` Pengelolaan Clinical Order Terintegrasi | Cross-Domain | Capability Candidate |
+| `CPOE-ORDER` Pengelolaan Clinical Order | Cross-Domain | Capability Candidate |
 | `RJL-KONSUL` Konsultasi | Rawat Jalan | Known |
-| `RJL-TRANSFER` Rujukan Internal | Rawat Jalan | Known |
 | `LAB-ORDER` Order Lab | Laboratory | Known |
 | `RAD-ORDER` Order Radiologi | Radiology | Known |
-| `KMO-ORDER` Order Operasi | Kamar Operasi | Known |
 | `APT-RESEP` Resep | Apotek | Known |
+| `KMO-ORDER` Order Operasi | Kamar Operasi | Known |
 | `ADM-REG` Registration | Admission | Known |
 | `ADM-TRACKER` Pasien Journey | Admission | Known |
-| `PAS-DATSOS` Data Sosial Pasien | Pasien | Known |
 | `ORG-LAYANAN` Unit Layanan | Organisasi | Known |
 | `ORG-PPA` Petugas Pemberi Asuhan | Organisasi | Known |
+| `PAS-DATSOS` Data Sosial Pasien | Pasien | Known |
 | `TRK-BILLING` Billing | Tata Rekening | Known |
 
 > **Capability Status values:** Known · Existing but Undocumented · Capability Candidate
@@ -68,147 +64,79 @@ Sebagai kapabilitas lintas domain (*cross-domain capability*), CPOE berinteraksi
 
 ## 5. Outcome Specification
 
+> What must be true for this Outcome to be considered established?
+
 ### 5.1 Required Business Facts
 
-#### A. Clinical Order sebagai Core Domain Object
-- Clinical Order merupakan representasi instruksi klinis prospektif tunggal yang membawa atribut esensial: identitas pasien, konteks kunjungan aktif (*Care Context*), kategori instruksi (*Order Type*), indikasi klinis (*Clinical Indication*), skala prioritas (Rutin, Urgent, Cito/Stat), jadwal permintaan pelaksanaan (*Requested Timing*), rincian instruksi klinis (*Order Instruction*), identitas penyusun (*Order Author*), pengesah (*Order Authorizer*), unit kerja pelaksana (*Destination*), serta penanggung jawab klinis aktif (*Current Responsibility*).
-- Pengelompokan beberapa order dalam paket klinis (*Order Set*) berfungsi memudahkan penulisan instruksi; setiap item order di dalamnya tetap berdiri sendiri dengan siklus hidup, otorisasi, dan disposisi masing-masing.
-
-#### B. Pemisahan Rantai Nilai Layanan
-Arsitektur CPOE memisahkan empat domain fakta bisnis:
-$$\text{Clinical Order} \longrightarrow \text{Fulfilment} \longrightarrow \text{Fulfilment Outcome} \longrightarrow \text{Result / Execution Documentation}$$
-- **Clinical Order:** Menyatakan apa yang diminta secara klinis prospektif (*intent*).
-- **Fulfilment:** Menunjukkan proses persiapan dan pengerjaan aktivitas klinis aktual.
-- **Result / Execution Documentation:** Menyimpan temuan diagnostik atau laporan prosedur resmi di bawah yurisdiksi domain pelaksana/EMR.
-- **Billing / Charge Eligibility:** Konsekuensi finansial yang bersumber dari fakta pemenuhan aktual yang diserahkan ke Tata Rekening.
-
-#### C. Aktor dan Akuntabilitas
-Tanggung jawab klinis dikelola melalui peran-peran utama berikut:
-- **Order Author:** Tenaga kesehatan yang menyusun draf instruksi klinis.
-- **Order Authorizer:** Tenaga kesehatan yang memiliki wewenang klinis formal (*clinical privileges*) untuk mengesahkan instruksi.
-- **Responsible Clinician:** Dokter penanggung jawab pelayanan (DPJP) atau klinisi yang bertanggung jawab atas kesinambungan asuhan pasien dan tindak lanjut terhadap *Outstanding Orders*.
-- **Receiver:** Pihak pada Destination yang bertugas menerima, menelaah kelayakan, dan merespons instruksi.
-- **Performer:** Pihak/tenaga kesehatan yang secara fisik melaksanakan aktivitas klinis.
-- **Executing Domain:** Domain yang memegang otoritas bisnis atas alur kerja (*workflow*) internal dan rekaman eksekusi (*execution record*).
-- **Tata Rekening:** Pihak yang mengelola konsekuensi finansial berdasarkan fakta pemenuhan.
-
-> **Pemisahan Authorship vs. Authorization:**  
-> Identitas penyusun instruksi (*Author*) dan pengambil tanggung jawab medikolegal formal (*Authorizer*) dicatat secara terpisah, meskipun dilakukan oleh individu yang sama.
-
-#### D. Siklus Hidup Instruksi (Order Lifecycle)
-Siklus hidup instruksi klinis bergerak melalui tahapan:
-$$\text{Draft} \longrightarrow \text{Authorized} \longrightarrow \text{Dispatched} \longrightarrow \text{Accepted} \longrightarrow \text{In Fulfilment} \longrightarrow \text{Fulfilled} \longrightarrow \text{Closed}$$
-
-- **Draft:** Instruksi sedang disiapkan dan belum dapat ditindaklanjuti.
-- **Authorized:** Tanggung jawab klinis formal telah diambil oleh Authorizer.
-- **Dispatched:** Instruksi telah diserahkan kepada antrean kerja Destination.
-- **Accepted:** Destination menyatakan komitmen untuk mengoordinasikan pemenuhan.
-- **In Fulfilment:** Persiapan teknis atau pelaksanaan aktivitas klinis telah dimulai di Destination.
-- **Fulfilled:** Seluruh kriteria penyelesaian (*Completion Criterion*) untuk kategori order tersebut terpenuhi.
-- **Closed:** Tanggung jawab koordinasi klinis CPOE selesai. Penutupan klinis ini berdiri sendiri dan tidak bergantung pada status penyelesaian penagihan finansial (*Billing*).
-
-**Terminal / Exceptional States:**
-- **Rejected:** Instruksi ditolak oleh Destination disertai alasan penolakan yang sah.
-- **Cancelled:** Instruksi dibatalkan oleh pihak pemesan sebelum pelaksanaan fisik dimulai.
-- **Discontinued:** Instruksi berkala/serial dihentikan untuk jadwal pelaksanaan masa depan; pelaksanaan yang telah lalu tetap sah.
-- **Not Fulfilled:** Instruksi tidak dapat diselesaikan karena kendala operasional atau kondisi klinis pasien.
-- **Entered in Error:** Instruksi dianulir karena kekeliruan mendasar sejak pembuatan tanpa menghapus riwayat data asli.
-
-> **Pembedaan Status:**  
-> Status penerimaan atau persiapan (`Accepted`, `Scheduled`, `In Fulfilment`) tidak sama dengan status `Fulfilled`. Status `Fulfilled` mensyaratkan tercapainya *Completion Criterion* objektif.
-
-#### E. Keputusan Penerima dan Tata Kelola Klarifikasi
-Destination memiliki kewenangan untuk:
-1. **Accept:** Menerima instruksi untuk diproses ke tahap pemenuhan.
-2. **Reject:** Menolak instruksi yang tidak memenuhi syarat teknis atau memiliki kontraindikasi mutlak, disertai alasan penolakan.
-3. **Request Clarification:** Meminta penjelasan atas ambiguitas, inkonsistensi, atau isu keselamatan pasien.
-   - Instruksi yang memerlukan klarifikasi berada dalam kondisi **On Hold for Clarification** hingga klarifikasi diselesaikan.
-   - Penangguhan instruksi yang membutuhkan klarifikasi **tidak boleh menahan instruksi lain** milik pasien yang tidak berkaitan secara klinis (*impact isolation*).
-
-#### F. Pengendalian Perubahan (Change Control)
-- Perubahan pada draf pra-otorisasi dilakukan langsung tanpa pencatatan amandemen.
-- Perubahan setelah otorisasi dicatat sebagai **Amendment** dengan mempertahankan instruksi sebelumnya, alasan perubahan, otorisasi perubahan, dan evaluasi dampak terhadap pemenuhan.
-- **Cancellation** hanya berlaku sebelum pelaksanaan fisik dimulai. Jika pelaksanaan telah berjalan, penghentian dilakukan melalui **Discontinuation**.
-- Riwayat keputusan dan instruksi klinis yang telah disahkan bersifat permanen dan tidak boleh dihapus.
-
-#### G. Tata Kelola Exceptional Order
-Pada situasi klinis luar biasa di mana otorisasi elektronik prospektif tidak memungkinkan:
-- **Verbal Order, Emergency Action, Protocol-Based Action, dan Retrospective Order** dapat digunakan sesuai kewenangan klinis.
-- Kronologi peristiwa tidak boleh dipalsukan (*no backdating*). Waktu instruksi, waktu pelaksanaan, waktu pencatatan, dan waktu otorisasi susulan (*Subsequent Authorization*) tetap dapat dibedakan.
-- Otorisasi susulan wajib diselesaikan oleh klinisi penanggung jawab dalam batas periode yang diatur oleh kebijakan rumah sakit (*governed policy period*).
-
-#### H. Transisi Asuhan dan Rekonsiliasi Pemulangan
-- Tanggung jawab memantau instruksi yang masih aktif (*Outstanding Orders*) dapat dialihkan saat perpindahan ruangan, alih rawat, atau pergantian DPJP (*Transfer of Responsibility*), tanpa mengubah data kepengarangan awal (*Author* dan *Authorizer*).
-- Pemulangan pasien (*Discharge*) tidak membatalkan Outstanding Orders secara otomatis. Seluruh order aktif wajib melalui **Discharge Reconciliation** untuk menetapkan disposisi: dialihkan ke rawat jalan (*carried forward/converted*), ditutup (*discontinued*), atau diberikan penugasan tanggung jawab pemantauan hasil (*continuing responsibility*).
-
-#### I. Model Pemenuhan dan Kriteria Penyelesaian
-- Setiap kategori order memiliki kriteria penyelesaian objektif (*Completion Criterion*) yang menentukan kapan order dinyatakan sah *Fulfilled* (misal: validasi hasil lab, verifikasi ekspertise radiologi, pengesahan laporan operasi, serah terima obat, atau jawaban konsultasi).
-- Domain pelaksana khusus (Lab, Rad, Kamar Operasi, Apotek) berdaulat atas detail pelaksanaan teknisnya. CPOE hanya menyimpan ringkasan pemenuhan (*Fulfilment Summary*).
-- Apabila domain pelaksana khusus belum tersedia, CPOE menyediakan **Generic Fulfilment** secara transisional untuk mencatat fakta dasar pelaksanaan tanpa mengaburkan perbedaan antara order dan bukti pemenuhan.
-
----
+- **Hakikat Clinical Order:** Clinical Order merupakan representasi instruksi klinis prospektif terstruktur yang terikat pada satu identitas pasien (No. RM) dan satu registrasi kunjungan aktif (*Visit*).
+- **Pemisahan Order dan Biaya (*Order ≠ Charge*):** Pembuatan draf, otorisasi, pengiriman, penerimaan, maupun persiapan order tidak membentuk beban tagihan finansial. Kelayakan biaya (*Charge Eligibility*) hanya sah timbul dari eksekusi pemenuhan aktual di unit pelaksana.
+- **Pemisahan Peran Author dan Authorizer:** Identitas penyusun instruksi (*Order Author*) dan pengambil tanggung jawab medikolegal formal (*Order Authorizer*) dicatat sebagai entitas terpisah, meskipun dilakukan oleh individu yang sama.
+- **Siklus Hidup Terstandarisasi:** Clinical Order bergerak melalui tahapan: **Draft → Authorized → Dispatched → Accepted → In Fulfilment → Fulfilled → Closed**, serta status terminal/pengecualian (**Rejected**, **Cancelled**, **Discontinued**, **Not Fulfilled**, **Entered in Error**).
+- **Pembedaan Status Penerimaan vs Pemenuhan:** Status penerimaan dan persiapan (*Accepted*, *In Fulfilment*) tidak sama dengan status *Fulfilled*. Status *Fulfilled* mensyaratkan keterpenuhan kriteria penyelesaian objektif (*Completion Criterion*) dari kategori order terkait.
+- **Kedaulatan Unit Pelaksana (*Destination Sovereignty*):** Unit pelaksana (Lab, Radiologi, Apotek, Kamar Operasi) berdaulat penuh atas alur kerja teknis internalnya. CPOE mengoordinasikan instruksi dan memelihara ringkasan status pemenuhan (*Fulfilment Summary*).
+- **Isolasi Dampak Klarifikasi (*Impact Isolation*):** Unit pelaksana berhak menerima (*Accept*), menolak (*Reject*), atau meminta klarifikasi (*Request Clarification*). Penangguhan order (*On Hold*) akibat klarifikasi tidak boleh menahan item order lain milik pasien yang tidak berkaitan secara klinis.
+- **Integritas Pengendalian Perubahan:** Perubahan pasca-otorisasi dicatat sebagai *Amendment* dengan riwayat instruksi awal tetap utuh. Pembatalan (*Cancel*) hanya sah sebelum pengerjaan fisik dimulai; jika pengerjaan telah berjalan, dilakukan penghentian (*Discontinue*).
+- **Kemandirian Koordinasi Klinis:** Penutupan status order menjadi **Closed** menandai tuntasnya koordinasi klinis CPOE dan berdiri sendiri, tidak bergantung pada siklus penagihan atau pembayaran kasir di Tata Rekening.
 
 ### 5.2 Required Recorded Information
 
-- **Konteks Kunjungan & Pasien:** Identitas pasien (No. RM dan identitas sosial) serta konteks kunjungan aktif (*Care Context*).
-- **Atribut Instruksi Klinis:** Kategori order (*Order Type*), indikasi klinis, skala prioritas, waktu permintaan pelaksanaan, rincian instruksi teknis, dan relasi paket order (*Order Set*, bila ada).
-- **Akuntabilitas Kepengarangan & Otorisasi:** Identitas penyusun (*Order Author*), pengesah (*Order Authorizer*), waktu otorisasi, serta penanggung jawab klinis aktif (*Current Responsibility*).
-- **Perutean & Respons Destination:** Unit kerja tujuan (*Destination*), identitas penerima (*Receiver*), status keputusan (Accept, Reject, Request Clarification), dan catatan justifikasi penolakan/klarifikasi.
-- **Siklus Hidup & Jejak Perubahan:** Status siklus hidup terkini, riwayat amandemen (instruksi sebelum vs sesudah, alasan, dan pengotorisasi), alasan pembatalan/penghentian, atau catatan *Entered in Error*.
-- **Informasi Exceptional Order (bila berlaku):** Kategori order luar biasa, pencatatan kronologi waktu (waktu instruksi, pelaksanaan, pencatatan, dan otorisasi susulan), serta identitas pengotorisasi susulan.
-- **Ringkasan Pemenuhan & Tautan Bukti:** Ringkasan pemenuhan (*Fulfilment Summary*), waktu penyelesaian, tautan ke hasil klinis resmi atau dokumen rekam medis pelaksanaan, dan penyerahan fakta kelayakan biaya (*Charge Eligibility*) ke Tata Rekening.
-- **Disposisi Rekonsiliasi:** Catatan rekonsiliasi pemulangan (*Discharge Reconciliation*) dan alih tanggung jawab klinis (*Transfer of Responsibility*).
+**Konteks Pasien & Kunjungan:**
+- Nomor Registrasi Kunjungan (*Visit ID*) yang aktif.
+- Nomor Rekam Medis (No. RM) dan nama pasien.
+- Poliklinik/unit rawat jalan asal pembuat order (*Origin Service Unit*).
 
----
+**Atribut Instruksi Klinis:**
+- Kategori order (*Order Type*: Lab, Radiologi, Resep/Farmasi, Kamar Operasi, Prosedur/Konsul).
+- Rincian item dan parameter instruksi klinis.
+- Indikasi klinis / catatan pertimbangan medis pemesanan.
+- Skala prioritas (Rutin, Urgent, Cito/Stat).
+- Waktu dan jadwal permintaan pelaksanaan.
+- Relasi paket klinis (*Order Set*, bila berlaku).
+
+**Akuntabilitas & Otorisasi:**
+- Identitas pembuat draf (*Order Author*).
+- Identitas pengesah medikolegal (*Order Authorizer*).
+- Tanggal dan waktu otorisasi sah.
+- Penanggung jawab klinis aktif (*Responsible Clinician / DPJP*).
+
+**Perutean, Status, & Ringkasan Pemenuhan:**
+- Unit kerja pelaksana tujuan (*Destination*).
+- Status siklus hidup terkini (*Order Lifecycle Status*).
+- Keputusan penerimaan (*Accept*, *Reject* dengan alasan, atau *Request Clarification*).
+- Riwayat perubahan (*Amendment*, *Cancellation*, atau *Discontinuation*).
+- Ringkasan pemenuhan (*Fulfilment Summary*), waktu penyelesaian, dan tautan referensi hasil resmi/rekam medis.
 
 ### 5.3 Required Business Conditions
 
-- Registrasi kunjungan pasien berstatus aktif dalam pengelolaan Admission (`ADM-REG`).
-- Authorizer memiliki kewenangan klinis (*clinical privileges*) yang sah untuk kategori order yang diotorisasi (`ORG-PPA`).
-- Destination merupakan unit kerja aktif yang berwenang melayani kategori order terkait (`ORG-LAYANAN`).
-- Clinical Order memenuhi informasi wajib yang ditentukan oleh Order Definition, termasuk Clinical Indication apabila diwajibkan.
-- Otorisasi susulan pada Exceptional Order diselesaikan dalam batas periode kebijakan rumah sakit.
-
----
+- Kunjungan rawat jalan pasien berstatus aktif dalam pengelolaan Admission (`ADM-REG`).
+- Authorizer memiliki kewenangan klinis (*clinical privileges*) yang sah sesuai kategori order yang disahkan (`ORG-PPA`).
+- Unit pelaksana tujuan (*Destination*) aktif dan berwenang melayani kategori order terkait (`ORG-LAYANAN`).
+- Instruksi klinis memenuhi parameter minimal yang diwajibkan oleh definisi order (termasuk indikasi klinis bila disyaratkan).
+- Otorisasi susulan pada instruksi verbal/darurat (*Exceptional Order*) diselesaikan dalam batas periode kebijakan rumah sakit tanpa pemalsuan waktu (*no backdating*).
 
 ### 5.4 Completion Proof
 
-Clinical Order dinyatakan selesai dan mencapai status **Closed** apabila:
-1. Seluruh kriteria penyelesaian (*Completion Criterion*) untuk kategori order tersebut terpenuhi secara sah dan terekam dalam ringkasan pemenuhan, ATAU order mencapai disposisi terminasi yang sah (Rejected, Cancelled, Discontinued, Not Fulfilled, atau Entered in Error).
-2. Tautan Result Reference atau Execution Documentation Reference tersedia apabila diwajibkan oleh Order Definition.
-3. Seluruh tanggung jawab koordinasi klinis CPOE atas order ini telah tuntas, tanpa bergantung pada penyelesaian siklus penagihan di Tata Rekening.
-4. Fakta pemenuhan aktual yang layak dibebankan (*Charge Eligibility*) telah diserahkan ke Tata Rekening (apabila terdapat porsi layanan yang terlaksana).
+- Clinical Order tersimpan secara persisten dengan nomor identifikasi unik terhubung ke *Visit* aktif dan data pasien.
+- Seluruh kriteria penyelesaian (*Completion Criterion*) kategori order terpenuhi dan tercatat dalam *Fulfilment Summary*, atau order mencapai status terminasi sah (*Rejected*, *Cancelled*, *Discontinued*, *Not Fulfilled*, *Entered in Error*).
+- Tautan referensi hasil resmi (*Result Reference*) atau dokumentasi pelaksanaan tersedia di unit pelaksana / EMR.
+- Status koordinasi klinis order tercatat sebagai **Closed**.
+- Kelayakan pembebanan biaya (*Charge Eligibility*) atas pemenuhan aktual telah diteruskan ke domain Tata Rekening (bila terdapat porsi layanan yang terlaksana).
 
 ---
 
 ## 6. Outcome Boundary
 
 ### Start
-Dimulai ketika Petugas Pemberi Asuhan (PPA) mengidentifikasi kebutuhan klinis pasien dan mulai menyusun instruksi prospektif (*clinical intent*), atau ketika instruksi darurat/verbal pertama kali diberikan pada situasi kegawatdaruratan.
+
+Dimulai ketika Petugas Pemberi Asuhan (PPA) mengidentifikasi kebutuhan klinis pasien di poliklinik dan menginisiasi penyusunan instruksi prospektif (*clinical intent*), atau ketika instruksi verbal/darurat diberikan pada situasi klinis mendesak.
 
 ### End
+
 Berakhir ketika Clinical Order mencapai status akhir:
 - Berstatus **Closed** setelah pemenuhan terkonfirmasi, kriteria penyelesaian terpenuhi, tautan hasil terbentuk, dan tanggung jawab koordinasi klinis tuntas; ATAU
-- Berstatus akhir melalui terminasi resmi (**Rejected**, **Cancelled**, **Discontinued**, **Not Fulfilled**, atau **Entered in Error**) dengan seluruh alasan pertanggungjawaban tercatat permanen.
+- Berstatus akhir melalui terminasi sah (**Rejected**, **Cancelled**, **Discontinued**, **Not Fulfilled**, atau **Entered in Error**) dengan alasan pertanggungjawaban tercatat permanen.
 
----
-
-### Ruang Lingkup Formal
-
-#### In Scope
-1. Pengelolaan struktur dan siklus hidup Clinical Order prospektif.
-2. Tata kelola kepengarangan (*Authoring*) dan otorisasi (*Authorization*) berbasis kewenangan klinis PPA.
-3. Penetapan kategori order, indikasi klinis, skala prioritas, jadwal pelaksanaan, dan instruksi teknis.
-4. Perutean instruksi ke Destination pelaksana.
-5. Manajemen penerimaan oleh Destination (Accept, Reject, Request Clarification) dan penangguhan (*On Hold*).
-6. Koordinasi pemenuhan (*Fulfilment*) dan pencatatan ringkasan pemenuhan (*Fulfilment Summary*).
-7. Pengendalian perubahan (Amendment, Cancellation, Discontinuation, Entered in Error).
-8. Tata kelola tanggung jawab klinis (*Responsibility*) dan pengalihan tanggung jawab saat transisi asuhan.
-9. Tautan referensi ke hasil klinis resmi dan dokumentasi pelaksanaan di domain eksekusi/EMR.
-10. Tata kelola Exceptional Order (Verbal, Darurat, Protokol, Retrospektif) dengan pemisahan kronologi waktu.
-11. Rekonsiliasi pemulangan (*Discharge Reconciliation*) terhadap Outstanding Orders.
-12. Penyerahan kelayakan pembebanan biaya (*Charge Eligibility*) dari pemenuhan aktual ke domain finansial.
-13. Penyediaan *Generic Fulfilment* transisional apabila domain eksekusi khusus belum tersedia.
+> **Batasan Penting:** Penutupan koordinasi klinis CPOE (*Closed*) berdiri sendiri dan **TIDAK** bergantung pada penyelesaian transaksi penagihan atau pembayaran kasir di Tata Rekening.
 
 ---
 
@@ -216,38 +144,35 @@ Berakhir ketika Clinical Order mencapai status akhir:
 
 > Rules that must always hold true for this Outcome.
 
-1. **Clinical Order Bukan Bukti Pelaksanaan:** Clinical Order adalah instruksi prospektif, bukan bukti bahwa pelayanan klinis telah selesai dilakukan.
-2. **Order Bukan Biaya (*Order ≠ Charge*):** Penyusunan, otorisasi, pengiriman, penerimaan, maupun persiapan order tidak menghasilkan beban biaya. Biaya hanya dapat muncul dari fakta pemenuhan aktual.
-3. **Pemisahan Penulis dan Pengesah:** Identitas pembuat draf (*Author*) dan pengesah (*Authorizer*) dicatat terpisah untuk menjamin akuntabilitas medikolegal.
-4. **Kedaulatan Domain Pelaksana:** Domain pelaksana khusus berdaulat atas alur kerja teknis internalnya. CPOE hanya mengoordinasikan instruksi dan ringkasan pemenuhan.
-5. **Transisional Generic Fulfilment:** Pemanfaatan Generic Fulfilment bersifat transisional dan tidak boleh mengaburkan batas antara instruksi dan bukti pelaksanaan.
-6. **Isolasi Dampak Klarifikasi:** Penangguhan order akibat permintaan klarifikasi tidak boleh menahan order lain milik pasien yang tidak berkaitan secara klinis.
-7. **Pembedaan Status Fulfilled:** Status persiapan atau penerimaan tidak boleh disamakan dengan status Fulfilled.
-8. **Imutabilitas Riwayat Keputusan:** Riwayat instruksi yang telah disahkan, keputusan penerima, dan amandemen tidak boleh dihapus.
-9. **Integritas Kronologi Exceptional Order:** Kronologi order luar biasa tidak boleh dipalsukan (*no backdating*). Otorisasi susulan diselesaikan dalam batas periode kebijakan rumah sakit.
-10. **Larangan Pembatalan Otomatis Saat Discharge:** Pemulangan pasien tidak membatalkan Outstanding Orders secara otomatis; rekonsiliasi pemulangan (*Discharge Reconciliation*) wajib dilakukan.
-11. **Kemandirian Siklus Koordinasi dari Billing:** Penutupan koordinasi klinis (*Closed*) pada CPOE tidak bergantung pada penyelesaian siklus penagihan di Tata Rekening.
+- **Clinical Order Bukan Bukti Pelaksanaan:** Clinical Order adalah instruksi klinis prospektif, bukan bukti bahwa prosedur/layanan medis telah dilaksanakan.
+- **Order Bukan Biaya (Order ≠ Charge):** Pembuatan draf, otorisasi, pengiriman, penerimaan, maupun persiapan order tidak membentuk beban tagihan finansial. Biaya hanya dapat muncul dari fakta pemenuhan aktual di unit pelaksana.
+- **Pemisahan Penulis dan Pengesah:** Identitas pembuat draf (*Order Author*) dan pengesah (*Order Authorizer*) dicatat secara terpisah guna menjamin akuntabilitas medikolegal formal.
+- **Kedaulatan Domain Pelaksana:** Domain pelaksana khusus (Lab, Radiologi, Apotek, Kamar Operasi) berdaulat penuh atas alur kerja teknis internalnya. CPOE hanya mengoordinasikan instruksi dan memantau ringkasan pemenuhan.
+- **Pembedaan Status Fulfilled:** Status penerimaan atau persiapan (*Accepted*, *In Fulfilment*) tidak boleh disamakan dengan status *Fulfilled*. Status *Fulfilled* wajib memenuhi kriteria penyelesaian objektif (*Completion Criterion*).
+- **Isolasi Dampak Klarifikasi:** Penangguhan order (*On Hold*) akibat permintaan klarifikasi hanya berlaku pada item order terkait dan dilarang menahan order lain milik pasien yang tidak berkaitan secara klinis.
+- **Pengendalian Perubahan Pasca-Otorisasi:** Instruksi yang telah diotorisasi tidak dapat diedit langsung; perubahan dicatat sebagai *Amendment*. Pembatalan (*Cancel*) hanya sah sebelum pengerjaan fisik dimulai.
+- **Imutabilitas Riwayat Keputusan:** Riwayat instruksi yang telah disahkan, penolakan, amandemen, dan catatan pembatalan bersifat permanen dan tidak boleh dihapus fisik dari sistem.
+- **Integritas Kronologi Waktu:** Kronologi waktu pada order verbal/darurat wajib mencerminkan waktu nyata tanpa pemalsuan (*no backdating*). Otorisasi susulan wajib diselesaikan sesuai batas waktu kebijakan rumah sakit.
+- **Kemandirian Siklus Koordinasi dari Billing:** Penutupan koordinasi CPOE (*Closed*) tidak bergantung pada penyelesaian siklus verifikasi tagihan maupun pembayaran kasir di Tata Rekening.
 
 ---
 
 ## 8. Business Exceptions
 
-> Conditions under which the Outcome encounters an operational exception.
+> Conditions under which the Outcome cannot be established or encounters an exception.
 
 | Exception | Expected Behavior |
 |-----------|-------------------|
-| Registrasi kunjungan pasien tidak aktif atau telah ditutup | Penyusunan dan otorisasi Clinical Order ditolak. |
-| Pengesah tidak memiliki kewenangan klinis untuk kategori order terkait | Otorisasi ditolak; instruksi dialihkan kepada klinisi yang berwenang. |
-| Order ditolak oleh Receiver di unit kerja tujuan | Status order menjadi `Rejected` disertai alasan penolakan; pemenuhan dihentikan tanpa menghasilkan beban biaya. |
-| Receiver meminta klarifikasi atas keselamatan atau kelengkapan klinis | Status order menjadi `On Hold for Clarification`; pemenuhan ditunda hingga klarifikasi selesai tanpa menahan order lain yang tidak berkaitan. |
-| Pemesan membatalkan order sebelum pelaksanaan fisik dimulai | Status order menjadi `Cancelled`; koordinasi di unit tujuan dihentikan tanpa beban biaya. |
-| Pembatalan diajukan saat pelaksanaan fisik telah berjalan | Pembatalan otomatis tidak diizinkan; dialihkan ke mekanisme komunikasi penghentian (*Discontinuation*) atau penyelesaian sebagian. |
-| Terapi serial dihentikan karena perubahan kondisi klinis | Status order menjadi `Discontinued`; pelaksanaan yang telah lalu tetap sah, porsi masa depan dibatalkan. |
-| Teridentifikasi kesalahan mendasar pasca-otorisasi (salah pasien/salah perutean) | Status order menjadi `Entered in Error` dengan alasan lengkap; order dinonaktifkan tanpa menghapus riwayat data asli. |
-| Otorisasi susulan pada Exceptional Order belum diselesaikan dalam periode kebijakan | Order ditandai membutuhkan perhatian kepatuhan klinis dan dilaporkan untuk tindak lanjut medikolegal. |
-| Pasien berpindah ruangan atau berganti DPJP saat memiliki Outstanding Orders | Tanggung jawab klinis (*Responsibility*) dialihkan kepada penanggung jawab baru tanpa mengubah data kepengarangan awal. |
-| Pasien dipulangkan saat masih memiliki order diagnostik aktif yang hasilnya belum terbit | Dilakukan Discharge Reconciliation; order ditandai untuk pemantauan hasil pasca-pulang oleh penanggung jawab rawat jalan. |
-| Pelaksanaan fisik gagal akibat kendala klinis atau penolakan pasien | Status order menjadi `Not Fulfilled` disertai catatan kendala; kelayakan biaya hanya berlaku atas porsi persiapan yang sah menurut kebijakan rumah sakit. |
+| Registrasi kunjungan (*Visit*) pasien tidak aktif atau telah ditutup | Penyusunan dan otorisasi Clinical Order ditolak. |
+| Pengesah tidak memiliki kewenangan klinis (*clinical privileges*) untuk kategori order terkait | Otorisasi ditolak; instruksi dialihkan kepada klinisi yang berwenang. |
+| Order ditolak oleh unit kerja tujuan (*Destination*) | Status order menjadi **Rejected** disertai alasan penolakan; pemenuhan dihentikan tanpa menghasilkan beban biaya. |
+| Unit kerja tujuan meminta klarifikasi atas keselamatan atau kelengkapan klinis | Status order menjadi **On Hold for Clarification**; pengerjaan ditunda hingga klarifikasi tuntas tanpa menahan order lain yang tidak berkaitan. |
+| Pemesan membatalkan order sebelum pelaksanaan fisik dimulai | Status order menjadi **Cancelled**; koordinasi di unit tujuan dihentikan tanpa beban biaya. |
+| Pembatalan diajukan saat pelaksanaan fisik telah berjalan di unit tujuan | Pembatalan otomatis ditolak; penghentian dialihkan ke mekanisme penghentian klinis (**Discontinued**) atau penyesuaian porsi pemenuhan. |
+| Terapi atau tindakan serial dihentikan di tengah jalan | Status order menjadi **Discontinued**; pelaksanaan yang telah lewat tetap sah, jadwal pelaksanaan masa depan dibatalkan. |
+| Teridentifikasi kesalahan mendasar pasca-otorisasi (salah pasien/salah perutean) | Status order menjadi **Entered in Error** dengan alasan lengkap; order dinonaktifkan tanpa menghapus riwayat audit data asli. |
+| Otorisasi susulan instruksi verbal/darurat melampaui batas waktu kebijakan RS | Order ditandai membutuhkan perhatian kepatuhan klinis (*compliance alert*) dan dilaporkan untuk audit medikolegal. |
+| Pelaksanaan fisik gagal akibat kendala klinis atau penolakan pasien | Status order menjadi **Not Fulfilled** disertai catatan kendala; kelayakan biaya hanya berlaku atas porsi persiapan yang sah menurut kebijakan rumah sakit. |
 
 ---
 
@@ -257,16 +182,16 @@ Berakhir ketika Clinical Order mencapai status akhir:
 
 | # | Criterion | Validates |
 |---|-----------|-----------|
-| AC-01 | Terdapat rekaman Clinical Order terstruktur yang memuat identitas pasien, konteks kunjungan aktif, kategori order, indikasi klinis, prioritas, waktu permintaan, instruksi teknis, Author, Authorizer, Destination, dan penanggung jawab aktif sesuai Order Definition. | Completeness |
-| AC-02 | Perekaman pembuatan draf, otorisasi, perutean, penerimaan, maupun persiapan order tidak membentuk kelayakan pembebanan biaya (*Charge Eligibility*) pada domain Tata Rekening. | Constraint |
-| AC-03 | Terdapat rekaman yang dapat membedakan identitas pembuat draf (*Order Author*) dan pengesah (*Order Authorizer*) sebagai dua peran mandiri. | Correctness |
-| AC-04 | Clinical Order bergerak melalui siklus hidup yang sah (`Draft` → `Authorized` → `Dispatched` → `Accepted` → `In Fulfilment` → `Fulfilled` → `Closed`), dan status persiapan/penerimaan tidak disamakan dengan `Fulfilled`. | Correctness |
-| AC-05 | Destination dapat melakukan penerimaan (*Accept*), penolakan (*Reject* dengan alasan), atau permintaan klarifikasi (*Request Clarification*), di mana penangguhan klarifikasi hanya berdampak pada order terkait tanpa menahan order lain. | Completeness |
+| AC-01 | Clinical Order berhasil dicatat dengan struktur lengkap: identitas pasien, konteks kunjungan aktif, kategori order, instruksi klinis, prioritas, jadwal permintaan, Author, Authorizer, Destination, dan penanggung jawab aktif. | Completeness |
+| AC-02 | Pembuatan draf, otorisasi, perutean, penerimaan, maupun persiapan order tidak membentuk kelayakan biaya (*Charge Eligibility*) pada Tata Rekening. | Constraint |
+| AC-03 | Sistem mencatat dan membedakan identitas pembuat draf (*Order Author*) dan pengesah (*Order Authorizer*) sebagai dua entitas peran yang mandiri. | Correctness |
+| AC-04 | Clinical Order bertransisi mengikuti siklus hidup yang sah (**Draft → Authorized → Dispatched → Accepted → In Fulfilment → Fulfilled → Closed**), di mana status persiapan/penerimaan tidak disamakan dengan `Fulfilled`. | Correctness |
+| AC-05 | Unit tujuan (*Destination*) dapat menerima (*Accept*), menolak (*Reject* disertai alasan), atau meminta klarifikasi (*Request Clarification*), di mana penangguhan klarifikasi hanya mengisolasi order terkait tanpa menahan order lain. | Completeness |
 | AC-06 | Perubahan terhadap instruksi yang telah diotorisasi terekam sebagai *Amendment* dengan mempertahankan riwayat instruksi awal, alasan perubahan, dan otorisasi perubahan. | Constraint |
-| AC-07 | Perekaman Exceptional Order (Verbal, Darurat, Protokol, Retrospektif) mempertahankan kronologi waktu nyata tanpa *backdating*, serta mencatat otorisasi susulan dalam batas periode kebijakan rumah sakit. | Constraint |
-| AC-08 | Transisi perawatan (pindah ruangan, pergantian DPJP) mengalihkan tanggung jawab klinis atas Outstanding Orders kepada klinisi penanggung jawab baru tanpa mengubah data kepengarangan awal. | Correctness |
-| AC-09 | Pemulangan pasien tidak membatalkan Outstanding Orders secara otomatis dan mewajibkan penetapan disposisi melalui rekonsiliasi pemulangan (*Discharge Reconciliation*). | Constraint |
-| AC-10 | Status `Closed` dicapai setelah seluruh tanggung jawab koordinasi klinis CPOE selesai, tanpa bergantung pada penyelesaian siklus penagihan di Tata Rekening. | Constraint |
+| AC-07 | Perekaman instruksi verbal/darurat mempertahankan kronologi waktu nyata tanpa *backdating*, serta mencatat otorisasi susulan dalam batas waktu kebijakan yang berlaku. | Constraint |
+| AC-08 | Upaya pembatalan setelah pelaksanaan fisik dimulai di unit tujuan ditolak oleh sistem dan dialihkan ke mekanisme *Discontinuation*. | Exception |
+| AC-09 | Status `Closed` dicapai setelah seluruh kriteria penyelesaian koordinasi klinis CPOE terpenuhi, tanpa bergantung pada penyelesaian siklus penagihan di Tata Rekening. | Constraint |
+| AC-10 | Kelayakan pembebanan biaya (*Charge Eligibility*) hanya diteruskan ke domain Tata Rekening berdasarkan fakta pemenuhan aktual yang dilaporkan oleh unit pelaksana. | Correctness |
 
 ---
 
@@ -274,11 +199,12 @@ Berakhir ketika Clinical Order mencapai status akhir:
 
 > What this Outcome explicitly does NOT cover.
 
-- **Pelayanan Keperawatan Rutin (*Routine Nursing Care*):** Tindakan keperawatan mandiri reguler (seperti memandikan pasien atau pemantauan tanda vital rutin berkala) → Lingkup operasional keperawatan bangsal (`RNA-*`).
-- **Alur Kerja Teknis Internal Departemen Pelaksana:** Kalibrasi alat laboratorium, manajemen reagen, pengaturan radiasi mesin pencitraan, sterilisasi instrumen operasi, dan teknik peracikan obat → Domain pelaksana terkait (`LAB-*`, `RAD-*`, `KMO-*`, `APT-*`).
-- **Penyimpanan Dokumentasi Hasil Medis Authoritative:** Penyimpanan narasi ekspertise diagnostik lengkap, arsip citra radiologi, grafik lab, dan resume medis CPPT → Domain Penunjang Terkait dan Rekam Medis Elektronik (EMR).
-- **Laporan Dokumentasi Pembedahan Resmi:** Penyusunan lembar laporan operasi lengkap, laporan anestesi, dan *surgical safety checklist* → Domain Kamar Operasi (`KMO-OPR`) dan EMR.
-- **Konfigurasi Master Tarif dan Kebijakan Finansial:** Penentuan besaran tarif, aturan kelas perawatan, dan penjaminan asuransi → Domain Tata Rekening (`TRK-TARIF`, `TRK-JAMINAN`).
-- **Kalkulasi Tagihan dan Pembayaran Kasir:** Pembentukan rincian invoice tagihan, penerimaan pembayaran, dan alokasi kasir → Domain Tata Rekening (`TRK-BILLING`, `TRK-PAYMENT`, `TRK-KASIR`).
-- **Manajemen Persediaan dan Stok Fisik:** Pengurangan stok fisik obat/BMHP di depo/gudang, *batch number*, dan kadaluwarsa → Domain Inventory (`INV-*`) dan Apotek (`APT-*`).
-- **Tindak Lanjut Klinis Terhadap Hasil Diagnostik:** Pengambilan keputusan medis lanjutan dan formulasi terapi baru pasca-terbitnya hasil diagnostik pada Phase 1 → Domain Klinis / EMR.
+- **Alur Kerja Teknis Internal Unit Pelaksana:** Kalibrasi instrumen laboratorium, manajemen reagen, pengaturan radiasi mesin pencitraan, sterilisasi instrumen operasi, dan teknik peracikan obat → Domain pelaksana terkait (`LAB-*`, `RAD-*`, `KMO-*`, `APT-*`).
+- **Penyimpanan Dokumentasi Medis Otoritatif (EMR):** Penyimpanan narasi ekspertise diagnostik lengkap, arsip citra radiologi DICOM, grafik hasil laboratorium, dan resume medis CPPT → Domain Penunjang Terkait dan Rekam Medis Elektronik (EMR).
+- **Laporan Dokumentasi Pembedahan Resmi:** Penyusunan laporan operasi lengkap, laporan anestesi, dan *surgical safety checklist* → Domain Kamar Operasi (`KMO-OPR`) dan EMR.
+- **Pencatatan Tindakan Rawat Jalan Langsung:** Pencatatan prosedur/tindakan klinis yang langsung diselesaikan di ruang periksa poli tanpa melalui order penunjang → **OC-05-02 Tindakan Rawat Jalan** (`RJL-TINDAKAN`).
+- **Rujukan Pasien Antar-Dokter/Poli:** Pengalihan pelayanan medis pasien ke dokter tujuan lain pada hari yang sama → **OC-05-03 Rujuk Internal** (`RJL-TRANSFER`).
+- **Konfigurasi Tarif dan Aturan Pembebanan Biaya:** Penetapan besaran tarif layanan, matriks penjaminan asuransi, dan finalisasi episode tagihan → Tata Rekening (`TRK-TARIF`, `TRK-BILLING`, `TRK-JAMINAN`).
+- **Penerimaan Pembayaran Kasir:** Pembayaran biaya pemeriksaan/resep dan cetak kuitansi di loket kasir → Kasir (`TRK-KASIR`, `TRK-PAYMENT`).
+- **Manajemen Persediaan dan Stok Fisik:** Pengurangan saldo stok obat/BMHP di depo/gudang, nomor batch, dan kedaluwarsa → Domain Inventory (`INV-*`) dan Apotek (`APT-*`).
+- **Pelayanan Keperawatan Rutin:** Tindakan asuhan keperawatan mandiri reguler di ruang rawat → Ruang lingkup keperawatan bangsal (`RNA-*`).
