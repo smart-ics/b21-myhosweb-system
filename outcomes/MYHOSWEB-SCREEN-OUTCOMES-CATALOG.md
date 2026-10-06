@@ -53,7 +53,7 @@
 - OC-05-01 Antrian
 - OC-05-02 Tindakan
 - OC-05-03 Rujuk Internal
-- OC-05-04 CPOE (Order Pemeriksaan)
+- OC-05-04 CPOE (Computerized Provider Order Entry)
 - OC-05-05 Pakai Barang
 - OC-05-06 Mutasi Barang
 - OC-05-07 Opname
