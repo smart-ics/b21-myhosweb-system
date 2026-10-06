@@ -3,7 +3,7 @@
 | Field       | Value        |
 |-------------|--------------|
 | Code        | OC-07-02     |
-| Version     | 1.2          |
+| Version     | 1.3          |
 | Status      | Draft        |
 | LastUpdated | 2026-10-06   |
 
@@ -90,7 +90,7 @@ Penilaian kondisi pasien (meliputi ABC dan GCS) serta penetapan klasifikasi ting
 
 - Triage hanya dapat dilakukan dan dicatat pada pasien yang memiliki episode IGD Visit yang sah dan aktif.
 - Triage pertama dilakukan saat pasien tiba di IGD.
-- Re-Triage dapat dilakukan kapan saja selama episode IGD Visit berlangsung apabila tenaga medis IGD menilai perlu dilakukan penilaian ulang terhadap kondisi pasien, termasuk ketika terdapat perubahan kondisi pasien.
+- Re-Triage dapat dilakukan selama episode IGD Visit berlangsung apabila tenaga medis IGD menilai perlu dilakukan penilaian ulang terhadap kondisi pasien, termasuk ketika terdapat perubahan kondisi pasien.
 - Pencatatan Re-Triage tidak boleh menghapus, menimpa, atau mengubah catatan Triage atau Re-Triage sebelumnya.
 - Hubungan Triage dalam IGD Visit membentuk rantai penilaian: `IGD Visit → Triage → Re-Triage → Re-Triage → ...`
 - Dalam kondisi normal, penentuan ATS wajib diturunkan secara objektif dari hasil assessment ABC dan GCS (`ABC + GCS → ATS`).
@@ -150,7 +150,7 @@ Selesai ketika penilaian komponen ABC dan GCS telah dilakukan, dan hasil klasifi
 |---|---|
 | Pasien tiba di IGD dengan kondisi klinis tertentu yang memungkinkan penetapan ATS Hitam | Petugas IGD yang bertugas dapat melakukan **override** terhadap formula triage normal dan menetapkan hasil **ATS Hitam**. |
 | Kondisi pasien mengalami perburukan atau perbaikan klinis saat menunggu penanganan atau selama berada di IGD | Tenaga medis IGD melakukan **Re-Triage**. Penilaian baru dicatat sebagai assessment lanjutan tanpa menimpa assessment sebelumnya. Triage terakhir menjadi acuan kondisi dan prioritas pasien terkini dalam IGD Visit. |
-| Pasien datang tanpa identitas dan tidak sadar (Mr./Mrs. X) | Triage tetap dilaksanakan dan dicatat mengacu pada episode IGD Visit sementara pasien, memastikan prioritas penanganan medis darurat segera terdefinisi tanpa menunggu identifikasi data sosial. |
+| Pasien datang tanpa identitas definitif dan dalam kondisi tidak sadar | Triage tetap dapat dilakukan menggunakan identitas sementara pada IGD Visit, memastikan prioritas penanganan medis darurat segera terdefinisi tanpa menunggu identifikasi data sosial. |
 | Terjadi kekeliruan pencatatan data assessment Triage | Koreksi tidak boleh dilakukan dengan menghapus atau menimpa catatan yang keliru. Petugas berwenang mencatat assessment baru (Re-Triage) atau melakukan anotasi koreksi administratif sesuai tata kelola audit klinis yang sah. |
 
 ---
