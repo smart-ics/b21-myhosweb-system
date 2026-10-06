@@ -3,7 +3,7 @@
 | Field       | Value        |
 |-------------|--------------|
 | Code        | OC-06-02     |
-| Version     | 1.2          |
+| Version     | 1.3          |
 | Status      | Draft        |
 | LastUpdated | 2026-10-06   |
 
@@ -83,12 +83,11 @@ Pencatatan Pakai Bed harus dapat membuktikan informasi bisnis inti berikut secar
 
 ### 5.3 Required Business Conditions
 
-- Penggunaan bed harus berada dalam konteks episode rawat inap yang aktif.
-- Tempat tidur yang digunakan harus merupakan bed yang valid dalam konteks pelayanan rumah sakit.
-- Tempat tidur tidak boleh digunakan secara bersamaan oleh lebih dari satu pasien pada kurun waktu yang sama.
-- Pasien tidak dapat memiliki lebih dari satu active bed secara bersamaan dalam episode rawat inap yang sama.
-- Waktu mulai penggunaan harus merupakan waktu yang sah dan tidak berada di masa depan.
-- Waktu berakhir penggunaan harus sama dengan atau setelah waktu mulai penggunaan.
+- Pasien berada dalam konteks pelayanan rawat inap yang aktif.
+- Terdapat bed tertentu yang valid digunakan oleh pasien dalam konteks pelayanan rumah sakit.
+- Penggunaan bed memiliki waktu mulai yang sah dan tidak berada di masa depan.
+- Penggunaan bed memiliki waktu berakhir ketika penggunaan selesai, di mana waktu berakhir harus sama dengan atau setelah waktu mulai.
+- Perubahan bed menyebabkan penggunaan bed sebelumnya berakhir dan penggunaan bed berikutnya dimulai.
 
 ### 5.4 Completion Proof
 
@@ -131,7 +130,6 @@ Ketika pasien tidak lagi menggunakan bed tersebut (ditandai dengan tercatatnya w
      - **Bed 01 → Bed 02 dalam unit yang sama = Pakai Bed berubah, bukan Transfer Unit.**
      - **Unit A → Unit B = Transfer Unit + perubahan penggunaan bed.**
 5. **Boundary dengan Registrasi Rawat Inap:** Registrasi Rawat Inap (`OC-01-03`) menetapkan konteks episode rawat inap, sedangkan Pakai Bed mencatat penggunaan bed aktual. Proses registrasi rawat inap tidak dimasukkan ke dalam OC-06-02.
-6. **Ketunggalan Penggunaan Bed:** Suatu bed tidak boleh digunakan secara bersamaan oleh lebih dari satu pasien, dan seorang pasien tidak dapat memiliki lebih dari satu active bed secara bersamaan dalam episode rawat inap yang sama.
 
 ---
 
@@ -141,11 +139,9 @@ Ketika pasien tidak lagi menggunakan bed tersebut (ditandai dengan tercatatnya w
 
 | Exception | Expected Behavior |
 |-----------|-------------------|
-| Pasien tidak memiliki episode rawat inap aktif saat penggunaan bed dicatat | **Pencatatan ditolak.** Penggunaan bed harus berada dalam episode rawat inap yang aktif. |
-| Bed sedang digunakan oleh pasien lain pada kurun waktu yang sama | **Pencatatan ditolak.** Bed tidak dapat digunakan secara bersamaan oleh lebih dari satu pasien. |
-| Pasien masih tercatat memiliki active bed lain yang belum diakhiri | **Pencatatan ditolak.** Penggunaan bed sebelumnya harus diakhiri terlebih dahulu sebelum penggunaan bed baru dapat dicatat. |
-| Bed yang dipilih bukan bed yang valid dalam konteks pelayanan rumah sakit | **Pencatatan ditolak.** Penggunaan hanya sah pada bed yang valid. |
-| Waktu berakhir penggunaan mendahului waktu mulai penggunaan | **Pencatatan ditolak.** Waktu berakhir harus sama dengan atau setelah waktu mulai. |
+| Tidak ada konteks episode rawat inap yang sah | **Pencatatan ditolak.** Penggunaan bed harus berada dalam episode rawat inap yang aktif. |
+| Bed yang digunakan bukan merupakan bed yang valid dalam konteks pelayanan rumah sakit | **Pencatatan ditolak.** Penggunaan hanya sah pada bed yang valid. |
+| Waktu berakhir penggunaan lebih awal daripada waktu mulai penggunaan | **Pencatatan ditolak.** Waktu berakhir harus sama dengan atau setelah waktu mulai. |
 
 ---
 
@@ -164,7 +160,6 @@ Ketika pasien tidak lagi menggunakan bed tersebut (ditandai dengan tercatatnya w
 | AC-07 | Perubahan bed mengakhiri penggunaan bed lama (waktu berakhir tercatat) dan memulai penggunaan bed baru (waktu mulai tercatat). | Correctness |
 | AC-08 | Perubahan bed dalam unit pelayanan yang sama tidak menghasilkan pencatatan Transfer Unit. | Constraint |
 | AC-09 | Perpindahan pasien antar-unit pelayanan merupakan tanggung jawab OC-06-03 Transfer Unit, sementara perubahan penggunaan bed yang menyertainya tetap tercatat sebagai Pakai Bed. | Constraint |
-| AC-10 | Sistem menolak pencatatan jika bed sedang digunakan oleh pasien lain atau pasien masih memiliki active bed yang belum diakhiri. | Constraint |
 
 ---
 
