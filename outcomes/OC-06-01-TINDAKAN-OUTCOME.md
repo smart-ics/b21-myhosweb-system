@@ -3,9 +3,9 @@
 | Field       | Value        |
 |-------------|--------------|
 | Code        | OC-06-01     |
-| Version     | 2.0          |
+| Version     | 2.1          |
 | Status      | Draft        |
-| LastUpdated | 2026-10-03   |
+| LastUpdated | 2026-10-06   |
 
 ---
 
@@ -58,13 +58,13 @@ Ketika status Tindakan mencapai **Performed**, Tindakan menjadi fakta bahwa pela
 | `ORG-PPA` Petugas Pemberi Asuhan | Organisasi | Known |
 | `TRK-TARIF` Tariff | Tata Rekening | Known |
 | `TRK-BILLING` Billing | Tata Rekening | Known |
-| `RNA-TINDAKAN` Tindakan Rawat Inap | Rawat Inap | Capability Candidate |
 
 > **Capability Status values:** Known · Existing but Undocumented · Capability Candidate
 >
-> **Catatan Tata Kelola & Eskalasi Scope (Governance Rule):**
-> Sesuai Domain Catalog (Versi 2.1 authoritative), Domain Rawat Inap (`RNA`) saat ini mendefinisikan: `RNA-ANTRIAN`, `RNA-BED`, `RNA-TRANSFER`, `RNA-CHARGE`, `RNA-DISCHARGE`, dan `RNA-HK`. Berbeda dengan Rawat Jalan yang memiliki `RJL-TINDAKAN` dan Gawat Darurat yang memiliki `IGD-TINDAKAN`, capability pengelolaan tindakan klinis di Rawat Inap belum terdaftar di Domain Catalog.
-> Mengikuti aturan tata kelola skill, tim analisis **tidak membuat capability baru secara sepihak** dan **tidak menganggap Capability Candidate sebagai capability yang telah disetujui**. Kebutuhan ini didokumentasikan sebagai **Capability Candidate** (`RNA-TINDAKAN`) dan **dieskalasikan kepada Product Owner** untuk keputusan penetapan scope capability resmi dalam Domain Catalog.
+> **Catatan Tata Kelola & Otoritas Domain Catalog (Governance Rule):**
+> Domain Catalog tetap menjadi sumber otoritatif untuk penetapan Domain Capability. OC-06-01 tidak menetapkan, membuat, atau mengusulkan capability baru secara otomatis berdasarkan definisi Operational Service Event. Penambahan atau perubahan capability Domain merupakan keputusan governance yang menjadi wewenang Product Owner.
+>
+> Apabila pada tahap governance ditemukan kebutuhan capability Domain yang belum tercantum dalam Domain Catalog, kebutuhan tersebut harus menjadi bahan keputusan Product Owner melalui proses governance yang berlaku. Hal tersebut bukan merupakan bagian dari outcome definition OC-06-01 dan tidak boleh diperlakukan sebagai capability yang sudah ditetapkan.
 
 ---
 
