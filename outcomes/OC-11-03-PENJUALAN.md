@@ -3,7 +3,7 @@
 | Field       | Value        |
 |-------------|--------------|
 | Code        | OC-11-03     |
-| Version     | 1.0          |
+| Version     | 1.1          |
 | Status      | Draft        |
 | LastUpdated | 2026-10-06   |
 
@@ -150,12 +150,12 @@ Sales Order Establishment adalah transisi resmi ketika *accepted demand* berubah
 1. **Invarian Utama:** `One Sales Order = exactly one PayerPath`.
 2. **Waktu Pelaksanaan:** Payer split dieksekusi setelah *accepted items* tersedia dan sebelum Sales Order berstatus *Established*.
 3. **Mekanisme Split:**
-   - Apabila satu resep menghasilkan item-item dengan jalur penjamin berbeda (misalnya sebagian dijamin BPJS dan sebagian tidak dijamin sehingga menjadi tanggungan pasien/umum), sistem membentuk Sales Order terpisah yang masing-masing homogen:
+   - Apabila satu resep menghasilkan item-item dengan jalur penjamin berbeda (misalnya sebagian dijamin BPJS dan sebagian tidak dijamin sehingga menjadi tanggungan pasien/umum), terbentuk Sales Order terpisah yang masing-masing homogen:
      - `SO-A`: `PayerPath = BPJS`, berisi seluruh covered items.
      - `SO-B`: `PayerPath = GeneralPatientPay`, berisi seluruh non-covered items.
    - Dilarang membuat *hybrid Sales Order* yang mencampur lebih dari satu `PayerPath` dalam satu Sales Order.
-4. **Kelengkapan Atomik (*Business-Atomically Complete*):**
-   - Pembentukan Sales Order hasil payer split harus lengkap secara atomik. Tidak boleh hanya sebagian Sales Order yang terbentuk dari hasil split.
+4. **Kelengkapan Bisnis Hasil Split (*Business-Complete Split*):**
+   - Hasil payer split harus business-complete: seluruh Sales Order yang diperlukan dari satu permintaan yang displit harus terbentuk sebagai satu hasil bisnis yang lengkap. Tidak boleh menghasilkan partial split yang meninggalkan sebagian accepted item tanpa Sales Order.
 5. **Batasan Kepemilikan (*Scope Boundary*):**
    - Penjualan bukan pemilik evaluasi eligibilitas BPJS, aturan Fornas, maupun lifecycle SEP. Penjualan hanya mengonsumsi hasil evaluasi coverage/penjamin sebagai fakta masukan.
 6. **Imutabilitas Jalur Penjamin:**
@@ -168,17 +168,31 @@ Sales Order Establishment adalah transisi resmi ketika *accepted demand* berubah
 
 #### F. Model Kuantitas dan Plafon Komitmen (*Quantity Model*)
 1. **Definisi Istilah Kuantitas:**
-   - `PrescribedQty`: Kuantitas asli yang tertera pada instruksi resep dokter.
-   - `AcceptedQty`: Kuantitas yang disetujui Apotek dan resmi menjadi komitmen pada Sales Order.
-   - `DispensedQty`: Kuantitas fisik obat yang benar-benar disiapkan dan dipenuhi.
-   - `UnfulfilledQty`: Bagian dari `AcceptedQty` yang pada akhirnya tidak dapat atau tidak jadi dipenuhi.
-   - `UnresolvedAcceptedQty`: Kuantitas komitmen yang masih berjalan dan belum memiliki disposisi akhir.
-   - `ExcludedQty`: Bagian dari `PrescribedQty` yang tidak masuk ke dalam Sales Order (misalnya karena ketiadaan stok saat gerbang stok dievaluasi).
-2. **Formula Keseimbangan Kuantitas:**
+   - `PrescribedQty`: Kuantitas asli yang tertera pada instruksi resep dokter (untuk OTC: kuantitas yang diminta / `RequestedQty`).
+   - `AcceptedQty`: Kuantitas yang resmi dikomitmenkan Apotek ke dalam Sales Order, setelah melalui seluruh gerbang bisnis pra-SO (termasuk gerbang stok dan gerbang kelaikan telaah).
+   - `ExcludedQty`: Seluruh kuantitas dari permintaan asal yang tidak masuk ke dalam Sales Order untuk alasan apapun sebelum Sales Order terbentuk — termasuk (namun tidak terbatas pada) keterbatasan *Available Stock*, keputusan telaah yang membatasi kuantitas yang dapat dilayani, atau alasan bisnis pra-SO lainnya. `ExcludedQty` adalah selisih antara kuantitas permintaan asal dan `AcceptedQty`, bukan semata-mata bagian yang tidak ada stoknya.
+   - `DispensedQty`: Kuantitas fisik obat yang benar-benar disiapkan dan dipenuhi (ditentukan oleh proses Dispensing, bukan oleh Sales Order).
+   - `UnfulfilledQty`: Bagian dari `AcceptedQty` yang pada akhirnya tidak dipenuhi setelah Sales Order berstatus *Established* (misalnya: pasien menolak, batas waktu pengambilan terlampaui, atau kekurangan stok pada saat dispensing).
+   - `UnresolvedAcceptedQty`: Bagian dari `AcceptedQty` yang masih berjalan dan belum memiliki disposisi akhir yang definitif.
+2. **Relasi Kuantitas:**
+
+   Pada tahap pra-SO (sebelum Sales Order terbentuk):
    ```text
-   PrescribedQty = AcceptedQty + ExcludedQty
-   AcceptedQty   = DispensedQty + UnfulfilledQty + UnresolvedAcceptedQty
+   PrescribedQty (/ RequestedQty)
+     = AcceptedQty + ExcludedQty
    ```
+   Pada tahap pasca-SO (setelah Sales Order berstatus Established hingga Resolved):
+   ```text
+   AcceptedQty
+     = DispensedQty + UnfulfilledQty + UnresolvedAcceptedQty
+   ```
+   Pada disposisi komersial akhir:
+   ```text
+   UnresolvedAcceptedQty = 0
+   AcceptedQty = DispensedQty + UnfulfilledQty
+   ```
+   > **Catatan:** `ExcludedQty` dan `UnfulfilledQty` adalah dua fakta bisnis yang berbeda dan tidak boleh dicampur. `ExcludedQty` terjadi sebelum Sales Order terbentuk; `UnfulfilledQty` terjadi terhadap kuantitas yang sudah masuk ke dalam Sales Order.
+
 3. **Plafon Komitmen (*Commitment Ceiling*):**
    - Setelah Sales Order berstatus *Established*, `AcceptedQty` menjadi plafon komitmen tertinggi.
    - Kuantitas downstream (baik kuantitas dispensing maupun kuantitas faktur) dilarang melebihi `AcceptedQty`:
@@ -187,9 +201,9 @@ Sales Order Establishment adalah transisi resmi ketika *accepted demand* berubah
    - `AcceptedQty` dilarang ditulis ulang atau ditimpa (*overwritten*) menjadi `DispensedQty`.
 4. **Aturan Pelayanan Rawat Jalan (*Outpatient Rule*):**
    - Pelayanan farmasi rawat jalan **tidak mengenal mekanisme backorder**.
-   - Kuantitas yang tidak dapat dipenuhi saat pembentukan Sales Order menjadi *excluded demand* (`ExcludedQty`), bukan bagian dari Sales Order.
+   - Kuantitas yang tidak dapat dipenuhi pada saat pembentukan Sales Order — termasuk karena keterbatasan *Available Stock* — menjadi bagian dari `ExcludedQty` dan tidak masuk ke dalam Sales Order.
    - Jika diperlukan, sisa permintaan tersebut dapat diterbitkan salinan resep (*copy prescription*) sesuai aturan bisnis farmasi.
-   - Dilarang mencatat `ExcludedQty` pra-SO sebagai `UnfulfilledQty`. `UnfulfilledQty` hanya berlaku terhadap kuantitas yang sudah resmi masuk ke dalam Sales Order.
+   - `ExcludedQty` pra-SO dilarang dicatat atau dikategorikan sebagai `UnfulfilledQty`. `UnfulfilledQty` hanya berlaku terhadap kuantitas yang sudah resmi masuk ke dalam Sales Order.
 
 #### G. Penetapan Harga dan Komitmen Finansial (*Pricing & Financial Commitment*)
 1. **Pemisahan Sales Order dan Harga:**
@@ -206,7 +220,7 @@ Sales Order Establishment adalah transisi resmi ketika *accepted demand* berubah
      Sales Order Established → Basis Klaim / Penyerahan Terpenuhi → Invoice Established → Pricing Snapshot Mengikat
      ```
 3. **Konsep Potret Harga (*Pricing Snapshot*):**
-   - Saat Invoice ditetapkan (*Invoice Established*), sistem merekam *Pricing Snapshot* sebagai fakta finansial permanen:
+   - Saat Invoice ditetapkan (*Invoice Established*), *Pricing Snapshot* tercatat sebagai fakta finansial permanen yang merepresentasikan kondisi harga dan tagihan saat itu:
      - Kuantitas tertagih (*Invoiced Quantity*).
      - Harga satuan (*Unit Price*).
      - Potongan harga / diskon (*Discount*).
@@ -298,47 +312,34 @@ Sales Order mencapai kondisi akhir komersial yang sah (**Resolved**) HANYA JIKA 
 ### 5.2 Required Recorded Information
 
 1. **Informasi Header Sales Order:**
-   - Nomor identitas unik Sales Order (unik dan tidak dapat digunakan ulang).
-   - Waktu pembentukan Sales Order (*timestamp Established*).
-   - Unit farmasi / loket apotek yang menerbitkan komitmen.
+   - Nomor identitas unik Sales Order.
+   - Waktu pembentukan Sales Order.
+   - Unit farmasi / apotek yang menerbitkan komitmen.
    - Status siklus hidup saat ini (**Established**, **Active**, **Resolved**, **Cancelled**).
-   - Waktu dan alasan perubahan status siklus hidup.
-   - Jalur penjamin tunggal (`PayerPath`, e.g., BPJS, GeneralPatientPay, AsuransiKerjasama).
-   - Keterikatan dengan grup pemisahan jalur penjamin (*Payer Split Group Reference*), jika berasal dari resep yang displit.
+   - Alasan perubahan status siklus hidup.
+   - Jalur penjamin tunggal (`PayerPath`).
+   - Keterikatan dengan grup pemisahan jalur penjamin, jika berasal dari demand yang displit.
 2. **Informasi Subjek Pasien dan Kunjungan:**
-   - Identitas pasien (Nomor Rekam Medis dan Nama Pasien).
-   - Nomor registrasi / episode kunjungan aktif pasien (jika terikat episode pelayanan RS).
+   - Identitas pasien.
+   - Konteks episode kunjungan aktif pasien (jika terikat episode pelayanan RS).
 3. **Informasi Rincian Komitmen Item (`SalesOrderItem`):**
-   - Nomor referensi baris item Sales Order.
-   - Referensi item permintaan asal (nomor resep dokter dan ID baris resep, atau nomor permintaan OTC).
-   - Referensi keputusan telaah resep (nomor telaah, waktu persetujuan, dan identitas Apoteker penelaah).
-   - Identitas obat yang disetujui (kode obat, nama obat, bentuk sediaan, kekuatan dosis). Pada item hasil substitusi, mencatat identitas obat pengganti serta obat asli yang digantikan.
-   - Instruksi pemakaian obat / signa yang disetujui.
+   - Referensi item permintaan asal (resep dokter / permintaan OTC) yang dapat ditelusuri ke baris permintaan dan keputusan telaah yang mendasarinya.
+   - Identitas obat yang disetujui, termasuk obat pengganti dan obat asli bila hasil substitusi.
+   - Instruksi pemakaian obat yang disetujui.
    - Kuantitas asal permintaan (`PrescribedQty` / `RequestedQty`).
-   - Kuantitas yang disetujui dan dikomitmenkan (`AcceptedQty`).
-   - Kuantitas yang dieksklusi sebelum komitmen terbentuk (`ExcludedQty`) beserta alasan pengecualian (misal keterbatasan stok).
+   - Kuantitas yang dikomitmenkan (`AcceptedQty`).
+   - Kuantitas yang dieksklusi sebelum komitmen terbentuk (`ExcludedQty`) beserta alasan pengecualian.
    - Kuantitas yang berhasil diserahkan (`DispensedQty`).
-   - Kuantitas komitmen yang tidak terpenuhi (`UnfulfilledQty`) beserta alasan tidak terpenuhi (misal penolakan pasien atau kadaluwarsa pengambilan).
+   - Kuantitas komitmen yang tidak terpenuhi (`UnfulfilledQty`) beserta alasan tidak terpenuhi.
    - Kuantitas yang belum terselesaikan (`UnresolvedAcceptedQty`).
 4. **Informasi Komitmen Finansial (`Invoice`):**
-   - Nomor identitas unik Invoice.
-   - Referensi Sales Order yang mendasarinya.
-   - Waktu penetapan komitmen finansial (*timestamp Invoice Established*).
-   - Status penagihan invoice (misal *Established*, *Settled/Paid*, *Voided/Cancelled*).
-   - Rincian kuantitas yang ditagihkan per baris item (`InvoiceQty`).
-   - **Pricing Snapshot** permanen:
-     - Harga satuan yang berlaku saat invoice ditetapkan (*Unit Price*).
-     - Rincian diskon atau potongan harga (*Discount*).
-     - Biaya pelayanan / embalase / tuslah (*Charges*).
-     - Pajak pertambahan nilai (*Tax*).
-     - Pembulatan moneter (*Rounding*).
-     - Total nilai kewajiban finansial (*Total Invoiced Amount*).
-     - Pihak penanggung tagihan (*Payer Identity*).
-5. **Informasi Penyelesaian Disposisi Akhir:**
-   - Waktu penetapan disposisi akhir (*timestamp Resolution / Cancellation*).
-   - Kategori hasil akhir komersial (*Final Disposition Category*).
-   - Referensi bukti penyelesaian finansial (nomor kuitansi kasir, nomor penutupan billing kunjungan, atau nomor nota pembatalan/koreksi resmi).
-   - Identitas petugas yang memvalidasi penyelesaian komersial akhir.
+   - Referensi unik Invoice yang dapat ditelusuri ke Sales Order yang mendasarinya.
+   - Waktu penetapan komitmen finansial (Invoice Established).
+   - Kuantitas yang ditagihkan per baris item (`InvoiceQty`).
+   - **Pricing Snapshot** permanen yang merekam: harga satuan, diskon, biaya pelayanan, pajak, pembulatan, total nilai kewajiban finansial, dan informasi penjamin — seluruhnya merepresentasikan kondisi saat Invoice Established.
+5. **Informasi Disposisi Komersial Akhir:**
+   - Waktu dan kategori hasil akhir komersial (*Final Disposition Category*).
+   - Konfirmasi bahwa konsekuensi finansial dari Invoice terkait telah memiliki disposisi resmi dari pihak yang berwenang.
 
 ---
 
@@ -350,10 +351,10 @@ Sales Order mencapai kondisi akhir komersial yang sah (**Resolved**) HANYA JIKA 
    - Permintaan OTC telah disetujui resmi oleh petugas Apotek.
    - Kuantitas `AcceptedQty` tidak boleh melebihi kuantitas stok yang tersedia (`AcceptedQty <= Available Stock`).
    - Sales Order wajib memiliki minimal 1 item dengan `AcceptedQty > 0`.
-   - Permintaan yang sama belum pernah dibentuk menjadi Sales Order aktif/selesai (invarian idempotensi).
+   - Demand yang sama tidak boleh menghasilkan lebih dari satu accountable Sales Order commitment (invarian idempotensi).
 2. **Syarat Homogenitas dan Integritas Payer Split:**
    - Setiap Sales Order hanya memuat item-item yang memiliki `PayerPath` identik.
-   - Pembentukan Sales Order hasil payer split wajib berhasil secara atomik untuk seluruh pecahan jalur penjamin.
+   - Payer split wajib menghasilkan hasil yang business-complete: seluruh Sales Order yang diperlukan dari satu permintaan yang displit harus terbentuk sebagai satu hasil bisnis yang lengkap.
    - Setelah status *Established*, properti `PayerPath` tidak dapat diubah ke jalur penjamin lain.
 3. **Syarat Penguncian Finansial:**
    - Harga satuan, diskon, biaya embalase/tuslah, dan total tagihan baru menjadi komitmen mengikat saat Invoice berstatus *Established*.
@@ -361,21 +362,21 @@ Sales Order mencapai kondisi akhir komersial yang sah (**Resolved**) HANYA JIKA 
    - Nilai pada *Pricing Snapshot* kebal terhadap perubahan tarif master yang terjadi di kemudian hari.
 4. **Syarat Transisi Siklus Hidup:**
    - Transisi dari *Established* ke *Active* hanya terjadi bila telah terdapat konsekuensi turunan nyata (penerbitan Invoice atau dimulainya pemrosesan fisik).
-   - Sales Order dilarang bertransisi ke status terminal (*Resolved* atau *Cancelled*) selama nilai `UnresolvedAcceptedQty > 0`.
-   - Sales Order yang memiliki Invoice dilarang bertransisi ke status terminal selama konsekuensi finansial invoice belum berstatus selesai/resmi dari pihak Tata Rekening/Kasir.
+   - Sales Order dilarang mencapai status terminal (*Resolved* atau *Cancelled*) selama nilai `UnresolvedAcceptedQty > 0`.
+   - Sales Order yang memiliki Invoice dilarang mencapai status terminal selama konsekuensi finansial invoice belum memiliki disposisi resmi dari pihak Tata Rekening/Kasir.
 5. **Syarat Pelayanan Rawat Jalan:**
-   - Tidak ada pencatatan backorder kuantitas. Sisa kuantitas resep yang tidak dapat dilayani langsung dieksklusi menjadi `ExcludedQty` dan dapat difasilitasi melalui penerbitan salinan resep resmi.
+   - Tidak ada backorder. Sisa kuantitas demand yang tidak dapat dilayani menjadi `ExcludedQty` dan dapat difasilitasi melalui penerbitan salinan resep resmi.
 
 ---
 
 ### 5.4 Completion Proof
 
-Outcome Penjualan dinyatakan selesai (*complete*) apabila terbukti secara objektif dan dapat diverifikasi bahwa:
-1. Sales Order tersimpan secara persisten dan berada pada salah satu status terminal yang sah: **Resolved** atau **Cancelled**.
-2. Nilai `UnresolvedAcceptedQty = 0` untuk setiap baris item pada Sales Order.
-3. Setiap unit kuantitas pada `AcceptedQty` tercatat secara definitif ke dalam salah satu dari dua kategori akhir: `DispensedQty` atau `UnfulfilledQty` (`AcceptedQty = DispensedQty + UnfulfilledQty`).
-4. Seluruh Invoice yang terhubung dengan Sales Order memiliki status penyelesaian finansial definitif yang dikonfirmasi oleh Tata Rekening / Kasir (lunas, masuk ke billing kunjungan terpadu, atau dibatalkan melalui nota koreksi resmi).
-5. Keterlacakan penuh dari item permintaan asli dokter / OTC, hasil telaah klinis, Sales Order, Invoice, hingga penutupan komersial tersimpan utuh dan dapat diaudit.
+Outcome Penjualan dinyatakan selesai apabila dapat diverifikasi bahwa:
+1. Sales Order berada pada status terminal yang sah: **Resolved** atau **Cancelled**.
+2. `UnresolvedAcceptedQty = 0` untuk setiap baris item pada Sales Order.
+3. Setiap kuantitas pada `AcceptedQty` telah berstatus definitif sebagai `DispensedQty` atau `UnfulfilledQty` (`AcceptedQty = DispensedQty + UnfulfilledQty`).
+4. Seluruh Invoice yang terhubung dengan Sales Order telah memiliki disposisi finansial definitif yang dikonfirmasi oleh pihak yang berwenang (Tata Rekening / Kasir).
+5. Keterlacakan dari permintaan asal, keputusan telaah, Sales Order, hingga Invoice dan penutupan komersial dapat diverifikasi secara utuh.
 
 ---
 
@@ -424,17 +425,17 @@ Outcome berakhir ketika seluruh kuantitas komitmen (`AcceptedQty`) pada Sales Or
 
 | Exception | Expected Behavior |
 |-----------|-------------------|
-| **Stok yang tersedia kurang dari kuantitas yang diminta (*Available Stock < RequestedQty*)** | Sistem menerapkan *Available Stock Gate*: Sales Order tetap dibentuk dengan kuantitas komitmen sebesar stok yang tersedia (`AcceptedQty = Available Stock`). Selisih kuantitas dicatat sebagai `ExcludedQty` pra-SO. Pada pasien rawat jalan, sisa kuantitas tersebut tidak dijadikan backorder, melainkan dapat diterbitkan salinan resep (*copy prescription*) sesuai aturan bisnis. |
-| **Permintaan resep masih berstatus Belum Final / Sedang Ditelaah (*Under Review*)** | Pembentukan Sales Order ditolak. Sistem menahan proses hingga seluruh item pada resep memiliki keputusan telaah final dari Apoteker (**OC-11-02**). |
-| **Item resep berstatus Ditolak (*Rejected*) pada Telaah Resep** | Item yang ditolak dieksklusi secara mutlak dan dilarang dimasukkan ke dalam Sales Order. Jika seluruh item pada resep ditolak, Sales Order tidak terbentuk (*Non-Empty Commitment Gate*). |
-| **Accepted demand memiliki lebih dari satu jalur penjamin (*Multi-Payer Split*)** | Sistem mengeksekusi *Payer Split* sebelum penetapan Sales Order: membentuk Sales Order terpisah yang masing-masing homogen (`One Sales Order = One PayerPath`). Pembentukan seluruh Sales Order hasil split wajib berhasil secara atomik. |
-| **Pasien menolak Sales Order jalur bayar mandiri (*GeneralPatientPay*) hasil split** | Sales Order jalur umum diproses menuju disposisi akhir dengan status **Resolved** dan alasan `PatientDeclined` (jika belum ada invoice) atau diselesaikan pembatalan tagihannya ke Kasir (jika sudah ada invoice). Sales Order jalur BPJS tetap aktif dan tidak terpengaruh. |
-| **Pasien membatalkan/menolak sebagian obat setelah Sales Order Established (*Patient Declined Partial Fulfillment*)** | Nilai `AcceptedQty` tetap dipertahankan utuh. Kuantitas yang diambil dicatat sebagai `DispensedQty`, dan kuantitas yang ditolak dicatat sebagai `UnfulfilledQty` dengan alasan `PatientDeclined`. Jika Invoice telah terbit melebihi kuantitas yang diambil, diterbitkan permintaan penyesuaian finansial resmi ke Tata Rekening/Kasir sebelum Sales Order dapat berstatus **Resolved**. |
-| **Pasien tidak hadir mengambil obat hingga batas waktu terlampaui (*Collection Window Expired / No-Show*)** | Seluruh kuantitas komitmen dicatat sebagai `DispensedQty = 0` dan `UnfulfilledQty = AcceptedQty` dengan alasan `CollectionWindowExpired`. Jika Invoice belum terbit, Sales Order langsung mencapai status **Resolved**. Jika Invoice telah terbit, penutupan Sales Order ditahan hingga Tata Rekening/Kasir menyelesaikan disposisi finansial resmi (pembatalan tagihan / refund / void). |
-| **Terjadi permintaan proses ulang atas demand yang sama (*Duplicate Reprocessing Request*)** | Sistem mendeteksi komitmen yang sudah ada dan mengembalikan referensi Sales Order yang telah terbentuk tanpa membuat komitmen baru ganda (menjaga invarian *Business Idempotency*). |
-| **Terjadi perubahan master tarif setelah Invoice Established** | Perubahan tarif master tidak diterapkan pada transaksi yang bersangkutan. Invoice tetap mempertahankan nilai pada *Pricing Snapshot* yang direkam saat penetapan. |
-| **Permintaan pembatalan total atas Sales Order dengan Invoice yang sudah aktif** | Sales Order dilarang bertransisi langsung ke status terminal **Cancelled**. Sistem mewajibkan penyelesaian status faktur ke Tata Rekening / Kasir terlebih dahulu. Setelah konfirmasi pembatalan/void resmi diterima, Sales Order bertransisi ke status **Cancelled** dengan alasan pembatalan yang sah. |
-| **Kuantitas fisik yang berhasil disiapkan kurang dari komitmen (*Dispensing Shortage*)** | Bagian yang berhasil disiapkan dicatat sebagai `DispensedQty`, dan selisihnya dicatat sebagai `UnfulfilledQty` dengan alasan `DispensingShortage`. Nilai `AcceptedQty` tidak boleh diubah. Tagihan disesuaikan melalui koreksi resmi sesuai kuantitas riil sebelum disposisi akhir ditetapkan. |
+| **Stok yang tersedia kurang dari kuantitas yang diminta (*Available Stock < RequestedQty*)** | Sales Order tetap dapat terbentuk dengan `AcceptedQty` sebesar stok yang tersedia. Selisih kuantitas menjadi `ExcludedQty` pra-SO. Pada pasien rawat jalan, sisa kuantitas tersebut tidak menjadi backorder dan dapat difasilitasi melalui penerbitan salinan resep sesuai aturan bisnis. |
+| **Permintaan resep masih berstatus Belum Final / Sedang Ditelaah (*Under Review*)** | Sales Order tidak dapat terbentuk. Pembentukan Sales Order harus menunggu hingga seluruh item pada resep memiliki keputusan telaah final dari Apoteker (**OC-11-02**). |
+| **Item resep berstatus Ditolak (*Rejected*) pada Telaah Resep** | Item yang ditolak dieksklusi secara mutlak dan dilarang dimasukkan ke dalam Sales Order. Jika seluruh item pada resep ditolak, tidak ada Sales Order yang terbentuk (*Non-Empty Commitment Gate*). |
+| **Accepted demand memiliki lebih dari satu jalur penjamin (*Multi-Payer Split*)** | Payer split dieksekusi sebelum penetapan Sales Order: terbentuk Sales Order terpisah yang masing-masing homogen (`One Sales Order = One PayerPath`). Hasil split harus business-complete: tidak boleh ada accepted item yang tidak tercakup oleh Sales Order manapun. |
+| **Pasien menolak Sales Order jalur bayar mandiri (*GeneralPatientPay*) hasil split** | `AcceptedQty` tetap tidak berubah. Sales Order jalur umum diproses menuju disposisi akhir yang sesuai (misalnya **Resolved** dengan alasan `PatientDeclined`, setelah konsekuensi finansial apapun terselesaikan). Sales Order jalur BPJS tetap aktif dan tidak terpengaruh. |
+| **Pasien membatalkan/menolak sebagian obat setelah Sales Order Established (*Patient Declined Partial Fulfillment*)** | Nilai `AcceptedQty` tetap dipertahankan utuh. Kuantitas yang diambil dicatat sebagai `DispensedQty`, dan kuantitas yang ditolak dicatat sebagai `UnfulfilledQty` dengan alasan `PatientDeclined`. Sales Order dapat mencapai **Resolved** setelah seluruh konsekuensi finansial terkait memiliki disposisi resmi dari Tata Rekening/Kasir. |
+| **Pasien tidak hadir mengambil obat hingga batas waktu terlampaui (*Collection Window Expired / No-Show*)** | Seluruh kuantitas komitmen berstatus `DispensedQty = 0` dan `UnfulfilledQty = AcceptedQty` dengan alasan `CollectionWindowExpired`. Sales Order dapat mencapai **Resolved** setelah seluruh konsekuensi finansial terkait memiliki disposisi resmi dari Tata Rekening/Kasir. |
+| **Demand yang sama diproses ulang (*Duplicate Reprocessing Request*)** | Demand yang sama tidak boleh menghasilkan lebih dari satu accountable Sales Order commitment. Reprocessing atas demand yang sama mempertahankan commitment yang telah ada tanpa membentuk komitmen baru. |
+| **Terjadi perubahan master tarif setelah Invoice Established** | Perubahan tarif master tidak berlaku terhadap Invoice yang sudah terbentuk. Pricing Snapshot pada Invoice tersebut tetap merepresentasikan komitmen finansial saat Invoice Established. |
+| **Permintaan pembatalan total atas Sales Order dengan Invoice yang sudah aktif** | Sales Order tidak dapat mencapai status terminal **Cancelled** sebelum konsekuensi finansial dari Invoice terkait memiliki disposisi resmi dari Tata Rekening/Kasir. Setelah disposisi finansial resmi diterima, Sales Order dapat mencapai status **Cancelled**. |
+| **Kuantitas fisik yang berhasil disiapkan kurang dari komitmen (*Dispensing Shortage*)** | Bagian yang berhasil disiapkan dicatat sebagai `DispensedQty`, dan selisihnya dicatat sebagai `UnfulfilledQty`. Nilai `AcceptedQty` tidak boleh diubah. Sales Order dapat mencapai disposisi akhir setelah penyesuaian finansial atas kuantitas riil diselesaikan secara resmi. |
 
 ---
 
@@ -449,7 +450,7 @@ Outcome berakhir ketika seluruh kuantitas komitmen (`AcceptedQty`) pada Sales Or
 | **AC-03** | Item resep yang berstatus *Rejected* (Ditolak) pada Telaah Resep tidak dapat dimasukkan ke dalam baris item Sales Order. | Constraint |
 | **AC-04** | Kuantitas stok yang tersedia (*Available Stock*) menjadi batas penentu `AcceptedQty`, di mana keterbatasan stok menghasilkan `AcceptedQty < RequestedQty` dan selisihnya dicatat sebagai `ExcludedQty` tanpa menggagalkan pembentukan order. | Correctness |
 | **AC-05** | Pada pelayanan rawat jalan, `ExcludedQty` pra-SO tidak dicatat sebagai backorder maupun `UnfulfilledQty`, dan dapat difasilitasi melalui penerbitan salinan resep. | Constraint |
-| **AC-06** | Permintaan yang memiliki campuran jalur penjamin menghasilkan Sales Order terpisah yang masing-masing homogen (`One Sales Order = One PayerPath`) dan terbentuk secara lengkap serta atomik. | Completeness |
+| **AC-06** | Permintaan yang memiliki campuran jalur penjamin menghasilkan Sales Order terpisah yang masing-masing homogen (`One Sales Order = One PayerPath`) dan terbentuk secara business-complete: tidak ada accepted item yang tidak tercakup oleh Sales Order manapun. | Completeness |
 | **AC-07** | Setiap Sales Order memiliki tepat satu `PayerPath` yang bersifat *immutable* dan tidak dapat diubah ke jalur penjamin lain setelah berstatus *Established*. | Constraint |
 | **AC-08** | Pemrosesan ulang (*reprocessing*) atas permintaan yang sama tidak menghasilkan duplikasi Sales Order, melainkan merujuk pada komitmen akuntabel yang telah ada (*Business Idempotency*). | Constraint |
 | **AC-09** | Setiap `SalesOrderItem` dapat ditelusuri dan direkonsiliasi secara penuh ke baris permintaan asal dan keputusan telaah/penerimaan profesional yang mendasarinya. | Completeness |
