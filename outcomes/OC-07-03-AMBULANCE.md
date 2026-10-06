@@ -3,7 +3,7 @@
 | Field       | Value        |
 |-------------|--------------|
 | Code        | OC-07-03     |
-| Version     | 1.1          |
+| Version     | 1.2          |
 | Status      | Draft        |
 | LastUpdated | 2026-10-06   |
 
@@ -25,7 +25,7 @@ Secara bisnis, Pelayanan Ambulance merupakan **pelayanan lintas-domain (*cross-d
 - Kebutuhan transportasi medis pasien Instalasi Gawat Darurat (IGD);
 - Kebutuhan transportasi medis lainnya yang memenuhi tujuan pelayanan Ambulance.
 
-Instalasi Gawat Darurat (IGD) adalah salah satu domain yang dapat berinteraksi dengan pelayanan Ambulance, namun **IGD bukan owner maupun parent wajib dari Ambulance**. Pelayanan Ambulance dapat diselenggarakan secara mandiri dan dapat berdiri sendiri tanpa harus memiliki keterikatan atau ketergantungan pada episode kunjungan IGD (`IgdVisit`). `IgdVisit` bersifat opsional dan **bukan prerequisite** untuk membuat maupun menyelesaikan pelayanan Ambulance.
+Instalasi Gawat Darurat (IGD) adalah salah satu domain yang dapat berinteraksi dengan pelayanan Ambulance, namun **IGD bukan owner maupun parent wajib dari Ambulance**. Pelayanan Ambulance diselenggarakan secara mandiri dan dapat berdiri sendiri tanpa harus memiliki keterikatan atau ketergantungan pada episode kunjungan IGD (`IgdVisit`). `IgdVisit` bersifat opsional dan **bukan prerequisite** untuk membuat maupun menyelesaikan pelayanan Ambulance.
 
 ---
 
@@ -37,9 +37,13 @@ Satu pelayanan transportasi medis ambulance bagi pasien — mencakup pemindahan 
 
 ## 3. Participating Domains
 
+Outcome ini merepresentasikan **pelayanan transportasi medis lintas-domain (*cross-domain medical transport service*)**. Tidak ada domain pelayanan tunggal yang bertindak sebagai pemilik eksklusif (*exclusive owner*) atas lifecycle pelayanan ini.
+
 | Domain | Role in this Outcome |
 |---|---|
-| Gawat Darurat (IGD) | Domain yang menaungi capability `IGD-AMBULANCE` dalam Capability Catalog repositori saat ini. Bertanggung jawab atas pembentukan (*establishing*), pemutakhiran (*modifying*), dan penyelesaian (*completing*) outcome pelayanan transportasi medis ambulance. Domain pelayanan lain (seperti Rawat Inap, Rawat Jalan, atau IGD Visit) bertindak sebagai *service context* peminta atau tujuan rujukan, bukan domain yang memiliki lifecycle outcome ini. |
+| Gawat Darurat (IGD) | Salah satu *service context* yang dapat berinteraksi dengan pelayanan Ambulance (misalnya pada skenario penjemputan darurat pra-faskes atau transfer kegawatdaruratan). IGD **bukan domain owner**, bukan parent wajib, dan bukan prerequisite bagi lifecycle pelayanan Ambulance. Penempatan entri `IGD-AMBULANCE` di bawah domain IGD pada katalog saat ini merupakan isu struktural katalog yang terpisah dan tidak mendefinisikan kepemilikan bisnis atas outcome Ambulance. |
+| Rawat Inap (RNA) | *Service context* yang dapat berinteraksi dengan pelayanan Ambulance ketika pasien rawat inap memerlukan transportasi medis (misalnya rujukan keluar, transfer antar-faskes, alih rawat, atau pemulangan dengan pendampingan medis). |
+| Rawat Jalan (RJL) | *Service context* yang dapat berinteraksi dengan pelayanan Ambulance ketika pasien poliklinik memerlukan transportasi medis lanjutan atau rujukan antar-faskes. |
 
 ---
 
@@ -47,10 +51,14 @@ Satu pelayanan transportasi medis ambulance bagi pasien — mencakup pemindahan 
 
 | Capability | Domain | Status |
 |---|---|---|
-| `IGD-AMBULANCE` Ambulance | Gawat Darurat | Known |
+| `IGD-AMBULANCE` Ambulance | Gawat Darurat | Capability Candidate |
 
 > **Capability Status values:** Known · Existing but Undocumented · Capability Candidate  
-> *Catatan Validasi:* Mengacu langsung pada Domain Catalog resmi repository (`domain/DOMAIN-CATALOG.md`). Domain pendukung/konsumen (seperti Pasien, Organisasi, Admission, dan Tata Rekening) maupun konteks peminta (seperti Rawat Inap dan Rawat Jalan) tidak dicantumkan sebagai Participating Capabilities karena tidak berperan langsung dalam establishing, modifying, atau completing outcome Ambulance.
+>
+> **Hasil Validasi & Catatan Eskalasi Scope (Unresolved):**  
+> 1. Dokumen **Capability Catalog resmi** tersendiri belum tersedia di repositori (repositori saat ini baru memiliki *Domain Catalog* di mana entri `IGD-AMBULANCE` diletakkan di bawah domain Gawat Darurat dengan deskripsi pencatatan penggunaan ambulans dan tarif).  
+> 2. Karena belum ada Capability Catalog resmi yang memvalidasi kapabilitas pelayanan transportasi medis lintas-domain dengan nama dan penempatan domain definitif, maka kapabilitas ini **tidak diasumsikan sebagai `Known`**, melainkan ditandai sebagai **`Capability Candidate` (Unresolved)**.  
+> 3. Sesuai aturan tata kelola `.agents/skills/outcome-creation/SKILL.md` (Scope Validation & Escalation Rules) dan `foundation/conceptual-model.md`, status ini dicatat secara terbuka dan **dieskalasikan ke Product Owner (PO)** untuk mendapatkan persetujuan ruang lingkup (*scope approval*), penamaan resmi kapabilitas (apakah tetap `IGD-AMBULANCE` atau kapabilitas lintas-domain tersendiri), serta penetapan domain naungannya di Capability Catalog resmi.
 
 ---
 
