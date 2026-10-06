@@ -88,7 +88,8 @@ Tanggung jawab klinis dikelola melalui peran-peran utama berikut:
 - **Order Authorizer:** Tenaga kesehatan yang memiliki wewenang klinis formal (*clinical privileges*) untuk mengesahkan instruksi.
 - **Responsible Clinician:** Dokter penanggung jawab pelayanan (DPJP) atau klinisi yang bertanggung jawab atas kesinambungan asuhan pasien dan tindak lanjut terhadap *Outstanding Orders*.
 - **Receiver:** Pihak pada Destination yang bertugas menerima, menelaah kelayakan, dan merespons instruksi.
-- **Performer / Executing Domain:** Pihak yang melaksanakan aktivitas klinis dan menerbitkan bukti pemenuhan resmi.
+- **Performer:** Pihak/tenaga kesehatan yang secara fisik melaksanakan aktivitas klinis.
+- **Executing Domain:** Domain yang memegang otoritas bisnis atas alur kerja (*workflow*) internal dan rekaman eksekusi (*execution record*).
 - **Tata Rekening:** Pihak yang mengelola konsekuensi finansial berdasarkan fakta pemenuhan.
 
 > **Pemisahan Authorship vs. Authorization:**  
@@ -165,7 +166,7 @@ Pada situasi klinis luar biasa di mana otorisasi elektronik prospektif tidak mem
 - Registrasi kunjungan pasien berstatus aktif dalam pengelolaan Admission (`ADM-REG`).
 - Authorizer memiliki kewenangan klinis (*clinical privileges*) yang sah untuk kategori order yang diotorisasi (`ORG-PPA`).
 - Destination merupakan unit kerja aktif yang berwenang melayani kategori order terkait (`ORG-LAYANAN`).
-- Setiap instruksi klinis mencantumkan indikasi medis yang jelas.
+- Clinical Order memenuhi informasi wajib yang ditentukan oleh Order Definition, termasuk Clinical Indication apabila diwajibkan.
 - Otorisasi susulan pada Exceptional Order diselesaikan dalam batas periode kebijakan rumah sakit.
 
 ---
@@ -174,7 +175,7 @@ Pada situasi klinis luar biasa di mana otorisasi elektronik prospektif tidak mem
 
 Clinical Order dinyatakan selesai dan mencapai status **Closed** apabila:
 1. Seluruh kriteria penyelesaian (*Completion Criterion*) untuk kategori order tersebut terpenuhi secara sah dan terekam dalam ringkasan pemenuhan, ATAU order mencapai disposisi terminasi yang sah (Rejected, Cancelled, Discontinued, Not Fulfilled, atau Entered in Error).
-2. Tautan ke hasil klinis resmi (*Result Reference*) atau dokumentasi pelaksanaan resmi (*Execution Documentation Reference*) telah terbentuk (pada order yang berhasil dipenuhi).
+2. Tautan Result Reference atau Execution Documentation Reference tersedia apabila diwajibkan oleh Order Definition.
 3. Seluruh tanggung jawab koordinasi klinis CPOE atas order ini telah tuntas, tanpa bergantung pada penyelesaian siklus penagihan di Tata Rekening.
 4. Fakta pemenuhan aktual yang layak dibebankan (*Charge Eligibility*) telah diserahkan ke Tata Rekening (apabila terdapat porsi layanan yang terlaksana).
 
@@ -256,16 +257,16 @@ Berakhir ketika Clinical Order mencapai status akhir:
 
 | # | Criterion | Validates |
 |---|-----------|-----------|
-| AC-01 | Sistem mencatat Clinical Order terstruktur yang memuat identitas pasien, konteks kunjungan aktif, kategori order, indikasi klinis, prioritas, waktu permintaan, instruksi teknis, Author, Authorizer, Destination, dan penanggung jawab aktif. | Completeness |
-| AC-02 | Pembuatan draf, otorisasi, perutean, penerimaan, maupun persiapan order tidak membentuk kelayakan pembebanan biaya (*Charge Eligibility*) pada domain Tata Rekening. | Constraint |
-| AC-03 | Sistem membedakan secara tegas identitas pembuat draf (*Order Author*) dan pengesah (*Order Authorizer*) sebagai dua peran mandiri dalam pencatatan instruksi. | Correctness |
-| AC-04 | Siklus hidup Clinical Order bergerak melalui tahapan yang sah (`Draft` → `Authorized` → `Dispatched` → `Accepted` → `In Fulfilment` → `Fulfilled` → `Closed`), dan tidak menyamakan status persiapan dengan `Fulfilled`. | Correctness |
-| AC-05 | Destination dapat menerima (*Accept*), menolak (*Reject* dengan alasan), atau meminta klarifikasi (*Request Clarification*), di mana penangguhan klarifikasi hanya berdampak pada order terkait tanpa menahan order lain. | Completeness |
-| AC-06 | Setiap perubahan terhadap instruksi yang telah diotorisasi tercatat sebagai *Amendment* dengan mempertahankan riwayat instruksi awal, alasan perubahan, dan otorisasi perubahan. | Constraint |
+| AC-01 | Terdapat rekaman Clinical Order terstruktur yang memuat identitas pasien, konteks kunjungan aktif, kategori order, indikasi klinis, prioritas, waktu permintaan, instruksi teknis, Author, Authorizer, Destination, dan penanggung jawab aktif sesuai Order Definition. | Completeness |
+| AC-02 | Perekaman pembuatan draf, otorisasi, perutean, penerimaan, maupun persiapan order tidak membentuk kelayakan pembebanan biaya (*Charge Eligibility*) pada domain Tata Rekening. | Constraint |
+| AC-03 | Terdapat rekaman yang dapat membedakan identitas pembuat draf (*Order Author*) dan pengesah (*Order Authorizer*) sebagai dua peran mandiri. | Correctness |
+| AC-04 | Clinical Order bergerak melalui siklus hidup yang sah (`Draft` → `Authorized` → `Dispatched` → `Accepted` → `In Fulfilment` → `Fulfilled` → `Closed`), dan status persiapan/penerimaan tidak disamakan dengan `Fulfilled`. | Correctness |
+| AC-05 | Destination dapat melakukan penerimaan (*Accept*), penolakan (*Reject* dengan alasan), atau permintaan klarifikasi (*Request Clarification*), di mana penangguhan klarifikasi hanya berdampak pada order terkait tanpa menahan order lain. | Completeness |
+| AC-06 | Perubahan terhadap instruksi yang telah diotorisasi terekam sebagai *Amendment* dengan mempertahankan riwayat instruksi awal, alasan perubahan, dan otorisasi perubahan. | Constraint |
 | AC-07 | Perekaman Exceptional Order (Verbal, Darurat, Protokol, Retrospektif) mempertahankan kronologi waktu nyata tanpa *backdating*, serta mencatat otorisasi susulan dalam batas periode kebijakan rumah sakit. | Constraint |
 | AC-08 | Transisi perawatan (pindah ruangan, pergantian DPJP) mengalihkan tanggung jawab klinis atas Outstanding Orders kepada klinisi penanggung jawab baru tanpa mengubah data kepengarangan awal. | Correctness |
 | AC-09 | Pemulangan pasien tidak membatalkan Outstanding Orders secara otomatis dan mewajibkan penetapan disposisi melalui rekonsiliasi pemulangan (*Discharge Reconciliation*). | Constraint |
-| AC-10 | Status `Closed` dapat dicapai setelah seluruh tanggung jawab koordinasi klinis CPOE selesai, tanpa bergantung pada penyelesaian siklus penagihan di Tata Rekening. | Constraint |
+| AC-10 | Status `Closed` dicapai setelah seluruh tanggung jawab koordinasi klinis CPOE selesai, tanpa bergantung pada penyelesaian siklus penagihan di Tata Rekening. | Constraint |
 
 ---
 
