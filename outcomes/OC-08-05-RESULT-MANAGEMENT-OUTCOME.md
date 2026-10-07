@@ -3,7 +3,7 @@
 | Field       | Value                    |
 |-------------|--------------------------|
 | Code        | OC-08-05                 |
-| Version     | 1.0                      |
+| Version     | 1.1                      |
 | Status      | Final Draft              |
 | LastUpdated | 2026-10-07               |
 
@@ -17,7 +17,9 @@ OC-08-05 bertanggung jawab atas **Result Management** — yaitu pencatatan hasil
 
 Status `Recorded`, `Verified`, dan `Released` berlaku pada **Order Laboratorium secara utuh** — bukan pada Result atau item pemeriksaan individual. Result dapat tersedia secara bertahap: Order tidak harus menunggu seluruh pemeriksaan selesai untuk dapat di-Verify atau di-Release.
 
-Amend adalah command untuk mengoreksi Result yang telah tercatat. Amend tidak menghasilkan status tersendiri; Amend hanya mencatat **siapa, kapan, dan alasan** perubahan, sedangkan Result hanya menyimpan **nilai terakhir**.
+Amend adalah command untuk mengoreksi Result yang telah tercatat, termasuk Result pada Order yang sudah berstatus `Verified` atau `Released`. Amend tidak menghasilkan status tersendiri dan tidak mengubah status Order secara otomatis. Amend wajib mencatat **siapa, kapan, dan alasan** perubahan, sedangkan Result hanya menyimpan **nilai terakhir** — nilai sebelum Amend tidak disimpan sebagai version atau history.
+
+Apabila Result di-Amend setelah Order berstatus `Released`, nilai perubahan tersebut **belum dianggap sebagai hasil yang telah diverifikasi dan dirilis**. Agar perubahan tersebut menjadi hasil yang telah dirilis, Order harus melalui command **Verify** dan kemudian **Release** kembali secara eksplisit.
 
 ---
 
@@ -60,7 +62,7 @@ Hasil pemeriksaan laboratorium pada Order Laboratorium telah tercatat, dan Order
 - Setidaknya satu Result telah dicatat pada Order Laboratorium, menjadikan Order berstatus **`Recorded`**.
 - Status **`Verified`** hanya dapat ditetapkan melalui command **Verify** yang dijalankan secara eksplisit terhadap Order. Verify bukan proses otomatis.
 - Status **`Released`** hanya dapat ditetapkan melalui command **Release** yang dijalankan secara eksplisit terhadap Order, dan hanya terhadap Order yang sudah pernah melalui Verify (minimal sekali berstatus `Verified`).
-- **Amend** adalah command koreksi terhadap Result yang telah tercatat. Amend tidak menghasilkan status tersendiri pada Order. Amend hanya mencatat rekam jejak perubahan (siapa, kapan, alasan), sedangkan Result hanya menyimpan nilai terakhir.
+- **Amend** adalah command koreksi terhadap Result yang telah tercatat, termasuk Result pada Order yang sudah berstatus `Verified` atau `Released`. Amend tidak menghasilkan status tersendiri pada Order dan tidak mengubah status Order secara otomatis. Amend wajib mencatat rekam jejak perubahan (`AmendedBy`, `AmendedDateTime`, `AmendReason`), sedangkan Result hanya menyimpan nilai terakhir. Apabila Result pada Order berstatus `Released` di-Amend, perubahan nilai tersebut belum dianggap sebagai hasil yang telah diverifikasi dan dirilis; Order harus melalui Verify dan Release kembali secara eksplisit agar perubahan tersebut menjadi hasil yang telah dirilis.
 - Status Order Laboratorium (`Recorded`, `Verified`, `Released`) berlaku pada Order secara utuh, bukan per Result atau item pemeriksaan individual.
 
 ### 5.2 Required Recorded Information
@@ -95,7 +97,7 @@ Hasil pemeriksaan laboratorium pada Order Laboratorium telah tercatat, dan Order
 - Result dapat tersedia secara bertahap (partial result). Order tidak harus menunggu seluruh pemeriksaan selesai sebelum Verify atau Release dapat dijalankan.
 - Partial result release diperbolehkan: Order dapat di-Release meskipun belum seluruh Result tersedia.
 - Command Verify, Release, dan pencatatan Result hanya dapat dilakukan oleh actor yang memiliki kewenangan/permission sesuai access-control policy yang berlaku (tidak dikunci pada role tertentu di level Outcome ini).
-- Command Amend hanya dapat dijalankan terhadap Result yang telah tercatat pada Order yang sudah memiliki status Result Management (bukan terhadap Order yang belum pernah memiliki Result).
+- Command **Amend** dapat dijalankan terhadap Result yang telah tercatat, termasuk pada Order yang sudah berstatus `Verified` atau `Released`. Amend tidak mengubah status Order secara otomatis. Apabila Result pada Order berstatus `Released` di-Amend, perubahan nilai tersebut belum dianggap sebagai hasil yang telah diverifikasi dan dirilis; agar perubahan menjadi hasil yang telah dirilis, Order harus melalui Verify dan kemudian Release kembali secara eksplisit. AmendReason wajib disertakan.
 
 ### 5.4 Required Completion Conditions
 
@@ -125,7 +127,8 @@ OC-08-05 berakhir ketika Order Laboratorium mencapai status **`Released`** dan t
 
 - **Status berlaku pada Order, bukan pada Result individual.** `Recorded`, `Verified`, dan `Released` adalah status Order Laboratorium secara utuh. Tidak ada status per-Result (`PartiallyVerified`, `PartiallyReleased`, `Amended`, dsb.).
 - **Release hanya setelah Verify.** Order tidak dapat di-Release tanpa pernah melalui Verify terlebih dahulu.
-- **Amend bukan status.** Amend adalah command yang menghasilkan rekam jejak perubahan. Order tidak memiliki status `Amended`. Result hanya menyimpan nilai terakhir.
+- **Amend tidak mengubah status Order.** Amend adalah command koreksi terhadap Result yang telah tercatat, termasuk pada Order berstatus `Verified` atau `Released`. Amend tidak menghasilkan status tersendiri dan tidak mengubah status Order secara otomatis. Result hanya menyimpan nilai terakhir; nilai sebelum Amend tidak disimpan. `AmendedBy`, `AmendedDateTime`, dan `AmendReason` wajib dicatat.
+- **Amend setelah Released memerlukan Verify dan Release ulang.** Apabila Result pada Order berstatus `Released` di-Amend, perubahan nilai tersebut belum dianggap sebagai hasil yang telah diverifikasi dan dirilis. Agar perubahan menjadi hasil yang telah dirilis, Order harus melalui command **Verify** dan kemudian **Release** kembali secara eksplisit.
 - **Pencatatan Result baru tidak menurunkan status Order.** Result baru yang dicatat setelah Order berstatus `Verified` atau `Released` tidak otomatis mengembalikan status Order ke `Recorded`.
 - **Partial result diperbolehkan.** Verify dan Release dapat dijalankan meskipun belum seluruh Result tersedia, sesuai pertimbangan operasional.
 - **Verify dan Release dapat diulang.** Keduanya dapat dijalankan kembali sesuai kebutuhan operasional, selama memenuhi kondisi bisnis yang berlaku (khususnya Release hanya setelah Verify pernah dilakukan).
@@ -143,7 +146,8 @@ OC-08-05 berakhir ketika Order Laboratorium mencapai status **`Released`** dan t
 | Order Laboratorium berstatus `Cancelled` | Semua command Result Management ditolak. Order yang telah dibatalkan tidak dapat diproses dalam OC ini. |
 | Command Verify dijalankan pada Order yang belum memiliki Result (belum `Recorded`) | Verify ditolak. Order harus memiliki setidaknya satu Result yang tercatat. |
 | Command Release dijalankan pada Order yang belum pernah melalui Verify | Release ditolak. Release hanya dapat dilakukan terhadap Order yang sudah pernah berstatus `Verified`. |
-| Command Amend dijalankan tanpa menyertakan alasan perubahan (`AmendReason`) | Amend ditolak. Alasan perubahan wajib dicatat sebagai bagian dari rekam jejak Amend. |
+| Command Amend dijalankan tanpa menyertakan alasan perubahan (`AmendReason`) | Amend ditolak. `AmendReason` wajib dicatat sebagai bagian dari rekam jejak Amend. |
+| Command Amend dijalankan terhadap Result pada Order berstatus `Released`, lalu tidak dilanjutkan dengan Verify dan Release ulang | Amend tetap diterima dan rekam jejak tersimpan, namun perubahan nilai belum dianggap sebagai hasil yang telah diverifikasi dan dirilis hingga Order melalui Verify dan Release kembali secara eksplisit. |
 | Actor tidak memiliki kewenangan/permission untuk menjalankan command yang dimaksud | Command ditolak. Hanya actor yang berwenang sesuai access-control policy yang berlaku yang dapat menjalankan command Result Management. |
 | Penyimpanan pencatatan Result, Verify, Release, atau Amend gagal | Status Order tidak berubah dan perubahan tidak tersimpan. Sistem mempertahankan kondisi sebelumnya. |
 
@@ -160,7 +164,7 @@ OC-08-05 berakhir ketika Order Laboratorium mencapai status **`Released`** dan t
 | AC-05 | Command **Release** ditolak apabila Order belum pernah berstatus `Verified` (belum pernah melalui proses Verify). | Constraint |
 | AC-06 | Command **Verify** ditolak apabila Order belum memiliki Result yang tercatat (belum `Recorded`). | Constraint |
 | AC-07 | Pencatatan Result baru pada Order yang sudah berstatus `Verified` atau `Released` **tidak mengubah status Order**. Status Order tetap pada nilai terakhirnya. | Correctness |
-| AC-08 | Command **Amend** berhasil mengoreksi nilai Result dan menyimpan rekam jejak perubahan: **AmendedDateTime**, **AmendedBy**, dan **AmendReason**. Result hanya menyimpan nilai terakhir setelah Amend. | Correctness |
+| AC-08 | Command **Amend** dapat dijalankan terhadap Result yang telah tercatat, termasuk pada Order berstatus `Verified` atau `Released`. Amend berhasil mengoreksi nilai Result dan menyimpan rekam jejak perubahan: **AmendedDateTime**, **AmendedBy**, dan **AmendReason**. Result hanya menyimpan nilai terakhir setelah Amend; nilai sebelum Amend tidak disimpan. | Correctness |
 | AC-09 | Command Amend ditolak apabila tidak menyertakan **AmendReason**. | Constraint |
 | AC-10 | Order tidak memiliki status `Amended`, `PartiallyVerified`, `PartiallyReleased`, atau status turunan per-Result lainnya. Status Order hanya: `Recorded`, `Verified`, atau `Released`. | Correctness |
 | AC-11 | Command **Verify** dan **Release** dapat dijalankan kembali terhadap Order yang sudah pernah `Verified` atau `Released`, selama memenuhi kondisi bisnis yang berlaku. | Correctness |
@@ -169,6 +173,7 @@ OC-08-05 berakhir ketika Order Laboratorium mencapai status **`Released`** dan t
 | AC-14 | Semua command Result Management ditolak apabila Order berstatus `Cancelled`. | Constraint |
 | AC-15 | Status Order hanya diperbarui setelah pencatatan berhasil tersimpan secara persisten. Kegagalan penyimpanan tidak mengubah status Order. | Constraint |
 | AC-16 | Semua command Result Management hanya dapat dijalankan oleh actor yang memiliki kewenangan/permission sesuai access-control policy yang berlaku. | Correctness |
+| AC-17 | Apabila Result pada Order berstatus `Released` di-Amend, status Order **tidak berubah secara otomatis**. Perubahan nilai tersebut belum dianggap sebagai hasil yang telah diverifikasi dan dirilis hingga Order melalui command **Verify** dan kemudian **Release** kembali secara eksplisit. | Constraint |
 
 ---
 
@@ -195,7 +200,7 @@ OC-08-05 berakhir ketika Order Laboratorium mencapai status **`Released`** dan t
 2. **Semantik `Recorded`:** Order berstatus `Recorded` berarti sudah terdapat minimal satu Result yang dicatat pada Order tersebut.
 3. **Semantik Verify:** Verify adalah command eksplisit terhadap Order yang menghasilkan status `Verified`. Verify bukan proses otomatis.
 4. **Semantik Release:** Release adalah command eksplisit terhadap Order yang menghasilkan status `Released`. Release hanya dapat dilakukan terhadap Order yang sudah pernah melalui Verify (pernah berstatus `Verified` minimal sekali).
-5. **Semantik Amend:** Amend adalah command, bukan status. Amend mencatat siapa, kapan, dan alasan perubahan. Result hanya menyimpan nilai terakhir; nilai sebelum Amend tidak disimpan oleh OC ini.
+5. **Semantik Amend:** Amend adalah command koreksi terhadap Result yang telah tercatat, termasuk pada Order yang sudah berstatus `Verified` atau `Released`. Amend bukan status — Order tidak memiliki status `Amended`. Amend tidak mengubah status Order secara otomatis. Amend wajib mencatat `AmendedBy`, `AmendedDateTime`, dan `AmendReason`; Result hanya menyimpan nilai terakhir; nilai sebelum Amend tidak disimpan sebagai version atau history.
 6. **Lifecycle konseptual, bukan state machine ketat:** Urutan `Recorded → Verified → Released` adalah urutan yang diharapkan, tetapi tidak diberlakukan sebagai state machine yang kaku. Verify dan Release dapat dijalankan kembali sesuai kebutuhan operasional.
 7. **Pencatatan Result baru tidak menurunkan status Order:** Result baru yang dicatat pada Order berstatus `Verified` atau `Released` tidak otomatis mengembalikan status Order ke `Recorded`.
 8. **Partial result diperbolehkan:** Order dapat di-Verify atau di-Release meskipun belum seluruh Result tersedia. Partial result release diperbolehkan.
@@ -203,6 +208,7 @@ OC-08-05 berakhir ketika Order Laboratorium mencapai status **`Released`** dan t
 10. **AmendReason wajib:** Rekam jejak Amend wajib menyertakan alasan perubahan. Amend tanpa AmendReason ditolak.
 11. **Persistence sebelum status:** Status Order hanya diperbarui setelah pencatatan berhasil tersimpan. Kegagalan penyimpanan tidak mengubah status Order.
 12. **Actor Authorization:** Kewenangan menjalankan command Result Management diatur oleh access-control policy. OC-08-05 tidak mengunci pada role tertentu di level Outcome.
+13. **Konsekuensi Amend setelah Released:** Apabila Result pada Order berstatus `Released` di-Amend, perubahan nilai tersebut belum dianggap sebagai hasil yang telah diverifikasi dan dirilis. Agar perubahan menjadi hasil yang telah dirilis, Order harus melalui command Verify dan kemudian Release kembali secara eksplisit. Status Order tidak berubah secara otomatis akibat Amend.
 
 ### Open Questions
 
