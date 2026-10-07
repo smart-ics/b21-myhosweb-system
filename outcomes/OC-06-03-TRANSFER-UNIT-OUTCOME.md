@@ -3,7 +3,7 @@
 | Field       | Value        |
 |-------------|--------------|
 | Code        | OC-06-03     |
-| Version     | 1.3          |
+| Version     | 1.4          |
 | Status      | Draft        |
 | LastUpdated | 2026-10-07   |
 
@@ -39,8 +39,8 @@ Outcome ini merepresentasikan fakta operasional yang dapat diamati (*observable*
 
 | Domain | Role in this Outcome |
 |--------|----------------------|
-| Rawat Inap (`RNA`) | Mengelola pencatatan perubahan unit pelayanan/perawatan pasien dan penerimaan di unit perawatan berikutnya (`RNA-TRANSFER`), sesuai penugasan domain dalam Domain Catalog. |
-| Gawat Darurat (`IGD`) | Mengelola transfer keluar saat pasien beralih dari unit gawat darurat menuju unit rawat inap (`IGD-RANAP`). |
+| Rawat Inap (`RNA`) | Mengelola pencatatan perubahan unit pelayanan/perawatan pasien ketika transfer melibatkan unit rawat inap (`RNA-TRANSFER`), sesuai penugasan domain dalam Domain Catalog. |
+| Gawat Darurat (`IGD`) | Mengelola transfer keluar ketika pasien beralih dari unit gawat darurat menuju unit rawat inap (`IGD-RANAP`). |
 | Admission (`ADM`) | Menyediakan konteks episode pelayanan aktif tempat terjadinya perubahan unit pelayanan/perawatan (`ADM-REG`). |
 | Pasien (`PAS`) | Menyediakan data identitas pasien yang mengalami perubahan unit pelayanan/perawatan (`PAS-DATSOS`). |
 | Organisasi (`ORG`) | Menyediakan referensi unit layanan yang sah sebagai unit asal dan unit tujuan (`ORG-LAYANAN`, `ORG-BANGSAL`). |
@@ -52,19 +52,20 @@ Outcome ini merepresentasikan fakta operasional yang dapat diamati (*observable*
 
 ## 4. Participating Capabilities
 
-| Capability | Domain | Status |
-|------------|--------|--------|
-| `RNA-TRANSFER` Transfer Ke Unit Lain | Rawat Inap | Known |
-| `IGD-RANAP` Transfer Ranap | Gawat Darurat | Known |
-| `ADM-REG` Registration | Admission | Known |
-| `PAS-DATSOS` Data Sosial Pasien | Pasien | Known |
-| `ORG-LAYANAN` Unit Layanan | Organisasi | Known |
-| `ORG-BANGSAL` Room Bangsal Management | Organisasi | Known |
+| Capability | Domain | Status | Konteks Partisipasi |
+|------------|--------|--------|---------------------|
+| `RNA-TRANSFER` Transfer Ke Unit Lain | Rawat Inap | Known | Berpartisipasi pada skenario transfer yang melibatkan unit rawat inap (misalnya antar-bangsal rawat inap, rawat inap ke ICU/isolasi, atau sebaliknya). Bukan merupakan capability wajib untuk seluruh kemungkinan skenario transfer di luar rawat inap. |
+| `IGD-RANAP` Transfer Ranap | Gawat Darurat | Known | Berpartisipasi secara spesifik pada skenario transfer pasien dari IGD menuju unit rawat inap. Tidak berlaku untuk skenario transfer antar-unit lainnya. |
+| `ADM-REG` Registration | Admission | Known | Menyediakan konteks episode pelayanan aktif tempat terjadinya perubahan unit pelayanan/perawatan. |
+| `PAS-DATSOS` Data Sosial Pasien | Pasien | Known | Menyediakan identitas pasien yang mengalami perubahan unit pelayanan/perawatan. |
+| `ORG-LAYANAN` Unit Layanan | Organisasi | Known | Menyediakan referensi unit layanan yang sah sebagai unit asal dan unit tujuan. |
+| `ORG-BANGSAL` Room Bangsal Management | Organisasi | Known | Menyediakan referensi bangsal/ruang perawatan ketika transfer melibatkan fasilitas rawat inap. |
 
 > **Capability Status values:** Known · Existing but Undocumented · Capability Candidate
 >
-> **Catatan Tata Kelola & Otoritas Capability Catalog:**
-> Capability Catalog pada `domain/DOMAIN-CATALOG.md` adalah sumber otoritatif tunggal (*authoritative source*). OC-06-03 tidak membuat atau mengubah Domain/Capability secara sepihak. Seluruh capability yang terlibat telah berstatus **Known** dan merujuk secara ketat pada katalog yang berlaku. Sesuai aturan `SKILL.md`, jika di kemudian hari timbul kebutuhan capability yang belum tersedia dalam katalog, analis wajib menghentikan proses (STOP) dan melakukan eskalasi kepada Product Owner untuk persetujuan ruang lingkup (*scope approval*).
+> **Catatan Partisipasi Kontekstual & Otoritas Capability Catalog:**
+> 1. Partisipasi capability bersifat kontekstual sesuai skenario bisnis perpindahan unit yang terjadi. Capability seperti `RNA-TRANSFER` dan `IGD-RANAP` bukan merupakan capability yang selalu wajib untuk setiap Transfer Unit, melainkan berpartisipasi sesuai batasan domain masing-masing dalam Capability Catalog.
+> 2. Capability Catalog pada `domain/DOMAIN-CATALOG.md` adalah sumber otoritatif tunggal (*authoritative source*). OC-06-03 tidak membuat atau mengubah Domain/Capability secara sepihak. Seluruh capability yang terlibat telah berstatus **Known** dan merujuk secara ketat pada katalog yang berlaku. Sesuai aturan `SKILL.md`, jika di kemudian hari timbul kebutuhan capability yang belum tersedia dalam katalog, analis wajib menghentikan proses (STOP) dan melakukan eskalasi kepada Product Owner untuk persetujuan ruang lingkup (*scope approval*).
 
 ---
 
@@ -96,7 +97,7 @@ Pencatatan Transfer Unit membuktikan informasi bisnis inti berikut secara *imple
 - Unit asal dan unit tujuan adalah unit pelayanan/perawatan yang sah dan terdaftar aktif dalam struktur organisasi rumah sakit.
 - Unit tujuan harus berbeda dari unit asal.
 - Unit tujuan adalah unit yang menjadi unit pelayanan/perawatan pasien berikutnya, bukan sekadar tempat pasien datang untuk mendapatkan layanan.
-- Waktu perubahan unit adalah waktu yang sah (kronologis dan tidak berada di masa depan).
+- Waktu terjadinya perubahan unit pelayanan/perawatan tercatat dalam konteks episode pelayanan yang bersangkutan.
 
 ### 5.4 Completion Proof
 
@@ -133,7 +134,7 @@ Berakhir ketika rekaman operasional perubahan unit pelayanan/perawatan pasien ke
      - Rawat Inap → Radiologi untuk pemeriksaan = bukan Transfer Unit.
      - Rawat Inap → Laboratorium untuk pemeriksaan = bukan Transfer Unit.
      - Rawat Inap → Kamar Operasi (OK) untuk operasi = bukan Transfer Unit.
-   Pada contoh tersebut pasien hanya berpindah fisik sementara untuk memperoleh layanan/tindakan, bukan berpindah unit pelayanan/perawatan sebagai unit pasien.
+   Pada contoh tersebut pasien hanya berpindah fisik sementara untuk memperoleh layanan/tindakan, bukan berpindah unit pelayanan/perawatan sebagai unit pasien. Pencatatan aktivitas tersebut mengikuti outcome yang relevan dan tidak otomatis dikategorikan sebagai Transfer Unit.
 3. **Perubahan Bed dalam Unit yang Sama Bukan Transfer Unit:**
    Perubahan atau perpindahan bed di dalam unit pelayanan/perawatan yang sama bukan Transfer Unit.
    - **Contoh:** Perpindahan dari Bed A-01 ke Bed A-05 dalam unit Rawat Inap yang sama adalah domain **OC-06-02 Pakai Bed**, bukan Transfer Unit.
@@ -172,8 +173,8 @@ Berakhir ketika rekaman operasional perubahan unit pelayanan/perawatan pasien ke
 | Episode pelayanan pasien tidak aktif (sudah *Discharged* atau Batal) | **Pencatatan ditolak.** Transfer Unit hanya dapat dilakukan pada pasien dengan episode pelayanan yang masih aktif. |
 | Unit tujuan sama dengan unit asal | **Pencatatan ditolak sebagai Transfer Unit.** Apabila terjadi pergantian bed dalam unit yang sama, proses diarahkan ke pencatatan perubahan bed pada OC-06-02 Pakai Bed. |
 | Unit asal atau tujuan bukan unit yang sah dalam master organisasi | **Pencatatan ditolak.** Unit harus terdaftar, valid, dan aktif sebagai unit pelayanan rumah sakit. |
-| Pasien berpindah sementara untuk memperoleh layanan/tindakan (misal ke OK, Lab, Radiologi) tanpa perubahan unit pelayanan/perawatan | **Pencatatan sebagai Transfer Unit ditolak.** Aktivitas tersebut dicatat sebagai tindakan (OC-06-01) di mana unit pelayanan/perawatan pasien tetap berada di unit asal. |
-| Waktu transfer tidak valid (mendahului waktu registrasi/masuk unit asal atau berada di masa depan) | **Pencatatan ditolak.** Waktu transfer harus kronologis dan tidak melampaui waktu saat ini. |
+| Pasien berpindah sementara ke unit lain (misalnya ke Radiologi, Laboratorium, Kamar Operasi) untuk menerima layanan/prosedur tanpa perubahan unit pelayanan/perawatan | **Pencatatan sebagai Transfer Unit ditolak.** Aktivitas tersebut bukan Transfer Unit karena tidak mengubah unit pelayanan/perawatan pasien. Pencatatan aktivitasnya mengikuti outcome yang relevan dan tidak otomatis dikategorikan sebagai OC-06-01 Tindakan. |
+| Waktu transfer tidak tercatat atau berada di luar rentang episode pelayanan yang bersangkutan | **Pencatatan ditolak.** Waktu terjadinya perubahan unit harus tercatat secara sah dalam rentang episode pelayanan aktif. |
 
 ---
 
@@ -186,7 +187,7 @@ Berakhir ketika rekaman operasional perubahan unit pelayanan/perawatan pasien ke
 | AC-01 | Pasien dan episode pelayanan aktif teridentifikasi dalam pencatatan Transfer Unit. | Completeness |
 | AC-02 | Unit asal dan unit tujuan teridentifikasi serta terbukti saling berbeda. | Correctness |
 | AC-03 | Unit tujuan terkonfirmasi sebagai unit pelayanan/perawatan pasien berikutnya, bukan sekadar lokasi tindakan sementara. | Correctness |
-| AC-04 | Waktu perubahan unit tercatat secara valid dan kronologis. | Completeness |
+| AC-04 | Waktu perubahan unit tercatat secara sah dalam konteks episode pelayanan aktif. | Completeness |
 | AC-05 | Terdapat rekaman operasional yang membuktikan unit pelayanan/perawatan pasien telah beralih ke unit tujuan dalam episode pelayanan yang sama. | Completeness |
 | AC-06 | Perubahan bed di dalam unit yang sama (misal Bed A-01 ke Bed A-05) tidak menghasilkan pencatatan Transfer Unit. | Constraint |
 | AC-07 | Kunjungan sementara ke unit lain untuk tindakan atau pemeriksaan (Radiologi, Laboratorium, OK) tidak menghasilkan pencatatan Transfer Unit. | Constraint |
