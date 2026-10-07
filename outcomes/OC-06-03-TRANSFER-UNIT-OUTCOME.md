@@ -3,7 +3,7 @@
 | Field       | Value        |
 |-------------|--------------|
 | Code        | OC-06-03     |
-| Version     | 1.2          |
+| Version     | 1.3          |
 | Status      | Draft        |
 | LastUpdated | 2026-10-07   |
 
@@ -17,7 +17,7 @@ Rumah sakit memerlukan pencatatan operasional yang membuktikan bahwa unit pelaya
 
 Unit tujuan yang dimaksud adalah unit yang menjadi **unit pelayanan/perawatan pasien berikutnya**, bukan sekadar tempat pasien datang untuk mendapatkan layanan.
 
-Fokus outcome ini adalah **fakta bisnis (*business fact*) operasional bahwa unit pelayanan/perawatan pasien telah berubah**, bukan perpindahan fisik pasien semata dan bukan sistem pelacakan pergerakan (*patient tracking* atau *patient journey*). Transfer Unit memastikan rumah sakit memiliki rekaman operasional yang jelas bahwa pasien telah beralih ke unit pelayanan/perawatan berikutnya dalam episode pelayanan yang aktif.
+Fokus outcome ini adalah **fakta bisnis (*operational business fact*) bahwa unit pelayanan/perawatan pasien telah berubah**, bukan perpindahan fisik pasien semata dan bukan sistem pelacakan pergerakan (*patient tracking* atau *patient journey*). Transfer Unit memastikan rumah sakit memiliki rekaman operasional yang jelas bahwa pasien telah beralih ke unit pelayanan/perawatan berikutnya dalam episode pelayanan yang aktif.
 
 ---
 
@@ -30,8 +30,8 @@ Fokus outcome ini adalah **fakta bisnis (*business fact*) operasional bahwa unit
 
 Outcome ini merepresentasikan fakta operasional yang dapat diamati (*observable*):
 1. Pasien teridentifikasi dalam episode pelayanan yang aktif;
-2. Unit pelayanan/perawatan asal dan unit pelayanan/perawatan tujuan teridentifikasi dan saling berbeda;
-3. Perubahan unit pelayanan/perawatan pasien dari unit asal ke unit tujuan telah tercatat dan berlaku efektif dalam episode pelayanan yang sama.
+2. Unit asal dan unit tujuan teridentifikasi serta saling berbeda;
+3. Unit tujuan merupakan unit pelayanan/perawatan pasien berikutnya.
 
 ---
 
@@ -74,41 +74,35 @@ Outcome ini merepresentasikan fakta operasional yang dapat diamati (*observable*
 
 ### 5.1 Required Business Facts
 
-- Pasien yang mengalami perubahan unit teridentifikasi dalam episode pelayanan yang aktif.
-- Episode pelayanan aktif yang menaungi perubahan unit teridentifikasi.
-- Unit pelayanan/perawatan asal (*origin care unit*) teridentifikasi secara sah.
-- Unit pelayanan/perawatan tujuan (*destination care unit*) teridentifikasi secara sah dan berbeda dari unit asal.
-- Unit tujuan teridentifikasi sebagai unit pelayanan/perawatan pasien berikutnya.
+- Pasien teridentifikasi dalam episode pelayanan yang aktif.
+- Unit asal dan unit tujuan teridentifikasi serta saling berbeda.
+- Unit tujuan merupakan unit pelayanan/perawatan pasien berikutnya.
 - Waktu terjadinya perubahan unit pelayanan/perawatan tercatat.
-- Perubahan unit pelayanan/perawatan pasien dari unit asal ke unit tujuan dalam episode pelayanan yang sama telah tercatat dan berlaku efektif.
+- Terbentuk rekaman operasional bahwa unit pelayanan/perawatan pasien telah beralih ke unit tujuan dalam episode pelayanan yang sama.
 
 ### 5.2 Required Recorded Information
 
-Pencatatan Transfer Unit harus membuktikan informasi bisnis inti berikut secara *implementation-independent* tanpa memasukkan detail transportasi, proses klinis, atau klasifikasi tambahan:
+Pencatatan Transfer Unit membuktikan informasi bisnis inti berikut secara *implementation-independent* tanpa memuat detail transportasi, proses klinis, atau klasifikasi tambahan:
 
 - Identitas pasien.
 - Identitas episode pelayanan aktif.
-- Unit pelayanan/perawatan asal (*origin care unit*).
-- Unit pelayanan/perawatan tujuan (*destination care unit*).
-- Waktu terjadinya perubahan unit pelayanan/perawatan (tanggal dan jam efektif).
+- Unit asal (*origin care unit*).
+- Unit tujuan (*destination care unit*).
+- Waktu perubahan unit (tanggal dan jam).
 
 ### 5.3 Required Business Conditions
 
-- Pasien berada dalam episode pelayanan yang aktif (tidak berstatus *discharge*, batal, atau selesai pelayanan).
-- Unit asal dan unit tujuan adalah unit pelayanan/perawatan yang sah dalam struktur organisasi rumah sakit.
+- Pasien berada dalam episode pelayanan yang aktif (bukan berstatus *discharge*, batal, atau selesai pelayanan).
+- Unit asal dan unit tujuan adalah unit pelayanan/perawatan yang sah dan terdaftar aktif dalam struktur organisasi rumah sakit.
 - Unit tujuan harus berbeda dari unit asal.
 - Unit tujuan adalah unit yang menjadi unit pelayanan/perawatan pasien berikutnya, bukan sekadar tempat pasien datang untuk mendapatkan layanan.
-- Waktu perubahan unit adalah waktu yang sah dan tidak berada di masa depan.
+- Waktu perubahan unit adalah waktu yang sah (kronologis dan tidak berada di masa depan).
 
 ### 5.4 Completion Proof
 
 > Bukti utama keberhasilan outcome:
 
-- Unit asal teridentifikasi;
-- Unit tujuan teridentifikasi;
-- Keduanya terbukti berbeda;
-- Perubahan terjadi dalam episode pelayanan yang sama;
-- Perubahan unit pelayanan/perawatan pasien tersebut telah tercatat dan berlaku efektif.
+- Adanya rekaman operasional yang membuktikan bahwa unit pelayanan/perawatan pasien dalam episode pelayanan yang sama telah beralih dari unit asal ke unit tujuan yang berbeda, dengan waktu perubahan yang tercatat.
 
 ---
 
@@ -120,7 +114,7 @@ Dimulai ketika pencatatan perubahan unit pelayanan/perawatan pasien dari unit as
 
 ### End
 
-Berakhir ketika perubahan unit pelayanan/perawatan pasien dari unit asal ke unit tujuan telah tercatat dan berlaku efektif.
+Berakhir ketika rekaman operasional perubahan unit pelayanan/perawatan pasien ke unit tujuan telah terbentuk.
 
 > **Catatan Batasan:**
 > Jika perpindahan unit menyebabkan perubahan bed, perubahan penggunaan bed tersebut bukan merupakan bagian dari batasan outcome ini, melainkan dicatat secara terpisah pada **OC-06-02 Pakai Bed**. Berakhirnya Transfer Unit menandai tuntasnya pencatatan perubahan unit pelayanan/perawatan pasien, bukan selesainya proses fisik perjalanan pasien dan bukan berakhirnya episode pelayanan rawat inap.
@@ -131,8 +125,8 @@ Berakhir ketika perubahan unit pelayanan/perawatan pasien dari unit asal ke unit
 
 > Aturan bisnis yang menjadi batasan utama (constraints) untuk Outcome ini.
 
-1. **Fokus Tunggal pada Perubahan Unit Pelayanan/Perawatan:**
-   Transfer Unit hanya berfokus pada pencatatan perubahan unit pelayanan/perawatan pasien dari unit asal ke unit tujuan. Transfer Unit tidak boleh didefinisikan sebagai pencatatan seluruh perpindahan atau lokasi fisik pasien.
+1. **Fokus pada Perubahan Unit Pelayanan/Perawatan:**
+   Transfer Unit hanya berfokus pada pencatatan perubahan unit pelayanan/perawatan pasien dari unit asal ke unit tujuan, bukan mencatat seluruh perpindahan atau lokasi fisik pasien.
 2. **Perpindahan Fisik Sementara Bukan Transfer Unit:**
    Perpindahan fisik sementara untuk memperoleh layanan atau tindakan di unit lain bukan Transfer Unit, selama unit pelayanan/perawatan pasien tetap sama.
    - **Contoh:**
@@ -175,9 +169,9 @@ Berakhir ketika perubahan unit pelayanan/perawatan pasien dari unit asal ke unit
 
 | Exception | Expected Behavior |
 |-----------|-------------------|
-| Episode pelayanan pasien tidak aktif atau sudah *Discharged* / Batal | **Pencatatan ditolak.** Transfer Unit hanya dapat dilakukan pada pasien dengan episode pelayanan yang masih aktif. |
+| Episode pelayanan pasien tidak aktif (sudah *Discharged* atau Batal) | **Pencatatan ditolak.** Transfer Unit hanya dapat dilakukan pada pasien dengan episode pelayanan yang masih aktif. |
 | Unit tujuan sama dengan unit asal | **Pencatatan ditolak sebagai Transfer Unit.** Apabila terjadi pergantian bed dalam unit yang sama, proses diarahkan ke pencatatan perubahan bed pada OC-06-02 Pakai Bed. |
-| Unit tujuan bukan merupakan unit pelayanan/perawatan yang sah dalam master organisasi | **Pencatatan ditolak.** Unit tujuan harus terdaftar, valid, dan aktif sebagai unit pelayanan rumah sakit. |
+| Unit asal atau tujuan bukan unit yang sah dalam master organisasi | **Pencatatan ditolak.** Unit harus terdaftar, valid, dan aktif sebagai unit pelayanan rumah sakit. |
 | Pasien berpindah sementara untuk memperoleh layanan/tindakan (misal ke OK, Lab, Radiologi) tanpa perubahan unit pelayanan/perawatan | **Pencatatan sebagai Transfer Unit ditolak.** Aktivitas tersebut dicatat sebagai tindakan (OC-06-01) di mana unit pelayanan/perawatan pasien tetap berada di unit asal. |
 | Waktu transfer tidak valid (mendahului waktu registrasi/masuk unit asal atau berada di masa depan) | **Pencatatan ditolak.** Waktu transfer harus kronologis dan tidak melampaui waktu saat ini. |
 
@@ -189,18 +183,17 @@ Berakhir ketika perubahan unit pelayanan/perawatan pasien dari unit asal ke unit
 
 | # | Kriteria Penerimaan | Validasi |
 |---|---------------------|----------|
-| AC-01 | Pasien dan episode pelayanan aktif teridentifikasi secara lengkap dalam pencatatan Transfer Unit. | Completeness |
-| AC-02 | Unit pelayanan/perawatan asal dan unit tujuan teridentifikasi secara sah dalam struktur organisasi rumah sakit. | Completeness |
-| AC-03 | Unit tujuan terbukti berbeda dari unit asal. | Constraint |
-| AC-04 | Unit tujuan terkonfirmasi sebagai unit pelayanan/perawatan pasien berikutnya, bukan sekadar unit penerima kunjungan tindakan sementara. | Correctness |
-| AC-05 | Waktu perubahan unit tercatat secara valid dan tidak berada di masa depan. | Completeness |
-| AC-06 | Perubahan unit pelayanan/perawatan dari unit asal ke unit tujuan tercatat dan berlaku efektif pada episode pelayanan yang bersangkutan. | Correctness |
-| AC-07 | Perubahan bed di dalam unit yang sama (misal Bed A-01 ke Bed A-05) tidak menghasilkan pencatatan Transfer Unit. | Constraint |
-| AC-08 | Kunjungan sementara ke unit lain untuk tindakan atau pemeriksaan (Radiologi, Laboratorium, OK) tidak menghasilkan pencatatan Transfer Unit. | Constraint |
-| AC-09 | Contoh representatif perpindahan (seperti IGD ke Rawat Inap, Rawat Inap A ke Rawat Inap B, Rawat Inap ke ICU, ICU ke Rawat Inap, dan Rawat Inap ke Ruang Isolasi) terbukti dapat dicatat sebagai Transfer Unit. | Correctness |
-| AC-10 | Pencatatan Transfer Unit tidak memuat detail klinis, metode transportasi, petugas pengantar, atau klasifikasi transfer tambahan yang tidak diperlukan. | Constraint |
-| AC-11 | Perubahan penggunaan bed yang menyertai perpindahan unit rawat inap tercatat secara terpisah pada OC-06-02 Pakai Bed dan tidak menjadi bagian dari definisi Transfer Unit. | Constraint |
-| AC-12 | Upaya pencatatan transfer unit pada episode yang tidak aktif atau unit tujuan yang tidak sah ditolak oleh sistem sesuai aturan bisnis exception. | Exception |
+| AC-01 | Pasien dan episode pelayanan aktif teridentifikasi dalam pencatatan Transfer Unit. | Completeness |
+| AC-02 | Unit asal dan unit tujuan teridentifikasi serta terbukti saling berbeda. | Correctness |
+| AC-03 | Unit tujuan terkonfirmasi sebagai unit pelayanan/perawatan pasien berikutnya, bukan sekadar lokasi tindakan sementara. | Correctness |
+| AC-04 | Waktu perubahan unit tercatat secara valid dan kronologis. | Completeness |
+| AC-05 | Terdapat rekaman operasional yang membuktikan unit pelayanan/perawatan pasien telah beralih ke unit tujuan dalam episode pelayanan yang sama. | Completeness |
+| AC-06 | Perubahan bed di dalam unit yang sama (misal Bed A-01 ke Bed A-05) tidak menghasilkan pencatatan Transfer Unit. | Constraint |
+| AC-07 | Kunjungan sementara ke unit lain untuk tindakan atau pemeriksaan (Radiologi, Laboratorium, OK) tidak menghasilkan pencatatan Transfer Unit. | Constraint |
+| AC-08 | Contoh representatif perpindahan (seperti IGD ke Rawat Inap, Rawat Inap A ke Rawat Inap B, Rawat Inap ke ICU, ICU ke Rawat Inap, dan Rawat Inap ke Ruang Isolasi) terbukti dapat dicatat sebagai Transfer Unit. | Correctness |
+| AC-09 | Pencatatan Transfer Unit tidak memuat detail klinis, metode transportasi, petugas pengantar, atau klasifikasi transfer tambahan. | Constraint |
+| AC-10 | Perubahan penggunaan bed yang menyertai perpindahan unit rawat inap tercatat secara terpisah pada OC-06-02 Pakai Bed dan tidak menjadi bagian dari definisi Transfer Unit. | Constraint |
+| AC-11 | Upaya pencatatan transfer unit pada episode yang tidak aktif, unit yang tidak sah, atau unit tujuan yang sama ditolak oleh sistem sesuai aturan bisnis exception. | Exception |
 
 ---
 
