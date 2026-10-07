@@ -3,7 +3,9 @@
     "workPackage": "Preparation & Outcome Discovery Workspace System Architecture & Discovery (SC-00-01)",
     "pic": "All PICs",
     "totalEffort": 5,
-    "Outcomes": ["Outcome Discovery"],
+    "Outcomes": [
+      "Outcome Discovery"
+    ],
     "tasks": [
       {
         "taskId": "SC-00-01-01",
@@ -20,8 +22,13 @@
   {
     "workPackage": "Admisi Workspace Booking (SC-01-01)",
     "pic": "Arif",
-    "totalEffort": 17,
-    "Outcomes": ["Booking", "PasienTracker", "JadwalPraktek", "Antrian"],
+    "totalEffort": 16,
+    "Outcomes": [
+      "Booking",
+      "PasienTracker",
+      "JadwalPraktek",
+      "Antrian"
+    ],
     "tasks": [
       {
         "taskId": "SC-01-01-01",
@@ -63,8 +70,14 @@
   {
     "workPackage": "Admisi Workspace Reg Rajal-IGD (SC-01-02)",
     "pic": "Arif",
-    "totalEffort": 17,
-    "Outcomes": ["Registrasi", "VclaimBpjs", "PasienTracker", "JadwalPraktek", "Antrian"],
+    "totalEffort": 16,
+    "Outcomes": [
+      "Registrasi",
+      "VclaimBpjs",
+      "PasienTracker",
+      "JadwalPraktek",
+      "Antrian"
+    ],
     "tasks": [
       {
         "taskId": "SC-01-02-01",
@@ -107,7 +120,12 @@
     "workPackage": "Admisi Workspace Reg Ranap (SC-01-03)",
     "pic": "Arif",
     "totalEffort": 17,
-    "Outcomes": ["Registrasi", "VclaimBpjs", "PasienTracker", "WaitingList"],
+    "Outcomes": [
+      "Registrasi",
+      "VclaimBpjs",
+      "PasienTracker",
+      "WaitingList"
+    ],
     "tasks": [
       {
         "taskId": "SC-01-03-01",
@@ -149,8 +167,12 @@
   {
     "workPackage": "Poli Rawat Jalan Workspace Tindakan (SC-05-01)",
     "pic": "Fikri",
-    "totalEffort": 17,
-    "Outcomes": ["Tindakan", "Billing", "PakaiBrg"],
+    "totalEffort": 18,
+    "Outcomes": [
+      "Tindakan",
+      "Billing",
+      "PakaiBrg"
+    ],
     "tasks": [
       {
         "taskId": "SC-05-01-01",
@@ -192,8 +214,12 @@
   {
     "workPackage": "Poli Rawat Jalan Workspace Local Inventory (SC-05-02)",
     "pic": "Fikri",
-    "totalEffort": 17,
-    "Outcomes": ["StokOpname", "ReqMutasi", "TerimaMutasi"],
+    "totalEffort": 18,
+    "Outcomes": [
+      "StokOpname",
+      "ReqMutasi",
+      "TerimaMutasi"
+    ],
     "tasks": [
       {
         "taskId": "SC-05-02-01",
@@ -236,7 +262,10 @@
     "workPackage": "Tata Rekening Workspace Reg Out (SC-02-01)",
     "pic": "Erkoc",
     "totalEffort": 17,
-    "Outcomes": ["Billing", "OrderPayment"],
+    "Outcomes": [
+      "Billing",
+      "OrderPayment"
+    ],
     "tasks": [
       {
         "taskId": "SC-02-01-01",
@@ -278,8 +307,10 @@
   {
     "workPackage": "Kasir Workspace Kasir (SC-03-01)",
     "pic": "Erkoc",
-    "totalEffort": 17,
-    "Outcomes": ["Kasir"],
+    "totalEffort": 18,
+    "Outcomes": [
+      "Kasir"
+    ],
     "tasks": [
       {
         "taskId": "SC-03-01-01",
@@ -321,8 +352,10 @@
   {
     "workPackage": "Kasir Workspace Closing Shift (SC-03-02)",
     "pic": "Erkoc",
-    "totalEffort": 17,
-    "Outcomes": ["ClosingShift"],
+    "totalEffort": 11,
+    "Outcomes": [
+      "ClosingShift"
+    ],
     "tasks": [
       {
         "taskId": "SC-03-02-01",
@@ -364,8 +397,11 @@
   {
     "workPackage": "Rekam Medis Workspace Berkas RM (SC-04-01)",
     "pic": "Rizal",
-    "totalEffort": 17,
-    "Outcomes": ["DataSosialPasien", "MutasiBerkas"],
+    "totalEffort": 14,
+    "Outcomes": [
+      "DataSosialPasien",
+      "MutasiBerkas"
+    ],
     "tasks": [
       {
         "taskId": "SC-04-01-01",
@@ -408,7 +444,10 @@
     "workPackage": "Rekam Medis Workspace Casemix dan Coding (SC-04-02)",
     "pic": "Rizal",
     "totalEffort": 17,
-    "Outcomes": ["MorbiditasPasien", "Eklaim"],
+    "Outcomes": [
+      "MorbiditasPasien",
+      "Eklaim"
+    ],
     "tasks": [
       {
         "taskId": "SC-04-02-01",
@@ -450,8 +489,10 @@
   {
     "workPackage": "Rekam Medis Workspace Pelaporan RL (SC-04-03)",
     "pic": "Rizal",
-    "totalEffort": 17,
-    "Outcomes": ["PelaporanRL"],
+    "totalEffort": 14,
+    "Outcomes": [
+      "PelaporanRL"
+    ],
     "tasks": [
       {
         "taskId": "SC-04-03-01",
@@ -493,8 +534,15 @@
   {
     "workPackage": "IGD Workspace IGD Triage (SC-07-01)",
     "pic": "Arif",
-    "totalEffort": 17,
-    "Outcomes": ["IgdVisit", "IgdTriage", "Tindakan", "PakaiBrg", "Billing", "Ambulance"],
+    "totalEffort": 16,
+    "Outcomes": [
+      "IgdVisit",
+      "IgdTriage",
+      "Tindakan",
+      "PakaiBrg",
+      "Billing",
+      "Ambulance"
+    ],
     "tasks": [
       {
         "taskId": "SC-07-01-01",
@@ -536,8 +584,12 @@
   {
     "workPackage": "IGD Workspace Local Inventory (SC-05-02)",
     "pic": "Arif",
-    "totalEffort": 17,
-    "Outcomes": ["StokOpname", "ReqMutasi", "TerimaMutasi"],
+    "totalEffort": 16,
+    "Outcomes": [
+      "StokOpname",
+      "ReqMutasi",
+      "TerimaMutasi"
+    ],
     "tasks": [
       {
         "taskId": "SC-05-02-01",
@@ -579,8 +631,15 @@
   {
     "workPackage": "Bangsal Rawat Inap Workspace Bed Management (SC-06-01)",
     "pic": "Sulis",
-    "totalEffort": 17,
-    "Outcomes": ["PakaiBed", "WaitingList", "RoomCharge", "Tindakan", "Billing", "PakaiBrg"],
+    "totalEffort": 18,
+    "Outcomes": [
+      "PakaiBed",
+      "WaitingList",
+      "RoomCharge",
+      "Tindakan",
+      "Billing",
+      "PakaiBrg"
+    ],
     "tasks": [
       {
         "taskId": "SC-06-01-01",
@@ -622,8 +681,12 @@
   {
     "workPackage": "Bangsal Rawat Inap Workspace Local Inventory (SC-05-02)",
     "pic": "Sulis",
-    "totalEffort": 17,
-    "Outcomes": ["StokOpname", "ReqMutasi", "TerimaMutasi"],
+    "totalEffort": 14,
+    "Outcomes": [
+      "StokOpname",
+      "ReqMutasi",
+      "TerimaMutasi"
+    ],
     "tasks": [
       {
         "taskId": "SC-05-02-01",
@@ -665,8 +728,13 @@
   {
     "workPackage": "Laboratorium Workspace Order Laboratorium (SC-08-01)",
     "pic": "We",
-    "totalEffort": 17,
-    "Outcomes": ["RegExternal", "OrderLab", "SampleCollection", "Billing"],
+    "totalEffort": 15,
+    "Outcomes": [
+      "RegExternal",
+      "OrderLab",
+      "SampleCollection",
+      "Billing"
+    ],
     "tasks": [
       {
         "taskId": "SC-08-01-01",
@@ -708,8 +776,10 @@
   {
     "workPackage": "Laboratorium Workspace Result Management (SC-08-02)",
     "pic": "We",
-    "totalEffort": 17,
-    "Outcomes": ["HasilLab"],
+    "totalEffort": 15,
+    "Outcomes": [
+      "HasilLab"
+    ],
     "tasks": [
       {
         "taskId": "SC-08-02-01",
@@ -751,8 +821,12 @@
   {
     "workPackage": "Laboratorium Workspace Local Inventory (SC-08-03)",
     "pic": "We",
-    "totalEffort": 17,
-    "Outcomes": ["StokOpname", "ReqMutasi", "TerimaMutasi"],
+    "totalEffort": 16,
+    "Outcomes": [
+      "StokOpname",
+      "ReqMutasi",
+      "TerimaMutasi"
+    ],
     "tasks": [
       {
         "taskId": "SC-08-03-01",
@@ -794,8 +868,13 @@
   {
     "workPackage": "Radiologi Workspace Order Radiologi (SC-09-01)",
     "pic": "We",
-    "totalEffort": 17,
-    "Outcomes": ["OrderRadiologi", "JadwalRadiologi", "Billing", "PakaiBrg"],
+    "totalEffort": 14,
+    "Outcomes": [
+      "OrderRadiologi",
+      "JadwalRadiologi",
+      "Billing",
+      "PakaiBrg"
+    ],
     "tasks": [
       {
         "taskId": "SC-09-01-01",
@@ -837,8 +916,10 @@
   {
     "workPackage": "Radiologi Workspace Expertise (SC-09-02)",
     "pic": "We",
-    "totalEffort": 17,
-    "Outcomes": ["Expertise"],
+    "totalEffort": 14,
+    "Outcomes": [
+      "Expertise"
+    ],
     "tasks": [
       {
         "taskId": "SC-09-02-01",
@@ -880,8 +961,12 @@
   {
     "workPackage": "Radiologi Workspace Local Inventory (SC-09-03)",
     "pic": "We",
-    "totalEffort": 17,
-    "Outcomes": ["StokOpname", "ReqMutasi", "TerimaMutasi"],
+    "totalEffort": 16,
+    "Outcomes": [
+      "StokOpname",
+      "ReqMutasi",
+      "TerimaMutasi"
+    ],
     "tasks": [
       {
         "taskId": "SC-09-03-01",
@@ -923,8 +1008,11 @@
   {
     "workPackage": "Kamar Operasi Workspace Scheduling (SC-10-01)",
     "pic": "Arie",
-    "totalEffort": 17,
-    "Outcomes": ["OrderOk", "JadwalOk"],
+    "totalEffort": 18,
+    "Outcomes": [
+      "OrderOk",
+      "JadwalOk"
+    ],
     "tasks": [
       {
         "taskId": "SC-10-01-01",
@@ -967,7 +1055,12 @@
     "workPackage": "Kamar Operasi Workspace Operative Management (SC-10-02)",
     "pic": "Arie",
     "totalEffort": 17,
-    "Outcomes": ["JadwalOk", "PreOperativeClearance", "PakaiBrg", "Tindakan"],
+    "Outcomes": [
+      "JadwalOk",
+      "PreOperativeClearance",
+      "PakaiBrg",
+      "Tindakan"
+    ],
     "tasks": [
       {
         "taskId": "SC-10-02-01",
@@ -1009,8 +1102,12 @@
   {
     "workPackage": "Kamar Operasi Workspace Local Inventory (SC-10-03)",
     "pic": "Arie",
-    "totalEffort": 17,
-    "Outcomes": ["StokOpname", "ReqMutasi", "TerimaMutasi"],
+    "totalEffort": 18,
+    "Outcomes": [
+      "StokOpname",
+      "ReqMutasi",
+      "TerimaMutasi"
+    ],
     "tasks": [
       {
         "taskId": "SC-10-03-01",
@@ -1052,8 +1149,14 @@
   {
     "workPackage": "Apotek Workspace Antrian Apotek (SC-11-01)",
     "pic": "Jude",
-    "totalEffort": 17,
-    "Outcomes": ["AntrianApotek", "Penjualan", "TelaahResep", "OrderDispensing", "Billing"],
+    "totalEffort": 16,
+    "Outcomes": [
+      "AntrianApotek",
+      "Penjualan",
+      "TelaahResep",
+      "OrderDispensing",
+      "Billing"
+    ],
     "tasks": [
       {
         "taskId": "SC-11-01-01",
@@ -1096,7 +1199,9 @@
     "workPackage": "Apotek Workspace Telaah Resep (SC-11-02)",
     "pic": "Jude",
     "totalEffort": 17,
-    "Outcomes": ["TelaahResep"],
+    "Outcomes": [
+      "TelaahResep"
+    ],
     "tasks": [
       {
         "taskId": "SC-11-02-01",
@@ -1139,7 +1244,11 @@
     "workPackage": "Apotek Workspace Dispensing (SC-11-03)",
     "pic": "Jude",
     "totalEffort": 17,
-    "Outcomes": ["OrderDispensing", "AntrianApotek", "Stok"],
+    "Outcomes": [
+      "OrderDispensing",
+      "AntrianApotek",
+      "Stok"
+    ],
     "tasks": [
       {
         "taskId": "SC-11-03-01",
@@ -1181,8 +1290,11 @@
   {
     "workPackage": "Apotek Workspace Serah Obat (SC-11-04)",
     "pic": "Jude",
-    "totalEffort": 17,
-    "Outcomes": ["AntrianApotek", "Stok"],
+    "totalEffort": 13,
+    "Outcomes": [
+      "AntrianApotek",
+      "Stok"
+    ],
     "tasks": [
       {
         "taskId": "SC-11-04-01",
@@ -1224,8 +1336,12 @@
   {
     "workPackage": "Apotek Workspace Local Inventory (SC-11-05)",
     "pic": "Jude",
-    "totalEffort": 17,
-    "Outcomes": ["StokOpname", "ReqMutasi", "TerimaMutasi"],
+    "totalEffort": 16,
+    "Outcomes": [
+      "StokOpname",
+      "ReqMutasi",
+      "TerimaMutasi"
+    ],
     "tasks": [
       {
         "taskId": "SC-11-05-01",
@@ -1268,7 +1384,11 @@
     "workPackage": "Gudang Workspace Terima Barang (DO) (SC-12-01)",
     "pic": "Roso",
     "totalEffort": 17,
-    "Outcomes": ["TerimaBrg", "Stok", "PurchaseOrder"],
+    "Outcomes": [
+      "TerimaBrg",
+      "Stok",
+      "PurchaseOrder"
+    ],
     "tasks": [
       {
         "taskId": "SC-12-01-01",
@@ -1311,7 +1431,11 @@
     "workPackage": "Gudang Workspace Local Inventory (SC-12-02)",
     "pic": "Roso",
     "totalEffort": 17,
-    "Outcomes": ["Stok", "StokOpname", "Mutasi"],
+    "Outcomes": [
+      "Stok",
+      "StokOpname",
+      "Mutasi"
+    ],
     "tasks": [
       {
         "taskId": "SC-12-02-01",
@@ -1354,7 +1478,10 @@
     "workPackage": "Gudang Workspace Retur Beli (SC-12-03)",
     "pic": "Roso",
     "totalEffort": 17,
-    "Outcomes": ["ReturBeli", "Stok"],
+    "Outcomes": [
+      "ReturBeli",
+      "Stok"
+    ],
     "tasks": [
       {
         "taskId": "SC-12-03-01",
@@ -1396,8 +1523,13 @@
   {
     "workPackage": "Purchasing Workspace Purchase Order (SC-13-01)",
     "pic": "Fikri",
-    "totalEffort": 17,
-    "Outcomes": ["MaterialReq", "PurchaseReq", "Forecasting", "PurchaseOrder"],
+    "totalEffort": 18,
+    "Outcomes": [
+      "MaterialReq",
+      "PurchaseReq",
+      "Forecasting",
+      "PurchaseOrder"
+    ],
     "tasks": [
       {
         "taskId": "SC-13-01-01",
@@ -1439,8 +1571,11 @@
   {
     "workPackage": "Purchasing Workspace Faktur Tagihan (SC-13-02)",
     "pic": "Fikri",
-    "totalEffort": 17,
-    "Outcomes": ["Faktur", "PurchaseOrder"],
+    "totalEffort": 18,
+    "Outcomes": [
+      "Faktur",
+      "PurchaseOrder"
+    ],
     "tasks": [
       {
         "taskId": "SC-13-02-01",
