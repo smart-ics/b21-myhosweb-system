@@ -3,7 +3,7 @@
 | Field       | Value             |
 |-------------|-------------------|
 | Code        | OC-08-06          |
-| Version     | 1.1               |
+| Version     | 1.2               |
 | Status      | Final Draft       |
 | LastUpdated | 2026-10-08        |
 
@@ -19,7 +19,7 @@ OC-08-06 bertanggung jawab atas **Pencatatan Pemakaian Barang (Pakai Barang)** p
 
 ## 2. Outcome Statement
 
-Transaksi pemakaian barang oleh petugas laboratorium pada lokasi laboratorium **telah berhasil disimpan secara persisten**, dan **stok barang pada lokasi laboratorium terkait telah berkurang atau disesuaikan secara konsisten dan atomik sesuai status dan kuantitas transaksi yang berlaku (Active atau Cancelled)**, dengan riwayat transaksi yang **tidak pernah dihapus**, serta **dapat diedit atau dibatalkan** selama masih memungkinkan dikoreksi secara bisnis.
+Transaksi pemakaian barang oleh petugas laboratorium pada lokasi laboratorium **telah berhasil disimpan secara persisten**, dan **stok barang pada lokasi laboratorium terkait telah berkurang atau disesuaikan secara konsisten dan atomik sesuai status dan kuantitas transaksi yang berlaku (Active atau Cancelled)**, dengan riwayat transaksi yang **tidak pernah dihapus**, serta **dapat diedit atau dibatalkan (hanya untuk transaksi berstatus Active)** selama masih memungkinkan dikoreksi secara bisnis.
 
 ---
 
@@ -69,15 +69,17 @@ Transaksi pemakaian barang oleh petugas laboratorium pada lokasi laboratorium **
   - Transaksi yang sudah tersimpan **masih dapat diedit** apabila masih memungkinkan dikoreksi secara bisnis.
   - Edit dilakukan terhadap transaksi yang sudah ada (**bukan membuat transaksi baru**).
   - Perubahan data transaksi harus diikuti penyesuaian dampak terhadap stok secara langsung dan atomik:
-    - Jika jumlah pemakaian **dinaikkan**, hanya selisih tambahan yang perlu mengurangi stok.
-    - Jika jumlah pemakaian **diturunkan**, selisihnya harus dikembalikan ke stok.
+    - Jika jumlah pemakaian **dinaikkan**, hanya selisih tambahan (delta) yang perlu mengurangi stok.
+    - Jika jumlah pemakaian **diturunkan**, selisihnya (delta) harus dikembalikan ke stok.
     - Jika stok tidak mencukupi untuk perubahan yang membutuhkan tambahan pengurangan stok, operasi edit harus ditolak.
     - Jika edit gagal, baik perubahan transaksi maupun perubahan stok tidak boleh tersimpan sebagian.
 - **Koreksi melalui Pembatalan (Cancel Transaksi):**
   - Pembatalan transaksi merupakan **bagian dari OC-08-06**.
-  - Transaksi yang sudah tersimpan **masih dapat dibatalkan** apabila masih memungkinkan dikoreksi secara bisnis.
+  - Pembatalan **hanya dapat dilakukan pada transaksi yang berstatus `Active`**. Upaya membatalkan transaksi yang sudah berstatus `Cancelled` harus ditolak tanpa penyesuaian stok.
+  - Transaksi yang sudah tersimpan masih dapat dibatalkan apabila berstatus `Active` dan masih memungkinkan dikoreksi secara bisnis.
   - Pembatalan **tidak menghapus transaksi**; status transaksi berubah menjadi **`Cancelled`**.
-  - Stok pada lokasi laboratorium dikembalikan sebesar jumlah yang sebelumnya dikurangi oleh transaksi tersebut.
+  - Ketika transaksi dibatalkan (termasuk transaksi yang sebelumnya telah melalui satu atau lebih operasi Edit), stok pada lokasi laboratorium **dikembalikan sebesar jumlah pemakaian aktif terakhir (current/latest active quantity)** dari transaksi tersebut, bukan jumlah awal saat Create.
+    - *Contoh alur:* Create 10 $\rightarrow$ stok berkurang 10. Edit 10 menjadi 7 $\rightarrow$ stok bertambah 3 (stok terefleksi berkurang bersih 7). Cancel $\rightarrow$ stok bertambah 7 (mengembalikan kuantitas aktif terakhir 7).
   - Perubahan status transaksi menjadi `Cancelled` dan pengembalian stok harus konsisten; tidak boleh hanya salah satunya yang berhasil.
 - **Otorisasi Petugas:**
   - Transaksi simpan baru (Create), perubahan (Edit), maupun pembatalan (Cancel) dilakukan oleh petugas laboratorium yang memiliki permission **Pakai Barang**.
@@ -92,16 +94,16 @@ Setiap transaksi pemakaian barang mencatat minimal:
 - **Lokasi Pemakaian** — identitas lokasi inventori laboratorium tempat barang diambil/digunakan.
 - **Petugas Transaksi** — identitas petugas/user laboratorium yang melakukan transaksi.
 - **Waktu Transaksi** — waktu pencatatan transaksi dilakukan.
-- **Status Transaksi** — status keberlakuan transaksi (aktif / berlaku).
+- **Status Transaksi** — status keberlakuan transaksi (`Active`).
 
 #### B. Informasi Perubahan (Edit)
 Ketika transaksi diedit selama masih memungkinkan dikoreksi secara bisnis, tercatat:
-- Nilai kuantitas pemakaian yang telah diperbarui.
+- Nilai kuantitas pemakaian yang telah diperbarui (current/latest active quantity).
 - Identitas petugas yang melakukan edit dan waktu perubahan.
 - Rekam jejak perubahan kuantitas untuk dasar kalkulasi selisih stok (delta).
 
 #### C. Informasi Pembatalan (Cancel)
-Ketika transaksi dibatalkan selama masih memungkinkan dikoreksi secara bisnis, tercatat:
+Ketika transaksi berstatus `Active` dibatalkan selama masih memungkinkan dikoreksi secara bisnis, tercatat:
 - **Status Transaksi** — berubah menjadi **`Cancelled`**.
 - Identitas petugas yang membatalkan dan waktu pembatalan.
 
@@ -112,6 +114,8 @@ Ketika transaksi dibatalkan selama masih memungkinkan dikoreksi secara bisnis, t
 - Lokasi laboratorium yang dipilih harus merupakan lokasi inventori yang valid dan aktif.
 - Pada saat Create: jumlah pemakaian wajib $\le$ stok tersedia pada lokasi laboratorium tersebut.
 - Pada saat Edit dengan kenaikan jumlah pemakaian: selisih tambahan pemakaian wajib $\le$ stok tersedia pada lokasi laboratorium tersebut.
+- Pembatalan (Cancel) hanya diizinkan untuk transaksi yang berstatus `Active`. Transaksi berstatus `Cancelled` tidak dapat dibatalkan kembali.
+- Pada saat Cancel: stok dikembalikan sebesar kuantitas aktif terakhir dari transaksi tersebut.
 - Sistem tidak boleh menghasilkan stok bernilai negatif pada lokasi tersebut, baik setelah create, edit, maupun cancel.
 - Keberhasilan penyimpanan data transaksi dan eksekusi perubahan/penyesuaian stok harus diperlakukan secara atomik (satu kesatuan utuh; tidak boleh ada kondisi perubahan parsial).
 - Transaksi yang telah tersimpan tidak boleh dihapus secara fisik maupun logis dari database histori.
@@ -122,15 +126,15 @@ Ketika transaksi dibatalkan selama masih memungkinkan dikoreksi secara bisnis, t
 > What proves this Outcome is complete?
 
 - **Untuk Transaksi Pemakaian Baru (Create):**
-  - Data transaksi Pakai Barang tersimpan secara persisten dengan status aktif dan memuat atribut minimal (barang, jumlah pemakaian, lokasi pemakaian, petugas transaksi, waktu transaksi).
+  - Data transaksi Pakai Barang tersimpan secara persisten dengan status `Active` dan memuat atribut minimal (barang, jumlah pemakaian, lokasi pemakaian, petugas transaksi, waktu transaksi).
   - Saldo stok barang pada lokasi laboratorium terkait berkurang persis sebesar jumlah pemakaian secara persisten.
 - **Untuk Perubahan Transaksi (Edit):**
-  - Data transaksi Pakai Barang yang ada diperbarui secara persisten dengan nilai jumlah pemakaian yang baru (tanpa membuat transaksi baru).
+  - Data transaksi Pakai Barang yang ada diperbarui secara persisten dengan nilai jumlah pemakaian yang baru sebagai kuantitas aktif terakhir (tanpa membuat transaksi baru).
   - Saldo stok barang pada lokasi laboratorium terkait bertambah/berkurang persis sebesar selisih kuantitas baru terhadap kuantitas lama.
   - Data transaksi tetap utuh dan tidak terhapus.
 - **Untuk Pembatalan Transaksi (Cancel):**
   - Status data transaksi Pakai Barang berubah menjadi **`Cancelled`** secara persisten (transaksi tetap ada dan tidak dihapus).
-  - Saldo stok barang pada lokasi laboratorium terkait telah bertambah kembali sebesar jumlah pemakaian transaksi tersebut.
+  - Saldo stok barang pada lokasi laboratorium terkait telah bertambah kembali sebesar kuantitas pemakaian aktif terakhir (current/latest active quantity) dari transaksi tersebut sebelum dibatalkan.
 
 ---
 
@@ -139,14 +143,14 @@ Ketika transaksi dibatalkan selama masih memungkinkan dikoreksi secara bisnis, t
 ### Start
 
 - **Untuk Pemakaian Baru (Create):** Dimulai ketika petugas laboratorium yang memiliki permission Pakai Barang mencatat penggunaan satu jenis barang pada lokasi laboratorium tertentu.
-- **Untuk Perubahan (Edit):** Dimulai ketika petugas laboratorium yang memiliki permission Pakai Barang mengubah data transaksi pemakaian tersimpan yang masih memungkinkan dikoreksi secara bisnis.
-- **Untuk Pembatalan (Cancel):** Dimulai ketika petugas laboratorium yang memiliki permission Pakai Barang membatalkan transaksi pemakaian tersimpan yang masih memungkinkan dikoreksi secara bisnis.
+- **Untuk Perubahan (Edit):** Dimulai ketika petugas laboratorium yang memiliki permission Pakai Barang mengubah data transaksi pemakaian tersimpan yang masih berstatus `Active` dan masih memungkinkan dikoreksi secara bisnis.
+- **Untuk Pembatalan (Cancel):** Dimulai ketika petugas laboratorium yang memiliki permission Pakai Barang membatalkan transaksi pemakaian tersimpan yang berstatus `Active` dan masih memungkinkan dikoreksi secara bisnis.
 
 ### End
 
 - **Untuk Pemakaian Baru (Create):** Berakhir ketika transaksi pemakaian berhasil disimpan secara persisten dan stok barang pada lokasi laboratorium terkait berkurang seketika sebesar jumlah pemakaian.
 - **Untuk Perubahan (Edit):** Berakhir ketika transaksi pemakaian berhasil diperbarui dan selisih stok (pengurangan tambahan atau pengembalian stok) berhasil diaplikasikan secara atomik.
-- **Untuk Pembatalan (Cancel):** Berakhir ketika status transaksi berhasil berubah menjadi `Cancelled` dan stok barang dikembalikan secara penuh sesuai jumlah pemakaian transaksi tersebut secara atomik.
+- **Untuk Pembatalan (Cancel):** Berakhir ketika status transaksi berhasil berubah menjadi `Cancelled` dan stok barang dikembalikan sebesar kuantitas pemakaian aktif terakhir (current/latest active quantity) secara atomik.
 
 ### Scope Boundary & Batas Tanggung Jawab
 
@@ -169,10 +173,14 @@ OC-08-06 berfokus murni pada pencatatan konsumsi barang laboratorium, pengelolaa
 3. **No Negative Stock Invariant:** Jumlah pemakaian tidak boleh melebihi stok yang tersedia. Sistem harus menolak transaksi apabila stok tidak mencukupi, dan stok tidak boleh menjadi negatif dalam kondisi apa pun (baik saat create maupun edit kenaikan jumlah). Setelah edit atau cancel, saldo stok harus merepresentasikan transaksi Pakai Barang yang masih berlaku.
 4. **Larangan Penghapusan (No Delete Invariant):** Transaksi yang sudah berhasil disimpan **tidak boleh dihapus**. Riwayat transaksi selalu dipertahankan di dalam sistem.
 5. **Mekanisme Edit Transaksi:** Transaksi yang sudah tersimpan masih dapat diedit apabila masih memungkinkan dikoreksi secara bisnis. Edit dilakukan dengan memodifikasi transaksi yang ada (bukan membuat transaksi baru). Perubahan jumlah pemakaian berdampak langsung pada stok:
-   - Kenaikan pemakaian $\rightarrow$ hanya selisih tambahan yang mengurangi stok.
-   - Penurunan pemakaian $\rightarrow$ selisihnya dikembalikan ke stok.
+   - Kenaikan pemakaian $\rightarrow$ hanya selisih tambahan (delta) yang mengurangi stok.
+   - Penurunan pemakaian $\rightarrow$ selisihnya (delta) dikembalikan ke stok.
    - Jika stok tidak mencukupi untuk tambahan pengurangan, edit ditolak dan stok tidak berubah.
-6. **Mekanisme Pembatalan (Cancel):** Transaksi yang sudah tersimpan masih dapat dibatalkan apabila masih memungkinkan dikoreksi secara bisnis. Pembatalan merupakan bagian dari OC-08-06. Pembatalan tidak menghapus transaksi, melainkan mengubah statusnya menjadi `Cancelled` dan mengembalikan stok sebesar jumlah pemakaian transaksi tersebut.
+6. **Mekanisme Pembatalan (Cancel) & Kuantitas Pemulihan Stok:**
+   - Pembatalan merupakan bagian dari OC-08-06 dan **hanya berlaku untuk transaksi berstatus `Active`**.
+   - Pembatalan tidak menghapus transaksi, melainkan mengubah statusnya menjadi `Cancelled`.
+   - Stok dikembalikan sebesar **kuantitas pemakaian aktif terakhir (current/latest active quantity)** dari transaksi tersebut sebelum dibatalkan, bukan kuantitas awal saat Create.
+   - Upaya pembatalan pada transaksi yang sudah berstatus `Cancelled` ditolak tanpa penyesuaian stok.
 7. **Independence from Clinical Orders / Visits:** Pemakaian barang tidak wajib dikaitkan dengan Order Laboratorium dan tidak wajib dikaitkan dengan pemeriksaan pasien tertentu. Keduanya bukan prasyarat validitas transaksi.
 8. **Actor Permission Policy:** Aktor adalah petugas laboratorium yang memiliki permission **Pakai Barang**. Transaksi Create, Edit, dan Cancel menggunakan permission yang sama (`Pakai Barang`); tidak diperlukan permission khusus tambahan untuk edit atau cancel.
 
@@ -191,6 +199,7 @@ OC-08-06 berfokus murni pada pencatatan konsumsi barang laboratorium, pengelolaa
 | Upaya melakukan Edit atau Cancel terhadap transaksi yang sudah tidak lagi memungkinkan dikoreksi secara bisnis | Aksi ditolak oleh sistem. Data transaksi dan saldo stok tidak berubah. |
 | Upaya melakukan penghapusan (Delete) terhadap transaksi Pakai Barang yang sudah tersimpan | Aksi ditolak secara mutlak oleh sistem. Transaksi yang sudah tersimpan tidak boleh dihapus. |
 | Upaya melakukan Edit terhadap transaksi yang sudah berstatus `Cancelled` | Aksi ditolak. Transaksi yang telah dibatalkan tidak dapat diedit kembali. |
+| Upaya melakukan Cancel terhadap transaksi yang sudah berstatus `Cancelled` | Aksi ditolak. Pembatalan hanya dapat dilakukan terhadap transaksi berstatus `Active`. Tidak ada penyesuaian stok yang terjadi. |
 | Terjadi kegagalan teknis/penyimpanan saat eksekusi Create, Edit, atau Cancel | Seluruh proses dibatalkan (rollback). Baik data transaksi maupun stok tidak boleh tersimpan/berubah secara parsial (prinsip atomisitas). |
 
 ---
@@ -200,19 +209,21 @@ OC-08-06 berfokus murni pada pencatatan konsumsi barang laboratorium, pengelolaa
 | # | Criterion | Validates |
 |---|-----------|-----------|
 | AC-01 | Petugas laboratorium dengan permission **Pakai Barang** dapat mencatat transaksi pemakaian satu jenis barang pada lokasi laboratorium dengan mencatat barang, jumlah pemakaian, lokasi pemakaian, petugas transaksi, dan waktu transaksi, tanpa prerequisite Order Laboratorium atau pemeriksaan pasien. | Completeness |
-| AC-02 | Ketika transaksi pemakaian berhasil disimpan, transaksi tercatat dan stok barang pada lokasi laboratorium berkurang seketika sesuai jumlah pemakaian. | Correctness |
+| AC-02 | Ketika transaksi pemakaian berhasil disimpan, transaksi tercatat dengan status `Active` dan stok barang pada lokasi laboratorium berkurang seketika sesuai jumlah pemakaian. | Correctness |
 | AC-03 | Jika penyimpanan transaksi pemakaian baru gagal, transaksi tidak dianggap terjadi dan stok barang pada lokasi laboratorium tidak mengalami perubahan. | Constraint |
 | AC-04 | Transaksi pemakaian baru ditolak dan stok tidak berubah apabila jumlah pemakaian melebihi stok yang tersedia pada lokasi laboratorium, memastikan stok tidak menjadi negatif. | Constraint |
 | AC-05 | Transaksi Pakai Barang yang sudah berhasil disimpan tidak boleh dihapus dari sistem dalam kondisi apa pun. | Constraint |
 | AC-06 | Transaksi yang sudah tersimpan masih dapat diedit pada transaksi yang bersangkutan (tanpa membuat transaksi baru) selama masih memungkinkan dikoreksi secara bisnis, oleh petugas dengan permission **Pakai Barang** tanpa memerlukan permission khusus. | Completeness |
-| AC-07 | Pada operasi Edit, jika jumlah pemakaian dinaikkan, hanya selisih tambahannya yang mengurangi stok; jika stok tidak mencukupi untuk selisih tersebut, edit ditolak dan stok tidak berubah. | Correctness |
-| AC-08 | Pada operasi Edit, jika jumlah pemakaian diturunkan, selisih pengurangannya dikembalikan ke stok pada lokasi laboratorium terkait. | Correctness |
+| AC-07 | Pada operasi Edit, jika jumlah pemakaian dinaikkan, hanya selisih tambahannya (delta) yang mengurangi stok; jika stok tidak mencukupi untuk selisih tersebut, edit ditolak dan stok tidak berubah. | Correctness |
+| AC-08 | Pada operasi Edit, jika jumlah pemakaian diturunkan, selisih pengurangannya (delta) dikembalikan ke stok pada lokasi laboratorium terkait. | Correctness |
 | AC-09 | Jika operasi Edit gagal disimpan, perubahan data transaksi maupun penyesuaian stok tidak tersimpan secara parsial. | Constraint |
-| AC-10 | Transaksi yang sudah tersimpan masih dapat dibatalkan selama masih memungkinkan dikoreksi secara bisnis, oleh petugas dengan permission **Pakai Barang** tanpa memerlukan permission khusus. | Completeness |
-| AC-11 | Pada operasi Cancel, transaksi tidak dihapus melainkan statusnya berubah menjadi **`Cancelled`**, dan stok barang pada lokasi laboratorium dikembalikan sebesar jumlah yang sebelumnya dikurangi oleh transaksi tersebut. | Correctness |
-| AC-12 | Perubahan status transaksi menjadi `Cancelled` dan pengembalian stok pada operasi Cancel berlangsung secara atomik dan konsisten; tidak boleh hanya salah satunya yang berhasil. | Constraint |
-| AC-13 | Setelah seluruh operasi (Create, Edit, atau Cancel), stok pada lokasi laboratorium tidak bernilai negatif dan selalu merepresentasikan transaksi Pakai Barang yang masih berlaku. | Constraint |
-| AC-14 | Operasi Create, Edit, dan Cancel ditolak apabila petugas tidak memiliki permission **Pakai Barang**. | Exception |
+| AC-10 | Transaksi yang sudah tersimpan hanya dapat dibatalkan apabila berstatus **`Active`** dan masih memungkinkan dikoreksi secara bisnis, oleh petugas dengan permission **Pakai Barang** tanpa memerlukan permission khusus. | Completeness |
+| AC-11 | Pada operasi Cancel terhadap transaksi berstatus `Active`, transaksi tidak dihapus melainkan statusnya berubah menjadi **`Cancelled`**, dan stok barang pada lokasi laboratorium dikembalikan sebesar kuantitas pemakaian aktif terakhir (current/latest active quantity) dari transaksi tersebut sebelum dibatalkan. | Correctness |
+| AC-12 | Pada transaksi yang telah diedit sebelum dibatalkan (misal: Create 10 $\rightarrow$ Edit 7 $\rightarrow$ Cancel), operasi Cancel mengembalikan kuantitas aktif terakhir (7) ke stok, bukan kuantitas awal (10). | Correctness |
+| AC-13 | Upaya menjalankan operasi Cancel pada transaksi yang sudah berstatus **`Cancelled`** ditolak oleh sistem, dan tidak terjadi penyesuaian stok. | Exception |
+| AC-14 | Perubahan status transaksi menjadi `Cancelled` dan pengembalian stok pada operasi Cancel berlangsung secara atomik dan konsisten; tidak boleh hanya salah satunya yang berhasil. | Constraint |
+| AC-15 | Setelah seluruh operasi (Create, Edit, atau Cancel), stok pada lokasi laboratorium tidak bernilai negatif dan selalu merepresentasikan transaksi Pakai Barang yang masih berlaku. | Constraint |
+| AC-16 | Operasi Create, Edit, dan Cancel ditolak apabila petugas tidak memiliki permission **Pakai Barang**. | Exception |
 
 ---
 
@@ -239,7 +250,13 @@ OC-08-06 berfokus murni pada pencatatan konsumsi barang laboratorium, pengelolaa
 4. **Batas Stok & Invariant Non-Negatif:** Jumlah pemakaian tidak boleh melebihi stok yang tersedia. Sistem harus menolak transaksi apabila stok tidak mencukupi. Stok tidak boleh menjadi negatif.
 5. **Larangan Penghapusan:** Transaksi yang sudah berhasil disimpan tidak boleh dihapus.
 6. **Koreksi via Edit Transaksi:** Transaksi yang sudah tersimpan masih dapat diedit apabila masih memungkinkan dikoreksi secara bisnis. Edit bukan membuat transaksi baru. Perubahan transaksi harus diikuti penyesuaian dampak terhadap stok: jika dinaikkan, hanya selisih tambahan yang mengurangi stok (ditolak jika stok tidak cukup); jika diturunkan, selisihnya dikembalikan ke stok. Jika edit gagal, tidak boleh tersimpan sebagian.
-7. **Koreksi via Pembatalan (Cancel):** Transaksi yang sudah tersimpan masih dapat dibatalkan apabila masih memungkinkan dikoreksi secara bisnis. Pembatalan merupakan bagian dari OC-08-06. Pembatalan tidak menghapus transaksi; status transaksi menjadi `Cancelled`. Stok dikembalikan sebesar jumlah yang sebelumnya dikurangi oleh transaksi tersebut. Perubahan status dan pengembalian stok harus konsisten.
+7. **Koreksi via Pembatalan (Cancel):**
+   - Pembatalan merupakan bagian dari OC-08-06 dan hanya berlaku untuk transaksi berstatus `Active`.
+   - Transaksi yang sudah tersimpan masih dapat dibatalkan apabila berstatus `Active` dan masih memungkinkan dikoreksi secara bisnis.
+   - Pembatalan tidak menghapus transaksi; status transaksi menjadi `Cancelled`.
+   - Stok dikembalikan sebesar **kuantitas pemakaian aktif terakhir (current/latest active quantity)** dari transaksi tersebut sebelum dibatalkan, bukan kuantitas awal saat Create.
+   - Upaya pembatalan pada transaksi yang sudah berstatus `Cancelled` ditolak tanpa penyesuaian stok.
+   - Perubahan status dan pengembalian stok harus konsisten.
 8. **Permission Model:** Tidak diperlukan permission khusus untuk edit atau cancel. Edit dan cancel menggunakan permission yang sama dengan akses `Pakai Barang`.
 9. **Invariant Stok Pasca-Aksi:** Setelah edit atau cancel, stok tidak boleh negatif dan harus merepresentasikan transaksi Pakai Barang yang masih berlaku.
 10. **Scope Boundary:** OC-08-06 tidak mengambil tanggung jawab Order Laboratorium, Sample Collection, Result Management, pengadaan/penerimaan barang, mutasi barang antar lokasi, maupun stock opname.
