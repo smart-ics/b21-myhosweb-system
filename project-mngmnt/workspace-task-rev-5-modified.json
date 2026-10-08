@@ -1,38 +1,27 @@
 [
   {
-    "workPackage": "Preparation & Outcome Discovery Workspace System Architecture & Discovery (SC-00-01)",
-    "pic": "All PICs",
-    "totalEffort": 5,
-    "Outcomes": [
-      "Outcome Discovery"
-    ],
-    "tasks": [
-      {
-        "taskId": "SC-00-01-01",
-        "taskName": "Outcome Discovery & Domain Alignment",
-        "effort": 3
-      },
-      {
-        "taskId": "SC-00-01-02",
-        "taskName": "Environment & Baseline Setup",
-        "effort": 2
-      }
-    ]
-  },
-  {
     "workPackage": "Admisi Workspace Booking (SC-01-01)",
     "pic": "Arif",
     "totalEffort": 16,
-    "Outcomes": [
-      "Booking",
-      "PasienTracker",
-      "JadwalPraktek",
-      "Antrian"
-    ],
     "tasks": [
       {
-        "taskId": "SC-01-01-01",
+        "taskId": "SC-01-01-01a",
         "taskName": "Booking - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-01-01-01b",
+        "taskName": "PasienTracker - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-01-01-01c",
+        "taskName": "JadwalPraktek - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-01-01-01d",
+        "taskName": "Antrian - Core Feature",
         "effort": 5
       },
       {
@@ -71,17 +60,30 @@
     "workPackage": "Admisi Workspace Reg Rajal-IGD (SC-01-02)",
     "pic": "Arif",
     "totalEffort": 16,
-    "Outcomes": [
-      "Registrasi",
-      "VclaimBpjs",
-      "PasienTracker",
-      "JadwalPraktek",
-      "Antrian"
-    ],
     "tasks": [
       {
-        "taskId": "SC-01-02-01",
-        "taskName": "Reg Rajal-IGD - Core Feature",
+        "taskId": "SC-01-02-01a",
+        "taskName": "Registrasi - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-01-02-01b",
+        "taskName": "VclaimBpjs - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-01-02-01c",
+        "taskName": "PasienTracker - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-01-02-01d",
+        "taskName": "JadwalPraktek - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-01-02-01e",
+        "taskName": "Antrian - Core Feature",
         "effort": 5
       },
       {
@@ -120,16 +122,25 @@
     "workPackage": "Admisi Workspace Reg Ranap (SC-01-03)",
     "pic": "Arif",
     "totalEffort": 17,
-    "Outcomes": [
-      "Registrasi",
-      "VclaimBpjs",
-      "PasienTracker",
-      "WaitingList"
-    ],
     "tasks": [
       {
-        "taskId": "SC-01-03-01",
-        "taskName": "Reg Ranap - Core Feature",
+        "taskId": "SC-01-03-01a",
+        "taskName": "Registrasi - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-01-03-01b",
+        "taskName": "VclaimBpjs - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-01-03-01c",
+        "taskName": "PasienTracker - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-01-03-01d",
+        "taskName": "WaitingList - Core Feature",
         "effort": 5
       },
       {
@@ -168,15 +179,20 @@
     "workPackage": "Poli Rawat Jalan Workspace Tindakan (SC-05-01)",
     "pic": "Fikri",
     "totalEffort": 18,
-    "Outcomes": [
-      "Tindakan",
-      "Billing",
-      "PakaiBrg"
-    ],
     "tasks": [
       {
-        "taskId": "SC-05-01-01",
-        "taskName": "Tindakan Rajal - Core Feature",
+        "taskId": "SC-05-01-01a",
+        "taskName": "Tindakan - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-05-01-01b",
+        "taskName": "Billing - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-05-01-01c",
+        "taskName": "PakaiBrg - Core Feature",
         "effort": 5
       },
       {
@@ -215,15 +231,20 @@
     "workPackage": "Poli Rawat Jalan Workspace Local Inventory (SC-05-02)",
     "pic": "Fikri",
     "totalEffort": 18,
-    "Outcomes": [
-      "StokOpname",
-      "ReqMutasi",
-      "TerimaMutasi"
-    ],
     "tasks": [
       {
-        "taskId": "SC-05-02-01",
-        "taskName": "Inventory Rajal - Core Feature",
+        "taskId": "SC-05-02-01a",
+        "taskName": "StokOpname - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-05-02-01b",
+        "taskName": "ReqMutasi - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-05-02-01c",
+        "taskName": "TerimaMutasi - Core Feature",
         "effort": 5
       },
       {
@@ -262,14 +283,15 @@
     "workPackage": "Tata Rekening Workspace Reg Out (SC-02-01)",
     "pic": "Erkoc",
     "totalEffort": 17,
-    "Outcomes": [
-      "Billing",
-      "OrderPayment"
-    ],
     "tasks": [
       {
-        "taskId": "SC-02-01-01",
-        "taskName": "Reg Out - Core Feature",
+        "taskId": "SC-02-01-01a",
+        "taskName": "Billing - Core Feature",
+        "effort": 4
+      },
+      {
+        "taskId": "SC-02-01-01b",
+        "taskName": "OrderPayment - Core Feature",
         "effort": 4
       },
       {
@@ -308,12 +330,9 @@
     "workPackage": "Kasir Workspace Kasir (SC-03-01)",
     "pic": "Erkoc",
     "totalEffort": 18,
-    "Outcomes": [
-      "Kasir"
-    ],
     "tasks": [
       {
-        "taskId": "SC-03-01-01",
+        "taskId": "SC-03-01-01a",
         "taskName": "Kasir - Core Feature",
         "effort": 5
       },
@@ -353,13 +372,10 @@
     "workPackage": "Kasir Workspace Closing Shift (SC-03-02)",
     "pic": "Erkoc",
     "totalEffort": 11,
-    "Outcomes": [
-      "ClosingShift"
-    ],
     "tasks": [
       {
-        "taskId": "SC-03-02-01",
-        "taskName": "Closing Shift - Core Feature",
+        "taskId": "SC-03-02-01a",
+        "taskName": "ClosingShift - Core Feature",
         "effort": 2
       },
       {
@@ -398,14 +414,15 @@
     "workPackage": "Rekam Medis Workspace Berkas RM (SC-04-01)",
     "pic": "Rizal",
     "totalEffort": 14,
-    "Outcomes": [
-      "DataSosialPasien",
-      "MutasiBerkas"
-    ],
     "tasks": [
       {
-        "taskId": "SC-04-01-01",
-        "taskName": "Berkas RM - Core Feature",
+        "taskId": "SC-04-01-01a",
+        "taskName": "DataSosialPasien - Core Feature",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-04-01-01b",
+        "taskName": "MutasiBerkas - Core Feature",
         "effort": 3
       },
       {
@@ -444,14 +461,15 @@
     "workPackage": "Rekam Medis Workspace Casemix dan Coding (SC-04-02)",
     "pic": "Rizal",
     "totalEffort": 17,
-    "Outcomes": [
-      "MorbiditasPasien",
-      "Eklaim"
-    ],
     "tasks": [
       {
-        "taskId": "SC-04-02-01",
-        "taskName": "Casemix - Core Feature",
+        "taskId": "SC-04-02-01a",
+        "taskName": "MorbiditasPasien - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-04-02-01b",
+        "taskName": "Eklaim - Core Feature",
         "effort": 5
       },
       {
@@ -490,13 +508,10 @@
     "workPackage": "Rekam Medis Workspace Pelaporan RL (SC-04-03)",
     "pic": "Rizal",
     "totalEffort": 14,
-    "Outcomes": [
-      "PelaporanRL"
-    ],
     "tasks": [
       {
-        "taskId": "SC-04-03-01",
-        "taskName": "Pelaporan RL - Core Feature",
+        "taskId": "SC-04-03-01a",
+        "taskName": "PelaporanRL - Core Feature",
         "effort": 4
       },
       {
@@ -535,18 +550,35 @@
     "workPackage": "IGD Workspace IGD Triage (SC-07-01)",
     "pic": "Arif",
     "totalEffort": 16,
-    "Outcomes": [
-      "IgdVisit",
-      "IgdTriage",
-      "Tindakan",
-      "PakaiBrg",
-      "Billing",
-      "Ambulance"
-    ],
     "tasks": [
       {
-        "taskId": "SC-07-01-01",
-        "taskName": "IGD Triage - Core Feature",
+        "taskId": "SC-07-01-01a",
+        "taskName": "IgdVisit - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-07-01-01b",
+        "taskName": "IgdTriage - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-07-01-01c",
+        "taskName": "Tindakan - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-07-01-01d",
+        "taskName": "PakaiBrg - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-07-01-01e",
+        "taskName": "Billing - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-07-01-01f",
+        "taskName": "Ambulance - Core Feature",
         "effort": 5
       },
       {
@@ -585,15 +617,20 @@
     "workPackage": "IGD Workspace Local Inventory (SC-05-02)",
     "pic": "Arif",
     "totalEffort": 16,
-    "Outcomes": [
-      "StokOpname",
-      "ReqMutasi",
-      "TerimaMutasi"
-    ],
     "tasks": [
       {
-        "taskId": "SC-05-02-01",
-        "taskName": "Inventory IGD - Core Feature",
+        "taskId": "SC-05-02-01a",
+        "taskName": "StokOpname - Core Feature",
+        "effort": 4
+      },
+      {
+        "taskId": "SC-05-02-01b",
+        "taskName": "ReqMutasi - Core Feature",
+        "effort": 4
+      },
+      {
+        "taskId": "SC-05-02-01c",
+        "taskName": "TerimaMutasi - Core Feature",
         "effort": 4
       },
       {
@@ -632,18 +669,35 @@
     "workPackage": "Bangsal Rawat Inap Workspace Bed Management (SC-06-01)",
     "pic": "Sulis",
     "totalEffort": 18,
-    "Outcomes": [
-      "PakaiBed",
-      "WaitingList",
-      "RoomCharge",
-      "Tindakan",
-      "Billing",
-      "PakaiBrg"
-    ],
     "tasks": [
       {
-        "taskId": "SC-06-01-01",
-        "taskName": "Bangsal - Core Feature",
+        "taskId": "SC-06-01-01a",
+        "taskName": "PakaiBed - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-06-01-01b",
+        "taskName": "WaitingList - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-06-01-01c",
+        "taskName": "RoomCharge - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-06-01-01d",
+        "taskName": "Tindakan - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-06-01-01e",
+        "taskName": "Billing - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-06-01-01f",
+        "taskName": "PakaiBrg - Core Feature",
         "effort": 5
       },
       {
@@ -682,15 +736,20 @@
     "workPackage": "Bangsal Rawat Inap Workspace Local Inventory (SC-05-02)",
     "pic": "Sulis",
     "totalEffort": 14,
-    "Outcomes": [
-      "StokOpname",
-      "ReqMutasi",
-      "TerimaMutasi"
-    ],
     "tasks": [
       {
-        "taskId": "SC-05-02-01",
-        "taskName": "Inventory Bangsal - Core Feature",
+        "taskId": "SC-05-02-01a",
+        "taskName": "StokOpname - Core Feature",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-05-02-01b",
+        "taskName": "ReqMutasi - Core Feature",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-05-02-01c",
+        "taskName": "TerimaMutasi - Core Feature",
         "effort": 3
       },
       {
@@ -729,16 +788,25 @@
     "workPackage": "Laboratorium Workspace Order Laboratorium (SC-08-01)",
     "pic": "We",
     "totalEffort": 15,
-    "Outcomes": [
-      "RegExternal",
-      "OrderLab",
-      "SampleCollection",
-      "Billing"
-    ],
     "tasks": [
       {
-        "taskId": "SC-08-01-01",
-        "taskName": "Order Lab - Core Feature",
+        "taskId": "SC-08-01-01a",
+        "taskName": "RegExternal - Core Feature",
+        "effort": 4
+      },
+      {
+        "taskId": "SC-08-01-01b",
+        "taskName": "OrderLab - Core Feature",
+        "effort": 4
+      },
+      {
+        "taskId": "SC-08-01-01c",
+        "taskName": "SampleCollection - Core Feature",
+        "effort": 4
+      },
+      {
+        "taskId": "SC-08-01-01d",
+        "taskName": "Billing - Core Feature",
         "effort": 4
       },
       {
@@ -777,13 +845,10 @@
     "workPackage": "Laboratorium Workspace Result Management (SC-08-02)",
     "pic": "We",
     "totalEffort": 15,
-    "Outcomes": [
-      "HasilLab"
-    ],
     "tasks": [
       {
-        "taskId": "SC-08-02-01",
-        "taskName": "Lab Result - Core Feature",
+        "taskId": "SC-08-02-01a",
+        "taskName": "HasilLab - Core Feature",
         "effort": 3
       },
       {
@@ -822,15 +887,20 @@
     "workPackage": "Laboratorium Workspace Local Inventory (SC-08-03)",
     "pic": "We",
     "totalEffort": 16,
-    "Outcomes": [
-      "StokOpname",
-      "ReqMutasi",
-      "TerimaMutasi"
-    ],
     "tasks": [
       {
-        "taskId": "SC-08-03-01",
-        "taskName": "Inventory Lab - Core Feature",
+        "taskId": "SC-08-03-01a",
+        "taskName": "StokOpname - Core Feature",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-08-03-01b",
+        "taskName": "ReqMutasi - Core Feature",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-08-03-01c",
+        "taskName": "TerimaMutasi - Core Feature",
         "effort": 3
       },
       {
@@ -869,16 +939,25 @@
     "workPackage": "Radiologi Workspace Order Radiologi (SC-09-01)",
     "pic": "We",
     "totalEffort": 14,
-    "Outcomes": [
-      "OrderRadiologi",
-      "JadwalRadiologi",
-      "Billing",
-      "PakaiBrg"
-    ],
     "tasks": [
       {
-        "taskId": "SC-09-01-01",
-        "taskName": "Order Rad - Core Feature",
+        "taskId": "SC-09-01-01a",
+        "taskName": "OrderRadiologi - Core Feature",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-09-01-01b",
+        "taskName": "JadwalRadiologi - Core Feature",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-09-01-01c",
+        "taskName": "Billing - Core Feature",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-09-01-01d",
+        "taskName": "PakaiBrg - Core Feature",
         "effort": 3
       },
       {
@@ -917,12 +996,9 @@
     "workPackage": "Radiologi Workspace Expertise (SC-09-02)",
     "pic": "We",
     "totalEffort": 14,
-    "Outcomes": [
-      "Expertise"
-    ],
     "tasks": [
       {
-        "taskId": "SC-09-02-01",
+        "taskId": "SC-09-02-01a",
         "taskName": "Expertise - Core Feature",
         "effort": 3
       },
@@ -962,15 +1038,20 @@
     "workPackage": "Radiologi Workspace Local Inventory (SC-09-03)",
     "pic": "We",
     "totalEffort": 16,
-    "Outcomes": [
-      "StokOpname",
-      "ReqMutasi",
-      "TerimaMutasi"
-    ],
     "tasks": [
       {
-        "taskId": "SC-09-03-01",
-        "taskName": "Inventory Rad - Core Feature",
+        "taskId": "SC-09-03-01a",
+        "taskName": "StokOpname - Core Feature",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-09-03-01b",
+        "taskName": "ReqMutasi - Core Feature",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-09-03-01c",
+        "taskName": "TerimaMutasi - Core Feature",
         "effort": 3
       },
       {
@@ -1009,14 +1090,15 @@
     "workPackage": "Kamar Operasi Workspace Scheduling (SC-10-01)",
     "pic": "Arie",
     "totalEffort": 18,
-    "Outcomes": [
-      "OrderOk",
-      "JadwalOk"
-    ],
     "tasks": [
       {
-        "taskId": "SC-10-01-01",
-        "taskName": "Schedule OK - Core Feature",
+        "taskId": "SC-10-01-01a",
+        "taskName": "OrderOk - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-10-01-01b",
+        "taskName": "JadwalOk - Core Feature",
         "effort": 5
       },
       {
@@ -1055,16 +1137,25 @@
     "workPackage": "Kamar Operasi Workspace Operative Management (SC-10-02)",
     "pic": "Arie",
     "totalEffort": 17,
-    "Outcomes": [
-      "JadwalOk",
-      "PreOperativeClearance",
-      "PakaiBrg",
-      "Tindakan"
-    ],
     "tasks": [
       {
-        "taskId": "SC-10-02-01",
-        "taskName": "Operative OK - Core Feature",
+        "taskId": "SC-10-02-01a",
+        "taskName": "JadwalOk - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-10-02-01b",
+        "taskName": "PreOperativeClearance - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-10-02-01c",
+        "taskName": "PakaiBrg - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-10-02-01d",
+        "taskName": "Tindakan - Core Feature",
         "effort": 5
       },
       {
@@ -1103,15 +1194,20 @@
     "workPackage": "Kamar Operasi Workspace Local Inventory (SC-10-03)",
     "pic": "Arie",
     "totalEffort": 18,
-    "Outcomes": [
-      "StokOpname",
-      "ReqMutasi",
-      "TerimaMutasi"
-    ],
     "tasks": [
       {
-        "taskId": "SC-10-03-01",
-        "taskName": "Inventory OK - Core Feature",
+        "taskId": "SC-10-03-01a",
+        "taskName": "StokOpname - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-10-03-01b",
+        "taskName": "ReqMutasi - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-10-03-01c",
+        "taskName": "TerimaMutasi - Core Feature",
         "effort": 5
       },
       {
@@ -1150,17 +1246,30 @@
     "workPackage": "Apotek Workspace Antrian Apotek (SC-11-01)",
     "pic": "Jude",
     "totalEffort": 16,
-    "Outcomes": [
-      "AntrianApotek",
-      "Penjualan",
-      "TelaahResep",
-      "OrderDispensing",
-      "Billing"
-    ],
     "tasks": [
       {
-        "taskId": "SC-11-01-01",
-        "taskName": "Antrian Apotek - Core Feature",
+        "taskId": "SC-11-01-01a",
+        "taskName": "AntrianApotek - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-11-01-01b",
+        "taskName": "Penjualan - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-11-01-01c",
+        "taskName": "TelaahResep - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-11-01-01d",
+        "taskName": "OrderDispensing - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-11-01-01e",
+        "taskName": "Billing - Core Feature",
         "effort": 5
       },
       {
@@ -1199,13 +1308,10 @@
     "workPackage": "Apotek Workspace Telaah Resep (SC-11-02)",
     "pic": "Jude",
     "totalEffort": 17,
-    "Outcomes": [
-      "TelaahResep"
-    ],
     "tasks": [
       {
-        "taskId": "SC-11-02-01",
-        "taskName": "Telaah Resep - Core Feature",
+        "taskId": "SC-11-02-01a",
+        "taskName": "TelaahResep - Core Feature",
         "effort": 4
       },
       {
@@ -1244,15 +1350,20 @@
     "workPackage": "Apotek Workspace Dispensing (SC-11-03)",
     "pic": "Jude",
     "totalEffort": 17,
-    "Outcomes": [
-      "OrderDispensing",
-      "AntrianApotek",
-      "Stok"
-    ],
     "tasks": [
       {
-        "taskId": "SC-11-03-01",
-        "taskName": "Dispensing - Core Feature",
+        "taskId": "SC-11-03-01a",
+        "taskName": "OrderDispensing - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-11-03-01b",
+        "taskName": "AntrianApotek - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-11-03-01c",
+        "taskName": "Stok - Core Feature",
         "effort": 5
       },
       {
@@ -1291,14 +1402,15 @@
     "workPackage": "Apotek Workspace Serah Obat (SC-11-04)",
     "pic": "Jude",
     "totalEffort": 13,
-    "Outcomes": [
-      "AntrianApotek",
-      "Stok"
-    ],
     "tasks": [
       {
-        "taskId": "SC-11-04-01",
-        "taskName": "Serah Obat - Core Feature",
+        "taskId": "SC-11-04-01a",
+        "taskName": "AntrianApotek - Core Feature",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-11-04-01b",
+        "taskName": "Stok - Core Feature",
         "effort": 3
       },
       {
@@ -1337,15 +1449,20 @@
     "workPackage": "Apotek Workspace Local Inventory (SC-11-05)",
     "pic": "Jude",
     "totalEffort": 16,
-    "Outcomes": [
-      "StokOpname",
-      "ReqMutasi",
-      "TerimaMutasi"
-    ],
     "tasks": [
       {
-        "taskId": "SC-11-05-01",
-        "taskName": "Inventory Apotek - Core Feature",
+        "taskId": "SC-11-05-01a",
+        "taskName": "StokOpname - Core Feature",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-11-05-01b",
+        "taskName": "ReqMutasi - Core Feature",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-11-05-01c",
+        "taskName": "TerimaMutasi - Core Feature",
         "effort": 3
       },
       {
@@ -1384,15 +1501,20 @@
     "workPackage": "Gudang Workspace Terima Barang (DO) (SC-12-01)",
     "pic": "Roso",
     "totalEffort": 17,
-    "Outcomes": [
-      "TerimaBrg",
-      "Stok",
-      "PurchaseOrder"
-    ],
     "tasks": [
       {
-        "taskId": "SC-12-01-01",
-        "taskName": "DO Gudang - Core Feature",
+        "taskId": "SC-12-01-01a",
+        "taskName": "TerimaBrg - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-12-01-01b",
+        "taskName": "Stok - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-12-01-01c",
+        "taskName": "PurchaseOrder - Core Feature",
         "effort": 5
       },
       {
@@ -1431,15 +1553,20 @@
     "workPackage": "Gudang Workspace Local Inventory (SC-12-02)",
     "pic": "Roso",
     "totalEffort": 17,
-    "Outcomes": [
-      "Stok",
-      "StokOpname",
-      "Mutasi"
-    ],
     "tasks": [
       {
-        "taskId": "SC-12-02-01",
-        "taskName": "Inventory Gudang - Core Feature",
+        "taskId": "SC-12-02-01a",
+        "taskName": "Stok - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-12-02-01b",
+        "taskName": "StokOpname - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-12-02-01c",
+        "taskName": "Mutasi - Core Feature",
         "effort": 5
       },
       {
@@ -1478,14 +1605,15 @@
     "workPackage": "Gudang Workspace Retur Beli (SC-12-03)",
     "pic": "Roso",
     "totalEffort": 17,
-    "Outcomes": [
-      "ReturBeli",
-      "Stok"
-    ],
     "tasks": [
       {
-        "taskId": "SC-12-03-01",
-        "taskName": "Retur Beli - Core Feature",
+        "taskId": "SC-12-03-01a",
+        "taskName": "ReturBeli - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-12-03-01b",
+        "taskName": "Stok - Core Feature",
         "effort": 5
       },
       {
@@ -1524,16 +1652,25 @@
     "workPackage": "Purchasing Workspace Purchase Order (SC-13-01)",
     "pic": "Fikri",
     "totalEffort": 18,
-    "Outcomes": [
-      "MaterialReq",
-      "PurchaseReq",
-      "Forecasting",
-      "PurchaseOrder"
-    ],
     "tasks": [
       {
-        "taskId": "SC-13-01-01",
-        "taskName": "Purchasing - Core Feature",
+        "taskId": "SC-13-01-01a",
+        "taskName": "MaterialReq - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-13-01-01b",
+        "taskName": "PurchaseReq - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-13-01-01c",
+        "taskName": "Forecasting - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-13-01-01d",
+        "taskName": "PurchaseOrder - Core Feature",
         "effort": 5
       },
       {
@@ -1572,14 +1709,15 @@
     "workPackage": "Purchasing Workspace Faktur Tagihan (SC-13-02)",
     "pic": "Fikri",
     "totalEffort": 18,
-    "Outcomes": [
-      "Faktur",
-      "PurchaseOrder"
-    ],
     "tasks": [
       {
-        "taskId": "SC-13-02-01",
+        "taskId": "SC-13-02-01a",
         "taskName": "Faktur - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-13-02-01b",
+        "taskName": "PurchaseOrder - Core Feature",
         "effort": 5
       },
       {

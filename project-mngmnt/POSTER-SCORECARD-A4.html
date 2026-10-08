@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MYHOSWEB Developer War Room Scorecard & Due Date Poster (Concept 4 - A4)</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    @page {
+      size: A4 landscape;
+      margin: 5mm;
+    }
+    @media print {
+      body {
+        background-color: #0b0f19 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .poster-container {
+        width: 100% !important;
+        max-width: none !important;
+        padding: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased p-2 md:p-6 min-h-screen flex flex-col items-center justify-center">
+
+  <!-- A4 POSTER WRAPPER (Landscape Format 297mm x 210mm) -->
+  <div class="poster-container w-full max-w-[1140px] bg-slate-900/95 border border-slate-800 rounded-2xl shadow-2xl p-4 md:p-5 relative overflow-hidden flex flex-col justify-between">
+    
+    <!-- HEADER BAR -->
+    <header class="flex items-center justify-between border-b border-slate-800 pb-2.5 mb-3">
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-full text-[11px] font-black uppercase tracking-wider bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
+            WAR ROOM DUE DATE BOARD
+          </span>
+          <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+            4h/Day Model (1,504 Man-Days)
+          </span>
+          <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+            Rev 7 Baseline
+          </span>
+        </div>
+        <h1 class="text-xl md:text-2xl font-black text-white tracking-tight mt-0.5 flex items-center gap-2">
+          <span>🎯 MYHOSWEB DEVELOPER SCORECARDS & WORKSPACE DUE DATES</span>
+        </h1>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <div class="text-right hidden sm:block">
+          <div class="text-[10px] uppercase tracking-wider text-slate-400 font-medium">Final Go-Live Deadline</div>
+          <div class="text-base font-black text-rose-400">12 Feb 2027 (We - PACS Inv)</div>
+        </div>
+        <button onclick="window.print()" class="no-print px-3 py-1.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs flex items-center gap-1.5 shadow transition cursor-pointer" title="Print to A4 Landscape">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+          <span>Print A4 Poster</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- ARCHITECTURAL BANNER (ERKOC REFERENCE NEXUS) -->
+    <div class="bg-gradient-to-r from-amber-950/40 via-slate-950 to-indigo-950/40 border border-amber-500/40 rounded-xl px-3 py-2 mb-3 flex items-center justify-between text-xs">
+      <div class="flex items-center gap-2">
+        <span class="px-2 py-0.5 text-[10px] font-black uppercase bg-amber-500 text-slate-950 rounded font-mono">CRITICAL MILESTONE</span>
+        <span class="text-slate-200"><strong>Jan 12, 2027:</strong> Erkoc delivers <strong>Lab Local Inventory (SC-08-03) Reference Template</strong>. Downstream units (marked <span class="text-amber-400 font-bold">✦</span>) copy-modify starting Jan 12!</span>
+      </div>
+      <div class="font-mono text-amber-300 font-bold text-[11px] hidden md:block">
+        Template Ready: 12 Jan 2027
+      </div>
+    </div>
+
+    <!-- 3x3 GRID OF 9 DEVELOPER SCORECARDS -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-2.5 mb-3">
+
+      <!-- 1. ARIF -->
+      <div class="bg-slate-950/80 border border-blue-500/40 rounded-xl p-2.5 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between border-b border-slate-800 pb-1.5 mb-1.5">
+            <div class="flex items-center gap-1.5">
+              <span class="w-5 h-5 rounded-full bg-blue-500 text-slate-950 text-xs font-black flex items-center justify-center">1</span>
+              <span class="font-black text-white text-sm">ARIF</span>
+              <span class="text-[10px] text-blue-400 font-medium">(Admisi & IGD)</span>
+            </div>
+            <span class="text-[10px] font-mono text-slate-400">214d • 856h</span>
+          </div>
+
+          <div class="space-y-1 text-xs">
+            <div class="flex items-center justify-between bg-slate-900/60 p-1 rounded border border-slate-800/60">
+              <span class="text-slate-300 truncate pr-1">☐ <strong class="text-cyan-300">SC-01-02</strong> Reg Rajal-IGD</span>
+              <span class="font-mono font-bold text-cyan-400 text-[11px] shrink-0">10 OCT 2026</span>
+            </div>
+            <div class="flex items-center justify-between bg-slate-900/60 p-1 rounded border border-slate-800/60">
+              <span class="text-slate-300 truncate pr-1">☐ <strong class="text-cyan-300">SC-01-01</strong> Booking Online</span>
+              <span class="font-mono font-bold text-cyan-400 text-[11px] shrink-0">12 OCT 2026</span>
+            </div>
+            <div class="flex items-center justify-between bg-slate-900/60 p-1 rounded border border-slate-800/60">
+              <span class="text-slate-300 truncate pr-1">☐ <strong class="text-cyan-300">SC-01-03</strong> Reg Ranap</span>
+              <span class="font-mono font-bold text-cyan-400 text-[11px] shrink-0">04 NOV 2026</span>
+            </div>
+            <div class="flex items-center justify-between bg-slate-900/60 p-1 rounded border border-slate-800/60">
+              <span class="text-slate-300 truncate pr-1">☐ <strong class="text-cyan-300">SC-07-01</strong> IGD Triage Emergency</span>
+              <span class="font-mono font-bold text-indigo-300 text-[11px] shrink-0">08 DEC 2026</span>
+            </div>
+            <div class="flex items-center justify-between bg-amber-950/20 p-1 rounded border border-amber-500/30">
+              <span class="text-amber-200 truncate pr-1">☐ <strong class="text-amber-400">SC-05-02</strong> IGD Local Inv <span class="text-amber-400 font-bold">✦</span></span>
+              <span class="font-mono font-bold text-amber-300 text-[11px] shrink-0">03 FEB 2027</span>
+            </div>
+          </div>
+        </div>
+        <div class="mt-1.5 pt-1 border-t border-slate-800/60 flex justify-between text-[10px] text-slate-500 font-mono">
+          <span>Stream End: 03 Feb 2027</span>
+          <span class="text-blue-400 font-bold">5 Workspaces</span>
+        </div>
+      </div>
+
+      <!-- 2. WE (CRITICAL PATH) -->
+      <div class="bg-slate-950/80 border border-rose-500/50 rounded-xl p-2.5 shadow-sm flex flex-col justify-between relative overflow-hidden">
+        <div class="absolute -right-6 -top-6 w-16 h-16 bg-rose-500/10 rounded-full blur pointer-events-none"></div>
+        <div>
+          <div class="flex items-center justify-between border-b border-slate-800 pb-1.5 mb-1.5">
+            <div class="flex items-center gap-1.5">
+              <span class="w-5 h-5 rounded-full bg-rose-500 text-white text-xs font-black flex items-center justify-center">2</span>
+              <span class="font-black text-white text-sm">WE</span>
+              <span class="text-[9px] px-1 py-0.2 rounded bg-rose-500/20 text-rose-300 font-bold">CRITICAL</span>
+            </div>
+            <span class="text-[10px] font-mono text-slate-400">214d • 856h</span>
+          </div>
+
+          <div class="space-y-1 text-xs">
+            <div class="flex items-center justify-between bg-slate-900/60 p-1 rounded border border-slate-800/60">
+              <span class="text-slate-300 truncate pr-1">☐ <strong class="text-cyan-300">SC-08-01</strong> Order Laboratorium</span>
+              <span class="font-mono font-bold text-cyan-400 text-[11px] shrink-0">11 NOV 2026</span>
+            </div>
+            <div class="flex items-center justify-between bg-slate-900/60 p-1 rounded border border-slate-800/60">
+              <span class="text-slate-300 truncate pr-1">☐ <strong class="text-cyan-300">SC-08-02</strong> Lab Result Mgmt</span>
+              <span class="font-mono font-bold text-indigo-300 text-[11px] shrink-0">02 DEC 2026</span>
+            </div>
+            <div class="flex items-center justify-between bg-slate-900/60 p-1 rounded border border-slate-800/60">
+              <span class="text-slate-300 truncate pr-1">☐ <strong class="text-cyan-300">SC-09-01</strong> Order Radiologi</span>
+              <span class="font-mono font-bold text-emerald-400 text-[11px] shrink-0">01 JAN 2027</span>
+            </div>
+            <div class="flex items-center justify-between bg-slate-900/60 p-1 rounded border border-slate-800/60">
+              <span class="text-slate-300 truncate pr-1">☐ <strong class="text-cyan-300">SC-09-02</strong> Radiologi Expertise</span>
+              <span class="font-mono font-bold text-emerald-400 text-[11px] shrink-0">21 JAN 2027</span>
+            </div>
+            <div class="flex items-center justify-between bg-rose-950/30 p-1 rounded border border-rose-500/40">
+              <span class="text-rose-200 truncate pr-1">☐ <strong class="text-rose-400">SC-09-03</strong> Rad Local Inv <span class="text-amber-400 font-bold">✦</span></span>
+              <span class="font-mono font-black text-rose-400 text-[11px] shrink-0">★ 12 FEB 2027</span>
+            </div>
+          </div>
+        </div>
+        <div class="mt-1.5 pt-1 border-t border-slate-800/60 flex justify-between text-[10px] text-slate-500 font-mono">
+          <span class="text-rose-400 font-bold">Final Cutover: 12 Feb 2027</span>
+          <span class="text-rose-400 font-bold">5 Workspaces</span>
+        </div>
+      </div>
+
+      <!-- 3. JUDE -->
+      <div class="bg-slate-950/80 border border-emerald-500/40 rounded-xl p-2.5 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between border-b border-slate-800 pb-1.5 mb-1.5">
+            <div class="flex items-center gap-1.5">
+              <span class="w-5 h-5 rounded-full bg-emerald-500 text-slate-950 text-xs font-black flex items-center justify-center">3</span>
+              <span class="font-black text-white text-sm">JUDE</span>
+              <span class="text-[10px] text-emerald-400 font-medium">(Apotek & Farmasi)</span>
+            </div>
+            <span class="text-[10px] font-mono text-slate-400">202d • 808h</span>
+          </div>
+
+          <div class="space-y-1 text-xs">
+            <div class="flex items-center justify-between bg-slate-900/60 p-1 rounded border border-slate-800/60">
+              <span class="text-slate-300 truncate pr-1">☐ <strong class="text-cyan-300">SC-11-01</strong> Antrian Apotek</span>
+              <span class="font-mono font-bold text-cyan-400 text-[11px] shrink-0">11 NOV 2026</span>
+            </div>
+            <div class="flex items-center justify-between bg-slate-900/60 p-1 rounded border border-slate-800/60">
+              <span class="text-slate-300 truncate pr-1">☐ <strong class="text-cyan-300">SC-11-02</strong> Telaah Resep</span>
+              <span class="font-mono font-bold text-indigo-300 text-[11px] shrink-0">01 DEC 2026</span>
+            </div>
+            <div class="flex items-center justify-between bg-slate-900/60 p-1 rounded border border-slate-800/60">
+              <span class="text-slate-300 truncate pr-1">☐ <strong class="text-cyan-300">SC-11-03</strong> Dispensing Obat</span>
+              <span class="font-mono font-bold text-indigo-300 text-[11px] shrink-0">24 DEC 2026</span>
+            </div>
+            <div class="flex items-center justify-between bg-slate-900/60 p-1 rounded border border-slate-800/60">
+              <span class="text-slate-300 truncate pr-1">☐ <strong class="text-cyan-300">SC-11-04</strong> Serah Obat</span>
+              <span class="font-mono font-bold text-emerald-400 text-[11px] shrink-0">14 JAN 2027</span>
+            </div>
+            <div class="flex items-center justify-between bg-amber-950/20 p-1 rounded border border-amber-500/30">
+              <span class="text-amber-200 truncate pr-1">☐ <strong class="text-amber-400">SC-11-05</strong> Apotek Local Inv <span class="text-amber-400 font-bold">✦</span></span>
+              <span class="font-mono font-bold text-amber-300 text-[11px] shrink-0">05 FEB 2027</span>
+            </div>
+          </div>
+        </div>
+        <div class="mt-1.5 pt-1 border-t border-slate-800/60 flex justify-between text-[10px] text-slate-500 font-mono">
+          <span>Stream End: 05 Feb 2027</span>
+          <span class="text-emerald-400 font-bold">5 Workspaces</span>
+        </div>
+      </div>
+
+      <!-- 4. FIKRI -->
+      <div class="bg-slate-950/80 border border-purple-500/40 rounded-xl p-2.5 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between border-b border-slate-800 pb-1.5 mb-1.5">
+            <div class="flex items-center gap-1.5">
+              <span class="w-5 h-5 rounded-full bg-purple-500 text-white text-xs font-black flex items-center justify-center">4</span>
+              <span class="font-black text-white text-sm">FIKRI</span>
+              <span class="text-[10px] text-purple-300 font-medium">(Poli & Purchasing)</span>
+            </div>
+            <span class="text-[10px] font-mono text-slate-400">198d • 792h</span>
+          </div>
+
+          <div class="space-y-1 text-xs">
+            <div class="flex items-center justify-between bg-slate-900/60 p-1 rounded border border-slate-800/60">
+              <span class="text-slate-300 truncate pr-1">☐ <strong class="text-cyan-300">SC-05-01</strong> Poli Tindakan</span>
+              <span class="font-mono font-bold text-cyan-400 text-[11px] shrink-0">07 NOV 2026</span>
+            </div>
+            <div class="flex items-center justify-between bg-slate-900/60 p-1 rounded border border-slate-800/60">
+              <span class="text-slate-300 truncate pr-1">☐ <strong class="text-cyan-300">SC-05-02</strong> Poli Local Inventory</span>
+              <span class="font-mono font-bold text-indigo-300 text-[11px] shrink-0">02 DEC 2026</span>
+            </div>
+            <div class="flex items-center justify-between bg-slate-900/60 p-1 rounded border border-slate-800/60">
+              <span class="text-slate-300 truncate pr-1">☐ <strong class="text-cyan-300">SC-13-01</strong> Purchase Order (PO)</span>
+              <span class="font-mono font-bold text-emerald-400 text-[11px] shrink-0">09 JAN 2027</span>
+            </div>
+            <div class="flex items-center justify-between bg-slate-900/60 p-1 rounded border border-slate-800/60">
+              <span class="text-slate-300 truncate pr-1">☐ <strong class="text-cyan-300">SC-13-02</strong> Faktur Tagihan AP</span>
+              <span class="font-mono font-bold text-emerald-400 text-[11px] shrink-0">03 FEB 2027</span>
+            </div>
+          </div>
+        </div>
+        <div class="mt-1.5 pt-1 border-t border-slate-800/60 flex justify-between text-[10px] text-slate-500 font-mono">
+          <span>Stream End: 03 Feb 2027</span>
+          <span class="text-purple-400 font-bold">4 Workspaces</span>
+        </div>
+      </div>
+
+      <!-- 5. ERKOC (TEMPLATE LEADER) -->
+      <div class="bg-slate-950/80 border border-amber-500/50 rounded-xl p-2.5 shadow-sm flex flex-col justify-between relative">
+        <div>
+          <div class="flex items-center justify-between border-b border-slate-800 pb-1.5 mb-1.5">
+            <div class="flex items-center gap-1.5">
+              <span class="w-5 h-5 rounded-full bg-amber-500 text-slate-950 text-xs font-black flex items-center justify-center">5</span>
+              <span class="font-black text-white text-sm">ERKOC</span>
+              <span class="text-[9px] px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-300 font-bold">TEMPLATE LEAD</span>
+            </div>
+            <span class="text-[10px] font-mono text-slate-400">166d • 664h</span>
+          </div>
+
+          <div class="space-y-1 text-xs">
+            <div class="flex items-center justify-between bg-slate-900/60 p-1 rounded border border-slate-800/60">
+              <span class="text-slate-300 truncate pr-1">☐ <strong class="text-cyan-300">SC-02-01</strong> Tata Rekening Out</span>
+              <span class="font-mono font-bold text-cyan-400 text-[11px] shrink-0">05 NOV 2026</span>
+            </div>
+            <div class="flex items-center justify-between bg-slate-900/60 p-1 rounded border border-slate-800/60">
+              <span class="text-slate-300 truncate pr-1">☐ <strong class="text-cyan-300">SC-03-01</strong> Kasir POS Payment</span>
+              <span class="font-mono font-bold text-cyan-400 text-[11px] shrink-0">26 NOV 2026</span>
+            </div>
+            <div class="flex items-center justify-between bg-slate-900/60 p-1 rounded border border-slate-800/60">
+              <span class="text-slate-300 truncate pr-1">☐ <strong class="text-cyan-300">SC-03-02</strong> Kasir Closing Shift</span>
+              <span class="font-mono font-bold text-indigo-300 text-[11px] shrink-0">15 DEC 2026</span>
+            </div>
+            <div class="flex items-center justify-between bg-amber-950/30 p-1 rounded border border-amber-500/40">
+              <span class="text-amber-200 truncate pr-1">☐ <strong class="text-amber-400">SC-08-03</strong> <strong>Lab Local Inv ★</strong></span>
+              <span class="font-mono font-black text-amber-400 text-[11px] shrink-0">★ 12 JAN (15 Jan)</span>
+            </div>
+          </div>
+        </div>
+        <div class="mt-1.5 pt-1 border-t border-slate-800/60 flex justify-between text-[10px] text-slate-500 font-mono">
+          <span class="text-amber-400 font-bold">Template Fan-Out: 12 Jan 2027</span>
+          <span class="text-amber-400 font-bold">4 Workspaces</span>
+        </div>
+      </div>
+
+      <!-- 6. ARIE -->
+      <div class="bg-slate-950/80 border border-teal-500/40 rounded-xl p-2.5 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between border-b border-slate-800 pb-1.5 mb-1.5">
+            <div class="flex items-center gap-1.5">
+              <span class="w-5 h-5 rounded-full bg-teal-500 text-slate-950 text-xs font-black flex items-center justify-center">6</span>
+              <span class="font-black text-white text-sm">ARIE</span>
+              <span class="text-[10px] text-teal-400 font-medium">(Kamar Operasi)</span>
+            </div>
+            <span class="text-[10px] font-mono text-slate-400">138d • 552h</span>
+          </div>
+
+          <div class="space-y-1 text-xs">
+            <div class="flex items-center justify-between bg-slate-900/60 p-1 rounded border border-slate-800/60">
+              <span class="text-slate-300 truncate pr-1">☐ <strong class="text-cyan-300">SC-10-01</strong> OK Scheduling</span>
+              <span class="font-mono font-bold text-cyan-400 text-[11px] shrink-0">07 NOV 2026</span>
+            </div>
+            <div class="flex items-center justify-between bg-slate-900/60 p-1 rounded border border-slate-800/60">
+              <span class="text-slate-300 truncate pr-1">☐ <strong class="text-cyan-300">SC-10-02</strong> OK Operative Mgmt</span>
+              <span class="font-mono font-bold text-indigo-300 text-[11px] shrink-0">08 DEC 2026</span>
+            </div>
+            <div class="flex items-center justify-between bg-amber-950/20 p-1 rounded border border-amber-500/30">
+              <span class="text-amber-200 truncate pr-1">☐ <strong class="text-amber-400">SC-10-03</strong> OK Local Inv <span class="text-amber-400 font-bold">✦</span></span>
+              <span class="font-mono font-bold text-amber-300 text-[11px] shrink-0">02 FEB 2027</span>
+            </div>
+          </div>
+        </div>
+        <div class="mt-1.5 pt-1 border-t border-slate-800/60 flex justify-between text-[10px] text-slate-500 font-mono">
+          <span>Stream End: 02 Feb 2027</span>
+          <span class="text-teal-400 font-bold">3 Workspaces</span>
+        </div>
+      </div>
+
+      <!-- 7. ROSO -->
+      <div class="bg-slate-950/80 border border-orange-500/40 rounded-xl p-2.5 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between border-b border-slate-800 pb-1.5 mb-1.5">
+            <div class="flex items-center gap-1.5">
+              <span class="w-5 h-5 rounded-full bg-orange-500 text-slate-950 text-xs font-black flex items-center justify-center">7</span>
+              <span class="font-black text-white text-sm">ROSO</span>
+              <span class="text-[10px] text-orange-400 font-medium">(Gudang Logistik)</span>
+            </div>
+            <span class="text-[10px] font-mono text-slate-400">138d • 552h</span>
+          </div>
+
+          <div class="space-y-1 text-xs">
+            <div class="flex items-center justify-between bg-slate-900/60 p-1 rounded border border-slate-800/60">
+              <span class="text-slate-300 truncate pr-1">☐ <strong class="text-cyan-300">SC-12-01</strong> Gudang Terima DO</span>
+              <span class="font-mono font-bold text-cyan-400 text-[11px] shrink-0">10 NOV 2026</span>
+            </div>
+            <div class="flex items-center justify-between bg-slate-900/60 p-1 rounded border border-slate-800/60">
+              <span class="text-slate-300 truncate pr-1">☐ <strong class="text-cyan-300">SC-12-02</strong> Gudang Local Inv</span>
+              <span class="font-mono font-bold text-indigo-300 text-[11px] shrink-0">08 DEC 2026</span>
+            </div>
+            <div class="flex items-center justify-between bg-slate-900/60 p-1 rounded border border-slate-800/60">
+              <span class="text-slate-300 truncate pr-1">☐ <strong class="text-cyan-300">SC-12-03</strong> Gudang Retur Beli</span>
+              <span class="font-mono font-bold text-indigo-300 text-[11px] shrink-0">30 DEC 2026</span>
+            </div>
+          </div>
+        </div>
+        <div class="mt-1.5 pt-1 border-t border-slate-800/60 flex justify-between text-[10px] text-slate-500 font-mono">
+          <span>Stream End: 30 Dec 2026</span>
+          <span class="text-orange-400 font-bold">3 Workspaces</span>
+        </div>
+      </div>
+
+      <!-- 8. RIZAL (FIRST DONE) -->
+      <div class="bg-slate-950/80 border border-cyan-500/40 rounded-xl p-2.5 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between border-b border-slate-800 pb-1.5 mb-1.5">
+            <div class="flex items-center gap-1.5">
+              <span class="w-5 h-5 rounded-full bg-cyan-500 text-slate-950 text-xs font-black flex items-center justify-center">8</span>
+              <span class="font-black text-white text-sm">RIZAL</span>
+              <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-300 font-bold">FIRST DONE</span>
+            </div>
+            <span class="text-[10px] font-mono text-slate-400">132d • 528h</span>
+          </div>
+
+          <div class="space-y-1 text-xs">
+            <div class="flex items-center justify-between bg-slate-900/60 p-1 rounded border border-slate-800/60">
+              <span class="text-slate-300 truncate pr-1">☐ <strong class="text-cyan-300">SC-04-01</strong> Rekam Medis Berkas</span>
+              <span class="font-mono font-bold text-cyan-400 text-[11px] shrink-0">05 NOV 2026</span>
+            </div>
+            <div class="flex items-center justify-between bg-slate-900/60 p-1 rounded border border-slate-800/60">
+              <span class="text-slate-300 truncate pr-1">☐ <strong class="text-cyan-300">SC-04-02</strong> Casemix & Coding</span>
+              <span class="font-mono font-bold text-indigo-300 text-[11px] shrink-0">02 DEC 2026</span>
+            </div>
+            <div class="flex items-center justify-between bg-emerald-950/20 p-1 rounded border border-emerald-500/30">
+              <span class="text-emerald-200 truncate pr-1">☐ <strong class="text-emerald-400">SC-04-03</strong> Kemenkes RL Export</span>
+              <span class="font-mono font-bold text-emerald-300 text-[11px] shrink-0">26 DEC 2026</span>
+            </div>
+          </div>
+        </div>
+        <div class="mt-1.5 pt-1 border-t border-slate-800/60 flex justify-between text-[10px] text-slate-500 font-mono">
+          <span class="text-emerald-400 font-bold">First Done: 26 Dec 2026</span>
+          <span class="text-cyan-400 font-bold">3 Workspaces</span>
+        </div>
+      </div>
+
+      <!-- 9. SULIS -->
+      <div class="bg-slate-950/80 border border-pink-500/40 rounded-xl p-2.5 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between border-b border-slate-800 pb-1.5 mb-1.5">
+            <div class="flex items-center gap-1.5">
+              <span class="w-5 h-5 rounded-full bg-pink-500 text-white text-xs font-black flex items-center justify-center">9</span>
+              <span class="font-black text-white text-sm">SULIS</span>
+              <span class="text-[10px] text-pink-400 font-medium">(Bangsal Ranap)</span>
+            </div>
+            <span class="text-[10px] font-mono text-slate-400">102d • 408h</span>
+          </div>
+
+          <div class="space-y-1 text-xs">
+            <div class="flex items-center justify-between bg-slate-900/60 p-1 rounded border border-slate-800/60">
+              <span class="text-slate-300 truncate pr-1">☐ <strong class="text-cyan-300">SC-06-01</strong> Bed Management Ranap</span>
+              <span class="font-mono font-bold text-cyan-400 text-[11px] shrink-0">16 NOV 2026</span>
+            </div>
+            <div class="flex items-center justify-between bg-amber-950/20 p-1 rounded border border-amber-500/30">
+              <span class="text-amber-200 truncate pr-1">☐ <strong class="text-amber-400">SC-05-02</strong> Ranap Local Inv <span class="text-amber-400 font-bold">✦</span></span>
+              <span class="font-mono font-bold text-amber-300 text-[11px] shrink-0">03 FEB 2027</span>
+            </div>
+          </div>
+        </div>
+        <div class="mt-1.5 pt-1 border-t border-slate-800/60 flex justify-between text-[10px] text-slate-500 font-mono">
+          <span>Stream End: 03 Feb 2027</span>
+          <span class="text-pink-400 font-bold">2 Workspaces</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- POSTER FOOTER / QUICK COLOR KEY -->
+    <footer class="border-t border-slate-800 pt-2 flex flex-col md:flex-row items-center justify-between text-[10px] text-slate-400 font-mono gap-2">
+      <div class="flex items-center gap-3">
+        <span class="flex items-center gap-1"><span class="w-2 h-2 rounded bg-cyan-400"></span> Wave 1 (Nov)</span>
+        <span class="flex items-center gap-1"><span class="w-2 h-2 rounded bg-indigo-400"></span> Wave 2 (Dec)</span>
+        <span class="flex items-center gap-1"><span class="w-2 h-2 rounded bg-amber-400"></span> ✦ Template Fan-Out</span>
+        <span class="flex items-center gap-1"><span class="w-2 h-2 rounded bg-rose-400"></span> ★ Critical Final Cutover</span>
+      </div>
+      <div>
+        POSTER FORM 4: MYHOSWEB WAR ROOM ACCOUNTABILITY BOARD • PRINT ON A4 LANDSCAPE • MOUNT IN MAIN ROOM
+      </div>
+    </footer>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MYHOSWEB Metro Transit Map - A4 War Room Poster (Rev 7)</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    @page {
+      size: A4 landscape;
+      margin: 6mm;
+    }
+    @media print {
+      body {
+        background-color: #0b0f19 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .poster-container {
+        width: 100% !important;
+        height: 100% !important;
+        max-width: none !important;
+        padding: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased p-2 md:p-6 min-h-screen flex flex-col items-center justify-center">
+
+  <!-- A4 POSTER WRAPPER (Landscape Aspect Ratio 297mm x 210mm) -->
+  <div class="poster-container w-full max-w-[1120px] bg-slate-900/95 border border-slate-800 rounded-2xl shadow-2xl p-4 md:p-6 relative overflow-hidden flex flex-col justify-between">
+    
+    <!-- TOP HEADER & CONTROLS -->
+    <div class="flex items-start justify-between border-b border-slate-800 pb-3 mb-3">
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-full text-[11px] font-black uppercase tracking-wider bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
+            METRO TRANSIT MAP • REV 7
+          </span>
+          <span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+            4 Hours/Day Capacity Model
+          </span>
+          <span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+            A4 Print Ready
+          </span>
+        </div>
+        <h1 class="text-2xl md:text-3xl font-black text-white tracking-tight mt-1 flex items-center gap-2">
+          <span>🚇 MYHOSWEB DELIVERY NETWORK</span>
+          <span class="text-slate-500 font-light text-xl">| War Room Due Date Map</span>
+        </h1>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <div class="text-right hidden sm:block">
+          <div class="text-[11px] uppercase tracking-wider text-slate-400 font-medium">Final Hospital Cutover</div>
+          <div class="text-lg font-black text-rose-400">12 Feb 2027</div>
+        </div>
+        <button onclick="window.print()" class="no-print px-3 py-1.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs flex items-center gap-1.5 shadow transition cursor-pointer" title="Print to A4 Landscape">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+          <span>Print A4 Poster</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ZONE TIMELINE HEADER BARS -->
+    <div class="grid grid-cols-3 gap-2 mb-3 text-center text-xs font-bold font-mono">
+      <div class="bg-cyan-950/40 border border-cyan-500/30 text-cyan-300 py-1 rounded-md">
+        ZONE 1: OCT – NOV 2026 (Foundation & Access)
+      </div>
+      <div class="bg-indigo-950/40 border border-indigo-500/30 text-indigo-300 py-1 rounded-md">
+        ZONE 2: DEC 2026 (Clinical Care & Template Build)
+      </div>
+      <div class="bg-emerald-950/40 border border-emerald-500/30 text-emerald-300 py-1 rounded-md">
+        ZONE 3: JAN – FEB 2027 (Template Fan-out & Cutover)
+      </div>
+    </div>
+
+    <!-- MAIN TRANSIT METRO MAP CANVAS (SVG) -->
+    <div class="relative w-full bg-slate-950/80 rounded-xl border border-slate-800 p-2 overflow-x-auto shadow-inner">
+      <svg viewBox="0 0 1060 480" class="w-full h-auto min-w-[900px] text-slate-100 select-none">
+        <defs>
+          <!-- Line Gradients -->
+          <linearGradient id="grad-amber" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#f59e0b" />
+            <stop offset="100%" stop-color="#fbbf24" />
+          </linearGradient>
+          <filter id="glow-gold" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="3" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+          </filter>
+        </defs>
+
+        <!-- ZONE BACKGROUND DIVIDERS -->
+        <line x1="360" y1="10" x2="360" y2="470" stroke="#1e293b" stroke-width="2" stroke-dasharray="6,6" />
+        <line x1="720" y1="10" x2="720" y2="470" stroke="#1e293b" stroke-width="2" stroke-dasharray="6,6" />
+
+        <!-- ================= TRACKS (SVG PATHS) ================= -->
+        <!-- L1 Arif (Blue) -->
+        <path d="M 80,40 L 320,40 L 480,40 L 750,40 L 980,40" fill="none" stroke="#3b82f6" stroke-width="5" stroke-linecap="round" />
+        <!-- L2 We (Red - Critical) -->
+        <path d="M 80,85 L 280,85 L 640,85 L 820,85 L 1020,85" fill="none" stroke="#ef4444" stroke-width="6" stroke-linecap="round" />
+        <!-- L3 Jude (Green) -->
+        <path d="M 80,135 L 280,135 L 560,135 L 780,135 L 990,135" fill="none" stroke="#10b981" stroke-width="5" stroke-linecap="round" />
+        <!-- L4 Fikri (Purple) -->
+        <path d="M 80,185 L 240,185 L 440,185 L 760,185 L 970,185" fill="none" stroke="#a855f7" stroke-width="5" stroke-linecap="round" />
+        
+        <!-- L5 Erkoc (Gold - Central Hub) -->
+        <path d="M 80,240 L 220,240 L 300,240 L 520,240 L 730,240" fill="none" stroke="#f59e0b" stroke-width="6" stroke-linecap="round" filter="url(#glow-gold)" />
+        
+        <!-- L6 Arie (Teal) -->
+        <path d="M 80,295 L 240,295 L 480,295 L 960,295" fill="none" stroke="#14b8a6" stroke-width="5" stroke-linecap="round" />
+        <!-- L7 Roso (Orange) -->
+        <path d="M 80,350 L 260,350 L 500,350 L 620,350" fill="none" stroke="#f97316" stroke-width="5" stroke-linecap="round" />
+        <!-- L8 Rizal (Sky Blue) -->
+        <path d="M 80,405 L 220,405 L 440,405 L 600,405" fill="none" stroke="#06b6d4" stroke-width="5" stroke-linecap="round" />
+        <!-- L9 Sulis (Rose/Pink) -->
+        <path d="M 80,455 L 300,455 L 960,455" fill="none" stroke="#ec4899" stroke-width="5" stroke-linecap="round" />
+
+        <!-- ================= TEMPLATE TRANSFER CONNECTIONS (JAN 12) ================= -->
+        <!-- Erkoc Hub at x=730, y=240 branching to L1, L2, L3, L6, L9 -->
+        <path d="M 730,240 Q 770,240 770,140 Q 770,40 850,40" fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="4,4" opacity="0.8" />
+        <path d="M 730,240 Q 780,240 780,180 Q 780,85 890,85" fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="4,4" opacity="0.8" />
+        <path d="M 730,240 Q 760,240 760,180 Q 760,135 870,135" fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="4,4" opacity="0.8" />
+        <path d="M 730,240 Q 760,240 760,270 Q 760,295 840,295" fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="4,4" opacity="0.8" />
+        <path d="M 730,240 Q 770,240 770,350 Q 770,455 840,455" fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="4,4" opacity="0.8" />
+
+        <!-- ================= LINE LABELS (LEFT) ================= -->
+        <g font-family="sans-serif" font-size="11" font-weight="bold">
+          <!-- L1 Arif -->
+          <rect x="8" y="28" width="58" height="24" rx="12" fill="#3b82f6" />
+          <text x="37" y="44" fill="#ffffff" text-anchor="middle">L1 ARIF</text>
+
+          <!-- L2 We -->
+          <rect x="8" y="73" width="58" height="24" rx="12" fill="#ef4444" />
+          <text x="37" y="89" fill="#ffffff" text-anchor="middle">L2 WE ★</text>
+
+          <!-- L3 Jude -->
+          <rect x="8" y="123" width="58" height="24" rx="12" fill="#10b981" />
+          <text x="37" y="139" fill="#ffffff" text-anchor="middle">L3 JUDE</text>
+
+          <!-- L4 Fikri -->
+          <rect x="8" y="173" width="58" height="24" rx="12" fill="#a855f7" />
+          <text x="37" y="189" fill="#ffffff" text-anchor="middle">L4 FIKRI</text>
+
+          <!-- L5 Erkoc -->
+          <rect x="8" y="228" width="58" height="24" rx="12" fill="#f59e0b" />
+          <text x="37" y="244" fill="#0f172a" text-anchor="middle">L5 ERKOC</text>
+
+          <!-- L6 Arie -->
+          <rect x="8" y="283" width="58" height="24" rx="12" fill="#14b8a6" />
+          <text x="37" y="299" fill="#ffffff" text-anchor="middle">L6 ARIE</text>
+
+          <!-- L7 Roso -->
+          <rect x="8" y="338" width="58" height="24" rx="12" fill="#f97316" />
+          <text x="37" y="354" fill="#ffffff" text-anchor="middle">L7 ROSO</text>
+
+          <!-- L8 Rizal -->
+          <rect x="8" y="393" width="58" height="24" rx="12" fill="#06b6d4" />
+          <text x="37" y="409" fill="#ffffff" text-anchor="middle">L8 RIZAL</text>
+
+          <!-- L9 Sulis -->
+          <rect x="8" y="443" width="58" height="24" rx="12" fill="#ec4899" />
+          <text x="37" y="459" fill="#ffffff" text-anchor="middle">L9 SULIS</text>
+        </g>
+
+        <!-- ================= STATIONS & DUE DATES ================= -->
+        <!-- HELPER MACRO FOR STATIONS: Circle + Text -->
+        <g font-family="monospace" font-size="9.5">
+
+          <!-- --- L1 ARIF STATIONS --- -->
+          <!-- 1. Reg Rajal-IGD (Oct 10) -->
+          <circle cx="120" cy="40" r="6" fill="#ffffff" stroke="#3b82f6" stroke-width="3" />
+          <text x="120" y="25" fill="#93c5fd" text-anchor="middle" font-weight="bold">10 OCT</text>
+          <text x="120" y="60" fill="#cbd5e1" text-anchor="middle" font-family="sans-serif" font-size="8.5">Reg Rajal</text>
+
+          <!-- 2. Booking (Oct 12) -->
+          <circle cx="210" cy="40" r="6" fill="#ffffff" stroke="#3b82f6" stroke-width="3" />
+          <text x="210" y="25" fill="#93c5fd" text-anchor="middle" font-weight="bold">12 OCT</text>
+          <text x="210" y="60" fill="#cbd5e1" text-anchor="middle" font-family="sans-serif" font-size="8.5">Booking</text>
+
+          <!-- 3. Reg Ranap (Nov 04) -->
+          <circle cx="320" cy="40" r="6" fill="#ffffff" stroke="#3b82f6" stroke-width="3" />
+          <text x="320" y="25" fill="#93c5fd" text-anchor="middle" font-weight="bold">04 NOV</text>
+          <text x="320" y="60" fill="#cbd5e1" text-anchor="middle" font-family="sans-serif" font-size="8.5">Reg Ranap</text>
+
+          <!-- 4. IGD Triage (Dec 08) -->
+          <circle cx="480" cy="40" r="6" fill="#ffffff" stroke="#3b82f6" stroke-width="3" />
+          <text x="480" y="25" fill="#93c5fd" text-anchor="middle" font-weight="bold">08 DEC</text>
+          <text x="480" y="60" fill="#cbd5e1" text-anchor="middle" font-family="sans-serif" font-size="8.5">IGD Triage</text>
+
+          <!-- 5. IGD Local Inv (Feb 03) -->
+          <circle cx="980" cy="40" r="7" fill="#3b82f6" stroke="#ffffff" stroke-width="2.5" />
+          <text x="980" y="24" fill="#60a5fa" text-anchor="middle" font-weight="bold" font-size="11">03 FEB</text>
+          <text x="980" y="60" fill="#ffffff" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold">IGD Inv ✦</text>
+
+          <!-- --- L2 WE STATIONS (CRITICAL PATH) --- -->
+          <!-- 1. Order Lab (Nov 11) -->
+          <circle cx="280" cy="85" r="6" fill="#ffffff" stroke="#ef4444" stroke-width="3" />
+          <text x="280" y="70" fill="#fca5a5" text-anchor="middle" font-weight="bold">11 NOV</text>
+          <text x="280" y="105" fill="#cbd5e1" text-anchor="middle" font-family="sans-serif" font-size="8.5">Order Lab</text>
+
+          <!-- 2. Result Mgmt (Dec 02) -->
+          <circle cx="440" cy="85" r="6" fill="#ffffff" stroke="#ef4444" stroke-width="3" />
+          <text x="440" y="70" fill="#fca5a5" text-anchor="middle" font-weight="bold">02 DEC</text>
+          <text x="440" y="105" fill="#cbd5e1" text-anchor="middle" font-family="sans-serif" font-size="8.5">Result Lab</text>
+
+          <!-- 3. Order Rad (Jan 01) -->
+          <circle cx="640" cy="85" r="6" fill="#ffffff" stroke="#ef4444" stroke-width="3" />
+          <text x="640" y="70" fill="#fca5a5" text-anchor="middle" font-weight="bold">01 JAN</text>
+          <text x="640" y="105" fill="#cbd5e1" text-anchor="middle" font-family="sans-serif" font-size="8.5">Order Rad</text>
+
+          <!-- 4. Rad Expertise (Jan 21) -->
+          <circle cx="820" cy="85" r="6" fill="#ffffff" stroke="#ef4444" stroke-width="3" />
+          <text x="820" y="70" fill="#fca5a5" text-anchor="middle" font-weight="bold">21 JAN</text>
+          <text x="820" y="105" fill="#cbd5e1" text-anchor="middle" font-family="sans-serif" font-size="8.5">Expertise</text>
+
+          <!-- 5. Rad Local Inv (Feb 12 - FINAL) -->
+          <circle cx="1020" cy="85" r="9" fill="#ef4444" stroke="#ffffff" stroke-width="3" filter="url(#glow-gold)" />
+          <text x="1020" y="68" fill="#f87171" text-anchor="middle" font-weight="black" font-size="12">12 FEB</text>
+          <text x="1020" y="108" fill="#fca5a5" text-anchor="middle" font-family="sans-serif" font-size="9.5" font-weight="black">★ GO-LIVE (Rad Inv)</text>
+
+          <!-- --- L3 JUDE STATIONS --- -->
+          <!-- 1. Antrian Apotek (Nov 11) -->
+          <circle cx="280" cy="135" r="6" fill="#ffffff" stroke="#10b981" stroke-width="3" />
+          <text x="280" y="120" fill="#6ee7b7" text-anchor="middle" font-weight="bold">11 NOV</text>
+          <text x="280" y="155" fill="#cbd5e1" text-anchor="middle" font-family="sans-serif" font-size="8.5">Antrian Aptk</text>
+
+          <!-- 2. Telaah Resep (Dec 01) -->
+          <circle cx="430" cy="135" r="6" fill="#ffffff" stroke="#10b981" stroke-width="3" />
+          <text x="430" y="120" fill="#6ee7b7" text-anchor="middle" font-weight="bold">01 DEC</text>
+          <text x="430" y="155" fill="#cbd5e1" text-anchor="middle" font-family="sans-serif" font-size="8.5">Telaah Resep</text>
+
+          <!-- 3. Dispensing (Dec 24) -->
+          <circle cx="560" cy="135" r="6" fill="#ffffff" stroke="#10b981" stroke-width="3" />
+          <text x="560" y="120" fill="#6ee7b7" text-anchor="middle" font-weight="bold">24 DEC</text>
+          <text x="560" y="155" fill="#cbd5e1" text-anchor="middle" font-family="sans-serif" font-size="8.5">Dispensing</text>
+
+          <!-- 4. Serah Obat (Jan 14) -->
+          <circle cx="780" cy="135" r="6" fill="#ffffff" stroke="#10b981" stroke-width="3" />
+          <text x="780" y="120" fill="#6ee7b7" text-anchor="middle" font-weight="bold">14 JAN</text>
+          <text x="780" y="155" fill="#cbd5e1" text-anchor="middle" font-family="sans-serif" font-size="8.5">Serah Obat</text>
+
+          <!-- 5. Apotek Local Inv (Feb 05) -->
+          <circle cx="990" cy="135" r="7" fill="#10b981" stroke="#ffffff" stroke-width="2.5" />
+          <text x="990" y="119" fill="#34d399" text-anchor="middle" font-weight="bold" font-size="11">05 FEB</text>
+          <text x="990" y="155" fill="#ffffff" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold">Apotek Inv ✦</text>
+
+          <!-- --- L4 FIKRI STATIONS --- -->
+          <!-- 1. Poli Tindakan (Nov 07) -->
+          <circle cx="240" cy="185" r="6" fill="#ffffff" stroke="#a855f7" stroke-width="3" />
+          <text x="240" y="170" fill="#d8b4fe" text-anchor="middle" font-weight="bold">07 NOV</text>
+          <text x="240" y="205" fill="#cbd5e1" text-anchor="middle" font-family="sans-serif" font-size="8.5">Poli Tindakan</text>
+
+          <!-- 2. Poli Local Inv (Dec 02) -->
+          <circle cx="440" cy="185" r="6" fill="#ffffff" stroke="#a855f7" stroke-width="3" />
+          <text x="440" y="170" fill="#d8b4fe" text-anchor="middle" font-weight="bold">02 DEC</text>
+          <text x="440" y="205" fill="#cbd5e1" text-anchor="middle" font-family="sans-serif" font-size="8.5">Poli Inv</text>
+
+          <!-- 3. Purchasing PO (Jan 09) -->
+          <circle cx="760" cy="185" r="6" fill="#ffffff" stroke="#a855f7" stroke-width="3" />
+          <text x="760" y="170" fill="#d8b4fe" text-anchor="middle" font-weight="bold">09 JAN</text>
+          <text x="760" y="205" fill="#cbd5e1" text-anchor="middle" font-family="sans-serif" font-size="8.5">Purchasing PO</text>
+
+          <!-- 4. Purchasing Faktur (Feb 03) -->
+          <circle cx="970" cy="185" r="7" fill="#a855f7" stroke="#ffffff" stroke-width="2.5" />
+          <text x="970" y="169" fill="#c084fc" text-anchor="middle" font-weight="bold" font-size="11">03 FEB</text>
+          <text x="970" y="205" fill="#ffffff" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold">Faktur AP</text>
+
+          <!-- --- L5 ERKOC STATIONS (CENTRAL REFERENCE HUB) --- -->
+          <!-- 1. Tata Rek Reg Out (Nov 05) -->
+          <circle cx="220" cy="240" r="6" fill="#ffffff" stroke="#f59e0b" stroke-width="3" />
+          <text x="220" y="225" fill="#fde68a" text-anchor="middle" font-weight="bold">05 NOV</text>
+          <text x="220" y="260" fill="#cbd5e1" text-anchor="middle" font-family="sans-serif" font-size="8.5">Tata Rekening</text>
+
+          <!-- 2. Kasir (Nov 26) -->
+          <circle cx="300" cy="240" r="6" fill="#ffffff" stroke="#f59e0b" stroke-width="3" />
+          <text x="300" y="225" fill="#fde68a" text-anchor="middle" font-weight="bold">26 NOV</text>
+          <text x="300" y="260" fill="#cbd5e1" text-anchor="middle" font-family="sans-serif" font-size="8.5">Kasir POS</text>
+
+          <!-- 3. Kasir Closing (Dec 15) -->
+          <circle cx="520" cy="240" r="6" fill="#ffffff" stroke="#f59e0b" stroke-width="3" />
+          <text x="520" y="225" fill="#fde68a" text-anchor="middle" font-weight="bold">15 DEC</text>
+          <text x="520" y="260" fill="#cbd5e1" text-anchor="middle" font-family="sans-serif" font-size="8.5">Closing Shift</text>
+
+          <!-- 4. CENTRAL TEMPLATE NEXUS (Jan 12 / Jan 15) -->
+          <rect x="670" y="218" width="120" height="44" rx="8" fill="#78350f" stroke="#fbbf24" stroke-width="2.5" filter="url(#glow-gold)" />
+          <circle cx="730" cy="240" r="7" fill="#fbbf24" stroke="#ffffff" stroke-width="2" />
+          <text x="730" y="233" fill="#fef08a" text-anchor="middle" font-weight="black" font-size="11">12 JAN (QA Ready)</text>
+          <text x="730" y="253" fill="#ffffff" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="black">★ LAB LOCAL INV (REF)</text>
+
+          <!-- --- L6 ARIE STATIONS --- -->
+          <!-- 1. OK Scheduling (Nov 07) -->
+          <circle cx="240" cy="295" r="6" fill="#ffffff" stroke="#14b8a6" stroke-width="3" />
+          <text x="240" y="280" fill="#5eead4" text-anchor="middle" font-weight="bold">07 NOV</text>
+          <text x="240" y="315" fill="#cbd5e1" text-anchor="middle" font-family="sans-serif" font-size="8.5">OK Scheduling</text>
+
+          <!-- 2. OK Operative (Dec 08) -->
+          <circle cx="480" cy="295" r="6" fill="#ffffff" stroke="#14b8a6" stroke-width="3" />
+          <text x="480" y="280" fill="#5eead4" text-anchor="middle" font-weight="bold">08 DEC</text>
+          <text x="480" y="315" fill="#cbd5e1" text-anchor="middle" font-family="sans-serif" font-size="8.5">OK Operative</text>
+
+          <!-- 3. OK Local Inv (Feb 02) -->
+          <circle cx="960" cy="295" r="7" fill="#14b8a6" stroke="#ffffff" stroke-width="2.5" />
+          <text x="960" y="279" fill="#2dd4bf" text-anchor="middle" font-weight="bold" font-size="11">02 FEB</text>
+          <text x="960" y="315" fill="#ffffff" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold">OK Inv ✦</text>
+
+          <!-- --- L7 ROSO STATIONS --- -->
+          <!-- 1. Terima Barang DO (Nov 10) -->
+          <circle cx="260" cy="350" r="6" fill="#ffffff" stroke="#f97316" stroke-width="3" />
+          <text x="260" y="335" fill="#fdba74" text-anchor="middle" font-weight="bold">10 NOV</text>
+          <text x="260" y="370" fill="#cbd5e1" text-anchor="middle" font-family="sans-serif" font-size="8.5">Gudang DO</text>
+
+          <!-- 2. Gudang Local Inv (Dec 08) -->
+          <circle cx="500" cy="350" r="6" fill="#ffffff" stroke="#f97316" stroke-width="3" />
+          <text x="500" y="335" fill="#fdba74" text-anchor="middle" font-weight="bold">08 DEC</text>
+          <text x="500" y="370" fill="#cbd5e1" text-anchor="middle" font-family="sans-serif" font-size="8.5">Gudang Inv</text>
+
+          <!-- 3. Retur Beli (Dec 30) -->
+          <circle cx="620" cy="350" r="6" fill="#ffffff" stroke="#f97316" stroke-width="3" />
+          <text x="620" y="335" fill="#fdba74" text-anchor="middle" font-weight="bold">30 DEC</text>
+          <text x="620" y="370" fill="#cbd5e1" text-anchor="middle" font-family="sans-serif" font-size="8.5">Retur Beli</text>
+
+          <!-- --- L8 RIZAL STATIONS --- -->
+          <!-- 1. Berkas RM (Nov 05) -->
+          <circle cx="220" cy="405" r="6" fill="#ffffff" stroke="#06b6d4" stroke-width="3" />
+          <text x="220" y="390" fill="#67e8f9" text-anchor="middle" font-weight="bold">05 NOV</text>
+          <text x="220" y="425" fill="#cbd5e1" text-anchor="middle" font-family="sans-serif" font-size="8.5">Berkas RM</text>
+
+          <!-- 2. Casemix (Dec 02) -->
+          <circle cx="440" cy="405" r="6" fill="#ffffff" stroke="#06b6d4" stroke-width="3" />
+          <text x="440" y="390" fill="#67e8f9" text-anchor="middle" font-weight="bold">02 DEC</text>
+          <text x="440" y="425" fill="#cbd5e1" text-anchor="middle" font-family="sans-serif" font-size="8.5">Casemix</text>
+
+          <!-- 3. Pelaporan RL (Dec 26 - FIRST COMPLETE) -->
+          <circle cx="600" cy="405" r="7" fill="#06b6d4" stroke="#ffffff" stroke-width="2.5" />
+          <text x="600" y="389" fill="#22d3ee" text-anchor="middle" font-weight="bold" font-size="11">26 DEC</text>
+          <text x="600" y="425" fill="#ffffff" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold">RL Kemenkes (Done)</text>
+
+          <!-- --- L9 SULIS STATIONS --- -->
+          <!-- 1. Bed Mgmt (Nov 16) -->
+          <circle cx="300" cy="455" r="6" fill="#ffffff" stroke="#ec4899" stroke-width="3" />
+          <text x="300" y="440" fill="#f472b6" text-anchor="middle" font-weight="bold">16 NOV</text>
+          <text x="300" y="475" fill="#cbd5e1" text-anchor="middle" font-family="sans-serif" font-size="8.5">Bed Mgmt</text>
+
+          <!-- 2. Ranap Local Inv (Feb 03) -->
+          <circle cx="960" cy="455" r="7" fill="#ec4899" stroke="#ffffff" stroke-width="2.5" />
+          <text x="960" y="439" fill="#f472b6" text-anchor="middle" font-weight="bold" font-size="11">03 FEB</text>
+          <text x="960" y="475" fill="#ffffff" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold">Ranap Inv ✦</text>
+
+        </g>
+      </svg>
+    </div>
+
+    <!-- POSTER LEGEND & QUICK LOOKUP -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-3 mt-3 pt-3 border-t border-slate-800 text-xs">
+      
+      <!-- Box 1: Architecture Rule -->
+      <div class="bg-amber-950/30 border border-amber-500/30 rounded-lg p-2.5">
+        <div class="text-[11px] font-bold text-amber-300 uppercase tracking-wider flex items-center gap-1.5 mb-1">
+          <span>★ Central Reference Hub</span>
+        </div>
+        <p class="text-[11px] text-slate-300 leading-tight">
+          <strong>Erkoc (SC-08-03)</strong> delivers the core template on <strong>12 Jan 2027</strong>. Downstream units (marked with ✦) copy-modify from this baseline.
+        </p>
+      </div>
+
+      <!-- Box 2: 3 Governance Gates -->
+      <div class="bg-slate-950/60 border border-slate-800 rounded-lg p-2.5">
+        <div class="text-[11px] font-bold text-cyan-400 uppercase tracking-wider mb-1">3 Release Gates</div>
+        <div class="space-y-0.5 text-[11px] font-mono text-slate-300">
+          <div><strong class="text-white">Gate 1:</strong> 15 Dec 2026 (Foundation)</div>
+          <div><strong class="text-white">Gate 2:</strong> 30 Dec 2026 (Care & Log)</div>
+          <div><strong class="text-white">Gate 3:</strong> 12 Feb 2027 (Cutover)</div>
+        </div>
+      </div>
+
+      <!-- Box 3: Capacity Basis -->
+      <div class="bg-slate-950/60 border border-slate-800 rounded-lg p-2.5">
+        <div class="text-[11px] font-bold text-emerald-400 uppercase tracking-wider mb-1">Capacity Rules</div>
+        <div class="space-y-0.5 text-[11px] text-slate-300 font-mono">
+          <div>Daily: <strong>4.0 Hours/Day</strong> (24h/wk)</div>
+          <div>Total: <strong>6,016h</strong> = <strong>1,504 Man-Days</strong></div>
+          <div>Streams: <strong>9 Parallel Leads</strong></div>
+        </div>
+      </div>
+
+      <!-- Box 4: Critical Path & Team Signoff -->
+      <div class="bg-rose-950/30 border border-rose-500/30 rounded-lg p-2.5">
+        <div class="text-[11px] font-bold text-rose-300 uppercase tracking-wider mb-1">Critical Path Alert</div>
+        <p class="text-[11px] text-slate-300 leading-tight">
+          <strong>We (L2)</strong> anchors the final critical path ending on <strong>12 Feb 2027</strong> (Radiologi Local Inventory). Zero slack on diagnostic track.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- ROOM POSTER FOOTER -->
+    <div class="mt-2 text-center text-[10px] text-slate-500 font-mono">
+      MYHOSWEB SIMRS IMPLEMENTATION • WAR ROOM A4 POSTER • REV 7 BASELINE • KEEP VISIBLE AT ALL TIMES
+    </div>
+
+  </div>
+
+</body>
+</html>

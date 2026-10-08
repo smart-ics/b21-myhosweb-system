@@ -1,0 +1,317 @@
+[
+  {
+    "date": "2026-10-10",
+    "dev": "Arif",
+    "code": "SC-01-02",
+    "name": "Admisi Reg Rajal & IGD",
+    "hours": 152,
+    "milestone": false,
+    "desc": "First delivery wave"
+  },
+  {
+    "date": "2026-10-12",
+    "dev": "Arif",
+    "code": "SC-01-01",
+    "name": "Booking Online & APM",
+    "hours": 144,
+    "milestone": false,
+    "desc": "Parallel admisi stream"
+  },
+  {
+    "date": "2026-11-04",
+    "dev": "Arif",
+    "code": "SC-01-03",
+    "name": "Admisi Reg Rawat Inap",
+    "hours": 168,
+    "milestone": false,
+    "desc": "Sequential admisi"
+  },
+  {
+    "date": "2026-11-05",
+    "dev": "Erkoc",
+    "code": "SC-02-01",
+    "name": "Tata Rekening Rawat Jalan",
+    "hours": 176,
+    "milestone": false,
+    "desc": "Billing engine base"
+  },
+  {
+    "date": "2026-11-05",
+    "dev": "Rizal",
+    "code": "SC-04-01",
+    "name": "Pengelolaan Berkas RM",
+    "hours": 176,
+    "milestone": false,
+    "desc": "Medical records"
+  },
+  {
+    "date": "2026-11-07",
+    "dev": "Arie",
+    "code": "SC-10-01",
+    "name": "OK Scheduling & Booking",
+    "hours": 192,
+    "milestone": false,
+    "desc": "Surgical booking"
+  },
+  {
+    "date": "2026-11-07",
+    "dev": "Fikri",
+    "code": "SC-05-01",
+    "name": "Poli Rawat Jalan & Tindakan",
+    "hours": 192,
+    "milestone": false,
+    "desc": "Outpatient clinical"
+  },
+  {
+    "date": "2026-11-10",
+    "dev": "Roso",
+    "code": "SC-12-01",
+    "name": "Gudang Penerimaan Barang (DO)",
+    "hours": 208,
+    "milestone": false,
+    "desc": "Logistics intake"
+  },
+  {
+    "date": "2026-11-11",
+    "dev": "Jude",
+    "code": "SC-11-01",
+    "name": "Antrian Apotek & Penerimaan",
+    "hours": 216,
+    "milestone": false,
+    "desc": "Pharmacy queue"
+  },
+  {
+    "date": "2026-11-11",
+    "dev": "We",
+    "code": "SC-08-01",
+    "name": "Order Laboratorium",
+    "hours": 216,
+    "milestone": false,
+    "desc": "Diagnostic order CP"
+  },
+  {
+    "date": "2026-11-16",
+    "dev": "Sulis",
+    "code": "SC-06-01",
+    "name": "Bed Management Rawat Inap",
+    "hours": 248,
+    "milestone": false,
+    "desc": "Inpatient bed matrix"
+  },
+  {
+    "date": "2026-11-26",
+    "dev": "Erkoc",
+    "code": "SC-03-01",
+    "name": "Kasir POS Pembayaran",
+    "hours": 144,
+    "milestone": false,
+    "desc": "Front cashier POS"
+  },
+  {
+    "date": "2026-12-01",
+    "dev": "Jude",
+    "code": "SC-11-02",
+    "name": "Telaah Resep & Verifikasi",
+    "hours": 136,
+    "milestone": false,
+    "desc": "Clinical check"
+  },
+  {
+    "date": "2026-12-02",
+    "dev": "Fikri",
+    "code": "SC-05-02",
+    "name": "Poli Local Inventory",
+    "hours": 168,
+    "milestone": false,
+    "desc": "Outpatient stock"
+  },
+  {
+    "date": "2026-12-02",
+    "dev": "Rizal",
+    "code": "SC-04-02",
+    "name": "Casemix & ICD Coding",
+    "hours": 184,
+    "milestone": false,
+    "desc": "Diagnosis coding"
+  },
+  {
+    "date": "2026-12-02",
+    "dev": "We",
+    "code": "SC-08-02",
+    "name": "Laboratorium Result Mgmt",
+    "hours": 144,
+    "milestone": false,
+    "desc": "Lab release CP"
+  },
+  {
+    "date": "2026-12-08",
+    "dev": "Arie",
+    "code": "SC-10-02",
+    "name": "OK Operative & Pasca-Bedah",
+    "hours": 208,
+    "milestone": false,
+    "desc": "Surgery log"
+  },
+  {
+    "date": "2026-12-08",
+    "dev": "Arif",
+    "code": "SC-07-01",
+    "name": "IGD Triage & Pelayanan Medis",
+    "hours": 232,
+    "milestone": false,
+    "desc": "Emergency triage"
+  },
+  {
+    "date": "2026-12-08",
+    "dev": "Roso",
+    "code": "SC-12-02",
+    "name": "Gudang Local Inventory",
+    "hours": 192,
+    "milestone": false,
+    "desc": "Central stock"
+  },
+  {
+    "date": "2026-12-15",
+    "dev": "Erkoc",
+    "code": "SC-03-02",
+    "name": "Kasir Closing Shift & Rekap",
+    "hours": 128,
+    "milestone": false,
+    "desc": "Shift balancing"
+  },
+  {
+    "date": "2026-12-24",
+    "dev": "Jude",
+    "code": "SC-11-03",
+    "name": "Dispensing & Racik Obat",
+    "hours": 160,
+    "milestone": false,
+    "desc": "Pharmacy dispense"
+  },
+  {
+    "date": "2026-12-26",
+    "dev": "Rizal",
+    "code": "SC-04-03",
+    "name": "Pelaporan Kemenkes RL",
+    "hours": 168,
+    "milestone": true,
+    "m_title": "Rizal Complete (1st Done)"
+  },
+  {
+    "date": "2026-12-30",
+    "dev": "Roso",
+    "code": "SC-12-03",
+    "name": "Gudang Retur Beli ke Supplier",
+    "hours": 152,
+    "milestone": true,
+    "m_title": "Roso Complete"
+  },
+  {
+    "date": "2027-01-01",
+    "dev": "We",
+    "code": "SC-09-01",
+    "name": "Order Radiologi",
+    "hours": 208,
+    "milestone": false,
+    "desc": "Radiology order CP"
+  },
+  {
+    "date": "2027-01-09",
+    "dev": "Fikri",
+    "code": "SC-13-01",
+    "name": "Purchasing & PO Barang",
+    "hours": 264,
+    "milestone": false,
+    "desc": "Procurement PO"
+  },
+  {
+    "date": "2027-01-12",
+    "dev": "Erkoc",
+    "code": "SC-08-03",
+    "name": "Lab Local Inv (TEMPLATE READY)",
+    "hours": 0,
+    "milestone": true,
+    "m_title": "\u2605 Erkoc Ref Template Ready for Downstream QA"
+  },
+  {
+    "date": "2027-01-14",
+    "dev": "Jude",
+    "code": "SC-11-04",
+    "name": "Penyerahan Obat & PIO",
+    "hours": 144,
+    "milestone": false,
+    "desc": "Pharmacy handover"
+  },
+  {
+    "date": "2027-01-15",
+    "dev": "Erkoc",
+    "code": "SC-08-03",
+    "name": "Laboratorium Local Inventory",
+    "hours": 216,
+    "milestone": true,
+    "m_title": "Erkoc Complete (Ref Leader)"
+  },
+  {
+    "date": "2027-01-21",
+    "dev": "We",
+    "code": "SC-09-02",
+    "name": "Radiologi Expertise (PACS)",
+    "hours": 136,
+    "milestone": false,
+    "desc": "PACS reading CP"
+  },
+  {
+    "date": "2027-02-02",
+    "dev": "Arie",
+    "code": "SC-10-03",
+    "name": "Kamar Operasi Local Inventory",
+    "hours": 152,
+    "milestone": true,
+    "m_title": "Arie Complete (Copy-Mod)"
+  },
+  {
+    "date": "2027-02-03",
+    "dev": "Arif",
+    "code": "SC-05-02",
+    "name": "IGD Local Inventory",
+    "hours": 160,
+    "milestone": true,
+    "m_title": "Arif Complete (Copy-Mod)"
+  },
+  {
+    "date": "2027-02-03",
+    "dev": "Fikri",
+    "code": "SC-13-02",
+    "name": "Faktur Tagihan Hutang (AP)",
+    "hours": 168,
+    "milestone": true,
+    "m_title": "Fikri Complete"
+  },
+  {
+    "date": "2027-02-03",
+    "dev": "Sulis",
+    "code": "SC-05-02",
+    "name": "Rawat Inap Local Inventory",
+    "hours": 160,
+    "milestone": true,
+    "m_title": "Sulis Complete (Copy-Mod)"
+  },
+  {
+    "date": "2027-02-05",
+    "dev": "Jude",
+    "code": "SC-11-05",
+    "name": "Apotek Depo Local Inventory",
+    "hours": 152,
+    "milestone": true,
+    "m_title": "Jude Complete (Copy-Mod)"
+  },
+  {
+    "date": "2027-02-12",
+    "dev": "We",
+    "code": "SC-09-03",
+    "name": "Radiologi Local Inventory",
+    "hours": 152,
+    "milestone": true,
+    "m_title": "\u2605 FINAL SYSTEM GO-LIVE CUTOVER"
+  }
+]
