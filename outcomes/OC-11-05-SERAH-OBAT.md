@@ -3,7 +3,7 @@
 | Field       | Value        |
 |-------------|--------------|
 | Code        | OC-11-05     |
-| Version     | 1.1          |
+| Version     | 1.2          |
 | Status      | Draft        |
 | LastUpdated | 2026-10-08   |
 
@@ -14,14 +14,14 @@
 Serah Obat adalah outcome final pelayanan farmasi rawat jalan ketika sediaan obat yang telah selesai disiapkan melalui proses penyiapan (*Dispensing*), serta telah memenuhi seluruh gerbang keselamatan (*safety gates*) klinis dan administratif yang diwajibkan, benar-benar diserahkan secara fisik kepada pasien atau penerima yang berhak di loket penyerahan farmasi.
 
 Tujuan bisnis Serah Obat adalah:
-1. **Menegakkan Pemisahan Otoritas Profesional dan Eksekusi Operasional (*Authority Decoupling*):** Memisahkan hak profesional klinis Apoteker (*professional authority*) dalam memvalidasi gerbang keselamatan klinis (Final Dispense Review, Pelayanan Informasi Obat / PIO, serta persetujuan Collection Window Override) dari hak operasional pelaksanaan penyerahan (*operational authority*) di loket (pemanggilan pasien, penyerahan fisik obat, dan eksekusi pencatatan serah di sistem) yang dapat dilaksanakan oleh Apoteker maupun Staf Farmasi Terotorisasi (*Authorized Pharmacy Staff* / Tenaga Vokasi Farmasi).
-2. **Menjamin Pemenuhan Seluruh Safety Gates Sebelum Penyerahan Fisik (*Mandatory Safety Gates Enforcement*):** Menjamin obat tidak dapat diserahkan sebelum seluruh prasyarat keselamatan terpenuhi lengkap (pemanggilan loket tercatat, telaah akhir fisik lolos oleh Apoteker, pemberian informasi obat dikonfirmasi oleh Apoteker, pelunasan pembayaran terverifikasi untuk pasien umum, serta persetujuan perpanjangan sah apabila batas waktu pengambilan terlampaui).
-3. **Menetapkan Fakta Bisnis Penyerahan Fisik yang Definitif dan Permanen (*Definitive & Immutable Physical Handover*):** Menegaskan bahwa Serah Obat bukan sekadar perubahan status administratif antrean atau pemanggilan loket, melainkan pencatatan persisten atas peristiwa fisik penyerahan obat yang telah dieksekusi secara sah, serta mengikat status akhir pekerjaan penyiapan (*Dispensing Job*) menjadi **Completed** dengan prinsip sekali selesai (*one-time business semantics*).
-4. **Menjamin Keutuhan Penyerahan (*Full Handover Accountability*):** Menerapkan aturan penyerahan utuh (*1 Dispensing = 1 Full Handover*) tanpa penyerahan sebagian (*Partial Handover*) pada level Serah Obat. Pemenuhan sebagian diselesaikan tuntas pada level pesanan (*Sales Order*) dan penyiapan (*Dispensing*).
-5. **Kemandirian Fakta Penyerahan dari Proses Hilir (*Downstream Decoupling*):** Memastikan keberhasilan penyerahan fisik obat sebagai fakta bisnis mandiri yang sah, yang memicu pembaruan persediaan fisik dan pembentukan tagihan klaim BPJS tanpa menjadikan ketergantungan teknis proses hilir sebagai penentu keabsahan penyerahan obat.
+1. **Menegakkan Pemisahan Otoritas Profesional dan Eksekusi Operasional:** Memisahkan hak profesional klinis Apoteker dalam memvalidasi gerbang keselamatan klinis (Final Dispense Review, Pelayanan Informasi Obat / PIO, serta persetujuan Collection Window Override) dari hak operasional pelaksanaan penyerahan di loket (pemanggilan pasien, penyerahan fisik obat, dan pencatatan serah di sistem) yang dapat dilaksanakan oleh Apoteker maupun Staf Farmasi Terotorisasi / Tenaga Vokasi Farmasi.
+2. **Menjamin Pemenuhan Seluruh Safety Gates Sebelum Penyerahan Fisik:** Menjamin obat tidak dapat diserahkan sebelum seluruh prasyarat keselamatan terpenuhi lengkap (pemanggilan loket tercatat, telaah akhir fisik lolos oleh Apoteker, pemberian informasi obat dikonfirmasi oleh Apoteker, pelunasan pembayaran terverifikasi untuk pasien umum, serta persetujuan perpanjangan sah apabila batas waktu pengambilan terlampaui).
+3. **Menetapkan Fakta Bisnis Penyerahan Fisik yang Definitif dan Permanen:** Menegaskan bahwa Serah Obat bukan sekadar perubahan status administratif antrean atau pemanggilan loket, melainkan pencatatan persisten atas peristiwa fisik penyerahan obat yang telah dieksekusi secara sah, serta mengikat status akhir pekerjaan penyiapan (*Dispensing Job*) menjadi **Completed** dengan prinsip penyerahan sekali selesai.
+4. **Menjamin Keutuhan Penyerahan (*Full Handover*):** Menerapkan aturan penyerahan utuh (*1 Dispensing = 1 Full Handover*) tanpa penyerahan sebagian (*Partial Handover*) pada level Serah Obat. Pemenuhan sebagian diselesaikan tuntas pada level pesanan (*Sales Order*) dan penyiapan (*Dispensing*).
+5. **Kemandirian Fakta Penyerahan dari Proses Lanjutan:** Memastikan keberhasilan penyerahan fisik obat sebagai fakta bisnis mandiri yang sah, yang memicu pembaruan persediaan dan proses penjaminan/klaim tanpa menjadikan ketergantungan teknis proses lanjutan sebagai penentu keabsahan penyerahan obat.
 
 Serah Obat secara tegas **BUKAN**:
-- **Penyelesaian Antrean Administratif:** Status antrean atau pelacak perjalanan pasien (*Patient Journey Tracker*) yang berstatus 'Done' bukan bukti bahwa obat telah diserahkan.
+- **Penyelesaian Antrean Administratif:** Status antrean atau pelacak alur pelayanan pasien yang berstatus selesai bukan bukti bahwa obat telah diserahkan.
 - **Pemanggilan Pasien (*Pickup Call*):** Pemanggilan pasien ke loket penyerahan hanya membuktikan panggilan telah dilakukan, bukan bukti bahwa obat telah diterima oleh pasien.
 - **Telaah Resep Dokter:** Pengkajian administratif, farmasetis, dan klinis atas resep dokter adalah wewenang penuh **OC-11-02 (Telaah Resep)**.
 - **Komersial & Penjualan:** Penetapan komitmen kuantitas pesanan, pemisahan jalur penjamin, penetapan harga, dan penerbitan faktur tagihan adalah wewenang penuh **OC-11-03 (Penjualan)**.
@@ -42,12 +42,12 @@ Sediaan obat yang telah selesai disiapkan dan berada dalam status siap serah (*R
 | Domain | Role in this Outcome |
 |--------|----------------------|
 | **Apotek (`APT`)** | Pemilik utama outcome Serah Obat (`APT-SERAH`): mengelola siklus penyerahan obat, memverifikasi kelolosan safety gates klinis, mencatat eksekusi penyerahan fisik operasional, dan mentransisikan pekerjaan penyiapan (*Dispensing Job*) dari `Ready for Pickup` menjadi status akhir `Completed`. |
-| **Organisasi (`ORG`)** | Menyediakan konteks unit layanan farmasi (`ORG-LAYANAN`) dan otorisasi peran petugas (`ORG-PPA`), yang membedakan otoritas profesional klinis Apoteker (untuk Final Review, KIE/PIO, dan Override) dari otoritas operasional loket penyerahan (Apoteker atau Authorized Pharmacy Staff / Tenaga Vokasi Farmasi). |
+| **Organisasi (`ORG`)** | Menyediakan konteks unit layanan farmasi (`ORG-LAYANAN`) dan otorisasi peran petugas (`ORG-PPA`), yang membedakan otoritas profesional klinis Apoteker (untuk Final Review, KIE/PIO, dan Override) dari otoritas operasional loket penyerahan (Apoteker atau Staf Farmasi Terotorisasi). |
 | **Tata Rekening (`TRK`)** | Kolaborator finansial: menyediakan kepastian pelunasan pembayaran tagihan obat (*Payment Clearance* via `TRK-PAYMENT` / `TRK-BILLING`) untuk memvalidasi kelayakan penyerahan obat bagi pasien jalur umum / bayar mandiri (*General / Self-Pay*). |
 | **Pasien (`PAS`)** | Subjek pelayanan: menyediakan identitas tunggal pasien yang sah (`PAS-DATSOS`) sebagai penerima manfaat terapi obat. |
-| **Inventory (`INV`)** | Kolaborator persediaan hilir: menerima konfirmasi penyerahan obat untuk pemotongan saldo persediaan fisik (`INV-STOK`) tanpa memengaruhi keabsahan status penyerahan obat. |
-| **BPJS (`BPJ`)** | Kolaborator jaminan hilir: menerima konfirmasi penyerahan obat untuk pembentukan tagihan klaim BPJS (`BPJ-VCLAIM`) tanpa memengaruhi keabsahan status penyerahan obat. |
-| **Admission (`ADM`)** | Kolaborator perjalanan pasien: menerima pembaruan peristiwa penyerahan obat untuk memperbarui pelacakan alur pasien (*Patient Journey Tracker* via `ADM-TRACKER`) di instalasi farmasi. |
+| **Inventory (`INV`)** | Kolaborator persediaan: menerima konfirmasi penyerahan obat untuk pembaruan persediaan fisik (`INV-STOK`) tanpa memengaruhi keabsahan status penyerahan obat. |
+| **BPJS (`BPJ`)** | Kolaborator jaminan: menerima konfirmasi penyerahan obat untuk proses penagihan klaim penjamin (`BPJ-VCLAIM`) tanpa memengaruhi keabsahan status penyerahan obat. |
+| **Admission (`ADM`)** | Kolaborator perjalanan pasien: menerima pembaruan peristiwa penyerahan obat untuk pelacakan alur pelayanan pasien (`ADM-TRACKER`) di instalasi farmasi. |
 
 ---
 
@@ -65,9 +65,9 @@ Sediaan obat yang telah selesai disiapkan dan berada dalam status siap serah (*R
 | `BPJ-VCLAIM` VClaim | BPJS | Known |
 | `ADM-TRACKER` Pasien Journey | Admission | Known |
 
-> **Batasan Kepemilikan Upstream & Downstream:**
+> **Batasan Kepemilikan:**
 > - Kapabilitas `APT-DISPENSING` menyediakan sediaan berstatus *Ready for Pickup* sebagai titik awal Serah Obat dan menerima pembaruan status akhir menjadi *Completed*.
-> - Kapabilitas `INV-STOK` dan `BPJ-VCLAIM` murni berperan menerima peristiwa hilir pasca-serah tanpa menentukan keabsahan status penyerahan.
+> - Kapabilitas `INV-STOK` dan `BPJ-VCLAIM` murni berperan menerima peristiwa pasca-serah tanpa menentukan keabsahan status penyerahan obat.
 
 ---
 
@@ -79,7 +79,7 @@ Sediaan obat yang telah selesai disiapkan dan berada dalam status siap serah (*R
 
 #### A. Hakikat Serah Obat
 1. **Perpindahan Fisik Sediaan:** Serah Obat adalah peristiwa fisik berpindahnya penguasaan sediaan obat dari instalasi farmasi kepada pasien atau penerima yang berhak di loket apotek setelah seluruh safety gates terpenuhi.
-2. **Pembedaan dari Status Administratif:** Keberhasilan penyerahan obat tidak dapat disimpulkan dari status antrean yang selesai (*Done*), status pelacak perjalanan pasien, atau pemanggilan pasien ke loket (*Pickup Call*). Outcome baru tercapai saat penyerahan fisik dieksekusi dan dicatat secara sah.
+2. **Pembedaan dari Status Administratif:** Keberhasilan penyerahan obat tidak dapat disimpulkan dari status antrean yang selesai (*Done*), pelacakan alur pelayanan pasien, atau pemanggilan pasien ke loket (*Pickup Call*). Outcome baru tercapai saat penyerahan fisik dieksekusi dan dicatat secara sah.
 
 #### B. Pemisahan Otoritas Profesional dan Operasional
 1. **Otoritas Profesional Klinis (Apoteker):**
@@ -90,7 +90,7 @@ Sediaan obat yang telah selesai disiapkan dan berada dalam status siap serah (*R
      - Menyetujui pembukaan blokir pengambilan jika masa tunggu pengambilan terlampaui (*Collection Window Override*).
 2. **Otoritas Eksekusi Operasional (Staf Farmasi Terotorisasi atau Apoteker):**
    - Tindakan operasional di loket penyerahan meliputi memanggil pasien ke loket (*Pickup Call*), menyerahkan paket obat fisik, dan mencatat eksekusi penyerahan di sistem.
-   - Tindakan operasional ini dapat dilakukan oleh **Authorized Pharmacy Staff / Tenaga Vokasi Farmasi**, atau dilakukan langsung oleh **Apoteker**.
+   - Tindakan operasional ini dapat dilakukan oleh **Staf Farmasi Terotorisasi / Tenaga Vokasi Farmasi**, atau dilakukan langsung oleh **Apoteker**.
    - Staf farmasi hanya dapat mengeksekusi penyerahan di sistem setelah seluruh gerbang keselamatan klinis yang menjadi wewenang Apoteker telah terpenuhi lengkap.
 
 #### C. Gerbang Keselamatan Wajib (*Mandatory Safety Gates*)
@@ -103,8 +103,8 @@ Penyerahan obat dilarang dieksekusi apabila salah satu dari prasyarat keselamata
 
 #### D. Bukti Penyerahan (*Evidence of Handover*)
 1. **Bukti Prasyarat Kelaikan Serah:** Waktu pemanggilan loket, kelolosan Final Review beserta identitas Apoteker, konfirmasi PIO beserta identitas Apoteker, bukti pelunasan tagihan untuk pasien umum, dan catatan otorisasi override (aktor, waktu, alasan) bila masa tunggu terlampaui.
-2. **Bukti Final Penyerahan Fisik:** Waktu pelaksanaan penyerahan fisik obat dan identitas aktor penyerah (*Handover Actor*), baik Apoteker maupun Authorized Pharmacy Staff.
-3. **Bukan Bukti Penyerahan (*Non-Evidence*):** Status antrean *Done*, pemanggilan loket, data kontak pengambil atau hubungan dengan pasien (informasi pendukung opsional), nomor KTP, surat kuasa, tanda tangan digital, verifikasi biometrik pengambil (verifikasi fisik di loket adalah tanggung jawab operasional petugas loket), catatan konseling panjang, serta keberhasilan integrasi sistem persediaan dan klaim BPJS.
+2. **Bukti Final Penyerahan Fisik:** Waktu pelaksanaan penyerahan fisik obat dan identitas aktor penyerah (*Handover Actor*), baik Apoteker maupun Staf Farmasi Terotorisasi.
+3. **Bukan Bukti Penyerahan (*Non-Evidence*):** Status antrean selesai, pemanggilan loket, data kontak pengambil atau hubungan dengan pasien (informasi pendukung opsional), nomor KTP, surat kuasa, tanda tangan digital, verifikasi biometrik pengambil (verifikasi fisik di loket adalah tanggung jawab operasional petugas loket), catatan konseling panjang, serta respon pembaruan sistem persediaan dan klaim penjamin.
 
 #### E. Prinsip Penyerahan Utuh (*Full Handover*)
 1. **1 Dispensing = 1 Full Handover:** Sediaan obat dalam pekerjaan penyiapan diserahkan secara utuh.
@@ -113,15 +113,15 @@ Penyerahan obat dilarang dieksekusi apabila salah satu dari prasyarat keselamata
 #### F. Penyelesaian dan Status Akhir
 1. **Transisi ke Completed:** Eksekusi penyerahan fisik yang sah mentransisikan status pekerjaan Dispensing menjadi **Completed**.
 2. **Status Terminal Definitif:** Status `Completed` merupakan kondisi terminal akhir.
-3. **Semantik Sekali Selesai:** Satu pekerjaan Dispensing hanya menghasilkan satu kali penyerahan obat yang sah. Tindakan berulang atau pengiriman ulang tidak menghasilkan penyerahan kedua.
+3. **Penyerahan Sekali Selesai:** Satu pekerjaan Dispensing hanya menghasilkan satu kali penyerahan obat yang sah. Tindakan berulang atau pengiriman ulang tidak menghasilkan penyerahan kedua.
 
 #### G. Imutabilitas Status Selesai
 1. **Fakta Historis Permanen:** Peristiwa penyerahan fisik obat bersifat permanen dan tidak dapat dibatalkan melalui pembatalan biasa (*Undo / Cancel*).
 2. **Pemisahan Jalur Koreksi:** Penyesuaian atau pengembalian obat pasca-serah diselesaikan melalui proses Retur Obat (**APT-RETUR**) atau pembalikan transaksi tersendiri, bukan dengan membatalkan fakta penyerahan.
 
-#### H. Kemandirian terhadap Proses Hilir
-1. **Pemicu Proses Hilir:** Keberhasilan penyerahan obat memicu pemotongan saldo persediaan fisik di gudang/depo dan pembentukan tagihan klaim BPJS.
-2. **Bukan Prasyarat Status:** Keberhasilan penyerahan obat tidak bergantung pada respon sistem hilir. Jika terjadi gangguan pada proses hilir, status penyerahan obat **tetap Completed** dan proses hilir dilanjutkan secara mandiri.
+#### H. Kemandirian terhadap Proses Lanjutan
+1. **Pemicu Proses Lanjutan:** Keberhasilan penyerahan obat memicu pembaruan saldo persediaan fisik dan penagihan klaim penjamin.
+2. **Bukan Prasyarat Status:** Keberhasilan penyerahan obat tidak bergantung pada respon sistem lanjutan. Jika terjadi gangguan pada proses pembaruan stok atau klaim, status penyerahan obat **tetap Completed** dan proses lanjutan diselesaikan secara mandiri.
 
 #### I. Penanganan Kegagalan Telaah Akhir (*Review Failure*)
 Jika Final Dispense Review oleh Apoteker menghasilkan status tidak lolos (*Fail*), hal tersebut bukan kegagalan serah obat (*Failed Handover*) karena penyerahan belum terjadi. Sediaan dilarang diserahkan dan dikembalikan ke penyiapan farmasi untuk diperbaiki/diracik ulang (*rework*) di Dispensing (**OC-11-04**).
@@ -177,7 +177,7 @@ Outcome Serah Obat dinyatakan selesai secara akuntabel apabila:
 3. Tercatat bukti lengkap kelolosan seluruh gerbang keselamatan (*Pickup Call*, *Final Review Pass*, konfirmasi PIO, *Payment Clearance*, serta persetujuan *Override* bila masa tunggu lewat).
 4. Waktu penyerahan fisik dan identitas aktor penyerah (*Handover Actor*) tercatat secara sah dan permanen.
 5. Pekerjaan Dispensing terkunci dari eksekusi penyerahan ulang.
-6. Peristiwa penyerahan obat diterbitkan untuk pembaruan persediaan dan penagihan klaim BPJS secara mandiri.
+6. Peristiwa penyerahan obat diterbitkan untuk pembaruan persediaan dan penagihan klaim penjamin secara mandiri.
 
 ---
 
@@ -199,14 +199,14 @@ Apabila pasien tidak hadir mengambil obat (*No-Show*) hingga batas waktu pengamb
 > Rules that must always hold true for this Outcome.
 
 1. **Full Handover (Tanpa Parsial):** Satu pekerjaan Dispensing hanya diserahkan secara utuh (*1 Dispensing = 1 Full Handover*). Penyerahan sebagian dilarang pada level Serah Obat.
-2. **Pemisahan Otoritas (Authority Decoupling):** Wewenang profesional klinis untuk memvalidasi dan meloloskan safety gates (Final Review, PIO, Override) adalah hak eksklusif Apoteker dan dilarang dialihkan ke staf non-apoteker.
+2. **Pemisahan Otoritas:** Wewenang profesional klinis untuk memvalidasi dan meloloskan safety gates (Final Review, PIO, Override) adalah hak eksklusif Apoteker dan dilarang dialihkan ke staf non-apoteker.
 3. **Precedence Gerbang Keselamatan:** Penyerahan obat dilarang dieksekusi sebelum seluruh safety gates wajib (Pickup Call, Final Review Pass, konfirmasi PIO, Payment Clearance untuk pasien umum, dan Override bila batas waktu lewat) terpenuhi.
 4. **Kelayakan Aktor Penyerah:** Tindakan operasional penyerahan fisik di loket diakui sah jika dilakukan oleh Apoteker ATAU Staf Farmasi Terotorisasi / Tenaga Vokasi Farmasi yang berwenang.
-5. **Bukan Bukti Serah Obat:** Pemanggilan loket (*Pickup Call*) dan status antrean *Done* bukan bukti bahwa obat telah diterima oleh pasien.
+5. **Bukan Bukti Serah Obat:** Pemanggilan loket (*Pickup Call*) dan status antrean selesai bukan bukti bahwa obat telah diterima oleh pasien.
 6. **Non-Mandatory Identity Artifact:** Identitas pendukung (nomor KTP, surat kuasa fisik, tanda tangan digital, biometrik, telepon) bukan prasyarat wajib sistem untuk menyelesaikan penyerahan obat.
-7. **Semantik Penyerahan Sekali Selesai:** Satu pekerjaan Dispensing hanya menghasilkan satu penyerahan sah. Eksekusi ulang atau tindakan ganda tidak menghasilkan penyerahan kedua.
+7. **Penyerahan Sekali Selesai:** Satu pekerjaan Dispensing hanya menghasilkan satu penyerahan sah. Eksekusi ulang atau tindakan ganda tidak menghasilkan penyerahan kedua.
 8. **Imutabilitas Status Selesai:** Status **Completed** bersifat permanen dan tidak dapat dibatalkan melalui pembatalan biasa (*Undo / Cancel*). Koreksi pasca-serah diselesaikan melalui alur Retur Obat (**APT-RETUR**) atau pembalikan transaksi terpisah.
-9. **Kemandirian dari Proses Hilir:** Keberhasilan penyerahan obat tidak bergantung pada respon pembaruan persediaan fisik (*Inventory*) maupun penagihan klaim (*BPJS*).
+9. **Kemandirian dari Proses Lanjutan:** Keberhasilan penyerahan obat tidak bergantung pada respon pembaruan persediaan fisik maupun penagihan klaim penjamin.
 10. **Batas Waktu Pengambilan (Collection Window):** Penyerahan obat yang melewati batas waktu pengambilan diblokir, kecuali terdapat persetujuan resmi *Collection Window Override* dari Apoteker/Supervisor yang memuat aktor, waktu, dan alasan.
 11. **Kegagalan Telaah Akhir Bukan Gagal Serah:** Kegagalan Final Dispense Review menghentikan alur penyerahan dan mengembalikan sediaan ke alur penyiapan Dispensing untuk perbaikan/rework, bukan dianggap kegagalan serah obat (*Failed Handover*).
 12. **Ketidakhadiran Pasien Bukan Gagal Serah:** Ketidakhadiran pasien mengambil obat hingga batas waktu berakhir (*No-Show*) ditutup sebagai batas waktu terlampaui (*Pickup Expired*) untuk penyelesaian disposisi fisik di Dispensing, bukan kegagalan serah obat.
@@ -228,7 +228,7 @@ Apabila pasien tidak hadir mengambil obat (*No-Show*) hingga batas waktu pengamb
 | **Pasien Tidak Muncul Saat Dipanggil di Loket (*Pickup Call No-Show*)** | Pasien tidak merespons panggilan di loket → Obat tetap disimpan di loket dalam pengawasan farmasi. Penyerahan tidak dieksekusi dan masa tunggu pengambilan tetap berjalan. |
 | **Percobaan Eksekusi Penyerahan Berulang (*Duplicate Handover Attempt*)** | Terjadi tindakan eksekusi berulang atau ganda pada pekerjaan Dispensing yang telah Completed → Sistem menolak eksekusi kedua dan mempertahankan catatan penyerahan sah yang telah ada tanpa perubahan. |
 | **Eksekusi Penyerahan oleh Staf Tanpa Kelolosan Safety Gate Klinis** | Staf mencoba mengeksekusi penyerahan sebelum Apoteker meloloskan Final Review atau PIO → Sistem menolak penyerahan dan menampilkan informasi gerbang klinis yang belum dipenuhi oleh Apoteker. |
-| **Gangguan pada Proses Hilir Persediaan atau BPJS (*Downstream Processing Failure*)** | Pembaruan persediaan atau penagihan klaim BPJS mengalami gangguan teknis saat penyerahan dilakukan → Status penyerahan obat **tetap Completed**. Proses pembaruan hilir dilanjutkan secara mandiri tanpa membatalkan penyerahan obat. |
+| **Gangguan pada Proses Lanjutan Persediaan atau Klaim Penjamin** | Pembaruan persediaan atau penagihan klaim mengalami gangguan teknis saat penyerahan dilakukan → Status penyerahan obat **tetap Completed**. Proses pembaruan lanjutan dilanjutkan secara mandiri tanpa membatalkan penyerahan obat. |
 
 ---
 
@@ -238,23 +238,22 @@ Apabila pasien tidak hadir mengambil obat (*No-Show*) hingga batas waktu pengamb
 
 | # | Criterion | Validates |
 |---|-----------|-----------|
-| **AC-01** | Penyerahan obat hanya dapat dieksekusi jika pekerjaan Dispensing berstatus **Ready for Pickup** dan seluruh safety gates wajib terpenuhi. | Completeness |
-| **AC-02** | Sistem menolak penyerahan jika Final Dispense Review oleh Apoteker belum dilakukan atau berstatus selain **Pass**. | Constraint |
-| **AC-03** | Sistem menolak penyerahan jika Pelayanan Informasi Obat (PIO) oleh Apoteker belum tercatat konfirmasinya. | Constraint |
-| **AC-04** | Sistem menolak penyerahan untuk pasien jalur umum jika kewajiban pembayaran belum berstatus lunas. | Constraint |
-| **AC-05** | Penyerahan obat yang melewati batas waktu pengambilan ditolak, kecuali telah disertai persetujuan *Collection Window Override* yang sah dari Apoteker/Supervisor. | Constraint |
-| **AC-06** | Aktor penyerah obat (*Handover Actor*) dapat dicatat sebagai Apoteker maupun Staf Farmasi Terotorisasi yang sah. | Correctness |
-| **AC-07** | Keberhasilan penyerahan obat mencatat waktu penyerahan, identitas aktor penyerah, dan mentransisikan status pekerjaan Dispensing menjadi **Completed**. | Completeness |
-| **AC-08** | Sistem menolak penyerahan sebagian (*Partial Handover*); pekerjaan Dispensing hanya dapat diserahkan secara utuh (*Full Handover*). | Constraint |
-| **AC-09** | Tindakan penyerahan berulang atas pekerjaan Dispensing yang telah Completed tidak menghasilkan penyerahan kedua. | Constraint |
-| **AC-10** | Pekerjaan Dispensing yang telah berstatus **Completed** tidak dapat dibatalkan melalui pembatalan biasa (*Undo / Cancel*). | Constraint |
-| **AC-11** | Kendala pada proses persediaan fisik maupun penagihan klaim BPJS pasca-serah tidak membatalkan atau menunda status **Completed**. | Correctness |
-| **AC-12** | Ketiadaan data KTP, surat kuasa fisik, tanda tangan digital, atau biometrik penerima tidak menghalangi penyelesaian penyerahan obat di sistem. | Constraint |
-| **AC-13** | Pemanggilan loket (*Pickup Call*) dicatat sebagai prasyarat pemanggilan dan tidak dianggap sebagai bukti penyelesaian serah obat. | Correctness |
-| **AC-14** | Perubahan status antrean loket atau pelacak perjalanan pasien menjadi `Done` tidak dapat dijadikan bukti penyerahan fisik obat. | Constraint |
-| **AC-15** | Model Terpadu (Apoteker tunggal) dan Model Kolaboratif (Apoteker dan Staf) menghasilkan bukti penyerahan dan status akhir **Completed** yang identik. | Correctness |
-| **AC-16** | Kegagalan pada Final Dispense Review mengembalikan sediaan ke penyiapan Dispensing dan tidak dicatat sebagai kegagalan serah obat (*Failed Handover*). | Exception |
-| **AC-17** | Berakhirnya batas waktu pengambilan tanpa kehadiran pasien (*No-Show*) ditutup sebagai *Pickup Expired* untuk disposisi fisik sediaan di Dispensing, bukan kegagalan serah obat. | Exception |
+| **AC-01** | Rekam penyerahan obat terbentuk lengkap dengan bukti pemanggilan loket, kelolosan telaah akhir fisik, konfirmasi PIO, dan status lunas untuk pasien umum. | Completeness |
+| **AC-02** | Verifikasi bahwa sistem menolak eksekusi penyerahan jika Final Dispense Review oleh Apoteker belum dilakukan atau berstatus selain Pass. | Constraint |
+| **AC-03** | Verifikasi bahwa sistem menolak eksekusi penyerahan jika konfirmasi Pelayanan Informasi Obat (PIO) oleh Apoteker belum tercatat. | Constraint |
+| **AC-04** | Verifikasi bahwa sistem menolak eksekusi penyerahan untuk pasien jalur umum jika konfirmasi pelunasan tagihan belum terbit. | Constraint |
+| **AC-05** | Verifikasi bahwa penyerahan obat yang melewati batas waktu pengambilan ditolak, kecuali disertai persetujuan override sah yang memuat identitas Apoteker/Supervisor, waktu, dan alasan. | Constraint |
+| **AC-06** | Verifikasi bahwa penyerahan fisik obat di loket dapat dicatat dan diakui sah baik oleh Apoteker maupun Staf Farmasi Terotorisasi. | Correctness |
+| **AC-07** | Keberhasilan penyerahan fisik obat mencatat waktu penyerahan definitif, identitas aktor penyerah, dan mentransisikan status Dispensing menjadi Completed. | Completeness |
+| **AC-08** | Verifikasi bahwa sistem menolak penyerahan sebagian (*Partial Handover*) dan memastikan 100% sediaan siap serah pada pekerjaan Dispensing diserahkan secara utuh. | Constraint |
+| **AC-09** | Verifikasi bahwa tindakan penyerahan berulang atau ganda atas pekerjaan Dispensing yang telah Completed ditolak dan tidak menghasilkan catatan penyerahan kedua. | Constraint |
+| **AC-10** | Verifikasi bahwa pekerjaan Dispensing yang telah berstatus Completed terkunci dari pembatalan biasa (*Undo / Cancel*), dan koreksi hanya dapat dilakukan via alur retur/pembalikan terpisah. | Constraint |
+| **AC-11** | Verifikasi bahwa status Completed penyerahan obat tetap sah dan tidak dibatalkan saat terjadi kendala pada pembaruan persediaan atau penagihan klaim lanjutan. | Correctness |
+| **AC-12** | Verifikasi bahwa penyerahan obat dapat diselesaikan tanpa mewajibkan verifikasi KTP, surat kuasa, tanda tangan digital, atau biometrik penerima. | Correctness |
+| **AC-13** | Verifikasi bahwa pemanggilan pasien (*Pickup Call*) atau status antrean selesai tidak memicu penyelesaian penyerahan obat tanpa eksekusi fisik riil. | Correctness |
+| **AC-14** | Verifikasi bahwa alur pelayanan Model Terpadu (Apoteker tunggal) dan Model Kolaboratif (Apoteker bersama Staf) menghasilkan bukti penyerahan dan status akhir Completed yang setara. | Correctness |
+| **AC-15** | Verifikasi bahwa sediaan yang gagal pada telaah akhir fisik dialihkan kembali ke penyiapan Dispensing untuk perbaikan dan tidak dicatat sebagai kegagalan serah obat (*Failed Handover*). | Exception |
+| **AC-16** | Verifikasi bahwa sediaan yang tidak diambil pasien hingga batas waktu berakhir ditutup sebagai Pickup Expired untuk retur fisik di Dispensing, bukan kegagalan serah obat. | Exception |
 
 ---
 
