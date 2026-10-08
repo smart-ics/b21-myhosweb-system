@@ -3,7 +3,7 @@
 | Field       | Value        |
 |-------------|--------------|
 | Code        | OC-11-07     |
-| Version     | 1.2          |
+| Version     | 1.3          |
 | Status      | Draft        |
 | LastUpdated | 2026-10-08   |
 
@@ -27,7 +27,7 @@ Barang persediaan yang diminta oleh Unit Pemohon **telah diterima secara fisik d
 
 | Domain | Role in this Outcome |
 |--------|----------------------|
-| **Inventory (`INV`)** | Pemilik utama outcome Mutasi: mengelola pencatatan mutasi persediaan, pergerakan stok antar-lokasi, dan pengendalian status stok dalam perjalanan (*in-transit*). |
+| **Inventory (`INV`)** | Pemilik utama outcome Mutasi: mengelola pencatatan mutasi persediaan, pergerakan stok antar-lokasi, dan status stok dalam perjalanan (*in-transit*). |
 | **Apotek (`APT`)** | Konteks unit pelayanan kefarmasian: berperan sebagai Unit Pemohon atau Unit Penyedia dalam pengelolaan perbekalan farmasi. |
 | **Organisasi (`ORG`)** | Menyediakan definisi unit kerja rumah sakit (unit layanan, instalasi, ruangan, bangsal, depo) dan identitas personel berwenang. |
 
@@ -53,10 +53,10 @@ Barang persediaan yang diminta oleh Unit Pemohon **telah diterima secara fisik d
 
 ### 5.1 Required Business Facts
 
-- **Order Mutasi Disetujui:** Order Mutasi dari Unit Pemohon telah memperoleh persetujuan resmi (`Approved`) dari Unit Penyedia.
-- **Serah Terima Fisik Riil:** Barang yang diminta telah diterima secara fisik oleh personel yang berwenang atas nama Unit Pemohon.
-- **Perpindahan Stok Tercatat:** Pengurangan stok pada Penyedia dan penambahan stok pada Pemohon telah tercatat secara berpasangan.
-- **Order Berstatus Completed:** Order Mutasi resmi berstatus **Completed** dengan bukti serah terima fisik dan mutasi stok lengkap.
+- **Order Mutasi Disetujui:** Order Mutasi diterbitkan oleh Unit Pemohon dan telah disetujui (`Approved`) oleh Unit Penyedia.
+- **Penerimaan Fisik Sah:** Barang telah diterima secara fisik oleh personel yang berwenang atas nama Unit Pemohon.
+- **Perpindahan Persediaan Tercatat:** Pengurangan stok pada Penyedia dan penambahan stok pada Pemohon telah tercatat secara berpasangan.
+- **Status Selesai:** Order Mutasi berstatus **Completed**.
 
 ---
 
@@ -74,10 +74,8 @@ Barang persediaan yang diminta oleh Unit Pemohon **telah diterima secara fisik d
 
 ### 5.3 Required Business Conditions
 
-- Unit Pemohon dan Unit Penyedia aktif serta merupakan dua unit yang berbeda;
-- Saldo persediaan Penyedia mencukupi pada saat pengeluaran barang;
-- Kuantitas fisik barang yang diterima terverifikasi lengkap sesuai persetujuan (*all-or-nothing*);
-- Penerima fisik berwenang bertindak atas nama Unit Pemohon.
+- Unit Pemohon dan Unit Penyedia aktif serta merupakan dua unit berbeda dalam organisasi rumah sakit;
+- Saldo persediaan Unit Penyedia mencukupi untuk pemenuhan kebutuhan saat pengeluaran barang.
 
 ---
 
@@ -85,8 +83,8 @@ Barang persediaan yang diminta oleh Unit Pemohon **telah diterima secara fisik d
 
 > What proves this Outcome is complete?
 
-- **Completed:** Order Mutasi berstatus **Completed** dengan bukti serah terima fisik sah (identitas penerima atas nama Unit Pemohon dan waktu penerimaan tercatat).
-- **Stok Berpindah Seimbang:** Catatan mutasi persediaan terbit secara berpasangan (stok berkurang di Penyedia dan bertambah di Pemohon dengan kuantitas yang sama).
+- Dokumen Order Mutasi berstatus **Completed** dengan bukti serah terima fisik sah tercatat;
+- Catatan mutasi persediaan terbit secara berpasangan (stok berkurang di Penyedia dan bertambah di Pemohon dengan kuantitas yang sama).
 
 ---
 
@@ -128,10 +126,10 @@ Berakhir ketika barang diterima secara fisik atas nama Unit Pemohon, status Orde
 | Exception | Expected Behavior |
 |-----------|-------------------|
 | **Ketidaksesuaian fisik saat serah terima** | Penyelesaian order ditahan sampai ketidaksesuaian diselesaikan secara operasional (*all-or-nothing*). |
-| **Permintaan ditolak oleh Penyedia** | Order menjadi status terminal `Rejected`; kebutuhan lanjutan diproses melalui order baru. |
-| **Pembatalan diajukan pasca-`Approved`** | Pembatalan sepihak ditolak; proses dialihkan ke koordinasi pembatalan bersama Penyedia. |
+| **Permintaan ditolak oleh Penyedia** | Order ditutup permanen dengan status terminal `Rejected`. |
+| **Kebutuhan pembatalan pasca-`Approved`** | Pembatalan sepihak dilarang; harus diselesaikan melalui koordinasi pembatalan resmi bersama Penyedia. |
 | **Stok Penyedia tidak mencukupi saat persetujuan** | Order tidak dapat disetujui penuh; Penyedia menolak atau menunda persetujuan hingga stok tersedia. |
-| **Koreksi atas transaksi mutasi yang sudah `Completed`** | Data transaksi asal tetap utuh; diterbitkan transaksi pembalik (*reversal*) yang mereferensikan order asal. |
+| **Koreksi atas transaksi mutasi yang sudah `Completed`** | Catatan transaksi asal tetap utuh; penyesuaian diproses melalui transaksi pembalik (*reversal*). |
 
 ---
 
@@ -142,15 +140,14 @@ Berakhir ketika barang diterima secara fisik atas nama Unit Pemohon, status Orde
 | # | Criterion | Validates |
 |---|-----------|-----------|
 | **AC-01** | Order Mutasi hanya ditujukan kepada tepat satu Unit Penyedia. | Constraint |
-| **AC-02** | Order Mutasi tidak dapat berpindah menjadi `Completed` tanpa melalui persetujuan (`Approved`) oleh Unit Penyedia. | Constraint |
-| **AC-03** | Order pada status `Draft` atau `Submitted` dapat dibatalkan oleh Pemohon menjadi `Cancelled`. | Correctness |
-| **AC-04** | Order berstatus `Approved` tidak dapat dibatalkan secara sepihak oleh Unit Pemohon. | Constraint |
-| **AC-05** | Order yang ditolak Penyedia berstatus terminal `Rejected` yang tidak dapat diedit atau dibuka kembali. | Exception |
-| **AC-06** | Barang berstatus `Dispatched` tidak menambah stok tersedia pada Unit Pemohon hingga berstatus `Completed`. | Correctness |
-| **AC-07** | Order hanya dapat diselesaikan (`Completed`) jika fisik barang yang diterima sesuai penuh dengan yang disetujui/dikirim (*all-or-nothing*). | Constraint |
-| **AC-08** | Penyelesaian mencatat bukti serah terima (identitas penerima atas nama Unit Pemohon dan waktu penerimaan fisik). | Completeness |
-| **AC-09** | Status `Completed` mencatat perpindahan stok berpasangan (berkurang di Penyedia dan bertambah di Pemohon) tanpa mengubah total persediaan rumah sakit. | Completeness |
-| **AC-10** | Pembatalan transaksi `Completed` dilakukan melalui penerbitan transaksi pembalik (*reversal*) tanpa menghapus catatan transaksi asal. | Constraint |
+| **AC-02** | Transisi ke status `Completed` wajib didahului oleh persetujuan (`Approved`) Unit Penyedia. | Constraint |
+| **AC-03** | Order berstatus `Draft` atau `Submitted` dapat dibatalkan oleh Pemohon, namun dilarang dibatalkan sepihak setelah `Approved`. | Constraint |
+| **AC-04** | Order yang ditolak Penyedia berstatus terminal `Rejected` yang tidak dapat diedit atau dibuka kembali. | Exception |
+| **AC-05** | Barang berstatus `Dispatched` tidak menambah stok tersedia pada Unit Pemohon hingga berstatus `Completed`. | Correctness |
+| **AC-06** | Order hanya dapat diselesaikan (`Completed`) jika fisik barang yang diterima sesuai penuh dengan persetujuan (*all-or-nothing*). | Constraint |
+| **AC-07** | Penyelesaian mencatat bukti serah terima berupa identitas penerima atas nama Unit Pemohon dan waktu penerimaan fisik. | Completeness |
+| **AC-08** | Status `Completed` mencatat perpindahan stok berpasangan (berkurang di Penyedia dan bertambah di Pemohon) tanpa mengubah total persediaan rumah sakit. | Completeness |
+| **AC-09** | Pembatalan transaksi `Completed` menghasilkan transaksi pembalik (*reversal*) tanpa menghapus catatan transaksi asal. | Constraint |
 
 ---
 
