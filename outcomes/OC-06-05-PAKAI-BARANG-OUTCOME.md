@@ -3,7 +3,7 @@
 | Field       | Value        |
 |-------------|--------------|
 | Code        | OC-06-05     |
-| Version     | 1.0          |
+| Version     | 1.1          |
 | Status      | Draft        |
 | LastUpdated | 2026-10-08   |
 
@@ -17,13 +17,11 @@ Rumah sakit memerlukan pencatatan operasional yang membuktikan bahwa suatu baran
 
 Fokus utama outcome ini adalah **terjadinya penggunaan barang**, bukan sekadar barang tersedia, dipindahkan, disimpan, atau dihitung.
 
-Pakai Barang ditetapkan sebagai **Operational Service Event**, bukan Clinical Service Event. Outcome ini memastikan rumah sakit memiliki fakta bisnis yang jelas dan terverifikasi bahwa barang tertentu telah dikonsumsi atau digunakan dalam konteks operasional atau pelayanan rumah sakit. 
+Pakai Barang merupakan **Operational Service Event**, bukan Clinical Service Event. Alur sederhananya:
 
-Pencatatan ini beroperasi secara mandiri dan implementation-independent, serta memisahkan peristiwa penggunaan fisik barang dari:
-1. Pelaksanaan tindakan klinis kepada pasien;
-2. Perpindahan fisik logistik antar-unit kerja;
-3. Penghitungan fisik persediaan (opname);
-4. Konsekuensi downstream pengelolaan persediaan (seperti pengurangan kartu stok gudang, kalkulasi biaya, atau jurnal akuntansi).
+> **Barang digunakan → penggunaan dicatat → menjadi fakta operasional yang dapat diverifikasi.**
+
+Outcome ini berfokus pada fakta bisnis bahwa barang telah digunakan secara nyata dalam kegiatan operasional atau pelayanan rumah sakit, tanpa mengikat spesifikasi teknis manajemen persediaan (*inventory management*), mekanisme pengurangan stok, atau detail teknis sistem.
 
 ---
 
@@ -37,10 +35,9 @@ Pencatatan ini beroperasi secara mandiri dan implementation-independent, serta m
 
 **Pakai Barang adalah pencatatan bahwa suatu barang telah digunakan dalam kegiatan pelayanan atau operasional rumah sakit.**
 
-Outcome ini merepresentasikan fakta operasional yang dapat diamati (*observable*) dan diverifikasi:
-1. Suatu barang yang teridentifikasi telah digunakan/dikonsumsi;
-2. Penggunaan tersebut berlangsung dalam konteks kegiatan pelayanan atau operasional rumah sakit;
-3. Terdapat catatan operasional yang sah atas peristiwa penggunaan barang tersebut.
+Outcome ini merepresentasikan fakta operasional bahwa:
+1. Suatu barang telah digunakan dalam kegiatan pelayanan atau operasional rumah sakit;
+2. Penggunaan barang tersebut telah dicatat sebagai fakta operasional yang sah dan dapat diverifikasi.
 
 ---
 
@@ -48,14 +45,14 @@ Outcome ini merepresentasikan fakta operasional yang dapat diamati (*observable*
 
 | Domain | Role in this Outcome |
 |--------|----------------------|
-| Inventory (`INV`) | **Domain Utama (Owner):** Mengelola kapabilitas pencatatan pemakaian barang (`INV-PAKAI`) sebagai pencatatan bahwa barang telah digunakan, serta menyediakan master item barang (`INV-MASTER`) yang sah digunakan di lingkungan rumah sakit. |
-| Rawat Inap (`RNA`) | **Operational Context Domain:** Menyediakan konteks operasional lingkungan bangsal rawat inap tempat terjadinya pemakaian barang (khususnya dalam ruang lingkup bangsal rawat inap / SC-06). |
-| Organisasi (`ORG`) | **Supporting / Context Domain:** Menyediakan referensi unit layanan atau ruangan tempat barang digunakan (`ORG-LAYANAN`) serta data petugas atau staf yang menggunakan/mencatat pemakaian barang (`ORG-PPA`). |
-| Pasien (`PAS`) | **Supporting / Context Domain (Kondisional):** Menyediakan identitas pasien (`PAS-DATSOS`) apabila barang digunakan dalam konteks pelayanan kepada pasien tertentu. |
-| Admission (`ADM`) | **Supporting / Context Domain (Kondisional):** Menyediakan referensi episode pelayanan aktif (`ADM-REG`) apabila pemakaian barang berkaitan langsung dengan episode rawat inap pasien. |
+| Inventory (`INV`) | **Domain Utama (Owner):** Menyediakan kapabilitas pencatatan pemakaian barang (`INV-PAKAI`) serta referensi item barang (`INV-MASTER`). |
+| Rawat Inap (`RNA`) | **Operational Context Domain:** Menyediakan konteks operasional lingkungan bangsal rawat inap tempat penggunaan barang berlangsung (khususnya untuk SC-06). |
+| Organisasi (`ORG`) | **Supporting / Context Domain:** Menyediakan konteks unit layanan tempat barang digunakan (`ORG-LAYANAN`) serta petugas yang mencatat atau menggunakan barang (`ORG-PPA`). |
+| Pasien (`PAS`) | **Supporting / Context Domain (Kondisional):** Menyediakan konteks data pasien (`PAS-DATSOS`) apabila penggunaan barang terkait dengan pelayanan pasien tertentu. |
+| Admission (`ADM`) | **Supporting / Context Domain (Kondisional):** Menyediakan konteks episode pelayanan (`ADM-REG`) apabila penggunaan barang terkait dengan episode rawat inap pasien. |
 
 > **Catatan Batasan Domain:**
-> Domain Catalog tetap menjadi sumber otoritatif untuk penetapan Domain dan Capability. Outcome ini tidak mengambil alih kepemilikan atas manajemen pengadaan barang (`PUR`), mutasi perpindahan barang antar-lokasi (`INV-MUTASI`), penghitungan fisik opname (`INV-OPNAME`), tindakan klinis (`OC-06-01`), maupun pembentukan tagihan pasien (`TRK-BILLING`). Domain-domain tersebut berpartisipasi murni sesuai batas tanggung jawab bisnisnya masing-masing.
+> Domain Catalog tetap menjadi sumber otoritatif untuk penetapan Domain dan Capability. Outcome ini tidak mengambil alih kepemilikan atas manajemen pengadaan (`PUR`), mutasi perpindahan barang (`INV-MUTASI`), opname persediaan (`INV-OPNAME`), tindakan klinis (`OC-06-01`), maupun billing (`TRK-BILLING`). Domain pendukung berpartisipasi murni sebagai penyedia konteks sesuai kebutuhan.
 
 ---
 
@@ -63,17 +60,17 @@ Outcome ini merepresentasikan fakta operasional yang dapat diamati (*observable*
 
 | Capability | Domain | Status | Konteks Partisipasi |
 |------------|--------|--------|---------------------|
-| `INV-PAKAI` Pakai Barang | Inventory | Known | Mengelola pencatatan bahwa suatu barang telah digunakan dalam kegiatan rumah sakit. |
-| `INV-MASTER` Item Master | Inventory | Known | Menyediakan identitas dan referensi item barang yang sah dan terdaftar di rumah sakit. |
-| `ORG-LAYANAN` Unit Layanan | Organisasi | Known | Menyediakan referensi unit kerja, bangsal, atau ruangan tempat barang digunakan. |
-| `ORG-PPA` Petugas Pemberi Asuhan | Organisasi | Known | Menyediakan referensi staf atau petugas yang menggunakan atau mencatat pemakaian barang. |
-| `PAS-DATSOS` Data Sosial Pasien | Pasien | Known | Menyediakan identitas pasien jika pemakaian barang dilakukan untuk asuhan pasien tertentu (kondisional). |
-| `ADM-REG` Registration | Admission | Known | Menyediakan konteks episode rawat inap aktif jika pemakaian barang terkait dengan episode pelayanan pasien (kondisional). |
+| `INV-PAKAI` Pakai Barang | Inventory | Known | Menyediakan kapabilitas pencatatan bahwa suatu barang telah digunakan dalam kegiatan rumah sakit. |
+| `INV-MASTER` Item Master | Inventory | Known | Menyediakan referensi identitas item barang yang sah di rumah sakit. |
+| `ORG-LAYANAN` Unit Layanan | Organisasi | Known | Menyediakan referensi unit kerja atau lokasi tempat barang digunakan. |
+| `ORG-PPA` Petugas Pemberi Asuhan | Organisasi | Known | Menyediakan referensi petugas atau staf yang mencatat atau menggunakan barang. |
+| `PAS-DATSOS` Data Sosial Pasien | Pasien | Known | Menyediakan konteks identitas pasien apabila penggunaan barang terkait pelayanan pasien tertentu (kondisional). |
+| `ADM-REG` Registration | Admission | Known | Menyediakan konteks episode rawat inap apabila penggunaan barang terkait episode pelayanan pasien (kondisional). |
 
 > **Capability Status values:** Known · Existing but Undocumented · Capability Candidate
 >
 > **Catatan Tata Kelola & Otoritas Domain Catalog:**
-> Seluruh capability yang berpartisipasi berstatus **Known** dan terdaftar dalam Domain Catalog yang berlaku. OC-06-05 tidak mendefinisikan capability baru secara sepihak. Apabila di masa mendatang timbul kebutuhan kapabilitas domain baru di luar Domain Catalog, kebutuhan tersebut wajib dieskalasikan kepada Product Owner untuk persetujuan ruang lingkup (*scope approval*).
+> Seluruh capability yang tercantum berstatus **Known** dan mengacu pada Domain Catalog yang berlaku. OC-06-05 tidak membuat atau mengasumsikan capability baru. Apabila di kemudian hari diperlukan capability tambahan, hal tersebut harus menjadi keputusan Product Owner melalui proses tata kelola yang berlaku.
 
 ---
 
@@ -83,47 +80,42 @@ Outcome ini merepresentasikan fakta operasional yang dapat diamati (*observable*
 
 ### 5.1 Required Business Facts
 
-- Teridentifikasinya item barang yang digunakan sebagai barang yang sah dalam operasional rumah sakit.
-- Teridentifikasinya kuantitas (jumlah) barang yang digunakan.
-- Teridentifikasinya unit kerja, bangsal, atau lokasi tempat barang digunakan.
-- Teridentifikasinya waktu terjadinya penggunaan barang.
-- Teridentifikasinya petugas atau staf yang mencatat/menggunakan barang.
-- Terdapat konteks kegiatan yang mendasari penggunaan barang (baik terkait pelayanan pasien tertentu maupun kebutuhan operasional rutin unit tanpa pasien).
-- Terdapat catatan operasional yang sah dan dapat diverifikasi bahwa barang tersebut telah digunakan.
-- Apabila terjadi koreksi atau pembatalan atas pencatatan pemakaian barang, koreksi tersebut tercatat secara akuntabel tanpa menghapus rekam jejak audit operasional.
+**Fakta Bisnis Utama:**
+- Barang yang digunakan teridentifikasi sebagai barang yang sah dalam operasional rumah sakit.
+- Kuantitas atau jumlah barang yang digunakan teridentifikasi.
+- Terjadinya penggunaan barang telah dicatat sebagai fakta operasional yang dapat diverifikasi.
+
+**Konteks Penggunaan (Sesuai Kebutuhan):**
+- Penggunaan barang dapat memuat konteks unit/lokasi, waktu penggunaan, atau petugas yang mencatat/menggunakan.
+- Penggunaan barang dapat memuat konteks pasien/episode apabila digunakan untuk pelayanan pasien, atau dicatat tanpa data pasien apabila digunakan untuk operasional unit.
 
 ### 5.2 Required Recorded Information
 
-Pencatatan Pakai Barang harus dapat membuktikan informasi bisnis inti berikut secara *implementation-independent*:
-
-- **Barang yang Digunakan:** Identifikasi item barang yang dikonsumsi/digunakan.
+Pencatatan Pakai Barang mencatat informasi bisnis utama:
+- **Barang yang Digunakan:** Identitas barang yang digunakan.
 - **Jumlah Penggunaan:** Besaran atau kuantitas barang yang digunakan.
-- **Waktu Penggunaan:** Waktu (tanggal dan/atau jam) penggunaan barang terjadi atau dicatat.
-- **Unit / Lokasi Penggunaan:** Unit kerja, bangsal, atau ruangan tempat barang digunakan.
-- **Petugas Pencatat / Pengguna:** Identitas petugas atau staf yang menggunakan atau mencatat pemakaian barang.
-- **Konteks Kegiatan / Pasien (Kondisional):**
-  - Identitas pasien dan/atau episode pelayanan, apabila barang digunakan dalam konteks pelayanan langsung kepada pasien tertentu; **ATAU**
-  - Keterangan kegiatan operasional unit, apabila barang digunakan untuk kebutuhan operasional umum unit tanpa terkait pasien tertentu.
-- **Keterangan Tambahan (Opsional):** Catatan kontekstual mengenai pemakaian barang (misalnya keperluan khusus atau referensi kegiatan).
-- **Informasi Pembatalan / Koreksi (Kondisional):** Alasan bisnis dan akuntabilitas petugas apabila catatan pemakaian barang dibatalkan atau dikoreksi.
+
+**Konteks Penggunaan (Sesuai Kebutuhan):**
+- **Waktu Penggunaan:** Waktu terjadinya penggunaan atau pencatatan barang.
+- **Unit / Lokasi:** Unit kerja atau ruangan tempat barang digunakan.
+- **Petugas:** Petugas atau staf yang menggunakan atau mencatat penggunaan barang.
+- **Konteks Pasien / Pelayanan (Kondisional):** Identitas pasien atau episode pelayanan jika penggunaan barang terkait pelayanan pasien tertentu.
+- **Keterangan Tambahan (Opsional):** Keterangan operasional mengenai penggunaan barang.
 
 ### 5.3 Required Business Conditions
 
-- Item barang yang dicatat merupakan barang yang sah dan aktif dalam katalog barang rumah sakit.
-- Jumlah barang yang digunakan harus bernilai positif (lebih besar dari nol).
-- Waktu penggunaan merupakan waktu yang valid dan tidak berada di masa depan.
-- Unit kerja atau lokasi tempat penggunaan barang merupakan unit operasional yang valid.
-- Jika penggunaan barang dikaitkan dengan pasien, identitas pasien harus valid dalam sistem rumah sakit.
-- Penggunaan barang dapat berdiri sendiri untuk operasional unit tanpa keharusan adanya data pasien.
-- Peristiwa pemakaian barang bukan merupakan pemindahan fisik antar-lokasi (bukan mutasi) dan bukan pencocokan stok fisik (bukan opname).
+- Barang yang dicatat merupakan barang yang sah dalam operasional rumah sakit.
+- Jumlah barang yang digunakan bernilai lebih dari nol (> 0).
+- Penggunaan barang dapat dicatat dalam konteks pasien maupun non-pasien.
+- Penggunaan barang bukan merupakan perpindahan fisik barang antar-lokasi (bukan mutasi) dan bukan pemeriksaan fisik stok (bukan opname).
 
 ### 5.4 Completion Proof
 
 Outcome ini dinyatakan terpenuhi (*established*) apabila:
 
-- Terdapat rekaman catatan operasional yang sah yang membuktikan bahwa barang tertentu dalam jumlah tertentu telah digunakan pada unit/lokasi dan waktu yang jelas.
-- Catatan penggunaan barang dapat diverifikasi oleh pihak berkepentingan (misalnya kepala bangsal, auditor operasional, atau penanggung jawab logistik).
-- Keberadaan fakta pemakaian barang bersifat mandiri dan tidak bergantung pada keberhasilan atau waktu penyelesaian proses downstream (seperti mutasi kartu stok, kalkulasi biaya persediaan, maupun pembebanan billing pasien).
+- Terdapat catatan operasional yang sah bahwa suatu barang telah digunakan dalam kegiatan pelayanan atau operasional rumah sakit.
+- Catatan penggunaan barang dapat diverifikasi sebagai fakta operasional.
+- Keabsahan catatan penggunaan barang berdiri sendiri dan tidak bergantung pada mekanisme penyesuaian persediaan, costing, atau pembebanan tagihan downstream.
 
 ---
 
@@ -131,21 +123,14 @@ Outcome ini dinyatakan terpenuhi (*established*) apabila:
 
 ### Start
 
-Dimulai ketika barang digunakan dalam kegiatan pelayanan atau operasional rumah sakit.
+Barang digunakan dalam kegiatan pelayanan atau operasional rumah sakit.
 
 ### End
 
-Berakhir ketika penggunaan barang telah tercatat sebagai fakta operasional yang dapat diverifikasi.
+Penggunaan barang telah dicatat sebagai fakta operasional yang dapat diverifikasi.
 
 > **Catatan Batasan Boundary:**
-> Batasan Pakai Barang tidak diperluas ke aktivitas sebelum atau sesudahnya. Secara tegas, boundary **TIDAK mencakup**:
-> - Pengadaan barang (*procurement* / *purchasing*);
-> - Penerimaan barang (*receiving* / *delivery order*);
-> - Penyimpanan barang di gudang atau depo persediaan;
-> - Pemindahan barang antar-lokasi/unit (*mutasi barang*);
-> - Penghitungan atau pencocokan fisik persediaan (*stock opname*);
-> - Penentuan biaya dan valuasi persediaan (*costing* / *valuation*);
-> - Pelaksanaan tindakan klinis (*clinical procedure*).
+> Boundary Pakai Barang berfokus pada pencatatan penggunaan barang dan tidak diperluas sampai proses pengurangan stok, costing, accounting, rekonsiliasi, maupun inventory control.
 
 ---
 
@@ -153,30 +138,30 @@ Berakhir ketika penggunaan barang telah tercatat sebagai fakta operasional yang 
 
 > Aturan bisnis yang harus selalu terpenuhi untuk Outcome ini.
 
-1. **Fokus Tunggal pada Penggunaan Barang:**
+1. **Fokus pada Pencatatan Penggunaan Barang:**
    Pakai Barang hanya mencatat bahwa suatu barang telah digunakan. Outcome ini tidak mencakup pengelolaan sistem persediaan (*inventory management*) secara keseluruhan, pengadaan, maupun penyimpanan.
 2. **Pengurangan Stok Bukan Definisi Utama:**
-   Pengurangan persediaan/stok dapat menjadi konsekuensi logistik lanjutan apabila barang tersebut dikelola sebagai item persediaan, namun pengurangan stok bukan merupakan identitas dari Outcome Pakai Barang. Fakta bahwa barang telah digunakan tetap sah terbentuk terlepas dari apakah barang tersebut barang stok, barang non-stok, maupun perlengkapan operasional.
+   Pengurangan persediaan/stok dapat menjadi konsekuensi logistik lanjutan dari barang yang dikelola sebagai stok, namun bukan merupakan definisi atau syarat pembentukan Outcome Pakai Barang. Fakta bahwa barang telah digunakan tetap sah tercatat terlepas dari apakah barang tersebut barang stok, non-stok, atau perlengkapan operasional.
 3. **Pasien Bukan Syarat Utama (Kondisionalitas Pasien):**
-   Penggunaan barang dapat terkait dengan pelayanan pasien tertentu (misalnya pemakaian bahan medis habis pakai/BMHP saat perawatan pasien), namun dapat juga terjadi untuk kebutuhan operasional rutin unit tanpa pasien tertentu (misalnya cairan pembersih/disinfektan bangsal, form kertas, baterai tensimeter, atau alat tulis operasional). Ketiadaan data pasien tidak membatalkan keabsahan pencatatan Pakai Barang.
-4. **Pemisahan Tegas dengan Tindakan (Tindakan ≠ Pakai Barang):**
-   Pakai Barang mencatat barang yang digunakan, bukan tindakan klinis yang dilakukan menggunakan barang tersebut. Keduanya merupakan event yang berbeda:
-   - Pemberian injeksi → **Tindakan** (`OC-06-01`)
-   - Penggunaan 1 buah spuit → **Pakai Barang** (`OC-06-05`)
-   Satu tindakan klinis dapat mengonsumsi barang atau tidak mengonsumsi barang, dan pemakaian barang dapat terjadi tanpa ada tindakan klinis.
-5. **Pemisahan Tegas dengan Mutasi Barang (Mutasi ≠ Pakai Barang):**
-   Perpindahan fisik barang antar lokasi atau unit kerja adalah Mutasi Barang, bukan Pakai Barang:
-   - Gudang Logistik → Bangsal Rawat Inap → **Mutasi Barang** (`OC-06-06` / `INV-MUTASI`)
-   - Spuit kemudian digunakan dalam pelayanan di Bangsal → **Pakai Barang** (`OC-06-05`)
-   Mutasi memindahkan lokasi barang tanpa mengonsumsinya. Pakai Barang menyatakan barang telah selesai dikonsumsi/digunakan.
-6. **Pemisahan Tegas dengan Opname (Opname ≠ Pakai Barang):**
-   Penghitungan fisik atau pencocokan kondisi stok di lokasi penyimpanan adalah Opname, bukan Pakai Barang:
-   - Menghitung jumlah fisik spuit yang tersisa di lemari obat bangsal → **Opname** (`OC-06-07` / `INV-OPNAME`)
-   - Mengambil dan menggunakan 1 buah spuit → **Pakai Barang** (`OC-06-05`)
+   Penggunaan barang tidak harus terkait pasien:
+   - Sarung tangan digunakan untuk pelayanan pasien → dapat terkait pasien;
+   - Alat tulis digunakan oleh unit administrasi → tidak terkait pasien;
+   - Bahan operasional digunakan oleh unit → tidak terkait pasien.
+   Konteks pasien/episode bersifat kondisional dan bukan bagian dari definisi inti Pakai Barang.
+4. **Pembedaan Tegas dari Tindakan (Pakai Barang ≠ Tindakan):**
+   - **Tindakan** mencatat aktivitas atau tindakan pelayanan klinis yang dilakukan kepada pasien.
+   - **Pakai Barang** mencatat barang yang digunakan dalam kegiatan tersebut.
+   Contoh: Pemberian injeksi adalah Tindakan (`OC-06-01`), sedangkan penggunaan 1 buah spuit adalah Pakai Barang (`OC-06-05`). Keduanya merupakan event yang berbeda.
+5. **Pembedaan Tegas dari Mutasi Barang (Pakai Barang ≠ Mutasi Barang):**
+   - **Mutasi Barang** mencatat perpindahan barang dari satu lokasi ke lokasi lain (misalnya Gudang ke Bangsal).
+   - **Pakai Barang** mencatat bahwa barang telah digunakan/dikonsumsi di unit tersebut.
+6. **Pembedaan Tegas dari Opname (Pakai Barang ≠ Opname):**
+   - **Opname** mencatat hasil pemeriksaan atau penghitungan fisik persediaan di suatu lokasi.
+   - **Pakai Barang** mencatat peristiwa penggunaan/konsumsi barang.
 7. **Pengecualian Detail Inventory Tingkat Lanjut:**
-   Detail inventori tingkat lanjut seperti nomor batch, tanggal kedaluwarsa (*expiry date*), nomor seri (*serial number*), harga pokok (*costing*), metode valuasi persediaan (FIFO/FEFO/Average), dan jurnal akuntansi persediaan berada di luar batas Outcome ini. Detail tersebut tidak boleh dijadikan syarat wajib pembentukan fakta Pakai Barang kecuali dipersyaratkan oleh capability yang telah disetujui.
-8. **Integritas Koreksi / Pembatalan:**
-   Pencatatan pemakaian barang yang keliru dapat dibatalkan atau dikoreksi melalui mekanisme bisnis yang sah dengan mencantumkan alasan bisnis. Pembatalan/koreksi tidak boleh menghapus jejak audit bahwa pencatatan pemakaian pernah dilakukan.
+   Detail lanjutan seperti nomor batch, tanggal kedaluwarsa (*expiry date*), nomor seri (*serial number*), harga pokok (*costing*), metode valuasi persediaan (FIFO/FEFO/Average), aturan stok minimum/maksimum, dan jurnal akuntansi persediaan berada di luar batas outcome ini dan bukan merupakan syarat pembentukan fakta Pakai Barang.
+8. **Independensi dari Aturan Administratif Stok:**
+   Fakta bahwa barang telah digunakan secara fisik tetap sah dicatat sebagai fakta operasional terlepas dari kondisi administratif catatan stok di sistem (misalnya stok administratif tercatat nol atau belum direkonsiliasi).
 
 ---
 
@@ -186,14 +171,11 @@ Berakhir ketika penggunaan barang telah tercatat sebagai fakta operasional yang 
 
 | Exception | Expected Behavior |
 |-----------|-------------------|
-| Item barang yang digunakan tidak terdaftar atau tidak aktif dalam katalog barang | **Pencatatan ditolak.** Barang yang dicatat harus merupakan item yang dikenal dan sah dalam operasional rumah sakit. |
-| Jumlah penggunaan barang bernilai nol atau negatif | **Pencatatan ditolak.** Kuantitas penggunaan barang harus bernilai positif (> 0). |
-| Waktu penggunaan berada di masa depan | **Pencatatan ditolak.** Waktu penggunaan harus merepresentasikan kejadian aktual dan tidak boleh mendahului waktu saat ini. |
-| Unit layanan atau lokasi penggunaan tidak teridentifikasi | **Pencatatan ditolak.** Unit atau ruangan tempat terjadinya penggunaan barang harus terdefinisi secara sah. |
-| Pencatatan pemakaian ditujukan untuk pasien tertentu, namun identitas pasien tidak valid | **Pencatatan ditolak.** Jika konteks penggunaan dispesifikasikan untuk pasien, identitas pasien harus terdaftar sah dalam sistem. |
-| Pencatatan pemakaian barang dilakukan untuk operasional unit tanpa pasien | **Kondisi bisnis yang sah (bukan error).** Pencatatan tetap diterima sebagai pemakaian operasional umum unit kerja. |
-| Stok administratif barang di unit tercatat nol atau tidak mencukupi saat barang fisik aktual digunakan | **Fakta operasional pemakaian barang tetap dapat dicatat.** Masalah ketidaksesuaian catatan administratif persediaan diselesaikan melalui rekonsiliasi persediaan downstream tanpa menganulir fakta fisik bahwa barang telah digunakan. |
-| Terjadi kekeliruan pencatatan pemakaian barang yang telah tersimpan | Pencatatan dapat dibatalkan atau dikoreksi melalui prosedur pembatalan bisnis yang sah dengan menyertakan alasan pembatalan/koreksi. Jejak audit tetap tersimpan. |
+| Item barang yang digunakan tidak terdaftar atau tidak sah dalam operasional rumah sakit | **Pencatatan ditolak.** Barang yang dicatat harus merupakan item yang dikenal dan sah di rumah sakit. |
+| Jumlah penggunaan barang tidak bernilai positif (≤ 0) | **Pencatatan ditolak.** Jumlah barang yang digunakan harus bernilai lebih dari nol. |
+| Penggunaan dicatat dalam konteks pasien tertentu, namun identitas pasien tidak valid | **Pencatatan ditolak.** Jika konteks penggunaan dikaitkan dengan pasien, identitas pasien harus sah dalam sistem. |
+| Penggunaan dicatat untuk keperluan operasional unit tanpa terkait pasien | **Kondisi bisnis yang sah (bukan error).** Pencatatan tetap sah diterima sebagai pemakaian operasional unit. |
+| Status administratif stok di unit tercatat nol atau belum tercatat saat barang fisik aktual digunakan | **Fakta operasional penggunaan barang tetap sah dicatat.** Kesenjangan administratif persediaan diselesaikan pada domain inventory tanpa membatalkan fakta fisik bahwa barang telah digunakan. |
 
 ---
 
@@ -203,17 +185,13 @@ Berakhir ketika penggunaan barang telah tercatat sebagai fakta operasional yang 
 
 | # | Kriteria Penerimaan | Validasi |
 |---|---------------------|----------|
-| AC-01 | Terdapat pencatatan operasional yang membuktikan bahwa suatu barang tertentu telah digunakan dalam kegiatan pelayanan atau operasional rumah sakit. | Completeness |
-| AC-02 | Informasi inti mencakup identitas barang, jumlah (kuantitas) yang digunakan, unit/lokasi penggunaan, waktu penggunaan, dan petugas pencatat. | Completeness |
-| AC-03 | Pencatatan Pakai Barang dapat dilakukan untuk kebutuhan operasional unit tanpa mensyaratkan adanya data pasien. | Correctness |
-| AC-04 | Pencatatan Pakai Barang dapat mengaitkan identitas pasien dan/atau episode pelayanan apabila pemakaian barang dilakukan dalam konteks pelayanan pasien tertentu. | Correctness |
-| AC-05 | Pencatatan pemakaian barang dilakukan terpisah dan independen dari pencatatan tindakan klinis (Tindakan ≠ Pakai Barang). | Constraint |
-| AC-06 | Pencatatan pemakaian barang dibedakan secara tegas dari perpindahan fisik barang antar lokasi/unit (Mutasi ≠ Pakai Barang). | Constraint |
-| AC-07 | Pencatatan pemakaian barang dibedakan secara tegas dari penghitungan/verifikasi stok fisik (Opname ≠ Pakai Barang). | Constraint |
-| AC-08 | Validitas pembentukan Outcome Pakai Barang tidak mensyaratkan atribut inventory tingkat lanjut (nomor batch, expiry date, serial number, costing, FIFO/FEFO, atau jurnal akuntansi). | Constraint |
-| AC-09 | Pembentukan fakta pemakaian barang tidak dibatalkan atau digagalkan oleh kendala penyesuaian persediaan/pengurangan stok downstream. | Constraint |
-| AC-10 | Pembatalan atau koreksi atas catatan pemakaian barang mencatat alasan bisnis dan memelihara jejak audit yang dapat ditelusuri. | Correctness |
-| AC-11 | Spesifikasi Outcome Pakai Barang dinyatakan secara murni dalam bahasa bisnis yang *implementation-independent* tanpa bergantung pada skema database, API endpoint, antarmuka pengguna (UI), atau tipe data teknis. | Correctness |
+| AC-01 | Sistem dapat mencatat bahwa suatu barang telah digunakan dalam kegiatan pelayanan atau operasional rumah sakit sebagai fakta operasional yang dapat diverifikasi. | Completeness |
+| AC-02 | Penggunaan barang dapat dibedakan dari tindakan klinis (Pakai Barang ≠ Tindakan). | Constraint |
+| AC-03 | Penggunaan barang dapat dibedakan dari mutasi barang (Pakai Barang ≠ Mutasi Barang). | Constraint |
+| AC-04 | Penggunaan barang dapat dibedakan dari opname (Pakai Barang ≠ Opname). | Constraint |
+| AC-05 | Penggunaan barang dapat terjadi dalam konteks pasien maupun non-pasien. | Correctness |
+| AC-06 | Keberadaan catatan penggunaan barang bersifat mandiri dan tidak mensyaratkan atribut inventory tingkat lanjut (batch, expired, serial number, costing, FIFO/FEFO, atau jurnal akuntansi). | Constraint |
+| AC-07 | Spesifikasi Outcome Pakai Barang tetap *implementation-independent* tanpa bergantung pada skema database, API endpoint, desain antarmuka pengguna (UI), atau mekanisme teknis sistem. | Correctness |
 
 ---
 
@@ -221,14 +199,12 @@ Berakhir ketika penggunaan barang telah tercatat sebagai fakta operasional yang 
 
 > Hal-hal yang secara eksplisit berada di luar tanggung jawab Outcome ini.
 
-- Perencanaan kebutuhan material (*Material Request*) dan pengadaan barang → **Purchasing Domain** (`PUR-MATREQ`, `PUR-PO`).
-- Penerimaan barang dari pemasok ke gudang/depo (*Delivery Order*) → **Purchasing / Inventory Domain** (`PUR-DO`).
-- Pengelolaan master katalog item barang dan pengaturan stok minimum/maksimum → **Inventory Domain** (`INV-MASTER`, `INV-STOK`).
-- Pencatatan perpindahan fisik barang antar lokasi, bangsal, atau depo → **OC-06-06 Mutasi Barang** (`INV-MUTASI`).
-- Penghitungan fisik, pencocokan stok fisik, dan penyesuaian selisih persediaan → **OC-06-07 Opname** (`INV-OPNAME`).
-- Pengelolaan pemusnahan barang rusak atau kedaluwarsa → **Inventory Domain** (`INV-MUSNAH`).
-- Pengemasan ulang (*repack*) atau proses produksi internal barang farmasi/logistik → **Inventory Domain** (`INV-REPACK`).
-- Penentuan metode valuasi persediaan (FIFO, LIFO, Average), kalkulasi HPP/costing, dan pembentukan jurnal akuntansi persediaan → **Finance / Costing / Accounting Domain**.
-- Pelaksanaan dan pendokumentasian tindakan/prosedur klinis kepada pasien → **OC-06-01 Tindakan** (`RNA-TINDAKAN`, `RJL-TINDAKAN`, `IGD-TINDAKAN`).
-- Penentuan tarif barang dan pembebanan tagihan barang ke rekening pasien → **OC-02-01 Rincian Tagihan Pasien** (`TRK-BILLING`, `TRK-TARIF`).
-- Desain antarmuka pengguna (UI), formulir isian teknis, endpoint API, skema tabel database, atau penetapan tipe data/enum teknis.
+- Pengadaan barang (*procurement* / *purchasing*).
+- Penerimaan barang (*receiving* / *delivery order*).
+- Penyimpanan dan pengelolaan penataan persediaan di gudang atau depo.
+- Mutasi atau perpindahan fisik barang antar unit/lokasi.
+- Pemeriksaan fisik dan penghitungan stok (*stock opname*).
+- Costing, valuasi persediaan (FIFO/FEFO/Average), dan jurnal akuntansi persediaan.
+- Pelaksanaan dan pendokumentasian tindakan/prosedur klinis kepada pasien.
+- Penentuan tarif dan pembebanan tagihan ke billing pasien.
+- Desain antarmuka pengguna (UI), formulir isian teknis, API endpoint, atau skema tabel database.
