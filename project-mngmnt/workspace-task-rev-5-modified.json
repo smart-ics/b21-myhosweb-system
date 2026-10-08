@@ -1,0 +1,1755 @@
+[
+  {
+    "workPackage": "Admisi Workspace Booking (SC-01-01)",
+    "pic": "Arif",
+    "totalEffort": 16,
+    "tasks": [
+      {
+        "taskId": "SC-01-01-01a",
+        "taskName": "Booking - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-01-01-01b",
+        "taskName": "PasienTracker - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-01-01-01c",
+        "taskName": "JadwalPraktek - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-01-01-01d",
+        "taskName": "Antrian - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-01-01-02",
+        "taskName": "Booking - UI Design",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-01-01-03",
+        "taskName": "Booking - BFF Feature",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-01-01-04",
+        "taskName": "Booking - Architecture",
+        "effort": 2
+      },
+      {
+        "taskId": "SC-01-01-05",
+        "taskName": "Booking - Development",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-01-01-06",
+        "taskName": "Booking - Testing",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-01-01-07",
+        "taskName": "Booking - Deployment",
+        "effort": 1
+      }
+    ]
+  },
+  {
+    "workPackage": "Admisi Workspace Reg Rajal-IGD (SC-01-02)",
+    "pic": "Arif",
+    "totalEffort": 16,
+    "tasks": [
+      {
+        "taskId": "SC-01-02-01a",
+        "taskName": "Registrasi - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-01-02-01b",
+        "taskName": "VclaimBpjs - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-01-02-01c",
+        "taskName": "PasienTracker - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-01-02-01d",
+        "taskName": "JadwalPraktek - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-01-02-01e",
+        "taskName": "Antrian - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-01-02-02",
+        "taskName": "Reg Rajal-IGD - UI Design",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-01-02-03",
+        "taskName": "Reg Rajal-IGD - BFF Feature",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-01-02-04",
+        "taskName": "Reg Rajal-IGD - Architecture",
+        "effort": 2
+      },
+      {
+        "taskId": "SC-01-02-05",
+        "taskName": "Reg Rajal-IGD - Development",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-01-02-06",
+        "taskName": "Reg Rajal-IGD - Testing",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-01-02-07",
+        "taskName": "Reg Rajal-IGD - Deployment",
+        "effort": 1
+      }
+    ]
+  },
+  {
+    "workPackage": "Admisi Workspace Reg Ranap (SC-01-03)",
+    "pic": "Arif",
+    "totalEffort": 17,
+    "tasks": [
+      {
+        "taskId": "SC-01-03-01a",
+        "taskName": "Registrasi - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-01-03-01b",
+        "taskName": "VclaimBpjs - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-01-03-01c",
+        "taskName": "PasienTracker - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-01-03-01d",
+        "taskName": "WaitingList - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-01-03-02",
+        "taskName": "Reg Ranap - UI Design",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-01-03-03",
+        "taskName": "Reg Ranap - BFF Feature",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-01-03-04",
+        "taskName": "Reg Ranap - Architecture",
+        "effort": 2
+      },
+      {
+        "taskId": "SC-01-03-05",
+        "taskName": "Reg Ranap - Development",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-01-03-06",
+        "taskName": "Reg Ranap - Testing",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-01-03-07",
+        "taskName": "Reg Ranap - Deployment",
+        "effort": 2
+      }
+    ]
+  },
+  {
+    "workPackage": "Poli Rawat Jalan Workspace Tindakan (SC-05-01)",
+    "pic": "Fikri",
+    "totalEffort": 18,
+    "tasks": [
+      {
+        "taskId": "SC-05-01-01a",
+        "taskName": "Tindakan - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-05-01-01b",
+        "taskName": "Billing - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-05-01-01c",
+        "taskName": "PakaiBrg - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-05-01-02",
+        "taskName": "Tindakan Rajal - UI Design",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-05-01-03",
+        "taskName": "Tindakan Rajal - BFF Feature",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-05-01-04",
+        "taskName": "Tindakan Rajal - Architecture",
+        "effort": 2
+      },
+      {
+        "taskId": "SC-05-01-05",
+        "taskName": "Tindakan Rajal - Development",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-05-01-06",
+        "taskName": "Tindakan Rajal - Testing",
+        "effort": 4
+      },
+      {
+        "taskId": "SC-05-01-07",
+        "taskName": "Tindakan Rajal - Deployment",
+        "effort": 2
+      }
+    ]
+  },
+  {
+    "workPackage": "Poli Rawat Jalan Workspace Local Inventory (SC-05-02)",
+    "pic": "Fikri",
+    "totalEffort": 18,
+    "tasks": [
+      {
+        "taskId": "SC-05-02-01a",
+        "taskName": "StokOpname - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-05-02-01b",
+        "taskName": "ReqMutasi - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-05-02-01c",
+        "taskName": "TerimaMutasi - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-05-02-02",
+        "taskName": "Inventory Rajal - UI Design",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-05-02-03",
+        "taskName": "Inventory Rajal - BFF Feature",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-05-02-04",
+        "taskName": "Inventory Rajal - Architecture",
+        "effort": 2
+      },
+      {
+        "taskId": "SC-05-02-05",
+        "taskName": "Inventory Rajal - Development",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-05-02-06",
+        "taskName": "Inventory Rajal - Testing",
+        "effort": 4
+      },
+      {
+        "taskId": "SC-05-02-07",
+        "taskName": "Inventory Rajal - Deployment",
+        "effort": 2
+      }
+    ]
+  },
+  {
+    "workPackage": "Tata Rekening Workspace Reg Out (SC-02-01)",
+    "pic": "Erkoc",
+    "totalEffort": 17,
+    "tasks": [
+      {
+        "taskId": "SC-02-01-01a",
+        "taskName": "Billing - Core Feature",
+        "effort": 4
+      },
+      {
+        "taskId": "SC-02-01-01b",
+        "taskName": "OrderPayment - Core Feature",
+        "effort": 4
+      },
+      {
+        "taskId": "SC-02-01-02",
+        "taskName": "Reg Out - UI Design",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-02-01-03",
+        "taskName": "Reg Out - BFF Feature",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-02-01-04",
+        "taskName": "Reg Out - Architecture",
+        "effort": 2
+      },
+      {
+        "taskId": "SC-02-01-05",
+        "taskName": "Reg Out - Development",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-02-01-06",
+        "taskName": "Reg Out - Testing",
+        "effort": 4
+      },
+      {
+        "taskId": "SC-02-01-07",
+        "taskName": "Reg Out - Deployment",
+        "effort": 2
+      }
+    ]
+  },
+  {
+    "workPackage": "Kasir Workspace Kasir (SC-03-01)",
+    "pic": "Erkoc",
+    "totalEffort": 18,
+    "tasks": [
+      {
+        "taskId": "SC-03-01-01a",
+        "taskName": "Kasir - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-03-01-02",
+        "taskName": "Kasir - UI Design",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-03-01-03",
+        "taskName": "Kasir - BFF Feature",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-03-01-04",
+        "taskName": "Kasir - Architecture",
+        "effort": 2
+      },
+      {
+        "taskId": "SC-03-01-05",
+        "taskName": "Kasir - Development",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-03-01-06",
+        "taskName": "Kasir - Testing",
+        "effort": 4
+      },
+      {
+        "taskId": "SC-03-01-07",
+        "taskName": "Kasir - Deployment",
+        "effort": 2
+      }
+    ]
+  },
+  {
+    "workPackage": "Kasir Workspace Closing Shift (SC-03-02)",
+    "pic": "Erkoc",
+    "totalEffort": 11,
+    "tasks": [
+      {
+        "taskId": "SC-03-02-01a",
+        "taskName": "ClosingShift - Core Feature",
+        "effort": 2
+      },
+      {
+        "taskId": "SC-03-02-02",
+        "taskName": "Closing Shift - UI Design",
+        "effort": 2
+      },
+      {
+        "taskId": "SC-03-02-03",
+        "taskName": "Closing Shift - BFF Feature",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-03-02-04",
+        "taskName": "Closing Shift - Architecture",
+        "effort": 2
+      },
+      {
+        "taskId": "SC-03-02-05",
+        "taskName": "Closing Shift - Development",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-03-02-06",
+        "taskName": "Closing Shift - Testing",
+        "effort": 2
+      },
+      {
+        "taskId": "SC-03-02-07",
+        "taskName": "Closing Shift - Deployment",
+        "effort": 1
+      }
+    ]
+  },
+  {
+    "workPackage": "Rekam Medis Workspace Berkas RM (SC-04-01)",
+    "pic": "Rizal",
+    "totalEffort": 14,
+    "tasks": [
+      {
+        "taskId": "SC-04-01-01a",
+        "taskName": "DataSosialPasien - Core Feature",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-04-01-01b",
+        "taskName": "MutasiBerkas - Core Feature",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-04-01-02",
+        "taskName": "Berkas RM - UI Design",
+        "effort": 2
+      },
+      {
+        "taskId": "SC-04-01-03",
+        "taskName": "Berkas RM - BFF Feature",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-04-01-04",
+        "taskName": "Berkas RM - Architecture",
+        "effort": 2
+      },
+      {
+        "taskId": "SC-04-01-05",
+        "taskName": "Berkas RM - Development",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-04-01-06",
+        "taskName": "Berkas RM - Testing",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-04-01-07",
+        "taskName": "Berkas RM - Deployment",
+        "effort": 2
+      }
+    ]
+  },
+  {
+    "workPackage": "Rekam Medis Workspace Casemix dan Coding (SC-04-02)",
+    "pic": "Rizal",
+    "totalEffort": 17,
+    "tasks": [
+      {
+        "taskId": "SC-04-02-01a",
+        "taskName": "MorbiditasPasien - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-04-02-01b",
+        "taskName": "Eklaim - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-04-02-02",
+        "taskName": "Casemix - UI Design",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-04-02-03",
+        "taskName": "Casemix - BFF Feature",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-04-02-04",
+        "taskName": "Casemix - Architecture",
+        "effort": 2
+      },
+      {
+        "taskId": "SC-04-02-05",
+        "taskName": "Casemix - Development",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-04-02-06",
+        "taskName": "Casemix - Testing",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-04-02-07",
+        "taskName": "Casemix - Deployment",
+        "effort": 2
+      }
+    ]
+  },
+  {
+    "workPackage": "Rekam Medis Workspace Pelaporan RL (SC-04-03)",
+    "pic": "Rizal",
+    "totalEffort": 14,
+    "tasks": [
+      {
+        "taskId": "SC-04-03-01a",
+        "taskName": "PelaporanRL - Core Feature",
+        "effort": 4
+      },
+      {
+        "taskId": "SC-04-03-02",
+        "taskName": "Pelaporan RL - UI Design",
+        "effort": 2
+      },
+      {
+        "taskId": "SC-04-03-03",
+        "taskName": "Pelaporan RL - BFF Feature",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-04-03-04",
+        "taskName": "Pelaporan RL - Architecture",
+        "effort": 2
+      },
+      {
+        "taskId": "SC-04-03-05",
+        "taskName": "Pelaporan RL - Development",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-04-03-06",
+        "taskName": "Pelaporan RL - Testing",
+        "effort": 2
+      },
+      {
+        "taskId": "SC-04-03-07",
+        "taskName": "Pelaporan RL - Deployment",
+        "effort": 2
+      }
+    ]
+  },
+  {
+    "workPackage": "IGD Workspace IGD Triage (SC-07-01)",
+    "pic": "Arif",
+    "totalEffort": 16,
+    "tasks": [
+      {
+        "taskId": "SC-07-01-01a",
+        "taskName": "IgdVisit - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-07-01-01b",
+        "taskName": "IgdTriage - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-07-01-01c",
+        "taskName": "Tindakan - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-07-01-01d",
+        "taskName": "PakaiBrg - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-07-01-01e",
+        "taskName": "Billing - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-07-01-01f",
+        "taskName": "Ambulance - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-07-01-02",
+        "taskName": "IGD Triage - UI Design",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-07-01-03",
+        "taskName": "IGD Triage - BFF Feature",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-07-01-04",
+        "taskName": "IGD Triage - Architecture",
+        "effort": 2
+      },
+      {
+        "taskId": "SC-07-01-05",
+        "taskName": "IGD Triage - Development",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-07-01-06",
+        "taskName": "IGD Triage - Testing",
+        "effort": 2
+      },
+      {
+        "taskId": "SC-07-01-07",
+        "taskName": "IGD Triage - Deployment",
+        "effort": 2
+      }
+    ]
+  },
+  {
+    "workPackage": "IGD Workspace Local Inventory (SC-05-02)",
+    "pic": "Arif",
+    "totalEffort": 16,
+    "tasks": [
+      {
+        "taskId": "SC-05-02-01a",
+        "taskName": "StokOpname - Core Feature",
+        "effort": 4
+      },
+      {
+        "taskId": "SC-05-02-01b",
+        "taskName": "ReqMutasi - Core Feature",
+        "effort": 4
+      },
+      {
+        "taskId": "SC-05-02-01c",
+        "taskName": "TerimaMutasi - Core Feature",
+        "effort": 4
+      },
+      {
+        "taskId": "SC-05-02-02",
+        "taskName": "Inventory IGD - UI Design",
+        "effort": 2
+      },
+      {
+        "taskId": "SC-05-02-03",
+        "taskName": "Inventory IGD - BFF Feature",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-05-02-04",
+        "taskName": "Inventory IGD - Architecture",
+        "effort": 2
+      },
+      {
+        "taskId": "SC-05-02-05",
+        "taskName": "Inventory IGD - Development",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-05-02-06",
+        "taskName": "Inventory IGD - Testing",
+        "effort": 4
+      },
+      {
+        "taskId": "SC-05-02-07",
+        "taskName": "Inventory IGD - Deployment",
+        "effort": 2
+      }
+    ]
+  },
+  {
+    "workPackage": "Bangsal Rawat Inap Workspace Bed Management (SC-06-01)",
+    "pic": "Sulis",
+    "totalEffort": 18,
+    "tasks": [
+      {
+        "taskId": "SC-06-01-01a",
+        "taskName": "PakaiBed - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-06-01-01b",
+        "taskName": "WaitingList - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-06-01-01c",
+        "taskName": "RoomCharge - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-06-01-01d",
+        "taskName": "Tindakan - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-06-01-01e",
+        "taskName": "Billing - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-06-01-01f",
+        "taskName": "PakaiBrg - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-06-01-02",
+        "taskName": "Bangsal - UI Design",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-06-01-03",
+        "taskName": "Bangsal - BFF Feature",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-06-01-04",
+        "taskName": "Bangsal - Architecture",
+        "effort": 2
+      },
+      {
+        "taskId": "SC-06-01-05",
+        "taskName": "Bangsal - Development",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-06-01-06",
+        "taskName": "Bangsal - Testing",
+        "effort": 4
+      },
+      {
+        "taskId": "SC-06-01-07",
+        "taskName": "Bangsal - Deployment",
+        "effort": 2
+      }
+    ]
+  },
+  {
+    "workPackage": "Bangsal Rawat Inap Workspace Local Inventory (SC-05-02)",
+    "pic": "Sulis",
+    "totalEffort": 14,
+    "tasks": [
+      {
+        "taskId": "SC-05-02-01a",
+        "taskName": "StokOpname - Core Feature",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-05-02-01b",
+        "taskName": "ReqMutasi - Core Feature",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-05-02-01c",
+        "taskName": "TerimaMutasi - Core Feature",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-05-02-02",
+        "taskName": "Inventory Bangsal - UI Design",
+        "effort": 2
+      },
+      {
+        "taskId": "SC-05-02-03",
+        "taskName": "Inventory Bangsal - BFF Feature",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-05-02-04",
+        "taskName": "Inventory Bangsal - Architecture",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-05-02-05",
+        "taskName": "Inventory Bangsal - Development",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-05-02-06",
+        "taskName": "Inventory Bangsal - Testing",
+        "effort": 4
+      },
+      {
+        "taskId": "SC-05-02-07",
+        "taskName": "Inventory Bangsal - Deployment",
+        "effort": 2
+      }
+    ]
+  },
+  {
+    "workPackage": "Laboratorium Workspace Order Laboratorium (SC-08-01)",
+    "pic": "We",
+    "totalEffort": 15,
+    "tasks": [
+      {
+        "taskId": "SC-08-01-01a",
+        "taskName": "RegExternal - Core Feature",
+        "effort": 4
+      },
+      {
+        "taskId": "SC-08-01-01b",
+        "taskName": "OrderLab - Core Feature",
+        "effort": 4
+      },
+      {
+        "taskId": "SC-08-01-01c",
+        "taskName": "SampleCollection - Core Feature",
+        "effort": 4
+      },
+      {
+        "taskId": "SC-08-01-01d",
+        "taskName": "Billing - Core Feature",
+        "effort": 4
+      },
+      {
+        "taskId": "SC-08-01-02",
+        "taskName": "Order Lab - UI Design",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-08-01-03",
+        "taskName": "Order Lab - BFF Feature",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-08-01-04",
+        "taskName": "Order Lab - Architecture",
+        "effort": 2
+      },
+      {
+        "taskId": "SC-08-01-05",
+        "taskName": "Order Lab - Development",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-08-01-06",
+        "taskName": "Order Lab - Testing",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-08-01-07",
+        "taskName": "Order Lab - Deployment",
+        "effort": 1
+      }
+    ]
+  },
+  {
+    "workPackage": "Laboratorium Workspace Result Management (SC-08-02)",
+    "pic": "We",
+    "totalEffort": 15,
+    "tasks": [
+      {
+        "taskId": "SC-08-02-01a",
+        "taskName": "HasilLab - Core Feature",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-08-02-02",
+        "taskName": "Lab Result - UI Design",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-08-02-03",
+        "taskName": "Lab Result - BFF Feature",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-08-02-04",
+        "taskName": "Lab Result - Architecture",
+        "effort": 2
+      },
+      {
+        "taskId": "SC-08-02-05",
+        "taskName": "Lab Result - Development",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-08-02-06",
+        "taskName": "Lab Result - Testing",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-08-02-07",
+        "taskName": "Lab Result - Deployment",
+        "effort": 2
+      }
+    ]
+  },
+  {
+    "workPackage": "Laboratorium Workspace Local Inventory (SC-08-03)",
+    "pic": "We",
+    "totalEffort": 16,
+    "tasks": [
+      {
+        "taskId": "SC-08-03-01a",
+        "taskName": "StokOpname - Core Feature",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-08-03-01b",
+        "taskName": "ReqMutasi - Core Feature",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-08-03-01c",
+        "taskName": "TerimaMutasi - Core Feature",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-08-03-02",
+        "taskName": "Inventory Lab - UI Design",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-08-03-03",
+        "taskName": "Inventory Lab - BFF Feature",
+        "effort": 2
+      },
+      {
+        "taskId": "SC-08-03-04",
+        "taskName": "Inventory Lab - Architecture",
+        "effort": 2
+      },
+      {
+        "taskId": "SC-08-03-05",
+        "taskName": "Inventory Lab - Development",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-08-03-06",
+        "taskName": "Inventory Lab - Testing",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-08-03-07",
+        "taskName": "Inventory Lab - Deployment",
+        "effort": 2
+      }
+    ]
+  },
+  {
+    "workPackage": "Radiologi Workspace Order Radiologi (SC-09-01)",
+    "pic": "We",
+    "totalEffort": 14,
+    "tasks": [
+      {
+        "taskId": "SC-09-01-01a",
+        "taskName": "OrderRadiologi - Core Feature",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-09-01-01b",
+        "taskName": "JadwalRadiologi - Core Feature",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-09-01-01c",
+        "taskName": "Billing - Core Feature",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-09-01-01d",
+        "taskName": "PakaiBrg - Core Feature",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-09-01-02",
+        "taskName": "Order Rad - UI Design",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-09-01-03",
+        "taskName": "Order Rad - BFF Feature",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-09-01-04",
+        "taskName": "Order Rad - Architecture",
+        "effort": 2
+      },
+      {
+        "taskId": "SC-09-01-05",
+        "taskName": "Order Rad - Development",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-09-01-06",
+        "taskName": "Order Rad - Testing",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-09-01-07",
+        "taskName": "Order Rad - Deployment",
+        "effort": 1
+      }
+    ]
+  },
+  {
+    "workPackage": "Radiologi Workspace Expertise (SC-09-02)",
+    "pic": "We",
+    "totalEffort": 14,
+    "tasks": [
+      {
+        "taskId": "SC-09-02-01a",
+        "taskName": "Expertise - Core Feature",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-09-02-02",
+        "taskName": "Expertise - UI Design",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-09-02-03",
+        "taskName": "Expertise - BFF Feature",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-09-02-04",
+        "taskName": "Expertise - Architecture",
+        "effort": 2
+      },
+      {
+        "taskId": "SC-09-02-05",
+        "taskName": "Expertise - Development",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-09-02-06",
+        "taskName": "Expertise - Testing",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-09-02-07",
+        "taskName": "Expertise - Deployment",
+        "effort": 1
+      }
+    ]
+  },
+  {
+    "workPackage": "Radiologi Workspace Local Inventory (SC-09-03)",
+    "pic": "We",
+    "totalEffort": 16,
+    "tasks": [
+      {
+        "taskId": "SC-09-03-01a",
+        "taskName": "StokOpname - Core Feature",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-09-03-01b",
+        "taskName": "ReqMutasi - Core Feature",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-09-03-01c",
+        "taskName": "TerimaMutasi - Core Feature",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-09-03-02",
+        "taskName": "Inventory Rad - UI Design",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-09-03-03",
+        "taskName": "Inventory Rad - BFF Feature",
+        "effort": 2
+      },
+      {
+        "taskId": "SC-09-03-04",
+        "taskName": "Inventory Rad - Architecture",
+        "effort": 2
+      },
+      {
+        "taskId": "SC-09-03-05",
+        "taskName": "Inventory Rad - Development",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-09-03-06",
+        "taskName": "Inventory Rad - Testing",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-09-03-07",
+        "taskName": "Inventory Rad - Deployment",
+        "effort": 2
+      }
+    ]
+  },
+  {
+    "workPackage": "Kamar Operasi Workspace Scheduling (SC-10-01)",
+    "pic": "Arie",
+    "totalEffort": 18,
+    "tasks": [
+      {
+        "taskId": "SC-10-01-01a",
+        "taskName": "OrderOk - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-10-01-01b",
+        "taskName": "JadwalOk - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-10-01-02",
+        "taskName": "Schedule OK - UI Design",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-10-01-03",
+        "taskName": "Schedule OK - BFF Feature",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-10-01-04",
+        "taskName": "Schedule OK - Architecture",
+        "effort": 2
+      },
+      {
+        "taskId": "SC-10-01-05",
+        "taskName": "Schedule OK - Development",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-10-01-06",
+        "taskName": "Schedule OK - Testing",
+        "effort": 4
+      },
+      {
+        "taskId": "SC-10-01-07",
+        "taskName": "Schedule OK - Deployment",
+        "effort": 2
+      }
+    ]
+  },
+  {
+    "workPackage": "Kamar Operasi Workspace Operative Management (SC-10-02)",
+    "pic": "Arie",
+    "totalEffort": 17,
+    "tasks": [
+      {
+        "taskId": "SC-10-02-01a",
+        "taskName": "JadwalOk - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-10-02-01b",
+        "taskName": "PreOperativeClearance - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-10-02-01c",
+        "taskName": "PakaiBrg - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-10-02-01d",
+        "taskName": "Tindakan - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-10-02-02",
+        "taskName": "Operative OK - UI Design",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-10-02-03",
+        "taskName": "Operative OK - BFF Feature",
+        "effort": ""
+      },
+      {
+        "taskId": "SC-10-02-04",
+        "taskName": "Operative OK - Architecture",
+        "effort": 2
+      },
+      {
+        "taskId": "SC-10-02-05",
+        "taskName": "Operative OK - Development",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-10-02-06",
+        "taskName": "Operative OK - Testing",
+        "effort": 4
+      },
+      {
+        "taskId": "SC-10-02-07",
+        "taskName": "Operative OK - Deployment",
+        "effort": 2
+      }
+    ]
+  },
+  {
+    "workPackage": "Kamar Operasi Workspace Local Inventory (SC-10-03)",
+    "pic": "Arie",
+    "totalEffort": 18,
+    "tasks": [
+      {
+        "taskId": "SC-10-03-01a",
+        "taskName": "StokOpname - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-10-03-01b",
+        "taskName": "ReqMutasi - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-10-03-01c",
+        "taskName": "TerimaMutasi - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-10-03-02",
+        "taskName": "Inventory OK - UI Design",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-10-03-03",
+        "taskName": "Inventory OK - BFF Feature",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-10-03-04",
+        "taskName": "Inventory OK - Architecture",
+        "effort": 2
+      },
+      {
+        "taskId": "SC-10-03-05",
+        "taskName": "Inventory OK - Development",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-10-03-06",
+        "taskName": "Inventory OK - Testing",
+        "effort": 4
+      },
+      {
+        "taskId": "SC-10-03-07",
+        "taskName": "Inventory OK - Deployment",
+        "effort": 2
+      }
+    ]
+  },
+  {
+    "workPackage": "Apotek Workspace Antrian Apotek (SC-11-01)",
+    "pic": "Jude",
+    "totalEffort": 16,
+    "tasks": [
+      {
+        "taskId": "SC-11-01-01a",
+        "taskName": "AntrianApotek - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-11-01-01b",
+        "taskName": "Penjualan - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-11-01-01c",
+        "taskName": "TelaahResep - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-11-01-01d",
+        "taskName": "OrderDispensing - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-11-01-01e",
+        "taskName": "Billing - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-11-01-02",
+        "taskName": "Antrian Apotek - UI Design",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-11-01-03",
+        "taskName": "Antrian Apotek - BFF Feature",
+        "effort": ""
+      },
+      {
+        "taskId": "SC-11-01-04",
+        "taskName": "Antrian Apotek - Architecture",
+        "effort": 2
+      },
+      {
+        "taskId": "SC-11-01-05",
+        "taskName": "Antrian Apotek - Development",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-11-01-06",
+        "taskName": "Antrian Apotek - Testing",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-11-01-07",
+        "taskName": "Antrian Apotek - Deployment",
+        "effort": 2
+      }
+    ]
+  },
+  {
+    "workPackage": "Apotek Workspace Telaah Resep (SC-11-02)",
+    "pic": "Jude",
+    "totalEffort": 17,
+    "tasks": [
+      {
+        "taskId": "SC-11-02-01a",
+        "taskName": "TelaahResep - Core Feature",
+        "effort": 4
+      },
+      {
+        "taskId": "SC-11-02-02",
+        "taskName": "Telaah Resep - UI Design",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-11-02-03",
+        "taskName": "Telaah Resep - BFF Feature",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-11-02-04",
+        "taskName": "Telaah Resep - Architecture",
+        "effort": 2
+      },
+      {
+        "taskId": "SC-11-02-05",
+        "taskName": "Telaah Resep - Development",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-11-02-06",
+        "taskName": "Telaah Resep - Testing",
+        "effort": 4
+      },
+      {
+        "taskId": "SC-11-02-07",
+        "taskName": "Telaah Resep - Deployment",
+        "effort": 2
+      }
+    ]
+  },
+  {
+    "workPackage": "Apotek Workspace Dispensing (SC-11-03)",
+    "pic": "Jude",
+    "totalEffort": 17,
+    "tasks": [
+      {
+        "taskId": "SC-11-03-01a",
+        "taskName": "OrderDispensing - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-11-03-01b",
+        "taskName": "AntrianApotek - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-11-03-01c",
+        "taskName": "Stok - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-11-03-02",
+        "taskName": "Dispensing - UI Design",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-11-03-03",
+        "taskName": "Dispensing - BFF Feature",
+        "effort": ""
+      },
+      {
+        "taskId": "SC-11-03-04",
+        "taskName": "Dispensing - Architecture",
+        "effort": 2
+      },
+      {
+        "taskId": "SC-11-03-05",
+        "taskName": "Dispensing - Development",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-11-03-06",
+        "taskName": "Dispensing - Testing",
+        "effort": 4
+      },
+      {
+        "taskId": "SC-11-03-07",
+        "taskName": "Dispensing - Deployment",
+        "effort": 2
+      }
+    ]
+  },
+  {
+    "workPackage": "Apotek Workspace Serah Obat (SC-11-04)",
+    "pic": "Jude",
+    "totalEffort": 13,
+    "tasks": [
+      {
+        "taskId": "SC-11-04-01a",
+        "taskName": "AntrianApotek - Core Feature",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-11-04-01b",
+        "taskName": "Stok - Core Feature",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-11-04-02",
+        "taskName": "Serah Obat - UI Design",
+        "effort": 2
+      },
+      {
+        "taskId": "SC-11-04-03",
+        "taskName": "Serah Obat - BFF Feature",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-11-04-04",
+        "taskName": "Serah Obat - Architecture",
+        "effort": 2
+      },
+      {
+        "taskId": "SC-11-04-05",
+        "taskName": "Serah Obat - Development",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-11-04-06",
+        "taskName": "Serah Obat - Testing",
+        "effort": 2
+      },
+      {
+        "taskId": "SC-11-04-07",
+        "taskName": "Serah Obat - Deployment",
+        "effort": 2
+      }
+    ]
+  },
+  {
+    "workPackage": "Apotek Workspace Local Inventory (SC-11-05)",
+    "pic": "Jude",
+    "totalEffort": 16,
+    "tasks": [
+      {
+        "taskId": "SC-11-05-01a",
+        "taskName": "StokOpname - Core Feature",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-11-05-01b",
+        "taskName": "ReqMutasi - Core Feature",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-11-05-01c",
+        "taskName": "TerimaMutasi - Core Feature",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-11-05-02",
+        "taskName": "Inventory Apotek - UI Design",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-11-05-03",
+        "taskName": "Inventory Apotek - BFF Feature",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-11-05-04",
+        "taskName": "Inventory Apotek - Architecture",
+        "effort": 2
+      },
+      {
+        "taskId": "SC-11-05-05",
+        "taskName": "Inventory Apotek - Development",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-11-05-06",
+        "taskName": "Inventory Apotek - Testing",
+        "effort": 4
+      },
+      {
+        "taskId": "SC-11-05-07",
+        "taskName": "Inventory Apotek - Deployment",
+        "effort": 2
+      }
+    ]
+  },
+  {
+    "workPackage": "Gudang Workspace Terima Barang (DO) (SC-12-01)",
+    "pic": "Roso",
+    "totalEffort": 17,
+    "tasks": [
+      {
+        "taskId": "SC-12-01-01a",
+        "taskName": "TerimaBrg - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-12-01-01b",
+        "taskName": "Stok - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-12-01-01c",
+        "taskName": "PurchaseOrder - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-12-01-02",
+        "taskName": "DO Gudang - UI Design",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-12-01-03",
+        "taskName": "DO Gudang - BFF Feature",
+        "effort": ""
+      },
+      {
+        "taskId": "SC-12-01-04",
+        "taskName": "DO Gudang - Architecture",
+        "effort": 2
+      },
+      {
+        "taskId": "SC-12-01-05",
+        "taskName": "DO Gudang - Development",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-12-01-06",
+        "taskName": "DO Gudang - Testing",
+        "effort": 4
+      },
+      {
+        "taskId": "SC-12-01-07",
+        "taskName": "DO Gudang - Deployment",
+        "effort": 2
+      }
+    ]
+  },
+  {
+    "workPackage": "Gudang Workspace Local Inventory (SC-12-02)",
+    "pic": "Roso",
+    "totalEffort": 17,
+    "tasks": [
+      {
+        "taskId": "SC-12-02-01a",
+        "taskName": "Stok - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-12-02-01b",
+        "taskName": "StokOpname - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-12-02-01c",
+        "taskName": "Mutasi - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-12-02-02",
+        "taskName": "Inventory Gudang - UI Design",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-12-02-03",
+        "taskName": "Inventory Gudang - BFF Feature",
+        "effort": ""
+      },
+      {
+        "taskId": "SC-12-02-04",
+        "taskName": "Inventory Gudang - Architecture",
+        "effort": 2
+      },
+      {
+        "taskId": "SC-12-02-05",
+        "taskName": "Inventory Gudang - Development",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-12-02-06",
+        "taskName": "Inventory Gudang - Testing",
+        "effort": 4
+      },
+      {
+        "taskId": "SC-12-02-07",
+        "taskName": "Inventory Gudang - Deployment",
+        "effort": 2
+      }
+    ]
+  },
+  {
+    "workPackage": "Gudang Workspace Retur Beli (SC-12-03)",
+    "pic": "Roso",
+    "totalEffort": 17,
+    "tasks": [
+      {
+        "taskId": "SC-12-03-01a",
+        "taskName": "ReturBeli - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-12-03-01b",
+        "taskName": "Stok - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-12-03-02",
+        "taskName": "Retur Beli - UI Design",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-12-03-03",
+        "taskName": "Retur Beli - BFF Feature",
+        "effort": ""
+      },
+      {
+        "taskId": "SC-12-03-04",
+        "taskName": "Retur Beli - Architecture",
+        "effort": 2
+      },
+      {
+        "taskId": "SC-12-03-05",
+        "taskName": "Retur Beli - Development",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-12-03-06",
+        "taskName": "Retur Beli - Testing",
+        "effort": 4
+      },
+      {
+        "taskId": "SC-12-06-07",
+        "taskName": "Retur Beli - Deployment",
+        "effort": 2
+      }
+    ]
+  },
+  {
+    "workPackage": "Purchasing Workspace Purchase Order (SC-13-01)",
+    "pic": "Fikri",
+    "totalEffort": 18,
+    "tasks": [
+      {
+        "taskId": "SC-13-01-01a",
+        "taskName": "MaterialReq - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-13-01-01b",
+        "taskName": "PurchaseReq - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-13-01-01c",
+        "taskName": "Forecasting - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-13-01-01d",
+        "taskName": "PurchaseOrder - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-13-01-02",
+        "taskName": "Purchasing - UI Design",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-13-01-03",
+        "taskName": "Purchasing - BFF Feature",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-13-01-04",
+        "taskName": "Purchasing - Architecture",
+        "effort": 2
+      },
+      {
+        "taskId": "SC-13-01-05",
+        "taskName": "Purchasing - Development",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-13-01-06",
+        "taskName": "Purchasing - Testing",
+        "effort": 4
+      },
+      {
+        "taskId": "SC-13-01-07",
+        "taskName": "Purchasing - Deployment",
+        "effort": 2
+      }
+    ]
+  },
+  {
+    "workPackage": "Purchasing Workspace Faktur Tagihan (SC-13-02)",
+    "pic": "Fikri",
+    "totalEffort": 18,
+    "tasks": [
+      {
+        "taskId": "SC-13-02-01a",
+        "taskName": "Faktur - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-13-02-01b",
+        "taskName": "PurchaseOrder - Core Feature",
+        "effort": 5
+      },
+      {
+        "taskId": "SC-13-02-02",
+        "taskName": "Faktur - UI Design",
+        "effort": 3
+      },
+      {
+        "taskId": "SC-13-02-03",
+        "taskName": "Faktur - BFF Feature",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-13-02-04",
+        "taskName": "Faktur - Architecture",
+        "effort": 2
+      },
+      {
+        "taskId": "SC-13-02-05",
+        "taskName": "Faktur - Development",
+        "effort": 1
+      },
+      {
+        "taskId": "SC-13-02-06",
+        "taskName": "Faktur - Testing",
+        "effort": 4
+      },
+      {
+        "taskId": "SC-13-02-07",
+        "taskName": "Faktur - Deployment",
+        "effort": 2
+      }
+    ]
+  }
+]

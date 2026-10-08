@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Executive Summary Infographic: MyHosWeb System Implementation (Rev 7 - Reference Architecture)</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    @media print {
+      body { background-color: #ffffff !important; color: #0f172a !important; }
+      .no-print { display: none !important; }
+      .print-shadow-none { box-shadow: none !important; }
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased font-sans p-4 md:p-8 min-h-screen">
+
+  <div class="max-w-7xl mx-auto space-y-6">
+
+    <!-- HEADER / HERO -->
+    <header class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 border border-slate-800 rounded-2xl p-6 md:p-8 shadow-2xl relative overflow-hidden">
+      <div class="absolute -right-16 -top-16 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -left-16 -bottom-16 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
+        <div>
+          <div class="flex flex-wrap items-center gap-2 mb-2">
+            <span class="px-3 py-1 text-xs font-semibold tracking-wider uppercase rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+              Board of Directors Executive Briefing
+            </span>
+            <span class="px-3 py-1 text-xs font-semibold tracking-wider uppercase rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+              4 Hours / Day Capacity Model
+            </span>
+            <span class="px-3 py-1 text-xs font-semibold tracking-wider uppercase rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/20">
+              Revision 7 Baseline
+            </span>
+          </div>
+          <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight text-white">
+            MyHosWeb System Implementation
+          </h1>
+          <p class="text-slate-400 text-sm md:text-base mt-1 max-w-3xl">
+            Integrated Hospital Information System (SIMRS) • Local Inventory Reference Architecture & 34-Workspace Roadmap
+          </p>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <div class="text-right">
+            <p class="text-xs uppercase tracking-wider text-slate-400 font-medium">Final Hospital Cutover</p>
+            <p class="text-2xl font-black text-cyan-400">12 Feb 2027</p>
+            <p class="text-xs text-emerald-400 font-medium">⚡ Erkoc Reference Template Standardized</p>
+          </div>
+          <button onclick="window.print()" class="no-print p-3 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-200 border border-slate-700 transition" title="Print to PDF">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ARCHITECTURAL HIGHLIGHT: ERKOC LOCAL INVENTORY TEMPLATE BANNER -->
+    <section class="bg-gradient-to-r from-amber-950/40 via-slate-900 to-indigo-950/40 border border-amber-500/30 rounded-2xl p-5 shadow-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-300 flex items-center justify-center font-bold text-lg border border-amber-500/30">
+          🏗️
+        </div>
+        <div>
+          <h3 class="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+            Rev-7 Architectural Standard: Local Inventory Reference Template
+            <span class="px-2 py-0.5 text-xs font-normal bg-amber-500/20 text-amber-300 rounded border border-amber-500/30">SC-08-03 Lead: Erkoc</span>
+          </h3>
+          <p class="text-xs text-slate-300 mt-0.5">
+            <strong>Laboratorium Workspace Local Inventory (SC-08-03)</strong> is built first by Erkoc (completes testing <strong>12 Jan 2027</strong>). All downstream unit local inventories (IGD, Bangsal, OK, Apotek, Radiologi) copy-modify from this reference template.
+          </p>
+        </div>
+      </div>
+      <div class="flex items-center gap-6 text-xs text-slate-300 font-mono bg-slate-950/60 px-4 py-2 rounded-xl border border-slate-800">
+        <div><span class="text-slate-500">Template Target:</span> <strong class="text-amber-400">12 Jan 2027</strong></div>
+        <div class="h-4 w-px bg-slate-800"></div>
+        <div><span class="text-slate-500">Total Workload:</span> <strong class="text-cyan-400">1,504 Man-Days</strong></div>
+      </div>
+    </section>
+
+    <!-- TOP 4 KPI CARDS -->
+    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      
+      <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-5 shadow-lg relative overflow-hidden group hover:border-slate-700 transition">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Total Effort</span>
+          <span class="p-2 rounded-lg bg-indigo-500/10 text-indigo-400">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </span>
+        </div>
+        <div class="mt-3">
+          <div class="text-3xl font-black text-white">1,504 <span class="text-lg font-normal text-slate-400">Days</span></div>
+          <p class="text-xs text-slate-400 mt-1">6,016 Person-Hours (@ 4h/day model)</p>
+        </div>
+        <div class="mt-3 w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+          <div class="bg-indigo-500 h-full w-full"></div>
+        </div>
+      </div>
+
+      <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-5 shadow-lg relative overflow-hidden group hover:border-slate-700 transition">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Hospital Workspaces</span>
+          <span class="p-2 rounded-lg bg-cyan-500/10 text-cyan-400">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+          </span>
+        </div>
+        <div class="mt-3">
+          <div class="text-3xl font-black text-white">34 <span class="text-lg font-normal text-slate-400">Units</span></div>
+          <p class="text-xs text-slate-400 mt-1">13 Clinical & Administrative Modules</p>
+        </div>
+        <div class="mt-3 w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+          <div class="bg-cyan-500 h-full w-full"></div>
+        </div>
+      </div>
+
+      <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-5 shadow-lg relative overflow-hidden group hover:border-slate-700 transition">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Dedicated Leads</span>
+          <span class="p-2 rounded-lg bg-emerald-500/10 text-emerald-400">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+          </span>
+        </div>
+        <div class="mt-3">
+          <div class="text-3xl font-black text-white">9 <span class="text-lg font-normal text-slate-400">Parallel Leads</span></div>
+          <p class="text-xs text-slate-400 mt-1">303 Granular Leaf Work Packages</p>
+        </div>
+        <div class="mt-3 w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+          <div class="bg-emerald-500 h-full w-full"></div>
+        </div>
+      </div>
+
+      <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-5 shadow-lg relative overflow-hidden group hover:border-slate-700 transition">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Template Fan-Out</span>
+          <span class="p-2 rounded-lg bg-amber-500/10 text-amber-400">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h6a2 2 0 012 2v2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"/></svg>
+          </span>
+        </div>
+        <div class="mt-3">
+          <div class="text-3xl font-black text-white">5 <span class="text-lg font-normal text-slate-400">Dependent Units</span></div>
+          <p class="text-xs text-amber-400 mt-1">IGD, Ranap, OK, Apotek, Radiologi</p>
+        </div>
+        <div class="mt-3 w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+          <div class="bg-amber-500 h-full w-full"></div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- 3 STRATEGIC GOVERNANCE GATES -->
+    <section class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-xl">
+      <div class="flex items-center justify-between mb-6">
+        <div>
+          <h2 class="text-xl font-bold text-white flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-cyan-400"></span>
+            Board Governance: 3 Strategic Release Gates (Rev 7)
+          </h2>
+          <p class="text-slate-400 text-xs mt-1">Phased delivery checkpoints enabling progressive clinical validation and template standardization</p>
+        </div>
+        <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider bg-slate-800 px-3 py-1 rounded-full">Phase Milestones</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- GATE 1 -->
+        <div class="bg-slate-950/60 border border-cyan-500/30 rounded-xl p-5 relative overflow-hidden group hover:border-cyan-500/60 transition">
+          <div class="flex items-center justify-between mb-3">
+            <span class="px-2.5 py-1 text-xs font-bold bg-cyan-500/20 text-cyan-300 rounded-md border border-cyan-500/30">
+              GATE 1
+            </span>
+            <span class="text-sm font-bold text-cyan-400">15 Dec 2026</span>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Foundation, Outpatient & Financials</h3>
+          <p class="text-xs text-slate-400 mb-4 leading-relaxed">
+            Patient registration, clinic consultation, bed management admission, and cashier shift closing.
+          </p>
+          <div class="space-y-1.5 text-xs text-slate-300">
+            <div class="flex items-center gap-2"><span class="text-cyan-400">✓</span> SC-01 Admisi Booking & Reg (Arif)</div>
+            <div class="flex items-center gap-2"><span class="text-cyan-400">✓</span> SC-05 Poli Rawat Jalan (Fikri)</div>
+            <div class="flex items-center gap-2"><span class="text-cyan-400">✓</span> SC-06 Bed Management Ranap (Sulis)</div>
+            <div class="flex items-center gap-2"><span class="text-cyan-400">✓</span> SC-02 Tata Rek & SC-03 Kasir (Erkoc)</div>
+          </div>
+        </div>
+
+        <!-- GATE 2 -->
+        <div class="bg-slate-950/60 border border-indigo-500/30 rounded-xl p-5 relative overflow-hidden group hover:border-indigo-500/60 transition">
+          <div class="flex items-center justify-between mb-3">
+            <span class="px-2.5 py-1 text-xs font-bold bg-indigo-500/20 text-indigo-300 rounded-md border border-indigo-500/30">
+              GATE 2
+            </span>
+            <span class="text-sm font-bold text-indigo-400">30 Dec 2026</span>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Emergency, Perioperative & Compliance</h3>
+          <p class="text-xs text-slate-400 mb-4 leading-relaxed">
+            Emergency department triage, operating suites (OK), central logistics warehouse, and Kemenkes RL reporting.
+          </p>
+          <div class="space-y-1.5 text-xs text-slate-300">
+            <div class="flex items-center gap-2"><span class="text-indigo-400">✓</span> SC-07 IGD Triage (Arif)</div>
+            <div class="flex items-center gap-2"><span class="text-indigo-400">✓</span> SC-10 Kamar Operasi / Bedah (Arie)</div>
+            <div class="flex items-center gap-2"><span class="text-indigo-400">✓</span> SC-12 Gudang Logistik (Roso)</div>
+            <div class="flex items-center gap-2"><span class="text-indigo-400">✓</span> SC-04 Rekam Medis RL (Rizal completes Dec 26)</div>
+          </div>
+        </div>
+
+        <!-- GATE 3 -->
+        <div class="bg-slate-950/60 border border-emerald-500/30 rounded-xl p-5 relative overflow-hidden group hover:border-emerald-500/60 transition">
+          <div class="flex items-center justify-between mb-3">
+            <span class="px-2.5 py-1 text-xs font-bold bg-emerald-500/20 text-emerald-300 rounded-md border border-emerald-500/30">
+              GATE 3
+            </span>
+            <span class="text-sm font-bold text-emerald-400">12 Feb 2027</span>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Reference Template Fan-Out & Cutover</h3>
+          <p class="text-xs text-slate-400 mb-4 leading-relaxed">
+            Erkoc finishes Lab Inventory template testing (Jan 12). Downstream local inventories (IGD, Ranap, OK, Apotek, Radiologi) copy-modify and cut over.
+          </p>
+          <div class="space-y-1.5 text-xs text-slate-300">
+            <div class="flex items-center gap-2"><span class="text-amber-400">★</span> SC-08-03 Lab Local Inv Reference (Erkoc Jan 12)</div>
+            <div class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Unit Inventory Fan-out (Arif, Sulis, Arie, Jude)</div>
+            <div class="flex items-center gap-2"><span class="text-emerald-400">✓</span> SC-13 Purchasing PO & Invoicing (Fikri)</div>
+            <div class="flex items-center gap-2"><span class="text-emerald-400">✓</span> SC-09 Radiologi PACS (We - Final Cutover Feb 12)</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- RESOURCE LOAD RANKING (REV 7) -->
+    <section class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-xl">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+        <div>
+          <h2 class="text-xl font-bold text-white flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-indigo-400"></span>
+            Resource Capacity & Workload Ranking (Rev 7 - 4h/Day Model)
+          </h2>
+          <p class="text-slate-400 text-xs mt-1">9 Dedicated Leads • Net Hours & Man-Days calculated at 4h/day</p>
+        </div>
+        <div class="flex items-center gap-4 text-xs font-medium">
+          <span class="flex items-center gap-1.5 text-slate-300"><span class="w-3 h-3 rounded bg-indigo-500"></span> Standard Stream</span>
+          <span class="flex items-center gap-1.5 text-amber-300"><span class="w-3 h-3 rounded bg-amber-500"></span> Template Leader (Erkoc)</span>
+          <span class="flex items-center gap-1.5 text-rose-300"><span class="w-3 h-3 rounded bg-rose-500"></span> Critical Path (We)</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+        <!-- 1. Arif -->
+        <div class="bg-slate-950/60 border border-slate-800 rounded-xl p-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="w-6 h-6 rounded-full bg-slate-800 text-xs font-bold text-white flex items-center justify-center">#1</span>
+              <span class="font-bold text-white">Arif</span>
+            </div>
+            <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono">14.2% Share</span>
+          </div>
+          <div class="mt-2 text-xs text-slate-400">Admisi (3) & IGD (2)</div>
+          <div class="mt-3 flex items-baseline justify-between text-xs">
+            <span class="font-mono text-white text-base font-bold">214.0 <span class="text-xs font-normal text-slate-400">Days</span></span>
+            <span class="text-slate-400 font-mono">856 hrs • 52 Tasks</span>
+          </div>
+          <div class="mt-2 w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+            <div class="bg-indigo-500 h-full" style="width: 100%"></div>
+          </div>
+          <div class="mt-2 text-[11px] text-slate-400 text-right">Finish: <strong class="text-slate-200">03 Feb 2027</strong></div>
+        </div>
+
+        <!-- 2. We -->
+        <div class="bg-slate-950/60 border border-rose-500/40 rounded-xl p-4 relative">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-300 text-xs font-bold flex items-center justify-center">#2</span>
+              <span class="font-bold text-white">We</span>
+              <span class="text-[10px] px-1.5 py-0.5 rounded bg-rose-500/20 text-rose-300 font-bold">CRITICAL</span>
+            </div>
+            <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono">14.2% Share</span>
+          </div>
+          <div class="mt-2 text-xs text-slate-400">Diagnostics: Lab (2) & Radiologi PACS (3)</div>
+          <div class="mt-3 flex items-baseline justify-between text-xs">
+            <span class="font-mono text-rose-400 text-base font-bold">214.0 <span class="text-xs font-normal text-slate-400">Days</span></span>
+            <span class="text-slate-400 font-mono">856 hrs • 43 Tasks</span>
+          </div>
+          <div class="mt-2 w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+            <div class="bg-rose-500 h-full" style="width: 100%"></div>
+          </div>
+          <div class="mt-2 text-[11px] text-rose-300 text-right">Finish: <strong class="text-rose-400">12 Feb 2027</strong> (Go-Live)</div>
+        </div>
+
+        <!-- 3. Jude -->
+        <div class="bg-slate-950/60 border border-slate-800 rounded-xl p-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="w-6 h-6 rounded-full bg-slate-800 text-xs font-bold text-white flex items-center justify-center">#3</span>
+              <span class="font-bold text-white">Jude</span>
+            </div>
+            <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono">13.4% Share</span>
+          </div>
+          <div class="mt-2 text-xs text-slate-400">Apotek & Farmasi (5 Workspaces)</div>
+          <div class="mt-3 flex items-baseline justify-between text-xs">
+            <span class="font-mono text-white text-base font-bold">202.0 <span class="text-xs font-normal text-slate-400">Days</span></span>
+            <span class="text-slate-400 font-mono">808 hrs • 44 Tasks</span>
+          </div>
+          <div class="mt-2 w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+            <div class="bg-indigo-500 h-full" style="width: 94%"></div>
+          </div>
+          <div class="mt-2 text-[11px] text-slate-400 text-right">Finish: <strong class="text-slate-200">05 Feb 2027</strong></div>
+        </div>
+
+        <!-- 4. Fikri -->
+        <div class="bg-slate-950/60 border border-slate-800 rounded-xl p-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="w-6 h-6 rounded-full bg-slate-800 text-xs font-bold text-white flex items-center justify-center">#4</span>
+              <span class="font-bold text-white">Fikri</span>
+            </div>
+            <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono">13.2% Share</span>
+          </div>
+          <div class="mt-2 text-xs text-slate-400">Poli Clinics (2) & Purchasing AP (2)</div>
+          <div class="mt-3 flex items-baseline justify-between text-xs">
+            <span class="font-mono text-white text-base font-bold">198.0 <span class="text-xs font-normal text-slate-400">Days</span></span>
+            <span class="text-slate-400 font-mono">792 hrs • 36 Tasks</span>
+          </div>
+          <div class="mt-2 w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+            <div class="bg-indigo-500 h-full" style="width: 92%"></div>
+          </div>
+          <div class="mt-2 text-[11px] text-slate-400 text-right">Finish: <strong class="text-slate-200">03 Feb 2027</strong></div>
+        </div>
+
+        <!-- 5. Erkoc (Template Leader) -->
+        <div class="bg-slate-950/60 border border-amber-500/40 rounded-xl p-4 relative">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="w-6 h-6 rounded-full bg-amber-500/20 text-amber-300 text-xs font-bold flex items-center justify-center">#5</span>
+              <span class="font-bold text-white">Erkoc</span>
+              <span class="text-[10px] px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 font-bold">TEMPLATE LEAD</span>
+            </div>
+            <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono">11.0% Share</span>
+          </div>
+          <div class="mt-2 text-xs text-slate-400">Tata Rek (1), Kasir (2), Lab Local Inv (Ref)</div>
+          <div class="mt-3 flex items-baseline justify-between text-xs">
+            <span class="font-mono text-amber-400 text-base font-bold">166.0 <span class="text-xs font-normal text-slate-400">Days</span></span>
+            <span class="text-slate-400 font-mono">664 hrs • 31 Tasks</span>
+          </div>
+          <div class="mt-2 w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+            <div class="bg-amber-500 h-full" style="width: 78%"></div>
+          </div>
+          <div class="mt-2 text-[11px] text-amber-300 text-right">Template Ready: <strong class="text-amber-400">12 Jan 2027</strong></div>
+        </div>
+
+        <!-- 6. Arie -->
+        <div class="bg-slate-950/60 border border-slate-800 rounded-xl p-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="w-6 h-6 rounded-full bg-slate-800 text-xs font-bold text-white flex items-center justify-center">#6</span>
+              <span class="font-bold text-white">Arie</span>
+            </div>
+            <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono">9.2% Share</span>
+          </div>
+          <div class="mt-2 text-xs text-slate-400">Kamar Operasi / Bedah (3 Workspaces)</div>
+          <div class="mt-3 flex items-baseline justify-between text-xs">
+            <span class="font-mono text-white text-base font-bold">138.0 <span class="text-xs font-normal text-slate-400">Days</span></span>
+            <span class="text-slate-400 font-mono">552 hrs • 27 Tasks</span>
+          </div>
+          <div class="mt-2 w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+            <div class="bg-indigo-500 h-full" style="width: 64%"></div>
+          </div>
+          <div class="mt-2 text-[11px] text-slate-400 text-right">Finish: <strong class="text-slate-200">02 Feb 2027</strong></div>
+        </div>
+
+        <!-- 7. Roso -->
+        <div class="bg-slate-950/60 border border-slate-800 rounded-xl p-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="w-6 h-6 rounded-full bg-slate-800 text-xs font-bold text-white flex items-center justify-center">#7</span>
+              <span class="font-bold text-white">Roso</span>
+            </div>
+            <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono">9.2% Share</span>
+          </div>
+          <div class="mt-2 text-xs text-slate-400">Gudang Logistik Farmasi (3 Workspaces)</div>
+          <div class="mt-3 flex items-baseline justify-between text-xs">
+            <span class="font-mono text-white text-base font-bold">138.0 <span class="text-xs font-normal text-slate-400">Days</span></span>
+            <span class="text-slate-400 font-mono">552 hrs • 26 Tasks</span>
+          </div>
+          <div class="mt-2 w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+            <div class="bg-indigo-500 h-full" style="width: 64%"></div>
+          </div>
+          <div class="mt-2 text-[11px] text-slate-400 text-right">Finish: <strong class="text-slate-200">30 Dec 2026</strong></div>
+        </div>
+
+        <!-- 8. Rizal (First Done) -->
+        <div class="bg-slate-950/60 border border-emerald-500/40 rounded-xl p-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold flex items-center justify-center">#8</span>
+              <span class="font-bold text-white">Rizal</span>
+              <span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold">FIRST DONE</span>
+            </div>
+            <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono">8.8% Share</span>
+          </div>
+          <div class="mt-2 text-xs text-slate-400">Rekam Medis & Casemix RL (3 Workspaces)</div>
+          <div class="mt-3 flex items-baseline justify-between text-xs">
+            <span class="font-mono text-emerald-400 text-base font-bold">132.0 <span class="text-xs font-normal text-slate-400">Days</span></span>
+            <span class="text-slate-400 font-mono">528 hrs • 23 Tasks</span>
+          </div>
+          <div class="mt-2 w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+            <div class="bg-emerald-500 h-full" style="width: 62%"></div>
+          </div>
+          <div class="mt-2 text-[11px] text-emerald-300 text-right">Finish: <strong class="text-emerald-400">26 Dec 2026</strong></div>
+        </div>
+
+        <!-- 9. Sulis -->
+        <div class="bg-slate-950/60 border border-slate-800 rounded-xl p-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="w-6 h-6 rounded-full bg-slate-800 text-xs font-bold text-white flex items-center justify-center">#9</span>
+              <span class="font-bold text-white">Sulis</span>
+            </div>
+            <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono">6.8% Share</span>
+          </div>
+          <div class="mt-2 text-xs text-slate-400">Bangsal Ranap & Bed Mgmt (2 Workspaces)</div>
+          <div class="mt-3 flex items-baseline justify-between text-xs">
+            <span class="font-mono text-white text-base font-bold">102.0 <span class="text-xs font-normal text-slate-400">Days</span></span>
+            <span class="text-slate-400 font-mono">408 hrs • 21 Tasks</span>
+          </div>
+          <div class="mt-2 w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+            <div class="bg-indigo-500 h-full" style="width: 48%"></div>
+          </div>
+          <div class="mt-2 text-[11px] text-slate-400 text-right">Finish: <strong class="text-slate-200">03 Feb 2027</strong></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- MASTER WORKSPACE DUE DATES TABLE (ALL 34 WORKSPACES - REV 7) -->
+    <section class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-xl">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+        <div>
+          <h2 class="text-xl font-bold text-white flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-cyan-400"></span>
+            Master Schedule: Due Dates for All 34 Operational Workspaces (Rev 7)
+          </h2>
+          <p class="text-slate-400 text-xs mt-1">Chronological delivery roadmap • Highlighting Erkoc Reference Template & Fan-out schedule</p>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-3 no-print">
+          <input type="text" id="searchInput" placeholder="Filter workspace or PIC..." class="bg-slate-950 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500">
+          <select id="waveSelect" class="bg-slate-950 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:border-cyan-500">
+            <option value="all">All Delivery Waves</option>
+            <option value="wave1">Wave 1: Oct - Nov 2026</option>
+            <option value="wave2">Wave 2: Dec 2026</option>
+            <option value="wave3">Wave 3: Jan - Feb 2027</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto rounded-xl border border-slate-800">
+        <table class="w-full text-left border-collapse text-xs">
+          <thead>
+            <tr class="bg-slate-950/80 text-slate-400 uppercase tracking-wider border-b border-slate-800 font-semibold">
+              <th class="py-3 px-3 w-10 text-center">#</th>
+              <th class="py-3 px-3 w-24">Module</th>
+              <th class="py-3 px-4">Operational Workspace Name</th>
+              <th class="py-3 px-3 w-20">PIC</th>
+              <th class="py-3 px-3 w-24 text-right">Hours</th>
+              <th class="py-3 px-3 w-32 text-right">Man-Days (4h)</th>
+              <th class="py-3 px-3 w-28">Start Date</th>
+              <th class="py-3 px-3 w-28 text-cyan-400">Due Date</th>
+              <th class="py-3 px-3 w-24 text-center">Wave</th>
+            </tr>
+          </thead>
+          <tbody id="workspaceTableBody" class="divide-y divide-slate-800/60 font-mono">
+            <!-- Table rows populated via JS -->
+          </tbody>
+        </table>
+      </div>
+      <div class="mt-4 flex items-center justify-between text-xs text-slate-400">
+        <span id="rowCount">Showing 34 workspaces</span>
+        <span class="font-mono text-cyan-400">Total: 6,016 Hours = 1,504.0 Man-Days (@ 4h/day)</span>
+      </div>
+    </section>
+
+    <!-- FOOTER & SIGN-OFF -->
+    <footer class="bg-slate-900/60 border border-slate-800 rounded-xl p-4 text-xs text-slate-400 flex flex-col md:flex-row items-center justify-between gap-3">
+      <div>
+        <strong class="text-slate-300">MyHosWeb System Implementation (Rev 7)</strong> • Board of Directors Briefing
+      </div>
+      <div class="text-slate-500 font-mono">
+        Capacity: 4h/Day (24h/Wk) • Total Effort: 1,504 Man-Days • Target Go-Live: Feb 12, 2027
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- EMBEDDED JAVASCRIPT DATA & FILTERING -->
+  <script>
+    const workspacesData = [
+      { num: 1, code: 'SC-01-02', name: 'Admisi Workspace Reg Rajal-IGD', pic: 'Arif', hours: 152, days4h: 38.0, start: '2026-09-20', due: '2026-10-10', wave: 'wave1', ref: false },
+      { num: 2, code: 'SC-01-01', name: 'Admisi Workspace Booking', pic: 'Arif', hours: 144, days4h: 36.0, start: '2026-09-22', due: '2026-10-12', wave: 'wave1', ref: false },
+      { num: 3, code: 'SC-01-03', name: 'Admisi Workspace Reg Ranap', pic: 'Arif', hours: 168, days4h: 42.0, start: '2026-10-12', due: '2026-11-04', wave: 'wave1', ref: false },
+      { num: 4, code: 'SC-02-01', name: 'Tata Rekening Workspace Reg Out', pic: 'Erkoc', hours: 176, days4h: 44.0, start: '2026-10-12', due: '2026-11-05', wave: 'wave1', ref: false },
+      { num: 5, code: 'SC-04-01', name: 'Rekam Medis Workspace Berkas RM', pic: 'Rizal', hours: 176, days4h: 44.0, start: '2026-10-12', due: '2026-11-05', wave: 'wave1', ref: false },
+      { num: 6, code: 'SC-05-01', name: 'Poli Rawat Jalan Workspace Tindakan', pic: 'Fikri', hours: 192, days4h: 48.0, start: '2026-10-12', due: '2026-11-07', wave: 'wave1', ref: false },
+      { num: 7, code: 'SC-10-01', name: 'Kamar Operasi Workspace Scheduling', pic: 'Arie', hours: 192, days4h: 48.0, start: '2026-10-12', due: '2026-11-07', wave: 'wave1', ref: false },
+      { num: 8, code: 'SC-12-01', name: 'Gudang Workspace Terima Barang (DO)', pic: 'Roso', hours: 208, days4h: 52.0, start: '2026-10-12', due: '2026-11-10', wave: 'wave1', ref: false },
+      { num: 9, code: 'SC-08-01', name: 'Laboratorium Workspace Order Laboratorium', pic: 'We', hours: 216, days4h: 54.0, start: '2026-10-12', due: '2026-11-11', wave: 'wave1', ref: false },
+      { num: 10, code: 'SC-11-01', name: 'Apotek Workspace Antrian Apotek', pic: 'Jude', hours: 216, days4h: 54.0, start: '2026-10-12', due: '2026-11-11', wave: 'wave1', ref: false },
+      { num: 11, code: 'SC-06-01', name: 'Bangsal Rawat Inap Workspace Bed Management', pic: 'Sulis', hours: 248, days4h: 62.0, start: '2026-10-12', due: '2026-11-16', wave: 'wave1', ref: false },
+      { num: 12, code: 'SC-03-01', name: 'Kasir Workspace Kasir', pic: 'Erkoc', hours: 144, days4h: 36.0, start: '2026-11-06', due: '2026-11-26', wave: 'wave1', ref: false },
+      { num: 13, code: 'SC-11-02', name: 'Apotek Workspace Telaah Resep', pic: 'Jude', hours: 136, days4h: 34.0, start: '2026-11-12', due: '2026-12-01', wave: 'wave1', ref: false },
+      { num: 14, code: 'SC-05-02', name: 'Poli Rawat Jalan Workspace Local Inventory', pic: 'Fikri', hours: 168, days4h: 42.0, start: '2026-11-09', due: '2026-12-02', wave: 'wave2', ref: false },
+      { num: 15, code: 'SC-04-02', name: 'Rekam Medis Workspace Casemix dan Coding', pic: 'Rizal', hours: 184, days4h: 46.0, start: '2026-11-06', due: '2026-12-02', wave: 'wave2', ref: false },
+      { num: 16, code: 'SC-08-02', name: 'Laboratorium Workspace Result Management', pic: 'We', hours: 144, days4h: 36.0, start: '2026-11-12', due: '2026-12-02', wave: 'wave2', ref: false },
+      { num: 17, code: 'SC-07-01', name: 'IGD Workspace IGD Triage', pic: 'Arif', hours: 232, days4h: 58.0, start: '2026-11-05', due: '2026-12-08', wave: 'wave2', ref: false },
+      { num: 18, code: 'SC-10-02', name: 'Kamar Operasi Workspace Operative Management', pic: 'Arie', hours: 208, days4h: 52.0, start: '2026-11-09', due: '2026-12-08', wave: 'wave2', ref: false },
+      { num: 19, code: 'SC-12-02', name: 'Gudang Workspace Local Inventory', pic: 'Roso', hours: 192, days4h: 48.0, start: '2026-11-11', due: '2026-12-08', wave: 'wave2', ref: false },
+      { num: 20, code: 'SC-03-02', name: 'Kasir Workspace Closing Shift', pic: 'Erkoc', hours: 128, days4h: 32.0, start: '2026-11-27', due: '2026-12-15', wave: 'wave2', ref: false },
+      { num: 21, code: 'SC-11-03', name: 'Apotek Workspace Dispensing', pic: 'Jude', hours: 160, days4h: 40.0, start: '2026-12-02', due: '2026-12-24', wave: 'wave2', ref: false },
+      { num: 22, code: 'SC-04-03', name: 'Rekam Medis Workspace Pelaporan RL', pic: 'Rizal', hours: 168, days4h: 42.0, start: '2026-12-03', due: '2026-12-26', wave: 'wave2', ref: false },
+      { num: 23, code: 'SC-12-03', name: 'Gudang Workspace Retur Beli', pic: 'Roso', hours: 152, days4h: 38.0, start: '2026-12-09', due: '2026-12-30', wave: 'wave2', ref: false },
+      { num: 24, code: 'SC-09-01', name: 'Radiologi Workspace Order Radiologi', pic: 'We', hours: 208, days4h: 52.0, start: '2026-12-03', due: '2027-01-01', wave: 'wave2', ref: false },
+      { num: 25, code: 'SC-13-01', name: 'Purchasing Workspace Purchase Order', pic: 'Fikri', hours: 264, days4h: 66.0, start: '2026-12-03', due: '2027-01-09', wave: 'wave3', ref: false },
+      { num: 26, code: 'SC-11-04', name: 'Apotek Workspace Serah Obat', pic: 'Jude', hours: 144, days4h: 36.0, start: '2026-12-25', due: '2027-01-14', wave: 'wave3', ref: false },
+      { num: 27, code: 'SC-08-03', name: 'Laboratorium Workspace Local Inventory', pic: 'Erkoc', hours: 216, days4h: 54.0, start: '2026-12-16', due: '2027-01-15', wave: 'wave3', ref: true },
+      { num: 28, code: 'SC-09-02', name: 'Radiologi Workspace Expertise', pic: 'We', hours: 136, days4h: 34.0, start: '2027-01-02', due: '2027-01-21', wave: 'wave3', ref: false },
+      { num: 29, code: 'SC-10-03', name: 'Kamar Operasi Workspace Local Inventory', pic: 'Arie', hours: 152, days4h: 38.0, start: '2027-01-12', due: '2027-02-02', wave: 'wave3', ref: false },
+      { num: 30, code: 'SC-05-02', name: 'IGD Workspace Local Inventory', pic: 'Arif', hours: 160, days4h: 40.0, start: '2027-01-12', due: '2027-02-03', wave: 'wave3', ref: false },
+      { num: 31, code: 'SC-05-02', name: 'Bangsal Rawat Inap Workspace Local Inventory', pic: 'Sulis', hours: 160, days4h: 40.0, start: '2027-01-12', due: '2027-02-03', wave: 'wave3', ref: false },
+      { num: 32, code: 'SC-13-02', name: 'Purchasing Workspace Faktur Tagihan', pic: 'Fikri', hours: 168, days4h: 42.0, start: '2027-01-11', due: '2027-02-03', wave: 'wave3', ref: false },
+      { num: 33, code: 'SC-11-05', name: 'Apotek Workspace Local Inventory', pic: 'Jude', hours: 152, days4h: 38.0, start: '2027-01-15', due: '2027-02-05', wave: 'wave3', ref: false },
+      { num: 34, code: 'SC-09-03', name: 'Radiologi Workspace Local Inventory', pic: 'We', hours: 152, days4h: 38.0, start: '2027-01-22', due: '2027-02-12', wave: 'wave3', ref: false }
+    ];
+
+    function renderTable(data) {
+      const tbody = document.getElementById('workspaceTableBody');
+      tbody.innerHTML = '';
+      
+      data.forEach((w) => {
+        const tr = document.createElement('tr');
+        tr.className = w.ref ? 'bg-amber-950/20 hover:bg-amber-950/40 transition font-sans border-l-4 border-amber-500' : 'hover:bg-slate-800/40 transition font-sans';
+        
+        let waveBadge = '';
+        if (w.wave === 'wave1') {
+          waveBadge = '<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">Wave 1</span>';
+        } else if (w.wave === 'wave2') {
+          waveBadge = '<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">Wave 2</span>';
+        } else {
+          waveBadge = '<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">Wave 3</span>';
+        }
+
+        const isCritical = (w.num === 34);
+
+        tr.innerHTML = `
+          <td class="py-2.5 px-3 text-center text-slate-500 font-mono">${w.num}</td>
+          <td class="py-2.5 px-3 font-mono font-semibold ${w.ref ? 'text-amber-400' : 'text-cyan-300'}">${w.code}</td>
+          <td class="py-2.5 px-4 font-medium text-white">
+            ${w.name}
+            ${w.ref ? '<span class="ml-2 px-1.5 py-0.5 text-[10px] bg-amber-500/20 text-amber-300 rounded font-bold border border-amber-500/30">REFERENCE BASELINE</span>' : ''}
+            ${isCritical ? '<span class="ml-1 px-1.5 py-0.5 text-[10px] bg-rose-500/20 text-rose-300 rounded font-bold">FINAL CUTOVER</span>' : ''}
+          </td>
+          <td class="py-2.5 px-3 font-semibold ${w.ref ? 'text-amber-300' : 'text-slate-200'}">${w.pic}</td>
+          <td class="py-2.5 px-3 text-right font-mono text-slate-300">${w.hours}h</td>
+          <td class="py-2.5 px-3 text-right font-mono text-indigo-300 font-semibold">${w.days4h.toFixed(1)}d</td>
+          <td class="py-2.5 px-3 font-mono text-slate-400">${w.start}</td>
+          <td class="py-2.5 px-3 font-mono font-bold ${w.ref ? 'text-amber-400' : (isCritical ? 'text-rose-400' : 'text-cyan-400')}">${w.due}</td>
+          <td class="py-2.5 px-3 text-center">${waveBadge}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      document.getElementById('rowCount').innerText = `Showing ${data.length} of 34 workspaces`;
+    }
+
+    function applyFilters() {
+      const q = document.getElementById('searchInput').value.toLowerCase();
+      const wave = document.getElementById('waveSelect').value;
+
+      const filtered = workspacesData.filter(w => {
+        const matchText = w.name.toLowerCase().includes(q) || w.code.toLowerCase().includes(q) || w.pic.toLowerCase().includes(q);
+        const matchWave = (wave === 'all') || (w.wave === wave);
+        return matchText && matchWave;
+      });
+
+      renderTable(filtered);
+    }
+
+    document.getElementById('searchInput').addEventListener('input', applyFilters);
+    document.getElementById('waveSelect').addEventListener('change', applyFilters);
+
+    // Initial render
+    renderTable(workspacesData);
+  </script>
+</body>
+</html>
