@@ -3,7 +3,7 @@
 | Field       | Value        |
 |-------------|--------------|
 | Code        | OC-06-05     |
-| Version     | 1.1          |
+| Version     | 1.2          |
 | Status      | Draft        |
 | LastUpdated | 2026-10-08   |
 
@@ -138,30 +138,18 @@ Penggunaan barang telah dicatat sebagai fakta operasional yang dapat diverifikas
 
 > Aturan bisnis yang harus selalu terpenuhi untuk Outcome ini.
 
-1. **Fokus pada Pencatatan Penggunaan Barang:**
-   Pakai Barang hanya mencatat bahwa suatu barang telah digunakan. Outcome ini tidak mencakup pengelolaan sistem persediaan (*inventory management*) secara keseluruhan, pengadaan, maupun penyimpanan.
-2. **Pengurangan Stok Bukan Definisi Utama:**
-   Pengurangan persediaan/stok dapat menjadi konsekuensi logistik lanjutan dari barang yang dikelola sebagai stok, namun bukan merupakan definisi atau syarat pembentukan Outcome Pakai Barang. Fakta bahwa barang telah digunakan tetap sah tercatat terlepas dari apakah barang tersebut barang stok, non-stok, atau perlengkapan operasional.
-3. **Pasien Bukan Syarat Utama (Kondisionalitas Pasien):**
-   Penggunaan barang tidak harus terkait pasien:
-   - Sarung tangan digunakan untuk pelayanan pasien → dapat terkait pasien;
-   - Alat tulis digunakan oleh unit administrasi → tidak terkait pasien;
-   - Bahan operasional digunakan oleh unit → tidak terkait pasien.
-   Konteks pasien/episode bersifat kondisional dan bukan bagian dari definisi inti Pakai Barang.
-4. **Pembedaan Tegas dari Tindakan (Pakai Barang ≠ Tindakan):**
-   - **Tindakan** mencatat aktivitas atau tindakan pelayanan klinis yang dilakukan kepada pasien.
-   - **Pakai Barang** mencatat barang yang digunakan dalam kegiatan tersebut.
-   Contoh: Pemberian injeksi adalah Tindakan (`OC-06-01`), sedangkan penggunaan 1 buah spuit adalah Pakai Barang (`OC-06-05`). Keduanya merupakan event yang berbeda.
-5. **Pembedaan Tegas dari Mutasi Barang (Pakai Barang ≠ Mutasi Barang):**
-   - **Mutasi Barang** mencatat perpindahan barang dari satu lokasi ke lokasi lain (misalnya Gudang ke Bangsal).
-   - **Pakai Barang** mencatat bahwa barang telah digunakan/dikonsumsi di unit tersebut.
-6. **Pembedaan Tegas dari Opname (Pakai Barang ≠ Opname):**
-   - **Opname** mencatat hasil pemeriksaan atau penghitungan fisik persediaan di suatu lokasi.
-   - **Pakai Barang** mencatat peristiwa penggunaan/konsumsi barang.
-7. **Pengecualian Detail Inventory Tingkat Lanjut:**
-   Detail lanjutan seperti nomor batch, tanggal kedaluwarsa (*expiry date*), nomor seri (*serial number*), harga pokok (*costing*), metode valuasi persediaan (FIFO/FEFO/Average), aturan stok minimum/maksimum, dan jurnal akuntansi persediaan berada di luar batas outcome ini dan bukan merupakan syarat pembentukan fakta Pakai Barang.
-8. **Independensi dari Aturan Administratif Stok:**
-   Fakta bahwa barang telah digunakan secara fisik tetap sah dicatat sebagai fakta operasional terlepas dari kondisi administratif catatan stok di sistem (misalnya stok administratif tercatat nol atau belum direkonsiliasi).
+1. **Fokus pada Penggunaan Barang:** Outcome ini hanya mencatat bahwa suatu barang telah digunakan dalam kegiatan pelayanan atau operasional rumah sakit.
+2. **Pengurangan Stok Bukan Definisi Utama:** Penyesuaian atau pengurangan stok fisik/administratif dapat menjadi konsekuensi logistik lanjutan dari barang yang dikelola sebagai persediaan, namun bukan merupakan definisi atau syarat ketercapaian Outcome Pakai Barang.
+3. **Konteks Pasien Bersifat Kondisional:** Penggunaan barang dapat terkait dengan pelayanan pasien maupun kebutuhan operasional unit tanpa pasien. Keberadaan data pasien bukan merupakan syarat wajib.
+4. **Pakai Barang Berbeda dari Tindakan:**
+   - **Tindakan** = pencatatan tindakan/prosedur klinis yang dilakukan kepada pasien.
+   - **Pakai Barang** = pencatatan barang yang digunakan dalam kegiatan tersebut.
+5. **Pakai Barang Berbeda dari Mutasi Barang:**
+   - **Mutasi Barang** = perpindahan fisik barang dari satu lokasi ke lokasi lain.
+   - **Pakai Barang** = pencatatan bahwa barang telah digunakan/dikonsumsi di unit tersebut.
+6. **Pakai Barang Berbeda dari Opname:**
+   - **Opname** = penghitungan atau verifikasi fisik stok di suatu lokasi.
+   - **Pakai Barang** = pencatatan peristiwa penggunaan/konsumsi barang.
 
 ---
 
@@ -171,11 +159,10 @@ Penggunaan barang telah dicatat sebagai fakta operasional yang dapat diverifikas
 
 | Exception | Expected Behavior |
 |-----------|-------------------|
-| Item barang yang digunakan tidak terdaftar atau tidak sah dalam operasional rumah sakit | **Pencatatan ditolak.** Barang yang dicatat harus merupakan item yang dikenal dan sah di rumah sakit. |
-| Jumlah penggunaan barang tidak bernilai positif (≤ 0) | **Pencatatan ditolak.** Jumlah barang yang digunakan harus bernilai lebih dari nol. |
-| Penggunaan dicatat dalam konteks pasien tertentu, namun identitas pasien tidak valid | **Pencatatan ditolak.** Jika konteks penggunaan dikaitkan dengan pasien, identitas pasien harus sah dalam sistem. |
-| Penggunaan dicatat untuk keperluan operasional unit tanpa terkait pasien | **Kondisi bisnis yang sah (bukan error).** Pencatatan tetap sah diterima sebagai pemakaian operasional unit. |
-| Status administratif stok di unit tercatat nol atau belum tercatat saat barang fisik aktual digunakan | **Fakta operasional penggunaan barang tetap sah dicatat.** Kesenjangan administratif persediaan diselesaikan pada domain inventory tanpa membatalkan fakta fisik bahwa barang telah digunakan. |
+| Barang tidak valid atau tidak terdaftar dalam operasional rumah sakit | **Pencatatan ditolak.** Penggunaan tidak dapat dicatat sebagai Pakai Barang. |
+| Jumlah penggunaan tidak valid atau nonpositif (≤ 0) | **Pencatatan ditolak.** Kuantitas penggunaan barang harus bernilai positif. |
+| Penggunaan dikaitkan dengan pasien, namun konteks atau identitas pasien tidak valid | **Pencatatan ditolak.** Jika dikaitkan dengan pasien, konteks pasien harus valid. |
+| Penggunaan dicatat untuk kebutuhan operasional unit tanpa pasien | **Kondisi bisnis yang sah (bukan error).** Tetap merupakan Pakai Barang yang valid. |
 
 ---
 
