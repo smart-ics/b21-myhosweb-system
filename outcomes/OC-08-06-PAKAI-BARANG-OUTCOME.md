@@ -13,13 +13,13 @@
 
 Unit laboratorium memerlukan bahan habis pakai dan reagen untuk pemeriksaan pasien maupun aktivitas operasional laboratorium lainnya. OC-08-06 bertanggung jawab atas **Pencatatan Pemakaian Barang (Pakai Barang)** pada lokasi laboratorium serta koreksi operasionalnya melalui **Edit** dan **Pembatalan (Cancel)**.
 
-Outcome ini memastikan konsumsi barang tercatat secara tertib dan saldo stok berkurang atau disesuaikan secara seketika dan konsisten, tanpa pernah menghasilkan stok negatif dan tanpa menghapus riwayat transaksi.
+Outcome ini memastikan konsumsi barang tercatat secara tertib, saldo stok pada lokasi laboratorium tetap konsisten dan tidak bernilai negatif, serta riwayat transaksi selalu dipertahankan tanpa pernah dihapus.
 
 ---
 
 ## 2. Outcome Statement
 
-Transaksi pemakaian barang pada lokasi laboratorium **telah berhasil disimpan, diedit, atau dibatalkan secara persisten**, dan **saldo stok barang pada lokasi laboratorium berkurang atau disesuaikan secara atomik**, dengan riwayat transaksi yang **tidak pernah dihapus**.
+Transaksi pemakaian barang pada lokasi laboratorium **berhasil tercatat, terkoreksi (Edit), atau dibatalkan (Cancel) secara persisten**, dengan **saldo stok barang pada lokasi terkait disesuaikan secara atomik**, serta **seluruh riwayat transaksi dipertahankan tanpa penghapusan**.
 
 ---
 
@@ -93,7 +93,7 @@ Transaksi pemakaian barang pada lokasi laboratorium **telah berhasil disimpan, d
 | Cancel tanpa menyertakan `CancelReason` | Pembatalan ditolak. Alasan pembatalan wajib diisi. |
 | Cancel pada transaksi berstatus `Cancelled` | Aksi ditolak. Pembatalan hanya berlaku untuk transaksi `Active`. Stok tidak berubah. |
 | Upaya menghapus (Delete) transaksi tersimpan | Aksi ditolak mutlak. Transaksi tidak boleh dihapus. |
-| Kegagalan teknis penyimpanan Create/Edit/Cancel | Operasi dibatalkan penuh (rollback). Data dan stok tidak berubah parsial. |
+| Kegagalan teknis penyimpanan Create/Edit/Cancel | Operasi gagal dan tidak menghasilkan perubahan parsial pada transaksi maupun stok. |
 
 ---
 
@@ -134,5 +134,5 @@ Transaksi pemakaian barang pada lokasi laboratorium **telah berhasil disimpan, d
 5. **Create:** Status menjadi `Active`, stok berkurang sebesar kuantitas pemakaian (wajib $\le$ stok tersedia).
 6. **Edit:** Modifikasi transaksi `Active` in-place berbasis delta stok; ditolak jika stok kurang untuk selisih kenaikan; alasan edit opsional.
 7. **Cancel:** Khusus transaksi `Active`, wajib `CancelReason`, status menjadi `Cancelled`, tidak bergantung stok saat ini, mengembalikan kuantitas aktif terakhir (*latest active quantity*).
-8. **Atomisitas:** Eksekusi data transaksi dan stok selalu utuh; stok tidak pernah negatif.
+8. **Atomisitas:** Eksekusi data transaksi dan stok selalu utuh; stok tidak boleh menjadi negatif.
 9. **Scope Boundary:** Tidak mencakup Order Lab, Sample Collection, Result Management, Pengadaan, Mutasi Barang, maupun Opname.
