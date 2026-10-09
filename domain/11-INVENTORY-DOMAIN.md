@@ -1,8 +1,8 @@
 ---
 
 DocumentName: Inventory Domain
-Version: 1.0
-LastUpdate: 2026-09-30
+Version: 1.1
+LastUpdate: 2026-10-09
 UpdatedBy: Drury Yudis
 ----------------------
 
@@ -60,17 +60,69 @@ Stock is the authoritative current state of inventory quantity.
 
 ### 3. INV-MUTASI — Mutasi
 
-The capability to record **inventory movements** that change stock quantities.
+The capability to manage inventory movements between inventory locations through a three-stage business process.
 
-Examples:
+#### Three-Stage Mutation Cycle
 
-* Stock receipt
-* Stock transfer
-* Stock adjustment
-* Stock issue
-* Other movements affecting inventory quantity
+The mutation cycle establishes three distinct persistent business facts:
 
-Each movement contributes to the resulting stock state.
+| Business Record | Business Fact | Meaning |
+|---|---|---|
+| `ReqMutasi` | Mutation Request exists | A request to move inventory has been recorded. |
+| `Mutasi` | Stock Dispatch exists | Inventory has been issued from the source location for transfer. |
+| `TerimaMutasi` | Stock Receipt exists | The destination has recorded acceptance of the transferred inventory. |
+
+#### Business Semantics
+
+**1. ReqMutasi — Request**
+
+Records the intention to transfer inventory from a source location to a destination location.
+
+The existence of a request does not mean that the inventory has been dispatched or received.
+
+**2. Mutasi — Dispatch / Issue**
+
+Records the physical dispatch or issue of inventory from the source location.
+
+This establishes that a dispatch event has occurred. It is distinct from the request and does not, by itself, establish that the destination has accepted the inventory.
+
+**3. TerimaMutasi — Receipt / Acceptance**
+
+Records the destination's acceptance of the transferred inventory.
+
+This establishes that a receipt event has occurred. The accepted quantity may differ from the dispatched quantity and must be recorded according to the actual receipt.
+
+#### Business Invariants
+
+- A mutation request, a dispatch record, and a receipt record represent distinct business facts.
+- A request alone must not be treated as a completed stock movement.
+- Dispatch and receipt must remain distinguishable so that inventory in transit can be accounted for.
+- The dispatched quantity and accepted quantity must be independently recorded.
+- The absence of a receipt record must not be interpreted as proof that no dispatch occurred.
+- Stock quantities must reflect the applicable business event and its recorded quantity; a receipt must not be inferred merely from dispatch.
+
+#### Conceptual Flow
+
+```text
+ReqMutasi
+    │
+    ▼
+Mutation Request exists
+    │
+    ▼
+Mutasi
+    │
+    ▼
+Stock Dispatch exists
+    │
+    ▼
+TerimaMutasi
+    │
+    ▼
+Stock Receipt exists
+```
+
+The three records define the business meaning of the mutation cycle. They do not prescribe the UI, database schema, or technical implementation.
 
 ### 4. INV-MUSNAH — Musnah
 
@@ -140,7 +192,7 @@ It compares the physical quantity with the recorded stock and records the result
 | ---------- | ------------------------------------------------ |
 | INV-MASTER | Maintain inventory item master information       |
 | INV-STOK   | Maintain the current stock state                 |
-| INV-MUTASI | Record inventory movements                       |
+| INV-MUTASI | Manage inventory movements between locations through three-stage mutation cycle |
 | INV-MUSNAH | Record destroyed or removed inventory            |
 | INV-REPACK | Transform inventory through repack or production |
 | INV-PAKAI  | Record inventory consumption                     |

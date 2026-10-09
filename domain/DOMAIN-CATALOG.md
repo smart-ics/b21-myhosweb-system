@@ -149,6 +149,7 @@ Domain Code : **PUR**
 5. `PUR-DO` DO Penerimaan Barang
 6. `PUR-FAKTUR` Faktur
 7. `PUR-RETURN` Purchase Return
+8. `PUR-FORECAST` Procurement Forecasting
 
 ---
 

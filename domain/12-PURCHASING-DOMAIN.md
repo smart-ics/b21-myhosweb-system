@@ -1,8 +1,8 @@
 ---
 
 DocumentName: Purchasing Domain
-Version: 1.0
-LastUpdate: 2026-09-30
+Version: 1.1
+LastUpdate: 2026-10-09
 UpdatedBy: Drury Yudis
 ----------------------
 
@@ -23,7 +23,7 @@ Its responsibility is to ensure that the hospital's material procurement is prop
 The Domain covers supplier management and the operational lifecycle of procurement documents:
 
 ```text
-Material Requirement
+Material Requirement / Forecasting
         ↓
 Purchase Request
         ↓
@@ -44,6 +44,7 @@ The Purchasing Domain is responsible for:
 
 * Maintaining supplier information used for procurement.
 * Managing material requirements.
+* Estimating material purchasing requirements for upcoming periods (Procurement Forecasting).
 * Managing purchase requests.
 * Managing purchase orders with suppliers.
 * Managing receipt of purchased goods.
@@ -192,12 +193,36 @@ The capability manages:
 
 The resulting inventory adjustment is coordinated with the **Inventory Domain**, which remains authoritative for physical stock.
 
+---
+
+### 8. PUR-FORECAST — Procurement Forecasting
+
+The capability to estimate future material purchasing requirements for upcoming periods (memperkirakan kebutuhan pembelian material pada periode mendatang).
+
+A forecast generates estimates rather than purchasing authorizations. Procurement decisions are recorded through **PUR-PURREQ**. The **Inventory Domain** remains the authoritative source for stock information.
+
+The capability manages:
+
+* Material and estimated quantities (material dan kuantitas estimasi).
+* Forecast period (periode forecast).
+* Projected demand (perkiraan demand).
+* Stock information (informasi stok).
+* Outstanding purchase orders (outstanding purchase order).
+* Estimated shortage (estimasi kekurangan).
+
+#### Capability Boundary
+
+* Forecast menghasilkan estimasi, bukan otorisasi pembelian.
+* Keputusan pengadaan dicatat melalui **PUR-PURREQ**.
+* **Inventory** tetap menjadi sumber otoritatif untuk informasi stok.
+
 ## Domain Boundary
 
 ### Owns
 
 * Supplier master information used for procurement.
 * Material requirements.
+* Procurement forecasts and demand estimation.
 * Purchase Requests.
 * Purchase Orders.
 * Goods Receipts.
@@ -228,15 +253,16 @@ The resulting inventory adjustment is coordinated with the **Inventory Domain**,
 
 ## Capability Map
 
-| Capability   | Business Ability                                 |
-| ------------ | ------------------------------------------------ |
-| PUR-SUPPLIER | Maintain suppliers used for hospital procurement |
-| PUR-MATREQ   | Manage material requirements                     |
-| PUR-PURREQ   | Manage requests to procure materials             |
-| PUR-PO       | Manage purchase orders issued to suppliers       |
-| PUR-DO       | Record goods received from suppliers             |
-| PUR-FAKTUR   | Manage supplier invoices related to purchases    |
-| PUR-RETURN   | Manage goods returned to suppliers               |
+| Capability   | Business Ability                                                      |
+| ------------ | --------------------------------------------------------------------- |
+| PUR-SUPPLIER | Maintain suppliers used for hospital procurement                      |
+| PUR-MATREQ   | Manage material requirements                                          |
+| PUR-PURREQ   | Manage requests to procure materials                                  |
+| PUR-PO       | Manage purchase orders issued to suppliers                            |
+| PUR-DO       | Record goods received from suppliers                                  |
+| PUR-FAKTUR   | Manage supplier invoices related to purchases                         |
+| PUR-RETURN   | Manage goods returned to suppliers                                    |
+| PUR-FORECAST | Estimate future material purchasing requirements for upcoming periods |
 
 ## Core Rules
 
@@ -248,3 +274,4 @@ The resulting inventory adjustment is coordinated with the **Inventory Domain**,
 6. A supplier invoice must remain traceable to the corresponding procurement transaction.
 7. A Purchase Return must remain traceable to the original purchase or goods receipt.
 8. Purchasing owns procurement transactions; financial payment and settlement remain outside the Purchasing Domain.
+9. Procurement forecasting produces estimates and projected shortages, not purchase authorization; procurement decisions are recorded through PUR-PURREQ, with Inventory remaining the authoritative source for stock information.

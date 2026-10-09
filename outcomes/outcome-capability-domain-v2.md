@@ -76,7 +76,7 @@ Berikut adalah pemetaan komprehensif ke-48 Outcome V2 dari [`outcomes/list-outco
 | 7 | **Eklaim** | *BPJS INA-CBGs Claim Package exists* | **BPJ** (BPJS) | `BPJ-EKLAIM` e-Klaim | `BRM-CODING` (ICD-10/9-CM), `BRM-MORBID`, `TRK-BILLING` (Biaya Riil RS), `TRK-JAMINAN`, `ADM-REG` | Known (Catalog) |
 | 8 | **Expertise** | *Radiology Expertise Report exists* | **RAD** (Radiologi) | `RAD-EXPERTISE` Expertise | `RAD-EXAM` (Hasil Citra Modalitas), `ORG-PPA` (Dokter Spesialis Radiologi), `PAS-DATSOS` | Known |
 | 9 | **Faktur** | *Supplier Invoice exists* | **PUR** (Purchasing) | `PUR-FAKTUR` Faktur | `PUR-PO` (Pesanan Pembelian), `PUR-DO` (Tanda Terima Fisik), `PUR-SUPPLIER` | Known |
-| 10 | **Forecasting** | *Procurement Forecast Plan exists* | **PUR** (Purchasing) | `PUR-MATREQ` / `PUR-PURREQ` (Candidate: `PUR-FORECAST`) | `INV-STOK` (Saldo Berjalan), `INV-PAKAI` (Tren Historis Konsumsi) | Capability Candidate |
+| 10 | **Forecasting** | *Procurement Forecast Plan exists* | **PUR** (Purchasing) | `PUR-FORECAST` Procurement Forecasting | `INV-STOK` (Saldo Berjalan), `INV-PAKAI` (Tren Historis Konsumsi) | Known |
 | 11 | **HasilLab** | *Validated Laboratory Result exists* | **LAB** (Laboratory) | `LAB-RESULT` Lab Result Management | `LAB-COLLECT` (Spesimen), `LAB-ORDER`, `ORG-PPA` (Analis Lab / Patolog Klinis) | Known |
 | 12 | **IgdTriage** | *Emergency Triage Assessment exists* | **IGD** (Gawat Darurat) | `IGD-TRIAGE` Triage | `IGD-VISIT`, `ORG-PPA` (Dokter/Perawat Triase) | Known |
 | 13 | **IgdVisit** | *Emergency Visit exists* | **IGD** (Gawat Darurat) | `IGD-VISIT` IGD Visit | `PAS-DATSOS`, `ADM-REG` (Asosiasi Registrasi Administratif Lanjutan) | Known |
@@ -103,7 +103,7 @@ Berikut adalah pemetaan komprehensif ke-48 Outcome V2 dari [`outcomes/list-outco
 | 34 | **PurchaseReq** | *Purchase Request exists* | **PUR** (Purchasing) | `PUR-PURREQ` Purchase Request | `PUR-MATREQ`, `PUR-SUPPLIER`, `INV-MASTER` | Known |
 | 35 | **RegExternal** | *Direct External Lab Registration exists* | **LAB** (Laboratory) | `LAB-EXTERNAL` Registrasi External | `TRK-BILLING`, `TRK-TARIF` | Known |
 | 36 | **Registrasi** | *Hospital Visit Registration exists* | **ADM** (Admission) | `ADM-REG` Registration | `PAS-DATSOS`, `ORG-LAYANAN`, `ORG-JADWAL`, `TRK-JAMINAN`, `ADM-BOOKING` | Known |
-| 37 | **ReqMutasi** | *Stock Transfer Request exists* | **INV** (Inventory) | `INV-MUTASI` (Sub-Kapabilitas Pengajuan) [Candidate: `INV-REQ-MUTASI`] | `ORG-LAYANAN` (Unit Pemohon & Unit Penyedia), `INV-STOK` | Existing / Candidate |
+| 37 | **ReqMutasi** | *Stock Transfer Request exists* | **INV** (Inventory) | `INV-MUTASI` Mutasi (Tahap 1: ReqMutasi) | `ORG-LAYANAN` (Unit Pemohon & Unit Penyedia), `INV-STOK` | Known |
 | 38 | **ReturBeli** | *Purchase Return exists* | **PUR** (Purchasing) | `PUR-RETURN` Purchase Return | `PUR-DO`, `PUR-SUPPLIER`, `INV-MUTASI` (Pengurangan Fisik Stok) | Known |
 | 39 | **RoomCharge** | *Calculated Room Charge exists* | **RNA** (Rawat Inap) | `RNA-CHARGE` Room Charge | `RNA-BED` (Durasi & Perpindahan Bed), `TRK-TARIF` (Tarif Dasar Kamar), `TRK-BILLING` | Known |
 | 40 | **SampleCollection** | *Specimen Sample Record exists* | **LAB** (Laboratory) | `LAB-COLLECT` Specimen Collection | `LAB-ORDER`, `ORG-PPA` (Petugas Flebotomi/Analis) | Known |
@@ -111,7 +111,7 @@ Berikut adalah pemetaan komprehensif ke-48 Outcome V2 dari [`outcomes/list-outco
 | 42 | **StokOpname** | *Physical Stock Reconciliation exists* | **INV** (Inventory) | `INV-OPNAME` Stok Opname | `INV-STOK`, `INV-MASTER`, `ORG-LAYANAN` | Known |
 | 43 | **TelaahResep** | *Pharmacist Clinical Review exists* | **APT** (Apotek) | `APT-TELAAH` Telaah Resep | `APT-RESEP`, `ORG-PPA` (Apoteker Penelaah) | Known |
 | 44 | **TerimaBrg** | *Goods Receipt (DO) Record exists* | **PUR** (Purchasing) | `PUR-DO` DO Penerimaan Barang | `PUR-PO`, `PUR-SUPPLIER`, `INV-MUTASI` / `INV-STOK` (Pencatatan Masuk Fisik) | Known |
-| 45 | **TerimaMutasi** | *Stock Transfer Acceptance exists* | **INV** (Inventory) | `INV-MUTASI` (Sub-Kapabilitas Penerimaan) [Candidate: `INV-RCV-MUTASI`] | `INV-STOK`, `ORG-LAYANAN` (Gudang Penerima) | Existing / Candidate |
+| 45 | **TerimaMutasi** | *Stock Transfer Acceptance exists* | **INV** (Inventory) | `INV-MUTASI` Mutasi (Tahap 3: TerimaMutasi) | `INV-STOK`, `ORG-LAYANAN` (Gudang Penerima) | Known |
 | 46 | **Tindakan** | *Clinical Procedure Charge Record exists* | **RJL** / **IGD** / **RNA** (Clinical Care) | `RJL-TINDAKAN` / `IGD-TINDAKAN` | `TRK-TARIF`, `TRK-BILLING`, `ORG-PPA` (Pelaksana Klinis), `PAS-DATSOS` | Known |
 | 47 | **VclaimBpjs** | *BPJS Participation & SEP exists* | **BPJ** (BPJS) | `BPJ-VCLAIM` VClaim | `ADM-REG`, `TRK-JAMINAN`, `PAS-DATSOS` | Known (Catalog) |
 | 48 | **WaitingList** | *Inpatient Bed Waiting Queue exists* | **RNA** (Rawat Inap) | `RNA-ANTRIAN` Antrian Masuk Bangsal | `ADM-REG` (Rekomendasi Ranap), `ORG-BANGSAL` (Ketersediaan Kamar) | Known |
@@ -217,18 +217,17 @@ flowchart TD
 
 Sesuai Bab 5 & 6 dari [`foundation/conceptual-model.md`](file:///d:/Project.Aktif/b21-myhosweb-system/foundation/conceptual-model.md), tercatat beberapa poin tata kelola yang perlu diperhatikan oleh Product Owner, Analis, dan Arsitek:
 
-1. **Kapabilitas `Forecasting` (OC-10)**:
-   - *Status*: **Capability Candidate**.
-   - *Analisis*: Di dalam spesifikasi [`domain/12-PURCHASING-DOMAIN.md`](file:///d:/Project.Aktif/b21-myhosweb-system/domain/12-PURCHASING-DOMAIN.md), kapabilitas pengadaan mencakup `PUR-MATREQ`, `PUR-PURREQ`, `PUR-PO`, `PUR-DO`, `PUR-FAKTUR`, dan `PUR-RETURN`. Peramalan kebutuhan barang (*forecasting*) berfungsi sebagai instrumen analitik untuk memperkirakan kuantitas pembelian ideal sebelum membuat Material/Purchase Request.
-   - *Rekomendasi*: Daftarkan kapabilitas baru `PUR-FORECAST` ke dalam Domain Purchasing, atau jadwalkan persetujuan Product Owner sebagai sub-kapabilitas formal dari `PUR-PURREQ`.
+1. **Kapabilitas `Forecasting` (PUR-FORECAST)**:
+   - *Status Saat Ini*: **Known Capability** (Telah disahkan dan dicatat secara formal di [`domain/12-PURCHASING-DOMAIN.md`](file:///d:/Project.Aktif/b21-myhosweb-system/domain/12-PURCHASING-DOMAIN.md) dan [`domain/DOMAIN-CATALOG.md`](file:///d:/Project.Aktif/b21-myhosweb-system/domain/DOMAIN-CATALOG.md)).
+   - *Prinsip*: Menghasilkan estimasi kebutuhan material masa depan, bukan otorisasi pembelian. Otorisasi keputusan pembelian resmi dieksekusi melalui `PUR-PURREQ`, dengan `Inventory` tetap menjadi sumber otoritatif untuk informasi saldo stok.
 
-2. **Dekomposisi Mutasi Stok (`ReqMutasi`, `Mutasi`, `TerimaMutasi`)**:
-   - Di dalam spesifikasi [`domain/11-INVENTORY-DOMAIN.md`](file:///d:/Project.Aktif/b21-myhosweb-system/domain/11-INVENTORY-DOMAIN.md), pergerakan barang dicakup dalam kapabilitas umum `INV-MUTASI`.
-   - Di lapangan operasional rumah sakit (dan dalam Outcome V2), mutasi memiliki 3 fase *persisted business state*:
-     1. `ReqMutasi`: Permintaan transfer barang oleh unit pemohon (*Request exists*).
-     2. `Mutasi`: Pengeluaran fisik barang dari unit penyedia (*Dispatch/Issue exists*).
-     3. `TerimaMutasi`: Pengakuan penerimaan fisik dan bertambahnya stok di unit tujuan (*Receipt exists*).
-   - *Status*: **Existing but Undocumented Sub-Capabilities** di bawah `INV-MUTASI`.
+2. **Dekomposisi Mutasi Tiga Tahap (`ReqMutasi`, `Mutasi`, `TerimaMutasi`)**:
+   - *Status Saat Ini*: **Known Capability** (Telah disahkan dan dicatat secara formal di [`domain/11-INVENTORY-DOMAIN.md`](file:///d:/Project.Aktif/b21-myhosweb-system/domain/11-INVENTORY-DOMAIN.md) di bawah `INV-MUTASI`).
+   - *Prinsip*: Menetapkan tiga fakta bisnis persisten yang independen:
+     1. `ReqMutasi`: *Mutation Request exists* (pencatatan intensi transfer, belum terjadi perpindahan).
+     2. `Mutasi`: *Stock Dispatch exists* (pencatatan pengeluaran fisik dari gudang asal, barang dalam transit).
+     3. `TerimaMutasi`: *Stock Receipt exists* (penerimaan fisik dan verifikasi kuantitas di gudang tujuan).
+   - Invarian bisnis: Kuantitas kirim dan kuantitas terima dicatat secara independen; penerimaan tidak boleh diasumsikan hanya dari pengiriman.
 
 3. **Status Domain Berkas Rekam Medis (BRM) & BPJS (BPJ)**:
    - Meskipun terdapat 13 dokumen spesifikasi domain (01 hingga 13), katalog utama [`domain/DOMAIN-CATALOG.md`](file:///d:/Project.Aktif/b21-myhosweb-system/domain/DOMAIN-CATALOG.md) secara resmi mendokumentasikan Domain 14 (`BRM`) dan Domain 15 (`BPJ`).
