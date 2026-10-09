@@ -3,7 +3,7 @@
 | Field       | Value        |
 |-------------|--------------|
 | Code        | OC-06-07     |
-| Version     | 1.1          |
+| Version     | 1.2          |
 | Status      | Draft        |
 | LastUpdated | 2026-10-09   |
 
@@ -11,17 +11,17 @@
 
 ## 1. Business Purpose
 
-Rumah sakit mengelola persediaan di berbagai unit operasional, termasuk Bangsal Rawat Inap (SC-06). Untuk memastikan akurasi data dan keandalan informasi persediaan, diperlukan pencatatan operasional berkala maupun insidental untuk memeriksa keberadaan fisik barang secara langsung.
+Rumah sakit mengelola persediaan di berbagai unit operasional, termasuk Bangsal Rawat Inap (SC-06). Untuk memastikan akurasi data dan keandalan informasi persediaan, diperlukan pencatatan operasional untuk memeriksa keberadaan fisik barang secara langsung.
 
 **Opname adalah pencatatan hasil penghitungan fisik persediaan barang di Bangsal Rawat Inap, perbandingannya dengan saldo stok yang tercatat dalam sistem, serta dokumentasi hasil dan selisih pemeriksaan yang telah melalui validasi.**
 
-Fokus utama outcome ini adalah **pencatatan hasil penghitungan fisik, pembandingan dengan stok sistem, pendokumentasian selisih, dan validasi hasil pemeriksaan** hingga mencapai status akhir (**`Disahkan`** atau **`Dikembalikan`**), bukan eksekusi penyesuaian saldo stok (*koreksi stok*).
+Fokus utama outcome ini adalah **pencatatan hasil penghitungan fisik, pembandingan dengan stok sistem, pendokumentasian selisih, dan validasi hasil pemeriksaan** hingga mencapai status akhir (**`Disahkan`** atau **`Dikembalikan`**). Outcome ini tidak mencakup penyesuaian saldo stok (*koreksi stok*).
 
 Opname merupakan **Operational Service Event** (peristiwa operasional pemeriksaan fisik persediaan), bukan Clinical Service Event. Alur sederhananya:
 
 > **Penghitungan fisik dicatat → dibandingkan dengan saldo sistem & dihitung selisihnya → diajukan untuk validasi → divalidasi hingga berstatus Disahkan (atau Dikembalikan untuk diperiksa kembali) → menjadi fakta operasional yang dapat dipertanggungjawabkan.**
 
-Hasil pemeriksaan yang berstatus `Disahkan` menjadi dasar faktual yang akuntabel bagi tindak lanjut operasional. Outcome ini dirancang secara **pragmatis, operasional, dan sederhana untuk MyHospital Web**, tanpa memperluas ruang lingkup ke sistem audit investigatif, prosedur hitung berulang yang rumit, maupun alur persetujuan bertingkat.
+Hasil pemeriksaan yang berstatus `Disahkan` menjadi dasar faktual yang akuntabel bagi tindak lanjut operasional. Outcome ini dirancang secara pragmatis dan sederhana untuk kebutuhan MyHospital Web tanpa memperluas ruang lingkup ke audit investigatif atau persetujuan bertingkat.
 
 ---
 
@@ -31,15 +31,17 @@ Hasil pemeriksaan yang berstatus `Disahkan` menjadi dasar faktual yang akuntabel
 > **“Business fact apa yang harus ada setelah Opname terjadi?”**
 >
 > Jawaban:
-> **Terdapat catatan hasil pemeriksaan fisik persediaan di Bangsal Rawat Inap yang membandingkan jumlah fisik dengan saldo stok sistem beserta selisihnya, dan telah diverifikasi status keabsahannya (Draft, Menunggu Validasi, Disahkan, atau Dikembalikan untuk periksa ulang) sebagai fakta operasional yang dapat dipertanggungjawabkan.**
+> **Terdapat catatan hasil penghitungan fisik persediaan di Bangsal Rawat Inap yang membandingkan jumlah fisik dengan saldo stok sistem beserta selisihnya, yang telah selesai divalidasi dan mencapai status akhir: Disahkan (hasil dinyatakan sah) atau Dikembalikan (hasil perlu diperiksa atau diperbaiki kembali).**
 
-**Opname adalah pencatatan dan verifikasi jumlah fisik persediaan barang di Bangsal Rawat Inap, perbandingannya dengan saldo stok yang tercatat dalam sistem, serta dokumentasi hasil dan selisih pemeriksaan.**
+**Opname adalah pencatatan hasil penghitungan fisik persediaan barang di Bangsal Rawat Inap, perbandingannya dengan saldo stok sistem, serta dokumentasi hasil dan selisih pemeriksaan.**
 
 Outcome ini merepresentasikan fakta operasional bahwa:
 1. Objek dan lokasi persediaan barang yang diperiksa di Bangsal Rawat Inap teridentifikasi dan dihitung secara fisik;
 2. Jumlah fisik barang telah dibandingkan dengan saldo stok yang tercatat di sistem pada saat pemeriksaan, dan selisih stok (apabila ada) tercatat secara transparan;
-3. Hasil pemeriksaan fisik dan perbandingannya telah melalui proses verifikasi dengan status yang jelas (*Draft*, *Menunggu Validasi*, *Disahkan*, atau *Dikembalikan* untuk diperiksa/dihitung ulang) sehingga dapat dipertanggungjawabkan secara operasional;
-4. Pencatatan dan pengesahan hasil opname berdiri sendiri dan **tidak secara otomatis mengubah atau mengoreksi saldo stok sistem**.
+3. Status proses Opname terkelola secara tegas antara status proses berjalan dan status akhir:
+   - **Status Proses Berjalan:** `Draft` (tahap pencatatan) dan `Menunggu Validasi` (tahap pengajuan validasi) merupakan proses yang masih berjalan dan bukan bukti bahwa outcome telah mencapai hasil akhir;
+   - **Status Akhir Validasi:** Outcome mencapai hasil akhir ketika hasil Opname berstatus **`Disahkan`** (hasil telah divalidasi dan dinyatakan sah sebagai fakta operasional yang dapat dipertanggungjawabkan) atau **`Dikembalikan`** (hasil telah divalidasi tetapi dikembalikan untuk diperiksa atau diperbaiki kembali, bukan disahkan);
+4. Hasil Opname berdiri sendiri dan **tidak secara otomatis mengubah saldo stok sistem** (lihat Batasan Bisnis Bagian 7).
 
 ---
 
@@ -52,9 +54,7 @@ Outcome ini merepresentasikan fakta operasional bahwa:
 | Organisasi (`ORG`) | **Supporting / Context Domain:** Menyediakan referensi unit layanan atau ruangan bangsal tempat persediaan diperiksa (`ORG-LAYANAN`), serta staf atau petugas yang melakukan penghitungan fisik, pencatatan, dan validasi (`ORG-PPA`). |
 
 > **Catatan Batasan Domain:**
-> Domain Catalog tetap menjadi sumber otoritatif untuk penetapan Domain dan Capability. Outcome ini tidak mengambil alih kepemilikan atas transaksi pemakaian barang (`INV-PAKAI`), mutasi barang (`INV-MUTASI`), pengadaan (`PUR`), pemusnahan barang (`INV-MUSNAH`), maupun tindakan klinis (`OC-06-01`).
->
-> Outcome ini secara tegas memisahkan pencatatan opname dari tindakan **Koreksi Stok**; koreksi stok merupakan aktivitas logistik terpisah dalam domain Inventory yang memerlukan kewenangan tersendiri dan tidak dieksekusi secara otomatis oleh outcome Opname. Domain pendukung berpartisipasi murni sebagai penyedia konteks lokasi bangsal dan petugas pelaksana/validator.
+> Domain Catalog tetap menjadi sumber otoritatif untuk penetapan Domain dan Capability. Outcome ini berfokus pada verifikasi fisik persediaan di bangsal dan tidak mengambil alih transaksi logistik lain (`INV-PAKAI`, `INV-MUTASI`, `PUR-DO`) maupun tindakan klinis (`OC-06-01`). Pelaksanaan Koreksi Stok ditegaskan sebagai aktivitas terpisah dalam domain Inventory (lihat Bagian 7). Domain pendukung berpartisipasi murni sebagai penyedia konteks lokasi bangsal dan petugas pelaksana/validator.
 
 ---
 
@@ -87,9 +87,9 @@ Outcome ini merepresentasikan fakta operasional bahwa:
 - Jumlah aktual hasil penghitungan fisik barang teridentifikasi dan bernilai non-negatif (≥ 0).
 - Saldo stok sistem pada saat opname teridentifikasi untuk barang dan lokasi bersangkutan sebagai data pembanding.
 - Selisih antara jumlah fisik dan saldo stok sistem teridentifikasi dan tercatat (0/cocok, positif/selisih lebih, atau negatif/selisih kurang).
-- Status hasil opname teridentifikasi secara jelas (*Draft*, *Menunggu Validasi*, *Disahkan*, atau *Dikembalikan*).
+- Status hasil opname teridentifikasi secara jelas (`Draft`, `Menunggu Validasi`, `Disahkan`, atau `Dikembalikan`).
 - Waktu pencatatan atau pelaksanaan opname teridentifikasi.
-- Hasil opname telah dicatat sebagai fakta operasional yang dapat dipertanggungjawabkan tanpa mengubah saldo stok sistem secara otomatis.
+- Catatan hasil opname berdiri sendiri dan tidak mengubah saldo stok sistem secara otomatis.
 
 ### 5.2 Required Recorded Information
 
@@ -104,7 +104,7 @@ Pencatatan Opname mencatat informasi bisnis utama:
 - **Status Hasil Opname:**
   - **`Draft`:** Hasil opname masih dalam tahap pencatatan atau belum diajukan untuk validasi.
   - **`Menunggu Validasi`:** Hasil penghitungan fisik telah dicatat lengkap dan diajukan untuk proses validasi.
-  - **`Disahkan`:** Status hasil opname yang telah divalidasi dan dinyatakan valid.
+  - **`Disahkan`:** Status hasil opname yang telah divalidasi dan dinyatakan sah.
   - **`Dikembalikan`:** Status hasil opname yang belum dapat diterima saat validasi dan perlu diperiksa atau diperbaiki kembali.
 
 **Informasi Pendukung Operasional (Sesuai Kebutuhan):**
@@ -122,20 +122,20 @@ Pencatatan Opname mencatat informasi bisnis utama:
 - Pengajuan validasi hanya dapat dilakukan dari status *Draft* apabila data penghitungan fisik telah terisi.
 - Validasi (penetapan status *Disahkan* atau *Dikembalikan*) hanya dapat dilakukan terhadap hasil opname yang sedang berstatus *Menunggu Validasi*.
 - Hasil opname yang berstatus *Dikembalikan* dapat diperiksa atau dihitung ulang dan diperbarui catatannya sebelum diajukan kembali untuk validasi.
-- **Pencatatan opname dan penetapan status Disahkan tidak secara otomatis mengubah saldo stok sistem.**
+- Hasil opname dan penetapan statusnya tidak secara otomatis mengubah saldo stok sistem.
 
 ### 5.4 Completion Proof
 
 Outcome ini dinyatakan mencapai hasil akhir (*established*) apabila proses Opname telah selesai divalidasi dan mencapai salah satu status akhir berikut:
 
-1. **`Disahkan`:** Hasil penghitungan fisik persediaan di Bangsal Rawat Inap telah divalidasi dan dinyatakan valid sebagai fakta operasional yang dapat dipertanggungjawabkan (menjadi dasar tindak lanjut).
-2. **`Dikembalikan`:** Hasil Opname belum dapat diterima saat validasi dan ditetapkan perlu diperiksa atau diperbaiki kembali. Status `Dikembalikan` menandakan selesainya proses validasi tahap berjalan dengan keputusan pengembalian (bukan berarti hasil telah disahkan).
+1. **`Disahkan`:** Hasil penghitungan fisik persediaan di Bangsal Rawat Inap telah divalidasi dan dinyatakan sah sebagai fakta operasional yang dapat dipertanggungjawabkan (menjadi dasar tindak lanjut).
+2. **`Dikembalikan`:** Hasil Opname telah divalidasi tetapi dikembalikan untuk diperiksa atau diperbaiki kembali (bukan disahkan). Status `Dikembalikan` menandakan selesainya proses validasi tahap berjalan dengan keputusan pengembalian.
 
 > **Catatan Status Proses Berjalan (In-Progress):**
 > Status `Draft` dan `Menunggu Validasi` mencerminkan proses pencatatan dan pengajuan yang masih berjalan (*in-progress*) dan **bukan** merupakan bukti bahwa outcome Opname telah mencapai hasil akhir.
 
 **Kemandirian Hasil Opname:**
-Keabsahan bukti ketercapaian outcome ini berdiri sendiri dan tidak bergantung pada pelaksanaan transaksi koreksi saldo stok sistem otomatis, penyesuaian nilai buku akuntansi (*stock valuation*), alur persetujuan audit bertingkat yang rumit, maupun mekanisme investigasi selisih mendalam.
+Keabsahan bukti ketercapaian outcome ini berdiri sendiri dan tidak bergantung pada transaksi koreksi saldo stok sistem otomatis, penyesuaian nilai buku akuntansi (*stock valuation*), alur persetujuan bertingkat yang rumit, maupun mekanisme investigasi selisih mendalam.
 
 ---
 
@@ -147,10 +147,10 @@ Dimulai ketika petugas menginisiasi pencatatan penghitungan fisik persediaan bar
 
 ### End
 
-Berakhir ketika hasil penghitungan fisik persediaan dan perbandingannya dengan saldo stok sistem telah selesai divalidasi serta mencapai status akhir: **`Disahkan`** (hasil dinyatakan valid) atau **`Dikembalikan`** (hasil perlu diperiksa atau diperbaiki kembali).
+Berakhir ketika hasil penghitungan fisik persediaan dan perbandingannya dengan saldo stok sistem telah selesai divalidasi serta mencapai status akhir: **`Disahkan`** (hasil dinyatakan sah) atau **`Dikembalikan`** (hasil dikembalikan untuk diperiksa atau diperbaiki kembali).
 
 > **Catatan Batasan Boundary:**
-> Boundary Opname berfokus pada pencatatan, perbandingan stok, dan validasi hasil pemeriksaan fisik persediaan di bangsal. Boundary secara tegas **tidak mencakup pelaksanaan penyesuaian saldo stok (*Koreksi Stok*)**, jurnal pembukuan akuntansi atas selisih persediaan, maupun audit investigatif.
+> Boundary Opname berfokus pada pencatatan, perbandingan stok, dan validasi hasil pemeriksaan fisik persediaan di bangsal. Boundary secara tegas **tidak mencakup pelaksanaan penyesuaian saldo stok (*Koreksi Stok*)**, jurnal pembukuan akuntansi selisih persediaan, maupun audit investigatif.
 
 ---
 
@@ -158,23 +158,25 @@ Berakhir ketika hasil penghitungan fisik persediaan dan perbandingannya dengan s
 
 > Aturan bisnis yang harus selalu terpenuhi untuk Outcome ini.
 
-1. **Definisi dan Fokus Opname:** Opname adalah pencatatan hasil penghitungan fisik persediaan dan perbandingannya dengan stok sistem di Bangsal Rawat Inap, serta dokumentasi selisihnya.
+1. **Definisi dan Fokus Opname:**
+   Opname adalah pencatatan hasil penghitungan fisik persediaan barang di Bangsal Rawat Inap dan perbandingannya dengan stok sistem, serta dokumentasi selisihnya.
 2. **Pemisahan Tegas dari Koreksi Stok (Opname ≠ Koreksi Stok):**
    - Opname **tidak otomatis mengubah saldo stok sistem** berdasarkan hasil penghitungan fisik.
    - Koreksi Stok merupakan aktivitas terpisah yang dapat menggunakan hasil Opname yang telah disahkan sebagai dasar tindak lanjut, sesuai kewenangan dan ketentuan yang berlaku.
    - Penetapan status `Disahkan` pada hasil Opname tidak sama dengan persetujuan atau pelaksanaan Koreksi Stok.
 3. **Pemisahan dari Aktivitas Persediaan Lainnya:**
-   - **Bukan Pakai Barang (`OC-06-05`):** Opname memeriksa kuantitas fisik persediaan yang ada, bukan mencatat pemakaian atau konsumsi barang dalam pelayanan.
+   - **Bukan Pakai Barang (`OC-06-05`):** Opname memeriksa kuantitas fisik persediaan yang ada di lokasi, bukan mencatat pemakaian atau konsumsi barang dalam pelayanan.
    - **Bukan Mutasi Barang (`OC-06-06`):** Opname memverifikasi stok di lokasi tertentu, bukan memindahkan fisik barang antar-lokasi/unit.
    - **Bukan Penerimaan Barang (`PUR-DO`):** Opname bukan penerimaan barang baru dari pemasok/supplier.
-4. **Pragmatis dan Bebas dari Kompleksitas Audit Berlebihan:**
-   - Tidak mencakup sistem audit persediaan yang rumit, investigasi forensik kecurangan, prosedur hitung berulang kompleks (*double-blind counting*), maupun persetujuan bertingkat (*multi-tier approval*).
-   - Detail kewenangan validasi mengikuti kebijakan rumah sakit yang berlaku tanpa mengasumsikan struktur hierarki khusus.
-5. **Kemandirian dari Akuntansi Finansial:**
-   - Catatan hasil opname bersifat mandiri dan tidak mensyaratkan valuasi moneter selisih (nilai rupiah), penentuan harga pokok persediaan (FIFO/FEFO/Average), atau pembuatan jurnal akuntansi.
-6. **Kejelasan Status dan Validasi:**
-   - Status `Draft` dan `Menunggu Validasi` merupakan status proses berjalan (*in-progress*).
-   - Hasil akhir opname dicapai saat berstatus `Disahkan` (hasil dinyatakan valid) atau `Dikembalikan` (hasil perlu diperiksa atau diperbaiki kembali).
+4. **Pembedaan Status Proses Berjalan dan Status Akhir:**
+   - `Draft` dan `Menunggu Validasi` adalah status proses yang masih berjalan (*in-progress*), bukan bukti bahwa outcome telah mencapai hasil akhir.
+   - `Disahkan` dan `Dikembalikan` adalah status akhir dari proses validasi:
+     - `Disahkan` berarti hasil opname telah divalidasi dan dinyatakan sah.
+     - `Dikembalikan` berarti hasil opname telah divalidasi tetapi dikembalikan untuk diperiksa atau diperbaiki kembali, bukan disahkan.
+5. **Pragmatis dan Bebas dari Kompleksitas Berlebihan:**
+   - Tidak mencakup sistem audit investigatif forensik, prosedur hitung ganda kompleks (*double-blind counting*), maupun persetujuan bertingkat (*multi-tier approval*). Detail kewenangan validasi mengikuti kebijakan rumah sakit yang berlaku tanpa mengasumsikan struktur organisasi tertentu.
+6. **Kemandirian dari Akuntansi Finansial:**
+   - Catatan hasil opname bersifat mandiri dan tidak mensyaratkan valuasi moneter selisih (nilai rupiah), perhitungan harga pokok persediaan (FIFO/FEFO/Average), atau pembuatan jurnal akuntansi.
 
 ---
 
@@ -201,10 +203,10 @@ Berakhir ketika hasil penghitungan fisik persediaan dan perbandingannya dengan s
 | # | Kriteria Penerimaan | Validasi |
 |---|---------------------|----------|
 | AC-01 | Sistem dapat mencatat objek barang, lokasi Bangsal Rawat Inap, hasil penghitungan fisik persediaan, perbandingannya dengan saldo stok sistem, serta selisih stok yang ditemukan sebagai fakta operasional. | Completeness |
-| AC-02 | Status proses opname dapat dikelola secara jelas (*Draft* dan *Menunggu Validasi* sebagai proses berjalan). | Completeness |
-| AC-03 | Outcome mencapai hasil akhir ketika hasil opname berstatus *Disahkan* (hasil dinyatakan valid) atau *Dikembalikan* (hasil perlu diperiksa atau diperbaiki kembali). | Completeness |
+| AC-02 | Status proses opname dapat dikelola secara jelas (*Draft* dan *Menunggu Validasi* sebagai status proses berjalan). | Completeness |
+| AC-03 | Outcome mencapai hasil akhir ketika hasil opname berstatus *Disahkan* (hasil dinyatakan sah) atau *Dikembalikan* (hasil dikembalikan untuk diperiksa atau diperbaiki kembali, bukan disahkan). | Completeness |
 | AC-04 | Hasil opname yang belum dapat diterima saat validasi dapat ditetapkan berstatus *Dikembalikan* dengan pencatatan alasan pengembalian jika diperlukan. | Completeness |
-| AC-05 | Hasil opname yang telah *Disahkan* menjadi dokumen operasional yang valid dan dapat dipertanggungjawabkan sebagai dasar tindak lanjut. | Correctness |
+| AC-05 | Hasil opname yang telah *Disahkan* menjadi dokumen operasional yang sah dan dapat dipertanggungjawabkan sebagai dasar tindak lanjut. | Correctness |
 | AC-06 | Penetapan status *Disahkan* pada hasil opname secara tegas tidak otomatis mengubah atau memutakhirkan saldo stok sistem (Opname ≠ Koreksi Stok). | Constraint |
 | AC-07 | Koreksi Stok ditegaskan sebagai aktivitas terpisah yang dapat menggunakan hasil opname yang telah disahkan sebagai dasar, bukan bagian dari pembentukan outcome Opname. | Constraint |
 | AC-08 | Opname dapat dibedakan secara tegas dari transaksi Pakai Barang (`OC-06-05`), Mutasi Barang (`OC-06-06`), dan Penerimaan Barang (`PUR-DO`). | Constraint |
