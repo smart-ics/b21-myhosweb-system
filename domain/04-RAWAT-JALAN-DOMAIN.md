@@ -1,10 +1,9 @@
 ---
-
 DocumentName: Rawat Jalan Domain
-Version: 1.0
-LastUpdate: 2026-09-30
+Version: 1.1
+LastUpdate: 2026-10-10
 UpdatedBy: Drury Yudis
-----------------------
+---
 
 # RAWAT JALAN DOMAIN
 
@@ -24,13 +23,13 @@ It begins after outpatient registration and covers the clinical activities perfo
 
 ## Capabilities
 
-### 1. Konsultasi
+### 1. RJL-KONSUL — Konsultasi
 
 The capability to conduct and record the **clinical consultation** between the patient and the healthcare provider during an outpatient encounter.
 
 It includes the clinical assessment and decision-making performed as part of the consultation.
 
-### 2. Tindakan Klinis (RJL-TINDAKAN)
+### 2. RJL-TINDAKAN — Tindakan
 
 The capability to **record and manage chargeable procedures and interventions associated with an outpatient encounter, representing them as billable service items for financial processing**.
 
@@ -51,13 +50,13 @@ Examples:
 * Other billable outpatient service items
 
 
-### 3. Antrian Poli
+### 3. RJL-ANTRIAN — Antrian Poli
 
 The capability to manage the **outpatient clinic queue**.
 
 It organizes patients waiting for service at a specific outpatient clinic and supports the progression of patients through the clinic service queue.
 
-### 4. Rujukan Internal
+### 4. RJL-TRANSFER — Rujukan Internal
 
 The capability to transfer a patient from one outpatient service to another service within the hospital as part of the same episode of care.
 
@@ -77,7 +76,7 @@ Poli Gizi
 
 The destination service remains within the hospital's internal service structure.
 
-### 5. Pemeriksaan Awal
+### 5. RJL-AWAL — Pemeriksaan Awal
 
 The capability to automatically place patients into a queue for an **initial examination or screening service** before they are served by their target outpatient clinic.
 
@@ -137,10 +136,10 @@ The capability determines the patients who require initial examination and autom
 
 ## Capability Map
 
-| Capability       | Business Ability                                                                                               |
-| ---------------- | -------------------------------------------------------------------------------------------------------------- |
-| Konsultasi       | Conduct and record outpatient clinical consultation                                                            |
-| Tindakan Klinis  | Record and manage chargeable outpatient procedures and interventions for financial processing                  |
-| Antrian Poli     | Manage the patient queue for outpatient clinics                                                                |
-| Rujukan Internal | Transfer patients between internal outpatient services                                                         |
-| Pemeriksaan Awal | Automatically queue patients for required initial examination or screening before the target outpatient clinic |
+| Capability Code | Capability Name  | Business Ability                                                                                               |
+| --------------- | ---------------- | -------------------------------------------------------------------------------------------------------------- |
+| RJL-KONSUL      | Konsultasi       | Conduct and record outpatient clinical consultation                                                            |
+| RJL-TINDAKAN    | Tindakan         | Record and manage chargeable outpatient procedures and interventions for financial processing                  |
+| RJL-ANTRIAN     | Antrian Poli     | Manage the patient queue for outpatient clinics                                                                |
+| RJL-TRANSFER    | Rujukan Internal | Transfer patients between internal outpatient services                                                         |
+| RJL-AWAL        | Pemeriksaan Awal | Automatically queue patients for required initial examination or screening before the target outpatient clinic |

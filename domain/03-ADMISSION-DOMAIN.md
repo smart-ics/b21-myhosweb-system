@@ -1,5 +1,7 @@
 # Admission Domain
 
+Domain Code: **ADM**
+
 ## Purpose
 
 Mengelola proses masuk pasien ke rumah sakit sejak booking/appointment, registrasi kunjungan, antrian pendaftaran, sampai pencatatan perjalanan pasien selama satu kunjungan.
@@ -12,13 +14,13 @@ Domain ini berfokus pada **entry dan movement pasien dalam konteks kunjungan**, 
 
 ## Capabilities
 
-### 1. Booking
+### 1. ADM-BOOK — Booking
 
 Kemampuan untuk mengelola **booking / appointment** pasien untuk mendapatkan pelayanan rawat jalan.
 
 Booking terjadi sebelum kunjungan dan menjadi dasar bagi proses registrasi ketika pasien datang.
 
-### 2. Registration
+### 2. ADM-REG — Registration
 
 Kemampuan untuk mencatat **registrasi kunjungan pasien ke rumah sakit**.
 
@@ -30,13 +32,13 @@ Registration menangani jenis kunjungan:
 
 > Jenis registrasi tambahan belum ditentukan dalam model ini.
 
-### 3. Queue
+### 3. ADM-ANTRIAN — Queue
 
 Kemampuan untuk mengelola **antrian pendaftaran rawat jalan**.
 
 Queue mencatat posisi dan urutan pasien dalam proses pendaftaran rawat jalan.
 
-### 4. Patient Journey
+### 4. ADM-TRACKER — Patient Journey
 
 Kemampuan untuk mencatat **perjalanan pasien antar layanan selama satu kunjungan**.
 
@@ -82,9 +84,9 @@ Patient Journey mencatat layanan yang didatangi pasien dan hubungan perpindahan 
 
 ## Capability Map
 
-| Capability      | Business Ability                                              |
-| --------------- | ------------------------------------------------------------- |
-| Booking         | Mengelola appointment pasien sebelum kunjungan                |
-| Registration    | Mencatat kunjungan pasien ke rumah sakit                      |
-| Queue           | Mengelola antrian pendaftaran rawat jalan                     |
-| Patient Journey | Mencatat perjalanan pasien antar layanan dalam satu kunjungan |
+| Capability Code | Capability Name | Business Ability                                              |
+| --------------- | --------------- | ------------------------------------------------------------- |
+| ADM-BOOK        | Booking         | Mengelola appointment pasien sebelum kunjungan                |
+| ADM-REG         | Registration    | Mencatat kunjungan pasien ke rumah sakit                      |
+| ADM-ANTRIAN     | Queue           | Mengelola antrian pendaftaran rawat jalan                     |
+| ADM-TRACKER     | Patient Journey | Mencatat perjalanan pasien antar layanan dalam satu kunjungan |

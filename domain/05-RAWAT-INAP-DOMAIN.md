@@ -1,3 +1,10 @@
+---
+DocumentName: Rawat Inap Domain
+Version: 1.1
+LastUpdate: 2026-10-10
+UpdatedBy: Drury Yudis
+---
+
 # RAWAT INAP DOMAIN
 
 Domain Code: **RNA**
@@ -34,7 +41,7 @@ The Rawat Inap Domain is responsible for:
 
 ## Capabilities
 
-### 1. Antrian Masuk Bangsal
+### 1. RNA-WAITLIST — Waiting List
 
 Manages patients who have been assigned an inpatient destination but have not yet been registered to a specific inpatient unit and bed.
 
@@ -58,32 +65,22 @@ Therefore:
 
 ---
 
-### 2. Inpatient Registration
+### 2. RNA-BED — Bed Occupancy
 
-Registers a patient into an inpatient unit and assigns the patient to an available bed.
+Registers a patient into an inpatient unit, assigns the patient to an available bed, and manages the active occupancy of inpatient beds by patients.
 
-This capability establishes the patient's actual inpatient location.
-
-Registration is performed by the authorized staff of the receiving inpatient unit.
-
----
-
-### 3. Bed Occupancy
-
-Manages the occupancy of inpatient beds by patients.
-
-This capability maintains the current relationship between:
+This capability establishes the patient's actual inpatient location and maintains the current relationship between:
 
 * Inpatient unit
 * Bed
 * Patient
 * Occupancy period
 
-A bed is considered occupied only when a patient has actually been placed into that bed.
+Registration is performed by the authorized staff of the receiving inpatient unit. A bed is considered occupied only when a patient has actually been placed into that bed.
 
 ---
 
-### 4. Patient Transfer
+### 3. RNA-TRANSFER — Patient Transfer
 
 Manages the movement of an inpatient from one inpatient unit to another.
 
@@ -97,7 +94,7 @@ The transfer capability does not itself imply that the patient has already been 
 
 ---
 
-### 5. Room Charge
+### 4. RNA-ROOMCHARGE — Room Charge
 
 Determines the final charge for the room occupied by an inpatient.
 
@@ -117,7 +114,7 @@ The Rawat Inap Domain therefore determines **how the room tariff is applied**, w
 
 ---
 
-### 6. Housekeeping
+### 5. RNA-HK — Housekeeping
 
 Manages the operational readiness of inpatient beds after a patient leaves a bed and before another patient may occupy it.
 
@@ -135,7 +132,7 @@ This capability determines whether an otherwise empty bed is operationally ready
 
 ---
 
-### 7. Inpatient Discharge
+### 6. RNA-DISCHARGE — Inpatient Discharge
 
 Manages the operational completion of an inpatient stay when the patient leaves inpatient care.
 
@@ -145,7 +142,7 @@ Clinical discharge documentation remains within the appropriate clinical/EMR res
 
 ---
 
-### 8. RNA-TINDAKAN — Inpatient Tindakan
+### 7. RNA-TINDAKAN — Inpatient Tindakan
 
 The capability to **record and manage chargeable procedures and interventions associated with an inpatient stay, representing them as billable service items for financial processing**.
 
@@ -170,9 +167,8 @@ Examples:
 
 ### Owns
 
-* Inpatient destination queue.
-* Inpatient registration.
-* Bed occupancy.
+* Inpatient waiting list.
+* Bed occupancy and inpatient bed registration.
 * Inpatient transfer.
 * Inpatient location.
 * Room charging calculation based on occupancy.
@@ -229,16 +225,15 @@ Examples:
 
 ## Capability Map
 
-| Capability             | Business Ability                                                                             |
-| ---------------------- | -------------------------------------------------------------------------------------------- |
-| Antrian Masuk Bangsal  | Manage patients assigned an inpatient destination waiting for ward placement                 |
-| Inpatient Registration | Register a patient into an inpatient unit and assign an available bed                        |
-| Bed Occupancy          | Manage active occupancy of inpatient beds by patients                                        |
-| Patient Transfer       | Manage movement of inpatients between inpatient units                                        |
-| Room Charge            | Determine room charges based on occupancy duration, room class, and transfer rules          |
-| Housekeeping           | Manage bed cleaning and operational readiness for patient placement                          |
-| Inpatient Discharge    | Manage operational discharge and bed release when an inpatient stay ends                     |
-| Inpatient Tindakan     | Record and manage chargeable inpatient procedures and interventions for financial processing |
+| Capability Code | Capability Name     | Business Ability                                                                             |
+| --------------- | ------------------- | -------------------------------------------------------------------------------------------- |
+| RNA-WAITLIST    | Waiting List        | Manage patients assigned an inpatient destination waiting for ward placement                 |
+| RNA-BED         | Bed Occupancy       | Register a patient into an inpatient bed and manage active bed occupancy                     |
+| RNA-TRANSFER    | Patient Transfer    | Manage movement of inpatients between inpatient units                                        |
+| RNA-ROOMCHARGE  | Room Charge         | Determine room charges based on occupancy duration, room class, and transfer rules          |
+| RNA-HK          | Housekeeping        | Manage bed cleaning and operational readiness for patient placement                          |
+| RNA-DISCHARGE   | Inpatient Discharge | Manage operational discharge and bed release when an inpatient stay ends                     |
+| RNA-TINDAKAN    | Inpatient Tindakan  | Record and manage chargeable inpatient procedures and interventions for financial processing |
 
 ---
 
@@ -246,4 +241,4 @@ Examples:
 
 A patient is considered **actually admitted to an inpatient unit only after the receiving unit has registered the patient into a bed**.
 
-An assigned destination or inpatient queue entry does not constitute inpatient bed occupancy.
+An assigned destination or waiting list entry does not constitute inpatient bed occupancy.

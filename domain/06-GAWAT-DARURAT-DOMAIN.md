@@ -1,3 +1,10 @@
+---
+DocumentName: Gawat Darurat Domain
+Version: 1.1
+LastUpdate: 2026-10-10
+UpdatedBy: Drury Yudis
+---
+
 # GAWAT DARURAT DOMAIN
 
 Domain Code: **IGD**
@@ -34,7 +41,7 @@ The Gawat Darurat Domain is responsible for:
 
 ## Capabilities
 
-### 1. IGD Visit
+### 1. IGD-VISIT — IGD Visit
 
 The capability to record and manage a patient's **emergency visit**.
 
@@ -50,7 +57,7 @@ The IGD Visit therefore provides the operational context for emergency care befo
 
 ---
 
-### 2. Triage
+### 2. IGD-TRIAGE — Triage
 
 The capability to perform and record **emergency triage**.
 
@@ -62,7 +69,7 @@ Clinical findings and detailed medical documentation remain within the EMR domai
 
 ---
 
-### 3. IGD Tindakan (IGD-TINDAKAN)
+### 3. IGD-TINDAKAN — IGD Tindakan
 
 The capability to **record and manage chargeable procedures and interventions associated with an emergency visit, representing them as billable service items for financial processing**.
 
@@ -86,7 +93,7 @@ Examples:
 
 ---
 
-### 4. IGD Rawat Inap
+### 4. IGD-RANAP — IGD Transfer Ranap
 
 The capability to transfer an emergency patient into inpatient care when continued hospitalization is required.
 
@@ -110,7 +117,7 @@ The Rawat Inap Domain remains responsible for inpatient registration, bed placem
 
 ---
 
-### 5. Ambulance
+### 5. IGD-AMBULANCE — Ambulance
 
 The capability to record the **use of a hospital ambulance** and determine the associated charge.
 
@@ -163,13 +170,13 @@ This capability records the ambulance usage and the information required to dete
 
 ## Capability Map
 
-| Capability    | Business Ability                                                                             |
-| ------------- | -------------------------------------------------------------------------------------------- |
-| IGD Visit     | Record and manage emergency visits without requiring prior Admission registration            |
-| Triage        | Perform and record emergency triage priority for incoming patients                           |
-| IGD Tindakan  | Record and manage chargeable emergency procedures and interventions for financial processing |
-| IGD Rawat Inap| Manage transfer of emergency patients into inpatient care                                    |
-| Ambulance     | Record ambulance usage and determine distance- or area-based charges                         |
+| Capability Code | Capability Name    | Business Ability                                                                             |
+| --------------- | ------------------ | -------------------------------------------------------------------------------------------- |
+| IGD-VISIT       | IGD Visit          | Record and manage emergency visits without requiring prior Admission registration            |
+| IGD-TRIAGE      | Triage             | Perform and record emergency triage priority for incoming patients                           |
+| IGD-TINDAKAN    | IGD Tindakan       | Record and manage chargeable emergency procedures and interventions for financial processing |
+| IGD-RANAP       | IGD Transfer Ranap | Manage transfer of emergency patients into inpatient care                                    |
+| IGD-AMBULANCE   | Ambulance          | Record ambulance usage and determine distance- or area-based charges                         |
 
 ---
 

@@ -1,11 +1,13 @@
 ---
 DocumentName: Organisasi Domain
-Version: 1.0
-LastUpdate: 2026-09-30
+Version: 1.1
+LastUpdate: 2026-10-10
 UpdatedBy: Drury Yudis
 ---
 
 # ORGANISASI DOMAIN
+
+Domain Code: **ORG**
 
 ## 1. Purpose
 
@@ -38,7 +40,7 @@ ORGANISASI is responsible for:
 
 ## 4. Capabilities
 
-### 4.1 Layanan
+### 4.1 ORG-LYN — Layanan
 
 Defines the hospital's service units.
 
@@ -58,7 +60,7 @@ governance classifications.
 
 ---
 
-### 4.2 Instalasi
+### 4.2 ORG-INST — Instalasi
 
 Defines operational installations within the hospital.
 
@@ -69,7 +71,7 @@ An Instalasi may contain or organize multiple Layanan.
 
 ---
 
-### 4.3 Governance Mapping
+### 4.3 ORG-GOV-MAP — Governance Mapping
 
 Maintains the relationship between the hospital's internal organization and
 external healthcare governance standards.
@@ -84,7 +86,7 @@ The mapping exists to support standardized reporting and governance requirements
 
 ---
 
-### 4.4 PPA
+### 4.4 ORG-PPA — PPA
 
 Defines healthcare personnel who participate in clinical interventions.
 
@@ -101,7 +103,7 @@ interventions and actions.
 
 ---
 
-### 4.5 Jadwal Praktik
+### 4.5 ORG-JADW-PRTK — Jadwal Praktik
 
 Defines outpatient doctor practice schedules.
 
@@ -110,7 +112,7 @@ the doctor provides outpatient practice.
 
 ---
 
-### 4.6 Bangsal
+### 4.6 ORG-BANGSAL — Bangsal
 
 Defines the hospital's inpatient care location and bed structure.
 
