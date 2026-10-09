@@ -64,8 +64,8 @@ Sistem MyHosWeb memiliki **15 Domain Spesifikasi Utama** yang seluruhnya telah d
 Berikut adalah pemetaan komprehensif ke-51 Outcome V2 dari [`outcomes/list-outcome-v2.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/list-outcome-v2.md) ke Domain Pemilik Utama, Kapabilitas Utama, Kapabilitas Kontributor, dan Status Kapabilitas.
 
 > **Status Dokumen Definisi Formal (`outcomes/OC-*.md`):**
-> - 🟢 **Tersedia (20 Outcomes)**: Telah memiliki dokumen spesifikasi formal mandiri di direktori [`outcomes/`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes).
-> - ⚪ **Belum Tersedia (31 Outcomes)**: Belum memiliki dokumen spesifikasi formal mandiri (terpetakan secara arsitektural pada domain & kapabilitas terkait).
+> - 🟢 **Tersedia (21 Outcomes)**: Telah memiliki dokumen spesifikasi formal mandiri di direktori [`outcomes/`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes).
+> - ⚪ **Belum Tersedia (30 Outcomes)**: Belum memiliki dokumen spesifikasi formal mandiri (terpetakan secara arsitektural pada domain & kapabilitas terkait).
 
 | No | Outcome V2 | Dokumen Definisi Formal | Semantic Business State (`<Entity> exists`) | Primary Domain | Primary Capability | Contributing Domains & Capabilities | Status Kapabilitas |
 |---|---|---|---|---|---|---|---|
@@ -102,7 +102,7 @@ Berikut adalah pemetaan komprehensif ke-51 Outcome V2 dari [`outcomes/list-outco
 | 31 | **PasienTracker** | 🟢 [`OC-ADM-PASIEN-TRACKER.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-ADM-PASIEN-TRACKER.md) | *Patient Journey Step exists* | **ADM** (Admission) | `ADM-TRACKER` Pasien Journey | Seluruh Unit Pelayanan (RJL, RNA, IGD, LAB, RAD, APT), `PAS-DATSOS` | Known |
 | 32 | **PelaporanRL** | 🟢 [`OC-BRM-PELAPORAN-RL.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-BRM-PELAPORAN-RL.md) | *Ministry Health RL Report exists* | **BRM** (Berkas Rekam Medis) | `BRM-RL` Laporan RL | `BRM-CODING`, `BRM-MORBID`, `BRM-INDIKATOR` (BOR/LOS/TOI), `ORG-GOVERNANCE` (`LayananDk`) | Known (Catalog) |
 | 33 | **Penjualan** | ⚪ *Belum Tersedia* | *Pharmacy Sales Bill exists* | **APT** (Apotek) | `APT-BILL` Sales Bill & `APT-ORDER` | `TRK-BILLING`, `TRK-TARIF`, `PAS-DATSOS` | Known |
-| 34 | **PreOperativeClearance** | ⚪ *Belum Tersedia* | *Pre-Operative Readiness exists* | **KMO** (Kamar Operasi) | `KMO-PREOP` Persiapan Operasi | `KMO-ORDER`, `KMO-JADWAL`, `LAB-RESULT`, `RAD-EXPERTISE`, `ORG-PPA` | Known |
+| 34 | **PreOperativeClearance** | 🟢 [`OC-KMO-PREOP-CLEARANCE.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-KMO-PREOP-CLEARANCE.md) | *Pre-Operative Readiness / Clearance exists* | **KMO** (Kamar Operasi) | `KMO-PREOP` Persiapan Operasi | `KMO-ORDER`, `KMO-JADWAL`, `PAS-DATSOS`, `ADM-REG`, `ORG-PPA` | Known |
 | 35 | **PurchaseOrder** | ⚪ *Belum Tersedia* | *Purchase Order exists* | **PUR** (Purchasing) | `PUR-PO` Purchase Order | `PUR-PURREQ`, `PUR-SUPPLIER` | Known |
 | 36 | **PurchaseReq** | ⚪ *Belum Tersedia* | *Purchase Request exists* | **PUR** (Purchasing) | `PUR-PURREQ` Purchase Request | `PUR-MATREQ`, `PUR-SUPPLIER`, `INV-MASTER` | Known |
 | 37 | **RegExternal** | ⚪ *Belum Tersedia* | *Direct External Lab Registration exists* | **LAB** (Laboratory) | `LAB-EXTERNAL` Registrasi External | `TRK-BILLING`, `TRK-TARIF` | Known |
@@ -141,7 +141,7 @@ Berikut adalah ringkasan pengelompokan ke-51 Outcome berdasarkan Domain Pemilik 
 │ 07. LABORATORY (LAB)                 │      4      │    0 (0%)      │ HasilLab ⚪, OrderLab ⚪, RegExternal ⚪,                │
 │                                      │             │                │ SampleCollection ⚪                                    │
 │ 08. RADIOLOGY (RAD)                  │      3      │    0 (0%)      │ Expertise ⚪, JadwalRadiologi ⚪, OrderRadiologi ⚪      │
-│ 09. KAMAR OPERASI (KMO)              │      3      │   2 (66.7%)    │ JadwalOk 🟢, OrderOk 🟢, PreOperativeClearance ⚪        │
+│ 09. KAMAR OPERASI (KMO)              │      3      │   3 (100%)     │ JadwalOk 🟢, OrderOk 🟢, PreOperativeClearance 🟢        │
 │ 10. APOTEK (APT)                     │      4      │    0 (0%)      │ AntrianApotek ⚪, OrderDispensing ⚪, Penjualan ⚪,        │
 │                                      │             │                │ TelaahResep ⚪                                          │
 │ 11. INVENTORY (INV)                  │      6      │    0 (0%)      │ Mutasi ⚪, PakaiBrg ⚪, ReqMutasi ⚪, Stok ⚪,            │
@@ -155,7 +155,7 @@ Berikut adalah ringkasan pengelompokan ke-51 Outcome berdasarkan Domain Pemilik 
 │                                      │             │                │ SensusIndex 🟢                                         │
 │ 15. BPJS (BPJ)                       │      2      │    1 (50%)     │ Eklaim ⚪, VclaimBpjs 🟢                                │
 ├──────────────────────────────────────┼─────────────┼────────────────┼────────────────────────────────────────────────────────┤
-│ TOTAL                                │     51      │   20 (39.2%)   │ 🟢 20 Formal Defined  │  ⚪ 31 Pending Formal Definition│
+│ TOTAL                                │     51      │   21 (41.2%)   │ 🟢 21 Formal Defined  │  ⚪ 30 Pending Formal Definition│
 └──────────────────────────────────────┴─────────────┴────────────────┴────────────────────────────────────────────────────────┘
 ```
 *\*Catatan: `AlokasiPembayaran` secara kanonikal mensupersede label sementara `OrderPayment` dari draf awal V2 agar selaras dengan berkas spesifikasi OC-TRK-ALOKASI-PEMBAYARAN.md. `Antrian` mencakup antrean pendaftaran loket (`ADM-ANTRIAN`) dan antrean pelayanan poli (`RJL-ANTRIAN`). `Tindakan` dipetakan sebagai satu shared outcome tunggal ('Patient Procedure Charge Record exists') dengan kepemilikan utama kanonikal di Tata Rekening (`TRK`) karena secara esensi bisnis entitas ini merepresentasikan pembebanan biaya finansial pasien (`TRK-BILLING`), sedangkan domain pelayanan klinis (`RJL-TINDAKAN`, `RNA-TINDAKAN`, `IGD-TINDAKAN`) bertindak sebagai kapabilitas kontributor pencatatan di titik layanan (point-of-care capture). Lihat Bagian 6 poin 4 untuk analisis tata kelola penetapan kepemilikan.*
