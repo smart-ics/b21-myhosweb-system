@@ -86,20 +86,24 @@ Laboratory
 
 ## Outcome
 
-An **Outcome** is a persisted business result that the system establishes or changes.
+An **Outcome** is a persisted current business state that the system establishes or changes.
 
 An Outcome answers:
 
-> What business fact must now exist or change?
+> What business fact must now be true?
 
 Characteristics:
 
 * persisted;
+* represents current business state;
 * measurable;
 * verifiable;
+* business-oriented;
 * specification-oriented.
 
 An Outcome is the **primary unit of business change**.
+
+A Use Case may establish or change an Outcome.
 
 An Outcome must have sufficient specification to determine whether the requested work is complete.
 
@@ -110,12 +114,15 @@ Outcome must be expressed in business terms.
 Examples:
 
 ```text
+Patient exists
 Outpatient Visit exists
 Laboratory Result exists
 Bed Assignment exists
 Discharge Record exists
 Billing Transaction exists
 ```
+
+*Note: These examples represent persisted current business states (facts established or maintained in current operational reality), not merely persisted entities.*
 
 An Outcome is NOT:
 
@@ -259,19 +266,19 @@ Each Workspace may expose different Outcomes, Use Cases, and Worklists.
 The conceptual model requires a clear separation between:
 
 ```text
-Outcome     →  WHAT must now exist or change  (persisted business result)
+Outcome     →  WHAT must now be true           (persisted current business state)
 Use Case    →  HOW an actor interacts          (interaction scenario)
 ```
 
 These are distinct concepts and must not be conflated.
 
-An Outcome defines the persisted business result.
+An Outcome defines the persisted current business state (the business fact that the system establishes or changes).
 
-A Use Case defines the interaction through which an actor causes or consumes that result.
+A Use Case defines the interaction through which an actor causes or consumes that state.
 
-A single Outcome may be established through multiple Use Cases.
+A single Outcome may be established or changed through multiple Use Cases.
 
-A single Use Case may participate in establishing an Outcome, or may simply consume an existing one.
+A single Use Case may participate in establishing or changing an Outcome, or may simply consume an existing one.
 
 ---
 
@@ -505,9 +512,9 @@ The primary concern for request classification and escalation is the **Outcome**
 
 2. Capability defines business ability as a scope-defining claim.
 
-3. Outcome defines the persisted business result and is the primary unit of business change.
+3. Outcome defines the persisted current business state and is the primary unit of business change.
 
-4. Use Case defines interaction with business information — it may participate in establishing an Outcome or may only consume existing information.
+4. Use Case defines interaction with business information — it may participate in establishing or changing an Outcome or may only consume existing information.
 
 5. Screen defines operational context.
 
@@ -515,7 +522,7 @@ The primary concern for request classification and escalation is the **Outcome**
 
 7. Outcomes may span multiple Domains.
 
-8. Outcomes must always be designed from the desired persisted business result.
+8. Outcomes must always be designed from the desired persisted current business state.
 
 9. Use Cases must not be confused with Outcomes. A standalone Use Case does not create or modify persisted business state.
 
@@ -539,19 +546,27 @@ It consolidates the rules needed to correctly classify Outcomes, Use Cases, and 
 
 Apply these rules in strict order when identifying Outcomes for a Workspace:
 
-**Rule 1 — Entity Test**
+**Rule 1 — Business State Test**
 
-An Outcome corresponds to a distinct persisted business entity.
+An Outcome corresponds to a persisted current business state established or maintained by the system.
 
-Ask: *"What new business entity must exist as a result of the work performed in this Workspace?"*
+Outcome identification must focus on:
 
-Name the Outcome as `<Entity> exists` — e.g., `Booking exists`, `Outpatient Visit exists`.
+- persisted business state
+- current operational reality
+- business facts
+
+and must NOT focus on database entities or tables. An entity may be the mechanism used to represent that state, but the Outcome itself is defined by the business state, not by the entity.
+
+Ask: *"What business fact must now be true as a result of the work performed in this Workspace?"*
+
+Name the Outcome using the convention `<Entity> exists` — e.g., `Patient exists`, `Booking exists`, `Outpatient Visit exists`.
 
 **Rule 2 — State Transition Test**
 
-If a candidate Outcome is a state change of an entity that already exists, it is NOT a new Outcome.
+If a candidate Outcome is an operational state transition or lifecycle change of a business state that is already established, it is NOT a separate Outcome.
 
-It is a **Use Case** that modifies the existing Outcome.
+It is a **Use Case** that changes or updates the existing Outcome.
 
 ```text
 WRONG: Outcome = "Booking is cancelled"
@@ -560,7 +575,7 @@ RIGHT: Use Case = "Cancel Booking"  →  operates on Outcome: "Booking exists"
 
 **Rule 3 — Count Test**
 
-The number of Outcomes in a Workspace = the number of **distinct persisted business entities** managed there.
+The number of Outcomes in a Workspace equals the number of distinct **persisted current business states** established or governed there.
 
 ```text
 WRONG: Booking exists / Booking is confirmed / Booking is cancelled / Booking is rescheduled = 4 Outcomes
@@ -570,7 +585,7 @@ RIGHT: Booking exists = 1 Outcome
 
 **Rule 4 — Consumption Test**
 
-If the Workspace only reads, displays, searches, or navigates existing business information without creating or modifying a persisted entity, it has **no Outcomes** — only standalone Use Cases.
+If the Workspace only reads, displays, searches, or navigates existing business information without establishing or modifying a persisted business state, it has **no Outcomes** — only standalone Use Cases.
 
 ---
 
@@ -578,35 +593,42 @@ If the Workspace only reads, displays, searches, or navigates existing business 
 
 | Misclassification | Correct Classification | Reason |
 |---|---|---|
-| "Booking is cancelled" as Outcome | Use Case: Cancel Booking | State change of existing entity, not a new entity |
-| "Booking is confirmed" as Outcome | Use Case: Confirm Booking | State change of existing entity |
-| "Booking is rescheduled" as Outcome | Use Case: Reschedule Booking | State change of existing entity |
-| Each CRUD operation as an Outcome | One Outcome per entity | CRUD operates on the entity; the entity is the Outcome |
-| A report or printed document as an Outcome | Standalone Use Case | Not a persisted business entity |
-| A search result as an Outcome | Standalone Use Case | Temporary display, not persisted |
+| "Booking is cancelled" as Outcome | Use Case: Cancel Booking | Operational state transition of existing business state, not a new Outcome |
+| "Booking is confirmed" as Outcome | Use Case: Confirm Booking | Operational state transition of existing business state |
+| "Booking is rescheduled" as Outcome | Use Case: Reschedule Booking | Operational state transition of existing business state |
+| Each CRUD operation as an Outcome | One Outcome per persisted business state | CRUD modifies the business state; the persisted business state is the Outcome |
+| A report or printed document as an Outcome | Standalone Use Case | Not a persisted current business state |
+| A search result as an Outcome | Standalone Use Case | Temporary display, not persisted business state |
 
 ---
 
 ## 9.3 Outcome Naming Convention
 
-Outcomes must be named as:
+Outcomes are commonly named using the convention:
 
 ```text
-<Business Entity> exists
+<Entity> exists
 ```
+
+> **Important**: This is a naming convention, not the definition of Outcome.
+> 
+> The definition of Outcome remains: **Persisted current business state**.
+> 
+> An entity may be the mechanism used to represent that state, but the Outcome is defined by the business state itself (the business fact that must now be true).
 
 Examples:
 
 ```text
+✓ Patient exists
 ✓ Booking exists
 ✓ Outpatient Visit exists
 ✓ Laboratory Result exists
 ✓ Bed Assignment exists
 ✓ Discharge Record exists
 
-✗ Patient is registered          ← describes an action, not a persisted entity
-✗ Booking confirmed              ← describes a state change, not a new entity
-✗ Show booking list              ← describes a display action, not a persisted entity
+✗ Patient is registered          ← describes an action/interaction, not a persisted business state
+✗ Booking confirmed              ← describes a lifecycle state transition, not a separate Outcome
+✗ Show booking list              ← describes a display action, not a persisted business state
 ```
 
 ---
@@ -622,17 +644,17 @@ STEP 1 — Identify the Domain
 STEP 2 — Identify the Capability
   Determine which Capability within that Domain this Workspace exercises.
 
-STEP 3 — Identify the business entity produced
-  Ask: "What new persisted business entity does this Workspace create or manage?"
+STEP 3 — Identify the business state established or maintained
+  Ask: "What business fact must now be true as a result of the work performed in this Workspace?"
 
-STEP 4 — Apply the Entity Test (Rule 1)
-  Name it as "<Entity> exists".
+STEP 4 — Apply the Business State Test (Rule 1)
+  Name it using the convention "<Entity> exists".
 
 STEP 5 — Apply the State Transition Test (Rule 2)
-  Candidate Outcomes that are state changes of Step 4 entity → reclassify as Use Cases.
+  Candidate Outcomes that are lifecycle state changes or transitions of the Step 3/4 business state → reclassify as Use Cases.
 
 STEP 6 — Apply the Count Test (Rule 3)
-  Verify: one Outcome per distinct persisted business entity.
+  Verify: one Outcome per distinct persisted current business state.
 
 STEP 7 — List Use Cases
   Group Use Cases into:
