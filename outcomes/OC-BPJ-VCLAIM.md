@@ -2,7 +2,7 @@
 
 | Field       | Value        |
 |-------------|--------------|
-| Code        | OC-01-04     |
+| Code        | OC-BPJ-VCLAIM     |
 | Version     | 1.0          |
 | Status      | Draft        |
 | LastUpdated | 2026-10-01   |
@@ -182,8 +182,7 @@ Berakhir ketika transaksi VClaim telah berhasil dilakukan, nomor SEP yang valid 
 
 > What this Outcome explicitly does NOT cover.
 
-- Proses registrasi kunjungan rawat jalan atau IGD yang memerlukan SEP → **OC-01-02 Registrasi Rawat Jalan dan IGD**.
-- Proses registrasi rawat inap yang memerlukan SEP → **OC-01-03 Registrasi Rawat Inap**.
+- Proses registrasi pelayanan pasien (Rawat Jalan, IGD, Rawat Inap) yang memerlukan SEP → **OC-ADM-REGISTRASI Registrasi** (Unified REGISTRASI Outcome, mengonsolidasikan registrasi Rawat Jalan, IGD, dan Rawat Inap).
 - Pengajuan klaim BPJS pasca episode pelayanan (e-Klaim) → **BPJS Domain** (`BPJ-EKLAIM`).
 - Pengelolaan antrian online BPJS (Antrol / P-Care) → **BPJS Domain** (`BPJ-ANTROL`).
 - Pelaporan dan updating data fasilitas kesehatan ke BPJS (HFIS) → **BPJS Domain** (`BPJ-HFIS`).
@@ -192,4 +191,4 @@ Berakhir ketika transaksi VClaim telah berhasil dilakukan, nomor SEP yang valid 
 - Pengelolaan tarif dan paket BPJS (INA-CBGs) → **Tata Rekening Domain** (`TRK-TARIF`).
 - Proses pembayaran klaim BPJS oleh BPJS kepada rumah sakit → di luar sistem MYHOSWEB (eksternal).
 - Pengelolaan surat rujukan masuk dan keluar dalam konteks rekam medis → **Berkas Rekam Medis Domain**.
-- Pelaporan RL (Laporan Rumah Sakit) ke Kemenkes → **OC-04-04 Pelaporan RL** (`BRM-RL`).
+- Pelaporan RL (Laporan Rumah Sakit) ke Kemenkes → **OC-BRM-PELAPORAN-RL Pelaporan RL** (`BRM-RL`).

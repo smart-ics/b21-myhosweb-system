@@ -257,12 +257,12 @@
             },
             {
               "OutcomeId": "OC-01-02",
-              "OutcomeName": "Registrasi Rawat Jalan dan IGD",
+              "OutcomeName": "Registrasi (Unified: Rawat Jalan, IGD, Rawat Inap, External)",
               "Complexity": 1
             },
             {
               "OutcomeId": "OC-01-03",
-              "OutcomeName": "Registrasi Rawat Inap",
+              "OutcomeName": "Registrasi Rawat Inap [Consolidated into OC-01-02]",
               "Complexity": 1
             },
             {

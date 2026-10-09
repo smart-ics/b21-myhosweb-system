@@ -2,7 +2,7 @@
 
 | Field       | Value        |
 |-------------|--------------|
-| Code        | OC-04-03     |
+| Code        | OC-BRM-CASEMIX-CODING     |
 | Version     | 1.1          |
 | Status      | Draft        |
 | LastUpdated | 2026-10-02   |
@@ -183,11 +183,11 @@ Berakhir ketika:
 
 > What this Outcome explicitly does NOT cover.
 
-- **Pengelolaan Kelengkapan Berkas Rekam Medis**: Telaah dan administrasi kelengkapan dokumen fisik rekam medis (ketersediaan resume medis, laporan operasi, dan dokumen penunjang) → **OC-04-02 Manajemen Berkas**.
+- **Pengelolaan Kelengkapan Berkas Rekam Medis**: Telaah dan administrasi kelengkapan dokumen fisik rekam medis (ketersediaan resume medis, laporan operasi, dan dokumen penunjang) → **OC-BRM-MUTASI-BERKAS Manajemen Berkas**.
 - **Pencatatan Asuhan Klinis oleh Tenaga Medis**: Penulisan catatan medis harian, resume medis, dan laporan tindakan oleh dokter → domain pelayanan klinis terkait (Rawat Jalan, Rawat Inap, Gawat Darurat).
-- **Registrasi Kunjungan & Penerbitan SEP**: Pendaftaran pasien dan penerbitan Surat Eligibilitas Peserta → **OC-01-02**, **OC-01-03**, dan **OC-01-04 VClaim BPJS**.
+- **Registrasi Kunjungan & Penerbitan SEP**: Pendaftaran pasien dan penerbitan Surat Eligibilitas Peserta → **OC-ADM-REGISTRASI Registrasi** (Unified REGISTRASI Outcome) dan **OC-BPJ-VCLAIM VClaim BPJS**.
 - **Pengiriman dan Rekonsiliasi Klaim ke BPJS**: Proses pengiriman berkas klaim, tanda terima penagihan ke kantor BPJS, dan rekonsiliasi pembayaran.
 - **Aturan dan Pedoman Teknis Pengkodean**: Detail kaidah pengkodean klinis (aturan morbiditas WHO, pengecualian per tipe kode, dsb.) → Coding Rules / SOP Pengkodean (Business Rules artifact).
 - **Mekanisme Integrasi e-Klaim**: Detail teknis protokol komunikasi, mekanisme antrean ulang, dan spesifikasi API e-Klaim → Integration Specification artifact.
-- **Pelaporan Morbiditas RL**: Agregasi dan pengiriman laporan RL 4a/4b ke Kementerian Kesehatan → **OC-04-04 Pelaporan RL**.
-- **Sensus & Indeks Penyakit**: Pengolahan statistik BOR/LOS/TOI dan indeks morbiditas berkala → **OC-04-05 Pelaporan Index dan Sensus**.
+- **Pelaporan Morbiditas RL**: Agregasi dan pengiriman laporan RL 4a/4b ke Kementerian Kesehatan → **OC-BRM-PELAPORAN-RL Pelaporan RL**.
+- **Sensus & Indeks Penyakit**: Pengolahan statistik BOR/LOS/TOI dan indeks morbiditas berkala → **OC-BRM-SENSUS-INDEX Pelaporan Index dan Sensus**.

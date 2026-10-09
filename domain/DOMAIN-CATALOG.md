@@ -1,7 +1,7 @@
 ---
 Artifact Name: Domain Catalog
-Version: 2.1
-Last Update: 2026-09-28
+Version: 2.2
+Last Update: 2026-10-09
 Updated By: Dury Yudis
 ---
 
@@ -57,9 +57,10 @@ Domain Code : **RNA**
 1. `RNA-ANTRIAN` Antrian Masuk Bangsal
 2. `RNA-BED` Pakai Bed
 3. `RNA-TRANSFER` Transfer Ke Unit Lain
-4. `RNA-CHARGE' Room Charge
+4. `RNA-CHARGE` Room Charge
 5. `RNA-DISCHARGE` Discharge
 6. `RNA-HK` Housekeeping Bed Readiness
+7. `RNA-TINDAKAN` Charge Tindakan Inap
 
 ---
 

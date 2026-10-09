@@ -2,7 +2,7 @@
 
 | Field       | Value        |
 |-------------|--------------|
-| Code        | OC-03-02     |
+| Code        | OC-TRK-CLOSING-SHIFT     |
 | Version     | 1.0          |
 | Status      | Draft        |
 | LastUpdated | 2026-10-01   |
@@ -166,7 +166,7 @@ Setelah boundary End tercapai, shift tidak dapat digunakan untuk transaksi baru 
 | # | Criterion | Validates |
 |---|-----------|-----------| 
 | AC-01 | Shift kasir yang telah melewati proses Closing berstatus **Tutup** dan tidak menerima transaksi kas baru. | Completeness |
-| AC-02 | Laporan Penutupan Shift memuat ringkasan transaksi per metode pembayaran (Tunai, Kartu Debit, Kartu Kredit, Transfer, QRIS) selama shift dengan nilai yang konsisten terhadap akumulasi transaksi yang terpersistensi dalam OC-03-01. | Correctness |
+| AC-02 | Laporan Penutupan Shift memuat ringkasan transaksi per metode pembayaran (Tunai, Kartu Debit, Kartu Kredit, Transfer, QRIS) selama shift dengan nilai yang konsisten terhadap akumulasi transaksi yang terpersistensi dalam OC-TRK-KASIR. | Correctness |
 | AC-03 | Laporan Penutupan Shift mencatat saldo awal shift, total Terima Kas, total Keluar Kas, saldo yang diharapkan, kas fisik aktual, dan selisih kas — semua nilainya konsisten satu sama lain secara aritmetika. | Correctness |
 | AC-04 | Selisih kas (positif, negatif, atau nol) tercatat secara eksplisit pada Laporan Penutupan Shift beserta keterangannya jika selisih bukan nol. | Completeness |
 | AC-05 | Closing Shift yang dieksekusi terhadap shift yang memiliki transaksi berstatus Pending ditolak oleh sistem; sistem menampilkan daftar transaksi Pending yang menghambat penutupan. | Constraint |
@@ -177,7 +177,7 @@ Setelah boundary End tercapai, shift tidak dapat digunakan untuk transaksi baru 
 | AC-10 | Selisih kas yang melebihi ambang batas kebijakan memerlukan konfirmasi supervisor sebelum Closing Shift dapat dikonfirmasi. | Constraint |
 | AC-11 | Laporan Penutupan Shift yang telah terpersistensi dapat dicetak dan memuat identitas shift, identitas kasir, periode shift, ringkasan transaksi, dan hasil rekonsiliasi kas. | Completeness |
 | AC-12 | Isi Laporan Penutupan Shift (nilai rekonsiliasi dan ringkasan transaksi) tidak dapat dimodifikasi setelah shift berstatus Tutup tanpa mekanisme koreksi yang berotorisasi. | Constraint |
-| AC-13 | Seluruh transaksi kasir dari OC-03-01 yang tercatat dalam shift dapat diidentifikasi dan diikutsertakan dalam rekonsiliasi Closing Shift tanpa ada transaksi yang tertinggal. | Correctness |
+| AC-13 | Seluruh transaksi kasir dari OC-TRK-KASIR yang tercatat dalam shift dapat diidentifikasi dan diikutsertakan dalam rekonsiliasi Closing Shift tanpa ada transaksi yang tertinggal. | Correctness |
 
 ---
 
@@ -185,11 +185,11 @@ Setelah boundary End tercapai, shift tidak dapat digunakan untuk transaksi baru 
 
 > What this Outcome explicitly does NOT cover.
 
-- Eksekusi transaksi penerimaan dan pengeluaran kas per pasien — **OC-03-01 Kasir (Terima/Keluar Kas)** (OC-03-02 menggunakan data transaksi yang dihasilkan OC-03-01 sebagai input rekonsiliasi, namun tidak mengelola eksekusi transaksi itu sendiri).
-- Pembukaan (opening) shift kasir — termasuk penetapan saldo awal (float) dan pendaftaran kasir pada shift — adalah aktivitas inisiasi shift yang mendahului Closing Shift dan merupakan bagian dari manajemen shift dalam `TRK-KASIR` / `KSR-SHIFT`, bukan outcome tersendiri dalam cakupan OC-03-02.
-- Rekonsiliasi dan pelaporan keuangan tingkat rumah sakit (konsolidasi kas harian lintas loket, jurnal akuntansi) — domain Finance/Akuntansi (di luar scope MYHOSWEB saat ini); OC-03-02 menghasilkan Laporan Penutupan Shift sebagai sumber data, namun proses konsolidasi akuntansi adalah tanggung jawab domain di luar MYHOSWEB.
+- Eksekusi transaksi penerimaan dan pengeluaran kas per pasien — **OC-TRK-KASIR Kasir (Terima/Keluar Kas)** (OC-TRK-CLOSING-SHIFT menggunakan data transaksi yang dihasilkan OC-TRK-KASIR sebagai input rekonsiliasi, namun tidak mengelola eksekusi transaksi itu sendiri).
+- Pembukaan (opening) shift kasir — termasuk penetapan saldo awal (float) dan pendaftaran kasir pada shift — adalah aktivitas inisiasi shift yang mendahului Closing Shift dan merupakan bagian dari manajemen shift dalam `TRK-KASIR` / `KSR-SHIFT`, bukan outcome tersendiri dalam cakupan OC-TRK-CLOSING-SHIFT.
+- Rekonsiliasi dan pelaporan keuangan tingkat rumah sakit (konsolidasi kas harian lintas loket, jurnal akuntansi) — domain Finance/Akuntansi (di luar scope MYHOSWEB saat ini); OC-TRK-CLOSING-SHIFT menghasilkan Laporan Penutupan Shift sebagai sumber data, namun proses konsolidasi akuntansi adalah tanggung jawab domain di luar MYHOSWEB.
 - Pengelolaan kas kecil (petty cash) operasional yang tidak terhubung ke transaksi pasien — di luar scope modul Kasir MYHOSWEB.
-- Pembentukan rincian tagihan kunjungan pasien — **OC-02-01 Rincian Tagihan Pasien**.
-- Alokasi sumber pembayaran terhadap tagihan kunjungan — **OC-02-02 Alokasi Pembayaran**.
-- Pengelolaan saldo deposit pasien — **OC-02-03 Deposit**.
-- Penyelesaian administrasi kepulangan pasien — **OC-02-04 Reg-Out**.
+- Pembentukan rincian tagihan kunjungan pasien — **OC-TRK-BILLING Rincian Tagihan Pasien**.
+- Alokasi sumber pembayaran terhadap tagihan kunjungan — **OC-TRK-ALOKASI-PEMBAYARAN Alokasi Pembayaran**.
+- Pengelolaan saldo deposit pasien — **OC-TRK-DEPOSIT Deposit**.
+- Penyelesaian administrasi kepulangan pasien — **OC-TRK-REG-OUT Reg-Out**.

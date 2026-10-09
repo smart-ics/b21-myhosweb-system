@@ -2,7 +2,7 @@
 
 | Field       | Value        |
 |-------------|--------------|
-| Code        | OC-01-06     |
+| Code        | OC-ORG-JADWAL-PRAKTEK     |
 | Version     | 1.0          |
 | Status      | Draft        |
 | LastUpdated | 2026-10-01   |
@@ -160,9 +160,9 @@ Berakhir ketika jadwal praktek telah tersimpan dalam sistem dengan status **Akti
 
 > What this Outcome explicitly does NOT cover.
 
-- Pencatatan appointment / booking pasien berdasarkan jadwal ini → **OC-01-01 Booking**.
-- Proses registrasi kunjungan rawat jalan yang merujuk jadwal ini → **OC-01-02 Registrasi Rawat Jalan dan IGD**.
-- Pengelolaan antrian pasien di poliklinik pada hari pelayanan → **OC-01-07 Antrian**.
+- Pencatatan appointment / booking pasien berdasarkan jadwal ini → **OC-ADM-BOOKING Booking**.
+- Proses registrasi kunjungan rawat jalan yang merujuk jadwal ini → **OC-ADM-REGISTRASI Registrasi** (Unified REGISTRASI Outcome).
+- Pengelolaan antrian pasien di poliklinik pada hari pelayanan → **OC-ADM-ANTRIAN Antrian**.
 - Pengelolaan master data dokter (PPA) — termasuk identitas, spesialisasi, dan kompetensi → Organisasi Domain (`ORG-PPA`).
 - Pengelolaan master unit layanan dan poliklinik → Organisasi Domain (`ORG-LAYANAN`).
 - Penjadwalan tindakan operasi atau prosedur invasif → Kamar Operasi Domain.

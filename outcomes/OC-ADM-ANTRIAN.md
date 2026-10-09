@@ -2,7 +2,7 @@
 
 | Field       | Value        |
 |-------------|--------------|
-| Code        | OC-01-07     |
+| Code        | OC-ADM-ANTRIAN     |
 | Version     | 1.0          |
 | Status      | Draft        |
 | LastUpdated | 2026-10-01   |
@@ -91,7 +91,7 @@ Posisi antrian pasien — baik di loket pendaftaran maupun di poliklinik tujuan 
 ### 5.3 Required Business Conditions
 
 - Antrian Registrasi dapat diterbitkan kepada pasien yang datang ke loket, bahkan sebelum identitas pasien sepenuhnya terverifikasi.
-- Antrian Poli hanya dapat diterbitkan setelah kunjungan rawat jalan pasien ke poliklinik yang bersangkutan telah berhasil terdaftar (`OC-01-02 Registrasi Rawat Jalan dan IGD`).
+- Antrian Poli hanya dapat diterbitkan setelah kunjungan rawat jalan pasien ke poliklinik yang bersangkutan telah berhasil terdaftar (`OC-ADM-REGISTRASI Registrasi`).
 - Satu kunjungan rawat jalan hanya boleh memiliki satu entri antrian poli aktif di poliklinik dan dokter yang sama pada tanggal yang sama.
 - Nomor urut antrean — baik loket maupun poli — harus bersifat unik dalam lingkup loket/poli, dokter (jika relevan), dan tanggal pelayanan.
 - Status antrean harus mengikuti urutan yang valid: **Menunggu → Dipanggil → Dalam Pelayanan → Selesai** (dengan kemungkinan status **Dibatalkan** jika pasien tidak hadir atau membatalkan antrean).
@@ -112,7 +112,7 @@ Posisi antrian pasien — baik di loket pendaftaran maupun di poliklinik tujuan 
 
 **Antrian Registrasi:** Dimulai ketika pasien mengambil nomor antrean loket — baik melalui mesin antrean otomatis, petugas, maupun kanal lain yang tersedia — dan sistem menerbitkan serta menyimpan nomor urut antrean tersebut.
 
-**Antrian Poli:** Dimulai ketika registrasi kunjungan rawat jalan pasien berhasil diselesaikan (`OC-01-02`) dan sistem secara otomatis atau manual menerbitkan nomor urut antrian poli untuk poliklinik dan dokter tujuan.
+**Antrian Poli:** Dimulai ketika registrasi kunjungan rawat jalan pasien berhasil diselesaikan (`OC-ADM-REGISTRASI`) dan sistem secara otomatis atau manual menerbitkan nomor urut antrian poli untuk poliklinik dan dokter tujuan.
 
 ### End
 
@@ -174,9 +174,9 @@ Posisi antrian pasien — baik di loket pendaftaran maupun di poliklinik tujuan 
 
 > What this Outcome explicitly does NOT cover.
 
-- Registrasi kunjungan rawat jalan pasien yang menghasilkan nomor antrian poli → **OC-01-02 Registrasi Rawat Jalan dan IGD**.
-- Pengelolaan jadwal praktek dokter yang menjadi referensi kapasitas poli → **OC-01-06 Jadwal Praktek**.
-- Proses booking/appointment sebelum hari kunjungan → **OC-01-01 Booking**.
+- Registrasi kunjungan rawat jalan pasien yang menghasilkan nomor antrian poli → **OC-ADM-REGISTRASI Registrasi** (Unified REGISTRASI Outcome).
+- Pengelolaan jadwal praktek dokter yang menjadi referensi kapasitas poli → **OC-ORG-JADWAL-PRAKTEK Jadwal Praktek**.
+- Proses booking/appointment sebelum hari kunjungan → **OC-ADM-BOOKING Booking**.
 - Pencatatan tindakan klinis atau pelayanan medis yang dilakukan setelah pasien dipanggil → **Rawat Jalan Domain** (`RJL-TINDAKAN`).
 - Antrean farmasi / apotek → **OC-11-01 Antrian Apotek**.
 - Antrean laboratorium atau radiologi → domain terkait masing-masing.

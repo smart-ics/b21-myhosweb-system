@@ -2,7 +2,7 @@
 
 | Field       | Value        |
 |-------------|--------------|
-| Code        | OC-02-02     |
+| Code        | OC-TRK-ALOKASI-PEMBAYARAN     |
 | Version     | 1.0          |
 | Status      | Draft        |
 | LastUpdated | 2026-10-01   |
@@ -11,11 +11,11 @@
 
 ## 1. Business Purpose
 
-Setelah tagihan kunjungan pasien berstatus **Final** (OC-02-01), rumah sakit harus mampu mencatat dan mempersistensi seluruh alokasi pembayaran yang digunakan untuk melunasi atau mengurangi saldo tagihan tersebut — baik yang berasal dari pembayaran tunai/non-tunai oleh pasien, klaim kepada penjamin (BPJS, asuransi swasta, atau jaminan lain), maupun pemakaian deposit yang sudah ada.
+Setelah tagihan kunjungan pasien berstatus **Final** (OC-TRK-BILLING), rumah sakit harus mampu mencatat dan mempersistensi seluruh alokasi pembayaran yang digunakan untuk melunasi atau mengurangi saldo tagihan tersebut — baik yang berasal dari pembayaran tunai/non-tunai oleh pasien, klaim kepada penjamin (BPJS, asuransi swasta, atau jaminan lain), maupun pemakaian deposit yang sudah ada.
 
 Alokasi Pembayaran merupakan business fact yang membuktikan bagaimana kewajiban finansial pasien terhadap tagihan kunjungan diselesaikan: setiap sumber dana yang digunakan untuk menutup tagihan harus tercatat secara eksplisit, terhubung ke tagihan yang bersangkutan, dan menghasilkan saldo tagihan yang selalu dapat diverifikasi kapan saja.
 
-Tanpa Alokasi Pembayaran yang terpersistensi secara benar, proses Reg-Out (OC-02-05) tidak dapat diselesaikan, dan posisi piutang rumah sakit tidak dapat ditentukan secara akurat.
+Tanpa Alokasi Pembayaran yang terpersistensi secara benar, proses Reg-Out (OC-TRK-REG-OUT) tidak dapat diselesaikan, dan posisi piutang rumah sakit tidak dapat ditentukan secara akurat.
 
 ---
 
@@ -93,7 +93,7 @@ Seluruh sumber pembayaran yang digunakan untuk menutup tagihan kunjungan pasien 
 
 ### 5.3 Required Business Conditions
 
-- Tagihan yang menjadi target alokasi harus berstatus **Final** (OC-02-01); alokasi tidak dapat dilakukan terhadap tagihan yang masih berstatus Aktif atau Dibatalkan.
+- Tagihan yang menjadi target alokasi harus berstatus **Final** (OC-TRK-BILLING); alokasi tidak dapat dilakukan terhadap tagihan yang masih berstatus Aktif atau Dibatalkan.
 - Total nilai yang dialokasikan dari seluruh sumber tidak boleh melebihi total kewajiban yang tersisa pada tagihan, kecuali dalam kondisi yang secara eksplisit diizinkan (kelebihan bayar yang menghasilkan status Lebih Bayar dan berpotensi menjadi refund).
 - Alokasi dari sumber Deposit hanya dapat dilakukan jika pasien memiliki saldo deposit yang cukup; alokasi tidak dapat melebihi saldo deposit yang tersedia.
 - Alokasi dari sumber Penjamin hanya dapat dilakukan terhadap porsi tagihan yang memang ditanggung oleh penjamin tersebut, sesuai aturan manfaat yang berlaku; alokasi penjamin tidak dapat melebihi porsi penjamin yang tercatat pada tagihan.
@@ -106,7 +106,7 @@ Seluruh sumber pembayaran yang digunakan untuk menutup tagihan kunjungan pasien 
 - Total nilai yang dialokasikan dapat dihitung dan saldo tagihan yang tersisa (outstanding balance) tersaji dengan benar.
 - Status pelunasan tagihan (Lunas / Sebagian Terbayar / Lebih Bayar) dapat ditentukan berdasarkan data alokasi yang ada.
 - Alokasi dapat ditelusuri kembali ke transaksi sumber (kasir, deposit, klaim penjamin) dan ke tagihan kunjungan yang bersangkutan.
-- Tagihan yang berstatus Lunas dapat dijadikan dasar penyelesaian administrasi kepulangan (OC-02-05 Reg-Out).
+- Tagihan yang berstatus Lunas dapat dijadikan dasar penyelesaian administrasi kepulangan (OC-TRK-REG-OUT Reg-Out).
 
 ---
 
@@ -114,7 +114,7 @@ Seluruh sumber pembayaran yang digunakan untuk menutup tagihan kunjungan pasien 
 
 ### Start
 
-Dimulai ketika tagihan kunjungan pasien telah berstatus **Final** (OC-02-01) dan setidaknya satu sumber pembayaran — baik dari kasir, deposit, maupun konfirmasi klaim penjamin — siap dicatat sebagai alokasi terhadap tagihan tersebut.
+Dimulai ketika tagihan kunjungan pasien telah berstatus **Final** (OC-TRK-BILLING) dan setidaknya satu sumber pembayaran — baik dari kasir, deposit, maupun konfirmasi klaim penjamin — siap dicatat sebagai alokasi terhadap tagihan tersebut.
 
 Untuk kasus kunjungan dengan jaminan penuh (misalnya BPJS non-COB tanpa biaya tambahan), alokasi dapat langsung dicatat setelah konfirmasi porsi penjamin tersedia, tanpa harus menunggu pembayaran kasir.
 
@@ -122,7 +122,7 @@ Untuk kasus kunjungan dengan jaminan penuh (misalnya BPJS non-COB tanpa biaya ta
 
 Berakhir ketika seluruh entri alokasi pembayaran atas tagihan kunjungan telah tercatat dan saldo tagihan yang tersisa (outstanding balance) dapat ditentukan secara definitif — baik dalam status Lunas, Sebagian Terbayar, maupun Lebih Bayar.
 
-Tagihan dengan outstanding balance = 0 (Lunas) menjadi prasyarat untuk penyelesaian Reg-Out (OC-02-05). Kondisi Lebih Bayar yang tersisa menjadi dasar untuk proses Refund (OC-02-04).
+Tagihan dengan outstanding balance = 0 (Lunas) menjadi prasyarat untuk penyelesaian Reg-Out (OC-TRK-REG-OUT). Kondisi Lebih Bayar yang tersisa menjadi dasar untuk proses Refund (OC-TRK-REG-OUT).
 
 ---
 
@@ -137,7 +137,7 @@ Tagihan dengan outstanding balance = 0 (Lunas) menjadi prasyarat untuk penyelesa
 - Pembatalan atau koreksi entri alokasi hanya dapat dilakukan oleh petugas yang memiliki otorisasi pembatalan; setiap pembatalan harus meninggalkan jejak audit yang lengkap.
 - Saldo tagihan yang tersisa (outstanding balance) harus selalu dihitung ulang secara konsisten setiap kali entri alokasi ditambahkan, diubah, atau dibatalkan — tidak boleh ada inkonsistensi antara entri alokasi dan outstanding balance.
 - Satu entri alokasi hanya dapat dialokasikan ke satu tagihan; alokasi tidak dapat dibagi ke lebih dari satu tagihan sekaligus dalam satu entri.
-- Alokasi pembayaran kasir tidak dapat dicatat tanpa adanya Order Bayar yang telah dibuat dan dikonfirmasi oleh kasir (OC-03-01 Order Bayar → OC-03-02 Pembayaran).
+- Alokasi pembayaran kasir tidak dapat dicatat tanpa adanya Order Bayar yang telah dibuat dan dikonfirmasi oleh kasir (OC-TRK-KASIR Order Bayar → OC-TRK-CLOSING-SHIFT Pembayaran).
 
 ---
 
@@ -147,8 +147,8 @@ Tagihan dengan outstanding balance = 0 (Lunas) menjadi prasyarat untuk penyelesa
 
 | Exception | Expected Behavior |
 |-----------|-------------------|
-| Tagihan belum berstatus Final (masih Aktif atau Dibatalkan) | Alokasi tidak dapat dilakukan. Petugas harus memastikan tagihan telah difinalisasi (OC-02-01) sebelum alokasi dapat dicatat. |
-| Nilai alokasi melebihi saldo kewajiban pasien yang tersisa (outstanding balance) | Sistem memperingatkan kondisi lebih bayar. Jika dikonfirmasi, dicatat sebagai Lebih Bayar dan menjadi dasar proses Refund (OC-02-04). Jika tidak dikonfirmasi, alokasi ditolak. |
+| Tagihan belum berstatus Final (masih Aktif atau Dibatalkan) | Alokasi tidak dapat dilakukan. Petugas harus memastikan tagihan telah difinalisasi (OC-TRK-BILLING) sebelum alokasi dapat dicatat. |
+| Nilai alokasi melebihi saldo kewajiban pasien yang tersisa (outstanding balance) | Sistem memperingatkan kondisi lebih bayar. Jika dikonfirmasi, dicatat sebagai Lebih Bayar dan menjadi dasar proses Refund (OC-TRK-REG-OUT). Jika tidak dikonfirmasi, alokasi ditolak. |
 | Saldo deposit pasien tidak mencukupi untuk alokasi yang diminta | Alokasi dari deposit ditolak. Petugas dapat mengalokasikan hanya sejumlah saldo deposit yang tersedia, dengan selisihnya dilunasi dari sumber lain. |
 | Nilai alokasi penjamin melebihi porsi penjamin yang tercatat pada tagihan | Alokasi penjamin melebihi batas ditolak. Petugas harus memastikan nilai klaim penjamin sesuai dengan porsi yang terdefinisi pada tagihan. |
 | Referensi transaksi kasir tidak valid atau tidak ditemukan | Entri alokasi dari kasir tidak dapat disimpan. Petugas kasir harus memastikan transaksi pembayaran telah dikonfirmasi sebelum alokasi dicatat. |
@@ -174,8 +174,8 @@ Tagihan dengan outstanding balance = 0 (Lunas) menjadi prasyarat untuk penyelesa
 | AC-09 | Alokasi dari kasir hanya dapat dicatat jika memiliki referensi transaksi kasir yang sah; alokasi tanpa referensi valid ditolak. | Constraint |
 | AC-10 | Pembatalan entri alokasi hanya dapat dilakukan oleh petugas yang berwenang; percobaan pembatalan oleh petugas yang tidak berwenang ditolak. | Constraint |
 | AC-11 | Setiap pembatalan entri alokasi menyebabkan outstanding balance dipulihkan secara konsisten dan jejak audit pembatalan tersimpan. | Constraint |
-| AC-12 | Kondisi lebih bayar (outstanding balance < 0) teridentifikasi dan ditandai sebagai Lebih Bayar, yang kemudian dapat menjadi dasar proses Refund (OC-02-04). | Exception |
-| AC-13 | Tagihan dengan status Lunas dapat dijadikan prasyarat penyelesaian administrasi kepulangan (OC-02-05 Reg-Out). | Correctness |
+| AC-12 | Kondisi lebih bayar (outstanding balance < 0) teridentifikasi dan ditandai sebagai Lebih Bayar, yang kemudian dapat menjadi dasar proses Refund (OC-TRK-REG-OUT). | Exception |
+| AC-13 | Tagihan dengan status Lunas dapat dijadikan prasyarat penyelesaian administrasi kepulangan (OC-TRK-REG-OUT Reg-Out). | Correctness |
 
 ---
 
@@ -183,12 +183,12 @@ Tagihan dengan outstanding balance = 0 (Lunas) menjadi prasyarat untuk penyelesa
 
 > What this Outcome explicitly does NOT cover.
 
-- Pembentukan dan konsolidasi rincian item biaya tagihan kunjungan — **OC-02-01 Rincian Tagihan Pasien**.
-- Eksekusi penerimaan pembayaran tunai/non-tunai di loket kasir — **OC-03-01 Order Bayar** dan **OC-03-02 Pembayaran**.
-- Pengelolaan saldo deposit pasien (penerimaan dan pengisian deposit) — **OC-02-03 Deposit**.
-- Proses pengembalian kelebihan pembayaran (refund) kepada pasien — **OC-02-04 Refund**.
-- Penyelesaian administrasi kepulangan pasien — **OC-02-05 Reg-Out**.
+- Pembentukan dan konsolidasi rincian item biaya tagihan kunjungan — **OC-TRK-BILLING Rincian Tagihan Pasien**.
+- Eksekusi penerimaan pembayaran tunai/non-tunai di loket kasir — **OC-TRK-KASIR Order Bayar** dan **OC-TRK-CLOSING-SHIFT Pembayaran**.
+- Pengelolaan saldo deposit pasien (penerimaan dan pengisian deposit) — **OC-TRK-DEPOSIT Deposit**.
+- Proses pengembalian kelebihan pembayaran (refund) kepada pasien — **OC-TRK-REG-OUT Refund**.
+- Penyelesaian administrasi kepulangan pasien — **OC-TRK-REG-OUT Reg-Out**.
 - Proses klaim elektronik ke BPJS (e-Klaim) — **BPJS Domain** (`BPJ-EKLAIM`); alokasi penjamin di sini hanya mencatat porsi yang diklaim, bukan proses klaim itu sendiri.
 - Rekonsiliasi dan laporan keuangan atas pembayaran yang diterima — domain Finance/Akuntansi (di luar scope MYHOSWEB saat ini).
 - Pengelolaan master tarif dan aturan manfaat penjamin — `TRK-TARIF` dan `TRK-JAMINAN`.
-- Closing shift kasir dan rekonsiliasi kas harian — **OC-03-03 Closing Shift**.
+- Closing shift kasir dan rekonsiliasi kas harian — **OC-TRK-CLOSING-SHIFT Closing Shift**.

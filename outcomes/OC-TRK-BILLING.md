@@ -2,7 +2,7 @@
 
 | Field       | Value        |
 |-------------|--------------|
-| Code        | OC-02-01     |
+| Code        | OC-TRK-BILLING     |
 | Version     | 2.1          |
 | Status      | Draft        |
 | LastUpdated | 2026-10-03   |
@@ -86,7 +86,7 @@ Tagihan untuk satu episode pelayanan pasien — yang dibatasi oleh satu No. Regi
 - Tagihan episode dapat ditetapkan berstatus `Final` setelah seluruh kondisi bisnis untuk verifikasi terpenuhi.
 - `Final` merupakan business state, bukan sekadar informasi tampilan.
 - Setelah tagihan berstatus `Final`, episode tersebut tidak lagi menerima billing baru sebagai bagian dari episode tersebut.
-- Status `Final` dapat dikenali sebagai prerequisite oleh OC-02-02 Alokasi Pembayaran dan OC-02-04 Reg-Out.
+- Status `Final` dapat dikenali sebagai prerequisite oleh OC-TRK-ALOKASI-PEMBAYARAN Alokasi Pembayaran dan OC-TRK-REG-OUT Reg-Out.
 
 ### 5.2 Required Recorded Information
 
@@ -146,7 +146,7 @@ Tagihan untuk satu episode pelayanan pasien — yang dibatasi oleh satu No. Regi
 
 **Kondisi setelah status `Final` ditetapkan:**
 - Episode tersebut tidak lagi menerima billing baru sebagai bagian dari episode tersebut.
-- Status `Final` menjadi kondisi yang dapat diverifikasi secara independen oleh OC-02-02 dan OC-02-04 sebagai prerequisite.
+- Status `Final` menjadi kondisi yang dapat diverifikasi secara independen oleh OC-TRK-ALOKASI-PEMBAYARAN dan OC-TRK-REG-OUT sebagai prerequisite.
 
 ### 5.4 Completion Proof
 
@@ -156,7 +156,7 @@ Tagihan untuk satu episode pelayanan pasien — yang dibatasi oleh satu No. Regi
 - Episode tersebut tidak lagi menerima billing baru sebagai bagian dari episode tersebut.
 - Seluruh billing episode tercantum lengkap tanpa omission maupun duplikasi, dan setiap billing memuat referensi registrasi sumber yang dapat ditelusuri.
 - Nilai rekapitulasi tagihan terverifikasi tepat sama dengan total penjumlahan seluruh rincian billing.
-- Status `Final` dapat dikenali sebagai prerequisite yang sah oleh OC-02-02 Alokasi Pembayaran dan OC-02-04 Reg-Out.
+- Status `Final` dapat dikenali sebagai prerequisite yang sah oleh OC-TRK-ALOKASI-PEMBAYARAN Alokasi Pembayaran dan OC-TRK-REG-OUT Reg-Out.
 
 ---
 
@@ -184,12 +184,12 @@ Apabila verifikasi tidak dapat menghasilkan `Final` karena terdapat ketidaksesua
 4. Setiap rincian billing harus tetap dapat ditelusuri (traceable) ke registrasi sumber yang menghasilkan transaksi tersebut.
 5. Recap/grouping tidak boleh mengubah makna, nilai nominal, tanggal/waktu, atau status transaksi billing; total recap harus konsisten secara matematis dengan detail billing.
 6. Informasi pembayaran yang disajikan hanya merepresentasikan transaksi pembayaran yang telah terjadi secara faktual.
-7. Billing dan payment transaction yang menjadi sumber rincian tagihan bersifat read-only terhadap transaksi sumber: OC-02-01 tidak membuat, mengubah, atau menghapus transaksi billing maupun transaksi pembayaran.
-8. OC-02-01 menghasilkan perubahan business state melalui Finalisasi, yaitu menetapkan status tagihan menjadi `Final`. Finalisasi hanya dapat ditetapkan setelah seluruh kondisi bisnis untuk verifikasi terpenuhi.
+7. Billing dan payment transaction yang menjadi sumber rincian tagihan bersifat read-only terhadap transaksi sumber: OC-TRK-BILLING tidak membuat, mengubah, atau menghapus transaksi billing maupun transaksi pembayaran.
+8. OC-TRK-BILLING menghasilkan perubahan business state melalui Finalisasi, yaitu menetapkan status tagihan menjadi `Final`. Finalisasi hanya dapat ditetapkan setelah seluruh kondisi bisnis untuk verifikasi terpenuhi.
 9. Setelah tagihan berstatus `Final`, episode tersebut tidak lagi menerima billing baru sebagai bagian dari episode tersebut.
-10. OC-02-01 tidak memiliki tanggung jawab untuk menentukan, membuat, mengubah, atau menghapus relasi antar-registrasi — tanggung jawab tersebut berada pada `ADM-REG` (Admission Domain).
-11. OC-02-01 tidak memiliki tanggung jawab melakukan alokasi pembayaran terhadap tagihan — tanggung jawab tersebut berada pada OC-02-02 Alokasi Pembayaran.
-12. OC-02-01 tidak mengambil alih proses Reg-Out — tanggung jawab tersebut berada pada OC-02-04 Reg-Out.
+10. OC-TRK-BILLING tidak memiliki tanggung jawab untuk menentukan, membuat, mengubah, atau menghapus relasi antar-registrasi — tanggung jawab tersebut berada pada `ADM-REG` (Admission Domain).
+11. OC-TRK-BILLING tidak memiliki tanggung jawab melakukan alokasi pembayaran terhadap tagihan — tanggung jawab tersebut berada pada OC-TRK-ALOKASI-PEMBAYARAN Alokasi Pembayaran.
+12. OC-TRK-BILLING tidak mengambil alih proses Reg-Out — tanggung jawab tersebut berada pada OC-TRK-REG-OUT Reg-Out.
 13. Kondisi episode tunggal (tanpa registrasi terkait yang dikaitkan) tetap sah sebagai satu episode tagihan.
 
 ---
@@ -226,11 +226,11 @@ Apabila verifikasi tidak dapat menghasilkan `Final` karena terdapat ketidaksesua
 | AC-08 | Rincian billing, recap/grouping, dan histori pembayaran dapat diverifikasi sebelum Finalisasi dilakukan. | Completeness |
 | AC-09 | Tagihan episode dapat ditetapkan berstatus `Final` apabila seluruh kondisi bisnis untuk Finalisasi terpenuhi. | Correctness |
 | AC-10 | Setelah tagihan berstatus `Final`, episode tersebut tidak lagi menerima billing baru sebagai bagian dari episode tersebut. | Constraint |
-| AC-11 | OC-02-01 tidak membuat, mengubah, atau menghapus transaksi billing maupun transaksi pembayaran sumber. | Constraint |
-| AC-12 | OC-02-01 tidak membentuk, mengubah, atau menghapus relasi keterkaitan antar-registrasi. | Constraint |
-| AC-13 | OC-02-01 tidak melakukan alokasi pembayaran terhadap tagihan (tanggung jawab OC-02-02). | Constraint |
-| AC-14 | OC-02-01 tidak mengambil alih proses Reg-Out (tanggung jawab OC-02-04). | Constraint |
-| AC-15 | Tagihan yang berstatus `Final` dapat dikenali sebagai prerequisite yang sah oleh OC-02-02 Alokasi Pembayaran dan OC-02-04 Reg-Out. | Correctness |
+| AC-11 | OC-TRK-BILLING tidak membuat, mengubah, atau menghapus transaksi billing maupun transaksi pembayaran sumber. | Constraint |
+| AC-12 | OC-TRK-BILLING tidak membentuk, mengubah, atau menghapus relasi keterkaitan antar-registrasi. | Constraint |
+| AC-13 | OC-TRK-BILLING tidak melakukan alokasi pembayaran terhadap tagihan (tanggung jawab OC-TRK-ALOKASI-PEMBAYARAN). | Constraint |
+| AC-14 | OC-TRK-BILLING tidak mengambil alih proses Reg-Out (tanggung jawab OC-TRK-REG-OUT). | Constraint |
+| AC-15 | Tagihan yang berstatus `Final` dapat dikenali sebagai prerequisite yang sah oleh OC-TRK-ALOKASI-PEMBAYARAN Alokasi Pembayaran dan OC-TRK-REG-OUT Reg-Out. | Correctness |
 
 ---
 
@@ -241,9 +241,9 @@ Apabila verifikasi tidak dapat menghasilkan `Final` karena terdapat ketidaksesua
 - Penentuan, pembuatan, pengubahan, atau pemutusan relasi keterkaitan antara No. Registrasi Utama dengan registrasi-registrasi terkait — merupakan tanggung jawab `ADM-REG` (Admission Domain).
 - Pembuatan, pembaruan, pembatalan, atau penghapusan transaksi billing pelayanan — merupakan tanggung jawab `TRK-BILLING` dan domain-domain klinis/operasional penghasil charge.
 - Penerimaan, pencatatan, pembaruan, atau pembatalan transaksi pembayaran — merupakan tanggung jawab `TRK-PAYMENT` dan `TRK-KASIR`.
-- Penentuan dan pencatatan alokasi pembayaran terhadap komponen atau saldo tagihan pasien — merupakan tanggung jawab **OC-02-02 Alokasi Pembayaran**.
-- Pengelolaan penerimaan, mutasi, pemakaian, dan pengembalian uang jaminan pasien — merupakan tanggung jawab **OC-02-03 Deposit**.
-- Pelaksanaan penyelesaian administrasi kepulangan pasien dan penutupan episode kunjungan — merupakan tanggung jawab **OC-02-04 Reg-Out**.
+- Penentuan dan pencatatan alokasi pembayaran terhadap komponen atau saldo tagihan pasien — merupakan tanggung jawab **OC-TRK-ALOKASI-PEMBAYARAN Alokasi Pembayaran**.
+- Pengelolaan penerimaan, mutasi, pemakaian, dan pengembalian uang jaminan pasien — merupakan tanggung jawab **OC-TRK-DEPOSIT Deposit**.
+- Pelaksanaan penyelesaian administrasi kepulangan pasien dan penutupan episode kunjungan — merupakan tanggung jawab **OC-TRK-REG-OUT Reg-Out**.
 - Pemeliharaan struktur master tarif, jenis tarif, dan harga layanan — merupakan tanggung jawab `TRK-TARIF`.
 - Pemeliharaan data master penjamin, grup jaminan, dan polis keanggotaan — merupakan tanggung jawab `TRK-JAMINAN`.
 - Desain antarmuka pengguna, tata letak layar, alur navigasi, dan interaksi layar — merupakan ranah Use Case dan Interaction Design.

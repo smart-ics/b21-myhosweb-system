@@ -26,7 +26,7 @@ The Gawat Darurat Domain is responsible for:
 
 * Recording an emergency visit.
 * Managing emergency triage.
-* Recording chargeable emergency procedures and interventions.
+* Recording and managing chargeable emergency procedures and interventions.
 * Managing transfer from emergency care to inpatient care.
 * Managing ambulance usage and its associated charges.
 
@@ -62,26 +62,27 @@ Clinical findings and detailed medical documentation remain within the EMR domai
 
 ---
 
-### 3. IGD Tindakan
+### 3. IGD Tindakan (IGD-TINDAKAN)
 
-The capability to record and manage **chargeable procedures and interventions performed during an emergency visit**.
+The capability to **record and manage chargeable procedures and interventions associated with an emergency visit, representing them as billable service items for financial processing**.
 
-Emergency procedures may be performed **without an Admission registration existing first**.
+This capability represents the administrative recording of chargeable services delivered in an emergency care setting. It associates each chargeable item with the appropriate patient and emergency service context to support the financial processing of the resulting charges.
 
-This is intentional because emergency treatment may need to begin immediately.
+**Emergency-Specific Rule**:
+**Chargeable tindakan may be recorded before an Admission registration exists**, because emergency care may begin before formal admission registration. An Admission registration may be linked to the emergency encounter and its charges at a later stage.
 
-This capability focuses on the administrative representation of procedures for service charging.
+This capability remains consistent with the shared legacy header-detail entity used to record chargeable services across care settings. It focuses strictly on the administrative recording of charges for financial processing.
 
-It does not own the clinical documentation of the procedure.
+This capability does not own or include clinical documentation, findings, observations, assessments, diagnoses, or medical records, which remain outside its responsibility and belong to the EMR domain.
+
+Recording a charge does not prove or imply that a clinical procedure was performed or that clinical documentation has been completed.
 
 Examples:
 
 * Emergency procedure charge
 * Nursing intervention charge
-* Minor emergency procedure
-* Other billable emergency services
-
-Clinical documentation, findings, observations, assessments, and medical records remain within the EMR domain.
+* Minor emergency procedure charge
+* Other billable emergency service items
 
 ---
 
@@ -130,7 +131,7 @@ This capability records the ambulance usage and the information required to dete
 
 * IGD Visit.
 * Emergency triage.
-* Emergency procedures and interventions for charging purposes.
+* Administrative recording of chargeable emergency procedures and interventions for financial processing.
 * Transfer from IGD to inpatient care.
 * Ambulance usage and ambulance charge calculation.
 
@@ -149,14 +150,26 @@ This capability records the ambulance usage and the information required to dete
 
 ## Relationships
 
-| Related Domain | Relationship                                                                                                                       |
-| -------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| Pasien         | Gawat Darurat uses the authoritative patient identity for an emergency visit.                                                      |
-| Organisasi     | Gawat Darurat uses the IGD service unit and relevant PPA defined by Organisasi.                                                    |
-| Admission      | An IGD Visit may exist before Admission registration; the admission registration may subsequently reference the emergency episode. |
-| Rawat Inap     | IGD transfers patients to Rawat Inap when inpatient care is required.                                                              |
-| Tata Rekening  | Provides applicable tariff information for chargeable emergency services and ambulance services.                                   |
-| EMR            | Clinical findings, assessments, procedures, and medical documentation are maintained by EMR/clinical domains.                      |
+| Related Domain | Relationship                                                                                                                                         |
+| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Pasien         | Gawat Darurat uses the authoritative patient identity for an emergency visit.                                                                        |
+| Organisasi     | Gawat Darurat uses the IGD service unit and relevant PPA defined by Organisasi.                                                                      |
+| Admission      | An IGD Visit may exist before Admission registration; the admission registration may subsequently reference the emergency episode.                   |
+| Rawat Inap     | IGD transfers patients to Rawat Inap when inpatient care is required.                                                                                |
+| Tata Rekening  | Provides applicable tariff information for chargeable emergency services and ambulance services, and receives billable charges for patient billing. |
+| EMR            | Clinical findings, assessments, procedures, and medical documentation are maintained by EMR/clinical domains.                                        |
+
+---
+
+## Capability Map
+
+| Capability    | Business Ability                                                                             |
+| ------------- | -------------------------------------------------------------------------------------------- |
+| IGD Visit     | Record and manage emergency visits without requiring prior Admission registration            |
+| Triage        | Perform and record emergency triage priority for incoming patients                           |
+| IGD Tindakan  | Record and manage chargeable emergency procedures and interventions for financial processing |
+| IGD Rawat Inap| Manage transfer of emergency patients into inpatient care                                    |
+| Ambulance     | Record ambulance usage and determine distance- or area-based charges                         |
 
 ---
 
@@ -164,6 +177,7 @@ This capability records the ambulance usage and the information required to dete
 
 1. An **IGD Visit may exist without an Admission registration**.
 2. Emergency treatment may be performed before Admission registration exists.
-3. Admission registration may be completed after the IGD Visit has already started.
-4. IGD transfer to inpatient care does not itself constitute inpatient registration.
-5. Ambulance charging uses **either destination area or travel distance**, not both for the same charge.
+3. **Chargeable emergency procedures and interventions may be recorded before an Admission registration exists**.
+4. Admission registration may be completed after the IGD Visit has already started.
+5. IGD transfer to inpatient care does not itself constitute inpatient registration.
+6. Ambulance charging uses **either destination area or travel distance**, not both for the same charge.

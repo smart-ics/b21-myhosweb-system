@@ -70,7 +70,7 @@ Berikut adalah pemetaan komprehensif ke-48 Outcome V2 dari [`outcomes/list-outco
 | 1 | **Ambulance** | *Ambulance Usage & Charge exists* | **IGD** (Gawat Darurat) | `IGD-AMBULANCE` Ambulance | `TRK-TARIF` (Tarif Layanan/Jarak/Wilayah), `PAS-DATSOS` (Identitas Pasien), `ORG-PPA` (Supir/Petugas Medis) | Known |
 | 2 | **Antrian** | *Queue Ticket & Call State exists* | **ADM** (Admission) / **RJL** (Rawat Jalan) | `ADM-ANTRIAN` Antrian Registrasi & `RJL-ANTRIAN` Antrian Poli | `PAS-DATSOS` (Identitas Pasien), `ORG-LAYANAN` (Unit Poli Tujuan) | Known |
 | 3 | **AntrianApotek** | *Pharmacy Queue Ticket exists* | **APT** (Apotek) | `APT-QUEUE` Antrian Apotek | `PAS-DATSOS` (Pasien), `ADM-REG` (Kunjungan Aktif) | Known |
-| 4 | **Billing** | *Patient Account & Charge Items exist* | **TRK** (Tata Rekening) | `TRK-BILLING` Billing | `TRK-TARIF`, `TRK-JAMINAN`, `RJL-TINDAKAN`, `RNA-CHARGE`, `IGD-TINDAKAN`, `LAB-ORDER`, `RAD-ORDER`, `KMO-OPR`, `APT-BILL` | Known |
+| 4 | **Billing** | *Patient Account & Charge Items exist* | **TRK** (Tata Rekening) | `TRK-BILLING` Billing | `TRK-TARIF`, `TRK-JAMINAN`, `RJL-TINDAKAN`, `RNA-TINDAKAN`, `RNA-CHARGE`, `IGD-TINDAKAN`, `LAB-ORDER`, `RAD-ORDER`, `KMO-OPR`, `APT-BILL` | Known |
 | 5 | **ClosingShift** | *Cashier Shift Closing exists* | **TRK** (Tata Rekening) | `TRK-KASIR` Kasir | `ORG-PPA` (Petugas Kasir), `ORG-LAYANAN` (Loket Kasir) | Known |
 | 6 | **DataSosialPasien** | *Patient Master Social Data exists* | **PAS** (Pasien) | `PAS-DATSOS` Data Sosial Pasien | `PAS-MERGE` (Resolusi Duplikasi Pasien) | Known |
 | 7 | **Eklaim** | *BPJS INA-CBGs Claim Package exists* | **BPJ** (BPJS) | `BPJ-EKLAIM` e-Klaim | `BRM-CODING` (ICD-10/9-CM), `BRM-MORBID`, `TRK-BILLING` (Biaya Riil RS), `TRK-JAMINAN`, `ADM-REG` | Known (Catalog) |
@@ -102,7 +102,7 @@ Berikut adalah pemetaan komprehensif ke-48 Outcome V2 dari [`outcomes/list-outco
 | 33 | **PurchaseOrder** | *Purchase Order exists* | **PUR** (Purchasing) | `PUR-PO` Purchase Order | `PUR-PURREQ`, `PUR-SUPPLIER` | Known |
 | 34 | **PurchaseReq** | *Purchase Request exists* | **PUR** (Purchasing) | `PUR-PURREQ` Purchase Request | `PUR-MATREQ`, `PUR-SUPPLIER`, `INV-MASTER` | Known |
 | 35 | **RegExternal** | *Direct External Lab Registration exists* | **LAB** (Laboratory) | `LAB-EXTERNAL` Registrasi External | `TRK-BILLING`, `TRK-TARIF` | Known |
-| 36 | **Registrasi** | *Hospital Visit Registration exists* | **ADM** (Admission) | `ADM-REG` Registration | `PAS-DATSOS`, `ORG-LAYANAN`, `ORG-JADWAL`, `TRK-JAMINAN`, `ADM-BOOKING` | Known |
+| 36 | **Registrasi** | *Hospital Service Registration exists* | **ADM** (Admission) | `ADM-REG` Registration | `PAS-DATSOS`, `ORG-LAYANAN`, `ORG-PPA`, `ORG-JADWAL`, `ORG-BANGSAL`, `IGD-VISIT`, `RNA-ANTRIAN`, `LAB-EXTERNAL`, `TRK-JAMINAN`, `TRK-TARIF`, `TRK-DEPOSIT`, `BPJ-VCLAIM` | Known |
 | 37 | **ReqMutasi** | *Stock Transfer Request exists* | **INV** (Inventory) | `INV-MUTASI` Mutasi (Tahap 1: ReqMutasi) | `ORG-LAYANAN` (Unit Pemohon & Unit Penyedia), `INV-STOK` | Known |
 | 38 | **ReturBeli** | *Purchase Return exists* | **PUR** (Purchasing) | `PUR-RETURN` Purchase Return | `PUR-DO`, `PUR-SUPPLIER`, `INV-MUTASI` (Pengurangan Fisik Stok) | Known |
 | 39 | **RoomCharge** | *Calculated Room Charge exists* | **RNA** (Rawat Inap) | `RNA-CHARGE` Room Charge | `RNA-BED` (Durasi & Perpindahan Bed), `TRK-TARIF` (Tarif Dasar Kamar), `TRK-BILLING` | Known |
@@ -112,7 +112,7 @@ Berikut adalah pemetaan komprehensif ke-48 Outcome V2 dari [`outcomes/list-outco
 | 43 | **TelaahResep** | *Pharmacist Clinical Review exists* | **APT** (Apotek) | `APT-TELAAH` Telaah Resep | `APT-RESEP`, `ORG-PPA` (Apoteker Penelaah) | Known |
 | 44 | **TerimaBrg** | *Goods Receipt (DO) Record exists* | **PUR** (Purchasing) | `PUR-DO` DO Penerimaan Barang | `PUR-PO`, `PUR-SUPPLIER`, `INV-MUTASI` / `INV-STOK` (Pencatatan Masuk Fisik) | Known |
 | 45 | **TerimaMutasi** | *Stock Transfer Acceptance exists* | **INV** (Inventory) | `INV-MUTASI` Mutasi (Tahap 3: TerimaMutasi) | `INV-STOK`, `ORG-LAYANAN` (Gudang Penerima) | Known |
-| 46 | **Tindakan** | *Clinical Procedure Charge Record exists* | **RJL** / **IGD** / **RNA** (Clinical Care) | `RJL-TINDAKAN` / `IGD-TINDAKAN` | `TRK-TARIF`, `TRK-BILLING`, `ORG-PPA` (Pelaksana Klinis), `PAS-DATSOS` | Known |
+| 46 | **Tindakan** | *Patient Procedure Charge Record exists* | **TRK** (Tata Rekening) | `TRK-BILLING` Billing (Item Tagihan Tindakan) | `RJL-TINDAKAN` (Rawat Jalan), `RNA-TINDAKAN` (Rawat Inap), `IGD-TINDAKAN` (Gawat Darurat), `TRK-TARIF` (Tarif Tindakan), `ORG-PPA` (Pelaksana Klinis), `PAS-DATSOS` (Identitas Pasien) | Known |
 | 47 | **VclaimBpjs** | *BPJS Participation & SEP exists* | **BPJ** (BPJS) | `BPJ-VCLAIM` VClaim | `ADM-REG`, `TRK-JAMINAN`, `PAS-DATSOS` | Known (Catalog) |
 | 48 | **WaitingList** | *Inpatient Bed Waiting Queue exists* | **RNA** (Rawat Inap) | `RNA-ANTRIAN` Antrian Masuk Bangsal | `ADM-REG` (Rekomendasi Ranap), `ORG-BANGSAL` (Ketersediaan Kamar) | Known |
 
@@ -129,23 +129,23 @@ Berikut adalah ringkasan pengelompokan ke-48 Outcome berdasarkan Domain Pemilik 
 │ 01. PASIEN (PAS)                     │      1      │ DataSosialPasien                                       │
 │ 02. ORGANISASI (ORG)                 │      1      │ JadwalPraktek                                          │
 │ 03. ADMISSION (ADM)                  │      3      │ Antrian (Loket)*, PasienTracker, Registrasi            │
-│ 04. RAWAT JALAN (RJL)                │      2      │ Antrian (Poli)*, Tindakan (RJ)*                        │
-│ 05. RAWAT INAP (RNA)                 │      4      │ PakaiBed, RoomCharge, WaitingList, Tindakan (RI)*      │
-│ 06. GAWAT DARURAT (IGD)              │      4      │ Ambulance, IgdTriage, IgdVisit, Tindakan (IGD)*        │
+│ 04. RAWAT JALAN (RJL)                │      1      │ Antrian (Poli)*                                        │
+│ 05. RAWAT INAP (RNA)                 │      3      │ PakaiBed, RoomCharge, WaitingList                      │
+│ 06. GAWAT DARURAT (IGD)              │      3      │ Ambulance, IgdTriage, IgdVisit                         │
 │ 07. LABORATORY (LAB)                 │      4      │ HasilLab, OrderLab, RegExternal, SampleCollection      │
 │ 08. RADIOLOGY (RAD)                  │      3      │ Expertise, JadwalRadiologi, OrderRadiologi             │
 │ 09. KAMAR OPERASI (KMO)              │      3      │ JadwalOk, OrderOk, PreOperativeClearance               │
 │ 10. APOTEK (APT)                     │      4      │ AntrianApotek, OrderDispensing, Penjualan, TelaahResep │
 │ 11. INVENTORY (INV)                  │      6      │ Mutasi, PakaiBrg, ReqMutasi, Stok, StokOpname,         │
 │                                      │             │ TerimaMutasi                                           │
-│ 12. PURCHASING (PUR)                 │      6      │ Faktur, Forecasting, MaterialReq, PurchaseOrder,        │
+│ 12. PURCHASING (PUR)                 │      7      │ Faktur, Forecasting, MaterialReq, PurchaseOrder,        │
 │                                      │             │ PurchaseReq, ReturBeli, TerimaBrg                      │
-│ 13. TATA REKENING (TRK)              │      4      │ Billing, ClosingShift, Kasir, OrderPayment             │
+│ 13. TATA REKENING (TRK)              │      5      │ Billing, ClosingShift, Kasir, OrderPayment, Tindakan   │
 │ 14. BERKAS REKAM MEDIS (BRM)         │      3      │ MorbiditasPasien, MutasiBerkas, PelaporanRL            │
 │ 15. BPJS (BPJ)                       │      2      │ Eklaim, VclaimBpjs                                     │
 └──────────────────────────────────────┴─────────────┴────────────────────────────────────────────────────────┘
 ```
-*\*Catatan: `Antrian` mencakup antrean pendaftaran loket (`ADM-ANTRIAN`) dan antrean pelayanan poli (`RJL-ANTRIAN`). `Tindakan` dipetakan bersama ke kapabilitas pelayanan prosedur klinis masing-masing unit (`RJL-TINDAKAN`, `IGD-TINDAKAN`, serta prosedur tindakan di bangsal).*
+*\*Catatan: `Antrian` mencakup antrean pendaftaran loket (`ADM-ANTRIAN`) dan antrean pelayanan poli (`RJL-ANTRIAN`). `Tindakan` dipetakan sebagai satu shared outcome tunggal ('Patient Procedure Charge Record exists') dengan kepemilikan utama kanonikal di Tata Rekening (`TRK`) karena secara esensi bisnis entitas ini merepresentasikan pembebanan biaya finansial pasien (`TRK-BILLING`), sedangkan domain pelayanan klinis (`RJL-TINDAKAN`, `RNA-TINDAKAN`, `IGD-TINDAKAN`) bertindak sebagai kapabilitas kontributor pencatatan di titik layanan (point-of-care capture). Lihat Bagian 6 poin 4 untuk analisis tata kelola penetapan kepemilikan.*
 
 ---
 
@@ -194,8 +194,9 @@ flowchart TD
 ```
 
 ### 1. Rantai Pendapatan & Pembebanan Biaya (*Billing Chain*)
-- **`Billing` (TRK)** mengonsumsi data dari seluruh unit pelaksana: `RJL-TINDAKAN`, `IGD-TINDAKAN`, `RNA-CHARGE`, `LAB-RESULT`/`LAB-ORDER`, `RAD-ORDER`, `KMO-OPR`, dan `APT-BILL`.
+- **`Billing` (TRK)** mengonsumsi data dari seluruh unit pelaksana: `RJL-TINDAKAN`, `RNA-TINDAKAN`, `IGD-TINDAKAN`, `RNA-CHARGE`, `LAB-RESULT`/`LAB-ORDER`, `RAD-ORDER`, `KMO-OPR`, dan `APT-BILL`.
 - **`RoomCharge` (RNA)** menghitung lamanya inap dan aturan sewa kamar secara operasional berdasarkan okupansi tempat tidur (`RNA-BED`), lalu mengalikan tarif dasar dari Tata Rekening (`TRK-TARIF`) untuk membentuk rincian tagihan (`TRK-BILLING`).
+- **`Tindakan` (TRK)** merekam pembebanan tindakan administratif sebagai item tagihan finansial (`TRK-BILLING`) yang bersumber dari encounter rawat jalan (`RJL-TINDAKAN`), bangsal rawat inap (`RNA-TINDAKAN`), maupun gawat darurat (`IGD-TINDAKAN`), dengan penerapan tarif dasar dari `TRK-TARIF`.
 
 ### 2. Rantai Integrasi Pelayanan & Penunjang (*Diagnostic & Surgical Orders*)
 - Permintaan penunjang (`OrderLab`, `OrderRadiologi`, `OrderOk`) dipicu dari encounter klinis (Rawat Jalan, Rawat Inap, atau IGD), tetapi kepemilikan siklus layanannya berada pada domain penunjang terkait.
@@ -232,6 +233,23 @@ Sesuai Bab 5 & 6 dari [`foundation/conceptual-model.md`](file:///d:/Project.Akti
 3. **Status Domain Berkas Rekam Medis (BRM) & BPJS (BPJ)**:
    - Meskipun terdapat 13 dokumen spesifikasi domain (01 hingga 13), katalog utama [`domain/DOMAIN-CATALOG.md`](file:///d:/Project.Aktif/b21-myhosweb-system/domain/DOMAIN-CATALOG.md) secara resmi mendokumentasikan Domain 14 (`BRM`) dan Domain 15 (`BPJ`).
    - Outcome seperti `MorbiditasPasien`, `MutasiBerkas`, `PelaporanRL`, `Eklaim`, dan `VclaimBpjs` secara valid dan presisi bertempat di bawah kapabilitas `BRM` dan `BPJ`. Disarankan untuk melengkapi dokumen `14-BERKAS-REKAM-MEDIS-DOMAIN.md` dan `15-BPJS-DOMAIN.md` agar setara dengan 13 domain lainnya.
+
+4. **Penyelarasan Kapabilitas & Kepemilikan Definitif Outcome Tindakan (`RJL-TINDAKAN`, `RNA-TINDAKAN`, `IGD-TINDAKAN`, `TRK-BILLING`)**:
+   - *Status Kapabilitas*: **Known Capability** (Diselaraskan secara eksplisit pada [`domain/04-RAWAT-JALAN-DOMAIN.md`](file:///d:/Project.Aktif/b21-myhosweb-system/domain/04-RAWAT-JALAN-DOMAIN.md), [`domain/05-RAWAT-INAP-DOMAIN.md`](file:///d:/Project.Aktif/b21-myhosweb-system/domain/05-RAWAT-INAP-DOMAIN.md), [`domain/06-GAWAT-DARURAT-DOMAIN.md`](file:///d:/Project.Aktif/b21-myhosweb-system/domain/06-GAWAT-DARURAT-DOMAIN.md), dan terdaftar kanonikal di [`domain/DOMAIN-CATALOG.md`](file:///d:/Project.Aktif/b21-myhosweb-system/domain/DOMAIN-CATALOG.md)).
+   - *Tanggung Jawab Semantik Bersama*: Mencatat dan mengelola tindakan serta intervensi yang dapat dibebankan biaya (*chargeable*) terkait encounter pelayanan pasien, merepresentasikannya sebagai item tagihan (*billable service items*) untuk pemrosesan keuangan. Ketiga kapabilitas murni berfokus pada pencatatan administratif pembebanan biaya dan secara tegas mengecualikan dokumentasi klinis, temuan, asesmen, diagnosis, maupun rekam medis (yang dimiliki domain EMR). Pencatatan biaya tidak membuktikan atau mengimplikasikan bahwa prosedur klinis telah dilakukan atau dokumentasi klinis telah selesai.
+   - *Representasi Satu Shared Outcome*: Ketiga kapabilitas layanan berkontribusi pada tepat **satu shared Outcome** kanonikal: `Tindakan` dengan *semantic business state*: **`Patient Procedure Charge Record exists`**. Hal ini selaras dengan arsitektur sistem legacy yang menggunakan satu entitas header-detail bersama untuk mencatat pembebanan tindakan di seluruh konteks layanan (RJ, RI, IGD).
+   - *Resolusi Kepemilikan Utama (Primary Ownership Resolution)*:
+     Berdasarkan telaah arsitektur dan prinsip tanggung jawab bisnis (*business responsibility*):
+     1. Entitas legacy ini ada murni untuk **membebankan biaya jasa/tindakan kepada pasien** (*financial charge generation*), bukan untuk mendokumentasikan asuhan klinis.
+     2. Menetapkan Rawat Jalan (RJL) sebagai Primary Domain semata-mata karena urutan implementasi historis (*historical implementation order* / Workspace `SC-05-01`) secara konseptual cacat, karena RJL tidak memiliki otoritas lingkup (*scope boundary*) atas asuhan rawat inap (`RNA`) maupun gawat darurat (`IGD`).
+     3. Meskipun domain pelayanan klinis (`RJL`, `RNA`, `IGD`) mengoperasikan penangkapan di titik layanan (*point-of-care capture*) dan siklus hidup transaksi tindakan pada encounter masing-masing, fakta bisnis persisten yang dibentuk (*Patient Procedure Charge Record exists*) adalah **kewajiban keuangan / item tagihan pasien**.
+     4. Oleh karena itu, **Tata Rekening (TRK)** ditetapkan secara definitif sebagai **Primary Domain** kanonikal untuk Outcome `Tindakan` melalui kapabilitas `TRK-BILLING` (Item Tagihan Prosedur), dengan `RJL-TINDAKAN`, `RNA-TINDAKAN`, dan `IGD-TINDAKAN` sebagai kapabilitas kontributor penangkapan operasional, serta `TRK-TARIF` sebagai kontributor penentuan nilai tarif. Hal ini secara utuh menjaga batas domain, konsistensi semantik bisnis, dan integritas model konseptual.
+
+5. **Konsolidasi Unified REGISTRASI Outcome (`OC-ADM-REGISTRASI-REGISTRASI-OUTCOME.md`)**:
+   - *Status Saat Ini*: **Canonical Unified Outcome** (Mengonsolidasikan dan mensupersede `OC-01-02-REG-JALAN-IGD-OUTCOME.md` dan `OC-01-03-REG-INAP.md`).
+   - *Prinsip Konseptual*: Sistem legacy memiliki tepat **satu konsep bisnis REGISTRASI** yang mencakup empat tipe registrasi: **Rawat Jalan**, **IGD / Rawat Darurat**, **Rawat Inap**, dan **External**. Perbedaan aturan bisnis (masa berlaku 1 hari vs multi-hari, cross midnight, kelolaan berkas rekam medis) diperlakukan sebagai batasan bisnis (*business constraints*) dari satu Outcome, bukan empat Outcome terpisah.
+   - *Kepemilikan Utama*: **Admission (ADM)** sebagai Primary Domain melalui kapabilitas kanonikal **`ADM-REG` Registration**, dengan identitas registrasi warisan sistem **`RegId`** yang berfungsi sebagai kunci pengelompokan penagihan (*billing collection key*) bagi Tata Rekening (`TRK-BILLING`) dan Kasir (`TRK-KASIR`).
+   - *Boundary Gawat Darurat*: `IGD-VISIT` tetap berdiri sendiri sebagai outcome operasional domain IGD (`IGD-VISIT`) yang dapat dibuat sebelum registrasi admisi ada. Registrasi admisi tipe IGD menautkan `RegId` ke `IGD-VISIT` tersebut.
 
 ---
 *Dokumen ini merupakan pemetaan kanonikal resmi V2 antara Outcome dan Kapabilitas Domain Sistem Informasi Rumah Sakit MyHosWeb.*

@@ -2,7 +2,7 @@
 
 | Field       | Value        |
 |-------------|--------------|
-| Code        | OC-04-02     |
+| Code        | OC-BRM-MUTASI-BERKAS     |
 | Version     | 1.1          |
 | Status      | Draft        |
 | LastUpdated | 2026-10-02   |
@@ -180,10 +180,10 @@ Outcome ini berlangsung sepanjang masa aktif berkas rekam medis fisik di rumah s
 
 - **Manajemen Dokumen & Formulir Individual di Dalam Berkas**: Pengelolaan lembaran formulir, pengurutan halaman rekam medis, atau pengindeksan dokumen klinis spesifik di dalam folder rekam medis.
 - **Pencatatan Rekam Medis Elektronik (Asuhan Medis)**: Pengisian catatan klinis, resume medis, tindakan, dan asuhan yang dilakukan secara digital → domain pelayanan klinis terkait (Rawat Jalan, Rawat Inap, Gawat Darurat).
-- **Registrasi Kunjungan Pasien**: Pencatatan pendaftaran kedatangan pasien ke loket atau unit pelayanan → **OC-01-02 Registrasi Rawat Jalan dan IGD** dan **OC-01-03 Registrasi Rawat Inap**.
-- **Booking & Reservasi Pelayanan**: Pengelolaan reservasi dan jadwal perjanjian pasien → **OC-01-01 Booking**.
-- **Master Data Pasien & Data Sosial**: Pengelolaan profil master pasien dan identitas kependudukan → **OC-04-01 Data Sosial Pasien**.
-- **Kodifikasi Penyakit & Prosedur Medis**: Pengkodean diagnosis dan tindakan untuk keperluan casemix → **OC-04-03 Casemix dan Coding**.
-- **Pelaporan Statistik Rumah Sakit**: Laporan RL dan sensus harian → **OC-04-04 Pelaporan RL** dan **OC-04-05 Pelaporan Index dan Sensus**.
+- **Registrasi Kunjungan Pasien**: Pencatatan pendaftaran kedatangan pasien ke loket atau unit pelayanan → **OC-ADM-REGISTRASI Registrasi** (Unified REGISTRASI Outcome, mengonsolidasikan registrasi Rawat Jalan, IGD, dan Rawat Inap).
+- **Booking & Reservasi Pelayanan**: Pengelolaan reservasi dan jadwal perjanjian pasien → **OC-ADM-BOOKING Booking**.
+- **Master Data Pasien & Data Sosial**: Pengelolaan profil master pasien dan identitas kependudukan → **OC-PAS-DATA-SOSIAL-PASIEN Data Sosial Pasien**.
+- **Kodifikasi Penyakit & Prosedur Medis**: Pengkodean diagnosis dan tindakan untuk keperluan casemix → **OC-BRM-CASEMIX-CODING Casemix dan Coding**.
+- **Pelaporan Statistik Rumah Sakit**: Laporan RL dan sensus harian → **OC-BRM-PELAPORAN-RL Pelaporan RL** dan **OC-BRM-SENSUS-INDEX Pelaporan Index dan Sensus**.
 - **Mekanisme Fisik Pengantaran Berkas**: Pengaturan kurir, porter, atau sarana transportasi fisik pengantaran berkas antar unit.
 - **Penyusutan, Retensi, dan Pemusnahan Berkas Fisik**: Kebijakan pemilahan berkas inaktif, jadwal retensi arsip, dan berita acara pemusnahan berkas fisik secara hukum.

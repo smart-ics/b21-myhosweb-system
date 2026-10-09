@@ -2,7 +2,7 @@
 
 | Field       | Value        |
 |-------------|--------------|
-| Code        | OC-02-04     |
+| Code        | OC-TRK-REG-OUT     |
 | Version     | 1.0          |
 | Status      | Draft        |
 | LastUpdated | 2026-10-01   |
@@ -60,8 +60,8 @@ Seluruh kewajiban finansial pasien atas episode kunjungan **telah diselesaikan d
 ### 5.1 Required Business Facts
 
 - Episode kunjungan pasien yang diidentifikasi dengan nomor registrasi yang valid telah berstatus **Selesai** dalam sistem.
-- Tagihan kunjungan yang bersangkutan (OC-02-01) telah berstatus **Final** sebelum Reg-Out dapat dieksekusi.
-- Seluruh alokasi pembayaran (OC-02-02) atas tagihan kunjungan telah dicatat dan saldo tagihan yang tersisa (outstanding balance) telah ditentukan secara definitif.
+- Tagihan kunjungan yang bersangkutan (OC-TRK-BILLING) telah berstatus **Final** sebelum Reg-Out dapat dieksekusi.
+- Seluruh alokasi pembayaran (OC-TRK-ALOKASI-PEMBAYARAN) atas tagihan kunjungan telah dicatat dan saldo tagihan yang tersisa (outstanding balance) telah ditentukan secara definitif.
 - Kondisi penyelesaian kewajiban finansial terdokumentasi secara eksplisit: **Lunas** (outstanding = 0), **Piutang** (outstanding > 0 dan diizinkan sesuai ketentuan, misalnya untuk tagihan penjamin yang belum diklaim), atau **Lebih Bayar** (outstanding < 0 yang menjadi dasar pengembalian ke pasien).
 - Sisa deposit aktif pasien (jika ada) telah diidentifikasi pada saat Reg-Out dan tercatat sebagai dasar tindak lanjut — baik dikembalikan kepada pasien (refund), ditransfer ke kunjungan berikutnya (sesuai kebijakan), atau diproses sesuai prosedur yang berlaku.
 - Tanggal dan waktu Reg-Out telah terpersistensi sebagai penanda resmi penutupan episode kunjungan.
@@ -96,8 +96,8 @@ Seluruh kewajiban finansial pasien atas episode kunjungan **telah diselesaikan d
 
 ### 5.3 Required Business Conditions
 
-- Tagihan kunjungan harus berstatus **Final** (OC-02-01) sebelum Reg-Out dapat dieksekusi; Reg-Out tidak dapat dilakukan terhadap tagihan yang masih berstatus Aktif.
-- Seluruh alokasi pembayaran atas tagihan kunjungan harus telah dicatat (OC-02-02) sebelum Reg-Out dieksekusi; outstanding balance harus dapat ditentukan secara definitif.
+- Tagihan kunjungan harus berstatus **Final** (OC-TRK-BILLING) sebelum Reg-Out dapat dieksekusi; Reg-Out tidak dapat dilakukan terhadap tagihan yang masih berstatus Aktif.
+- Seluruh alokasi pembayaran atas tagihan kunjungan harus telah dicatat (OC-TRK-ALOKASI-PEMBAYARAN) sebelum Reg-Out dieksekusi; outstanding balance harus dapat ditentukan secara definitif.
 - Untuk kunjungan dengan status **Lunas** (outstanding = 0): Reg-Out dapat langsung dieksekusi.
 - Untuk kunjungan dengan outstanding balance > 0 (**Piutang**): Reg-Out hanya dapat dieksekusi jika diizinkan secara eksplisit sesuai kebijakan rumah sakit (misalnya untuk tagihan penjamin yang sedang dalam proses klaim, atau atas otorisasi pejabat yang berwenang); sisa kewajiban harus tercatat sebagai piutang.
 - Untuk kunjungan dengan outstanding balance < 0 (**Lebih Bayar**): Reg-Out hanya dapat dieksekusi setelah kelebihan pembayaran diidentifikasi dan tindak lanjutnya dicatat (pengembalian kepada pasien melalui kasir atau mekanisme lain yang berlaku).
@@ -120,7 +120,7 @@ Seluruh kewajiban finansial pasien atas episode kunjungan **telah diselesaikan d
 
 ### Start
 
-Dimulai ketika tagihan kunjungan telah berstatus **Final** (OC-02-01) dan petugas Tata Rekening memulai proses verifikasi penyelesaian finansial dengan tujuan mengeksekusi Reg-Out — yaitu mengonfirmasi bahwa seluruh kewajiban finansial pasien untuk episode kunjungan tersebut telah ditentukan kondisinya (Lunas, Piutang, atau Lebih Bayar) dan siap ditutup secara administratif.
+Dimulai ketika tagihan kunjungan telah berstatus **Final** (OC-TRK-BILLING) dan petugas Tata Rekening memulai proses verifikasi penyelesaian finansial dengan tujuan mengeksekusi Reg-Out — yaitu mengonfirmasi bahwa seluruh kewajiban finansial pasien untuk episode kunjungan tersebut telah ditentukan kondisinya (Lunas, Piutang, atau Lebih Bayar) dan siap ditutup secara administratif.
 
 ### End
 
@@ -151,11 +151,11 @@ Kunjungan yang sudah dalam status **Selesai** tidak dapat menerima aktivitas fin
 
 | Exception | Expected Behavior |
 |-----------|-------------------|
-| Tagihan kunjungan belum berstatus Final | Reg-Out ditolak. Petugas Tata Rekening harus memastikan tagihan difinalisasi (OC-02-01) terlebih dahulu sebelum Reg-Out dapat dieksekusi. |
-| Outstanding balance > 0 tanpa otorisasi kepulangan berpiutang | Reg-Out ditangguhkan. Petugas harus mendapatkan otorisasi dari pejabat yang berwenang atau menyelesaikan sisa kewajiban terlebih dahulu melalui tambahan alokasi pembayaran (OC-02-02). |
+| Tagihan kunjungan belum berstatus Final | Reg-Out ditolak. Petugas Tata Rekening harus memastikan tagihan difinalisasi (OC-TRK-BILLING) terlebih dahulu sebelum Reg-Out dapat dieksekusi. |
+| Outstanding balance > 0 tanpa otorisasi kepulangan berpiutang | Reg-Out ditangguhkan. Petugas harus mendapatkan otorisasi dari pejabat yang berwenang atau menyelesaikan sisa kewajiban terlebih dahulu melalui tambahan alokasi pembayaran (OC-TRK-ALOKASI-PEMBAYARAN). |
 | Outstanding balance < 0 (lebih bayar) tanpa tindak lanjut yang ditetapkan | Reg-Out ditangguhkan hingga kelebihan pembayaran diidentifikasi dan tindak lanjutnya dicatat (dikembalikan ke pasien melalui kasir atau mekanisme lain yang berlaku). |
 | Sisa deposit aktif pasien belum memiliki tindak lanjut yang jelas | Reg-Out tidak dapat dikonfirmasi tanpa kejelasan tindak lanjut deposit; petugas harus menetapkan apakah sisa deposit dikembalikan atau diproses sesuai kebijakan. |
-| Masih terdapat item biaya dari unit pelayanan yang menunggu verifikasi sebelum tagihan Final | Tagihan tidak dapat difinalisasi dan Reg-Out tidak dapat dimulai. Unit pelayanan terkait harus menyelesaikan verifikasi terlebih dahulu (OC-02-01). |
+| Masih terdapat item biaya dari unit pelayanan yang menunggu verifikasi sebelum tagihan Final | Tagihan tidak dapat difinalisasi dan Reg-Out tidak dapat dimulai. Unit pelayanan terkait harus menyelesaikan verifikasi terlebih dahulu (OC-TRK-BILLING). |
 | Untuk rawat inap: bed belum dikosongkan secara fisik dan data sistem belum diperbarui | Proses Reg-Out berjalan namun pembebasan bed harus dikonfirmasi; tanpa konfirmasi bed release, tempat tidur tidak dapat ditawarkan kembali ke pasien lain. |
 | Reg-Out dicoba dilakukan oleh petugas yang tidak berwenang | Eksekusi Reg-Out ditolak. Hanya petugas dengan otorisasi Reg-Out yang dapat mengeksekusi penutupan kunjungan. |
 | Kunjungan sudah berstatus Selesai dan Reg-Out dicoba dieksekusi ulang | Duplikasi Reg-Out ditolak. Sistem harus mendeteksi bahwa kunjungan sudah dalam status Selesai dan mencegah eksekusi Reg-Out kedua tanpa otorisasi reopening. |
@@ -188,11 +188,11 @@ Kunjungan yang sudah dalam status **Selesai** tidak dapat menerima aktivitas fin
 
 > What this Outcome explicitly does NOT cover.
 
-- Pembentukan dan konsolidasi rincian item biaya tagihan kunjungan — **OC-02-01 Rincian Tagihan Pasien**.
-- Pencatatan alokasi sumber pembayaran terhadap tagihan kunjungan — **OC-02-02 Alokasi Pembayaran** (alokasi harus selesai sebelum Reg-Out dimulai, namun mekanisme alokasi adalah tanggung jawab OC-02-02).
-- Pengelolaan saldo deposit pasien dan mutasinya — **OC-02-03 Deposit** (Reg-Out hanya mengidentifikasi saldo deposit yang tersisa dan menetapkan tindak lanjutnya; transaksi deposit itu sendiri dikelola oleh OC-02-03).
-- Eksekusi pengembalian kelebihan pembayaran (disbursement refund) kepada pasien secara fisik di kasir — **OC-03-01 Kasir (Terima/Keluar Kas)** (Reg-Out mencatat kondisi Lebih Bayar, namun eksekusi fisik pengembalian uang adalah tanggung jawab Kasir).
-- Eksekusi penutupan shift kasir dan rekonsiliasi kas — **OC-03-02 Closing Shift**.
+- Pembentukan dan konsolidasi rincian item biaya tagihan kunjungan — **OC-TRK-BILLING Rincian Tagihan Pasien**.
+- Pencatatan alokasi sumber pembayaran terhadap tagihan kunjungan — **OC-TRK-ALOKASI-PEMBAYARAN Alokasi Pembayaran** (alokasi harus selesai sebelum Reg-Out dimulai, namun mekanisme alokasi adalah tanggung jawab OC-TRK-ALOKASI-PEMBAYARAN).
+- Pengelolaan saldo deposit pasien dan mutasinya — **OC-TRK-DEPOSIT Deposit** (Reg-Out hanya mengidentifikasi saldo deposit yang tersisa dan menetapkan tindak lanjutnya; transaksi deposit itu sendiri dikelola oleh OC-TRK-DEPOSIT).
+- Eksekusi pengembalian kelebihan pembayaran (disbursement refund) kepada pasien secara fisik di kasir — **OC-TRK-KASIR Kasir (Terima/Keluar Kas)** (Reg-Out mencatat kondisi Lebih Bayar, namun eksekusi fisik pengembalian uang adalah tanggung jawab Kasir).
+- Eksekusi penutupan shift kasir dan rekonsiliasi kas — **OC-TRK-CLOSING-SHIFT Closing Shift**.
 - Proses klaim elektronik ke BPJS (e-Klaim) untuk tagihan penjamin — **BPJS Domain** (`BPJ-EKLAIM`); Reg-Out hanya mencatat kondisi piutang penjamin, bukan proses klaim itu sendiri.
 - Pencatatan tindak lanjut administratif rekam medis setelah kepulangan (coding, pengelolaan berkas) — **SC-04 Rekam Medis**.
 - Rekonsiliasi dan pelaporan keuangan atas pendapatan dan piutang rumah sakit — domain Finance/Akuntansi (di luar scope MYHOSWEB saat ini).

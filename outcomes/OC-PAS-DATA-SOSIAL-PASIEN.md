@@ -2,7 +2,7 @@
 
 | Field       | Value        |
 |-------------|--------------|
-| Code        | OC-04-01     |
+| Code        | OC-PAS-DATA-SOSIAL-PASIEN     |
 | Version     | 1.0          |
 | Status      | Draft        |
 | LastUpdated | 2026-10-02   |
@@ -233,12 +233,12 @@ Berakhir ketika data sosial pasien telah divalidasi, disimpan, dan dipersistensi
 
 > What this Outcome explicitly does NOT cover.
 
-- **Registrasi Kunjungan Pasien ke Unit Pelayanan**: Pencatatan kunjungan resmi pasien ke poliklinik atau IGD dikelola oleh **OC-01-02 Registrasi Rawat Jalan dan IGD**, sedangkan pendaftaran masuk rawat inap dikelola oleh **OC-01-03 Registrasi Rawat Inap**.
-- **Booking & Penjadwalan Janji Temu Pasien**: Pengelolaan reservasi dan jadwal kunjungan pasien sebelum hari H dikelola oleh **OC-01-01 Booking**.
+- **Registrasi Kunjungan Pasien ke Unit Pelayanan**: Pencatatan kunjungan resmi pasien (Rawat Jalan, IGD, Rawat Inap, maupun External) dikelola secara terpadu oleh **OC-ADM-REGISTRASI Registrasi** (Unified REGISTRASI Outcome).
+- **Booking & Penjadwalan Janji Temu Pasien**: Pengelolaan reservasi dan jadwal kunjungan pasien sebelum hari H dikelola oleh **OC-ADM-BOOKING Booking**.
 - **Penggabungan Rekam Medis Duplikat (*Merge Pasien*)**: Rekonsiliasi struktural dua atau lebih nomor rekam medis yang mewakili orang yang sama dikelola oleh kapabilitas **`PAS-MERGE` (Merge Duplicated Pasien)**.
-- **Manajemen Fisik Berkas Rekam Medis**: Pengelolaan map rekam medis manual, pengarsipan (*filing*), penomoran rak, dan pelacakan keluar-masuk berkas (*tracer/ekspedisi*) dikelola oleh **OC-04-02 Manajemen Berkas**.
-- **Kodifikasi Penyakit dan Prosedur Medis**: Pengkodean diagnosis (ICD-10) dan tindakan (ICD-9-CM) untuk keperluan klaim dan casemix dikelola oleh **OC-04-03 Casemix dan Coding**.
-- **Pelaporan Statistik Rumah Sakit**: Penyusunan laporan Rekapitulasi Laporan Rumah Sakit (RL 1 s/d RL 5) dikelola oleh **OC-04-04 Pelaporan RL**, serta sensus harian dikelola oleh **OC-04-05 Pelaporan Index dan Sensus**.
+- **Manajemen Fisik Berkas Rekam Medis**: Pengelolaan map rekam medis manual, pengarsipan (*filing*), penomoran rak, dan pelacakan keluar-masuk berkas (*tracer/ekspedisi*) dikelola oleh **OC-BRM-MUTASI-BERKAS Manajemen Berkas**.
+- **Kodifikasi Penyakit dan Prosedur Medis**: Pengkodean diagnosis (ICD-10) dan tindakan (ICD-9-CM) untuk keperluan klaim dan casemix dikelola oleh **OC-BRM-CASEMIX-CODING Casemix dan Coding**.
+- **Pelaporan Statistik Rumah Sakit**: Penyusunan laporan Rekapitulasi Laporan Rumah Sakit (RL 1 s/d RL 5) dikelola oleh **OC-BRM-PELAPORAN-RL Pelaporan RL**, serta sensus harian dikelola oleh **OC-BRM-SENSUS-INDEX Pelaporan Index dan Sensus**.
 - **Master Data Wilayah & Referensi**: Pengelolaan tabel master nama provinsi, kabupaten/kota, kecamatan, kelurahan, dan jenis-jenis pekerjaan/pendidikan dikelola oleh **Organisasi Domain** (`ORG-LAYANAN` / Master Wilayah).
-- **Penerbitan Surat Eligibilitas Peserta (SEP)**: Pembuatan SEP dan administrasi klaim BPJS dikelola oleh **OC-01-04 VCLAIM BPJS**.
+- **Penerbitan Surat Eligibilitas Peserta (SEP)**: Pembuatan SEP dan administrasi klaim BPJS dikelola oleh **OC-BPJ-VCLAIM VCLAIM BPJS**.
 - **Transaksi Finansial & Tagihan Pasien**: Penagihan biaya layanan, pengelolaan deposit, dan pembayaran kasir dikelola oleh **Tata Rekening Domain** (`TRK-BILLING`, `TRK-DEPOSIT`, `TRK-PAYMENT`).

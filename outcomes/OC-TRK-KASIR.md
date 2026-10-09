@@ -2,7 +2,7 @@
 
 | Field       | Value        |
 |-------------|--------------|
-| Code        | OC-03-01     |
+| Code        | OC-TRK-KASIR     |
 | Version     | 1.0          |
 | Status      | Draft        |
 | LastUpdated | 2026-10-01   |
@@ -13,7 +13,7 @@
 
 Setiap penerimaan uang dari pasien atau keluarga — baik sebagai pembayaran tagihan maupun sebagai setoran deposit — serta setiap pengeluaran uang dari kas rumah sakit kepada pasien — baik sebagai pengembalian kelebihan pembayaran (refund) maupun pengembalian sisa deposit — harus dieksekusi, dicatat, dan dipersistensi melalui loket kasir sebagai **transaksi kas yang sah**.
 
-Transaksi Kasir adalah business fact yang membuktikan bahwa perpindahan uang antara pasien/keluarga dan kas rumah sakit telah terjadi secara nyata: setiap penerimaan menghasilkan bukti terima kas yang terdokumentasi, dan setiap pengeluaran menghasilkan bukti keluar kas yang terdokumentasi. Bukti transaksi kasir inilah yang menjadi referensi sah untuk proses-proses hilir, termasuk Alokasi Pembayaran (OC-02-02), pencatatan Deposit (OC-02-03), dan penyelesaian Reg-Out (OC-02-04).
+Transaksi Kasir adalah business fact yang membuktikan bahwa perpindahan uang antara pasien/keluarga dan kas rumah sakit telah terjadi secara nyata: setiap penerimaan menghasilkan bukti terima kas yang terdokumentasi, dan setiap pengeluaran menghasilkan bukti keluar kas yang terdokumentasi. Bukti transaksi kasir inilah yang menjadi referensi sah untuk proses-proses hilir, termasuk Alokasi Pembayaran (OC-TRK-ALOKASI-PEMBAYARAN), pencatatan Deposit (OC-TRK-DEPOSIT), dan penyelesaian Reg-Out (OC-TRK-REG-OUT).
 
 Tanpa transaksi kasir yang terpersistensi secara benar, tidak ada sumber pembayaran yang sah yang dapat digunakan dalam alokasi pembayaran, saldo deposit tidak dapat dibentuk, dan pengembalian uang kepada pasien tidak dapat dieksekusi secara teraudit.
 
@@ -30,7 +30,7 @@ Perpindahan uang antara pasien atau keluarga dan kas rumah sakit — baik berupa
 | Domain        | Role in this Outcome |
 |---------------|----------------------|
 | Kasir         | Pemilik utama: mengeksekusi penerimaan dan pengeluaran kas secara fisik, mengonfirmasi transaksi, dan mempersistensi bukti transaksi kas yang sah |
-| Tata Rekening | Konsumen transaksi: menerima referensi transaksi kasir yang sah sebagai dasar Alokasi Pembayaran (OC-02-02) dan pencatatan mutasi Deposit (OC-02-03) |
+| Tata Rekening | Konsumen transaksi: menerima referensi transaksi kasir yang sah sebagai dasar Alokasi Pembayaran (OC-TRK-ALOKASI-PEMBAYARAN) dan pencatatan mutasi Deposit (OC-TRK-DEPOSIT) |
 | Pasien        | Subjek transaksi: identitas pasien menentukan tagihan atau deposit mana yang menjadi konteks transaksi kas |
 | Admission     | Menyediakan konteks kunjungan (nomor registrasi) yang menghubungkan transaksi kasir ke episode yang tepat, sehingga pembayaran dapat dialokasikan ke tagihan yang benar |
 
@@ -105,11 +105,11 @@ Perpindahan uang antara pasien atau keluarga dan kas rumah sakit — baik berupa
 ### 5.4 Completion Proof
 
 - Setiap transaksi kas memiliki nomor unik yang terpersistensi dan dapat ditelusuri ke Order Bayar atau perintah pengeluaran yang mendasarinya.
-- Transaksi Terima Kas yang berhasil dapat dijadikan referensi sah oleh Alokasi Pembayaran (OC-02-02) atau pencatatan mutasi Deposit (OC-02-03).
+- Transaksi Terima Kas yang berhasil dapat dijadikan referensi sah oleh Alokasi Pembayaran (OC-TRK-ALOKASI-PEMBAYARAN) atau pencatatan mutasi Deposit (OC-TRK-DEPOSIT).
 - Transaksi Keluar Kas yang berhasil tercatat sebagai bukti pengeluaran uang yang dapat dijadikan dasar rekonsiliasi kas.
 - Bukti penerimaan (kwitansi) dapat diterbitkan berdasarkan transaksi Terima Kas yang berhasil.
 - Saldo kas yang dipegang kasir pada setiap titik waktu dapat dihitung berdasarkan akumulasi transaksi Terima Kas dikurangi transaksi Keluar Kas dalam shift yang berjalan.
-- Transaksi kasir yang terpersistensi dapat diikutsertakan dalam rekonsiliasi Closing Shift (OC-03-02).
+- Transaksi kasir yang terpersistensi dapat diikutsertakan dalam rekonsiliasi Closing Shift (OC-TRK-CLOSING-SHIFT).
 
 ---
 
@@ -170,7 +170,7 @@ Untuk transaksi non-tunai, transaksi dianggap selesai setelah konfirmasi elektro
 | AC-02 | Setiap transaksi Keluar Kas memiliki nomor unik, terhubung ke perintah pengeluaran yang diotorisasi, dan mencatat identitas penerima serta kasir yang mengeksekusi. | Completeness |
 | AC-03 | Metode pembayaran tercatat secara eksplisit pada setiap transaksi; untuk non-tunai, nomor referensi konfirmasi elektronik tersimpan. | Correctness |
 | AC-04 | Untuk transaksi tunai Terima Kas: nilai yang dibayar pasien dan nilai kembalian yang diberikan kasir tercatat dan konsisten dengan nilai transaksi. | Correctness |
-| AC-05 | Transaksi Terima Kas yang berstatus Berhasil dapat dijadikan referensi sah untuk entri Alokasi Pembayaran (OC-02-02) atau mutasi Deposit (OC-02-03). | Correctness |
+| AC-05 | Transaksi Terima Kas yang berstatus Berhasil dapat dijadikan referensi sah untuk entri Alokasi Pembayaran (OC-TRK-ALOKASI-PEMBAYARAN) atau mutasi Deposit (OC-TRK-DEPOSIT). | Correctness |
 | AC-06 | Transaksi Keluar Kas yang berstatus Berhasil dapat dijadikan referensi sah untuk pencatatan pengembalian deposit atau refund. | Correctness |
 | AC-07 | Transaksi Terima Kas untuk pembayaran tagihan tanpa Order Bayar yang valid ditolak oleh sistem. | Constraint |
 | AC-08 | Transaksi Keluar Kas tanpa perintah pengeluaran yang diotorisasi ditolak oleh sistem. | Constraint |
@@ -180,7 +180,7 @@ Untuk transaksi non-tunai, transaksi dianggap selesai setelah konfirmasi elektro
 | AC-12 | Transaksi non-tunai hanya dapat berstatus Berhasil setelah konfirmasi elektronik dari sistem pembayaran diterima dan terpersistensi. | Constraint |
 | AC-13 | Pembatalan transaksi yang sudah direferensikan oleh alokasi pembayaran atau mutasi deposit yang dikonfirmasi ditolak tanpa mekanisme koreksi yang berotorisasi. | Exception |
 | AC-14 | Transaksi yang dieksekusi oleh petugas yang tidak terdaftar sebagai kasir aktif pada shift tersebut ditolak oleh sistem. | Constraint |
-| AC-15 | Seluruh transaksi kasir pada satu shift dapat diikutsertakan dalam rekonsiliasi Closing Shift (OC-03-02) dengan saldo yang dapat diverifikasi. | Completeness |
+| AC-15 | Seluruh transaksi kasir pada satu shift dapat diikutsertakan dalam rekonsiliasi Closing Shift (OC-TRK-CLOSING-SHIFT) dengan saldo yang dapat diverifikasi. | Completeness |
 
 ---
 
@@ -188,11 +188,11 @@ Untuk transaksi non-tunai, transaksi dianggap selesai setelah konfirmasi elektro
 
 > What this Outcome explicitly does NOT cover.
 
-- Pembentukan dan finalisasi rincian tagihan kunjungan pasien — **OC-02-01 Rincian Tagihan Pasien**.
-- Pencatatan alokasi sumber pembayaran terhadap tagihan kunjungan — **OC-02-02 Alokasi Pembayaran** (OC-03-01 menghasilkan referensi transaksi kasir yang digunakan sebagai dasar alokasi, namun mekanisme alokasi adalah tanggung jawab OC-02-02).
-- Pengelolaan saldo deposit pasien (pencatatan mutasi saldo, perhitungan saldo aktual) — **OC-02-03 Deposit** (OC-03-01 mengeksekusi penerimaan atau pengembalian uang deposit secara fisik; pencatatan mutasi saldo adalah tanggung jawab OC-02-03).
-- Penyelesaian administrasi kepulangan pasien — **OC-02-04 Reg-Out** (kasir mengeksekusi pembayaran yang mendasari Reg-Out, tetapi proses penutupan episode adalah tanggung jawab OC-02-04).
-- Penutupan shift kasir dan rekonsiliasi kas harian — **OC-03-02 Closing Shift** (OC-03-01 menghasilkan data transaksi yang direkonsiliasi dalam Closing Shift; proses penutupan shift adalah tanggung jawab OC-03-02).
+- Pembentukan dan finalisasi rincian tagihan kunjungan pasien — **OC-TRK-BILLING Rincian Tagihan Pasien**.
+- Pencatatan alokasi sumber pembayaran terhadap tagihan kunjungan — **OC-TRK-ALOKASI-PEMBAYARAN Alokasi Pembayaran** (OC-TRK-KASIR menghasilkan referensi transaksi kasir yang digunakan sebagai dasar alokasi, namun mekanisme alokasi adalah tanggung jawab OC-TRK-ALOKASI-PEMBAYARAN).
+- Pengelolaan saldo deposit pasien (pencatatan mutasi saldo, perhitungan saldo aktual) — **OC-TRK-DEPOSIT Deposit** (OC-TRK-KASIR mengeksekusi penerimaan atau pengembalian uang deposit secara fisik; pencatatan mutasi saldo adalah tanggung jawab OC-TRK-DEPOSIT).
+- Penyelesaian administrasi kepulangan pasien — **OC-TRK-REG-OUT Reg-Out** (kasir mengeksekusi pembayaran yang mendasari Reg-Out, tetapi proses penutupan episode adalah tanggung jawab OC-TRK-REG-OUT).
+- Penutupan shift kasir dan rekonsiliasi kas harian — **OC-TRK-CLOSING-SHIFT Closing Shift** (OC-TRK-KASIR menghasilkan data transaksi yang direkonsiliasi dalam Closing Shift; proses penutupan shift adalah tanggung jawab OC-TRK-CLOSING-SHIFT).
 - Pengelolaan master metode pembayaran dan konfigurasi terminal pembayaran non-tunai — **SC-14 Mastering** (`KSR-MASTER-PEMBAYARAN`).
 - Rekonsiliasi dan pelaporan keuangan atas kas yang diterima atau dikeluarkan — domain Finance/Akuntansi (di luar scope MYHOSWEB saat ini).
 - Pengelolaan kas kecil (petty cash) operasional rumah sakit yang tidak terhubung ke transaksi pasien — di luar scope modul Kasir MYHOSWEB.

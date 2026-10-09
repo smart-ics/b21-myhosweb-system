@@ -2,7 +2,7 @@
 
 | Field       | Value        |
 |-------------|--------------|
-| Code        | OC-01-01     |
+| Code        | OC-ADM-BOOKING     |
 | Version     | 1.0          |
 | Status      | Draft        |
 | LastUpdated | 2026-10-01   |
@@ -153,8 +153,8 @@ Outcome ini juga dianggap selesai (dengan status terminal) ketika booking dibata
 
 > What this Outcome explicitly does NOT cover.
 
-- Proses registrasi kunjungan rawat jalan yang menggunakan booking sebagai dasar → **OC-01-02 Registrasi Rawat Jalan dan IGD**.
-- Pengelolaan antrian pendaftaran rawat jalan → **OC-01-07 Antrian**.
+- Proses registrasi kunjungan rawat jalan yang menggunakan booking sebagai dasar → **OC-ADM-REGISTRASI Registrasi** (Unified REGISTRASI Outcome).
+- Pengelolaan antrian pendaftaran rawat jalan → **OC-ADM-ANTRIAN Antrian**.
 - Pengelolaan jadwal praktek dokter (pembuatan dan perubahan jadwal) → Organisasi Domain (`ORG-JADWAL`).
 - Pengelolaan identitas dan data sosial pasien → Pasien Domain (`PAS-DATSOS`).
 - Proses pembayaran atau deposit terkait booking → Tata Rekening Domain.

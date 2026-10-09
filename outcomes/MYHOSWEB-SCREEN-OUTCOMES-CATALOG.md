@@ -4,13 +4,12 @@
 
 ### Outcomes
 
-- OC-01-01 Booking
-- OC-01-02 Registrasi Rawat Jalan dan IGD
-- OC-01-03 Registrasi Rawat Inap
-- OC-01-04 VCLAIM BPJS
-- OC-01-05 Patient Journey Tracking
-- OC-01-06 Jadwal Praktek
-- OC-01-07 Antrian
+- OC-ADM-BOOKING Booking
+- OC-ADM-REGISTRASI Registrasi (Unified: Rawat Jalan, IGD, Rawat Inap, External)
+- OC-BPJ-VCLAIM VCLAIM BPJS
+- OC-ADM-PASIEN-TRACKER Patient Journey Tracking
+- OC-ORG-JADWAL-PRAKTEK Jadwal Praktek
+- OC-ADM-ANTRIAN Antrian
 
 ---
 
@@ -18,10 +17,10 @@
 
 ### Outcomes
 
-- OC-02-01 Rincian Tagihan Pasien
-- OC-02-02 Alokasi Pembayaran
-- OC-02-03 Deposit
-- OC-02-04 Reg-Out
+- OC-TRK-BILLING Rincian Tagihan Pasien
+- OC-TRK-ALOKASI-PEMBAYARAN Alokasi Pembayaran
+- OC-TRK-DEPOSIT Deposit
+- OC-TRK-REG-OUT Reg-Out
 
 ---
 
@@ -29,8 +28,8 @@
 
 ### Outcomes
 
-- OC-03-01 Kasir (Terima/Keluar Kas)
-- OC-03-02 Closing Shift
+- OC-TRK-KASIR Kasir (Terima/Keluar Kas)
+- OC-TRK-CLOSING-SHIFT Closing Shift
 
 ---
 
@@ -38,11 +37,11 @@
 
 ### Outcomes
 
-- OC-04-01 Data Sosial Pasien
-- OC-04-02 Manajemen Berkas
-- OC-04-03 Casemix dan Coding
-- OC-04-04 Pelaporan RL
-- OC-04-05 Pelaporan Index dan Sensus
+- OC-PAS-DATA-SOSIAL-PASIEN Data Sosial Pasien
+- OC-BRM-MUTASI-BERKAS Manajemen Berkas
+- OC-BRM-CASEMIX-CODING Casemix dan Coding
+- OC-BRM-PELAPORAN-RL Pelaporan RL
+- OC-BRM-SENSUS-INDEX Pelaporan Index dan Sensus
 
 ---
 

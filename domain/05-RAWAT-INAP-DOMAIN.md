@@ -1,10 +1,12 @@
 # RAWAT INAP DOMAIN
 
+Domain Code: **RNA**
+
 ## Purpose
 
 The Rawat Inap Domain manages the operational administration of inpatient care after a patient is admitted until the inpatient stay ends or the patient is transferred or discharged.
 
-It is responsible for managing the patient's inpatient placement, bed occupancy, movement between inpatient units, room charging, and operational readiness of beds.
+It is responsible for managing the patient's inpatient placement, bed occupancy, movement between inpatient units, room charging, recording chargeable inpatient procedures and interventions, and operational readiness of beds.
 
 Clinical and medical records remain the responsibility of the EMR domain.
 
@@ -12,7 +14,7 @@ Clinical and medical records remain the responsibility of the EMR domain.
 
 ## Definition
 
-Rawat Inap is the domain responsible for managing the operational lifecycle of a patient's inpatient stay, including placement into an inpatient unit and bed, transfer between units, bed readiness, and the determination of room charges.
+Rawat Inap is the domain responsible for managing the operational lifecycle of a patient's inpatient stay, including placement into an inpatient unit and bed, transfer between units, bed readiness, the determination of room charges, and the administrative recording of chargeable inpatient procedures and interventions.
 
 ---
 
@@ -25,6 +27,7 @@ The Rawat Inap Domain is responsible for:
 * Managing the queue of patients waiting to be placed in an inpatient bed.
 * Managing bed readiness for patient placement.
 * Determining the final room charge for an inpatient stay.
+* Recording and managing chargeable procedures and interventions associated with an inpatient stay.
 * Maintaining the operational record of the patient's inpatient location.
 
 ---
@@ -142,6 +145,27 @@ Clinical discharge documentation remains within the appropriate clinical/EMR res
 
 ---
 
+### 8. RNA-TINDAKAN — Inpatient Tindakan
+
+The capability to **record and manage chargeable procedures and interventions associated with an inpatient stay, representing them as billable service items for financial processing**.
+
+This capability represents the administrative recording of chargeable services associated with an inpatient stay. It associates each chargeable item with the appropriate patient and inpatient stay context (ward, room, and bed) to support the financial processing of the resulting charges.
+
+This capability remains consistent with the shared legacy header-detail entity used to record chargeable services across care settings. It focuses strictly on the administrative recording of charges for financial processing.
+
+This capability does not own or include clinical documentation, findings, observations, assessments, diagnoses, care plans, or medical records, which remain outside Rawat Inap and belong to the EMR domain.
+
+Recording a charge does not prove or imply that a clinical procedure was performed or that clinical documentation has been completed.
+
+Examples:
+
+* Ward nursing intervention charge
+* Inpatient physician procedure charge
+* Bedside treatment and therapy charge
+* Other billable inpatient service items
+
+---
+
 ## Domain Boundary
 
 ### Owns
@@ -152,6 +176,7 @@ Clinical discharge documentation remains within the appropriate clinical/EMR res
 * Inpatient transfer.
 * Inpatient location.
 * Room charging calculation based on occupancy.
+* Administrative recording of chargeable inpatient procedures and interventions for financial processing.
 * Bed readiness and housekeeping state.
 * Operational inpatient discharge.
 
@@ -176,9 +201,10 @@ Clinical discharge documentation remains within the appropriate clinical/EMR res
 
 **Tata Rekening**
 
-* Definition of room tariffs.
+* Definition of room tariffs and procedure tariffs.
 * Tariff master data.
 * Pricing rules independent of inpatient occupancy.
+* Patient billing and financial settlement.
 
 **EMR / Clinical Domains**
 
@@ -191,13 +217,28 @@ Clinical discharge documentation remains within the appropriate clinical/EMR res
 
 ## Relationships
 
-| Related Domain | Relationship                                                                                                  |
-| -------------- | ------------------------------------------------------------------------------------------------------------- |
-| Pasien         | Rawat Inap operates on a specific patient.                                                                    |
-| Organisasi     | Rawat Inap uses inpatient units, rooms, and beds defined by Organisasi.                                       |
-| Admission      | Admission may assign an inpatient destination, but the receiving unit performs actual inpatient registration. |
-| Tata Rekening  | Provides the base room tariff used by Room Charge.                                                            |
-| EMR            | Clinical and medical information is maintained outside Rawat Inap.                                            |
+| Related Domain | Relationship                                                                                                                                            |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Pasien         | Rawat Inap operates on a specific patient.                                                                                                              |
+| Organisasi     | Rawat Inap uses inpatient units, rooms, and beds defined by Organisasi.                                                                                 |
+| Admission      | Admission may assign an inpatient destination, but the receiving unit performs actual inpatient registration.                                           |
+| Tata Rekening  | Provides base room tariffs used by Room Charge and procedure tariffs for chargeable inpatient services; receives billable charges for patient billing. |
+| EMR            | Clinical and medical information is maintained outside Rawat Inap.                                                                                      |
+
+---
+
+## Capability Map
+
+| Capability             | Business Ability                                                                             |
+| ---------------------- | -------------------------------------------------------------------------------------------- |
+| Antrian Masuk Bangsal  | Manage patients assigned an inpatient destination waiting for ward placement                 |
+| Inpatient Registration | Register a patient into an inpatient unit and assign an available bed                        |
+| Bed Occupancy          | Manage active occupancy of inpatient beds by patients                                        |
+| Patient Transfer       | Manage movement of inpatients between inpatient units                                        |
+| Room Charge            | Determine room charges based on occupancy duration, room class, and transfer rules          |
+| Housekeeping           | Manage bed cleaning and operational readiness for patient placement                          |
+| Inpatient Discharge    | Manage operational discharge and bed release when an inpatient stay ends                     |
+| Inpatient Tindakan     | Record and manage chargeable inpatient procedures and interventions for financial processing |
 
 ---
 

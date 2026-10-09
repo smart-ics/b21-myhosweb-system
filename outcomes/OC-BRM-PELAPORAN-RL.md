@@ -2,7 +2,7 @@
 
 | Field       | Value        |
 |-------------|--------------|
-| Code        | OC-04-04     |
+| Code        | OC-BRM-PELAPORAN-RL     |
 | Version     | 1.1          |
 | Status      | Draft        |
 | LastUpdated | 2026-10-02   |
@@ -25,9 +25,9 @@ Tanpa Pelaporan RL yang terintegrasi dari data operasional:
 - Petugas Rekam Medis terbebani kompilasi manual yang lambat dan rawan kesalahan, mendorong pembuatan data rekaan.
 - Rumah sakit tidak dapat mempertanggungjawabkan angka laporan saat diaudit regulator.
 
-### Hubungan dengan OC-04-05 Pelaporan Index dan Sensus
+### Hubungan dengan OC-BRM-SENSUS-INDEX Pelaporan Index dan Sensus
 
-OC-04-04 dan **OC-04-05 Pelaporan Index dan Sensus** keduanya diturunkan secara independen dari data operasional rumah sakit sebagai sumber kebenaran tunggal. **OC-04-05 bukan sumber kebenaran bagi RL**, dan angka RL tidak didefinisikan sebagai hasil rekap dari laporan Index maupun Sensus.
+OC-BRM-PELAPORAN-RL dan **OC-BRM-SENSUS-INDEX Pelaporan Index dan Sensus** keduanya diturunkan secara independen dari data operasional rumah sakit sebagai sumber kebenaran tunggal. **OC-BRM-SENSUS-INDEX bukan sumber kebenaran bagi RL**, dan angka RL tidak didefinisikan sebagai hasil rekap dari laporan Index maupun Sensus.
 
 ```text
 Data Operasional Rumah Sakit
@@ -35,7 +35,7 @@ Data Operasional Rumah Sakit
             │
   ┌─────────┴─────────┐
   ▼                   ▼
-OC-04-04           OC-04-05
+OC-BRM-PELAPORAN-RL           OC-BRM-SENSUS-INDEX
 Pelaporan RL       Pelaporan Index dan Sensus
 (Regulatori)       (Operasional, Audit & Analisis)
   │                   ▲
@@ -43,12 +43,12 @@ Pelaporan RL       Pelaporan Index dan Sensus
       Verifikasi
 ```
 
-Peran OC-04-05 dalam konteks Pelaporan RL adalah:
-- **Lapisan Verifikasi**: Ketika angka RL perlu diperiksa keabsahannya (misal total kematian, total kasus morbiditas tertentu, atau hari perawatan), informasi Indeks dan Sensus pada OC-04-05 menyediakan sarana *drill-down* ke kelompok kasus dan pasien individual yang membentuk angka tersebut.
-- **Lapisan Keterlacakan (*Traceability Layer*)**: OC-04-05 memungkinkan penelusuran audit dari angka agregat RL ke fakta pelayanan granular melalui Indeks Rekam Medis dan Sensus Pelayanan.
-- **Lapisan Analitik Operasional**: OC-04-05 dimanfaatkan secara mandiri oleh instalasi Rekam Medis dan komite medis untuk pengawasan mutu layanan harian — terlepas dari siklus pelaporan RL kepada Kemenkes.
+Peran OC-BRM-SENSUS-INDEX dalam konteks Pelaporan RL adalah:
+- **Lapisan Verifikasi**: Ketika angka RL perlu diperiksa keabsahannya (misal total kematian, total kasus morbiditas tertentu, atau hari perawatan), informasi Indeks dan Sensus pada OC-BRM-SENSUS-INDEX menyediakan sarana *drill-down* ke kelompok kasus dan pasien individual yang membentuk angka tersebut.
+- **Lapisan Keterlacakan (*Traceability Layer*)**: OC-BRM-SENSUS-INDEX memungkinkan penelusuran audit dari angka agregat RL ke fakta pelayanan granular melalui Indeks Rekam Medis dan Sensus Pelayanan.
+- **Lapisan Analitik Operasional**: OC-BRM-SENSUS-INDEX dimanfaatkan secara mandiri oleh instalasi Rekam Medis dan komite medis untuk pengawasan mutu layanan harian — terlepas dari siklus pelaporan RL kepada Kemenkes.
 
-RL tetap dapat dihitung dan diterbitkan secara penuh tanpa bergantung pada laporan tertentu yang tersedia di OC-04-05.
+RL tetap dapat dihitung dan diterbitkan secara penuh tanpa bergantung pada laporan tertentu yang tersedia di OC-BRM-SENSUS-INDEX.
 
 ---
 
@@ -207,9 +207,9 @@ Berakhir ketika laporan RL 1–RL 5 untuk periode tersebut telah tersedia dari d
 > What this Outcome explicitly does NOT cover.
 
 - **Pencatatan Transaksi Pelayanan Operasional**: Pendaftaran pasien, asuhan klinis, tindakan medis, pemulangan di bangsal, peresepan, dan pemeriksaan penunjang → domain operasional masing-masing (`ADM`, `RNA`, `RJL`, `IGD`, `LAB`, `RAD`, `KMO`, `APT`).
-- **Kodifikasi Penyakit & Tindakan**: Penetapan kode ICD-10 dan ICD-9-CM pada setiap episode pelayanan → **OC-04-03 Casemix dan Coding** (`BRM-CODING`).
-- **Sensus Pelayanan, Indeks Rekam Medis, dan Statistik Operasional**: Penyajian sensus volume pelayanan, indeks kasus rekam medis (penyakit, operasi, dokter, kematian, kelahiran, rujukan), statistik indikator efisiensi rawat inap (BOR, ALOS, TOI, BTO, GDR, NDR), dan analitik morbiditas operasional untuk keperluan audit klinis, evaluasi mutu, dan pengawasan pelayanan — termasuk pemanfaatannya sebagai lapisan verifikasi dan penelusuran (*drill-down*) angka RL → **OC-04-05 Pelaporan Index dan Sensus** (`BRM-RPT`).
-- **Pengelolaan Fisik Berkas Rekam Medis**: Pelacakan posisi map fisik dan ekspedisi berkas → **OC-04-02 Manajemen Berkas** (`BRM-MUTASI`).
+- **Kodifikasi Penyakit & Tindakan**: Penetapan kode ICD-10 dan ICD-9-CM pada setiap episode pelayanan → **OC-BRM-CASEMIX-CODING Casemix dan Coding** (`BRM-CODING`).
+- **Sensus Pelayanan, Indeks Rekam Medis, dan Statistik Operasional**: Penyajian sensus volume pelayanan, indeks kasus rekam medis (penyakit, operasi, dokter, kematian, kelahiran, rujukan), statistik indikator efisiensi rawat inap (BOR, ALOS, TOI, BTO, GDR, NDR), dan analitik morbiditas operasional untuk keperluan audit klinis, evaluasi mutu, dan pengawasan pelayanan — termasuk pemanfaatannya sebagai lapisan verifikasi dan penelusuran (*drill-down*) angka RL → **OC-BRM-SENSUS-INDEX Pelaporan Index dan Sensus** (`BRM-RPT`).
+- **Pengelolaan Fisik Berkas Rekam Medis**: Pelacakan posisi map fisik dan ekspedisi berkas → **OC-BRM-MUTASI-BERKAS Manajemen Berkas** (`BRM-MUTASI`).
 - **Sistem Manajemen Kualitas Data Umum**: Workflow penugasan perbaikan data ke PIC, mekanisme persetujuan tata kelola data, penilaian skor kualitas data, dan generic rule engine.
 - **Pengiriman Elektronik ke SIRS Online Kemenkes**: Mekanisme komunikasi API/protokol transmisi data ke server eksternal Kementerian Kesehatan RI.
 - **Lifecycle Pengelolaan Laporan (Draft–Verified–Final, Amandemen)**: Mekanisme penguncian laporan, versioning, dan amandemen resmi — bila diperlukan, akan diformalisasi sebagai Use Case tersendiri.

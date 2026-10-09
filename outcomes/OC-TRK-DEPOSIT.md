@@ -2,7 +2,7 @@
 
 | Field       | Value        |
 |-------------|--------------|
-| Code        | OC-02-03     |
+| Code        | OC-TRK-DEPOSIT     |
 | Version     | 1.0          |
 | Status      | Draft        |
 | LastUpdated | 2026-10-01   |
@@ -13,7 +13,7 @@
 
 Rumah sakit harus mampu menerima, mencatat, dan memelihara uang titipan pasien — yang dikenal sebagai **deposit** — sebagai jaminan finansial yang dipegang rumah sakit selama episode perawatan, khususnya rawat inap. Deposit memastikan bahwa ada sumber dana yang tersedia untuk menutup kewajiban finansial pasien apabila tagihan kunjungan sudah difinalisasi.
 
-Saldo deposit yang terpersistensi secara benar merupakan business fact yang memungkinkan pemakaian deposit sebagai salah satu sumber pembayaran dalam proses Alokasi Pembayaran (OC-02-02), sekaligus menjadi dasar perhitungan kelebihan deposit yang dikembalikan kepada pasien melalui proses Refund (OC-02-04).
+Saldo deposit yang terpersistensi secara benar merupakan business fact yang memungkinkan pemakaian deposit sebagai salah satu sumber pembayaran dalam proses Alokasi Pembayaran (OC-TRK-ALOKASI-PEMBAYARAN), sekaligus menjadi dasar perhitungan kelebihan deposit yang dikembalikan kepada pasien melalui proses Refund (OC-TRK-REG-OUT).
 
 Tanpa deposit yang terbentuk dan terpelihara secara akurat, tidak ada kepastian tentang ketersediaan dana jaminan pasien, dan pemakaian deposit sebagai sumber pembayaran tidak dapat dilakukan.
 
@@ -58,8 +58,8 @@ Uang jaminan yang diserahkan pasien atau keluarga kepada rumah sakit **telah dit
 
 - Saldo deposit atas nama pasien yang teridentifikasi telah terbentuk dan tercatat dalam sistem dengan nilai yang mencerminkan jumlah uang yang diterima.
 - Setiap penerimaan setoran deposit (top-up) menghasilkan penambahan saldo deposit yang dapat diverifikasi.
-- Setiap pemakaian deposit terhadap tagihan kunjungan menghasilkan pengurangan saldo deposit yang konsisten dan terhubung ke alokasi pembayaran yang bersangkutan (OC-02-02).
-- Setiap pengembalian deposit kepada pasien (refund) menghasilkan pengurangan saldo deposit yang konsisten dan terhubung ke transaksi refund (OC-02-04).
+- Setiap pemakaian deposit terhadap tagihan kunjungan menghasilkan pengurangan saldo deposit yang konsisten dan terhubung ke alokasi pembayaran yang bersangkutan (OC-TRK-ALOKASI-PEMBAYARAN).
+- Setiap pengembalian deposit kepada pasien (refund) menghasilkan pengurangan saldo deposit yang konsisten dan terhubung ke transaksi refund (OC-TRK-REG-OUT).
 - Saldo deposit yang tersisa (saldo aktif) selalu dapat dihitung dan diverifikasi kapan saja, mencerminkan keadaan aktual setelah semua mutasi yang terjadi.
 - Deposit terhubung ke kunjungan atau pasien yang tepat, sehingga pemakaian deposit hanya dapat dilakukan terhadap tagihan kunjungan yang relevan.
 
@@ -101,8 +101,8 @@ Uang jaminan yang diserahkan pasien atau keluarga kepada rumah sakit **telah dit
 - Saldo deposit aktif atas nama pasien telah terbentuk dan memiliki nilai yang mencerminkan seluruh setoran yang diterima dikurangi seluruh pemakaian dan pengembalian yang terjadi.
 - Setiap mutasi deposit memiliki nomor referensi unik dan dapat ditelusuri ke transaksi sumber (kasir, alokasi pembayaran, atau refund).
 - Saldo deposit dapat ditampilkan dan diverifikasi kapan saja berdasarkan identitas pasien atau nomor deposit.
-- Saldo deposit yang aktif dapat dijadikan sumber pembayaran dalam proses Alokasi Pembayaran (OC-02-02).
-- Saldo deposit yang tersisa setelah tagihan terselesaikan dapat dijadikan dasar proses Refund (OC-02-04).
+- Saldo deposit yang aktif dapat dijadikan sumber pembayaran dalam proses Alokasi Pembayaran (OC-TRK-ALOKASI-PEMBAYARAN).
+- Saldo deposit yang tersisa setelah tagihan terselesaikan dapat dijadikan dasar proses Refund (OC-TRK-REG-OUT).
 
 ---
 
@@ -116,7 +116,7 @@ Untuk rawat inap, deposit umumnya diterima pada saat atau segera setelah pasien 
 
 ### End
 
-Berakhir ketika saldo deposit pasien mencapai nilai nol — baik karena seluruh saldo terpakai untuk melunasi tagihan kunjungan (melalui OC-02-02 Alokasi Pembayaran), maupun karena saldo yang tersisa telah dikembalikan kepada pasien melalui proses Refund (OC-02-04).
+Berakhir ketika saldo deposit pasien mencapai nilai nol — baik karena seluruh saldo terpakai untuk melunasi tagihan kunjungan (melalui OC-TRK-ALOKASI-PEMBAYARAN Alokasi Pembayaran), maupun karena saldo yang tersisa telah dikembalikan kepada pasien melalui proses Refund (OC-TRK-REG-OUT).
 
 Deposit yang tidak diklaim setelah kunjungan selesai tetap tercatat sebagai saldo aktif sampai diproses secara eksplisit.
 
@@ -142,11 +142,11 @@ Deposit yang tidak diklaim setelah kunjungan selesai tetap tercatat sebagai sald
 
 | Exception | Expected Behavior |
 |-----------|-------------------|
-| Identitas pasien tidak ditemukan atau tidak valid | Deposit tidak dapat dibentuk. Petugas harus memastikan pasien terdaftar dalam sistem (OC-04-01 Data Sosial Pasien) sebelum deposit dapat dicatat. |
+| Identitas pasien tidak ditemukan atau tidak valid | Deposit tidak dapat dibentuk. Petugas harus memastikan pasien terdaftar dalam sistem (OC-PAS-DATA-SOSIAL-PASIEN Data Sosial Pasien) sebelum deposit dapat dicatat. |
 | Transaksi penerimaan kasir tidak valid atau tidak dikonfirmasi | Saldo deposit tidak dapat ditambah. Petugas kasir harus memastikan transaksi penerimaan dikonfirmasi dengan bukti yang sah sebelum saldo deposit diperbarui. |
 | Pemakaian deposit melebihi saldo aktif yang tersedia | Pemakaian ditolak. Petugas harus menggunakan nilai pemakaian yang tidak melebihi saldo tersedia, dengan selisih kewajiban dipenuhi dari sumber pembayaran lain. |
 | Pasien tidak memiliki saldo deposit aktif saat pemakaian diminta | Pemakaian deposit tidak dapat dilakukan. Petugas harus melakukan setoran deposit terlebih dahulu, atau menggunakan sumber pembayaran lain yang tersedia. |
-| Refund deposit diminta namun tagihan kunjungan belum terselesaikan | Pengembalian deposit ditangguhkan hingga tagihan diselesaikan dan saldo deposit yang benar-benar tersisa dapat ditentukan (OC-02-02 Alokasi Pembayaran harus selesai terlebih dahulu). |
+| Refund deposit diminta namun tagihan kunjungan belum terselesaikan | Pengembalian deposit ditangguhkan hingga tagihan diselesaikan dan saldo deposit yang benar-benar tersisa dapat ditentukan (OC-TRK-ALOKASI-PEMBAYARAN Alokasi Pembayaran harus selesai terlebih dahulu). |
 | Koreksi atau pembatalan mutasi deposit dilakukan oleh petugas yang tidak berwenang | Koreksi ditolak. Hanya petugas dengan otorisasi khusus yang dapat melakukan koreksi atau pembatalan mutasi deposit. |
 | Deposit coba dilakukan untuk kunjungan yang sudah di-Reg-Out dan diselesaikan | Setoran deposit baru untuk kunjungan yang sudah selesai ditolak. Petugas harus memproses melalui mekanisme yang sesuai (misalnya kunjungan baru atau proses khusus). |
 
@@ -165,8 +165,8 @@ Deposit yang tidak diklaim setelah kunjungan selesai tetap tercatat sebagai sald
 | AC-05 | Setoran deposit tanpa referensi transaksi kasir yang terverifikasi ditolak dan tidak menghasilkan perubahan saldo. | Constraint |
 | AC-06 | Pemakaian deposit tidak dapat melebihi saldo deposit aktif pasien; percobaan pemakaian melebihi saldo menghasilkan penolakan. | Constraint |
 | AC-07 | Deposit satu pasien tidak dapat digunakan untuk tagihan pasien lain; percobaan pemakaian lintas pasien menghasilkan penolakan. | Constraint |
-| AC-08 | Setiap pemakaian deposit terhubung ke entri Alokasi Pembayaran (OC-02-02) yang valid dan menghasilkan pengurangan saldo yang konsisten. | Correctness |
-| AC-09 | Saldo deposit yang tersisa setelah tagihan diselesaikan dapat dijadikan dasar proses Refund (OC-02-04). | Correctness |
+| AC-08 | Setiap pemakaian deposit terhubung ke entri Alokasi Pembayaran (OC-TRK-ALOKASI-PEMBAYARAN) yang valid dan menghasilkan pengurangan saldo yang konsisten. | Correctness |
+| AC-09 | Saldo deposit yang tersisa setelah tagihan diselesaikan dapat dijadikan dasar proses Refund (OC-TRK-REG-OUT). | Correctness |
 | AC-10 | Koreksi atau pembatalan mutasi deposit hanya dapat dilakukan oleh petugas yang berwenang; percobaan oleh petugas yang tidak berwenang ditolak. | Constraint |
 | AC-11 | Setiap koreksi atau pembatalan mutasi deposit menghasilkan pemulihan saldo yang konsisten dan menyimpan jejak audit lengkap. | Constraint |
 | AC-12 | Riwayat seluruh mutasi deposit dapat ditelusuri secara kronologis dari setoran pertama hingga status saldo terkini. | Completeness |
@@ -177,13 +177,13 @@ Deposit yang tidak diklaim setelah kunjungan selesai tetap tercatat sebagai sald
 
 > What this Outcome explicitly does NOT cover.
 
-- Penerimaan pembayaran tunai/non-tunai di loket kasir untuk keperluan selain deposit — **OC-03-02 Pembayaran** dan `TRK-KASIR`.
-- Pembentukan dan konsolidasi rincian item biaya tagihan kunjungan — **OC-02-01 Rincian Tagihan Pasien**.
-- Pencatatan alokasi deposit terhadap tagihan kunjungan sebagai sumber pembayaran — **OC-02-02 Alokasi Pembayaran** (deposit digunakan sebagai sumber dalam alokasi, tetapi mekanisme alokasi itu sendiri adalah milik OC-02-02).
-- Proses pengembalian kelebihan deposit kepada pasien — **OC-02-04 Refund** (OC-02-03 hanya memastikan saldo deposit tersedia; proses refund adalah tanggung jawab OC-02-04).
-- Penyelesaian administrasi kepulangan pasien — **OC-02-05 Reg-Out**.
+- Penerimaan pembayaran tunai/non-tunai di loket kasir untuk keperluan selain deposit — **OC-TRK-CLOSING-SHIFT Pembayaran** dan `TRK-KASIR`.
+- Pembentukan dan konsolidasi rincian item biaya tagihan kunjungan — **OC-TRK-BILLING Rincian Tagihan Pasien**.
+- Pencatatan alokasi deposit terhadap tagihan kunjungan sebagai sumber pembayaran — **OC-TRK-ALOKASI-PEMBAYARAN Alokasi Pembayaran** (deposit digunakan sebagai sumber dalam alokasi, tetapi mekanisme alokasi itu sendiri adalah milik OC-TRK-ALOKASI-PEMBAYARAN).
+- Proses pengembalian kelebihan deposit kepada pasien — **OC-TRK-REG-OUT Refund** (OC-TRK-DEPOSIT hanya memastikan saldo deposit tersedia; proses refund adalah tanggung jawab OC-TRK-REG-OUT).
+- Penyelesaian administrasi kepulangan pasien — **OC-TRK-REG-OUT Reg-Out**.
 - Pengelolaan voucher pembayaran yang diterbitkan rumah sakit — `TRK-VOUCHER`.
 - Pengelolaan master jaminan dan aturan manfaat penjamin — `TRK-JAMINAN`.
 - Klaim ke BPJS melalui e-Klaim — **BPJS Domain** (`BPJ-EKLAIM`).
 - Rekonsiliasi dan pelaporan keuangan atas uang deposit — domain Finance/Akuntansi (di luar scope MYHOSWEB saat ini).
-- Closing shift kasir dan rekonsiliasi kas harian — **OC-03-03 Closing Shift**.
+- Closing shift kasir dan rekonsiliasi kas harian — **OC-TRK-CLOSING-SHIFT Closing Shift**.

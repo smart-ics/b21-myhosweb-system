@@ -14,7 +14,7 @@ Domain Code: **RJL**
 
 The **Rawat Jalan** Domain manages the delivery of outpatient clinical services after a patient has been registered for an outpatient visit.
 
-The domain is responsible for the patient's outpatient clinical encounter, clinical actions performed during the encounter, outpatient queue management, internal referral, and optional initial examination before the patient reaches the target clinic.
+The domain is responsible for the patient's outpatient clinical encounter, recording chargeable procedures and interventions performed during the encounter, outpatient queue management, internal referral, and optional initial examination before the patient reaches the target clinic.
 
 ## Definition
 
@@ -30,23 +30,25 @@ The capability to conduct and record the **clinical consultation** between the p
 
 It includes the clinical assessment and decision-making performed as part of the consultation.
 
-### 2. Tindakan Klinis
+### 2. Tindakan Klinis (RJL-TINDAKAN)
 
-The capability to record and manage the **chargeable clinical procedures and interventions** performed during an outpatient encounter.
+The capability to **record and manage chargeable procedures and interventions associated with an outpatient encounter, representing them as billable service items for financial processing**.
 
-The purpose of this capability is to ensure that clinical services delivered to the patient are properly represented as billable service items for operational and financial processing.
+This capability represents the administrative recording of chargeable services delivered in an outpatient setting. It associates each chargeable item with the appropriate patient and outpatient service context to support the financial processing of the resulting charges.
 
-This capability focuses on the administrative representation of clinical procedures rather than the clinical documentation itself.
+This capability remains consistent with the shared legacy header-detail entity used to record chargeable services across care settings. It focuses strictly on the administrative recording of charges for financial processing.
+
+Clinical documentation, clinical findings, observations, assessments, diagnoses, and medical records are outside the responsibility of this capability and belong to the EMR domain.
+
+Recording a charge does not prove or imply that a clinical procedure was performed or that clinical documentation has been completed.
 
 Examples:
 
 * Consultation charge
-* Procedure charge
+* Outpatient procedure charge
 * Nursing intervention charge
 * Minor surgery charge
-* Other billable outpatient clinical services
-
-Clinical documentation, clinical findings, observations, assessments, diagnoses, and medical records are outside the scope of this capability and belong to the EMR domain.
+* Other billable outpatient service items
 
 
 ### 3. Antrian Poli
@@ -102,7 +104,7 @@ The capability determines the patients who require initial examination and autom
 ### Owns
 
 * Outpatient clinical consultation.
-* Outpatient clinical procedures and interventions.
+* Administrative recording of chargeable outpatient procedures and interventions for financial processing.
 * Outpatient clinic queues.
 * Internal referral between outpatient services.
 * Initial examination and screening workflow before outpatient clinic service.
@@ -118,7 +120,8 @@ The capability determines the patients who require initial examination and autom
 * Laboratory services → **Laboratory Domain**
 * Radiology services → **Radiology Domain**
 * Pharmacy services → **Apotek Domain**
-* Billing and payment → **Tata Rekening Domain**
+* Clinical documentation, findings, assessments, diagnoses, and medical records → **EMR Domain**
+* Tariff master data, billing, and payment processing → **Tata Rekening Domain**
 
 ## Relationships
 
@@ -130,13 +133,14 @@ The capability determines the patients who require initial examination and autom
 | Rawat Inap                      | A patient may be transferred from outpatient care to inpatient care when clinically required.                          |
 | Gawat Darurat                   | A patient may be directed to emergency care when the required service falls outside outpatient care.                   |
 | Laboratory / Radiology / Apotek | Rawat Jalan may initiate or direct patient care toward these service domains as part of the patient's outpatient care. |
+| Tata Rekening                   | Provides applicable procedure tariffs and receives billable outpatient service charges for patient billing.            |
 
 ## Capability Map
 
 | Capability       | Business Ability                                                                                               |
 | ---------------- | -------------------------------------------------------------------------------------------------------------- |
 | Konsultasi       | Conduct and record outpatient clinical consultation                                                            |
-| Tindakan Klinis  | Perform and record outpatient clinical procedures and interventions                                            |
+| Tindakan Klinis  | Record and manage chargeable outpatient procedures and interventions for financial processing                  |
 | Antrian Poli     | Manage the patient queue for outpatient clinics                                                                |
 | Rujukan Internal | Transfer patients between internal outpatient services                                                         |
 | Pemeriksaan Awal | Automatically queue patients for required initial examination or screening before the target outpatient clinic |

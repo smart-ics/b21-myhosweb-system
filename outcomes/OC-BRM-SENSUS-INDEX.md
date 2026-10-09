@@ -2,7 +2,7 @@
 
 | Field       | Value        |
 |-------------|--------------|
-| Code        | OC-04-05     |
+| Code        | OC-BRM-SENSUS-INDEX     |
 | Version     | 1.2          |
 | Status      | Reviewed     |
 | LastUpdated | 2026-10-02   |
@@ -14,7 +14,7 @@
 >
 > Dokumen ini telah direviu dan dinyatakan **GOOD / ACCEPT** dengan satu *noted risk*:
 >
-> **Dikonfirmasi kuat:** Boundary bisnis sudah jelas; prinsip **Single Source of Truth + No Manual Re-entry** konsisten; hubungan independen dengan OC-04-04 sudah tepat; `Out of Scope` disiplin; detail teknis formula sudah diturunkan ke feasibility/architecture. **Kalimat "Independensi dari Pelaporan RL" (BC 5.3) dan AC-11 adalah bagian paling penting dari desain dan harus dipertahankan.**
+> **Dikonfirmasi kuat:** Boundary bisnis sudah jelas; prinsip **Single Source of Truth + No Manual Re-entry** konsisten; hubungan independen dengan OC-BRM-PELAPORAN-RL sudah tepat; `Out of Scope` disiplin; detail teknis formula sudah diturunkan ke feasibility/architecture. **Kalimat "Independensi dari Pelaporan RL" (BC 5.3) dan AC-11 adalah bagian paling penting dari desain dan harus dipertahankan.**
 >
 > **Noted Risk (bukan masalah fatal):** Outcome memasukkan tiga lapisan *(Sensus + Index + Statistik Pelayanan)*. Statistik (BOR, ALOS, TOI, BTO, GDR, NDR) berpotensi melebarkan scope. Saat ini masih dapat diterima karena statistik diposisikan eksplisit sebagai *derived dari Sensus dan Index*, dibatasi pada indikator standar nasional, dan analitik epidemiologi luas sudah dikeluarkan.
 >
@@ -37,9 +37,9 @@ Outcome ini **bukan hasil dari entri data manual oleh petugas Rekam Medis**. Rum
 
 Petugas Rekam Medis **tidak melakukan input ulang atau membuat data khusus** hanya untuk menghasilkan sensus, indeks, atau statistik. Seluruh informasi dalam outcome ini merupakan **informasi turunan (*derived information*)** yang dikompilasi secara otomatis dan konsisten dari data transaksi operasional yang telah tercatat.
 
-### Hubungan dengan OC-04-04 Pelaporan RL
+### Hubungan dengan OC-BRM-PELAPORAN-RL Pelaporan RL
 
-OC-04-04 (Pelaporan RL) adalah outcome kepatuhan regulatori untuk pelaporan resmi Sistem Informasi Rumah Sakit (SIRS) kepada Kementerian Kesehatan RI. Terdapat perbedaan mendasar dalam peran bisnis kedua outcome ini:
+OC-BRM-PELAPORAN-RL (Pelaporan RL) adalah outcome kepatuhan regulatori untuk pelaporan resmi Sistem Informasi Rumah Sakit (SIRS) kepada Kementerian Kesehatan RI. Terdapat perbedaan mendasar dalam peran bisnis kedua outcome ini:
 
 ```text
                Data Operasional Rumah Sakit
@@ -47,27 +47,27 @@ OC-04-04 (Pelaporan RL) adalah outcome kepatuhan regulatori untuk pelaporan resm
                            │
          ┌─────────────────┴─────────────────┐
          ▼                                   ▼
-OC-04-04 Pelaporan RL               OC-04-05 Sensus dan Index
+OC-BRM-PELAPORAN-RL Pelaporan RL               OC-BRM-SENSUS-INDEX Sensus dan Index
 (Kepatuhan Regulasi Kemenkes)       (Operasional, Audit & Analisis RM)
          │                                   ▲
          │                                   │
          └──────── Drill-Down / Verifikasi ──┘
 ```
 
-- **Independensi Sumber**: OC-04-04 dan OC-04-05 keduanya diturunkan langsung dari data operasional rumah sakit. **OC-04-05 bukan source of truth untuk Pelaporan RL**, dan angka RL tidak boleh didefinisikan sebagai hasil rekap laporan Index/Sensus.
-- **Lapisan Verifikasi dan Keterlacakan (*Traceability Layer*)**: OC-04-05 berfungsi sebagai lapisan operasional, audit, dan pembuktian fakta. Ketika angka agregat pada Pelaporan RL (misal total kematian atau total kasus morbiditas tertentu) perlu diperiksa keabsahannya, informasi Indeks dan Sensus pada OC-04-05 menyediakan sarana *drill-down* ke kelompok kasus dan pasien individual yang membentuk angka tersebut.
-- **Pemanfaatan Mandiri**: Terlepas dari pelaporan eksternal, OC-04-05 dimanfaatkan secara mandiri oleh instalasi Rekam Medis dan komite medis rumah sakit untuk pengawasan mutu layanan harian, audit rekam medis, dan pelaporan manajemen internal.
+- **Independensi Sumber**: OC-BRM-PELAPORAN-RL dan OC-BRM-SENSUS-INDEX keduanya diturunkan langsung dari data operasional rumah sakit. **OC-BRM-SENSUS-INDEX bukan source of truth untuk Pelaporan RL**, dan angka RL tidak boleh didefinisikan sebagai hasil rekap laporan Index/Sensus.
+- **Lapisan Verifikasi dan Keterlacakan (*Traceability Layer*)**: OC-BRM-SENSUS-INDEX berfungsi sebagai lapisan operasional, audit, dan pembuktian fakta. Ketika angka agregat pada Pelaporan RL (misal total kematian atau total kasus morbiditas tertentu) perlu diperiksa keabsahannya, informasi Indeks dan Sensus pada OC-BRM-SENSUS-INDEX menyediakan sarana *drill-down* ke kelompok kasus dan pasien individual yang membentuk angka tersebut.
+- **Pemanfaatan Mandiri**: Terlepas dari pelaporan eksternal, OC-BRM-SENSUS-INDEX dimanfaatkan secara mandiri oleh instalasi Rekam Medis dan komite medis rumah sakit untuk pengawasan mutu layanan harian, audit rekam medis, dan pelaporan manajemen internal.
 
 ### Evaluasi dan Rasionalisasi Menu Legacy
 
 Sistem legacy rumah sakit memiliki 38 menu terpisah yang berkembang selama bertahun-tahun berdasarkan permintaan ad-hoc pengguna. Struktur menu legacy tersebut **tidak dijadikan struktur outcome**, melainkan dirasionalisasi ke dalam boundary bisnis yang kohesif:
 
-| Klaster Bisnis OC-04-05 | Resolusi Fungsional Menu Legacy yang Dicakup | Peran Bisnis |
+| Klaster Bisnis OC-BRM-SENSUS-INDEX | Resolusi Fungsional Menu Legacy yang Dicakup | Peran Bisnis |
 |-------------------------|---------------------------------------------|--------------|
 | **Sensus Pelayanan** | `mnuSensusHarian`, `mnuSensusHarianInap`, `mnuRekapHarianRawatInap`, `mnuRekapRuanganRawatInap`, `mnuRekapKegiatanRawatDarurat`, `mnuInfoRekapKunjungan`, `mnuPasienPulang`, `mnuPasienPulangPerJaminan`, `mnuPasienBaru`, `mnuPasienDalamPerawatan` (posisi cut-off) | Mengukur volume kunjungan, pergerakan tempat tidur rawat inap (SHRI), dan sisa pasien pada periode/cut-off. |
 | **Indeks Rekam Medis** | `mnuPenyakit`, `mnuPenyakit2` (Indeks Diagnosis), `mnuOperasi`, `mnuTindakanMedis` (Indeks Prosedur/Operasi), `mnuDokter`, `mnuDokter2` (Indeks Dokter DPJP), `mnuKematian` (Indeks Kematian), `mnuKelahiran` (Indeks Kelahiran), `mnuRujukan` (Indeks Rujukan Masuk/Keluar), `mnuRekapPulangPaksa` (Indeks APS), `mnuImunisasi` (Indeks Pelayanan Khusus), `mnuWilayah` (Indeks Demografi Pasien) | Menyediakan daftar kasus granular berbasis filter fakta klinis/administratif untuk audit dan penelusuran fakta. |
 | **Statistik & Indikator Pelayanan** | `mnuInfoRekapIndikatorKes`, `mnuRekapIndikatorKesehatan2` (Indikator BOR, ALOS, TOI, BTO, NDR, GDR), `mnuMorbiditasPasien` (10 Besar Morbiditas), `mnuInfoMonitoringPelayanan`, `mnuInfoRekapWilayahPerGrupJaminan`, `mnuRekapKematian`, `mnuRekapKelahiran` | Menyajikan indikator efisiensi pemanfaatan fasilitas rawat inap dan rangkuman pola morbiditas yang langsung diturunkan dari data sensus dan indeks kasus. |
-| **Dikeluarkan dari Boundary (perlu dievaluasi lebih lanjut)** | `mnuInfoSurveilansKLB`, `mnuMaternal`, `mnuPenyakitTdkMenular`, `mnuRekapKegiatanDepkes` | Menu-menu ini mewakili analitik epidemiologi yang lebih luas dari fungsi Index/Sensus. Perlu dievaluasi apakah masuk dalam OC-04-05 atau merupakan capability/outcome tersendiri. |
+| **Dikeluarkan dari Boundary (perlu dievaluasi lebih lanjut)** | `mnuInfoSurveilansKLB`, `mnuMaternal`, `mnuPenyakitTdkMenular`, `mnuRekapKegiatanDepkes` | Menu-menu ini mewakili analitik epidemiologi yang lebih luas dari fungsi Index/Sensus. Perlu dievaluasi apakah masuk dalam OC-BRM-SENSUS-INDEX atau merupakan capability/outcome tersendiri. |
 | **Dikeluarkan dari Boundary (Out of Scope)** | `mnuHistoriPasien` (Penelusuran klinis individual → `ADM-TRACKER`), `mnuInfoPasien` (Pencarian master demografi → `PAS-DATSOS`), `mnuInfoPasienAktif` (Monitoring bed operasional real-time bangsal → `RNA-BED`), `mnuPasienNonAktif` (Retensi/keaktifan nomor RM → `PAS-DATSOS`/`BRM-MUTASI`), `mnuPasienUltah` (CRM/Humas non-klinis) | Jelas berada di luar boundary rekam medis: pencarian individual pasien, live bed monitoring, tata kelola RM, dan pemasaran. |
 
 ---
@@ -181,7 +181,7 @@ Informasi sensus pelayanan, indeks kasus rekam medis, dan statistik indikator ru
 - **Kepatuhan Terhadap Standar Baku Nasional**: Indikator efisiensi rawat inap (BOR, ALOS, TOI, BTO, GDR, NDR) harus dihitung berdasarkan definisi operasional dan standar baku yang berlaku di Indonesia. Formula dan detail penghitungan akan ditetapkan pada tahap feasibility/architecture.
 - **Konsistensi Penghitungan Sensus Rawat Inap**: Sensus rawat inap harus menggunakan definisi cut-off yang konsisten dan ditetapkan rumah sakit. Perpindahan ruangan internal tidak boleh menghasilkan penghitungan ganda hari perawatan untuk pasien yang sama dalam satu periode hitung yang sama.
 - **Keterlacakan Vertikal Penuh**: Setiap angka agregat pada rekapitulasi sensus dan tabel statistik wajib menyediakan mekanisme *drill-down* ke daftar kasus operasional pembentuknya.
-- **Independensi dari Pelaporan RL**: Sensus dan Indeks dihasilkan secara mandiri dari data operasional dan tidak bergantung pada output Pelaporan RL (OC-04-04). Namun, data sensus dan indeks dapat digunakan sebagai sarana pembuktian/verifikasi terhadap angka-angka pada laporan RL.
+- **Independensi dari Pelaporan RL**: Sensus dan Indeks dihasilkan secara mandiri dari data operasional dan tidak bergantung pada output Pelaporan RL (OC-BRM-PELAPORAN-RL). Namun, data sensus dan indeks dapat digunakan sebagai sarana pembuktian/verifikasi terhadap angka-angka pada laporan RL.
 
 
 ### 5.4 Completion Proof
@@ -246,7 +246,7 @@ Berakhir ketika informasi sensus pelayanan, indeks kasus rekam medis, dan statis
 | **AC-08** | Sistem menyajikan rangkuman pola morbiditas (peringkat 10 Besar Penyakit) berdasarkan data indeks kasus yang telah terkodifikasi. | Completeness |
 | **AC-09** | Setiap angka agregat pada sensus pelayanan dan statistik indikator dapat ditelusuri (*drill-down*) ke daftar kasus/pasien individual (indeks) yang membentuknya. | Correctness |
 | **AC-10** | Sistem tidak menyediakan fasilitas input manual atau modifikasi lokal terhadap angka sensus/indeks/statistik; seluruh angka merupakan turunan murni dari transaksi operasional sumber. | Constraint |
-| **AC-11** | Informasi sensus dan indeks dapat digunakan untuk memverifikasi dan mengaudit angka-angka pada Pelaporan RL (OC-04-04), tanpa menciptakan ketergantungan data langsung antara keduanya. | Correctness |
+| **AC-11** | Informasi sensus dan indeks dapat digunakan untuk memverifikasi dan mengaudit angka-angka pada Pelaporan RL (OC-BRM-PELAPORAN-RL), tanpa menciptakan ketergantungan data langsung antara keduanya. | Correctness |
 
 ---
 
@@ -255,10 +255,10 @@ Berakhir ketika informasi sensus pelayanan, indeks kasus rekam medis, dan statis
 > What this Outcome explicitly does NOT cover.
 
 - **Pencatatan Transaksi Pelayanan Operasional**: Pencatatan pendaftaran pasien, asuhan medis, tindakan keperawatan, transfer ruangan fisik di bangsal, administrasi kepulangan, peresepan obat, dan pemeriksaan laboratorium/radiologi → domain operasional masing-masing (`ADM`, `RNA`, `RJL`, `IGD`, `KMO`, `LAB`, `RAD`, `APT`).
-- **Kodifikasi Klinis ICD-10 dan ICD-9-CM**: Penetapan dan validasi kode diagnosis dan prosedur medis pada episode pelayanan → **OC-04-03 Casemix dan Coding** (`BRM-CODING`).
-- **Penyusunan Formulir Kepatuhan Regulasi Kemenkes (RL 1 s/d RL 5)**: Agregasi dan penyusunan format resmi pelaporan Sistem Informasi Rumah Sakit (SIRS) Kementerian Kesehatan RI → **OC-04-04 Pelaporan RL** (`BRM-RL`).
-- **Pengelolaan Fisik Berkas Rekam Medis**: Pelacakan lokasi fisik map rekam medis, ekspedisi peminjaman berkas, dan penyusutan berkas inaktif → **OC-04-02 Manajemen Berkas** (`BRM-MUTASI`).
-- **Pencarian Master Demografi Pasien Individual**: Pencarian data sosial perorangan pasien atau verifikasi identitas kependudukan (NIK) → **OC-04-01 Data Sosial Pasien** (`PAS-DATSOS`).
+- **Kodifikasi Klinis ICD-10 dan ICD-9-CM**: Penetapan dan validasi kode diagnosis dan prosedur medis pada episode pelayanan → **OC-BRM-CASEMIX-CODING Casemix dan Coding** (`BRM-CODING`).
+- **Penyusunan Formulir Kepatuhan Regulasi Kemenkes (RL 1 s/d RL 5)**: Agregasi dan penyusunan format resmi pelaporan Sistem Informasi Rumah Sakit (SIRS) Kementerian Kesehatan RI → **OC-BRM-PELAPORAN-RL Pelaporan RL** (`BRM-RL`).
+- **Pengelolaan Fisik Berkas Rekam Medis**: Pelacakan lokasi fisik map rekam medis, ekspedisi peminjaman berkas, dan penyusutan berkas inaktif → **OC-BRM-MUTASI-BERKAS Manajemen Berkas** (`BRM-MUTASI`).
+- **Pencarian Master Demografi Pasien Individual**: Pencarian data sosial perorangan pasien atau verifikasi identitas kependudukan (NIK) → **OC-PAS-DATA-SOSIAL-PASIEN Data Sosial Pasien** (`PAS-DATSOS`).
 - **Penelusuran Riwayat Klinis Pasien Individual (*Patient Journey / Clinical Chart*)**: Akses kronologis rekam medis lengkap perorangan pasien selama masa perawatan → `ADM-TRACKER` dan Clinical Chart di domain pelayanan terkait (`mnuHistoriPasien`).
 - **Monitoring Operasional Tempat Tidur Real-Time (*Live Bed Board*)**: Papan kontrol ketersediaan dan status kesiapan tempat tidur kamar bangsal saat ini untuk penempatan pasien baru → `RNA-BED` (`mnuInfoPasienAktif`).
 - **Pengelolaan Status Keaktifan Nomor Rekam Medis**: Penonaktifan nomor rekam medis atau retensi status pasien non-aktif → `PAS-DATSOS` / `BRM-MUTASI` (`mnuPasienNonAktif`).

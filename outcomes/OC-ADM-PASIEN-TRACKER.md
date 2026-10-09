@@ -2,7 +2,7 @@
 
 | Field       | Value        |
 |-------------|--------------|
-| Code        | OC-01-05     |
+| Code        | OC-ADM-PASIEN-TRACKER     |
 | Version     | 1.0          |
 | Status      | Draft        |
 | LastUpdated | 2026-10-01   |
@@ -181,9 +181,8 @@ Berakhir ketika seluruh titik layanan yang direncanakan dalam kunjungan telah me
 
 > What this Outcome explicitly does NOT cover.
 
-- Registrasi kunjungan rawat jalan atau IGD yang menjadi konteks perjalanan → **OC-01-02 Registrasi Rawat Jalan dan IGD**.
-- Registrasi rawat inap yang menjadi titik awal kunjungan rawat inap → **OC-01-03 Registrasi Rawat Inap**.
-- Pengelolaan antrian fisik pendaftaran rawat jalan di loket → **OC-01-07 Antrian**.
+- Registrasi pelayanan pasien (Rawat Jalan, IGD, Rawat Inap) yang menjadi konteks awal perjalanan pasien → **OC-ADM-REGISTRASI Registrasi** (Unified REGISTRASI Outcome, mengonsolidasikan registrasi Rawat Jalan, IGD, dan Rawat Inap).
+- Pengelolaan antrian fisik pendaftaran rawat jalan di loket → **OC-ADM-ANTRIAN Antrian**.
 - Antrian pasien di poliklinik rawat jalan → **Rawat Jalan Domain** (`RJL-ANTRIAN`).
 - Antrian pasien di apotek → **Apotek Domain** (`APT-QUEUE`).
 - Pelaksanaan tindakan klinis dan pelayanan medis di setiap unit layanan → domain pelayanan klinis terkait.
