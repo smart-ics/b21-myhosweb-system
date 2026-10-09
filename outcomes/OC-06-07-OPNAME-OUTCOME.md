@@ -3,7 +3,7 @@
 | Field       | Value        |
 |-------------|--------------|
 | Code        | OC-06-07     |
-| Version     | 1.4          |
+| Version     | 1.5          |
 | Status      | Draft        |
 | LastUpdated | 2026-10-09   |
 
@@ -122,16 +122,13 @@ Pencatatan Opname mencatat informasi bisnis utama:
 
 ### 5.4 Completion Proof
 
-Outcome ini dinyatakan mencapai hasil akhir (*established*) apabila proses Opname telah selesai divalidasi dan mencapai salah satu status akhir berikut:
+Outcome ini dinyatakan mencapai hasil akhir (*established*) apabila proses Opname telah selesai divalidasi dan mencapai salah satu **status akhir validasi** berikut (makna lengkap mengacu pada Bagian 7.4):
 
-1. **`Disahkan`:** Hasil penghitungan fisik persediaan di Bangsal Rawat Inap telah divalidasi dan dinyatakan sah sebagai fakta operasional yang dapat dipertanggungjawabkan (menjadi dasar tindak lanjut terpisah).
-2. **`Dikembalikan`:** Siklus validasi berakhir dengan keputusan pengembalian agar hasil opname ditindaklanjuti (diperiksa atau diperbaiki kembali). Status ini bukan pengesahan hasil opname dan tidak dapat dijadikan dasar perubahan saldo stok.
+1. **`Disahkan`:** Hasil opname divalidasi dan dinyatakan sah sebagai fakta operasional yang dapat dipertanggungjawabkan.
+2. **`Dikembalikan`:** Siklus validasi berakhir dengan keputusan pengembalian agar hasil opname ditindaklanjuti; bukan pengesahan dan bukan dasar perubahan saldo stok (lihat Bagian 7.2 dan 7.4).
 
-> **Catatan Status Proses Berjalan (In-Progress):**
-> Status `Draft` dan `Menunggu Validasi` mencerminkan tahapan proses pencatatan dan pengajuan yang masih berjalan (*in-progress*) dan **bukan** merupakan bukti bahwa outcome Opname telah mencapai hasil akhir.
+> **Status `Draft` dan `Menunggu Validasi`** mencerminkan proses yang masih berjalan (*in-progress*) dan **bukan** bukti bahwa outcome Opname telah mencapai hasil akhir.
 
-**Kemandirian Hasil Opname:**
-Keabsahan bukti ketercapaian outcome ini berdiri sendiri dan tidak bergantung pada transaksi koreksi saldo stok sistem otomatis, penyesuaian nilai buku akuntansi (*stock valuation*), alur persetujuan bertingkat yang rumit, maupun mekanisme investigasi selisih mendalam.
 
 ---
 
@@ -203,8 +200,8 @@ Berakhir ketika hasil penghitungan fisik persediaan dan perbandingannya dengan s
 | AC-01 | Sistem dapat mencatat objek barang, lokasi Bangsal Rawat Inap, hasil penghitungan fisik persediaan, perbandingannya dengan saldo stok sistem, serta selisih stok yang ditemukan sebagai fakta operasional. | Completeness |
 | AC-02 | Status proses opname dapat dikelola secara jelas (*Draft* dan *Menunggu Validasi* sebagai status proses berjalan). | Completeness |
 | AC-03 | Outcome mencapai hasil akhir ketika hasil opname berstatus *Disahkan* (hasil dinyatakan sah) atau *Dikembalikan* (hasil dikembalikan untuk ditindaklanjuti). | Completeness |
-| AC-04 | Status *Dikembalikan* secara eksplisit dimaknai sebagai akhir siklus validasi untuk pengembalian hasil opname agar ditindaklanjuti, bukan pengesahan hasil opname, dan tidak dapat dijadikan dasar perubahan saldo stok. | Constraint |
-| AC-05 | Status *Disahkan* membuktikan bahwa hasil opname telah disahkan secara operasional, sedangkan tindak lanjut Koreksi Stok tetap merupakan aktivitas terpisah dan tidak dilakukan otomatis oleh Opname. | Correctness |
+| AC-04 | Status *Dikembalikan* dimaknai sebagai akhir siklus validasi untuk pengembalian agar ditindaklanjuti: bukan pengesahan dan bukan dasar perubahan saldo stok (lihat Bagian 7.4). | Constraint |
+| AC-05 | Status *Disahkan* membuktikan hasil opname telah disahkan secara operasional; tindak lanjut Koreksi Stok tetap merupakan aktivitas terpisah dan tidak dilakukan otomatis oleh Opname (lihat Bagian 7.2 dan 7.4). | Correctness |
 | AC-06 | Hasil opname yang belum dapat diterima saat validasi dapat ditetapkan berstatus *Dikembalikan* dengan pencatatan alasan pengembalian jika diperlukan. | Completeness |
 | AC-07 | Penetapan status *Disahkan* pada hasil opname secara tegas tidak otomatis mengubah atau memutakhirkan saldo stok sistem (Opname ≠ Koreksi Stok). | Constraint |
 | AC-08 | Opname dapat dibedakan secara tegas dari transaksi Pakai Barang (`OC-06-05`), Mutasi Barang (`OC-06-06`), dan Penerimaan Barang (`PUR-DO`). | Constraint |
