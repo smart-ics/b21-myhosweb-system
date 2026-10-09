@@ -54,7 +54,7 @@ Domain Code : **RJL**
 Domain Code : **RNA**
 
 **Capabilities:**
-1. `RNA-ANTRIAN` Antrian Masuk Bangsal
+1. `RNA-WAITLIST` Waiting List
 2. `RNA-BED` Pakai Bed
 3. `RNA-TRANSFER` Transfer Ke Unit Lain
 4. `RNA-CHARGE` Room Charge

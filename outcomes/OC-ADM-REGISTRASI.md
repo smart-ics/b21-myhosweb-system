@@ -44,7 +44,7 @@ Berdasarkan tata kelola arsitektur sistem MyHosWeb, Outcome ini memiliki **tepat
 | **Pasien** (`PAS`) | **Contributing Domain:** Menyediakan identitas pasien otoritatif (Nomor Rekam Medis terkelola dan data sosial) untuk registrasi hospital-managed reguler (Rawat Jalan, IGD teridentifikasi, Rawat Inap), serta mencatat nomor rekam medis eksternal (*distinguishable External MR*) untuk registrasi External. |
 | **Organisasi** (`ORG`) | **Contributing Domain:** Menyediakan data master unit layanan, poliklinik, instalasi penunjang, bangsal/kamar, serta Petugas Pemberi Asuhan (dokter DPJP) dan jadwal praktik dokter. |
 | **Gawat Darurat** (`IGD`) | **Contributing Domain:** Mengelola episode kegawatdaruratan operasional (`IGD-VISIT`) yang dapat berdiri sendiri mendahului registrasi admisi. Registrasi tipe IGD kemudian menautkan konteks administratif `RegId` ke `IGD-VISIT` aktif tersebut. |
-| **Rawat Inap** (`RNA`) | **Contributing Domain:** Menerima notifikasi registrasi rawat inap sebagai pemicu antrean masuk bangsal (`RNA-ANTRIAN`) sebelum penempatan bed aktual dilakukan oleh unit bangsal penerima. |
+| **Rawat Inap** (`RNA`) | **Contributing Domain:** Menerima notifikasi registrasi rawat inap sebagai pemicu antrean masuk bangsal (`RNA-WAITLIST`) sebelum penempatan bed aktual dilakukan oleh unit bangsal penerima. |
 | **Laboratory** (`LAB`) | **Contributing Domain:** Mendukung inisiasi registrasi penunjang eksternal langsung melalui kapabilitas `LAB-EXTERNAL` untuk pasien laboratorium tanpa melalui registrasi rawat jalan/inap. |
 | **Tata Rekening** (`TRK`) | **Contributing Domain:** Menyediakan data penjamin/coverage (`TRK-JAMINAN`), acuan tarif (`TRK-TARIF`), dan deposit (`TRK-DEPOSIT`), serta mengonsumsi `RegId` sebagai billing collection key pada pencatatan tagihan (`TRK-BILLING`) dan penyelesaian pembayaran kasir (`TRK-KASIR`). |
 | **BPJS** (`BPJ`) | **Contributing Domain:** Memvalidasi kepesertaan jaminan BPJS Kesehatan dan menerbitkan Surat Eligibilitas Peserta (`BPJ-VCLAIM` / SEP) untuk kunjungan yang ditanggung oleh BPJS. |
@@ -66,7 +66,7 @@ Seluruh kapabilitas divalidasi terhadap [`domain/DOMAIN-CATALOG.md`](file:///d:/
 | `ORG-JADWAL` Jadwal Praktek Dokter | Organisasi | Known | Menyediakan validasi ketersediaan jadwal praktik dokter untuk registrasi rawat jalan. |
 | `ORG-BANGSAL` Room Bangsal Management | Organisasi | Known | Menyediakan konfigurasi bangsal dan kelas perawatan untuk registrasi rawat inap. |
 | `IGD-VISIT` IGD Visit | Gawat Darurat | Known | Menyediakan konteks operasional kunjungan IGD yang dapat eksis secara independen sebelum registrasi admisi. |
-| `RNA-ANTRIAN` Antrian Masuk Bangsal | Rawat Inap | Known | Menampung pasien rawat inap yang telah terdaftar ke dalam antrian masuk bangsal tujuan. |
+| `RNA-WAITLIST` Antrian Masuk Bangsal | Rawat Inap | Known | Menampung pasien rawat inap yang telah terdaftar ke dalam antrian masuk bangsal tujuan. |
 | `LAB-EXTERNAL` Registrasi External | Laboratory | Known | Menginisiasi registrasi langsung di unit laboratorium tanpa admisi umum. |
 | `TRK-JAMINAN` Jaminan | Tata Rekening | Known | Menentukan penjamin pembiayaan (Umum/Bayar Sendiri, BPJS, Asuransi, Perusahaan). |
 | `TRK-TARIF` Tariff | Tata Rekening | Known | Menyediakan kelas tarif dasar yang berlaku untuk registrasi. |
@@ -106,7 +106,7 @@ Registrasi Pelayanan Pasien dianggap terwujud (*established*) jika fakta bisnis 
 
 #### 4. Khusus Rawat Inap:
 - Registrasi merujuk pada DPJP penanggung jawab, bangsal tujuan, dan kelas perawatan yang sah.
-- Pasien telah tercatat dalam antrean masuk bangsal penerima (`RNA-ANTRIAN`), menunggu penempatan bed (`RNA-BED`).
+- Pasien telah tercatat dalam antrean masuk bangsal penerima (`RNA-WAITLIST`), menunggu penempatan bed (`RNA-BED`).
 - Masa berlaku administratif registrasi mencakup **seluruh durasi episode rawat inap** (multi-hari, dari tanggal masuk hingga pasien resmi keluar/discharge).
 - Asal rujukan admisi terdokumentasi (dari IGD, rujukan internal Rawat Jalan, atau Direct Admission).
 
@@ -192,7 +192,7 @@ Outcome ini dinyatakan selesai dan terbukti terbentuk apabila:
 3. Bukti keterhubungan operasional terbentuk:
    - Rawat Jalan: Pasien terdaftar dalam antrean poli tujuan (`RJL-ANTRIAN`).
    - IGD: `RegId` terhubung ke catatan `IGD-VISIT` aktif.
-   - Rawat Inap: Pasien terdaftar dalam antrean masuk bangsal (`RNA-ANTRIAN`).
+   - Rawat Inap: Pasien terdaftar dalam antrean masuk bangsal (`RNA-WAITLIST`).
    - External: Nomor RM Eksternal dan `RegId` terbentuk serta siap menerima pesanan layanan di unit penunjang.
 4. Kueri pencarian berdasarkan `RegId`, Nomor RM, tanggal pelayanan, atau unit tujuan mengembalikan data registrasi yang valid dan konsisten.
 5. `RegId` dapat digunakan secara langsung oleh domain penagihan (`TRK-BILLING`) untuk membebankan biaya layanan dan oleh Kasir (`TRK-KASIR`) untuk menerima pembayaran.
@@ -212,7 +212,7 @@ Outcome ini dinyatakan selesai dan terbukti terbentuk apabila:
 
 - **Rawat Jalan:** Berakhir saat data registrasi tersimpan dengan status **Terdaftar**, `RegId` terbit, dan pasien masuk antrean poliklinik tujuan.
 - **IGD / Rawat Darurat:** Berakhir saat registrasi administratif tersimpan dengan status **Terdaftar**, `RegId` terbit, dan terhubung secara resmi ke catatan `IGD-VISIT`.
-- **Rawat Inap:** Berakhir saat registrasi tersimpan dengan status **Terdaftar**, `RegId` terbit, dan pasien masuk dalam antrean masuk bangsal tujuan (`RNA-ANTRIAN`). Penempatan aktual ke tempat tidur (`RNA-BED`) berada di luar batasan Outcome ini.
+- **Rawat Inap:** Berakhir saat registrasi tersimpan dengan status **Terdaftar**, `RegId` terbit, dan pasien masuk dalam antrean masuk bangsal tujuan (`RNA-WAITLIST`). Penempatan aktual ke tempat tidur (`RNA-BED`) berada di luar batasan Outcome ini.
 - **External:** Berakhir saat registrasi tersimpan dengan status **Terdaftar**, `RegId` dan External MR terbit, dan data siap digunakan untuk pemrosesan order/penjualan penunjang.
 
 ---
@@ -284,7 +284,7 @@ Outcome ini dinyatakan selesai dan terbukti terbentuk apabila:
 | **AC-07** | Catatan kunjungan gawat darurat (`IGD-VISIT`) dapat terbentuk dan tindakan pertolongan darurat (`IGD-TINDAKAN`) dapat dicatat sebelum registrasi admisi (`ADM-REG`) diselesaikan. | Constraint |
 | **AC-08** | Registrasi admisi tipe IGD yang dibuat menyusul dapat ditautkan secara akurat ke ID `IGD-VISIT` aktif yang mendahuluinya. | Correctness |
 | **AC-09** | Registrasi Rawat Inap tetap berlaku aktif sepanjang durasi episode rawat inap pasien (multi-hari) hingga pasien resmi dipulangkan (*discharge*). | Correctness |
-| **AC-10** | Registrasi Rawat Inap mencatat identitas pasien, DPJP yang berwenang, bangsal tujuan, dan kelas perawatan, serta otomatis menempatkan pasien ke antrean masuk bangsal (`RNA-ANTRIAN`). | Completeness |
+| **AC-10** | Registrasi Rawat Inap mencatat identitas pasien, DPJP yang berwenang, bangsal tujuan, dan kelas perawatan, serta otomatis menempatkan pasien ke antrean masuk bangsal (`RNA-WAITLIST`). | Completeness |
 | **AC-11** | Sistem menolak pembuatan registrasi rawat inap baru jika pasien yang bersangkutan masih memiliki episode registrasi rawat inap aktif yang belum diselesaikan (*no overlapping inpatient stays*). | Constraint |
 | **AC-12** | Registrasi External dapat dibuat untuk pasien yang datang langsung ke unit penunjang (Laboratorium / Farmasi) tanpa melalui pendaftaran rawat jalan atau admisi rawat inap. | Completeness |
 | **AC-13** | Registrasi External menerbitkan Nomor Rekam Medis Eksternal yang polanya dapat dibedakan secara tegas dari format Nomor Rekam Medis reguler rumah sakit. | Correctness |
