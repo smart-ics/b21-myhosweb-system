@@ -20,7 +20,6 @@
 - OC-TRK-BILLING Rincian Tagihan Pasien
 - OC-TRK-ALOKASI-PEMBAYARAN Alokasi Pembayaran
 - OC-TRK-DEPOSIT Deposit
-- OC-TRK-REG-OUT Reg-Out
 
 ---
 
@@ -39,7 +38,6 @@
 
 - OC-PAS-DATA-SOSIAL-PASIEN Data Sosial Pasien
 - OC-BRM-MUTASI-BERKAS Manajemen Berkas
-- OC-BRM-CASEMIX-CODING Casemix dan Coding
 - OC-BRM-PELAPORAN-RL Pelaporan RL
 - OC-BRM-SENSUS-INDEX Pelaporan Index dan Sensus
 
