@@ -3,15 +3,15 @@
 | Field       | Value        |
 |-------------|--------------|
 | Code        | OC-12-01     |
-| Version     | 1.4          |
+| Version     | 1.5          |
 | Status      | Draft        |
-| LastUpdated | 2026-10-09   |
+| LastUpdated | 2026-10-10   |
 
 ---
 
 ## 1. Business Purpose
 
-Terima Barang (DO) memastikan barang obat dan BHP yang dikirim pemasok berdasarkan Purchase Order (PO) yang disetujui dapat diperiksa, diputuskan penerimaannya, dan diakui sebagai persediaan aktif rumah sakit secara akurat dan tertelusur.
+Terima Barang (DO) memastikan barang obat dan BHP yang dikirim pemasok berdasarkan Purchase Order (PO) dapat diperiksa, diputuskan penerimaannya, dan diakui sebagai persediaan aktif rumah sakit secara akurat dan akuntabel.
 
 Outcome ini membentuk fakta bisnis penerimaan yang sah sebagai dasar penambahan persediaan aktif dan penetapan HPP, sekaligus memastikan barang yang belum disahkan atau ditolak tidak menambah stok.
 
@@ -19,7 +19,7 @@ Outcome ini membentuk fakta bisnis penerimaan yang sah sebagai dasar penambahan 
 
 ## 2. Outcome Statement
 
-Barang obat atau BHP berdasarkan Purchase Order (PO) yang disetujui **telah diperiksa dan disahkan oleh pihak yang berwenang, sehingga kuantitas yang disahkan diterima diakui sebagai penambahan persediaan aktif rumah sakit yang tertelusur beserta nomor batch/lot, tanggal kedaluwarsa, dan penetapan HPP**.
+Barang kiriman pemasok **telah diverifikasi dan disahkan penerimaannya oleh pihak berwenang, sehingga kuantitas yang diterima sah diakui sebagai persediaan aktif rumah sakit yang tertelusur beserta nomor batch/lot, tanggal kedaluwarsa, dan penetapan HPP**.
 
 ---
 
@@ -52,19 +52,19 @@ Barang obat atau BHP berdasarkan Purchase Order (PO) yang disetujui **telah dipe
 
 ### 5.1 Required Business Facts
 
-- **Penerimaan Berdasar PO Sah:** Catatan penerimaan terbentuk dan tertaut ke PO yang disetujui serta dokumen pengiriman pemasok.
-- **Kuantitas Disahkan Tercatat Lengkap:** Kuantitas yang disahkan diterima (*Accepted Quantity*) tercatat per item barang beserta nomor batch/lot, tanggal kedaluwarsa, dan penetapan HPP definitif.
-- **Pengakuan Stok Mengikuti Pengesahan:** Penambahan stok aktif di gudang persediaan terbentuk hanya sebesar kuantitas yang disahkan diterima.
-- **Ketidaksesuaian dan Penolakan Terdokumentasi:** Selisih fisik (kurang/lebih) dan barang yang ditolak memiliki dokumentasi alasan dan keputusan pihak berwenang tanpa menambah stok aktif.
+- **Penerimaan Berdasar PO Sah:** Catatan penerimaan terbit dengan status sah dan tertaut ke PO yang disetujui serta dokumen pengiriman pemasok.
+- **Kuantitas Disahkan Tercatat Lengkap:** Kuantitas yang disahkan diterima (*Accepted Quantity*) tercatat per item barang beserta nomor batch/lot, tanggal kedaluwarsa, dan HPP perolehan.
+- **Pengakuan Stok Mengikuti Pengesahan:** Penambahan saldo persediaan aktif di gudang terbentuk hanya sebesar kuantitas yang disahkan diterima.
+- **Ketidaksesuaian dan Penolakan Terdokumentasi:** Selisih fisik (kurang/lebih) dan barang yang ditolak terdokumentasi lengkap tanpa menambah persediaan aktif.
 
 ---
 
 ### 5.2 Required Recorded Information
 
-- Identitas unik penerimaan (*Goods Receipt / DO*), nomor PO rujukan, surat jalan pemasok, pemasok, gudang tujuan, tanggal penerimaan dan pengesahan, serta identitas pemeriksa dan pejabat pengesah;
-- Rincian item diterima: identitas barang, kuantitas disahkan (*Accepted Qty*), nomor batch/lot, tanggal kedaluwarsa, dan nilai HPP;
-- Catatan selisih dan penolakan (jika ada): kuantitas selisih/ditolak dan alasan ketidaksesuaian/penolakan;
-- Status dokumen penerimaan (**Disahkan** / *Approved* atau **Ditolak** / *Rejected*).
+- Identitas penerimaan (*Goods Receipt / DO*), nomor PO, surat jalan, pemasok, gudang tujuan, tanggal penerimaan/pengesahan, serta identitas pemeriksa dan pejabat pengesah;
+- Rincian item diterima: identitas barang, kuantitas disahkan diterima, nomor batch/lot, tanggal kedaluwarsa, dan nilai HPP;
+- Rincian ketidaksesuaian: kuantitas selisih/ditolak beserta alasannya;
+- Status akhir dokumen: **Disahkan** (*Approved*) atau **Ditolak** (*Rejected*).
 
 ---
 
@@ -77,8 +77,8 @@ Barang obat atau BHP berdasarkan Purchase Order (PO) yang disetujui **telah dipe
 
 ### 5.4 Completion Proof
 
-- Dokumen penerimaan berstatus **Disahkan** (*Approved*) yang tertaut pada PO dan surat jalan pemasok;
-- Mutasi penambahan stok aktif tercatat di Inventory sebesar kuantitas yang disahkan diterima lengkap dengan nomor batch/lot, tanggal kedaluwarsa, dan HPP.
+- Dokumen penerimaan berstatus **Disahkan** (*Approved*);
+- Mutasi penambahan persediaan aktif tercatat di Inventory sebesar kuantitas yang disahkan diterima.
 
 ---
 
@@ -100,13 +100,13 @@ Dimulai ketika kiriman fisik barang tiba di gudang rumah sakit bersama dokumen p
 > Rules that must always hold true for this Outcome.
 
 1. **Rujukan PO Mandatori:** Penerimaan dilarang diproses tanpa merujuk pada PO yang telah disetujui (*Approved*).
-2. **Penetapan Fisik Obyektif:** Kuantitas penerimaan wajib didasarkan pada hasil pemeriksaan fisik nyata, bukan penyalinan otomatis dari PO atau surat jalan pemasok.
-3. **Plafon Stok Berdasarkan Pengesahan:** Kedatangan fisik barang atau draf penerimaan dilarang menambah stok aktif; penambahan stok aktif hanya bertambah setelah pengesahan resmi dan dibatasi sebesar kuantitas yang disahkan diterima (*Accepted Quantity*).
+2. **Verifikasi Fisik Mandatori:** Kuantitas penerimaan wajib didasarkan pada hasil pemeriksaan fisik nyata, bukan penyalinan otomatis dari dokumen pemesanan atau pengiriman.
+3. **Plafon Pengakuan Stok:** Kedatangan fisik barang atau draf penerimaan dilarang menambah stok aktif; penambahan stok aktif hanya bertambah setelah pengesahan resmi dan dibatasi sebesar kuantitas yang disahkan diterima (*Accepted Quantity*).
 4. **Mandatori Batch dan Kedaluwarsa:** Seluruh item yang disahkan diterima wajib memiliki nomor batch/lot dan tanggal kedaluwarsa yang valid.
-5. **Prinsip Penetapan HPP:** HPP perolehan ditetapkan saat pengesahan mengacu pada harga satuan PO, kecuali terdapat penyesuaian biaya perolehan yang sah—seperti alokasi diskon resmi pemasok, barang bonus kontraktual, atau perubahan harga resmi yang disahkan pejabat pengadaan berwenang pada dokumen penerimaan; nilai HPP yang telah disahkan bersifat mengikat sebagai nilai perolehan persediaan dan tidak berubah surut oleh rekonsiliasi faktur di kemudian hari.
-6. **Batas Penerimaan Melebihi PO:** Kuantitas yang melebihi PO wajib ditolak, kecuali didasari oleh amandemen PO atau keputusan otorisasi tertulis resmi dari pejabat pengadaan yang berwenang sebagai dasar sah penerimaan kuantitas berlebih.
-7. **Independensi Penerimaan Parsial:** Adanya barang yang ditolak, rusak, atau berselisih dalam satu kiriman tidak membatalkan penerimaan atas item lain yang memenuhi syarat dan disahkan.
-8. **Finalitas Catatan:** Dokumen penerimaan yang telah disahkan bersifat permanen dan tidak dapat diubah melalui alur operasional normal.
+5. **Prinsip Penetapan HPP:** HPP perolehan ditetapkan saat pengesahan mengacu pada harga kesepakatan PO (atau harga perolehan neto yang sah tercantum pada kesepakatan pesanan); setiap perbedaan nilai perolehan di luar PO wajib melalui persetujuan resmi amandemen pengadaan. Nilai HPP yang disahkan bersifat definitif sebagai biaya perolehan persediaan dan tidak berubah surut oleh rekonsiliasi faktur di kemudian hari.
+6. **Batas Penerimaan Melebihi PO:** Kuantitas kiriman yang melebihi PO wajib ditolak, kecuali didasari oleh amandemen PO atau keputusan otorisasi tertulis resmi dari pejabat pengadaan yang berwenang sebagai dasar sah penerimaan kuantitas berlebih.
+7. **Independensi Penerimaan Parsial:** Adanya barang yang ditolak atau berselisih dalam satu kiriman tidak membatalkan penerimaan atas item lain yang memenuhi syarat dan disahkan.
+8. **Finalitas dan Prinsip Koreksi:** Dokumen penerimaan yang disahkan bersifat mengikat dan tidak dapat diubah melalui alur operasional normal; koreksi atas kesalahan pencatatan wajib melalui mekanisme koreksi yang sah dengan mempertahankan catatan asal demi keutuhan jejak audit (*audit trail*).
 9. **Batas Yuridis:** Pengesahan penerimaan mencatat pengakuan fisik dan operasional persediaan internal, serta tidak menyatakan peralihan kepemilikan yuridis (*legal title*).
 
 ---
@@ -117,9 +117,9 @@ Dimulai ketika kiriman fisik barang tiba di gudang rumah sakit bersama dokumen p
 
 | Exception | Expected Behavior |
 |-----------|-------------------|
-| **Kiriman barang tiba tanpa PO yang disetujui** | Penerimaan ditolak atau ditangguhkan hingga PO yang disetujui tersedia. |
-| **Kuantitas kiriman kurang dari PO (*Under-delivery*)** | Item fisik yang memenuhi syarat disahkan diterima; selisih kurang dicatat untuk tindak lanjut pihak berwenang. |
-| **Kuantitas kiriman melebihi PO (*Over-delivery*)** | Kelebihan kuantitas ditolak, kecuali didukung dasar otorisasi sah pejabat pengadaan sebelum pengesahan. |
+| **Kiriman tanpa PO yang disetujui** | Penerimaan ditolak atau ditangguhkan hingga PO yang disetujui tersedia. |
+| **Kuantitas kiriman kurang (*Under-delivery*)** | Item fisik yang memenuhi syarat disahkan diterima; selisih kurang dicatat untuk tindak lanjut pihak berwenang. |
+| **Kuantitas kiriman lebih (*Over-delivery*)** | Kelebihan kuantitas ditolak, kecuali didukung dasar otorisasi sah pejabat pengadaan sebelum pengesahan. |
 | **Barang rusak, cacat kemasan, salah item, atau ED di bawah batas toleransi** | Barang ditolak dan dicatat dengan alasan spesifik tanpa menambah stok aktif. |
 | **Nomor batch atau tanggal kedaluwarsa tidak valid/tidak tercantum** | Pengesahan ditahan hingga verifikasi sah terpenuhi, atau barang ditolak. |
 | **Seluruh kiriman barang ditolak (*Total Rejection*)** | Dokumen penerimaan ditutup dengan status terminal ditolak (*Rejected*) sebagai jejak audit tanpa penambahan stok aktif. |
@@ -140,9 +140,9 @@ Dimulai ketika kiriman fisik barang tiba di gudang rumah sakit bersama dokumen p
 | **AC-06** | Penambahan saldo stok aktif di gudang persediaan terbukti hanya terjadi sebesar kuantitas yang disahkan diterima (*Accepted Quantity*). | Correctness |
 | **AC-07** | Kelebihan kuantitas dari pesanan PO hanya dapat disahkan jika didasari otorisasi sah pejabat pengadaan yang berwenang. | Constraint |
 | **AC-08** | Setiap item yang disahkan diterima mencatat nomor batch/lot dan tanggal kedaluwarsa yang valid. | Constraint |
-| **AC-09** | Nilai HPP ditetapkan saat pengesahan mengacu pada harga PO atau penyesuaian sah yang disahkan berwenang, dan bersifat definitif terlepas dari proses faktur. | Correctness |
+| **AC-09** | Nilai HPP ditetapkan saat pengesahan mengacu pada harga kesepakatan PO atau amandemen sah, dan bersifat definitif terlepas dari proses faktur. | Correctness |
 | **AC-10** | Seluruh catatan penerimaan, termasuk barang yang diterima maupun ditolak, dapat ditelusuri kembali ke PO rujukan dan dokumen pengiriman pemasok. | Completeness |
-| **AC-11** | Dokumen penerimaan yang telah disahkan berstatus final dan tidak dapat diubah melalui alur operasional normal. | Constraint |
+| **AC-11** | Dokumen penerimaan yang disahkan tidak dapat diubah langsung; koreksi pascapengesahan wajib melalui mekanisme koreksi yang sah dengan jejak audit yang utuh. | Constraint |
 
 ---
 
