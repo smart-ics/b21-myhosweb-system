@@ -45,9 +45,10 @@
 43. SensusIndex
 44. Stok
 45. StokOpname
-46. TelaahResep
-47. TerimaBrg
-48. TerimaMutasi
-49. Tindakan
-50. VclaimBpjs
-51. WaitingList
+46. Tarif
+47. TelaahResep
+48. TerimaBrg
+49. TerimaMutasi
+50. Tindakan
+51. VclaimBpjs
+52. WaitingList

@@ -4,7 +4,7 @@
 | Dokumen | Referensi / Metadata |
 |---|---|
 | **Artifact** | `outcome-capability-domain-v2.md` |
-| **Versi** | 2.2 |
+| **Versi** | 2.3 |
 | **Tanggal Pembaruan** | 2026-10-10 |
 | **Status** | Canonical Mapping Approved |
 | **Fondasi Konseptual** | [`foundation/conceptual-model.md`](file:///d:/Project.Aktif/b21-myhosweb-system/foundation/conceptual-model.md) |
@@ -59,12 +59,12 @@ Sistem MyHosWeb memiliki **15 Domain Spesifikasi Utama** yang seluruhnya telah d
 
 ---
 
-## 3. Matriks Pemetaan Lengkap: Outcome V2 (51 Outcomes)
+## 3. Matriks Pemetaan Lengkap: Outcome V2 (52 Outcomes)
 
-Berikut adalah pemetaan komprehensif ke-51 Outcome V2 dari [`outcomes/list-outcome-v2.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/list-outcome-v2.md) ke Domain Pemilik Utama, Kapabilitas Utama, Kapabilitas Kontributor, dan Status Kapabilitas.
+Berikut adalah pemetaan komprehensif ke-52 Outcome V2 dari [`outcomes/list-outcome-v2.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/list-outcome-v2.md) ke Domain Pemilik Utama, Kapabilitas Utama, Kapabilitas Kontributor, dan Status Kapabilitas.
 
 > **Status Dokumen Definisi Formal (`outcomes/OC-*.md`):**
-> - 🟢 **Tersedia (43 Outcomes)**: Telah memiliki dokumen spesifikasi formal mandiri di direktori [`outcomes/`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes).
+> - 🟢 **Tersedia (44 Outcomes)**: Telah memiliki dokumen spesifikasi formal mandiri di direktori [`outcomes/`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes).
 > - ⚪ **Belum Tersedia (8 Outcomes)**: Belum memiliki dokumen spesifikasi formal mandiri (terpetakan secara arsitektural pada domain & kapabilitas terkait).
 
 | No | Outcome V2 | Dokumen Definisi Formal | Semantic Business State (`<Entity> exists`) | Primary Domain | Primary Capability | Contributing Domains & Capabilities | Status Kapabilitas |
@@ -114,18 +114,19 @@ Berikut adalah pemetaan komprehensif ke-51 Outcome V2 dari [`outcomes/list-outco
 | 43 | **SensusIndex** | 🟢 [`OC-BRM-SENSUS-INDEX.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-BRM-SENSUS-INDEX.md) | *Service Census & Case Index exists* | **BRM** (Berkas Rekam Medis) | `BRM-RPT` Sensus dan Index | `BRM-CODING`, `BRM-MORBID`, `BRM-INDIKATOR`, `ADM-REG`, `ADM-TRACKER`, `RNA-BED`, `RNA-DISCHARGE`, `RJL-KONSUL`, `IGD-VISIT`, `PAS-DATSOS`, `ORG-BANGSAL`, `TRK-JAMINAN` | Known (Catalog) |
 | 44 | **Stok** | 🟢 [`OC-INV-STOK.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-INV-STOK.md) | *Inventory Stock Level exists* | **INV** (Inventory) | `INV-STOK` Stok | `INV-MASTER`, `ORG-LAYANAN` (Lokasi Gudang/Depo) | Known |
 | 45 | **StokOpname** | 🟢 [`OC-INV-STOK-OPNAME.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-INV-STOK-OPNAME.md) | *Physical Stock Reconciliation exists* | **INV** (Inventory) | `INV-OPNAME` Stok Opname | `INV-STOK`, `INV-MASTER`, `ORG-LAYANAN`, `ORG-PPA` | Known |
-| 46 | **TelaahResep** | 🟢 [`OC-APT-TELAAH-RESEP.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-APT-TELAAH-RESEP.md) | *Pharmacist Clinical Review exists* | **APT** (Apotek) | `APT-TELAAH` Telaah Resep | `APT-RESEP`, `ORG-PPA` (Apoteker Penelaah) | Known |
-| 47 | **TerimaBrg** | 🟢 [`OC-PUR-TERIMA-BRG.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-PUR-TERIMA-BRG.md) | *Goods Receipt (DO) Record exists* | **PUR** (Purchasing) | `PUR-DO` DO Penerimaan Barang | `PUR-PO`, `PUR-SUPPLIER`, `INV-MUTASI` / `INV-STOK` (Pencatatan Masuk Fisik) | Known |
-| 48 | **TerimaMutasi** | 🟢 [`OC-INV-TERIMA-MUTASI.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-INV-TERIMA-MUTASI.md) | *Stock Transfer Acceptance exists* | **INV** (Inventory) | `INV-MUTASI` Mutasi (Tahap 3: TerimaMutasi) | `INV-STOK`, `INV-MASTER`, `ORG-LAYANAN` (Gudang Penerima) | Known |
-| 49 | **Tindakan** | ⚪ *Belum Tersedia* | *Patient Procedure Charge Record exists* | **TRK** (Tata Rekening) | `TRK-BILLING` Billing (Item Tagihan Tindakan) | `RJL-TINDAKAN` (Rawat Jalan), `RNA-TINDAKAN` (Rawat Inap), `IGD-TINDAKAN` (Gawat Darurat), `TRK-TARIF` (Tarif Tindakan), `ORG-PPA` (Pelaksana Klinis), `PAS-DATSOS` (Identitas Pasien) | Known |
-| 50 | **VclaimBpjs** | 🟢 [`OC-BPJ-VCLAIM.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-BPJ-VCLAIM.md) | *BPJS Participation & SEP exists* | **BPJ** (BPJS) | `BPJ-VCLAIM` VClaim | `ADM-REG`, `TRK-JAMINAN`, `PAS-DATSOS` | Known (Catalog) |
-| 51 | **WaitingList** | 🟢 [`OC-RNA-WAITING-LIST.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-RNA-WAITING-LIST.md) | *Inpatient Bed Waiting Queue exists* | **RNA** (Rawat Inap) | `RNA-WAITLIST` Waiting List | `ADM-REG` (Rekomendasi Ranap), `ORG-BANGSAL` (Ketersediaan Kamar), `PAS-DATSOS`, `RNA-TRANSFER`, `RNA-BED` | Known |
+| 46 | **Tarif** | 🟢 [`OC-TRK-TARIF.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-TRK-TARIF.md) | *Hospital Service & Facility Tariff exists* | **TRK** (Tata Rekening) | `TRK-TARIF` Tariff | `TRK-JAMINAN` (Tipe Tarif & Penjamin), `ORG-LAYANAN` (Unit Layanan / Kamar), `ORG-BANGSAL` (Kelas Perawatan), `ORG-PPA` (Komponen Jasa Medis/Dokter) | Known |
+| 47 | **TelaahResep** | 🟢 [`OC-APT-TELAAH-RESEP.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-APT-TELAAH-RESEP.md) | *Pharmacist Clinical Review exists* | **APT** (Apotek) | `APT-TELAAH` Telaah Resep | `APT-RESEP`, `ORG-PPA` (Apoteker Penelaah) | Known |
+| 48 | **TerimaBrg** | 🟢 [`OC-PUR-TERIMA-BRG.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-PUR-TERIMA-BRG.md) | *Goods Receipt (DO) Record exists* | **PUR** (Purchasing) | `PUR-DO` DO Penerimaan Barang | `PUR-PO`, `PUR-SUPPLIER`, `INV-MUTASI` / `INV-STOK` (Pencatatan Masuk Fisik) | Known |
+| 49 | **TerimaMutasi** | 🟢 [`OC-INV-TERIMA-MUTASI.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-INV-TERIMA-MUTASI.md) | *Stock Transfer Acceptance exists* | **INV** (Inventory) | `INV-MUTASI` Mutasi (Tahap 3: TerimaMutasi) | `INV-STOK`, `INV-MASTER`, `ORG-LAYANAN` (Gudang Penerima) | Known |
+| 50 | **Tindakan** | ⚪ *Belum Tersedia* | *Patient Procedure Charge Record exists* | **TRK** (Tata Rekening) | `TRK-BILLING` Billing (Item Tagihan Tindakan) | `RJL-TINDAKAN` (Rawat Jalan), `RNA-TINDAKAN` (Rawat Inap), `IGD-TINDAKAN` (Gawat Darurat), `TRK-TARIF` (Tarif Tindakan), `ORG-PPA` (Pelaksana Klinis), `PAS-DATSOS` (Identitas Pasien) | Known |
+| 51 | **VclaimBpjs** | 🟢 [`OC-BPJ-VCLAIM.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-BPJ-VCLAIM.md) | *BPJS Participation & SEP exists* | **BPJ** (BPJS) | `BPJ-VCLAIM` VClaim | `ADM-REG`, `TRK-JAMINAN`, `PAS-DATSOS` | Known (Catalog) |
+| 52 | **WaitingList** | 🟢 [`OC-RNA-WAITING-LIST.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-RNA-WAITING-LIST.md) | *Inpatient Bed Waiting Queue exists* | **RNA** (Rawat Inap) | `RNA-WAITLIST` Waiting List | `ADM-REG` (Rekomendasi Ranap), `ORG-BANGSAL` (Ketersediaan Kamar), `PAS-DATSOS`, `RNA-TRANSFER`, `RNA-BED` | Known |
 
 ---
 
 ## 4. Distribusi Outcome Berdasarkan Primary Domain
 
-Berikut adalah ringkasan pengelompokan ke-51 Outcome berdasarkan Domain Pemilik Utama (*Primary Owner*) serta status ketersediaan dokumen spesifikasi formal (`OC-*.md`):
+Berikut adalah ringkasan pengelompokan ke-52 Outcome berdasarkan Domain Pemilik Utama (*Primary Owner*) serta status ketersediaan dokumen spesifikasi formal (`OC-*.md`):
 
 ```text
 ┌──────────────────────────────────────┬─────────────┬────────────────┬────────────────────────────────────────────────────────┐
@@ -149,13 +150,13 @@ Berikut adalah ringkasan pengelompokan ke-51 Outcome berdasarkan Domain Pemilik 
 │ 12. PURCHASING (PUR)                 │      7      │    5 (71%)     │ Faktur 🟢, MaterialReq 🟢, PurchaseReq 🟢,               │
 │                                      │             │                │ PurchaseOrder 🟢, TerimaBrg 🟢, Forecasting ⚪,          │
 │                                      │             │                │ ReturBeli ⚪                                             │
-│ 13. TATA REKENING (TRK)              │      6      │    5 (83%)     │ AlokasiPembayaran* 🟢, Billing 🟢, ClosingShift 🟢,     │
-│                                      │             │                │ Deposit 🟢, Kasir 🟢, Tindakan ⚪                        │
+│ 13. TATA REKENING (TRK)              │      7      │    6 (86%)     │ AlokasiPembayaran* 🟢, Billing 🟢, ClosingShift 🟢,     │
+│                                      │             │                │ Deposit 🟢, Kasir 🟢, Tarif 🟢, Tindakan ⚪              │
 │ 14. BERKAS REKAM MEDIS (BRM)         │      4      │    3 (75%)     │ MorbiditasPasien ⚪, MutasiBerkas 🟢, PelaporanRL 🟢,    │
 │                                      │             │                │ SensusIndex 🟢                                         │
 │ 15. BPJS (BPJ)                       │      2      │    1 (50%)     │ Eklaim ⚪, VclaimBpjs 🟢                                │
 ├──────────────────────────────────────┼─────────────┼────────────────┼────────────────────────────────────────────────────────┤
-│ TOTAL                                │     51      │   43 (84.3%)   │ 🟢 43 Formal Defined  │  ⚪ 8 Pending Formal Definition │
+│ TOTAL                                │     52      │   44 (84.6%)   │ 🟢 44 Formal Defined  │  ⚪ 8 Pending Formal Definition │
 └──────────────────────────────────────┴─────────────┴────────────────┴────────────────────────────────────────────────────────┘
 ```
 *\*Catatan: `AlokasiPembayaran` secara kanonikal mensupersede label sementara `OrderPayment` dari draf awal V2 agar selaras dengan berkas spesifikasi OC-TRK-ALOKASI-PEMBAYARAN.md. `Antrian` mencakup antrean pendaftaran loket (`ADM-ANTRIAN`) dan antrean pelayanan poli (`RJL-ANTRIAN`). `Tindakan` dipetakan sebagai satu shared outcome tunggal ('Patient Procedure Charge Record exists') dengan kepemilikan utama kanonikal di Tata Rekening (`TRK`) karena secara esensi bisnis entitas ini merepresentasikan pembebanan biaya finansial pasien (`TRK-BILLING`), sedangkan domain pelayanan klinis (`RJL-TINDAKAN`, `RNA-TINDAKAN`, `IGD-TINDAKAN`) bertindak sebagai kapabilitas kontributor pencatatan di titik layanan (point-of-care capture). Lihat Bagian 6 poin 4 untuk analisis tata kelola penetapan kepemilikan.*
@@ -195,7 +196,8 @@ flowchart TD
     end
 
     subgraph Keuangan & Klaim
-        RJL --> TRK_BILL[TRK: Billing]
+        TRK_TRF[TRK: Tarif] --> TRK_BILL[TRK: Billing]
+        RJL --> TRK_BILL
         RNA --> TRK_BILL
         IGD --> TRK_BILL
         LAB --> TRK_BILL
@@ -210,6 +212,7 @@ flowchart TD
 ```
 
 ### 1. Rantai Pendapatan & Pembebanan Biaya (*Billing Chain*)
+- **`Tarif` (TRK)** menetapkan dan memelihara seluruh besaran dan aturan nominal master tarif rumah sakit (prosedur/tindakan medis, kamar rawat inap, tes lab, radiologi, ambulans) berdasarkan kombinasi kelas perawatan dan tipe tarif/penjamin, yang bertindak sebagai referensi tunggal penentuan nilai pembebanan pada `Billing`, `RoomCharge`, dan `Tindakan`.
 - **`Billing` (TRK)** mengonsumsi data dari seluruh unit pelaksana: `RJL-TINDAKAN`, `RNA-TINDAKAN`, `IGD-TINDAKAN`, `RNA-CHARGE`, `LAB-RESULT`/`LAB-ORDER`, `RAD-ORDER`, `KMO-OPR`, dan `APT-BILL`.
 - **`RoomCharge` (RNA)** menghitung lamanya inap dan aturan sewa kamar secara operasional berdasarkan okupansi tempat tidur (`RNA-BED`), lalu mengalikan tarif dasar dari Tata Rekening (`TRK-TARIF`) untuk membentuk rincian tagihan (`TRK-BILLING`).
 - **`Tindakan` (TRK)** merekam pembebanan tindakan administratif sebagai item tagihan finansial (`TRK-BILLING`) yang bersumber dari encounter rawat jalan (`RJL-TINDAKAN`), bangsal rawat inap (`RNA-TINDAKAN`), maupun gawat darurat (`IGD-TINDAKAN`), dengan penerapan tarif dasar dari `TRK-TARIF`.
@@ -258,8 +261,8 @@ Seluruh poin telaah tata kelola konseptual yang diatur dalam [`foundation/concep
    - *Status*: **Terpenuhi & Kanonikal**. Konsep registrasi tunggal lintas layanan (RJ, IGD, Ranap, External) telah diresmikan melalui berkas kanonikal [`outcomes/OC-ADM-REGISTRASI.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-ADM-REGISTRASI.md) di bawah Primary Domain Admission (**ADM**) via `ADM-REG`.
 
 6. **Harmonisasi Kanonikal V2 Terkini**:
-   - *Status*: **Terpenuhi & Selaras Penuh (100%)**. Seluruh 15 berkas definisi `OC-*.md` di direktori `outcomes/` telah berkorespondensi 1-to-1 dengan Matriks Kanonikal Outcome V2 (51 Outcomes):
-     - Penambahan kanonikal: `Booking` (ADM), `Deposit` (TRK), `SensusIndex` (BRM), dan `AlokasiPembayaran` (TRK — mensupersede label sementara `OrderPayment`).
+   - *Status*: **Terpenuhi & Selaras Penuh (100%)**. Seluruh berkas definisi `OC-*.md` di direktori `outcomes/` telah berkorespondensi 1-to-1 dengan Matriks Kanonikal Outcome V2 (52 Outcomes):
+     - Penambahan kanonikal: `Booking` (ADM), `Deposit` (TRK), `SensusIndex` (BRM), `AlokasiPembayaran` (TRK — mensupersede label sementara `OrderPayment`), dan `Tarif` (TRK — master struktur tarif rumah sakit).
      - Eliminasi berkas non-kanonikal: `OC-TRK-REG-OUT.md` dan `OC-BRM-CASEMIX-CODING.md` telah dibersihkan dari repositori.
 
 ---
