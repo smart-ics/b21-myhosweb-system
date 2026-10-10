@@ -64,8 +64,8 @@ Sistem MyHosWeb memiliki **15 Domain Spesifikasi Utama** yang seluruhnya telah d
 Berikut adalah pemetaan komprehensif ke-51 Outcome V2 dari [`outcomes/list-outcome-v2.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/list-outcome-v2.md) ke Domain Pemilik Utama, Kapabilitas Utama, Kapabilitas Kontributor, dan Status Kapabilitas.
 
 > **Status Dokumen Definisi Formal (`outcomes/OC-*.md`):**
-> - 🟢 **Tersedia (24 Outcomes)**: Telah memiliki dokumen spesifikasi formal mandiri di direktori [`outcomes/`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes).
-> - ⚪ **Belum Tersedia (27 Outcomes)**: Belum memiliki dokumen spesifikasi formal mandiri (terpetakan secara arsitektural pada domain & kapabilitas terkait).
+> - 🟢 **Tersedia (28 Outcomes)**: Telah memiliki dokumen spesifikasi formal mandiri di direktori [`outcomes/`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes).
+> - ⚪ **Belum Tersedia (23 Outcomes)**: Belum memiliki dokumen spesifikasi formal mandiri (terpetakan secara arsitektural pada domain & kapabilitas terkait).
 
 | No | Outcome V2 | Dokumen Definisi Formal | Semantic Business State (`<Entity> exists`) | Primary Domain | Primary Capability | Contributing Domains & Capabilities | Status Kapabilitas |
 |---|---|---|---|---|---|---|---|
@@ -82,7 +82,7 @@ Berikut adalah pemetaan komprehensif ke-51 Outcome V2 dari [`outcomes/list-outco
 | 11 | **Expertise** | ⚪ *Belum Tersedia* | *Radiology Expertise Report exists* | **RAD** (Radiologi) | `RAD-EXPERTISE` Expertise | `RAD-EXAM` (Hasil Citra Modalitas), `ORG-PPA` (Dokter Spesialis Radiologi), `PAS-DATSOS` | Known |
 | 12 | **Faktur** | ⚪ *Belum Tersedia* | *Supplier Invoice exists* | **PUR** (Purchasing) | `PUR-FAKTUR` Faktur | `PUR-PO` (Pesanan Pembelian), `PUR-DO` (Tanda Terima Fisik), `PUR-SUPPLIER` | Known |
 | 13 | **Forecasting** | ⚪ *Belum Tersedia* | *Procurement Forecast Plan exists* | **PUR** (Purchasing) | `PUR-FORECAST` Procurement Forecasting | `INV-STOK` (Saldo Berjalan), `INV-PAKAI` (Tren Historis Konsumsi) | Known |
-| 14 | **HasilLab** | ⚪ *Belum Tersedia* | *Validated Laboratory Result exists* | **LAB** (Laboratory) | `LAB-RESULT` Lab Result Management | `LAB-COLLECT` (Spesimen), `LAB-ORDER`, `ORG-PPA` (Analis Lab / Patolog Klinis) | Known |
+| 14 | **HasilLab** | 🟢 [`OC-LAB-HASIL-LAB.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-LAB-HASIL-LAB.md) | *Validated Laboratory Result exists* | **LAB** (Laboratory) | `LAB-RESULT` Lab Result Management | `LAB-COLLECT` (Spesimen), `LAB-ORDER`, `ORG-PPA` (Analis Lab / Patolog Klinis), `TRK-BILLING` | Known |
 | 15 | **IgdTriage** | 🟢 [`OC-IGD-TRIAGE.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-IGD-TRIAGE.md) | *Emergency Triage Assessment exists* | **IGD** (Gawat Darurat) | `IGD-TRIAGE` Triage | `IGD-VISIT`, `ORG-PPA` (Dokter/Perawat Triase), `PAS-DATSOS`, `ADM-REG` | Known |
 | 16 | **IgdVisit** | 🟢 [`OC-IGD-VISIT.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-IGD-VISIT.md) | *Emergency Visit exists* | **IGD** (Gawat Darurat) | `IGD-VISIT` IGD Visit | `PAS-DATSOS`, `ADM-REG` (Asosiasi Registrasi Administratif Lanjutan), `ORG-PPA`, `ORG-LAYANAN`, `IGD-TRIAGE`, `IGD-TINDAKAN`, `TRK-BILLING` | Known |
 | 17 | **JadwalOk** | 🟢 [`OC-KMO-JADWAL-OK.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-KMO-JADWAL-OK.md) | *Surgical Operating Schedule exists* | **KMO** (Kamar Operasi) | `KMO-JADWAL` Jadwal Operasi | `KMO-ORDER`, `ORG-LAYANAN` (Kamar Bedah), `ORG-PPA` (Operator, Anestesi, Perawat Asisten) | Known |
@@ -94,7 +94,7 @@ Berikut adalah pemetaan komprehensif ke-51 Outcome V2 dari [`outcomes/list-outco
 | 23 | **Mutasi** | ⚪ *Belum Tersedia* | *Stock Transfer / Mutation exists* | **INV** (Inventory) | `INV-MUTASI` Mutasi | `INV-STOK`, `ORG-LAYANAN` (Gudang Asal & Gudang Tujuan) | Known |
 | 24 | **MutasiBerkas** | 🟢 [`OC-BRM-MUTASI-BERKAS.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-BRM-MUTASI-BERKAS.md) | *Medical Record Physical Movement exists* | **BRM** (Berkas Rekam Medis) | `BRM-MUTASI` Mutasi Berkas | `PAS-DATSOS` (Nomor RM Pasien), `ORG-LAYANAN` (Lokasi Peminjam/Pemegang Berkas) | Known (Catalog) |
 | 25 | **OrderDispensing** | ⚪ *Belum Tersedia* | *Pharmacy Dispensing Allocation exists* | **APT** (Apotek) | `APT-DISPENSING` Dispensing | `APT-ORDER`, `APT-SERAH`, `INV-PAKAI` (Pengurangan Stok Obat/Alkes) | Known |
-| 26 | **OrderLab** | ⚪ *Belum Tersedia* | *Laboratory Examination Order exists* | **LAB** (Laboratory) | `LAB-ORDER` Order Lab | `RJL-KONSUL` / `RNA-TRANSFER` / `IGD-VISIT` (Konteks Pengorder), `PAS-DATSOS` | Known |
+| 26 | **OrderLab** | 🟢 [`OC-LAB-ORDER-LAB.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-LAB-ORDER-LAB.md) | *Laboratory Examination Order exists* | **LAB** (Laboratory) | `LAB-ORDER` Order Lab | `RJL-KONSUL` / `RNA-TRANSFER` / `IGD-VISIT` (Konteks Pengorder), `PAS-DATSOS`, `ORG-PPA`, `ORG-LAYANAN`, `TRK-BILLING` | Known |
 | 27 | **OrderOk** | 🟢 [`OC-KMO-ORDER-OK.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-KMO-ORDER-OK.md) | *Surgical Operation Order exists* | **KMO** (Kamar Operasi) | `KMO-ORDER` Order Operasi | `RJL-KONSUL` / `RNA-TRANSFER` / `IGD-VISIT` (Klinisi Pengorder), `PAS-DATSOS` | Known |
 | 28 | **OrderRadiologi** | ⚪ *Belum Tersedia* | *Radiology Order exists* | **RAD** (Radiologi) | `RAD-ORDER` Order Radiologi | `RJL-KONSUL` / `RNA-TRANSFER` / `IGD-VISIT` (Klinisi Pengorder), `PAS-DATSOS` | Known |
 | 29 | **PakaiBed** | 🟢 [`OC-RNA-PAKAI-BED.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-RNA-PAKAI-BED.md) | *Inpatient Bed Occupancy exists* | **RNA** (Rawat Inap) | `RNA-BED` Pakai Bed | `ORG-BANGSAL` (Master Kamar & Bed), `ADM-REG` (Kunjungan Ranap), `PAS-DATSOS` | Known |
@@ -105,12 +105,12 @@ Berikut adalah pemetaan komprehensif ke-51 Outcome V2 dari [`outcomes/list-outco
 | 34 | **PreOperativeClearance** | 🟢 [`OC-KMO-PREOP-CLEARANCE.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-KMO-PREOP-CLEARANCE.md) | *Pre-Operative Readiness / Clearance exists* | **KMO** (Kamar Operasi) | `KMO-PREOP` Persiapan Operasi | `KMO-ORDER`, `KMO-JADWAL`, `PAS-DATSOS`, `ADM-REG`, `ORG-PPA` | Known |
 | 35 | **PurchaseOrder** | ⚪ *Belum Tersedia* | *Purchase Order exists* | **PUR** (Purchasing) | `PUR-PO` Purchase Order | `PUR-PURREQ`, `PUR-SUPPLIER` | Known |
 | 36 | **PurchaseReq** | ⚪ *Belum Tersedia* | *Purchase Request exists* | **PUR** (Purchasing) | `PUR-PURREQ` Purchase Request | `PUR-MATREQ`, `PUR-SUPPLIER`, `INV-MASTER` | Known |
-| 37 | **RegExternal** | ⚪ *Belum Tersedia* | *Direct External Lab Registration exists* | **LAB** (Laboratory) | `LAB-EXTERNAL` Registrasi External | `TRK-BILLING`, `TRK-TARIF` | Known |
+| 37 | **RegExternal** | 🟢 [`OC-LAB-REG-EXTERNAL.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-LAB-REG-EXTERNAL.md) | *Direct External Lab Registration exists* | **LAB** (Laboratory) | `LAB-EXTERNAL` Registrasi External | `TRK-BILLING`, `TRK-TARIF`, `TRK-KASIR`, `LAB-ORDER` | Known |
 | 38 | **Registrasi** | 🟢 [`OC-ADM-REGISTRASI.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-ADM-REGISTRASI.md) | *Hospital Service Registration exists* | **ADM** (Admission) | `ADM-REG` Registration | `PAS-DATSOS`, `ORG-LAYANAN`, `ORG-PPA`, `ORG-JADWAL`, `ORG-BANGSAL`, `IGD-VISIT`, `RNA-WAITLIST`, `LAB-EXTERNAL`, `TRK-JAMINAN`, `TRK-TARIF`, `TRK-DEPOSIT`, `BPJ-VCLAIM` | Known |
 | 39 | **ReqMutasi** | ⚪ *Belum Tersedia* | *Stock Transfer Request exists* | **INV** (Inventory) | `INV-MUTASI` Mutasi (Tahap 1: ReqMutasi) | `ORG-LAYANAN` (Unit Pemohon & Unit Penyedia), `INV-STOK` | Known |
 | 40 | **ReturBeli** | ⚪ *Belum Tersedia* | *Purchase Return exists* | **PUR** (Purchasing) | `PUR-RETURN` Purchase Return | `PUR-DO`, `PUR-SUPPLIER`, `INV-MUTASI` (Pengurangan Fisik Stok) | Known |
 | 41 | **RoomCharge** | 🟢 [`OC-RNA-ROOM-CHARGE.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-RNA-ROOM-CHARGE.md) | *Calculated Room Charge exists* | **RNA** (Rawat Inap) | `RNA-CHARGE` Room Charge | `RNA-BED` (Durasi & Perpindahan Bed), `TRK-TARIF` (Tarif Dasar Kamar), `TRK-BILLING` | Known |
-| 42 | **SampleCollection** | ⚪ *Belum Tersedia* | *Specimen Sample Record exists* | **LAB** (Laboratory) | `LAB-COLLECT` Specimen Collection | `LAB-ORDER`, `ORG-PPA` (Petugas Flebotomi/Analis) | Known |
+| 42 | **SampleCollection** | 🟢 [`OC-LAB-SAMPLE-COLLECTION.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-LAB-SAMPLE-COLLECTION.md) | *Specimen Sample Record exists* | **LAB** (Laboratory) | `LAB-COLLECT` Specimen Collection | `LAB-ORDER`, `ORG-PPA` (Petugas Flebotomi/Analis), `PAS-DATSOS` | Known |
 | 43 | **SensusIndex** | 🟢 [`OC-BRM-SENSUS-INDEX.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-BRM-SENSUS-INDEX.md) | *Service Census & Case Index exists* | **BRM** (Berkas Rekam Medis) | `BRM-RPT` Sensus dan Index | `BRM-CODING`, `BRM-MORBID`, `BRM-INDIKATOR`, `ADM-REG`, `ADM-TRACKER`, `RNA-BED`, `RNA-DISCHARGE`, `RJL-KONSUL`, `IGD-VISIT`, `PAS-DATSOS`, `ORG-BANGSAL`, `TRK-JAMINAN` | Known (Catalog) |
 | 44 | **Stok** | ⚪ *Belum Tersedia* | *Inventory Stock Level exists* | **INV** (Inventory) | `INV-STOK` Stok | `INV-MASTER`, `ORG-LAYANAN` (Lokasi Gudang/Depo) | Known |
 | 45 | **StokOpname** | ⚪ *Belum Tersedia* | *Physical Stock Reconciliation exists* | **INV** (Inventory) | `INV-OPNAME` Stok Opname | `INV-STOK`, `INV-MASTER`, `ORG-LAYANAN` | Known |
@@ -138,8 +138,8 @@ Berikut adalah ringkasan pengelompokan ke-51 Outcome berdasarkan Domain Pemilik 
 │ 04. RAWAT JALAN (RJL)                │      1      │    1 (100%)    │ Antrian (Poli)* 🟢                                     │
 │ 05. RAWAT INAP (RNA)                 │      3      │    3 (100%)    │ PakaiBed 🟢, RoomCharge 🟢, WaitingList 🟢               │
 │ 06. GAWAT DARURAT (IGD)              │      3      │   3 (100%)     │ Ambulance 🟢, IgdTriage 🟢, IgdVisit 🟢                  │
-│ 07. LABORATORY (LAB)                 │      4      │    0 (0%)      │ HasilLab ⚪, OrderLab ⚪, RegExternal ⚪,                │
-│                                      │             │                │ SampleCollection ⚪                                    │
+│ 07. LABORATORY (LAB)                 │      4      │    4 (100%)    │ HasilLab 🟢, OrderLab 🟢, RegExternal 🟢,                │
+│                                      │             │                │ SampleCollection 🟢                                    │
 │ 08. RADIOLOGY (RAD)                  │      3      │    0 (0%)      │ Expertise ⚪, JadwalRadiologi ⚪, OrderRadiologi ⚪      │
 │ 09. KAMAR OPERASI (KMO)              │      3      │   3 (100%)     │ JadwalOk 🟢, OrderOk 🟢, PreOperativeClearance 🟢        │
 │ 10. APOTEK (APT)                     │      4      │    0 (0%)      │ AntrianApotek ⚪, OrderDispensing ⚪, Penjualan ⚪,        │
@@ -155,7 +155,7 @@ Berikut adalah ringkasan pengelompokan ke-51 Outcome berdasarkan Domain Pemilik 
 │                                      │             │                │ SensusIndex 🟢                                         │
 │ 15. BPJS (BPJ)                       │      2      │    1 (50%)     │ Eklaim ⚪, VclaimBpjs 🟢                                │
 ├──────────────────────────────────────┼─────────────┼────────────────┼────────────────────────────────────────────────────────┤
-│ TOTAL                                │     51      │   24 (47.1%)   │ 🟢 24 Formal Defined  │  ⚪ 27 Pending Formal Definition│
+│ TOTAL                                │     51      │   28 (54.9%)   │ 🟢 28 Formal Defined  │  ⚪ 23 Pending Formal Definition│
 └──────────────────────────────────────┴─────────────┴────────────────┴────────────────────────────────────────────────────────┘
 ```
 *\*Catatan: `AlokasiPembayaran` secara kanonikal mensupersede label sementara `OrderPayment` dari draf awal V2 agar selaras dengan berkas spesifikasi OC-TRK-ALOKASI-PEMBAYARAN.md. `Antrian` mencakup antrean pendaftaran loket (`ADM-ANTRIAN`) dan antrean pelayanan poli (`RJL-ANTRIAN`). `Tindakan` dipetakan sebagai satu shared outcome tunggal ('Patient Procedure Charge Record exists') dengan kepemilikan utama kanonikal di Tata Rekening (`TRK`) karena secara esensi bisnis entitas ini merepresentasikan pembebanan biaya finansial pasien (`TRK-BILLING`), sedangkan domain pelayanan klinis (`RJL-TINDAKAN`, `RNA-TINDAKAN`, `IGD-TINDAKAN`) bertindak sebagai kapabilitas kontributor pencatatan di titik layanan (point-of-care capture). Lihat Bagian 6 poin 4 untuk analisis tata kelola penetapan kepemilikan.*
