@@ -64,13 +64,13 @@ Sistem MyHosWeb memiliki **15 Domain Spesifikasi Utama** yang seluruhnya telah d
 Berikut adalah pemetaan komprehensif ke-51 Outcome V2 dari [`outcomes/list-outcome-v2.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/list-outcome-v2.md) ke Domain Pemilik Utama, Kapabilitas Utama, Kapabilitas Kontributor, dan Status Kapabilitas.
 
 > **Status Dokumen Definisi Formal (`outcomes/OC-*.md`):**
-> - 🟢 **Tersedia (21 Outcomes)**: Telah memiliki dokumen spesifikasi formal mandiri di direktori [`outcomes/`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes).
-> - ⚪ **Belum Tersedia (30 Outcomes)**: Belum memiliki dokumen spesifikasi formal mandiri (terpetakan secara arsitektural pada domain & kapabilitas terkait).
+> - 🟢 **Tersedia (24 Outcomes)**: Telah memiliki dokumen spesifikasi formal mandiri di direktori [`outcomes/`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes).
+> - ⚪ **Belum Tersedia (27 Outcomes)**: Belum memiliki dokumen spesifikasi formal mandiri (terpetakan secara arsitektural pada domain & kapabilitas terkait).
 
 | No | Outcome V2 | Dokumen Definisi Formal | Semantic Business State (`<Entity> exists`) | Primary Domain | Primary Capability | Contributing Domains & Capabilities | Status Kapabilitas |
 |---|---|---|---|---|---|---|---|
 | 1 | **AlokasiPembayaran** | 🟢 [`OC-TRK-ALOKASI-PEMBAYARAN.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-TRK-ALOKASI-PEMBAYARAN.md) | *Payment Settlement Allocation exists* | **TRK** (Tata Rekening) | `TRK-PAYMENT` Payment & `TRK-ALOKASI` | `TRK-BILLING`, `TRK-JAMINAN` (Polis Penjamin), `TRK-KASIR`, `TRK-DEPOSIT` | Known |
-| 2 | **Ambulance** | ⚪ *Belum Tersedia* | *Ambulance Usage & Charge exists* | **IGD** (Gawat Darurat) | `IGD-AMBULANCE` Ambulance | `TRK-TARIF` (Tarif Layanan/Jarak/Wilayah), `PAS-DATSOS` (Identitas Pasien), `ORG-PPA` (Supir/Petugas Medis) | Known |
+| 2 | **Ambulance** | 🟢 [`OC-IGD-AMBULANCE.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-IGD-AMBULANCE.md) | *Ambulance Usage & Charge exists* | **IGD** (Gawat Darurat) | `IGD-AMBULANCE` Ambulance | `TRK-TARIF` (Tarif Layanan/Jarak/Wilayah), `PAS-DATSOS` (Identitas Pasien), `ORG-PPA` (Supir/Petugas Medis), `ADM-REG`, `TRK-BILLING`, `TRK-JAMINAN`, `BPJ-VCLAIM` | Known |
 | 3 | **Antrian** | 🟢 [`OC-ADM-ANTRIAN.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-ADM-ANTRIAN.md) | *Queue Ticket & Call State exists* | **ADM** (Admission) / **RJL** (Rawat Jalan) | `ADM-ANTRIAN` Antrian Registrasi & `RJL-ANTRIAN` Antrian Poli | `PAS-DATSOS` (Identitas Pasien), `ORG-LAYANAN` (Unit Poli Tujuan) | Known |
 | 4 | **AntrianApotek** | ⚪ *Belum Tersedia* | *Pharmacy Queue Ticket exists* | **APT** (Apotek) | `APT-QUEUE` Antrian Apotek | `PAS-DATSOS` (Pasien), `ADM-REG` (Kunjungan Aktif) | Known |
 | 5 | **Billing** | 🟢 [`OC-TRK-BILLING.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-TRK-BILLING.md) | *Patient Account & Charge Items exist* | **TRK** (Tata Rekening) | `TRK-BILLING` Billing | `TRK-TARIF`, `TRK-JAMINAN`, `RJL-TINDAKAN`, `RNA-TINDAKAN`, `RNA-CHARGE`, `IGD-TINDAKAN`, `LAB-ORDER`, `RAD-ORDER`, `KMO-OPR`, `APT-BILL` | Known |
@@ -83,8 +83,8 @@ Berikut adalah pemetaan komprehensif ke-51 Outcome V2 dari [`outcomes/list-outco
 | 12 | **Faktur** | ⚪ *Belum Tersedia* | *Supplier Invoice exists* | **PUR** (Purchasing) | `PUR-FAKTUR` Faktur | `PUR-PO` (Pesanan Pembelian), `PUR-DO` (Tanda Terima Fisik), `PUR-SUPPLIER` | Known |
 | 13 | **Forecasting** | ⚪ *Belum Tersedia* | *Procurement Forecast Plan exists* | **PUR** (Purchasing) | `PUR-FORECAST` Procurement Forecasting | `INV-STOK` (Saldo Berjalan), `INV-PAKAI` (Tren Historis Konsumsi) | Known |
 | 14 | **HasilLab** | ⚪ *Belum Tersedia* | *Validated Laboratory Result exists* | **LAB** (Laboratory) | `LAB-RESULT` Lab Result Management | `LAB-COLLECT` (Spesimen), `LAB-ORDER`, `ORG-PPA` (Analis Lab / Patolog Klinis) | Known |
-| 15 | **IgdTriage** | ⚪ *Belum Tersedia* | *Emergency Triage Assessment exists* | **IGD** (Gawat Darurat) | `IGD-TRIAGE` Triage | `IGD-VISIT`, `ORG-PPA` (Dokter/Perawat Triase) | Known |
-| 16 | **IgdVisit** | ⚪ *Belum Tersedia* | *Emergency Visit exists* | **IGD** (Gawat Darurat) | `IGD-VISIT` IGD Visit | `PAS-DATSOS`, `ADM-REG` (Asosiasi Registrasi Administratif Lanjutan) | Known |
+| 15 | **IgdTriage** | 🟢 [`OC-IGD-TRIAGE.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-IGD-TRIAGE.md) | *Emergency Triage Assessment exists* | **IGD** (Gawat Darurat) | `IGD-TRIAGE` Triage | `IGD-VISIT`, `ORG-PPA` (Dokter/Perawat Triase), `PAS-DATSOS`, `ADM-REG` | Known |
+| 16 | **IgdVisit** | 🟢 [`OC-IGD-VISIT.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-IGD-VISIT.md) | *Emergency Visit exists* | **IGD** (Gawat Darurat) | `IGD-VISIT` IGD Visit | `PAS-DATSOS`, `ADM-REG` (Asosiasi Registrasi Administratif Lanjutan), `ORG-PPA`, `ORG-LAYANAN`, `IGD-TRIAGE`, `IGD-TINDAKAN`, `TRK-BILLING` | Known |
 | 17 | **JadwalOk** | 🟢 [`OC-KMO-JADWAL-OK.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-KMO-JADWAL-OK.md) | *Surgical Operating Schedule exists* | **KMO** (Kamar Operasi) | `KMO-JADWAL` Jadwal Operasi | `KMO-ORDER`, `ORG-LAYANAN` (Kamar Bedah), `ORG-PPA` (Operator, Anestesi, Perawat Asisten) | Known |
 | 18 | **JadwalPraktek** | 🟢 [`OC-ORG-JADWAL-PRAKTEK.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-ORG-JADWAL-PRAKTEK.md) | *Doctor Outpatient Schedule exists* | **ORG** (Organisasi) | `ORG-JADWAL` Jadwal Praktek Dokter | `ORG-LAYANAN` (Klinik/Poli), `ORG-PPA` (Dokter Spesialis) | Known |
 | 19 | **JadwalRadiologi** | ⚪ *Belum Tersedia* | *Radiology Machine Schedule exists* | **RAD** (Radiologi) | `RAD-JADWAL` Jadwal Radiologi | `RAD-ORDER`, `ORG-LAYANAN` (Ruang/Modalitas Radiologi) | Known |
@@ -137,7 +137,7 @@ Berikut adalah ringkasan pengelompokan ke-51 Outcome berdasarkan Domain Pemilik 
 │                                      │             │                │ Registrasi 🟢                                          │
 │ 04. RAWAT JALAN (RJL)                │      1      │    1 (100%)    │ Antrian (Poli)* 🟢                                     │
 │ 05. RAWAT INAP (RNA)                 │      3      │    3 (100%)    │ PakaiBed 🟢, RoomCharge 🟢, WaitingList 🟢               │
-│ 06. GAWAT DARURAT (IGD)              │      3      │    0 (0%)      │ Ambulance ⚪, IgdTriage ⚪, IgdVisit ⚪                  │
+│ 06. GAWAT DARURAT (IGD)              │      3      │   3 (100%)     │ Ambulance 🟢, IgdTriage 🟢, IgdVisit 🟢                  │
 │ 07. LABORATORY (LAB)                 │      4      │    0 (0%)      │ HasilLab ⚪, OrderLab ⚪, RegExternal ⚪,                │
 │                                      │             │                │ SampleCollection ⚪                                    │
 │ 08. RADIOLOGY (RAD)                  │      3      │    0 (0%)      │ Expertise ⚪, JadwalRadiologi ⚪, OrderRadiologi ⚪      │
@@ -155,7 +155,7 @@ Berikut adalah ringkasan pengelompokan ke-51 Outcome berdasarkan Domain Pemilik 
 │                                      │             │                │ SensusIndex 🟢                                         │
 │ 15. BPJS (BPJ)                       │      2      │    1 (50%)     │ Eklaim ⚪, VclaimBpjs 🟢                                │
 ├──────────────────────────────────────┼─────────────┼────────────────┼────────────────────────────────────────────────────────┤
-│ TOTAL                                │     51      │   21 (41.2%)   │ 🟢 21 Formal Defined  │  ⚪ 30 Pending Formal Definition│
+│ TOTAL                                │     51      │   24 (47.1%)   │ 🟢 24 Formal Defined  │  ⚪ 27 Pending Formal Definition│
 └──────────────────────────────────────┴─────────────┴────────────────┴────────────────────────────────────────────────────────┘
 ```
 *\*Catatan: `AlokasiPembayaran` secara kanonikal mensupersede label sementara `OrderPayment` dari draf awal V2 agar selaras dengan berkas spesifikasi OC-TRK-ALOKASI-PEMBAYARAN.md. `Antrian` mencakup antrean pendaftaran loket (`ADM-ANTRIAN`) dan antrean pelayanan poli (`RJL-ANTRIAN`). `Tindakan` dipetakan sebagai satu shared outcome tunggal ('Patient Procedure Charge Record exists') dengan kepemilikan utama kanonikal di Tata Rekening (`TRK`) karena secara esensi bisnis entitas ini merepresentasikan pembebanan biaya finansial pasien (`TRK-BILLING`), sedangkan domain pelayanan klinis (`RJL-TINDAKAN`, `RNA-TINDAKAN`, `IGD-TINDAKAN`) bertindak sebagai kapabilitas kontributor pencatatan di titik layanan (point-of-care capture). Lihat Bagian 6 poin 4 untuk analisis tata kelola penetapan kepemilikan.*
