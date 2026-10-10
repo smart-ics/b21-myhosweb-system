@@ -64,8 +64,8 @@ Sistem MyHosWeb memiliki **15 Domain Spesifikasi Utama** yang seluruhnya telah d
 Berikut adalah pemetaan komprehensif ke-51 Outcome V2 dari [`outcomes/list-outcome-v2.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/list-outcome-v2.md) ke Domain Pemilik Utama, Kapabilitas Utama, Kapabilitas Kontributor, dan Status Kapabilitas.
 
 > **Status Dokumen Definisi Formal (`outcomes/OC-*.md`):**
-> - 🟢 **Tersedia (32 Outcomes)**: Telah memiliki dokumen spesifikasi formal mandiri di direktori [`outcomes/`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes).
-> - ⚪ **Belum Tersedia (19 Outcomes)**: Belum memiliki dokumen spesifikasi formal mandiri (terpetakan secara arsitektural pada domain & kapabilitas terkait).
+> - 🟢 **Tersedia (34 Outcomes)**: Telah memiliki dokumen spesifikasi formal mandiri di direktori [`outcomes/`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes).
+> - ⚪ **Belum Tersedia (17 Outcomes)**: Belum memiliki dokumen spesifikasi formal mandiri (terpetakan secara arsitektural pada domain & kapabilitas terkait).
 
 | No | Outcome V2 | Dokumen Definisi Formal | Semantic Business State (`<Entity> exists`) | Primary Domain | Primary Capability | Contributing Domains & Capabilities | Status Kapabilitas |
 |---|---|---|---|---|---|---|---|
@@ -89,7 +89,7 @@ Berikut adalah pemetaan komprehensif ke-51 Outcome V2 dari [`outcomes/list-outco
 | 18 | **JadwalPraktek** | 🟢 [`OC-ORG-JADWAL-PRAKTEK.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-ORG-JADWAL-PRAKTEK.md) | *Doctor Outpatient Schedule exists* | **ORG** (Organisasi) | `ORG-JADWAL` Jadwal Praktek Dokter | `ORG-LAYANAN` (Klinik/Poli), `ORG-PPA` (Dokter Spesialis) | Known |
 | 19 | **JadwalRadiologi** | ⚪ *Belum Tersedia* | *Radiology Machine Schedule exists* | **RAD** (Radiologi) | `RAD-JADWAL` Jadwal Radiologi | `RAD-ORDER`, `ORG-LAYANAN` (Ruang/Modalitas Radiologi) | Known |
 | 20 | **Kasir** | 🟢 [`OC-TRK-KASIR.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-TRK-KASIR.md) | *Cash Receipt / Disbursement exists* | **TRK** (Tata Rekening) | `TRK-KASIR` Kasir | `TRK-BILLING`, `TRK-PAYMENT`, `TRK-DEPOSIT`, `PAS-DATSOS` | Known |
-| 21 | **MaterialReq** | ⚪ *Belum Tersedia* | *Internal Material Request exists* | **PUR** (Purchasing) | `PUR-MATREQ` Material Request | `ORG-LAYANAN` (Unit Kerja Pemohon), `INV-MASTER` (Katalog Barang) | Known |
+| 21 | **MaterialReq** | 🟢 [`OC-PUR-MATERIAL-REQ.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-PUR-MATERIAL-REQ.md) | *Internal Material Request exists* | **PUR** (Purchasing) | `PUR-MATREQ` Material Request | `ORG-LAYANAN` (Unit Kerja Pemohon) | Known |
 | 22 | **MorbiditasPasien** | ⚪ *Belum Tersedia* | *Patient Clinical Morbidity Record exists* | **BRM** (Berkas Rekam Medis) | `BRM-MORBID` Morbiditas Pasien | `BRM-CODING` (Diagnosis Kodifikasi), `PAS-DATSOS`, `RJL-KONSUL` / `RNA-DISCHARGE` | Known (Catalog) |
 | 23 | **Mutasi** | ⚪ *Belum Tersedia* | *Stock Transfer / Mutation exists* | **INV** (Inventory) | `INV-MUTASI` Mutasi | `INV-STOK`, `ORG-LAYANAN` (Gudang Asal & Gudang Tujuan) | Known |
 | 24 | **MutasiBerkas** | 🟢 [`OC-BRM-MUTASI-BERKAS.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-BRM-MUTASI-BERKAS.md) | *Medical Record Physical Movement exists* | **BRM** (Berkas Rekam Medis) | `BRM-MUTASI` Mutasi Berkas | `PAS-DATSOS` (Nomor RM Pasien), `ORG-LAYANAN` (Lokasi Peminjam/Pemegang Berkas) | Known (Catalog) |
@@ -104,7 +104,7 @@ Berikut adalah pemetaan komprehensif ke-51 Outcome V2 dari [`outcomes/list-outco
 | 33 | **Penjualan** | 🟢 [`OC-APT-PENJUALAN.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-APT-PENJUALAN.md) | *Pharmacy Sales Bill exists* | **APT** (Apotek) | `APT-BILL` Sales Bill & `APT-ORDER` | `TRK-BILLING`, `TRK-TARIF`, `PAS-DATSOS` | Known |
 | 34 | **PreOperativeClearance** | 🟢 [`OC-KMO-PREOP-CLEARANCE.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-KMO-PREOP-CLEARANCE.md) | *Pre-Operative Readiness / Clearance exists* | **KMO** (Kamar Operasi) | `KMO-PREOP` Persiapan Operasi | `KMO-ORDER`, `KMO-JADWAL`, `PAS-DATSOS`, `ADM-REG`, `ORG-PPA` | Known |
 | 35 | **PurchaseOrder** | ⚪ *Belum Tersedia* | *Purchase Order exists* | **PUR** (Purchasing) | `PUR-PO` Purchase Order | `PUR-PURREQ`, `PUR-SUPPLIER` | Known |
-| 36 | **PurchaseReq** | ⚪ *Belum Tersedia* | *Purchase Request exists* | **PUR** (Purchasing) | `PUR-PURREQ` Purchase Request | `PUR-MATREQ`, `PUR-SUPPLIER`, `INV-MASTER` | Known |
+| 36 | **PurchaseReq** | 🟢 [`OC-PUR-PURCHASE-REQ.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-PUR-PURCHASE-REQ.md) | *Purchase Request exists* | **PUR** (Purchasing) | `PUR-PURREQ` Purchase Request | `PUR-MATREQ`, `PUR-FORECAST` | Known |
 | 37 | **RegExternal** | 🟢 [`OC-LAB-REG-EXTERNAL.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-LAB-REG-EXTERNAL.md) | *Direct External Lab Registration exists* | **LAB** (Laboratory) | `LAB-EXTERNAL` Registrasi External | `TRK-BILLING`, `TRK-TARIF`, `TRK-KASIR`, `LAB-ORDER` | Known |
 | 38 | **Registrasi** | 🟢 [`OC-ADM-REGISTRASI.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-ADM-REGISTRASI.md) | *Hospital Service Registration exists* | **ADM** (Admission) | `ADM-REG` Registration | `PAS-DATSOS`, `ORG-LAYANAN`, `ORG-PPA`, `ORG-JADWAL`, `ORG-BANGSAL`, `IGD-VISIT`, `RNA-WAITLIST`, `LAB-EXTERNAL`, `TRK-JAMINAN`, `TRK-TARIF`, `TRK-DEPOSIT`, `BPJ-VCLAIM` | Known |
 | 39 | **ReqMutasi** | ⚪ *Belum Tersedia* | *Stock Transfer Request exists* | **INV** (Inventory) | `INV-MUTASI` Mutasi (Tahap 1: ReqMutasi) | `ORG-LAYANAN` (Unit Pemohon & Unit Penyedia), `INV-STOK` | Known |
@@ -146,8 +146,8 @@ Berikut adalah ringkasan pengelompokan ke-51 Outcome berdasarkan Domain Pemilik 
 │                                      │             │                │ TelaahResep 🟢                                          │
 │ 11. INVENTORY (INV)                  │      6      │    0 (0%)      │ Mutasi ⚪, PakaiBrg ⚪, ReqMutasi ⚪, Stok ⚪,            │
 │                                      │             │                │ StokOpname ⚪, TerimaMutasi ⚪                           │
-│ 12. PURCHASING (PUR)                 │      7      │    0 (0%)      │ Faktur ⚪, Forecasting ⚪, MaterialReq ⚪,                │
-│                                      │             │                │ PurchaseOrder ⚪, PurchaseReq ⚪, ReturBeli ⚪,           │
+│ 12. PURCHASING (PUR)                 │      7      │    2 (29%)     │ MaterialReq 🟢, PurchaseReq 🟢, Faktur ⚪,                │
+│                                      │             │                │ Forecasting ⚪, PurchaseOrder ⚪, ReturBeli ⚪,           │
 │                                      │             │                │ TerimaBrg ⚪                                            │
 │ 13. TATA REKENING (TRK)              │      6      │    5 (83%)     │ AlokasiPembayaran* 🟢, Billing 🟢, ClosingShift 🟢,     │
 │                                      │             │                │ Deposit 🟢, Kasir 🟢, Tindakan ⚪                        │
@@ -155,7 +155,7 @@ Berikut adalah ringkasan pengelompokan ke-51 Outcome berdasarkan Domain Pemilik 
 │                                      │             │                │ SensusIndex 🟢                                         │
 │ 15. BPJS (BPJ)                       │      2      │    1 (50%)     │ Eklaim ⚪, VclaimBpjs 🟢                                │
 ├──────────────────────────────────────┼─────────────┼────────────────┼────────────────────────────────────────────────────────┤
-│ TOTAL                                │     51      │   32 (62.7%)   │ 🟢 32 Formal Defined  │  ⚪ 19 Pending Formal Definition│
+│ TOTAL                                │     51      │   34 (66.7%)   │ 🟢 34 Formal Defined  │  ⚪ 17 Pending Formal Definition│
 └──────────────────────────────────────┴─────────────┴────────────────┴────────────────────────────────────────────────────────┘
 ```
 *\*Catatan: `AlokasiPembayaran` secara kanonikal mensupersede label sementara `OrderPayment` dari draf awal V2 agar selaras dengan berkas spesifikasi OC-TRK-ALOKASI-PEMBAYARAN.md. `Antrian` mencakup antrean pendaftaran loket (`ADM-ANTRIAN`) dan antrean pelayanan poli (`RJL-ANTRIAN`). `Tindakan` dipetakan sebagai satu shared outcome tunggal ('Patient Procedure Charge Record exists') dengan kepemilikan utama kanonikal di Tata Rekening (`TRK`) karena secara esensi bisnis entitas ini merepresentasikan pembebanan biaya finansial pasien (`TRK-BILLING`), sedangkan domain pelayanan klinis (`RJL-TINDAKAN`, `RNA-TINDAKAN`, `IGD-TINDAKAN`) bertindak sebagai kapabilitas kontributor pencatatan di titik layanan (point-of-care capture). Lihat Bagian 6 poin 4 untuk analisis tata kelola penetapan kepemilikan.*
