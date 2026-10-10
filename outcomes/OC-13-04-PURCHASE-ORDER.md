@@ -3,8 +3,8 @@
 | Field       | Value        |
 |-------------|--------------|
 | Code        | OC-13-04     |
-| Version     | 1.0          |
-| Status      | Draft        |
+| Version     | 1.1          |
+| Status      | Review       |
 | LastUpdated | 2026-10-10   |
 
 ---
@@ -18,7 +18,7 @@ Purchase Order (PO) merepresentasikan pencatatan komitmen pemesanan resmi rumah 
 Purchase Order dibentuk berdasarkan dokumen **Purchase Request (PR)** yang telah disetujui (`Approved` pada `OC-13-03`). Dokumen PO berfungsi sebagai instrumen perikatan pemesanan resmi rumah sakit yang menjadi dasar rujukan bagi supplier untuk mengirimkan barang, bagi unit penerima/gudang untuk memverifikasi kedatangan barang (*Delivery Order / Goods Receipt*), serta bagi fungsi penagihan untuk mencocokkan faktur komersial (*Supplier Invoice*).
 
 ### 1.2 Outcome Statement
-Dokumen komitmen pemesanan **Purchase Order (PO)** resmi rumah sakit kepada supplier/vendor **telah berhasil dibentuk berdasarkan Purchase Request (PR) yang telah disetujui, diotorisasi sesuai kebijakan rumah sakit, diterbitkan dan dikirimkan secara resmi kepada supplier/vendor sebagai komitmen pemesanan aktif, mampu mencerminkan ringkasan progres penerimaan barang dari proses penerimaan fisik, dapat disesuaikan atau dibatalkan melalui mekanisme terkontrol dengan riwayat yang dapat ditelusuri, serta siap dinyatakan selesai (Closed) secara bisnis.**
+Dokumen **Purchase Order (PO)** resmi rumah sakit kepada supplier/vendor **tersedia sebagai komitmen pemesanan yang dibentuk dari Purchase Request (PR) yang telah disetujui, memuat ketentuan pemesanan yang diotorisasi dan dikirimkan secara resmi, serta mempertahankan keterlacakan perubahan, progres pemenuhan, pembatalan, dan penyelesaian bisnisnya.**
 
 Dokumen PO membedakan secara tegas antara persiapan internal (*Draft*) dengan komitmen resmi (*Issued/Sent*), serta terpisah secara fungsional dari pencatatan fisik penerimaan barang di gudang, mutasi saldo persediaan, dan pembayaran finansial.
 
@@ -65,7 +65,9 @@ Dokumen PO membedakan secara tegas antara persiapan internal (*Draft*) dengan ko
 2. **Keterlacakan Riwayat Perubahan (*Auditability*):**
    - Setiap perubahan wajib mencatat identitas pengubah, waktu perubahan, bagian yang diubah, dan alasan perubahan secara transparan.
    - Riwayat perubahan harus dapat ditelusuri kembali secara utuh (*traceable change history*).
-3. **Penetapan Versi Aktif & Pengiriman Kembali Resmi:**
+3. **Batas Perubahan, Penetapan Versi Aktif & Pengiriman Kembali Resmi:**
+   - Amendment hanya boleh memengaruhi komitmen PO yang masih terbuka. Riwayat penerimaan yang telah tercatat tidak boleh diubah melalui amendment PO.
+   - Perubahan yang memengaruhi kuantitas, harga, syarat pemesanan, atau jadwal pengiriman wajib mengikuti otorisasi yang dipersyaratkan oleh kebijakan rumah sakit.
    - Versi atau perubahan yang berlaku harus dapat dibedakan dan ditelusuri dengan jelas oleh pihak rumah sakit maupun supplier.
    - PO yang telah diperbarui **wajib dikirim kembali secara resmi kepada supplier/vendor** agar kedua pihak memegang komitmen yang selaras.
    - Outcome ini tidak menetapkan detail teknis format penomoran versi atau aturan otorisasi per jenis perubahan, melainkan memastikan prinsip keterlacakan dan pengiriman ulang terpenuhi sesuai kebijakan rumah sakit.
@@ -75,7 +77,8 @@ Dokumen PO membedakan secara tegas antara persiapan internal (*Draft*) dengan ko
    - Pembatalan PO dilakukan melalui mekanisme terkontrol dengan kewajiban mencatat alasan pembatalan tertulis serta identitas aktor dan stempel waktu pembatalan.
    - Seluruh perubahan status dan riwayat pembatalan dapat ditelusuri.
 2. **Pemberitahuan Resmi kepada Supplier:**
-   - Supplier/vendor wajib diberi tahu secara resmi bahwa PO yang bersangkutan telah dibatalkan.
+   - Untuk PO yang telah berstatus `Issued/Sent` atau `Partially Received`, supplier/vendor wajib diberi tahu secara resmi bahwa PO yang bersangkutan telah dibatalkan.
+   - Pembatalan pada status `Draft` hanya memerlukan alasan pembatalan internal karena PO belum dikirim kepada supplier/vendor.
 3. **Pembatalan PO Berstatus Partially Received:**
    - PO yang berada pada status `Partially Received` **dapat dibatalkan** untuk mengakhiri sisa komitmen kuantitas yang belum dipenuhi oleh supplier.
 4. **Pelestarian Riwayat Transaksi (*Non-Destructive History*):**
@@ -142,8 +145,8 @@ Dokumen PO membedakan secara tegas antara persiapan internal (*Draft*) dengan ko
   - Potongan harga / diskon per baris item (jika berlaku).
   - Subtotal nilai komitmen item ($\text{Ordered Quantity} \times \text{Agreed Unit Price} - \text{Diskon}$).
 - **Progres Penerimaan Item (*Item-Level Progress*):**
-  - Kuantitas yang telah diterima (**Received Quantity**, direfleksikan dari pencatatan penerimaan fisik barang).
-  - Kuantitas sisa pesanan yang masih terbuka (**Outstanding / Open Quantity** = $\text{Ordered Quantity} - \text{Received Quantity}$).
+  - Kuantitas yang telah diterima (**Received Quantity**, hanya direfleksikan dari pencatatan penerimaan fisik barang pada `PUR-DO`; tidak diedit langsung pada PO).
+  - Kuantitas sisa pesanan yang masih terbuka (**Outstanding / Open Quantity** = $\text{Ordered Quantity} - \text{Received Quantity}$), dengan penyesuaian atas saldo yang dibatalkan bila berlaku.
   - Status pemenuhan item (*Item Fulfillment Status*: misal `Pending`, `Partially Received`, `Fully Received`, `Cancelled Balance`).
 - **Instruksi Khusus Item:**
   - Spesifikasi teknis, merek yang disepakati, atau catatan instruksi penanganan barang (opsional).
@@ -214,7 +217,7 @@ stateDiagram-v2
 | Pencatatan kesepakatan harga, kuantitas, syarat penyerahan, dan lokasi kirim. | Pencatatan fisik penerimaan barang dan surat jalan di gudang (`PUR-DO` / `OC-12-01`). |
 | Penatausahaan status `Draft`, fasilitasi otorisasi, dan penerbitan/pengiriman resmi (`Issued/Sent`). | Pemutakhiran saldo stok fisik gudang dan mutasi persediaan (`INV-STOK`, `INV-MUTASI`). |
 | Pengelolaan perubahan terkontrol (*amendments*), riwayat versi, dan pengiriman ulang ke vendor. | Pencatatan & verifikasi tagihan/faktur komersial supplier (`PUR-FAKTUR` / `OC-13-05`). |
-| Pelacakan progres penerimaan item & agregasi status penerimaan PO berdasarkan informasi dari proses penerimaan. | Pembayaran utang usaha, disbursement kas, atau perbankan (`TRK-BILLING`, `TRK-PAYMENT`, `TRK-KASIR`). |
+| Pelacakan progres penerimaan item & agregasi status penerimaan PO berdasarkan informasi dari proses penerimaan (`PUR-DO`); PO tidak mencatat penerimaan fisik secara langsung. | Pembayaran utang usaha, disbursement kas, atau perbankan (`TRK-BILLING`, `TRK-PAYMENT`, `TRK-KASIR`). |
 | Pelaksanaan pembatalan terkontrol (`Cancelled`), pencatatan alasan, notifikasi vendor, dan terminasi sisa komitmen. | Pengelolaan pengembalian barang rusak/retur beli ke vendor (`PUR-RETURN` / `OC-12-05`). |
 | Pernyataan penutupan dokumen secara bisnis (`Closed`). | Evaluasi kinerja vendor pasca-pengadaan (*Vendor Performance Management*). |
 
@@ -229,7 +232,7 @@ stateDiagram-v2
 | Supplier/vendor yang dipilih tidak aktif atau diblokir | Pembuatan PO ditolak. Pengadaan hanya dapat diterbitkan kepada supplier terdaftar yang aktif pada `PUR-SUPPLIER`. |
 | Otorisasi penerbitan ditolak oleh pejabat berwenang | PO tetap pada status persiapan internal (*Draft*) atau dikembalikan untuk diperbaiki; tidak diterbitkan dan tidak dikirimkan ke supplier. |
 | PO yang telah diterbitkan (`Issued/Sent`) hendak diubah tanpa melalui mekanisme perubahan terkontrol | Pengeditan langsung tanpa jejak audit diblokir. Penyesuaian wajib dicatat melalui mekanisme perubahan resmi dengan alasan tertulis dan dikirim ulang ke vendor. |
-| Pembatalan PO diajukan tanpa mencantumkan alasan tertulis | Aksi pembatalan ditolak. Alasan pembatalan wajib dicatat sebagai bagian dari integritas tata kelola pengadaan. |
+| Pembatalan PO diajukan tanpa mencantumkan alasan tertulis | Aksi pembatalan ditolak. Alasan pembatalan wajib dicatat sebagai bagian dari integritas tata kelola pengadaan. Untuk PO yang telah dikirim, pemberitahuan resmi kepada supplier juga wajib dicatat. |
 | Pembatalan diajukan atas PO yang telah berstatus `Partially Received` | Pembatalan diizinkan untuk mengakhiri **sisa komitmen** yang belum diterima. Status PO berubah menjadi `Cancelled`, riwayat barang yang telah diterima tetap dipertahankan, dan supplier diberitahu resmi. |
 | Pembatalan diajukan atas PO yang telah berstatus `Fully Received` atau `Closed` | Pembatalan ditolak. Seluruh komitmen telah terpenuhi atau telah diselesaikan secara bisnis; penyesuaian fisik dilakukan melalui mekanisme retur beli (`PUR-RETURN`). |
 | Seluruh barang telah diterima (`Fully Received`), namun PO langsung ditutup otomatis tanpa pernyataan bisnis | Penutupan otomatis diblokir. Status tetap `Fully Received` hingga proses bisnis dinyatakan tuntas secara eksplisit sesuai kebijakan rumah sakit sebelum beralih ke `Closed`. |
@@ -245,10 +248,10 @@ stateDiagram-v2
 | **AC-03** | PO yang berstatus `Draft` tersimpan sebagai persiapan internal dan tidak diakui sebagai komitmen pemesanan resmi rumah sakit. | Integritas Status |
 | **AC-04** | PO hanya dapat berpindah ke status `Issued/Sent` setelah memperoleh otorisasi resmi sesuai kebijakan rumah sakit dan dikirim secara resmi kepada supplier/vendor. | Otorisasi & Komitmen |
 | **AC-05** | Sistem mencatat bukti/stempel waktu dan kanal komunikasi resmi saat PO pertama kali dikirimkan kepada supplier/vendor. | Keterlacakan Komunikasi |
-| **AC-06** | Penyesuaian atas PO yang telah berstatus `Issued/Sent` dicatat melalui mekanisme perubahan terkontrol, menghasilkan penanda versi/perubahan yang dapat dibedakan, dan mewajibkan pengiriman kembali dokumen pembaruan kepada supplier/vendor. | Perubahan Terkontrol |
-| **AC-07** | Pembatalan PO mewajibkan pengisian alasan pembatalan tertulis, mencatat identitas dan waktu pembatalan, serta mencatat konfirmasi pemberitahuan resmi kepada supplier. | Pembatalan Terkontrol |
+| **AC-06** | Penyesuaian atas PO yang telah berstatus `Issued/Sent` dicatat melalui mekanisme perubahan terkontrol, hanya memengaruhi komitmen yang masih terbuka, tidak mengubah riwayat penerimaan yang telah tercatat, menghasilkan penanda versi/perubahan yang dapat dibedakan, dan mewajibkan pengiriman kembali dokumen pembaruan kepada supplier/vendor. | Perubahan Terkontrol |
+| **AC-07** | Pembatalan PO mewajibkan pengisian alasan pembatalan tertulis serta pencatatan identitas dan waktu pembatalan; untuk PO yang telah dikirim kepada supplier, sistem juga mencatat konfirmasi pemberitahuan resmi kepada supplier. | Pembatalan Terkontrol |
 | **AC-08** | Sistem mengizinkan pembatalan atas PO berstatus `Partially Received` untuk mengakhiri sisa komitmen pesanan, mengubah status menjadi `Cancelled`, tanpa menghapus atau mengubah data penerimaan barang yang telah terjadi sebelumnya. | Integritas Siklus Hidup |
-| **AC-09** | Progres penerimaan barang dicatat dan dihitung pada tingkat baris item (*Ordered Qty*, *Received Qty*, *Open Qty*), dan status PO secara tepat meringkas status pemenuhan seluruh item (`Issued/Sent`, `Partially Received`, `Fully Received`). | Pelacakan Progres |
+| **AC-09** | Progres penerimaan barang dari `PUR-DO` dicatat dan dihitung pada tingkat baris item (*Ordered Qty*, *Received Qty*, *Open Qty*), dan status PO secara tepat meringkas status pemenuhan seluruh item (`Issued/Sent`, `Partially Received`, `Fully Received`). | Pelacakan Progres |
 | **AC-10** | Sistem mempertahankan pemisahan bisnis antara status `Fully Received` dan `Closed`; status PO tidak berubah otomatis menjadi `Closed` hanya karena seluruh kuantitas barang telah diterima. | Integritas Bisnis |
 | **AC-11** | PO dapat bertransisi menjadi `Closed` hanya melalui pernyataan penyelesaian bisnis resmi sesuai kebijakan rumah sakit. | Ketepatan Penutupan |
 | **AC-12** | Pembentukan, penerbitan, pemutakhiran status penerimaan, pembatalan, maupun penutupan PO tidak melakukan pemotongan/penambahan saldo stok fisik inventori secara langsung dan tidak mencatat pembayaran/pelunasan keuangan. | Batasan (*Boundary*) |
