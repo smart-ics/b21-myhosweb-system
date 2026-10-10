@@ -64,8 +64,8 @@ Sistem MyHosWeb memiliki **15 Domain Spesifikasi Utama** yang seluruhnya telah d
 Berikut adalah pemetaan komprehensif ke-51 Outcome V2 dari [`outcomes/list-outcome-v2.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/list-outcome-v2.md) ke Domain Pemilik Utama, Kapabilitas Utama, Kapabilitas Kontributor, dan Status Kapabilitas.
 
 > **Status Dokumen Definisi Formal (`outcomes/OC-*.md`):**
-> - 🟢 **Tersedia (40 Outcomes)**: Telah memiliki dokumen spesifikasi formal mandiri di direktori [`outcomes/`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes).
-> - ⚪ **Belum Tersedia (11 Outcomes)**: Belum memiliki dokumen spesifikasi formal mandiri (terpetakan secara arsitektural pada domain & kapabilitas terkait).
+> - 🟢 **Tersedia (41 Outcomes)**: Telah memiliki dokumen spesifikasi formal mandiri di direktori [`outcomes/`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes).
+> - ⚪ **Belum Tersedia (10 Outcomes)**: Belum memiliki dokumen spesifikasi formal mandiri (terpetakan secara arsitektural pada domain & kapabilitas terkait).
 
 | No | Outcome V2 | Dokumen Definisi Formal | Semantic Business State (`<Entity> exists`) | Primary Domain | Primary Capability | Contributing Domains & Capabilities | Status Kapabilitas |
 |---|---|---|---|---|---|---|---|
@@ -113,7 +113,7 @@ Berikut adalah pemetaan komprehensif ke-51 Outcome V2 dari [`outcomes/list-outco
 | 42 | **SampleCollection** | 🟢 [`OC-LAB-SAMPLE-COLLECTION.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-LAB-SAMPLE-COLLECTION.md) | *Specimen Sample Record exists* | **LAB** (Laboratory) | `LAB-COLLECT` Specimen Collection | `LAB-ORDER`, `ORG-PPA` (Petugas Flebotomi/Analis), `PAS-DATSOS` | Known |
 | 43 | **SensusIndex** | 🟢 [`OC-BRM-SENSUS-INDEX.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-BRM-SENSUS-INDEX.md) | *Service Census & Case Index exists* | **BRM** (Berkas Rekam Medis) | `BRM-RPT` Sensus dan Index | `BRM-CODING`, `BRM-MORBID`, `BRM-INDIKATOR`, `ADM-REG`, `ADM-TRACKER`, `RNA-BED`, `RNA-DISCHARGE`, `RJL-KONSUL`, `IGD-VISIT`, `PAS-DATSOS`, `ORG-BANGSAL`, `TRK-JAMINAN` | Known (Catalog) |
 | 44 | **Stok** | 🟢 [`OC-INV-STOK.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-INV-STOK.md) | *Inventory Stock Level exists* | **INV** (Inventory) | `INV-STOK` Stok | `INV-MASTER`, `ORG-LAYANAN` (Lokasi Gudang/Depo) | Known |
-| 45 | **StokOpname** | ⚪ *Belum Tersedia* | *Physical Stock Reconciliation exists* | **INV** (Inventory) | `INV-OPNAME` Stok Opname | `INV-STOK`, `INV-MASTER`, `ORG-LAYANAN` | Known |
+| 45 | **StokOpname** | 🟢 [`OC-INV-STOK-OPNAME.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-INV-STOK-OPNAME.md) | *Physical Stock Reconciliation exists* | **INV** (Inventory) | `INV-OPNAME` Stok Opname | `INV-STOK`, `INV-MASTER`, `ORG-LAYANAN`, `ORG-PPA` | Known |
 | 46 | **TelaahResep** | 🟢 [`OC-APT-TELAAH-RESEP.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-APT-TELAAH-RESEP.md) | *Pharmacist Clinical Review exists* | **APT** (Apotek) | `APT-TELAAH` Telaah Resep | `APT-RESEP`, `ORG-PPA` (Apoteker Penelaah) | Known |
 | 47 | **TerimaBrg** | ⚪ *Belum Tersedia* | *Goods Receipt (DO) Record exists* | **PUR** (Purchasing) | `PUR-DO` DO Penerimaan Barang | `PUR-PO`, `PUR-SUPPLIER`, `INV-MUTASI` / `INV-STOK` (Pencatatan Masuk Fisik) | Known |
 | 48 | **TerimaMutasi** | 🟢 [`OC-INV-TERIMA-MUTASI.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-INV-TERIMA-MUTASI.md) | *Stock Transfer Acceptance exists* | **INV** (Inventory) | `INV-MUTASI` Mutasi (Tahap 3: TerimaMutasi) | `INV-STOK`, `INV-MASTER`, `ORG-LAYANAN` (Gudang Penerima) | Known |
@@ -144,8 +144,8 @@ Berikut adalah ringkasan pengelompokan ke-51 Outcome berdasarkan Domain Pemilik 
 │ 09. KAMAR OPERASI (KMO)              │      3      │   3 (100%)     │ JadwalOk 🟢, OrderOk 🟢, PreOperativeClearance 🟢        │
 │ 10. APOTEK (APT)                     │      4      │   4 (100%)     │ AntrianApotek 🟢, OrderDispensing 🟢, Penjualan 🟢,       │
 │                                      │             │                │ TelaahResep 🟢                                          │
-│ 11. INVENTORY (INV)                  │      6      │    5 (83%)     │ Mutasi 🟢, ReqMutasi 🟢, TerimaMutasi 🟢,             │
-│                                      │             │                │ PakaiBrg 🟢, Stok 🟢, StokOpname ⚪                           │
+│ 11. INVENTORY (INV)                  │      6      │   6 (100%)     │ Mutasi 🟢, ReqMutasi 🟢, TerimaMutasi 🟢,             │
+│                                      │             │                │ PakaiBrg 🟢, Stok 🟢, StokOpname 🟢                           │
 │ 12. PURCHASING (PUR)                 │      7      │    3 (43%)     │ MaterialReq 🟢, PurchaseReq 🟢, PurchaseOrder 🟢,        │
 │                                      │             │                │ Faktur ⚪, Forecasting ⚪, ReturBeli ⚪, TerimaBrg ⚪      │
 │ 13. TATA REKENING (TRK)              │      6      │    5 (83%)     │ AlokasiPembayaran* 🟢, Billing 🟢, ClosingShift 🟢,     │
@@ -154,7 +154,7 @@ Berikut adalah ringkasan pengelompokan ke-51 Outcome berdasarkan Domain Pemilik 
 │                                      │             │                │ SensusIndex 🟢                                         │
 │ 15. BPJS (BPJ)                       │      2      │    1 (50%)     │ Eklaim ⚪, VclaimBpjs 🟢                                │
 ├──────────────────────────────────────┼─────────────┼────────────────┼────────────────────────────────────────────────────────┤
-│ TOTAL                                │     51      │   40 (78.4%)   │ 🟢 40 Formal Defined  │  ⚪ 11 Pending Formal Definition│
+│ TOTAL                                │     51      │   41 (80.4%)   │ 🟢 41 Formal Defined  │  ⚪ 10 Pending Formal Definition│
 └──────────────────────────────────────┴─────────────┴────────────────┴────────────────────────────────────────────────────────┘
 ```
 *\*Catatan: `AlokasiPembayaran` secara kanonikal mensupersede label sementara `OrderPayment` dari draf awal V2 agar selaras dengan berkas spesifikasi OC-TRK-ALOKASI-PEMBAYARAN.md. `Antrian` mencakup antrean pendaftaran loket (`ADM-ANTRIAN`) dan antrean pelayanan poli (`RJL-ANTRIAN`). `Tindakan` dipetakan sebagai satu shared outcome tunggal ('Patient Procedure Charge Record exists') dengan kepemilikan utama kanonikal di Tata Rekening (`TRK`) karena secara esensi bisnis entitas ini merepresentasikan pembebanan biaya finansial pasien (`TRK-BILLING`), sedangkan domain pelayanan klinis (`RJL-TINDAKAN`, `RNA-TINDAKAN`, `IGD-TINDAKAN`) bertindak sebagai kapabilitas kontributor pencatatan di titik layanan (point-of-care capture). Lihat Bagian 6 poin 4 untuk analisis tata kelola penetapan kepemilikan.*
