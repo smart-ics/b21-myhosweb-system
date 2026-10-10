@@ -64,8 +64,8 @@ Sistem MyHosWeb memiliki **15 Domain Spesifikasi Utama** yang seluruhnya telah d
 Berikut adalah pemetaan komprehensif ke-51 Outcome V2 dari [`outcomes/list-outcome-v2.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/list-outcome-v2.md) ke Domain Pemilik Utama, Kapabilitas Utama, Kapabilitas Kontributor, dan Status Kapabilitas.
 
 > **Status Dokumen Definisi Formal (`outcomes/OC-*.md`):**
-> - 🟢 **Tersedia (41 Outcomes)**: Telah memiliki dokumen spesifikasi formal mandiri di direktori [`outcomes/`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes).
-> - ⚪ **Belum Tersedia (10 Outcomes)**: Belum memiliki dokumen spesifikasi formal mandiri (terpetakan secara arsitektural pada domain & kapabilitas terkait).
+> - 🟢 **Tersedia (42 Outcomes)**: Telah memiliki dokumen spesifikasi formal mandiri di direktori [`outcomes/`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes).
+> - ⚪ **Belum Tersedia (9 Outcomes)**: Belum memiliki dokumen spesifikasi formal mandiri (terpetakan secara arsitektural pada domain & kapabilitas terkait).
 
 | No | Outcome V2 | Dokumen Definisi Formal | Semantic Business State (`<Entity> exists`) | Primary Domain | Primary Capability | Contributing Domains & Capabilities | Status Kapabilitas |
 |---|---|---|---|---|---|---|---|
@@ -80,7 +80,7 @@ Berikut adalah pemetaan komprehensif ke-51 Outcome V2 dari [`outcomes/list-outco
 | 9 | **Deposit** | 🟢 [`OC-TRK-DEPOSIT.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-TRK-DEPOSIT.md) | *Patient Financial Deposit Balance exists* | **TRK** (Tata Rekening) | `TRK-DEPOSIT` Deposit | `TRK-KASIR` (Penerimaan Kasir), `TRK-PAYMENT` (Alokasi Pembayaran), `ADM-REG` (Kunjungan Aktif), `PAS-DATSOS` (Identitas Pasien) | Known |
 | 10 | **Eklaim** | ⚪ *Belum Tersedia* | *BPJS INA-CBGs Claim Package exists* | **BPJ** (BPJS) | `BPJ-EKLAIM` e-Klaim | `BRM-CODING` (ICD-10/9-CM), `BRM-MORBID`, `TRK-BILLING` (Biaya Riil RS), `TRK-JAMINAN`, `ADM-REG` | Known (Catalog) |
 | 11 | **Expertise** | ⚪ *Belum Tersedia* | *Radiology Expertise Report exists* | **RAD** (Radiologi) | `RAD-EXPERTISE` Expertise | `RAD-EXAM` (Hasil Citra Modalitas), `ORG-PPA` (Dokter Spesialis Radiologi), `PAS-DATSOS` | Known |
-| 12 | **Faktur** | ⚪ *Belum Tersedia* | *Supplier Invoice exists* | **PUR** (Purchasing) | `PUR-FAKTUR` Faktur | `PUR-PO` (Pesanan Pembelian), `PUR-DO` (Tanda Terima Fisik), `PUR-SUPPLIER` | Known |
+| 12 | **Faktur** | 🟢 [`OC-PUR-FAKTUR.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-PUR-FAKTUR.md) | *Supplier Invoice exists* | **PUR** (Purchasing) | `PUR-FAKTUR` Faktur | `PUR-PO` (Pesanan Pembelian), `PUR-SUPPLIER` | Known |
 | 13 | **Forecasting** | ⚪ *Belum Tersedia* | *Procurement Forecast Plan exists* | **PUR** (Purchasing) | `PUR-FORECAST` Procurement Forecasting | `INV-STOK` (Saldo Berjalan), `INV-PAKAI` (Tren Historis Konsumsi) | Known |
 | 14 | **HasilLab** | 🟢 [`OC-LAB-HASIL-LAB.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-LAB-HASIL-LAB.md) | *Validated Laboratory Result exists* | **LAB** (Laboratory) | `LAB-RESULT` Lab Result Management | `LAB-COLLECT` (Spesimen), `LAB-ORDER`, `ORG-PPA` (Analis Lab / Patolog Klinis), `TRK-BILLING` | Known |
 | 15 | **IgdTriage** | 🟢 [`OC-IGD-TRIAGE.md`](file:///d:/Project.Aktif/b21-myhosweb-system/outcomes/OC-IGD-TRIAGE.md) | *Emergency Triage Assessment exists* | **IGD** (Gawat Darurat) | `IGD-TRIAGE` Triage | `IGD-VISIT`, `ORG-PPA` (Dokter/Perawat Triase), `PAS-DATSOS`, `ADM-REG` | Known |
@@ -146,15 +146,15 @@ Berikut adalah ringkasan pengelompokan ke-51 Outcome berdasarkan Domain Pemilik 
 │                                      │             │                │ TelaahResep 🟢                                          │
 │ 11. INVENTORY (INV)                  │      6      │   6 (100%)     │ Mutasi 🟢, ReqMutasi 🟢, TerimaMutasi 🟢,             │
 │                                      │             │                │ PakaiBrg 🟢, Stok 🟢, StokOpname 🟢                           │
-│ 12. PURCHASING (PUR)                 │      7      │    3 (43%)     │ MaterialReq 🟢, PurchaseReq 🟢, PurchaseOrder 🟢,        │
-│                                      │             │                │ Faktur ⚪, Forecasting ⚪, ReturBeli ⚪, TerimaBrg ⚪      │
+│ 12. PURCHASING (PUR)                 │      7      │    4 (57%)     │ Faktur 🟢, MaterialReq 🟢, PurchaseReq 🟢,               │
+│                                      │             │                │ PurchaseOrder 🟢, Forecasting ⚪, ReturBeli ⚪, TerimaBrg ⚪│
 │ 13. TATA REKENING (TRK)              │      6      │    5 (83%)     │ AlokasiPembayaran* 🟢, Billing 🟢, ClosingShift 🟢,     │
 │                                      │             │                │ Deposit 🟢, Kasir 🟢, Tindakan ⚪                        │
 │ 14. BERKAS REKAM MEDIS (BRM)         │      4      │    3 (75%)     │ MorbiditasPasien ⚪, MutasiBerkas 🟢, PelaporanRL 🟢,    │
 │                                      │             │                │ SensusIndex 🟢                                         │
 │ 15. BPJS (BPJ)                       │      2      │    1 (50%)     │ Eklaim ⚪, VclaimBpjs 🟢                                │
 ├──────────────────────────────────────┼─────────────┼────────────────┼────────────────────────────────────────────────────────┤
-│ TOTAL                                │     51      │   41 (80.4%)   │ 🟢 41 Formal Defined  │  ⚪ 10 Pending Formal Definition│
+│ TOTAL                                │     51      │   42 (82.4%)   │ 🟢 42 Formal Defined  │  ⚪ 9 Pending Formal Definition │
 └──────────────────────────────────────┴─────────────┴────────────────┴────────────────────────────────────────────────────────┘
 ```
 *\*Catatan: `AlokasiPembayaran` secara kanonikal mensupersede label sementara `OrderPayment` dari draf awal V2 agar selaras dengan berkas spesifikasi OC-TRK-ALOKASI-PEMBAYARAN.md. `Antrian` mencakup antrean pendaftaran loket (`ADM-ANTRIAN`) dan antrean pelayanan poli (`RJL-ANTRIAN`). `Tindakan` dipetakan sebagai satu shared outcome tunggal ('Patient Procedure Charge Record exists') dengan kepemilikan utama kanonikal di Tata Rekening (`TRK`) karena secara esensi bisnis entitas ini merepresentasikan pembebanan biaya finansial pasien (`TRK-BILLING`), sedangkan domain pelayanan klinis (`RJL-TINDAKAN`, `RNA-TINDAKAN`, `IGD-TINDAKAN`) bertindak sebagai kapabilitas kontributor pencatatan di titik layanan (point-of-care capture). Lihat Bagian 6 poin 4 untuk analisis tata kelola penetapan kepemilikan.*
@@ -221,6 +221,7 @@ flowchart TD
 
 ### 3. Rantai Logistik & Pengadaan (*Inventory & Procurement Chain*)
 - Permintaan pengadaan bermula dari kebutuhan operasional `MaterialReq` (PUR), dikonsolidasikan dalam `PurchaseReq` (PUR), dipesan melalui `PurchaseOrder` (PUR), dan diterima secara fisik via `TerimaBrg` (PUR-DO).
+- Tagihan komersial supplier dicatat melalui `Faktur` (PUR-FAKTUR) yang mengikat langsung komitmen `PurchaseOrder` (PUR) secara terpisah dari penerimaan fisik gudang `TerimaBrg` (PUR-DO); satu PO dapat memiliki beberapa Faktur dan beberapa DO secara independen.
 - Penerimaan barang fisik dan retur beli langsung memperbarui saldo fisik barang di `Stok` (INV) melalui transaksi `Mutasi` (INV-MUTASI).
 - Konsumsi harian di bangsal/poli/farmasi dicatat sebagai `PakaiBrg` (INV-PAKAI) yang memotong `Stok` (INV) dan dibebankan sebagai beban operasional unit (*Cost Center*).
 
